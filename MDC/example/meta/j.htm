@@ -1,0 +1,87 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -J-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter J</h1>
+
+<p><a href="#jobargument">jobargument</a>,
+<a href="#jobenv">jobenv</a>,
+<a href="#jobparameters">jobparameters</a></p>
+
+<hr>
+<a name="jobargument"></a>
+<h2>jobargument</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>JOB</b> command. Examples of valid arguments for the <b>JOB</b> command
+appear in an earlier section. The argument of the <b>JOB</b> command is either
+a destination, optionally followed by a colon, followed by
+implementation-specific process parameters (either an expression or a list of
+expressions (separated by colons) enclosed in parentheses), optionally
+followed by a colon and a time-out specification, or an indirection operator
+(<tt>@</tt>) followed by an expression that evaluates to a list (separated by
+commas) of such arguments.</p>
+
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>There may be a parameter list between the destination and the optional
+implementation-specific process parameters. Parameters in this parameter list
+may only be passed by value.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>An argument of a <b>JOB</b> command may optionally include a specification
+of the environment in which the process is intended to execute.</p>
+
+<hr>
+<a name="jobenv"></a>
+<h2>jobenv</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a specification of an
+environment. This symbol is used to indicate the environment
+where a process is executing. The representation in this context
+consists of a vertical bar, the name of an environment and
+another vertical bar.</p>
+
+<hr>
+<a name="jobparameters"></a>
+<h2>jobparameters</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any implementation-specific parameters to
+be passed to the process being created, optionally followed by a time-out
+specification. The implementation-specific parameters may be either a single
+expression, or a list of expressions (separated by colons), enclosed in
+parentheses.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "J" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

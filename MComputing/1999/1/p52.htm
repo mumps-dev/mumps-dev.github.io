@@ -1,0 +1,106 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 7, Number 1, Pages 52-53</h3>
+
+<h2>Questing<br>
+Fire and Ice</h2>
+
+<h3>by Art Smith</h3>
+
+<p>No airplanes this time! I'm sitting at home, warm and cozy
+next to the wood stove, while outside there are ten inches of
+snow and sub-zero temperatures.</p>
+
+<p>A perfect setting to discuss some of the work of the MDC's
+Subcommittee 16, the Object Oriented Language (Omega)
+subcommittee. There are a number of guiding principles behind
+this group's efforts (see, for instance, Rick Marshall's article
+in this issue). One of these is the notion of "Fire and Ice."</p>
+
+<p>In this context, we are referring to the notion of allowing
+some things to change at any time, even while a routine is
+running ("fire"), while other things may be fixed so that they
+are entirely constant ("ice"). These decisions are nothing new to
+programming languages- every language makes decisions on these
+sorts of issues. M is a rather "fiery" language; indirection and
+the XECUTE command allow programmers to easily write routines
+that behave in different run-time environments. Any of you who
+have programmed in COBOL or FORTRAN can appreciate how dynamic
+that makes the language! Most of the languages that date from the
+same period as M are, in general, much icier.</p>
+
+<p> Other examples of fire include pointers in C/C++ or
+references in Java (though C/C++ pointers are more fiery than
+Java references because you can do pointer arithmetic to produce
+new pointers on the fly). The old versions of FORTRAN in which
+you could change the value of numeric constants through parameter
+passing and aliasing probably represent fire gone out of
+control.</p>
+
+<p>Examples of ice would include the use of declaration modules
+in Modula-II or function prototypes in C. Encapsulation in object
+oriented languages (which limits access to an object's internal
+behavior to only declared public interfaces) is icy. Allowing
+encapsulation to be violated (as most popular "object oriented"
+languages do) melts that ice.</p>
+
+<p>So what's so new about Omega?</p>
+
+<p>In the opinion of the members of SC-16, decisions about fire
+and ice should not be made by the language designer, but rather
+by the programmer. There is much to be gained in a language that
+is fiery- it can do everything that can be done by an icier
+language, and more. But, like most forms of power, there is a
+price to pay. In this case the price is a lack of efficiency in
+the implementation, a decreased ability to catch programming
+errors, and a difficulty in learning and understanding the fiery
+aspects of a language.</p>
+
+<p>In Omega, we want that tradeoff to be your choice.</p>
+
+<p>If you want to write a simple routine to solve a simple task,
+you should not have to carry the implementational baggage
+required for sophisticated flexible programs; nor should you have
+to understand these fiery aspects.</p>
+
+<p>By writing your routine so that things are frozen, you allow
+the simplest coding and the quickest implementation. For this
+reason we may think that "ice" is often the default behavior. On
+the other hand, sometimes the programmer wants to lock down
+aspects of the program that would otherwise be allowed to float
+freely. In particular, specification of preconditions and
+postconditions (contracts) for objects and their methods can
+freeze code more than the fiery default behavior would allow.</p>
+
+<p>In some cases, we have even added a sort of "meta-fire" to the
+language. For example, the way objects communicate with each
+other can be fiery (allowing communication channels to come and
+go dynamically) or icy (requiring persistent connections between
+communicating objects). If the programmer does not specify this
+behavior, Omega is meta-fiery- it chooses the communication mode
+based on characteristics of the objects (e.g., whether the
+objects are on the same machine). The programmer can, however,
+make the meta-icy decision to lock this behavior down (choosing
+either fiery or icy behavior). Forcing dynamic communication,
+therefore, represents frozen fire!! So are you confused yet? If
+so, don't feel bad, I've been working with this stuff for years
+now and still get confused myself. These concepts are new to all
+of us, and we are still trying to figure out the implications of
+our decisions. You can expect more information on these
+developments in the future, but hopefully this has at least
+opened the door to some exciting ideas. Well, it's time to throw
+another log in the fire, crank up the old Ford tractor and blade
+the drive. Think warm thoughts!</p>
+
+<hr>
+
+<p><i>Art Smith chairs the MDC and is in charge of computer
+systems at the University of Missouris Veterinary Medical
+Teaching Hospital.<br>
+Email: <a href="mailto:Emergent@sockets.net">Emergent@sockets.net</a></i></p>
+
+</body></html>

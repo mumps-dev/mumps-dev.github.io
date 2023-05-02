@@ -1,0 +1,202 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $RANDOM</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $R[ANDOM]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a random (integer) value.</p>
+
+<p>(The notation [0..n) means these examples that the result is an
+integer value between 0 (inclusive) and n (exclusive).)</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(N)</tt></td>
+<td>&nbsp;</td>
+<td align=left>(0, <tt>N</tt>)</td></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> or <tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(2.3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> or <tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(0)</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (<a href="../mdcerror.htm#M3">M3</a>)</td></tr>
+
+<tr><td align=right><tt><b>$RANDOM</b>(-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (<a href="../mdcerror.htm#M3">M3</a>)</td></tr>
+</table></p>
+
+<p>A common mistake is to write code like</p>
+<pre>
+ ...
+ <b>Kill</b> Selected
+ <b>For</b> i=1:1:max <b>Do</b>
+ . <b>Set</b> ok=0 <b>For</b>  <b>Do</b>  <b>Quit</b>:ok
+ . . <b>Set</b> r=<b>$Random</b>(max)+1
+ . . <b>Set</b>:'<b>$Data</b>(Selected(r)) ok=r
+ . . <b>Quit</b>
+ . <b>Set</b> result(i)=ok
+ . <b>Set</b> Selected(ok)=1
+ . <b>Quit</b>
+ ...
+</pre>
+<p>This code will repeat a random selection until it finds an
+element that hasn't been selected before, and typically,
+one doesn't even notice that it may take multiple attempts to
+find an "not-yet-selected" element until about 90% of the
+elements have been selected. After that, the time that is
+spent in the multiple iterations to find a "not-yet-selected"
+element typically tend to consume noticeable amounts of time.<br>
+In short, it does pay to avoid multiple attempts to find a
+"not-yet-selected" element.</p>
+
+<p>In true keeping with the spirit of a Standards Development
+Committee, the amount of attention paid to a topic should
+be in reverse proportion to the importance of the topic.</p>
+
+<p>So... since many people feel that <b>$Random</b> is the least
+important function in the standardized suite, here goes:</p>
+
+<p>To shuffle a deck of cards:</pp>
+<pre>
+ <b>Set</b> DeckOne=""
+ <b>For</b> i=1:1:52 <b>Set</b> DeckOne=DeckOne_<b>$Char</b>(i)
+ <b>Set</b> DeckTwo=""
+ <b>For</b> i=52:-1:1 <b>Do</b>
+ . <b>Set</b> card=<b>$Random</b>(i)+1
+ . <b>Set</b> DeckTwo=DeckTwo_<b>$ASCII</b>(DeckOne,card)
+ . <b>Set</b> <b>$Extract</b>(DeckOne,card)=""
+ . <b>Quit</b>
+ <b>Set</b> suites="Clubs Hearts Clovers Diamonds"
+ <b>Set</b> cards="Ace 2 3 4 5 6 7 8 9 10 Jack Queen King"
+ <b>For</b> i=1:1:52 <b>Do</b>
+ . <b>Set</b> code=<b>$ASCII</b>(DeckTwo,i)-1
+ . <b>Set</b> suite=code\13+1,card=code#13+1
+ . <b>Write</b> !,<b>$Piece</b>(cards," ",card),
+ . <b>Write</b> " of ",<b>$Piece</b>(suites," ",suite)
+ . <b>Quit</b>
+ <b>Quit</b>
+</pre>
+<p>When displaying the shuffled deck, internal code numbers 1
+through 13 correspond to the suite of Clubs, 14 through 26
+the suite of Hearts, 27 through 39 the Clovers, and 40
+through 52 the Diamonds.<br>
+Within each suite, the first element corresponds to the Ace,
+and the thirteenth to the King.</p>
+
+<p>Note that one (random) card is removed from <tt>DeckOne</tt>
+at each step of the loop, and is added to <tt>DeckTwo</tt>.
+Thus, the random selection can never select the same
+card twice.</p>
+
+<p>Of course, the shuffle can also be accomplished by using
+one single variable that holds both the original deck of
+cards, and the cards that still need to be randomized.<br>
+The trick is to interchange the first card with a randomly
+selected one, then the second one, etcetera.<br>
+Note that the loop only goes to 51 in this case, because
+once 51 cards have been selected, the remaining one doesn't
+need the random generator to be able to find it anymore...
+(nor does it need to be interchanged with any other card).</p>
+<pre>
+ <b>Set</b> Deck=""
+ <b>For</b> i=1:1:52 <b>Set</b> Deck=Deck_<b>$Char</b>(i)
+ <b>Set</b> n=52 <b>For</b> i=1:1:51 <b>Do</b>
+ . <b>Set</b> r=<b>$Random</b>(n)
+ . <b>Set</b> n=n-1
+ . <b>Set</b> temp=<b>$Extract</b>(Deck,i+r)
+ . <b>Set</b> <b>$Extract</b>(Deck,i+r)=<b>$Extract</b>(Deck,i)
+ . <b>Set</b> <b>$Extract</b>(Deck,i)=temp
+ . <b>Quit</b>
+ <b>Quit</b>
+</pre>
+<p>The above approach works fine as long as the collection of
+elements has a predictably small size (particularly: less
+than the number of characters in the character-set).<br>
+So, with the 7-bit ASCII set, this will work uip to 127 elements,
+with the 8-bit ASCII, it will work up to 255 elements, with
+with Unicode, it will work up to 65,535 elements, and with
+ISO-10646 it would work up to 2**32-1 elements
+(4,294,967,295), but there currently aren't any known
+complete implementations of that character-set.</p>
+
+<p>So, for large collections, it will be necessary to rely
+on MUMPS's strong point: the sparse global variable.</p>
+
+<p>One approach could be to do it like this:</p>
+<pre>
+ <b>Kill</b>
+ <b>Set</b> max=<i>verymany</i>
+ <b>For</b> i=1:1:max <b>Set</b> ^GloVar(i)=0
+ <b>For</b> i=max:-1:1 <b>Do</b>
+ . <b>Set</b> done=0,t="",target=<b>$Random</b>(i)+1
+ . <b>Set</b> count=0 <b>For</b>  <b>Do</b>  <b>Quit</b>:done
+ . . <b>Set</b> t=<b>$Order</b>(^GloVar(t))
+ . . <b>Set</b>:t'="" count=count+1
+ . . <b>If</b> target=count <b>Set</b> done=1 <b>Kill</b> ^GloVar(t)
+ . . <b>Quit</b>
+ . <b>Write</b> !,"Element number "_(max-i+1)," = ",t
+ . <b>Quit</b>
+ </pre>
+<p>Or, making it a tad faster:</p>
+<pre>
+ <b>Kill</b>
+ <b>Set</b> max=<i>verymany</i>
+ <b>For</b> n=1:1:max <b>Set</b> ^GloVar(n)=""
+ <b>For</b> i=max:-1:1 <b>Do</b>
+  . <b>Set</b> r=<b>$Random</b>(i)+1
+  . <b>Set</b> n="" <b>For</b> k=1:1:r <b>Set</b> n=<b>$Order</b>(^GloVar(n))
+  . <b>Write</b> !,"Element number "_(max-i+1)," = ",n
+  . <b>Kill</b> ^GloVar(n)
+  . <b>Quit</b>
+</pre>
+<p>And, making it a lot faster by removing the need for the
+<b>$Order</b> altogether:</p>
+<pre>
+ <b>Kill</b>
+ <b>Set</b> max=<i>verymany</i>
+ <b>For</b> n=1:1:max <b>Set</b> ^GloVar(n)=""
+ <b>Set</b> n=max <b>For</b> i=1:1:max-1 <b>Do</b>
+ . <b>Set</b> r=<b>$Random</b>(n)
+ . <b>Set</b> n=n-1
+ . <b>Set</b> temp=^GloVar(i+r)
+ . <b>Set</b> ^GloVar(i+r)=^GloVar(i)
+ . <b>Set</b> ^GloVar(i)=temp
+ . <b>Quit</b>
+</pre>
+
+<p>Examples with naked references:</p>
+
+<p><b>$RANDOM</b>(VALUE)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$RANDOM</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

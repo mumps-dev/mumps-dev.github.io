@@ -1,0 +1,63 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $HOROLOG</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $H[OROLOG]</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a value that is related to the value of
+special variable <b>$HOROLOG</b>.</p>
+
+<p><b>$HOROLOG</b>(0) returns a string that is equal to the value of
+<b>$HOROLOG</b>, concatenated with a comma, concatenated with an
+integer number. This integer number is the time zone offset
+(number of seconds difference with Universally Coordinated 
+Time).</p>
+
+<p><b>$HOROLOG</b>(1) returns a value that is similar to the
+value of <b>$HOROLOG</b>(0), the difference being that the second
+piece (number of seconds in local time since midnight) may be a
+fractional number.</p>
+
+<p><b>$HOROLOG</b>(-1) returns a value that is similar to the
+value of <b>$HOROLOG</b>, the difference being that the time is
+represented in UCT (Universally Coordinated Time) rather than
+local time, and that the second piece (number of seconds since
+midnight) may be a fractional number.</p>
+
+<p>Assume that the actual time is 18 February 1991, 04:18:43 in
+Greenwich, England. A system in Washington DC with a high
+resolution clock would show at that moment:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$HOROLOG</b></tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>54834,83923</tt></td></tr>
+
+<tr><td align=right><tt><b>$HOROLOG</b>(0)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>54834,83923,18000</tt></td></tr>
+
+<tr><td align=right><tt><b>$HOROLOG</b>(1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>54834,83923.43,18000</tt></td></tr>
+
+<tr><td align=right><tt><b>$HOROLOG</b>(-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>54835,15523.43</tt></td></tr>
+
+</table></p>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

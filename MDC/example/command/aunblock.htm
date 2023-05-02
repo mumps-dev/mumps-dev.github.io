@@ -1,0 +1,51 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+
+<h2>AUNB[LOCK]</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language
+standard, as a part of the "event
+processing" extensions.</p>
+
+<p>This command "un-blocks" an event. When an event is "blocked"
+for a process, that process will not be interrupted to process
+that event when one occurs. If a registered event occurs for a
+process while it is "blocked", it will be queued for later
+processing. If an un-registered event occurs while it is
+"blocked", it will be ignored. Events are registered by assigning
+values to nodes in structured system variable <b>^$JOB</b>. Events are
+"blocked" using the command <b>ABLOCK</b>.</p>
+
+<p><b>Note</b>: every <b>ABLOCK</b> command increases the "block"
+counter for an event. In order to "un-block" an event, every
+<b>AUNBLOCK</b> command decreases that counter. Events are only
+"un-blocked" when the value of that counter is equal to zero.</p>
+
+<p>For examples, see the command <b>ABLOCK</b>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

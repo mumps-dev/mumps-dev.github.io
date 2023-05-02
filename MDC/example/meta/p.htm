@@ -1,0 +1,377 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -P-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter P</h1>
+
+<p><a href="#packagename">packagename</a>
+<a href="#patatom">patatom</a>,
+<a href="#patcode">patcode</a>,
+<a href="#patgrp">patgrp</a>,
+<a href="#patnonY">patnonY</a>,
+<a href="#patnonYZ">patnonYZ</a>,
+<a href="#patnonZ">patnonZ</a>,
+<a href="#patsetdest">patsetdest</a>,
+<a href="#pattern">pattern</a>,
+<a href="#pbuttoncode">pbuttoncode</a>,
+<a href="#pensize">pensize</a>,
+<a href="#piecedelimiter">piecedelimiter</a>,
+<a href="#place">place</a>,
+<a href="#platformname">platformname</a>,
+<a href="#platformversion">platformversion</a>,
+<a href="#pos">pos</a>,
+<a href="#positionformat">positionformat</a>,
+<a href="#postcond">postcond</a>,
+<a href="#processid">processid</a>,
+<a href="#processparameters">processparameters</a></p>
+
+<hr>
+<a name="packagename"></a>
+<h2>packagename</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a package that contains
+external resources.</p>
+
+<hr>
+<a name="patatom"></a>
+<h2>patatom</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents one part of a pattern to be matched. A
+specification consists of either a number (<b>intlit</b>) or a period followed
+by either a string literal or a pattern code (<b>patcode</b>).</p>
+
+<p>Valid specifications are:</p>
+
+<p><tt>1"string"<br>
+9"THIS SPECIFIC TEXT"<br>
+3E<br>
+.A<br>
+5N</tt></p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>Ranges of occurrences are introduced.</p>
+
+<p>Valid specifications are:</p>
+
+<p><tt>1.5N<br>
+2.7"This String"<br>
+.3A<br>
+6.N</tt></p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>Alternative options for one pattern atom are introduced (see metalanguage
+symbol <a href="a.htm#alternation"> alternation</a>.</p>
+
+<p>Valid specifications look like:</p>
+
+<p><tt>1.5(2A,3N,1"Xyz")</tt></p>
+
+<p>A pattern-match operation may also be used to extract the
+value of the sub-string that matches a specific pattern and store
+the value of this sub-string into a variable. In this context, a
+pattern atom may end with a name of a variable, enclosed in
+parentheses, e.g. <tt><b>IF</b> X?4N(ITEM)3A</tt>.</p>
+
+<hr>
+<a name="patcode"></a>
+<h2>patcode</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a code that identifies a certain class of
+characters. Valid codes are A, C, E, L, N, P and U.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Implementors and applications can define their own pattern codes by supplying
+a pattern-check algorithm in the structured system variable
+<tt><b>^$CHARACTER</b>(charset,"PATTERN",newcode)</tt>.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>Patterns may also be "negated", i.e. a string that matches a
+negated pattern matches anything but the pattern that is being
+negated.</p>
+
+<p>A pattern code may also be a "pattern range". A pattern range
+is indicated by a <a href="c.htm#charspec">specification</a>
+enclosed in square brackets. Such a specification looks like
+either a single constant, or two constants separated by a colon.
+A <a href="s.htm#strconst">constant</a>, in this context, is
+either a string literal, or a reference to the intrinsic function
+<b>$CHAR</b>.</p>
+
+<hr>
+<a name="patgrp"></a>
+<h2>patgrp</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a group
+of <a href="#patatom">pattern-atoms</a>.</p>
+
+<p>Such a group may occur in the context of
+an <a href="a.htm#alternation">alternation</a>,
+which is a specification of a number of patterns, one of
+which should be matched by the string that is being compared
+to this list of possible patterns.</p>
+
+<hr>
+<a name="patnonY"></a>
+<h2>patnonY</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="i.htm#ident"> ident</a>) and that is not the
+character Y (<b>$CHAR</b>(89) or <tt>"Y"</tt>).</p>
+
+<hr>
+<a name="patnonYZ"></a>
+<h2>patnonYZ</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="i.htm#ident"> ident</a>) and that is not one of
+the the character Y (<b>$CHAR</b>(89) or <tt>"Y"</tt>) or Z (<b>$CHAR</b>(90)
+or <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="patnonZ"></a>
+<h2>patnonZ</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="i.htm#ident"> ident</a>) and that is not the
+character Z (<b>$CHAR</b>(90) or <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="patstr"></a>
+<h2>patstr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents either a string literal
+or a "negated" string literal. This metalanguage symbol was
+added to facilitate the definition of "negated pattern 
+matching".</p>
+
+<p>A string literal is "negated" when it is preceded by the
+unary operator "not" (apostrophe).</p>
+
+<hr>
+<a name="patsetdest"></a>
+<h2>patsetdest</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the destination where
+the value of a sub-string may be stored. Such a destination
+looks like the name of a variable, enclosed in parentheses.</p>
+
+<p>A pattern-match operation may be used to extract the
+value of the sub-string that matches a specific pattern and store
+the value of this sub-string into a variable. In this context, a
+pattern atom may end with a name of a variable, enclosed in
+parentheses, e.g. <tt><b>IF</b> X?4N(ITEM)3A</tt>.</p>
+
+<hr>
+<a name="pattern"></a>
+<h2>pattern</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of a text pattern. A
+pattern specification is either an indefinite repetition of patttern atoms
+(see the metalanguage symbol
+<a href="#patatom"> patatom</a>), or an indirection operator
+followed by an expression that evaluates to a pattern specification.</p>
+
+<hr>
+<a name="pbuttoncode"></a>
+<h2>pbuttoncode</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents pointer button codes. Such codes can by
+any sequence of characters, except for commas.</p>
+
+<p>To be modified in a future ANSI M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>Pointer button codes occur as an expression that evaluates to one of the
+values <tt>"PB1"</tt>, <tt>"PB2"</tt> or <tt>"PB3"</tt> or to an
+implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="pensize"></a>
+<h2>pensize</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that indicates the
+diameter of a (round) pen that is used for drawing. If the pen size is 0
+(zero), no visible drawing is done with the pen.</p>
+
+<hr>
+<a name="piecedelimiter"></a>
+<h2>piecedelimiter</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the
+intrinsic function <b>$DPIECE</b>. This parameter corresponds to
+the string that separates the various pieces in a data record
+that is being manipulated by the function.</p>
+
+<hr>
+<a name="place"></a>
+<h2>place</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the line in a M[UMPS] program where an
+error occurred.</p>
+
+<p>Examples:</p>
+
+<p><tt>LABEL+12^|"HERE"|ROUTINE<br>
+@<br>
++12<br>
+LABEL<br>
+^|"HERE"|ROUTINE<br>
+LABEL^|"HERE"|ROUTINE</tt></p>
+
+<p>Note: The <b>environment</b> part is the only part that is not optional.</p>
+
+<hr>
+<a name="platformname"></a>
+<h2>platformname</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the type of windowing
+application. This metalanguage symbol occurs as an expression that evaluates
+to either one of the values <tt>"MAC"</tt>, <tt>"MSWIN"</tt>, <tt>"PM"</tt>,
+<tt>"X/MTF"</tt> or <tt>"X/OPNLNK"</tt>, or to an implementation-specific
+value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="platformversion"></a>
+<h2>platformversion</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of a specific version of a
+windowing application. This metalanguage symbol occurs as an expression that
+evaluates to a string that consists of two pieces, separated by a comma. The
+first piece identifies the windowing application system (see
+<b>platformname</b>), the second piece identifies the specific version and may
+contain any characters, except for the comma.</p>
+
+<hr>
+<a name="pos"></a>
+<h2>pos</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a position in a window. This metalanguage
+symbol occurs as an expression that evaluates to a string consisting of two or
+three pieces, separated by commas. The first piece identifies the horizontal
+position, the second piece identifies the vertical position. The optional
+third piece identifies the unit of measure.</p>
+
+<hr>
+<a name="positionformat"></a>
+<h2>positionformat</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a format item that may
+occur in an argument of a <b>READ</b> or a <b>WRITE</b> command.</p>
+
+<p>Such format items may be <a href="f.htm#ffformat">form-feeds</a>,
+<a href="n.htm#nlformat">line-feeds</a> or
+<a href="t.htm#tabformat">tabulations</a>.</p>
+
+<hr>
+<a name="postcond"></a>
+<h2>postcond</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a condition that specifies whether or not
+a command or argument is to be executed. Since this syntaxctical element
+follows the entity on which it operates, it is called a "post-conditional
+expression".</p>
+
+<p>All commands, except <b>ELSE</b>, <b>FOR</b> and <b>IF</b> may have a
+post-conditional expression. The arguments in the <b>DO</b>, <b>GOTO</b> and
+<b>XECUTE</b> commands may have post-conditional expressions.</p>
+
+<p>Note: The metalanguage definition of <b>postcond</b> includes the colon that
+separates the post-conditional expression from the entity on which it
+operates.</p>
+
+<hr>
+<a name="processid"></a>
+<h2>processid</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to a job
+number.</p>
+
+<hr>
+<a name="processparameters"></a>
+<h2>processparameters</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any implementation-specific parameters to
+be passed to the process being created. The implementation-specific parameters
+may be either a single expression, or a list of expressions (separated by
+colons), enclosed in parentheses.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "P" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>Turn, Turn again...</title></head>
+<body background="windmill.gif">
+
+<img alt="Ed de Moel" src="edf3.jpg" width="88" height="128" align="left"/>
+<h1>Wind<img alt="M" src="mta.gif" width="22" height="17" align="bottom"/>ills</h1>
+<p><i>M Computing, Volume 7, number 1, February 1999, pages 26-28</i></p>
+
+<h2>Turn, turn again...<br/>
+<i>by Ed de Moel</i></h2>
+
+<p>There are some questions that keep being asked again. So,
+here's another attempt at answering some questions about the LOCK
+command:</p>
+
+<ul>
+<li>Can you use a naked reference in a LOCK argument?</li>
+
+<li>What is a "deadly embrace"?</li>
+
+<li>Why can other users still change the value of a global
+variable while it is LOCKed?</li>
+
+<li>What is the purpose of LOCKing local variables?</li>
+
+<li>At what level does one LOCK a global variable?</li>
+
+<li>How come my previous LOCKs disappear when I ask to LOCK
+another one? Can I prevent that?</li>
+</ul>
+
+<p>Before answering any of these questions that people ask me on a
+regular basis, let's first answer a question that puts the whole
+affair in perspective: "What is the LOCK command supposed to
+accomplish?".</p>
+
+<p>What the LOCK command actually does is probably not what most
+novice users of the language might think it does: the command
+attempts to enter a name into a list of "LOCKed" names. When an
+occurrence of that name has already been entered into that list
+by a different process, the LOCK command will wait until that
+slot in the list is released (or when a time-out occurs).</p>
+
+<p>The idea behind this mechanism is that one can issue a signal
+that indicates that "I'm working on this data element at the
+moment, and if you need to modify it too, please wait until I'm
+done."</p>
+
+<p>Issuing that signal is all the LOCK command is supposed to do.
+The word "please" in the previous paragraph actually sums it up
+pretty nicely: if you don't want to heed the signal, you can go
+ahead and do whatever you want, but don't be surprised if my
+modifications to the data element in question undo all your
+efforts. After all, I did warn you.</p>
+
+<p>It's just like a red traffic light: it's just a light. When
+it's red, nothing prevents you from continuing on, but when you
+do, don't be surprised to see flashing colorful lights or to have
+a painful encounter with other users of the same intersection who
+assumed that you would wait for them...</p>
+
+<p>In other words, the LOCK command offers a "convention" by
+which programs can check whether someone else is already working
+on data elements that they are about to update. If each program
+"LOCKs" a application-specific name before such modifications, and
+"unLOCKs" that name when the work is done, then each other
+program that follows the same convention will just sit and wait
+until the other one is done, and all modifications to a data set
+will be neatly "serialized".</p>
+
+<p>In a world where we're more and more looking at our data
+through a model that favors "class library functions" to modify
+data in global variables over "hard coded direct access" that
+offer the highest performance, it will become also more and more
+a matter of common practice that certain data elements will
+always be accessed through the same subroutine or function. In
+that case, it is by definition a given that all access to the
+data elements in question will follow the same conventions, and
+the use of signals issued by LOCK commands will actually become
+more useful than in some of the software that I see on occasion,
+where each programmer invented a different access method for
+different sub-applications.</p>
+
+<h3>Naked References</h3>
+
+<p>The LOCK command attempts to enter names into a table. The
+names that are entered into this table are just that. They are
+names that are used "by convention" within a certain application
+to signal that certain activities are about to happen. So,
+supposing that I was about to update the payment record of one of
+my customers, I might use any of the following commands:</p>
+
+<p><tt>LOCK +Payment</tt><br/>
+<tt>LOCK +MyApp("Payment")</tt><br/>
+<tt>LOCK +^Cust(CID)</tt><br/>
+<tt>LOCK +^Cust(CID,"Pay")</tt><br/>
+<tt>LOCK +^MyApp("Pay",CID)</tt></p>
+
+<p>Assuming that local variable CID contains a customer ID and
+that the data in question is stored in
+<tt>^Cust(CID,"Payment",date,TransactionID)</tt> and</p>
+
+<p><tt>^Cust(CID,"Balance")</tt>, only a few of these names bear
+a relation to the global variable in which the data is stored.
+The main issue is that, as long as all programs accessing the
+data in question will use the same name in the LOCK table, it
+does not matter what that name is.</p>
+
+<p>It is common practice to choose a name that bears a direct
+relation to the sub-node in a global variable where the data is
+actually stored, but there is no requirement that such a name is
+chosen. (In fact, modern techniques would often not care what the
+physical data model is, and promote the use of "logical" names
+for the synchronization of data access.)</p>
+
+<p>Since the name in the argument of a LOCK command is not
+required to be a name of an application-related global variable,
+and since the LOCK command does not access the database to enter
+names into its table, it does not allow naked references in its
+arguments. Also, when the LOCK command processes the names that
+do occur in its arguments, the fact that some of these names
+might have the syntax of the name of a global variable does not
+at all affect the status of the current naked indicator.</p>
+
+<h3>Deadly Embrace</h3>
+
+<p>While using LOCK commands, it is very well possible that the
+following scenario happens:</p>
+
+<table>
+<tr><th>Time</th><th>Process A</th><th>Process B</th></tr>
+<tr><td>10:05</td><td><tt>LOCK +A</tt></td><td></td></tr>
+<tr><td>10:07</td><td></td><td><tt>LOCK +B</tt></td></tr>
+<tr><td>10:11</td><td><tt>LOCK +B</tt></td><td></td></tr>
+<tr><td>10:15</td><td></td><td><tt>LOCK +A</tt></td></tr>
+</table>
+
+<p>Process A will wait until process B will release its LOCK on
+the name "B", but process B will be waiting until process A would
+release its lock on the name "A". Since both processes will
+remain in "waiting" status, neither will complete their
+activities (which would include releasing the currently LOCKed
+names), and as a result, there is no normal condition that would
+allow both processes to complete their tasks.</p>
+
+<p>When such a situation happens, a system manager can often abort
+one of such processes, thus allowing the other process to
+complete its task, but, in general, when such a situation occurs,
+both processes are basically "dead in the water".</p>
+
+<p>In order to prevent such situations, it is possible to add a
+time-out on a LOCK argument:</p>
+
+<p align="center"><tt>LOCK +Name:20</tt></p>
+
+<p>The number following the colon indicates the number of seconds
+that the system will impose as the maximum time to wait until it
+would be possible to enter the name into the LOCK table.</p>
+
+<p>When the name is successfully entered into the LOCK table, the
+LOCK command will complete (even if the 20 seconds have not yet
+completely elapsed), and the value of special variable $TEST will
+be set to 1 (true).</p>
+
+<p>If it is not possible to enter the name successfully into the
+table after this time-out has expired, the LOCK command will
+complete, the value of special variable $TEST will be set to 0
+(false).</p>
+
+<p>If an application cannot successfully LOCK a name that really
+needs to be LOCKed before proceeding, that application will have
+to attempt to undo anything that has already been accomplished
+("rollback") and then possibly try to "restart" the current
+activity. (In the context of "transaction processing" such
+corrective action could be automated, but that is a subject for a
+different column.)</p>
+
+<h3>Which Level?</h3>
+
+<p>The easy answer to the question about "at which level does one
+LOCK a name?" is "<i>at the appropriate level</i>". Of course,
+this is an answer that has the advantage of being absolutely
+correct, and the disadvantage of being absolutely useless...</p>
+
+<p>Suppose that we have an activity that involves changing values
+of descendants of <tt>^Cust</tt>.</p>
+
+<p>If we wish to use the name of a "descendant" of <tt>^Cust</tt>
+in a LOCK command, then we have a choice:</p>
+
+<p><tt>LOCK +^Cust</tt> when the activity is one that involves
+modifications in the records of many customers at the same time.
+If the transaction involves only one customer, it makes no sense
+to put all other programs "on hold", while all they want to do is
+make modifications to records of other customers.</p>
+
+<p><tt>LOCK +^Cust(CID)</tt> when the action in question makes
+multiple changes to the record of a single customer.</p>
+
+<p>Similarly, when the transaction only affects one specific
+sub-node of a customer: LOCK at the deepest level that makes
+sense. After all, the "deeper" the argument of the LOCK command,
+the smaller the number of other programs that will have to
+wait.</p>
+
+<p>On the other hand, LOCK at a level that is high enough that all
+modifications that are made by the current transaction are
+covered by the LOCK.</p>
+
+<p>Sometimes, it helps to choose a reference that would reduce
+waiting time for other users when attempting to LOCK a name.</p>
+
+<p>For instance, if we would want to add a customer to our
+database, we would need to execute the procedure that would
+establish the next higher unique customer ID number. That
+procedure could <tt>LOCK&nbsp;+^Cust</tt> and figure things out,
+but that would put all users on hold who want to make
+modifications to individual customer records, and who would not
+at all look at the data that involves unique customer ID numbers.
+Using a command like <tt>LOCK&nbsp;+^Cust("Unique")</tt> would
+make much more sense in this case (whether or not there actually
+is a node in the customer database that is described by that
+name).</p>
+
+<h3>Local Variables</h3>
+
+<p>In ANSI Standard M[UMPS], it does not matter whether a name
+that is being LOCKed is a "local" or a "global" one. All that
+matters in this context is that the name does not yet appear in
+the table (nor one of its "descendents", nor one of its
+"ancestors").</p>
+
+<p>In many actual implementations, there is a difference.</p>
+
+<p>Most implementations allow for multiple "environments" or
+"name-spaces" (sometimes called "UCIs"). Each of these
+"environments" may have a set of global variables with similar
+names. When the argument of a LOCK command is a name of a global
+variable, these implementations will implicitly pre-pend the name
+of the environment to the name to be entered into the LOCK
+table.</p>
+
+<p>This means that the use of a name of a local variable in such
+an implementation will create a LOCK that spans all environments,
+whereas the names of global variables will only LOCK that name
+for their own environment.</p>
+
+<h3>Disappearing LOCKs</h3>
+
+<p>In the examples above, all occurrences of the LOCK command
+have shown an argument that was preceded with a plus sign. There
+are three possible prefixes for the argument of a LOCK
+command:</p>
+
+<ul>
+<li>No prefix.<br/>
+When a LOCK command is issued without a prefix, it first
+"unLOCKs" all names that were LOCKed for the current process and
+then attempts to enter the name(s) in the current argument into
+the LOCK table.<br/>
+(This usage prevents the possibility of a "deadly embrace", but
+is not really compatible with "modular programming".)</li>
+
+<li>Plus sign.<br/>
+When a LOCK command is issued with a plus sign as a prefix, it
+will attempt to add the name(s) in the current argument into the
+LOCK table.<br/>
+("Incremental LOCK")</li>
+
+<li>Minus sign.<br/>
+When a LOCK command is issued with a minus sign as a prefix, it
+will release the name(s) in the current argument from the LOCK
+table.<br/>
+("Decremental LOCK")</li>
+</ul>
+
+<p>In order to allow for the situation where subroutine A invokes
+subroutine B and both subroutines implement their own LOCKing
+conventions, it is imperative to use the LOCK + mechanism.
+Allowing for the possibility that both subroutines use the same
+name for their synchronization conventions,
+e.g. both subroutines issue the command</p>
+
+<p align="center"><tt>LOCK +MyApp</tt></p>
+
+<p>the LOCK mechanism should not release the LOCK that subroutine
+A holds when subroutine B issues its corresponding</p>
+
+<p align="center"><tt>LOCK -MyApp</tt></p>
+
+<p>In order to accomplish this, the number of occurrences of
+LOCK&nbsp; for a name must be equal to the number of occurrences
+of LOCK&nbsp;+, in other words: both subroutine A and subroutine
+B have to issue their own LOCK&nbsp; command.</p>
+
+<h3>Conclusion</h3>
+
+<p>LOCK is a useful mechanism to establish conventions that ensure
+reliable synchronization and serialization of activities that
+might affect the same data elements.</p>
+
+<p>Of course, like any other convention, any usage of the LOCK
+command will only work when all participating programmers embrace
+the same interpretation of this convention.</p>
+
+<hr/>
+
+<p><a href="http://www.jacquardsystems.com"><img src="jsr2.gif" alt="Jacquard Systems Research"
+align="left"/></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a href="mailto:demoel@jacquardsystems.com">by e-mail</a>.</i></p>
+
+<hr/>
+
+</body>
+</html>

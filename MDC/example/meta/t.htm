@@ -1,0 +1,295 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -T-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter T</h1>
+
+<p><a href="#tab">tab</a>,
+<a href="#tabformat">tabformat</a>,
+<a href="#textarg">textarg</a>,
+<a href="#tfacekeyword">tfacekeyword</a>,
+<a href="#timeout">timeout</a>,
+<a href="#titlepos">titlepos</a>,
+<a href="#tkeyword">tkeyword</a>,
+<a href="#tname">tname</a>,
+<a href="#transparameters">transparameters</a>,
+<a href="#truefalse">truefalse</a>,
+<a href="#truthop">truthop</a>,
+<a href="#tsparam">tsparam</a>,
+<a href="#tstartargument">tstartargument</a>,
+<a href="#tstartkeyword">tstartkeyword</a>,
+<a href="#tvexpr">tvexpr</a></p>
+
+<hr>
+<a name="tab"></a>
+<h2>tab</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the horizontal tabulation control
+character (HT, <b>$CHAR</b>(9)).</p>
+
+<hr>
+<a name="tabformat"></a>
+<h2>tabformat</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a format item that causes
+a tabulation in a <b>READ</b> or <b>WRITE</b> command.
+Such a format is written as a question mark followed by a numeric
+expression.</p>
+
+<hr>
+<a name="textarg"></a>
+<h2>textarg</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of the line in a M[UMPS]
+program that is to be retrieved by the function <b>$TEXT</b>.</p>
+
+<p>The specification can look like:</p>
+
+<p><tt>+12^ROUTINE<br>
+LABEL^ROUTINE<br>
+LABEL<br>
+LABEL+12^ROUTINE<br>
+LABEL+12<br>
+^ROUTINE</tt></p>
+
+<p>or be an indirection of an expression that evaluates to one of these forms.</p>
+
+<hr>
+<a name="tfacekeyword"></a>
+<h2>tfacekeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"TYPEFACE"</tt>.</p>
+
+<hr>
+<a name="timeout"></a>
+<h2>timeout</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a specification of an amount of time. A
+time-out specification is used to specify that the program should not attempt
+to complete a certain action for longer than the number of seconds identified
+in the time-out specification.</p>
+
+<p>Time-out specifications can be used on arguments of <b>JOB</b>, <b>READ</b>
+and <b>LOCK</b> commands.</p>
+
+<p>Note: The amount of seconds to be specified may be a fractional number. Many
+operating environments (especially those running on Unix (TM)
+platforms) do not support fractional seconds. This is a limitation of the
+operating environment, not a limitation of M[UMPS]. For portability, however,
+one cannot rely on the ability to use fractional numbers in this context.</p>
+
+<p>Note: The metalanguage definition of <b>timeout</b> includes the colon that
+separates the time-out specification from the argument on which it operates.</p>
+
+<hr>
+<a name="titlepos"></a>
+<h2>titlepos</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that specifies where the title of a
+gadget will appear. This metalanguage symbol occurs as an expression that
+evaluates to either one of <tt>"LEFT"</tt>, <tt>"RIGHT"</tt> or
+<tt>"TOP"</tt>, or to an implementation-specific value (starts with
+<tt>"Z"</tt>).</p>
+
+<hr>
+<a name="tkeyword"></a>
+<h2>tkeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"T"</tt>.</p>
+
+<hr>
+<a name="tname"></a>
+<h2>tname</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of a timer. Names of timers
+consist of alphabetic characters and digits and may start with a % sign.</p>
+
+<p>For portability, the number of characters in the name of a timer is limited to
+31 characters.</p>
+
+<hr>
+<a name="transparameters"></a>
+<h2>transparameters</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of the parameters that
+qualify a transaction. This specification may consist of either one
+transaction parameter, or of a list of transaction parameters (separated by
+colons) enclosed in parentheses).</p>
+
+<p>Transaction parameters take the form of a keyword, optionally followed by an
+equal sign (<tt>=</tt>), and an expression that signifies the value to be
+assigned to the parameter indicated by the keyword.</p>
+
+<hr>
+<a name="truefalse"></a>
+<h2>truefalse</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents a truth value. A truth value is the
+boolean interpretation of an expression (0 corresponds to <i>false</i>,
+1 corresponds to <i>true</i>; any non-zero value is <i>true</i>,
+and thus shows as 1 when interpreted as a truth value).</p>
+
+<hr>
+<a name="truthop"></a>
+<h2>truthop</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the relational binary operators
+(i.e. one of <tt>=</tt>, <tt>&lt;</tt>, <tt>&gt;</tt>, <tt>[</tt> or <tt>]</tt>) or
+any of the logical binary operators, (i.e. one of <tt>!</tt>, or
+<tt>&amp;</tt>).</p>
+
+<hr>
+<a name="tsparam"></a>
+<h2>tsparam</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a transaction parameter.</p>
+
+<p>Transaction parameters take the form of a keyword, optionally followed by an
+equal sign (<tt>=</tt>), and an expression that signifies the value to be
+assigned to the parameter indicated by the keyword.</p>
+
+<p>Valid parameter specifications are <b>T[RANSACTIONID]</b>=value and
+<b>S[ERIAL]</b>.</p>
+
+<hr>
+<a name="tstartargument"></a>
+<h2>tstartargument</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>TSTART</b> command. Examples of valid arguments for the <b>TSTART</b>
+command appear in an earlier section. The argument of the <b>TSTART</b>
+command is either an indication of local variables to reset at a restart as
+described below, optionally followed by an equal colon, followed by
+transaction parameters (which may be either a single parameter as described
+below, of a list of such parameters (separated by colons) enclosed in
+parentheses), or an indirection operator (<tt>@</tt>) followed by an
+expression that evaluates to a list (separated by commas) of such arguments.</p>
+
+<p>The specification of which variables to reset at a restart may look like:</p>
+
+<p><ul>
+<li> asterisk (<tt>*</tt>) to indicate all local variables</li>
+<li> one name of a local variable to indicate just that one
+variable</li>
+<li> a list of names of local variables (separated by
+commas) enclosed in parentheses to indicate that
+list of variables</li>
+<li> two adjacent parentheses open and close to indicate
+that no local variables are to be reset.</li>
+</ul></p>
+
+<p>Transaction parameters take the form of a keyword, optionally followed by an
+equal sign (<tt>=</tt>), and an expression that signifies the value to be
+assigned to the parameter indicated by the keyword.</p>
+
+<hr>
+<a name="tstartkeyword"></a>
+<h2>tstartkeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a text that indicates a special
+attribute of a <b>TSTART</b> command. Possible keywords are <b>SERIAL</b>
+and <b>TRANSACTIONID</b>.</p>
+
+<hr>
+<a name="tvexpr"></a>
+<h2>tvexpr</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the truth value interpretation of an
+expression. In order to produce the truth value interpretation of an
+expression, first the expression is evaluated, and then reduced to its
+canonical numeric representation; after this, if the numeric value is nonzero,
+it is replaced by 1.</p>
+
+<p><table width=90% border=2>
+<tr><th align=right>String value</th>
+<th>Truth value interpretation</th></tr>
+
+<tr><td align=right>123</td>
+<td>1</td></tr>
+
+<tr><td align=right>"apples"</td>
+<td>0</td></tr>
+
+<tr><td align=right>"25 apples"</td>
+<td>1</td></tr>
+
+<tr><td align=right>"seven apples"</td>
+<td>0</td></tr>
+
+<tr><td align=right>5.23</td>
+<td>1</td></tr>
+
+<tr><td align=right>-5.23</td>
+<td>1</td></tr>
+
+<tr><td align=right>1.7</td>
+<td>1</td></tr>
+
+<tr><td align=right>-1.7</td>
+<td>1</td></tr>
+</table></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "T" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

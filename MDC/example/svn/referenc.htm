@@ -1,0 +1,130 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $REFERENCE</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $REFERENCE</h1>
+
+<a name="$R[EFERENCE]"></a>
+<h2>$R[EFERENCE]</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>The value of this variable is equal to the name of the global
+variable that defined the current value of the "naked indicator"
+(or is empty when the "naked indicator" is currently
+undefined).</p>
+
+<pre>
+NAKED() ; Get naked indicator
+ IF <b>$REFERENCE</b>="" <b>QUIT</b> "&lt;undefined&gt;"
+ <b>NEW</b> TMP
+ <b>SET</b> TMP=<b>$DATA</b>(^(0))
+ <b>SET</b> TMP=<b>$REFERENCE</b>
+ <b>QUIT</b> <b>$EXTRACT</b>(TMP,1,<b>$LENGTH</b>(TMP)-2)
+
+<b>KILL</b> ^ABC
+<b>SET</b> ^ABC(1,2,3)="Demo"
+<b>WRITE</b> "--&gt;""",<b>$REFERENCE</b>,""""
+--&gt;"^ABC(1,2,3)"
+<b>SET</b> A=<b>$QUERY</b>(^ABC(1))
+<b>WRITE</b> "--&gt;""",A,""", and """,<b>$REFERENCE</b>,"""."
+--&gt;"^ABC(1,2,3)", and "".
+</pre>
+
+<p>After a reference to the function <b>$QUERY</b>, the naked
+indicator becomes undefined, which means that <b>$REFERENCE</b>
+becomes equal to the empty string.</p>
+
+<pre>
+ ...
+ <b>DO</b> SAVNAK
+ ...
+ <b>DO</b> RESTNAK
+ ...
+ <b>QUIT</b>
+SAVNAK <b>SET</b> OLD=<b>$REFERENCE QUIT</b>
+RESTNAK <b>SET $REFERENCE</b>=OLD <b>QUIT</b>
+</pre>
+
+<p>could be used to save and restore the naked indicator. Note that
+<b>SET</b>ting <b>$REFERENCE</b> does not imply that the global
+variable that it points to is actually referenced, only that the
+naked indicator is (re)set.</p>
+
+<p><tt><b>SET</b> X=<b>$DATA</b>(^A(3))<br>
+<b>SET</b> ^(3)="data ^A 3 (must be retrieved later)"<br>
+<b>SET</b> SBE="$REFERENCE should be equal to "<br>
+<b>SET</b> V1=<b>$REFERENCE</b><br>
+<b>WRITE</b> !,SBE,"'^A(3)': ",V1<br>
+<b>SET</b> X=<b>$DATA</b>(^(3,4))<br>
+<b>SET</b> V2=<b>$REFERENCE</b><br>
+<b>WRITE</b> !,SBE,"'^A(3,4)': ",V2<br>
+<b>LOCK</b> ^P(27)<br>
+<b>SET</b> V3=<b>$REFERENCE</b><br>
+<b>WRITE</b> !,SBE,"'^A(3,4)': ",V3<br>
+<b>SET $REFERENCE</b>=V1<br>
+<b>WRITE</b> !,"Naked reference should work: ",^(3)<br>
+<b>WRITE</b> !<br>
+<b>QUIT</b></tt></p>
+
+<p><tt>...<br>
+<b>SET</b> ^X=1 <b>WRITE</b> !,<b>$REFERENCE</b><br>
+<b>SET</b> ^X(1)=2 <b>WRITE</b> !,<b>$REFERENCE</b><br>
+<b>SET $REFERENCE</b>=""<br>
+<b>WRITE</b> !,"Naked indicator is undefined."</tt><br>
+should produce:<br>
+<tt>^X<br>
+^X(1)</tt><br>
+Note that a reference to <tt>^X</tt> makes the naked indicator
+undefined, but does not make <b>$REFERENCE</b> empty.<br>
+The final command, <tt><b>SET $REFERENCE</b>=""</tt> makes
+<b>$REFERENCE</b> empty and also makes the naked indicator
+undefined.</p>
+
+<p><b>$REFERENCE</b> may occur as an argument of a <b>NEW</b> command.</p>
+
+<pre>
+        ; Define value of $REFERENCE
+        <b>IF $DATA</b>(^Test(1234)
+        <b>DO</b> Test1
+        <b>WRITE</b> !,"The value of $REFERENCE is "
+        <b>WRITE $REFERENCE</b>
+        <b>WRITE</b> !,"This value should be ^Test(1234)."
+        <b>DO</b> Test2
+        <b>WRITE</b> !,"The value of $REFERENCE is "
+        <b>WRITE $REFERENCE</b>
+        <b>WRITE</b> !,"Should be ^Other(""Name"")."
+        <b>QUIT</b>
+Test1   <b>NEW $REFERENCE</b>
+        <b>DO</b> Test2
+        <b>QUIT</b>
+Test2   ; Re-define $REFERENCE
+        <b>IF $DATA</b>(^Other("Name"))
+        <b>QUIT</b>
+</pre>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

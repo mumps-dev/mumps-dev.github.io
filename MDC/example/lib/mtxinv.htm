@@ -1,0 +1,63 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%MTXINV^MATH</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%MTXINV^MATH</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as part of the
+library for Matrix Mathematics.</p>
+
+<p>This function solves a special matrix equation: [A] * [Result] = [unit
+matrix],</p>
+
+<p>Assuming that matrix <tt>DEMO</tt> contains:</p>
+
+<pre>
+ 1    2    0    0
+ 3    4    0    0
+ 0    0   -1    2
+ 0    0    3    1
+</pre>
+
+<p>the function call <tt><b>SET</b>
+X=<b>$%MTXINV^MATH</b>(.DEMO,.INV,4)</tt> will return the value
+<tt>14</tt> in <tt>X</tt> and as matrix <tt>INV</tt>:</p>
+
+<pre>
+-1.99999  0.99999   0        0
+ 1.49999  0.49999   0        0
+ 0        0         0.14285  0.28571
+ 0        0         0.42857  0.14285
+</pre>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="mtxinv.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

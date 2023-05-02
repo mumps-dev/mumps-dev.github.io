@@ -1,0 +1,126 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$Y...</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$Y...</h1>
+
+<a name="^$Y[...]"></a>
+<h2>^$Y[...], User Defined Structured System Variables</h2>
+
+<p>Approved addition for a future M[UMPS] Language Standard.</p>
+
+<p>Users may add definitions to their systems that enable them to
+create their own structured system variables.</p>
+
+<p>The implementation will provide a means to associate the name of
+a routine with the name of a user defined structured system
+variable. Within such a routine, the following labels are defined
+to have a specific meaning.</p>
+
+<p><tt><b>SET</b> MyVar=<b>$NAME</b>(<b>^$Y</b>Mine(1,2,"ABC",4,5))</tt></p>
+
+<p>The following examples assume that the value of local variable
+MyVar is equal to the name value of a user defined structured
+system variable.</p>
+
+<p>The function <tt><b>$$%VALUE</b>(MyVar)</tt> is invoked to obtain
+the value of a user defined structured system variable.</p>
+
+<p>The function <tt><b>$$%DATA</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as a parameter of
+the intrinsic function <b>$DATA</b>.</p>
+
+<p>The functions <tt><b>$$%GET</b>(MyVar)</tt> and
+<tt><b>$$%GET</b>(MyVar,default)</tt> are invoked when a user
+defined structured system variable appears as the first parameter
+of the intrinsic function <b>$GET</b>.</p>
+
+<p>The functions <tt><b>$$%ORDER</b>(MyVar)</tt> and
+<tt><b>$$%ORDER</b>(MyVar,direction)</tt> are invoked when a user
+defined structured system variable appears as the first
+parameter of the intrinsic function <b>$ORDER</b>.</p>
+
+<p>The functions <tt><b>$$%QUERY</b>(MyVar)</tt> and
+<tt><b>$$%QUERY</b>(MyVar,direction)</tt> are invoked when a user
+defined structured system variable appears as the first parameter
+of the intrinsic function <b>QUERY</b>.</p>
+
+<p>The subroutine <tt><b>%KILL</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as an argument of
+the <b>KILL</b> command.</p>
+
+<p>The subroutine <tt><b>%KSUBSCRIPTS</b>(MyVar)</tt> is invoked
+when a user defined structured system variable appears as an
+argument of the <b>KSUBSCRIPTS</b> command.</p>
+
+<p>The subroutine <tt><b>%KVALUE</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as an argument of
+the <b>KVALUE</b> command.</p>
+
+<p>The subroutine <tt><b>%MERGE</b>(MyVar,source)</tt> is invoked
+when a user defined structured system variable appears as an
+argument on the left hand side of the equal sign of the
+<b>MERGE</b> command (or when different sub-nodes of the same
+user defined structured system variable are specified in the same
+<b>MERGE</b> command).</p>
+
+<p>The subroutine <tt><b>%MERGES</b>(MyVar,destination)</tt> is
+invoked when a user defined structured system variable appears as
+an argument on the right hand side of the equal sign of the
+<b>MERGE</b> command.</p>
+
+<p>The subroutine <tt><b>%SET</b>(MyVar,value)</tt> is invoked when
+a user defined structured system variable appears as an argument
+on the left hand side of the equal sign of the <b>SET</b>
+command.</p>
+
+<p>Assuming that the routine <tt>MyRout</tt> is bound to the user
+defined structured system variable <tt><b>^$Y</b>Cust</tt>,</p>
+
+<p><tt>SET ^%YCust(123)="Santa Claus"</tt></p>
+
+<p>would cause a call to the subroutine</p>
+
+<p><center><tt><b>%SET</b>^MyRout("<b>^$Y</b>Cust(123)","Santa Claus")</tt></center></p>
+
+<p>The subroutine can then take care of any cross-referencing
+activity that may be needed for the application to which
+<tt><b>^$Y</b>Cust</tt> belongs, e.g.</p>
+
+<p><tt><b>%SET</b>(ref,value) <b>NEW</b> glob,old,x<br>
+ <b>SET</b> glob="^MyApp("_<b>$PIECE</b>(ref,"(",2,<b>$LENGTH</b>(ref)+2)<br>
+ <b>LOCK</b> +@glob<br>
+ <b>SET</b> old=<b>$GET</b>(@glob)<br>
+ <b>SET</b> x=<b>$PIECE</b>(old," ",<b>$LENGTH</b>(old," "))<br>
+ <b>IF</b> x'="" <b>KILL</b> ^MyApp("Lastname",x,glob)<br>
+ <b>SET</b> x=<b>$PIECE</b>(value," ",<b>$LENGTH</b>(value," "))<br>
+ <b>IF</b> x'="" <b>SET</b> ^MyApp("LastName",x,glob)=""<br>
+ <b>SET</b> @glob=value<br>
+ <b>LOCK</b> -@glob<br>
+ <b>QUIT</b></tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

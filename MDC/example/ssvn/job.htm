@@ -1,0 +1,150 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$JOB</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$JOB</h1>
+
+<a name="^$J[OB]"></a>
+<h2>^$J[OB]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This structured system variable provides information about the
+processes that are currently known to the M[UMPS] system.</p>
+
+<p><tt><b>WRITE</b> !,"Currently active jobs:"<br>
+<b>WRITE</b> !,"Job"<br>
+<b>WRITE</b> ?12,"Character set"<br>
+<b>WRITE</b> ?30,"Global Environment"<br>
+<b>WRITE</b> ?50,"LOCK Environment"<br>
+<b>WRITE</b> ?70,"Routine Environment"<br>
+<b>SET</b> J="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> J=<b>$ORDER</b>(<b>^$JOB</b>(J)) <b>QUIT</b>:J=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,J<br>
+. <b>WRITE</b> ?12,<b>$GET</b>(<b>^$JOB</b>(J,"CHARACTER"))<br>
+. <b>WRITE</b> ?30,<b>$GET</b>(<b>^$JOB</b>(J,"GLOBAL"))<br>
+. <b>WRITE</b> ?50,<b>$GET</b>(<b>^$JOB</b>(J,"LOCK"))<br>
+. <b>WRITE</b> ?70,<b>$GET</b>(<b>^$JOB</b>(J,"ROUTINE"))<br>
+. <b>QUIT</b></tt></p>
+
+<p>The routine</p>
+
+<pre>
+GSIZE(ENV,NAME) ;
+ <b>NEW</b> OLDENV,REF,SIZE
+ <b>SET</b> OLDENV=<b>^$JOB</b>(<b>$JOB</b>,"GLOBAL")
+ <b>SET</b> <b>^$JOB</b>(<b>$JOB</b>,"GLOBAL")=ENV
+ <b>SET</b> REF="^"_NAME,SIZE=0
+ <b>FOR&nbsp;&nbsp;DO&nbsp;&nbsp;SET</b> REF=<b>$QUERY</b>(@REF) <b>QUIT</b>:REF=""
+ . <b>SET</b> SIZE=SIZE+<b>$LENGTH</b>(REF)+<b>$LENGTH</b>(<b>$GET</b>(@REF))
+ . <b>QUIT</b>
+ <b>SET ^$JOB</b>(<b>$JOB</b>,"GLOBAL")=OLDENV
+ <b>QUIT</b> SIZE
+</pre>
+
+<p>would compute the size of a global variable in an arbitrary environment.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>If your implementation has granted you the privilege to do so,
+you may be able to remove a job from the system by executing the
+command<br>
+<tt><b>KILL ^$JOB</b>(number)</tt></p>
+
+<p><tt><b>^$JOB</b>(job,"$PRINCIPAL")</tt> and <tt><b>^$JOB</b>(job,"$IO")</tt>
+show the principal and current devices for the various processes.</p>
+
+<p><tt><b>^$JOB</b>(job,"OPEN",device)</tt> provides a list of devices that
+are open for a given process.</p>
+
+<p><tt><b>^$JOB</b>(job,"DEVICE")</tt> specifies the default environment
+in which the process can <b>OPEN</b>, <b>USE</b> and <b>CLOSE</b> devices.</p>
+
+<p><tt><b>^$JOB</b>(job,"LIBRARY",sequence)=library</tt> specifies
+the set of libraries that is currently available to a job, and
+the order in which these libraries are searched for 
+entry-points.</p>
+
+<p><tt><b>^$JOB</b>(job,"USER")</tt> is intended to contain an
+implementation-specific value that identifies the current user.
+At the start of a M[UMPS] process, the implementation may or may
+not provide an initial value. When this variable has no defined
+value, a M[UMPS] process may define a value for it; once this
+variable has a defined value; no M[UMPS] process may modify this
+value.</p>
+
+<p><tt><b>^$JOB</b>(job,"GROUP")</tt> is intended to contain an
+implementation-specific value that identifies the group of which
+the current user is a member. At the start of a M[UMPS] process,
+the implementation may or may not provide an initial value. When
+this variable has no defined value, a M[UMPS] process may define
+a value for it; once this variable has a defined value; no
+M[UMPS] process may modify this value.</p>
+
+<p><tt><b>^$JOB</b>(job,"VAR",name)</tt> may be used to access
+the local symbol table of a process.
+The following code could be used to capture the state of a
+process in an error handler:</p>
+
+<pre>
+ <b>LOCK</b> +^ERROR("NEW")
+ <b>SET</b> (^ERROR,%error)=<b>$GET</b>(^ERROR)+1
+ <b>LOCK</b> -^ERROR("NEW")
+ <b>MERGE</b> ^ERROR(%error)=<b>^$JOB</b>(<b>$JOB</b>,"VAR")
+ <b>KILL</b> ^ERROR(%error,"%error") ; only variable used
+</pre>
+
+Approved for addition in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>The ability to process events in an asynchronous fashion is
+introduced. The commands <b>ABLOCK</b>, <b>ASTART</b>,
+<b>ASTOP</b> and <b>AUNBLOCK</b> allow for starting and stopping
+recognition of certain events. The structured system variable
+<b>^$JOB</b> is used to register the entry point this is intended
+to be started when a certain event occurs. Nodes in
+<b>^$EVENT</b> are used to specify other specific behavior of the
+various events.</p>
+
+<p><tt><b>^$JOB</b>(<b>$JOB</b>,<b>"EVENT"</b>,eventclass,eventid)=entryref</tt>
+identifies the events that are enabled for event processing.
+Possible values for <tt>eventclass</tt> are explained with the command
+<b>ABLOCK</b>. Possible values of <tt>eventid</tt> depend on the event 
+class.</p>
+
+<p><tt><b>^$JOB</b>(<b>$JOB</b>,<b>"EVENT"</b>,eventclass,eventid,<b>"MODE"</b>)</tt>
+may have one of three possible values: <tt>"DISABLED"</tt>,
+<tt>"SYNCHRONOUS"</tt> or <tt>"ASYNCHRONOUS"</tt>.
+The value of this node identifies the processing mode for the
+specified event and the specified process.</p>
+
+<p><tt><b>^$JOB</b>(<b>$JOB</b>,<b>"EVENT"</b>,eventclass,eventid,<b>"BLOCKS"</b>)</tt>
+has an integer value. This value is either zero or a positive
+integer number. When this value is non-zero, it indicates the
+number of blocks (see the commands <b>ABLOCK</b> and 
+<b>AUNBLOCK</b>) that have been issued for the event.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

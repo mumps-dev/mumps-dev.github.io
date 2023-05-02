@@ -1,0 +1,66 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<a name="E[LSE]"></a>
+<h2>E[LSE]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The most common If-Then-Else construction is:<br>
+<tt><b>IF</b> X=4 <b>SET</b> A=5<br>
+<b>ELSE&nbsp;&nbsp;SET</b> A=6</tt></p>
+
+<p>But<br>
+<tt><b>IF</b> X=4 <b>DO</b> SUB<br>
+<b>ELSE&nbsp;&nbsp;QUIT</b></tt><br>
+may produce an unexpected result if the program assumes that the
+value of <b>$TEST</b> does not change within the subroutine
+<tt>SUB</tt>.</p>
+
+<p>If the code in the above example was intended as an If-Then-Else
+construction, then it would be better to write it as:<br>
+<tt><b>QUIT</b>:X'=4&nbsp;&nbsp;<b>DO</b> SUB</tt></p>
+
+<p><tt><b>OPEN</b> DEVICE::20 <b>ELSE&nbsp;&nbsp;WRITE "..."
+QUIT</b></tt><br>
+Don't process any data when resources cannot be allocated.</p>
+
+<p><tt><b>LOCK</b> +^ABC:20 <b>ELSE&nbsp;&nbsp;WRITE "..."
+QUIT</b></tt><br>
+Don't update while someone else is editing</p>
+
+<p><tt><b>IF</b> VAR=VALUE <b>LOCK</b> ^NAME:TIMEOUT <b>SET</b>
+X=1<br>
+<b>ELSE</b>&nbsp;&nbsp;<b>SET</b> X=2</tt><br>
+In this case... it depends. In the case where the values of
+<tt>VAR</tt> and <tt>VALUE</tt> are not equal, local variable
+<tt>X</tt> will be set to 2, but in the case whare those two
+variables do have the same value, the value of <b>$TEST</b> may
+become false if the time-out expires, in which case the
+<b>ELSE</b> command will also allow <tt>X</tt> to be set to 2.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

@@ -1,0 +1,315 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- Behind Modulo</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, number 2, June 1998, pages 18-19</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+Behind Modulo</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>Two of the questions that I hear very often are "Why does
+Modulo work the way it does?" and "Why do M[UMPS] people call
+'Remainder' by such a strange name?" After all, the
+definition,</p>
+
+<p><tt><i>A</i> # <i>B</i> =
+<i>A</i> - (<i>B</i> * floor(<i>A</i>/<i>B</i>))</tt></p>
+
+<p>where <tt>floor (<i>x</i>)</tt> = the largest integer less
+than or equal to <tt><i>x</i></tt>, does seem rather contrived.
+And, when one or both of the operands happen to be negative
+numbers, the result may meet the formula that is part of the
+definition, but it still is quite unexpected to a large amount of
+people.</p>
+
+<p>It all started with the Norwegian mathematician Niels Henrik
+Abel, who lived from 1802 until 1829.</p>
+
+<p>Abel was the first to formalize a set of theories that later
+became known as "Abelian Group Theory". There are perhaps not
+many people who at first sight would recognize this theory as
+something that they might use on a daily basis, but when we
+realize that terms like "commutative" and "binary operator" stem
+from this very theory, it may become less of a surprise that this
+theory lays the mathematical foundation for every-day operations
+like addition, subtraction, multiplication and division.</p>
+
+<p>One of the less commonly known aspects of this theory are
+Abel's attempts to deal with mathematical sets that are infinite
+in size. Being a mathematician, he tried to get a hold on
+entities that were too large in size to enumerate all their
+elements. What Abel did to get a "handle" on matters, was a
+process that we still use fairly often: he "mapped" infinitely
+large groups on smaller sets that he <i>could</i> deal with.</p>
+
+<p>The idea that he used in one of his theories was to map an
+infinitely large set of entities onto a small set of integer
+numbers, just equating one entity from the large set to the
+number 0 (zero) in the small set, the next one in the large set
+to the number 1 (one), etcetera, until all the numbers in the
+small set were used up. The next element from the large set would
+again be equated to the number 0, etcetera, cyclically, without
+limit.</p>
+
+<p>This may seem like a strange idea that only a mathematician
+could come up with, but, in fact, we use it every day: the number
+of hours in history is infinitely large, but when we're dealing
+with the time of day, we map this infinitely large number onto a
+set of 24 integer numbers, and, if it's noon now, and we're
+interested in what happened 25 hours ago, we'd expect that time to
+be 11 o'clock, and not -13 o'clock.</p>
+
+<p>Of course, there are cases where we want to know the actual
+date, but for a lot of our handling of date and time issues, it
+is more important to know whether something happened at noon, or
+in the evening, than it is to know the precise day on which it
+happened.</p>
+
+<p>To illustrate this, we could map the (infinitely large) set of
+integer numbers onto the set {0, 1, 2, 3, 4} in a cyclical
+fashion, which would result in the
+mapping <a href="#mapping">shown below</a>.</p>
+
+<p>Abel called the small set of numbers that resulted from
+mapping a large set onto a small set of number an "image of the
+orginal set modulo <i>n</i>", where <i>n</i> is the number of
+integers in the smaller set.</p>
+
+<p>So, this is where we got the name, and the behavior.</p>
+
+<p>Now that the pattern of repetition has been clarified, it may
+also become clear why the behavior of modulo with negative
+"left-hand" operands is the way it is: the "target" set is
+repeated cyclically, in the same sequence, over and over.</p>
+
+<p>With negative "right-hand" operators, the sequence is traversed
+in seemingly reverse order (seemingly, because the order is still
+from low to high, only 0 (zero) is now the upper limit of the
+sequence).</p>
+
+<p>For positive numbers, the result of "modulo" happens to
+coincide with the result of "remainder", but, in general,
+"remainder" and "modulo" have quite a different mathematical
+background, and may end up having quite different results.</p>
+
+<p>To make matters worse, the result of "remainder" depends on the
+country where one went to school. In some countries, the schools
+teach that a "remainder" is always a positive number, in some
+countries they teach that the sign of the remainder is the same
+as the sign of the <a href="#div"><i>dividend</i></a>, and in some
+countries they teach that the sign of the remainder is the
+product of the signs of the <i>dividend</i> and the
+<i>divisor</i>... Go figure it out! That's why the definition of
+the programming language "C" explicitly states that the result of
+the operator <tt>%</tt> (remainder) is
+implementation-specific.</p>
+
+<p>FORTRAN and (original) Pascal define "remainder" differently,
+and indeed, FORTRAN was defined in the USA, and Pascal originally
+in Switzerland. The ANSI standard for Pascal, however, was
+defined in the USA, and there the definition of "remainder" is
+indeed the same as in FORTRAN.</p>
+
+<p>Back to "modulo" and the formula that occurs in its definition
+in the language standard. Why didn't the authors of the standard
+just say: "modulo produces a number from the Abelian mapping of
+the infinitely large set of rational numbers (left operand) onto
+a finite set of rational numbers that make up the rest-group
+modulo right operand", or words of a similar meaning? I'm afraid
+that such a definition would end up being extremely verbose,
+confusing, and probably still not completely convey the official
+mathematical meaning that Abel tried to establish (he needed a
+couple of dozen pages to describe what he meant and then
+concluded "and this is called A modulo B").</p>
+
+<p>Also, the authors of the standard could have done the same for
+"modulo" as for addition, and briefly state that "# produces the
+algebraic modulus", but then, not everyone takes graduate-level
+classes in math, and a lot of people would probably not be able
+to understand what that term means.</p>
+
+<p>The formula in the standard is a compromise. It is fairly easy
+to understand, and it completely mimics the behavior intended by
+Niels Abel. This particular representation of the formula was
+first published in <a href="#knuth">one of the text-books by
+Donald Knuth</a>, a mathematician of this century, who laid the
+foundation for many of today's theories and practices in
+information technology.</p>
+
+<p>The formula concisely mimics the behavior of Abel's mappings,
+without much need to describe the mathematical intricacies of how
+it was that he arrived on his theories. It has all the benefits
+of a "short description", but it also lacks the advantages of the
+"greater picture".</p>
+
+<p>The "modulo" operator has its use primarily in finding out
+"where in a sequence of cyclically repeating events" the current
+entity is situated.</p>
+
+<p>Of course, there also is a clear relation between "modulo" and
+"remainder": often the two are undistinguishable, and identical
+enough for practical purposes. "Modulo", however, has a defined
+basis in formal mathematics, whereas the basis for "remainder" is
+more in culture and tradition than in generally accepted
+theory.</p>
+
+<p>Whenever you use it, however, be aware of the sign of the
+result, and be aware of the sequence in which numbers are
+repeated!</p>
+
+<hr>
+
+<a name="div"></a>
+<p>Terminology:<br>
+<i>dividend</i> / <i>divisor</i> = <i>quotient</i></p>
+
+<hr>
+
+<a name="knuth"></a>
+<p><b>Donald E. Knuth</b>, <i>The Art of
+Computer Programming</i>, Second
+Edition; Volume I, <i>Fundamental
+Algorithms</i>. Addison-Wesley
+Publishing Company, 1973, ISBN 0-201-03809-9, pages 37-39.</p>
+
+<hr>
+
+<a name="mapping"></a>
+<p><table>
+<tr><td align=left>N</td>
+<td align=center>-17</td>
+<td align=center>-16</td>
+<td align=center>-15</td>
+<td align=center>-14</td>
+<td align=center>-13</td>
+<td align=center>-12</td>
+<td align=center>-11</td>
+<td align=center>-10</td>
+<td align=center>-9</td>
+<td align=center>-8</td>
+<td align=center>-7</td>
+<td align=center>-6</td>
+<td align=center>-5</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>5</td>
+<td align=center>6</td>
+<td align=center>7</td>
+<td align=center>8</td>
+<td align=center>9</td>
+<td align=center>10</td>
+<td align=center>11</td>
+<td align=center>12</td>
+<td align=center>12</td>
+<td align=center>13</td>
+<td align=center>15</td>
+<td align=center>16</td>
+<td align=center>17</td>
+<td align=center>18</td></tr>
+
+<tr><td align=left>N#5</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td></tr>
+
+<tr><td align=left>N#-5</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td></tr>
+</table></p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+</body>
+</html>
+

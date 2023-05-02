@@ -1,0 +1,77 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>X[ECUTE]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>XECUTE</b> X</tt><br>
+The definition of the<b> XECUTE</b> command states that the
+command <tt><b>XECUTE</b> X</tt> is equivalent to the command
+<tt><b>DO</b> UNIQUENAME</tt> where the routine would contain a
+subroutine like:<br>
+<tt>UNIQUENAME ;<br>
+&nbsp;&lt;value of x&gt;<br>
+&nbsp;<b>QUIT</b></tt><br>
+This equivalence will make it easier to understand what happens
+in the following examples.</p>
+
+<p><tt><b>SET</b> X="WRITE ABC"<br>
+<b>XECUTE</b> X</tt><br>
+The value of local variable ABC will be written.</p>
+
+<p><tt><b>SET</b> X="SET X=1 QUIT:A&nbsp;&nbsp;SET X=3"<br>
+<b>XECUTE</b> X</tt><br>
+The <b>QUIT</b> command terminates the subroutine inside the
+eXECUTEd string, and does not terminate the subroutine from which
+the string is XECUTEd.</p>
+
+<p><tt><b>SET</b> X="SET X=1 GOTO PQR SET X=3"<br>
+<b>XECUTE</b> X <b>WRITE</b> "Back here"</tt><br>
+The <b>GOTO</b> command transfers command to label <tt>PQR</tt>.
+When a <b>QUIT</b> command is executed following that label, that
+<b>QUIT</b> command would return control to the statement
+following the <b>XECUTE</b> command, and the text <tt>"Back
+here"</tt> will be printed.</p>
+
+<p><tt><b>SET</b> FIRST="SET X=3 "<br>
+<b>SET</b> SECOND=" SET A=2   "<br>
+<b>SET</b> THIRD="SET Q=999 "<br>
+<b>IF</b> SPECIAL <b>SET</b> THIRD="  SET P=888  "<br>
+<b>XECUTE</b> FIRST_SECOND_THIRD</tt><br>
+There may be spaces at the end of a line of executeable code</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>XECUTE</b> VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>XECUTE</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

@@ -1,0 +1,826 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special characters</title>
+<body background="mbe.gif">
+<h2>Special characters</h2>
+
+<p>In this chapter, the terms <i>unary operator</i> and
+<i>binary operator</i> will be used. In this context, the
+meaning of these terms is to be taken in their mathematical
+sense: a <i>unary operator</i> is an operator that works on one
+operand, a <i>binary operator</i> is an operator that works on
+two operands.</p>
+
+<hr>
+
+<h2><a href="#_32_">space </a>
+<a href="#_33_">! </a>
+<a href="#_34_">"</a>
+<a href="#_35_">#</a>
+<a href="#_36_">$</a>
+<a href="#_37_">%</a>
+<a href="#_38_">&amp;</a>
+<a href="#_39_">'</a>
+<a href="#_40_">(</a>
+<a href="#_41_">)</a>
+<a href="#_42_">*</a>
+<a href="#_43_">+</a>
+<a href="#_44_">,</a>
+<a href="#_45_">-</a>
+<a href="#_46_">.</a>
+<a href="#_47_">/</a>
+<a href="#_58_">:</a>
+<a href="#_59_">;</a>
+<a href="#_60_">&lt;</a>
+<a href="#_61_">=</a>
+<a href="#_62_">&gt;</a>
+<a href="#_63_">?</a>
+<a href="#_64_">@</a>
+<a href="#_91_">[</a>
+<a href="#_92_">\</a>
+<a href="#_93_">]</a>
+<a href="#_94_">^</a>
+<a href="#_95_">_</a>
+<a href="#_96_">`</a>
+<a href="#_123_">{</a>
+<a href="#_124_">|</a>
+<a href="#_125_">}</a>
+<a href="#_126_">~</a></h2>
+
+<hr>
+
+<a name="_32_"></a>
+<h2>Space ("&nbsp;")</h2>
+
+<p>ASCII code 32.</p>
+
+<p>This character separates commands from surrounding
+information.<br>
+At the beginning of a program line, there may be a label with a
+parameter list. There is always a space that indicates the start
+of the line, and then there may be commands. Each command is
+separated from its argument(s) by one space, and if there are
+multiple commands on a line, there is at least one space between the last
+argument of one command and the next command.<br>
+<tt>&nbsp;<b>SET</b>&nbsp;X=1&nbsp;<b>WRITE</b>&nbsp;"Hello."</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>The number of spaces at the start of a line may be more than
+one.<br>
+The number of spaces between a command-argument and the next
+command may be larger than one.<br>
+<tt>&nbsp;&nbsp;&nbsp;<b>SET</b>&nbsp;X=1&nbsp;&nbsp;&nbsp;<b>WRITE</b>&nbsp;"Hello."</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>Spaces may occur at the end of a line.</p>
+
+<p><tt>&nbsp;&nbsp;&nbsp;<b>SET</b>&nbsp;X=1&nbsp;&nbsp;&nbsp;<b>WRITE</b>&nbsp;"Hello."&nbsp;&nbsp;&nbsp;</tt></p>
+
+<hr>
+
+<a name="_33_"></a>
+<h2>Exclamation mark ("!")</h2>
+
+<p>ASCII code 33.</p>
+
+<p>This character may be used as a binary 'or' operator.<br>
+<tt><b>IF</b> (X&gt;2)!(B&lt;9)</tt></p>
+
+<p>This character may be used as a 'new-line' indicator in an
+argument of a <b>READ</b> or <b>WRITE</b> command.<br>
+<tt><b>READ</b> !?5,"What is your age? ",AGE<br>
+<b>WRITE</b> !?10,"That is not an appropriate question."</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used as a binary 'exclusive or' operator.<br>
+<tt><b>IF</b> (X&gt;2)!!(B&lt;9)</tt></p>
+
+<hr>
+
+<a name="_34_"></a>
+<h2>Quotes, also known as inch sign ("""")</h2>
+
+<p>ASCII code 34.</p>
+
+<p>Many people call this character 'double quote'. In this document,
+the character ' is called apostrophe, and the character " is
+called quotes.</p>
+
+<p>Quotes delimit strings. When a quotes-character needs to be
+embedded in a string, it needs to be written twice.<br>
+<tt><b>SET</b> X="This is a string."<br>
+<b>SET</b> Y="This ""string"" contains quotes."</tt></p>
+
+<hr>
+
+<a name="_35_"></a>
+<h2>Number sign, also known as pound sign ("#")</h2>
+
+<p>ASCII code 35.</p>
+
+<p>This character may be used as a binary 'modulo' operator.<br>
+<tt><b>SET</b>
+THISHOUR=<b>$PIECE</b>(<b>$HOROLOG</b>,",",2)\60\60<br>
+<b>SET</b> THEN=THISHOUR+8#24</tt></p>
+
+<p>This character may be used as a 'form-feed' indicator in an
+argument of a <b>READ</b> or <b>WRITE</b> command.<br>
+<tt><b>IF</b> LINES&gt;PAGESIZE <b>WRITE</b> #</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in the argument of a <b>READ</b>
+command to indicate the maximum length for the value to be read:<br>
+<tt><b>READ</b> X#20</tt></p>
+
+<hr>
+
+<a name="_36_"></a>
+<h2>Dollar sign ("$")</h2>
+
+<p>ASCII code 36.</p>
+
+<p>This character preceeds the name of intrinsic language elements
+(variables and functions).<br>
+<tt><b>$IO</b></tt>, <tt><b>$HOROLOG</b></tt>,
+<tt><b>$ASCII</b></tt>, <tt><b>$FIND</b></tt>, etcetera.</p>
+
+<p>Additions in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character is used in a reference to an extrinsic
+variable:<br>
+<tt><b>SET</b> X=$$LABEL^ROUTINE</tt></p>
+
+<p>This character is used in a reference to an extrinsic
+function:<br>
+<tt><b>SET</b> X=$$LABEL^ROUTINE(PARA,METERS)</tt></p>
+
+<p>Additions in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character preceeds the name of structured system
+variables.<br>
+<tt><b>^$CHARACTER</b></tt>, <tt><b>^$ROUTINE</b></tt>,
+etcetera.</p>
+
+<p>This character is used in a reference to an external function
+call.<br>
+<tt><b>SET</b> X=$&amp;CADD^MATH("1%0","0%1")</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character is used to in a reference to a standard library
+function.<br>
+<tt><b>SET</b> X=$%CADD^MATH("1%0","0%1")</tt></p>
+
+<hr>
+
+<a name="_37_"></a>
+<h2>Percent sign ("%")</h2>
+
+<p>ASCII code 37.</p>
+
+<p>This character may occur as the first character in the name of a
+M[UMPS] entity (local variable, global variable, routine, label
+in a routine)</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character is used in the interpretation of strings as
+complex numbers: real and imaginary parts are separated by a
+percent sign.<br>
+<tt><b>SET</b> X=$&amp;CADD^MATH("1%0","0%1")</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character is used to identify a function reference as a
+reference to a standard library function.<br>
+<tt><b>SET</b> X=$%CADD^MATH("1%0","0%1")</tt></p>
+
+<hr>
+
+<a name="_38_"></a>
+<h2>Ampersand ("&amp;")</h2>
+
+<p>ASCII code 38.</p>
+
+<p>This character may be used as a binary 'and' operator.<br>
+<tt><b>IF</b> (X&gt;2)&amp;(B&lt;9)</tt></p>
+
+<p>Additions in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character is used in the prefix that identifies an
+"external" routine:<br>
+<b>DO</b> &amp;XMUMPS.Exit(123)<br>
+<tt><b>SET</b> X=$&amp;CADD^MATH("1%0","0%1")</tt></p>
+
+<p>This character may be used to introduce an embedded 'foreign
+language' program:<br>
+<tt><b>&amp;SQL</b>(SELECT * FROM SALES WHERE CONTACT =
+"Jones")</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>Names of external language processors will be case-insensitive.</p>
+
+<p><tt>&sql(cursor A on EMPLOYEES)</tt></p>
+
+<p>has the same meaning as the same command starting with <tt>&SQL</tt></p>
+
+<p>Implementors may add external language processors; the names for
+such implementation-specific processors will start with the letter "Z".</p>
+
+<p>The parameter list in a call to an external language processor may be empty.</p>
+
+<hr>
+
+<a name="_39_"></a>
+<h2>Apostrophe, also known as foot sign ("'")</h2>
+
+<p>ASCII code 39.</p>
+
+<p>Many people call this character 'single quote'. In this document,
+the character ' is called apostrophe, and the character " is
+called quotes.</p>
+
+<p>This character may be used as a unary 'not' operator.<br>
+<tt><b>IF</b> '(X&gt;2)</tt></p>
+
+<p>This character may be used to negate the meaning of other
+operators.
+The following pairs of expression are equivalent by definition:</p>
+
+<p>Is equal to: <tt>X'=2</tt> is the same as <tt>'(X=2)</tt><br>
+Is greater than: <tt>X'&gt;2</tt> is the same as <tt>'(X&gt;2)</tt><br>
+Is less than: <tt>X'&lt;2</tt> is the same as <tt>'(X&lt;2)</tt><br>
+Is less than or equal to: <tt>X'&lt;=2</tt> is the same as <tt>'(X&lt;=2)</tt><br>
+Is greater than or equal to: <tt>X'&gt;=2</tt> is the same as <tt>'(X&gt;=2)</tt><br>
+Matches pattern: <tt>X'?2N</tt> is the same as <tt>'(X?2N)</tt><br>
+Contains: <tt>X'[2</tt> is the same as <tt>'(X[2)</tt><br>
+Follows: <tt>X']2</tt> is the same as <tt>'(X]2)</tt><br>
+Follows or equal to: <tt>X']=2</tt> is the same as <tt>'(X]=2)</tt><br>
+Collates after: <tt>X']]2</tt> is the same as <tt>'(X]]2)</tt><br>
+Collates after or equal to: <tt>X']]=2</tt> is the same as <tt>'(X]]=2)</tt></p>
+
+<hr>
+
+<a name="_40_"></a>
+<h2>Left parenthesis ("(")</h2>
+
+<p>ASCII code 40.</p>
+
+<p>This character may be used in conjunction with a matching right
+parenthesis to indicate a priority of evaluation.<br>
+<tt><b>SET</b> X=12+(3*4)</tt></p>
+
+<p>This character may be used in conjunction with a matching right
+parenthesis to delimit lists of subscripts from names of variables.<br>
+<tt><b>SET</b> X=NAME(3,"ABC",2)</tt></p>
+
+<p>This character may be used in conjunction with a matching right
+parenthesis to delimit parameter lists of intrinsic
+functions.<br>
+<tt><b>SET</b> X=<b>$ASCII</b>("ABC",2)</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in conjunction with a matching right
+parenthesis to delimit parameter lists of subroutines, extrinsic
+variables and extrinsic functions.<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,12,.X)<br>
+LABEL(ONE,TWO,THREE) ; 3rd parameter by reference<br>
+<b>SET</b> X=$$VAR<br>
+<b>SET</b> Y=$$FUNCT(A,12)<br>
+<b>JOB</b> ENTRY^PROGRAM(A,B,C)</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in conjunction with a matching right
+parenthesis to delimit names of variables to which a value may be
+assigned in the context of the "find pattern match" operator.<br>
+<tt><b>IF</b> '(X?4N(ITEM)1","1.3N(QUANT(ITEM)) <b>DO</b> ...</tt></p>
+
+<hr>
+
+<a name="_41_"></a>
+<h2>Right Parenthesis (")")</h2>
+
+<p>ASCII code 41.</p>
+
+<p>This character may be used in conjunction with a matching left
+parenthesis to indicate a priority of evaluation.<br>
+<tt><b>SET</b> X=12+(3*4)</tt></p>
+
+<p>This character may be used in conjunction with a matching left
+parenthesis to delimit lists of subscripts from names of variables.<br>
+<tt><b>SET</b> X=NAME(3,"ABC",2)</tt></p>
+
+<p>This character may be used in conjunction with a matching left
+parenthesis to delimit parameter lists of intrinsic
+functions.<br>
+<tt><b>SET</b> X=<b>$ASCII</b>("ABC",2)</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in conjunction with a matching left
+parenthesis to delimit parameter lists of subroutines, extrinsic
+variables and extrinsic functions.<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,12,.X)<br>
+LABEL(ONE,TWO,THREE) ; 3rd parameter by reference<br>
+<b>SET</b> X=$$VAR<br>
+<b>SET</b> Y=$$FUNCT(A,12)<br>
+<b>JOB</b> ENTRY^PROGRAM(A,B,C)</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in conjunction with a matching left
+parenthesis to delimit names of variables to which a value may be
+assigned in the context of the "find pattern match" operator.<br>
+<tt><b>IF</b> '(X?4N(ITEM)1","1.3N(QUANT(ITEM)) <b>DO</b> ...</tt></p>
+
+<hr>
+
+<a name="_42_"></a>
+<h2>Asterisk, also known as star ("*")</h2>
+
+<p>ASCII code 42.</p>
+
+<p>This character may be used as a binary 'multiplication'
+operator.<br>
+<tt><b>SET</b> X=3*4</tt></p>
+
+<p>This character may be used as a binary 'exponentiation'
+operator.<br>
+<tt><b>SET</b> X=4**3</tt></p>
+
+<p>This character may be used in <b>READ</b> commands to designate that a
+single character is to be read from the current device. Note that,
+although the syntax <tt><b>READ</b> *X</tt> is standardized, the result
+of this command is implementation specific and, within an
+implementation, device specific.</p>
+
+<p>Typically, the result of a command like <tt><b>READ</b> X</tt> will be
+that the variable <tt>X</tt> will be set to an integer value that
+corresponds to the code of the character being transmitted. If a
+terminator character (or an "escape sequence") is transmitted, it is
+strongly implementation specific what the value of <tt>X</tt> will
+be.</p>
+
+<p>This character may be used in <b>WRITE</b> commands to designate that a
+special action is to be performed on the current device. Note that,
+although the syntax <tt><b>WRITE</b> *X</tt> is standardized, the result
+of this command is implementation specific and, within an
+implementation, device specific.</p>
+
+<p>Typically, the result of a command like <tt><b>WRITE</b> *VALUE</tt>
+will be that the character, whose code is equal to the integer
+interpretation of <tt>VALUE</tt> will be written to the current device.
+In some implementations, however <tt><b>WRITE</b> *5</tt> might rewind a
+magnetic tape, and <tt><b>WRITE</b> *1</tt> might write a file-label,
+etcetera.</p>
+
+<hr>
+
+<a name="_43_"></a>
+<h2>Plus sign ("+")</h2>
+
+<p>ASCII code 43.</p>
+
+<p>This character may be used as a unary 'numeric interpretation'
+operator.<br>
+<tt><b>SET</b> X=+"5 apples"</tt></p>
+
+<p>This character may be used as a binary 'addition' operator.<br>
+<tt><b>SET</b> X=3+4</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to indicate addition of a name to the
+LOCK table.<br>
+<tt><b>LOCK</b> +NAME</tt></p>
+
+<hr>
+
+<a name="_44_"></a>
+<h2>Comma (",")</h2>
+
+<p>ASCII code 44.</p>
+
+<p>This character may be used to separate command arguments.<br>
+<tt><b>SET</b> X=1,Y=2,Z=3</tt></p>
+
+<p>This character may be used to separate parameters of intrinsic
+functions.<br>
+<tt><b>SET</b> X=<b>$CHAR</b>(65,66,67)</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to separate parameters of subroutines
+and extrinsic functions.<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,12,.X)<br>
+LABEL(ONE,TWO,THREE) ; 3rd parameter by reference<br>
+<b>SET</b> Y=$$FUNCT(A,12)<br>
+<b>JOB</b> ENTRY^PROGRAM(A,B,C)</tt></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to separate various alternate pattern
+match options.<br>
+<tt><b>IF</b> X?1N2(2U,1P,3N)1P2A</tt></p>
+
+<hr>
+
+<a name="_45_"></a>
+<h2>Minus sign, also known as hyphen or dash ("-")</h2>
+
+<p>ASCII code 45.</p>
+
+<p>This character may be used as a unary 'negative numeric
+interpretation' operator.<br>
+<tt><b>SET</b> X=-"5 apples"</tt><br>
+<tt><b>SET</b> X=---++-4.23</tt></p>
+
+<p>This character may be used as a binary 'subtraction'
+operator.<br>
+<tt><b>SET</b> X=3-4</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to indicate removal of a name from the
+LOCK table.<br>
+<tt><b>LOCK</b> -NAME</tt></p>
+
+<hr>
+
+<a name="_46_"></a>
+<h2>Period, also known as point or dot (".")</h2>
+
+<p>ASCII code 46.</p>
+
+<p>This character may be used in numbers to separate the integral
+part of a number from its decimal fraction.<br>
+<tt><b>SET</b> X=12.345</tt></p>
+
+<p>Addition in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in a parameter list
+(<u>actuallist</u>) to indicate that a parameter is passed by
+reference.<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,12,.X)</tt></p>
+
+<p>This character may be used to indicate that a line in a routine
+is part of a block of code that may only be invoked by means of
+an argumentless DO command.<br>
+<tt><b>SET</b> K="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b>
+K=<b>$ORDER</b>(^D(K)) <b>QUIT</b>:K=""&nbsp;&nbsp;DO<br>
+. <b>SET</b> L="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b>
+L=<b>$ORDER</b>(^D(K,L)) <b>QUIT</b>:L=""&nbsp;&nbsp;DO<br>
+. . ; process one occurrence of ^D(K,L)<br>
+. . <b>QUIT</b><br>
+. <b>QUIT</b></tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>The period is introduced as the separator between parts of
+the name of a property or a method of an object. The part "to the
+left" of the period must be a handle or pointer to an object, the
+part "to the right" is the name of a property or method of that
+object (possibly iteratively).</p>
+
+<p><tt><b>DO</b> word.Insert("Hello World.")</tt><br>
+executes the method <tt>Insert</tt> of the object that
+is accessible through the value of local variable <tt>word</tt>.</p>
+
+<p><tt><b>SET</b> word.bold=1</tt><br>
+accesses the object that
+is accessible through the value of local variable <tt>word</tt>
+and sets its property <tt>bold</tt> to 1 (true).</p>
+
+<p><tt><b>SET</b> word.Application.Document.PageSetup.PageWidth=11*inch</tt><br>
+accesses a series of objects, and eventually sets the property of
+one object to a new value. The first object is the one that is
+accessed through the value of local variable <tt>word</tt>. For
+this object, the value of the property <tt>Application</tt> is
+fetched; this property is a pointer to another object. For that
+object, the value of the property <tt>Document</tt> is fetched;
+this property is a pointer to another object. For that object,
+the value of the property <tt>PageSetup</tt> is fetched; this
+property is a pointer to another object. For that object,
+finally, the value of its property <tt>PageWidth</tt> is set to
+the scalar value <tt>11*inch</tt>.</p>
+
+<hr>
+
+<a name="_47_"></a>
+<h2>Forward slash ("/")</h2>
+
+<p>ASCII code 47.</p>
+
+<p>This character may be used as a 'division' operator.<br>
+<tt><b>SET</b> X=3/4</tt></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to introduce a special formatting
+function in an argument of a <b>READ</b> or <b>WRITE</b>
+command.<br>
+<tt><b>WRITE</b> /<b>CUP</b>(1,20) ; Position cursor<br>
+<b>WRITE</b> /<b>SGR</b>(1) ; Turn boldface on</tt></p>
+
+<hr>
+
+<a name="_58_"></a>
+<h2>Colon (":")</h2>
+
+<p>ASCII code 58.</p>
+
+<p>This character may be used to separate commands and arguments
+from a 'postcondition' that indicates whether the command or
+argument is to be executed.<br>
+<tt><b>SET</b>:A&gt;5 X=99<br>
+<b>GOTO</b>
+LARGE:X&gt;100,TINY:X&gt;5,SMALL:X&gt;50,AVERAGE</tt></p>
+
+<p>This character may be used to separate entities within
+arguments.<br>
+<tt><b>FOR</b> I=1:1:4<br>
+<b>LOCK</b> NAME:TIME</tt></p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used to separate conditions and values in
+the parameterlist of the function <b>$SELECT</b>.<br>
+<tt><b>SET</b>
+A=<b>$SELECT</b>(X&gt;100:"Large",X&lt;5:"Tiny",1:"Average")</tt>
+</p>
+
+<hr>
+
+<a name="_59_"></a>
+<h2>Semicolon (";")</h2>
+
+<p>ASCII code 59.</p>
+
+<p>This character may be used to introduce a comment.<br>
+<tt><b>SET</b> HOURS=24 ; Initialize to full day</tt></p>
+
+<hr>
+
+<a name="_60_"></a>
+<h2>Left angle bracket, also known as less than sign
+("&lt;")</h2>
+
+<p>ASCII code 60.</p>
+
+<p>This character may be used as a binary 'is less than'
+operator.<br>
+<tt><b>IF</b> X&lt;5</tt></p>
+
+<p>This character may be used as part of a binary 'is not less than'
+operator.<br>
+<tt><b>IF</b> X'&lt;5</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used as part of a binary 'is less than or
+equal to' operator.<br>
+<tt><b>IF</b> X&lt;=5</tt></p>
+
+<p>This character may be used as part of a binary 'is not less than
+or equal to' operator.<br>
+<tt><b>IF</b> X'&lt;=5</tt></p>
+
+<hr>
+
+<a name="_61_"></a>
+<h2>Equals sign ("=")</h2>
+
+<p>ASCII code 61.</p>
+
+<p>This character may be used as an 'assignment' operator.<br>
+<tt><b>SET</b> X="Look here!"</tt></p>
+
+<p>This character may be used as a binary 'is equal to'
+operator.<br>
+<tt><b>IF</b> X=5</tt></p>
+
+<p>This character may be used as part of a binary 'is not equal to'
+operator.<br>
+<tt><b>IF</b> X'=5</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used as part of a binary 'is less than or
+equal to' operator.<br>
+<tt><b>IF</b> X&lt;=5</tt></p>
+
+<p>This character may be used as part of a binary 'is not less than
+or equal to' operator.<br>
+<tt><b>IF</b> X'&lt;=5</tt></p>
+
+<p>This character may be used as part of a binary 'is greater than
+or equal to' operator.<br>
+<tt><b>IF</b> X&gt;=5</tt></p>
+
+<p>This character may be used as part of a binary 'is not greater
+than or equal to' operator.<br>
+<tt><b>IF</b> X'&gt;=5</tt></p>
+
+<hr>
+
+<a name="_62_"></a>
+<h2>Right angle bracket, also known as greater than sign
+("&gt;")</h2>
+
+<p>ASCII code 62.</p>
+
+<p>This character may be used as a binary 'is greater than'
+operator.<br>
+<tt><b>IF</b> X&gt;5</tt></p>
+
+<p>This character may be used as part of a binary 'is not greater
+than' operator.<br>
+<tt><b>IF</b> X'&gt;5</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used as part of a binary 'is greater than
+or equal to' operator.<br>
+<tt><b>IF</b> X&gt;=5</tt></p>
+
+<p>This character may be used as part of a binary 'is not greater
+than or equal to' operator.<br>
+<tt><b>IF</b> X'&gt;=5</tt></p>
+
+<hr>
+
+<a name="_63_"></a>
+<h2>Question mark ("?")</h2>
+
+<p>ASCII code 63.</p>
+
+<p>This character may be used as a binary 'pattern match'
+operator.<br>
+<tt><b>IF</b> X?1A3.5N</tt></p>
+
+<p>This character may be used as a 'tabulation' indicator in an
+argument of a <b>READ</b> or <b>WRITE</b> command.<br>
+<tt><b>READ</b> !?5,"What is your age? ",AGE<br>
+<b>WRITE</b> !?10,"That is not an appropriate question."</tt></p>
+
+<hr>
+
+<a name="_64_"></a>
+<h2>At sign ("@")</h2>
+
+<p>ASCII code 64.</p>
+
+<p>This character may be used as a unary 'indirection' operator.<br>
+<tt><b>SET</b> NAME="ABC",X=123+@NAME+456<br>
+<b>SET</b> ARGU="X=123+456",@ARGU<br>
+<b>SET</b> ARRAY="^CUSTOMER("_CUSTID_")",@ARRAY(1)=55</tt></p>
+
+<hr>
+
+<a name="_91_"></a>
+<h2>Left square bracket ("[")</h2>
+
+<p>ASCII code 91.</p>
+
+<p>This character may be used as a binary 'contains' operator.<br>
+<tt><b>IF</b> ALPHABET["KLM"</tt></p>
+
+<hr>
+
+<a name="_92_"></a>
+<h2>Backward slash ("\")</h2>
+
+<p>ASCII code 92.</p>
+
+<p>This character may be used as a binary 'integer division'
+operator.<br>
+<tt><b>SET</b> SECONDS=$PIECE($HOROLOG,",",2)<br>
+<b>SET</b> DISPLAY=SECONDS\3600_":"_(SECONDS\60#60)</tt></p>
+
+<hr>
+
+<a name="_93_"></a>
+<h2>Right square bracket ("]")</h2>
+
+<p>ASCII code 93.</p>
+
+<p>This character may be used as a binary 'follows' operator.<br>
+<tt><b>IF</b> NEXT]PREVIOUS</tt></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character may be used in a binary 'sorts after'
+operator.<br>
+<tt><b>IF</b> NEXT]]PREVIOUS</tt></p>
+
+<hr>
+
+<a name="_94_"></a>
+<h2>Caret, also known as circumflex ("^")</h2>
+
+<p>ASCII code 94.</p>
+
+<p>This character preceeds the name of global variables and
+routines.<br>
+<tt><b>DO</b> ^%G<br>
+<b>SET</b> ^PATIENT(ID,1)=AGE_"|"_BRTHDATE</tt></p>
+
+<p>Note that the caret character precedes names.
+It is not counted as a character when determining the length of a name.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>This character preceeds the name of structured system
+variables.<br>
+<tt><b>^$CHARACTER</b></tt>, <tt><b>^$ROUTINE</b></tt>,
+etcetera</p>
+
+<hr>
+
+<a name="_95_"></a>
+<h2>Underscore ("_")</h2>
+
+<p>ASCII code 95.</p>
+
+<p>This character may be used as a binary 'concatenate'
+operator.<br>
+<tt><b>SET</b> ^PATIENT(ID,1)=AGE_"|"_BRTHDATE</tt></p>
+
+<hr>
+
+<a name="_96_"></a>
+<h2>Grave ("`")</h2>
+
+<p>ASCII code 96.</p>
+
+<p>This character has currently no syntactic meaning in M[UMPS].</p>
+
+<hr>
+
+<a name="_123_"></a>
+<h2>Left curly brace ("{")</h2>
+
+<p>ASCII code 123.</p>
+
+<p>This character has currently no syntactic meaning in M[UMPS].</p>
+
+<hr>
+
+<a name="_124_"></a>
+<h2>Vertical bar ("|")</h2>
+
+<p>ASCII code 124.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This character may be used to delimit an environment
+specification.<br>
+<tt><b>MERGE</b> ^|HERE|PATIENT=^|ACROSS|PATIENT</tt></p>
+
+<hr>
+
+<a name="_125_"></a>
+<h2>Right curly brace ("}")</h2>
+
+<p>ASCII code 125.</p>
+
+<p>This character has currently no syntactic meaning in M[UMPS].</p>
+
+<hr>
+
+<a name="_126_"></a>
+<h2>Tilde ("~")</h2>
+
+<p>ASCII code 126.</p>
+
+<p>This character has currently no syntactic meaning in M[UMPS].</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the possible meanings that the various punctuation
+characters may have, according to the various M[UMPS] standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

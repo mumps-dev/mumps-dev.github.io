@@ -1,0 +1,150 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- ... and in a fraction of a second,
+the computer can repeat this error a zillion times</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 5, number 5, December 1997, pages 14-15</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+... and in a fraction of a second, the computer can repeat
+this error a zillion times</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>In the various versions of the ANSI M[UMPS] standard there
+have been different texts for the specification of how precise the
+result of mathematical operations should be. Although it was
+"intuitively clear" to everyone what was intended, the older words
+could also be interpreted to mean something quite different. The
+older texts read like <b><i>"Implement-ations shall represent
+numeric quantities with at least ... significant digits"</i></b>,
+where the actual number grew slowly larger as time progressed.
+The current text is much longer:</p>
+
+<p>Implementations shall represent numeric quantities with at
+least 15 significant digits.  The error introduced by any single
+instance of the arithmetic operations of addition, subtraction,
+multiplication, division, integer division, or modulo shall not
+exceed one part in 10<sup>15</sup>.  The error introduced by
+exponentiation shall not exceed one part in 10<sup>7</sup>.</p>
+
+<p>This is more specific about what was intended.</p>
+
+<p>While nobody actually implemented it this way, the old text
+could be interpreted to mean: if an implementation thinks that
+3+2000 equals 1903 and represents that number in the appropriate
+number of digits, such an implementation would meet the standard.
+This, of course, sounds ridiculous, and luckily, no vendor ever
+created such an implementation.</p>
+
+<p>But, however much the MDC has refined this text, it still is
+based on the assumption that one knows what the correct result
+is, and that one can measure how much difference exists between
+this correct result, and the result that is produced by the
+computer. In the case of an addition like 3+2000 it may sound
+patronizing to make such a remark, but in the case of "square
+root of &pi; divided by measured length" it becomes a whole lot
+easier to understand that one cannot always exactly predict or
+verify that result is indeed as exact as it should be (and we're
+not even thinking yet about the error introduced by performing the
+measurement of that length, before any numbers are input into the
+computer).</p>
+
+<h3>Fun with subtractions</h3>
+
+<p>One specific type of subtraction is performed very often on
+computers: <tt>age = thisyear - birthyear</tt> (give or take one).
+We are coming to the point where some people are going to see
+surprising results in this context. Let's say that dates are
+stored in the database in <a href="#fmd">VA-FileMan format</a>
+or in MUMPS's traditional
+$HOROLOG format. This means that we can feel comfortable about
+the "year 2000 problem", because these formats encode the year in
+such a way that this particular problem is prevented. Or is
+it?</p>
+
+<p>Let's say that the year-number is computed from the "internal"
+value using one of the utility functions that are available on
+"your" system. Some of those have a parameter that specifies how
+many digits are to be used for the year-number, some always
+return two digits, some always return 4 digits, and some return 2
+digits for a year in "this" century and 4 digits for a year in
+any other century. Now, here comes the fun. This year, my age
+could be computed as <tt>97-54=43</tt>, four years from now, it
+could be <tt>2001-54=1947</tt> (Hey grandpa, did you have a Dino
+for a pet? Was the television coverage of Julius Caesar's
+stabbing anything like with Kennedy's?).</p>
+
+<p>Well, that would be an easy error to correct for, isn't it?
+All it takes to make this right is an extrinsic function that
+calls the original function and has</p>
+
+<p><tt>Set:year&lt;100 year=year+1900</tt></p>
+
+<p>before the year-number is returned as the function-value.</p>
+
+<p>Would it really be that simple? How many of those
+date-conversion function base their understanding of the term
+"this century" on the date when the function is executed? In that
+case, the calculation would be: <tt>1-1954=-1953</tt>, or with the
+above-mentioned correction, the outcome would be
+<tt>1+1900-1954=-53</tt>.</p>
+
+<p>In either case, the software might realize that my age would
+be less than 5 years old, and try to send my parents a reminder
+that I'd have to show up for kindergarten in the year 2059 (or
+3959 as the case might be).</p>
+
+<h3>And before the data gets into the computer?</h3>
+
+<p>Many of us allow our end-users to enter dates in various
+formats, and convert any input format to a standard format in
+which these dates are stored.</p>
+
+<p>How many programs would there be that allow for data entry with
+two-digit year numbers. And then convert the year-value by
+"correcting" <tt>IF year&lt;100 SET year=year+1900</tt>?</p>
+
+<p>Today that will work just fine. But when the same program is
+run 4 years from now, it will store the date of birth of an
+infant that is born in 2003 (entered as 03) as if the person was
+born in 1903.</p>
+
+<p>In this case, there won't be any automatic reminder letters
+for their mumps booster shots and all those other inoculations
+that our infants need to get. There might be a reminder letter
+for their annual glaucoma check, but that will be about it.</p>
+
+<p>Indeed, if <tt>03+century</tt> is calculated wrong, it doesn't
+matter very much that both VA-FileMan and $HOROLOG store that
+value with the century information intact.</p>
+
+<hr>
+
+<a name="fmd"></a>
+<p>1. In VA-FileMan, a date is represented as a numeric value
+based on the numeric values of the year, month and day. The value
+is (in MUMPS arithmetic) year-1700*100+month*100+day. For my
+birthday in this year, that would look like 2970217, and for my
+birthday 4 years from now, it would be 3010217. Assuming anyone
+would still care in the year 2876, the value would be 11760217.</p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+</body>
+</html>

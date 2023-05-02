@@ -1,0 +1,293 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, Number 5, Pages 34-37</h3>
+
+<h2>Putting a Browser Front End on M:<br>
+M Gets a Window on the World</h2>
+
+<h3>by Max Rivers</h3>
+
+<h3>Abstract</h3>
+
+<p>One of the best things about M is how little code it takes to create really
+powerful databases (I once replaced 80,000 lines of Pascal with 3,000 lines
+of M code). One of the worst things about M is its character-based
+interface. In recent years, the web has brought the HyperText Markup
+Language (HTML) into prominence as an extremely simple language for creating
+exciting graphical interfaces, but it has (by design) no database
+capabilities. This paper will discuss one method of combining these two
+powerful tools to utilize the strengths of each. Special emphasis will be
+put on converting existing character-based systems into web-enabled
+applications.</p>
+
+<h3>M Devolves from a Medical Generalist
+to a Database Specialist</h3>
+
+<p>M started out as a programming environment: functioning as operating system,
+database and user-interface all in one. As computers became more complex, M
+had to relinquish more and more of those original functions to other
+programs that are specifically designed for them. This has left M with two
+main functions: database management, which it does extremely well, and
+character-based user-interaction, which is simply no longer
+state-of-the-art.</p>
+
+<p>As operating systems' functionality has gotten more and more complex, so has
+coding for them. It is this complexity, as well as the perceived risk of
+converting existing code, which may be keeping M developers from adopting
+graphical user interfaces, even in the face of increased pressure from
+users, customers and management.</p>
+
+<p>The World Wide Web, however, with its emphasis on graphics, easy navigation
+and unlimited information, is every bit as engaging as Windows, but doesn't
+require anywhere near the complexity of programming. This makes it a perfect
+match for the M world: HTML is to Windows what M is to database programming.
+Perhaps it's time for M to offload one more of its original functions: User
+Interaction.</p>
+
+<h3>Connecting the Web to M: The Web Server</h3>
+
+<p>To understand how M and a web page might interact, it is necessary to
+understand the main functions of a web server. To put a server's
+functionality in M terms, it is basically a background job that reads user
+input and writes HTML files back to them. Servers do amazingly little actual
+processing. The two processes they do participate in are: 1) they read the
+HTML files they are sending, so they know which additional files, such as
+graphics, to send and 2) when a user clicks on a "submit" button on a form,
+the browser passes all of the form's data fields and the name of a program
+to process that data back to the server. The server's job is to execute that
+program, and then pass the data to it.</p>
+
+<p>The server does one more crucial thing: it sets itself up as the standard
+output device for that newly started process, and it passes all information
+it gets from that process back to the user's browser.</p>
+
+<p>You can no doubt already see where M might fit into this equation. If that
+new process had access to an M database, we'd have all the ingredients we
+need. And that's just what we're going to do.</p>
+
+<h3>Example: The Apache Web Server</h3>
+
+<p>For the sake of our example, we'll be using the Apache Web Server.
+Originally put together by committee (hence the name: it's made up of lots
+of "patches") for the UNIX operating system, Apache has several qualities
+that recommend it:
+<ol>
+<li>It has recently been ported to MS Win95 and WinNT (as well as OS/2 and
+AmigaOS).</li>
+<li>It requires almost no programming to get it to function as we'll be using
+it.</li>
+<li>It is widely used; over 80% of WWW sites are run on Apache.</li>
+<li>It is free.</li>
+</ol></p>
+
+<h3>Step 1: Installing TCP/IP</h3>
+
+<p>Before running a web server on your computer, you need to install a network
+language (called protocols in network terminology). TCP/IP is the network
+protocol used on the Web. TCP/IP is included with Win95/98/NT, you just need
+to install it. Then you need to assign your machine a TCP/IP address. If you
+don't know how to install TCP/IP, follow the Window's Help instructions
+(Start Menu/Help then search for "TCP/IP").</p>
+
+<p>(Note: The address range allowed for Local Area Networks is 192.168.0.0 -
+192.168.255.255. Any other addresses must be registered with the Federal
+Government through InterNIC to avoid collisions in the event that your
+network gets connected to the WWW.)</p>
+
+<h3>Step 2: Installing the Apache Server</h3>
+
+<p>To get Apache to run on a Win95/NT system, all you need to do is download it
+from the web (http://www.apache.org/dist/) and edit one line in its
+http.conf configuration text file:
+Change "#BindAddress *" to "Bind nnn.nnn.nnn.nnn" where nnn... is the TCP/IP
+address of your machine.</p>
+
+<p>(Note: It is strongly recommended on a Win95 or WinNT machine that you
+install Apache in C:\Apache\ directory. We will assume that for our
+example.)</p>
+
+<p>Servers make several assumptions, which you should know about. They are
+designed to protect the security of your machine and to help organize your
+web site. First, they assume that the directory the Server is run from
+(C:\Apache\) is the root directory of the web site, and they only allow
+users access to subdirectories of that root. They also assume that all HTML
+files will be in a subdirectory named "htdocs" and that all executable
+programs will be in a subdirectory called "cgi-bin." As system
+administrator, you can override any of these assumptions, of course, but we
+will accept them for our example.</p>
+
+<p>Now that we have a Server up and running, let's see how to get M involved.</p>
+
+<h3>Step 3: Creating a Web Site</h3>
+
+<p>HTML code is simply made up of text markers inside of "&lt;" and "&gt;"
+delimiters. "&lt;HEAD&gt;" creates a header, "&lt;/HEAD&gt;" terminates the header.
+Since M is so good at manipulating text, writing out web pages from M is
+very practical.
+As an example, since we had a tool, Simple Windows In M (SWIM), which knew
+how to create Windows from M function calls, we decided to add the
+capability to write out HTML from those same function calls. The Form fields
+available in HTML (text fields, submit buttons, drop down lists, etc.) are
+actually a small subset of the Window's toolbox, so the development effort
+to convert SWIM to WWW.SWIM, which outputs HTML instead of MS-Windows,
+required surprisingly little code change.</p>
+
+<p>Let's use WWW.SWIM to create a simple web site. Here is a standard M program
+that will write out our HTML:</p>
+
+<pre>
+WEBSITE1 ;Create a Simple Web Site in M
+        ;
+        ;
+HTML    ; If %WWW is positive, SWIM outputs HTML instead
+        ; of a window definition
+        set %WWW=1
+        ;
+        ; Create a HyperText Link to Page 2:
+        set x=$$LABEL^%SWIM(,,"This is a HyperText Link",,,,,"ANCHOR:PG2")
+        ;
+        ; Start Page Two with a title:
+        set x=$$NEWWIN^%SWIM(,,"Page Two of WWW.SWIM Sample web site")
+        ;
+        ; Now create a Form with a Text field 15 characters wide,
+        ; and a submit button:
+        set T1=$$TEXT^%SWIM(,,"Enter Name:","w",15)
+        set B1=$$BUTTON^%SWIM(,,"Submit")
+        ;
+        ; Now write out all the HTML, and wait  for a response:
+DRAW    set x=$$DRAW^%SWIM(10000)
+</pre>
+
+<p>This will produce the following two web pages:</p>
+
+<p><img src="p34%EF%B9%96%EF%B9%96%EF%B9%96.gif.htm"></p>
+
+<p>Clicking on "This is a HyperText Link" in Figure 1 will load Page 2 (see
+Figure 2). Typing in the Name field, and then clicking on the "Submit"
+button, will send data back to M.</p>
+
+<h3>Step 4: The Server Processes the Form</h3>
+
+<p>As mentioned above, a Form has to tell the Server two things : what the data
+are, and which program to execute to process that data.</p>
+
+<p>WWW.SWIM generated this FORM command in our Page 2's HTML file to do those
+two things:</p>
+
+<p><tt>&lt;FORM ACTION=/cgi-bin/swim.cgi method=get&gt;</tt></p>
+
+<p>You'll notice that the program, swim.cgi is in the cgi-bin directory, the
+default directory for executable programs. The method=get argument tells
+Apache that the method it should use to get the variables' values is to GET
+them from the address of this page, its URL. The GET method appends the
+values to the end of the URL. There is another method, POST, which sends the
+data to the server down the input stream. WWW.SWIM always uses the GET
+method.</p>
+
+<p>If you were to create the HTML Form on Page 2 manually, you would have to
+write the swim.cgi program yourself. It could be written in any language
+(you just need to tell Apache which language, and if the program isn't
+compiled, you need to tell it where the interpreter is). Your program would
+receive the Form's values from Apache as arguments and would also have
+access to a number of "environmental" variables as well, such as the ID of
+the browser, what kind of browser they are using, etc. The output of your
+program, unless otherwise directed, would go back out to the browser (so it
+should probably be formatted in standard HTML).</p>
+
+<p>Since WWW.SWIM wrote swim.cgi for you, none of this is necessary. SWIM does
+one more thing for you, it reorganizes the Form's data and writes it out to
+a file for M to read.</p>
+
+<p>Remember M? After it wrote out the HTML web pages, it went into a read loop,
+checking for that file which swim.cgi just wrote out. As soon as SWIM sees
+the file, it reads the data into a local M array and returns control to our
+program. You now have the user's input in a local M variable, exactly as if
+the user had answered a standard M read statement written to a
+character-based read statement:</p>
+
+<p><tt>READ "Enter Name:",%rtn</tt></p>
+
+<p>Except that this user might be in Brazil or Japan or anywhere on your local
+network, instead of having to be signed on to your computer!</p>
+
+<h3>Step 5. M Responds</h3>
+
+<p>The final step in this communication between M and the world, is to respond
+to the user's request for information. The browser is waiting for something
+back from the server, which is still attached to swim.cgi waiting for HTML
+output, and swim.cgi, having written out its file, is awaiting a file back
+from M. So let's output one.</p>
+
+<p>Remember, output is expected in the form of an HTML page, so let's let
+WWW.SWIM create one for us.</p>
+
+<p>Our program ended with:</p>
+
+<pre>
+        ; Now write out all the HTML, and wait  for a response:
+DRAW    set x=$$DRAW^%SWIM(10000)
+</pre>
+
+<p>so let's add:</p>
+
+<pre>
+RTN     ; Returned data is in %rtn
+        ;
+        set x=$$NEWWIN^%SWIM(,,"Response Back From M")
+        ;
+        ; LABEL writes out text
+        set x=$$LABEL^%SWIM(,,"Hello "_%rtn)
+        set x=$$LABEL^%SWIM(,,"Here is a picture of our logo: ")
+        ;
+        ; PIX displays graphical files
+        set x=$$PIX^%SWIM(,,,,,,"swim.gif")
+        go DRAW
+</pre>
+
+<p>Our RTN subroutine writes out a standard HTML file, which swim.cgi reads in
+and passes to the Apache server, which passes it to our user's browser,
+including the swim.gif file, and the user sees:
+This same code, by the way, would have produced Microsoft Windows if the
+local variable %WWW was not equal to 1.</p>
+
+<h3>Converting CHUI to WWW</h3>
+
+<p>In this simple example, we "wrote" out a web site consisting of two web
+pages, "read" in a user's input, and then "wrote" out a response. This is
+essentially what all M programs do. If your code uses a standard "forms"
+generator to display what the user responds to, converting those calls to
+web function calls may be quite trivial. If you have reads and writes
+sprinkled throughout your code, you will have to modularize your code to do
+all the writes first, with a processing module next, and an output module to
+follow.</p>
+
+<p>Since WWW.SWIM writes all the HTML and does the CGI programming for you,
+once you've modularized your software, there's little Web-specific
+programming to do.</p>
+
+<h3>Conclusion</h3>
+
+<p>The advent of the World Wide Web, and in particular, the popularization of
+HTML has created an opportunity for M developers to upgrade their user
+interfaces without the complications inherent in standard Window's
+programming. In return for modularizing your software, you get easy access
+to Forms, graphics, and HyperText displays, and you can expand access to
+your data across local networks, or even the entire world.</p>
+
+<p>M needs a graphical user interface if it is to overcome the perception that
+it is an outdated technology. The Web may be exactly the tool that is
+needed.</p>
+
+<hr>
+
+<p><i>Max Rivers is CEO and head programmer of Simple Windows, Inc., a consulting
+firm that does Windows and Web conversions of Legacy M systems. He can be
+contacted
+at <a href="mailto:INFO@SimpleWindows.com">INFO@SimpleWindows.com</a>
+ or <a href="http://www.SimpleWindows.com">http://www.SimpleWindows.com</a>.</i></p>
+
+</body></html>

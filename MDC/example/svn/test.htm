@@ -1,0 +1,122 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $TEST</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $TEST</h1>
+
+<a name="$T[EST]"></a>
+<h2>$T[EST]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The value of this variable identifies whether or not the most
+recent occurrence of one of the following commands was successful:
+<b>IF</b> (always), <b>READ</b> (with time-out), <b>OPEN</b>
+(with time-out) or <b>LOCK</b> (with time-out).</p>
+
+<p><tt><b>IF</b> DEVICE'=PRINTER <b>OPEN</b> DEVICE::20<br>
+<b>ELSE</b>  <b>OPEN</b> PRINTER:120</tt></p>
+
+<p>When the values of the variables <tt>DEVICE</tt> and
+<tt>PRINTER</tt> are unequal and opening the device indicated by
+<tt>DEVICE</tt> can not be realized within 20 seconds, the value
+of <b> $TEST</b> becomes <tt>0</tt> (<i>false</i>) and the device
+indicated by <tt>PRINTER</tt> will be opened as soon as it is
+available. Note that the <tt>::20</tt> specifies a <u>timeout</u>
+and the <tt>:120</tt> specifies an implementation-specific
+<u>deviceparameter</u>.<br>
+When the values of <tt>DEVICE</tt> and <tt>PRINTER</tt> are
+equal, the device indicated by <tt>PRINTER</tt> will be opened as
+soon as it is available.<br>
+Note that the action taken after the <b>ELSE</b> command depends
+on the outcome of the <b>IF</b> command, but also on the outcome
+of the <u>timeout</u> when it is processed.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard:</p>
+
+<p>The special variable <b>$TEST</b> may occur as an argument of the
+<b>NEW</b> command.</p>
+
+<pre>
+ <b>SET</b> T="$TEST should be "
+ <b>IF</b> REASON <b>DO</b> SUB1 <b>WRITE</b> !,T,"1:",<b>$TEST</b>,"."
+ <b>ELSE  DO</b> SUB2 <b>WRITE</b> !,T,"1: ",<b>$TEST</b>,"."
+ <b>QUIT</b>
+SUB1<b> WRITE</b> !,T,"1: ",<b>$TEST</b>,"."
+ <b>NEW $TEST</b>
+ <b>IF</b> 0 ; Force $TEST to a new value
+ <b>QUIT</b>
+SUB2 <b>WRITE</b> !,T,"0: ",<b>$TEST</b>,"."
+ <b>IF</b> 1 ; Force $TEST to a new value
+ <b>QUIT</b>
+</pre>
+
+<p>The initial value of <b>$TEST</b> is 0 (false).</p>
+
+<p>The <b>THEN</b> command may be used to stack the value of
+<b>$TEST</b> "until the end of the current line".</p>
+
+<p>Assume that the code segment below is executed.</p>
+
+<pre>
+ <b>FOR</b> A=1,0 <b>DO</b>
+ . <b>IF</b> A <b>WRITE</b> !,"TRUE 1" <b>IF</b> 0
+ . <b>ELSE  WRITE</b> !,"FALSE 1"
+ . <b>IF</b> A <b>THEN  WRITE</b> !,"TRUE 2" <b>IF</b> 0
+ . <b>ELSE  WRITE</b> !,"FALSE 2"
+ . <b>QUIT</b>
+</pre>
+
+<p>At the first iteration of the <b>FOR</b> loop, the value of <tt>A</tt>
+is true (1).
+The first <b>IF</b> command will cause the text <tt>"TRUE&nbsp;1"</tt>
+to be written, and the second <b>IF</b> command on that line will cause
+the value of special variable <b>$TEST</b> to be set to 0 (false).
+As a result, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;1"</tt> to be written.</p>
+
+<p>The next <b>IF</b> command will cause the text <tt>"TRUE&nbsp;2"</tt>
+to be written, and this time, the <b>THEN</b> command will stack
+the value of <b>$TEST</b> (which is at this point equal to 1).
+After this, the second <b>IF</b> command on that line will cause
+the value of special variable <b>$TEST</b> to be set to 0 (false).
+At this point, the end of the line is reached, and the value
+of <b>$TEST</b> will be popped off the stack, setting it back to 1 (true).
+As a result, on the next line, the <b>ELSE</b> command will cause
+the rest of that line to be ignored.</p>
+
+<p>At the second iteration of the <b>FOR</b> loop, the value of <tt>A</tt>
+is false (0).
+The first <b>IF</b> command will cause the rest of that line
+to be ignored, and, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;1"</tt> to be written.</p>
+
+<p>The next <b>IF</b> command will also cause the rest of that
+line to be ignored, and, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;2"</tt> to be written.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

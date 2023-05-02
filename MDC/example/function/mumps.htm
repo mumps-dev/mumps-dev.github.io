@@ -1,0 +1,51 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $MUMPS</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $M[UMPS]</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a value that indicates whether the text
+that was passed to the function as a parameter is valid M[UMPS] code.</p>
+
+<p><tt><b>SET</b> X="<b>SET</b> A=P+Q"<br>
+<b>WRITE $MUMPS</b>(X)</tt><br>
+will return the value <tt>0</tt>.</p>
+
+<p><tt><b>SET</b> X="<b>SET</b> A=P+$ZB"<br>
+<b>WRITE $MUMPS</b>(X)</tt><br>
+will return the either value <tt>0</tt>
+or an implementation-specific value.</p>
+
+<p><tt><b>SET</b> X="<b>SET</b> A=1/0"<br>
+<b>WRITE $MUMPS</b>(X)</tt><br>
+will return the value <tt>0</tt>.<br>
+Note that the function <b>$MUMPS</b> checks for syntactic correctness,
+not for semantic correctness.</p>
+
+<p><tt><b>SET</b> X="<b>SET</b> A=$PIECE($HOORLOG,"","",2)"<br>
+<b>WRITE $MUMPS</b>(X)</tt><br>
+will return an implementation-specific value, for instance
+<tt>"20;S20;Unknown <u>svn</u>"</tt>.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$MUMPS</b>(EXPR)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$MUMPS</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

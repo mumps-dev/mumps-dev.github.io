@@ -1,0 +1,209 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- Who says that you can't use M[UMPS]?</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 5, number 3, August 1997, pages 18-19</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+Who says that you can't use M[UMPS], because you have to use Object
+Oriented Technology?</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>How often have we heard this? And how true is it?</p>
+
+<p><i>Now that I'm no longer the Chairman of the MDC (Art Smith
+has gracefully accepted the challenge to take the lead for a
+couple of years, see his column elsewhere in this issue), I would
+like to throw in a column with a bit more bite than usual. Some
+of the issues that I will raise in this column will cause some
+discussion, and that is exactly what I intend to do: make us all
+aware that it is time to re-examine what we're doing, and
+emphasize those aspects of programming that will help us continue
+to be successful. There are lots of pieces of existing software
+that will continue to be as valuable as they ever were, and there
+are new ways of using familiar resources. I would like to offer
+the following thoughts as a start to re-evaluate the way in which
+we can make use of the language M[UMPS].</i></p>
+
+<p>Well, let's start at the beginning: working in an object
+oriented fashion is certainly a good idea. But does M[UMPS]
+really preclude the usage of object oriented practices? I don't
+think so.</p>
+
+<p>Now, I'm not going to say that M[UMPS] is the ideal language
+for object oriented work, but it certainly isn't any worse than
+most of the other possible choices at this point in time.</p>
+
+<p>The first thing to keep in mind is that the choice of a
+programming language has little or nothing to do with object
+orientation. Certainly, C++ offers more and better tools to
+support object orientation than M[UMPS] does, but I've also seen
+"perfect" spaghetti code written in C++. The fact that a program
+was compiled using a C++ compiler <i>by no means</i> implies that
+the program in question is object oriented in any way, shape or
+form. A program can only be object oriented because it was
+written with object oriented concepts in mind, and was written
+while maintaining the discipline to apply those concepts.</p>
+
+<p>Object orientation means making certain choices about how code
+is to be written and how data is to be structured. Any programming
+language will support these choices, including M[UMPS].</p>
+
+<h3>Classes and Class Libraries</h3>
+
+<p>A "class" is also known in "C" as a "structure": a bunch of
+variables, ordered in a certain sequence, with data types
+attached to each variable.</p>
+
+<p>What C++ adds is the ability to restrict access to the
+variables in a structure to certain procedures that are defined
+to operate on and with these data collections. Such a collection
+of procedures is generally known as a "class library".</p>
+
+<p>Now, is this really different from the definition, ordering and
+relations that we get out of any of the available utilities that
+offer data dictionary capabilities?</p>
+
+<p>The purist in me will say that a "class definition" gives a
+certain level of shielding and encapsulation that is simply
+unattainable in the M[UMPS] world where all "local" variables are
+in fact shared by every subroutine, and all "global" variables
+are accessible (for read, write and delete operations) to
+everyone. This is correct, of course, but isn't every "public"
+entry point in a C++ class also an attempt to re-create this type
+of access that we all have come to love and cherish so much?</p>
+
+<p>True encapsulation and shielding is attained by mere
+discipline, both in M[UMPS] and in C++. In M[UMPS], one has to
+have to discipline to access a data element only through the
+published interface, and in C++, one has to have the discipline
+to only make the truly essential accesses "public".</p>
+
+<h3>Creation and Destruction</h3>
+
+<p>One of the niceties of C++ is that objects of any class can be
+created "as needed" and will be destroyed automatically when
+returning out of the procedure or block that caused the creation
+of the "instance". The NEW command in M[UMPS] seems to be only a
+poor substitute for this powerful facility. Or is it?</p>
+
+<p>Having worked with these two features, each in its own domain,
+I have come to both love and hate them. I love the automatic
+destruction in cases where an "instance" is truly only of local
+significance. If I intended any form or type of "persistance" of
+information after returning from the procedure that did all the
+work to create the information in this "local instantiation", you
+should hear me curse and swear when it all disappears when the
+procedure is done!</p>
+
+<p>Of course, I have learned to export essential information out
+of "class procedures" in the appropriate way, but the purist in
+me still finds this a breach of the object oriented paradigm.</p>
+
+<p>At the start of this section, I used the term "automatic". How
+automatic is creation and destruction really? Any C++ programmer
+"worth his/her salt" will tell you "Yes, Of Course!"</p>
+
+<p>Also, of course, they forget that they had to write the
+procedures that perform creation and destruction first. It is
+nice that C++ has special names for these procedures, but they
+need to be written nevertheless.</p>
+
+<p>Since these procedures have to be written anyway, there
+remains little difference between extrinsic functions in M[UMPS]
+and any procedure in a class library in C++.</p>
+
+<p>And, don't forget: the "sparse" nature of storage in M[UMPS]
+has always seemed to me to be the ideal vehicle for "on the fly"
+creation and destruction of members of a collection, while still
+allowing information to persist outside of the scope of view of
+the procedure that created it.</p>
+
+<h3>Methods, Properties and Inheritance</h3>
+
+<p>In M[UMPS], people say, the only properties that are available
+are $DATA and $LENGTH. I would like to differ strongly to this
+view. Of course, there is a syntactic difference between</p>
+
+<p><center><tt>Patient.Name[PatID]</tt></center></p>
+
+<p>and</p>
+
+<p><center><tt>^Patient(PatID,"Name")</tt></center></p>
+
+<p>but, semantically, I see no difference: in both cases, the
+language supports a simple feature that allows us to reference the
+"name" property of a patient.</p>
+
+<p>The same holds for system properties that could be represented
+as</p>
+
+<p><center><tt>Job.CurrentDevice[Job]</tt></center></p>
+
+<p>or</p>
+
+<p><center><tt>^$Job($Job,"$IO")</tt></center></p>
+
+<p>and</p>
+
+<p><center><tt>System-&gt;CharSet</tt></center></p>
+
+<p>or</p>
+
+<p><center><tt>^$SY($SY,"CHARACTER")</tt></center></p>
+
+<p>In fact, I would argue that M[UMPS] has had "properties" since
+long before this term was coined in the object oriented world.</p>
+
+<p>Also, it is extremely interesting to see how well the
+hierarchical capability of M[UMPS] matches the object oriented
+paradigms. I find the combination of hierarchy and $ORDER much
+more powerful than anything that I can get out of properties in
+any language that is touted to be "object oriented"! After all,
+M[UMPS] allows me to check which properties are there:</p>
+
+<pre>
+        Set Prop=""
+        For  S Prop=$O(^x(ID,Prop)) Quit:Prop=""
+</pre>
+
+<p>will show me all properties that are defined at the time I am
+interested in knowing them, whereas in C++ these properties are
+defined at compile time, and there have to be explicit checks
+whether <tt>this.Prop!=NULL</tt> to find out whether a property
+has a value for each and every one.</p>
+
+<h3>In conclusion</h3>
+
+<p>So... When anyone tells you that you "should be using Object
+Oriented Technology" instead of what you're doing, your response
+should be: "<b><i>Just tell me which object oriented features you
+want to see, and I can show you how they are embodied in the
+baseline that I'm using</i></b>."</p>
+
+<p>There is nothing about M[UMPS] that precludes the use of object
+oriented practices!</p>
+
+<p>On the other hand, we should not be blind to the tools that
+other environments offer: some are not to be under-estimated.</p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+</body>
+</html>

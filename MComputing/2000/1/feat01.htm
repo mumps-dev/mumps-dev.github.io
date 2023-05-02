@@ -1,0 +1,322 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>System Development with Borland Delphi and MUMPS</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 8, Number 1, March 2000</h3>
+
+<h2>by Michael G. Kholin, M.D.</h2>
+
+<h3>Abstract</h3>
+
+<p>In this paper we describe how M-technology was successfully
+used to develop ProjectWorks, a multi-user client/server PDM
+(Product Data Management) system. A PDM system maintains data
+from various CAD/CAM systems such as Pro/ ENGINEER&#174,
+SolidWorks&#174, etc.</p>
+
+<P>In our system, the RAD (Rapid Application Development) tool
+Borland Delphi version 3.0 was used to make the client, and MSM
+Server for Windows NT 4.3.0 was used for the server. Our method
+enabled us to transfer data from client to server, to perform
+several operations with the data and to return the result to the
+client. It is important to note that no logic is implemented on
+the client. The client only displays the information in a
+graphical format, sends and receives data and calls stored M
+procedures.</P>
+
+<P>As a result we have a powerful, high-performance PDM system.</P>
+
+<p><img src="feat01.jpg"></p>
+
+<h3>Introduction</h3>
+
+<P>Many industrial companies use large and complex CAD/CAM
+software to model various mechanisms and goods from teapots and
+fishing reels to aeroplanes and spaceships. With the help of such
+powerful CAD systems as Pro/ENGINEER&#174, SolidWorks&#174,
+Unigraphics&#174, and Catia&#174, designers create many different
+files for every part, assembly or drawing.  The average assembly
+consists of 1500 components. PDM software is used to maintain all
+these data files.</P>
+
+<P>We analysed the PDM market and determined that the best way to
+meet the requirements of our customer was  to create our own PDM
+system.  The most important features of the software are:</P>
+
+<UL>
+<LI>high performance</LI>
+<LI>high storage capacity</LI>
+<LI>quick access both to data and files</LI>
+<LI>multi-user</LI>
+<LI>own database scheme</LI>
+<LI>well integrated with Pro/ENGINEER</LI>
+<LI>scalability</LI>
+<LI>portability</LI>
+<LI>open for integrating</LI>
+<LI>ease of administration</LI>
+<LI>acceptable price </LI></UL>
+
+<P>The idea was to create a system with three components:</P>
+
+<UL>
+<LI>client application with GUI</LI>
+<LI>database server for maintaining metadata for PDM objects.
+Metadata is the attribute information, which is stored in
+character records of mass, version, ownership, cost, name, type,
+designer, date, etc. </LI>
+
+<LI>file server for those CAD files</LI>
+</UL>
+
+<h3>Architecture</h3>
+
+<P>The metadata server is the heart of the system. The main tasks
+are to store metadata and to control every data operation. The
+metadata is stored in M globals. All system logic is concentrated
+in M routines. </P>
+
+<P>We started with MSM Server 4.0 for DOS and released the server
+software for MSM Server 4.3.2 for Windows NT and for Windows 95.
+Our code runs correctly  without modifications in both operation
+systems. To achieve this we didn’t use special OS commands or
+routines.  Neither the length of global variable names nor the
+length of the data exceed 255 characters, so the requirement of
+portability was satisfied.</P>
+
+<P>The client application is the only user interface. Most events
+initiate data transfer between client and server or calls of M
+procedures. The user interface for the client initially appeared
+very complicated. The only way to develop it was to use a
+powerful compiling tool such as Borland Delphi because it  makes
+quick modifications possible. Before starting to write the code
+for the real system with MSM server, we made the singleuser
+prototype of the future system using Delphi &amp; the built-in
+Borland Database Server. We then went through  several iterations
+and, together with the customer we ultimately designed the future
+system. We recommend using RAD tools in the design process, but
+you should strictly follow the rule &quot;all logic in one
+place&quot;. To store CAD models and documents any FTP server can
+be used. Files are renamed and put to the FTP server. When the
+user wants to retrieve  the file, it is renamed. So the server
+software (MSM and FTP) is easy portable. We can also have
+different machines for the metadata server and for the
+fileserver. </P>
+
+<P>The most popular installation of ProjectWorks is for Windows
+NT with MSM for Windows and built-in FTP from Microsoft Peer Web
+Services.</P>
+
+<h3>How to run an M routine from a Delphi client?</h3>
+
+<P>One way to integrate Delphi with the M system is MSM-API. This
+API is a DLL that provides approximately 30 different functions
+including functions for connecting and disconnecting.  It also
+provides a variety of functions that cover a wide range of M
+commands, and facilities to traverse M globals. </P>
+
+<P>We decided to use only the MSM_DO function, which provides
+full access to everything we needed to do within M. We didn’t use
+such functions as MSM_GLOBAL_SET, MSM_GLOBAL_ORDER, etc. This
+approach has several advantages. </P>
+
+<P>First we write our M routine. In this example we are creating
+a new node in the ^yRelAtr global, and we call one more
+procedure: ObjCreat.</P>
+
+<pre>
+NewChild(ParID,tid)
+&#9;...
+&#9;s ^yRelAtr(ParID,index,"Quantity")=""
+&#9;d ObjCreat(index,tid)
+&#9;q "success"
+</pre>
+
+<P>Without any non-M tool we can debug and test this routine! 
+This is one advantage.</P>
+
+<P>Logic is not required in the future client. You can write
+applications to the same system with simplified interface, for
+example CHUI, and save the integrity of the whole system. This is
+another advantage. </P>
+
+<P>Now we are sure that our routine is correct. So we have to
+call it from the client with the necessary parameters.  For this
+purpose we made our own procedure, Do1 in msm32api.pas for
+calling from a DLL.</P>
+
+<pre>
+procedure TMSM.Do1(MCode,MParams:string;Var Value:string);
+Var
+RetVal : integer;
+TmpStr : array[0..MSMK_STRING_LENGTH] of char;
+Begin
+
+try
+ RetVal:=MSM_DO(FSD,PChar(MCode),PChar(MParams),TmpStr,MSMK_STRING_LENGTH);
+  if RetVal&lt;&gt;MSM_SUCCESS then raise EMSMError.Create('');
+except
+ if (RetVal&gt;MSM_BASE_ERROR)AND(RetVal&lt;MSM_CLOBR) then raise EMSMError.Create(MErrCodes[RetVal]);
+ raise EMSMError.Create('No connection ...');
+end;
+
+ Value:=StrPas(TmpStr);
+End;
+</pre>
+
+<P>In msm32api.pas we wrote our own procedure, NewChildApp, which
+corresponds to our M subroutine NewChild from the ^Yes01
+routine.</P>
+
+<pre>
+procedure TMSM.NewChildApp(ParentID:integer;TypeID:integer);Var ResLine : string;
+BeginTry Do1('NewChild^Yes01',PrepareArgs([IntToStr(ParentId),IntToStr(TypeID)]),ResLine);
+  if ResLine&lt;&gt;'success' then
+   raise EMSMError.Create('Failed to create new object ...');
+except
+ raise EMSMError.Create('Failed to create new object ...');
+end;
+End;
+</pre>
+
+<P>Now we can call this procedure from our client. In our example
+we run NewChild^Yes01 with the necessary parameters and get
+&quot;success&quot; in ResLine. It is just what we wanted.</P>
+
+<h3>How to transfer data from M to Delphi
+client and back?</h3>
+
+<P>The procedure to
+transfer data from M to Delphi is similar. We  call the special M
+routine to set or get the value of M global variable. Earlier in
+this paper we pointed out that names and values of our globals
+don’t exceed 255 characters to achieve portability. Why didn't we
+write an MSM-API function? Because in our multi-user system we
+have to maintain different user data within single UCI and
+transfer big arrays of data. Several experiments proved that
+calling own M routine is the most economical method. </P>
+
+<P>In the MSM UCI  we have a special M global ^yTrans. It used to
+accumulate all data that is transferred from or to the client.
+Several operations can be performed before this data is put in
+other globals or sent to the client. The task was to develop
+multi-user system. So we separated data for every client
+connection with the help of unique index. Function Job() returns
+a string MSMSerialNumber_JobID ($sy_"_"_$j)</P>
+
+<pre>
+&gt;w $$Job^Yes01()
+43,3200000;6478890063_9
+&gt;
+</pre>
+
+<P>The example of ^yTrans global:</P>
+
+<pre>
+^yTrans(&quot;43,3200000;6478890063_1&quot;,0)=&quot;ObjectName HANDLE-12-890&quot;
+^yTrans(&quot;43,3200000;6478890063_1&quot;,1)=&quot;Designer John Smith&quot;
+^yTrans(&quot;43,3200000;6478890063_7&quot;,0)=&quot;ObjectName HANDLE-12-890&quot;
+^yTrans(&quot;43,3200000;6478890063_7&quot;,1)=&quot;Designer Brown&quot;
+^yTrans(&quot;43,3200000;6478890063_7&quot;,2)=&quot;Type Pro/Engineer part&quot;
+</pre>
+
+<P>In the same UCI there are two functions TransGet(Line), TransSet(Line,Value). 
+These functions themselves determine variable job and set or return the proper 
+value for each connection.</P>
+
+
+<pre>
+TransGet(Line)&#9;
+&#9;;Get the value of the ^yTrans(job,Line)
+&#9;s job=$$Job()
+&#9;q:$d(^yTrans(job,Line))=0 "error"
+&#9;q $g(^yTrans(job,Line))
+&#9;q 
+&#9;
+TransSet(Line,Value)&#9;
+&#9;;Put the value of the ^yTrans(job,Line)
+&#9;q:Line="" "success"
+&#9;s job=$$Job()
+&#9;s ^yTrans(job,Line)=Value
+&#9;q "success"
+</pre>
+
+
+<P>Whenever needed  we call TransGet or TransSet from M
+procedures whether receiving data from a client or preparing it
+to be sent to the client.</P>
+
+<P>When we want to get data from M, we first call some M routines
+from Delphi:</P>
+
+<pre>
+Do1('SomeMRoutine^Yes01',PrepareArgs(...),ResLine);
+</pre>
+
+<P>This procedure will prepare data in ^yTrans.</P>
+
+<P>In the next call we read data from M global ^yTrans:</P>
+
+
+<pre>
+Do1('TransGet^Yes01',PrepareArgs([Line]),ResLine);
+</pre>
+
+<P>In ResLine variable we receive the needed string.</P>
+
+<P>When we want to put data to M, we prepare data in ^yTrans
+calling the following:</P>
+
+<pre>
+Do1('TransSet^Yes01',PrepareArgs([Line],Value),ResLine);
+</pre>
+
+<P>Then we call the M routine to put it into database in the right way.</P>
+
+
+<pre>
+Do1('SomeMRoutine^Yes01',PrepareArgs(...),ResLine);
+</pre>
+
+<P>Notice we don’t need to determine the current link, but receive the right data! So our Delphi code becomes simple. </P>
+
+<h3>Conclusion</h3>
+
+<P>The customer wanted a multi-user system with a GUI for the
+Client application and a powerful data server. Looking for the
+solution we decided to use RAD tool Borland Delphi to develop for
+the client and Micronetics Standard MUMPS for the server.</P>
+
+<P>The most complicated and non-traditional part of the project
+was to connect M and non-M tools. We used the MSM_DO function
+from the MSM-API package, which provides full access to anything
+we need to do within M. We developed the method of data exchange
+between Client and Server with data division.</P>
+
+<P>We found out that it is better to keep system logic in one
+place. This approach makes the debugging process easier and the
+system itself more flexible.</P>
+ 
+<P>The  result was a  powerful PDM system that met the customer’s needs. </P>
+
+<img src="feat01.gif">
+
+<p>
+Pro/ENGINEER is a registered trademark of Parametric Technology<br>
+SolidWorks is a registered trademark of SolidWorks Corp.<br>
+Unigraphics is a registered trademark of Ungraphics Solutions.<br>
+Catia is a registered trademark of Dassault Systemes.<br>
+Delphi is a registered trademark of Borland International Inc.<br>
+MSM Server for DOS is a product of InterSystems.<br>
+MSM Server for Windows NT is a product of InterSystems.<br>
+MSM-API is part of the MSM Server products from InterSystems.</p>
+
+<P>There is a Russian site on the Internet about our PDM system:
+<A href="http://www.sparm.com/projectworks/">http://www.sparm.com/projectworks/</a></P>
+
+<P><i>Michael G. Kholin, M.D. is a post-graduate student at
+Computer Technology Department of SPIFMO (Technical University),
+Russia. Email: <a 
+href="mailto:pworks@unitel.spb.ru">pworks@unitel.spb.ru</a></i></P>
+</BODY></HTML>

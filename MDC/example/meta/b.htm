@@ -1,0 +1,129 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -B-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter B</h1>
+
+<p><a href="#bcolor">bcolor</a>,
+<a href="#binaryop">binaryop</a>,
+<a href="#Binding">Binding</a></p>
+
+<hr>
+<a name="bcolor"></a>
+<h2>bcolor</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the level of the blue component of a
+color. A color component level is an integer value
+(0 <img src="leq.xbm"> value <img src="leq.xbm"> 65,535).</p>
+
+<hr>
+<a name="binaryop"></a>
+<h2>binaryop</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the arithmetic or string binary
+operators, i.e. one of <tt> +</tt>, <tt>-</tt>, <tt>/</tt>, <tt>\</tt>,
+<tt>#</tt> or <tt>_</tt>.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The binary operator <tt>**</tt> is added to the definition of this
+metalanguage symbol.</p>
+
+<hr>
+<a name="Binding"></a>
+<h2>Binding</h2>
+
+<p>A specification of how two or more standards work together.</p>
+
+<p>Addition in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<h3>GKS - M[UMPS] binding.</h3>
+
+<p>GKS (which stands for <b>G</b>raphical
+<b>K</b>ernel <b>S</b>ystem) is a standard for producing and manipulating
+graphical images. The functions in GKS are called as <b>controlmnemonic</b>s;
+the <b>mnemonicspace</b> for GKS is <tt>"GKS"</tt> (<tt>WRITE
+/name(parameters</tt>); all function-names are the same as the "short" names
+in the ANSI FORTRAN binding to GKS; all parameters are the same in order and
+meaning as in GKS. Parameters that receive output values are defined using the
+M[UMPS] <b>READ</b> command.</p>
+
+<p>The standards for GKS that were used for this binding is ANSI X3.124-1985,
+which corresponds to ISO 7942-1985, and ANSI X3.124.1-1985 (GKS-FORTRAN
+binding).</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<h3>ANSI X3.64 - M[UMPS] binding.</h3>
+
+<p>ANSI X3.64 is a standard for device
+control command code sequences. The VT-100 compatible terminals are an example
+of terminals that meet this standard. The functions in X3.64 are called as
+<b>controlmnemonic</b>s; the <b>mnemonicspace</b> for ANSI X3.64 is
+<tt>"X3.64"</tt> (<tt>WRITE /name(parameters</tt>); all function-names are the
+same as in ANSI X3.64; all parameters are the same in order and meaning as in
+ANSI X3.64, except for row and column numbers: X3.64 uses co-ordinates that
+start numbering from 1 (one), M[UMPS] uses co-ordinates that start numbering
+from 0 (zero).</p>
+
+<p>The standard for device control that was used for this binding is ANSI
+X3.64-1979, which corresponds to ISO ???.</p>
+
+<p>Addition in the 1995 X Window - M[UMPS] language binding.</p>
+
+<h3>X Window - M[UMPS] binding.</h3>
+
+<p>X Window is a system architecture that
+consists of several layers. This binding is to the X Window System Routine
+Libraries as produced by the X Consortium, the Intrinsic Toolkit so provided
+and the Motif Widget and Routine set as produced by the Open Software
+Foundation. The functions from the various component libraries are called
+using the external call syntax: <tt>$&XLIB.name(parameters)</tt>,
+<tt>$&XMOTIF.name(parameters)</tt>, <tt>$&XMOTIFRM.name(parameters)</tt>,
+<tt>$&XTOOLKIT.name(parameters)</tt> and <tt>$&X.name(parameters)</tt>.
+Parameters are the same in order and meaning as in the definition of the
+various component libraries.</p>
+
+<p>At the moment in time that this binding was produced, for all of these layers
+of the X Window system a standard was being prepared, but not yet finalized.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<h3>POSIX.1 - M[UMPS] binding.</h3>
+
+<p>POSIX is a standard that describes a
+number of system services and support routines to access constructs described
+by this standard. (Further specifics to be included after the taskgroup
+decides how to bind.)</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "B" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

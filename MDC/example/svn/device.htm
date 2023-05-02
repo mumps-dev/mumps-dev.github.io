@@ -1,0 +1,60 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $DEVICE </title>
+<body background="../mbe.gif">
+<h1>Special variables -- $DEVICE </h1>
+
+<a name="$D[EVICE]"></a>
+<h2>$D[EVICE]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This variable provides information about the status of the
+current device.</p>
+
+<p>The value of <b>$DEVICE</b> depends on the active <u>mnemonicspace</u>.</p>
+
+<p>For the <u>mnemonicspace</u> <tt>"X3.64"</tt>, the possible values are:</p>
+
+<p>1 <u>mnemonicspace</u> not found<br>
+2 invalid <u>controlmnemonic</u><br>
+3 parameter out of range<br>
+4 hardware error<br>
+5 <u>controlmnemonic</u> not available for this device<br>
+6 parameter not available for this device<br>
+7 attempt to move outside of boundary - not moved<br>
+8 attempt to move outside of boundary - moved to boundary<br>
+9 auxiliary device not ready</p>
+
+Approved for addition in a future ANSI M[UMPS] Language Standard.</p>
+
+<p>The initial value of <b>$DEVICE</b> is implementation-dependent.
+However, if the initial value of <b>$IO</b> is the empty string,
+then the initial value of <b>$DEVICE</b> is also the empty
+string.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

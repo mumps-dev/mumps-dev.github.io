@@ -1,0 +1,444 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $STACK</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $ST[ACK]</h1>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns information extracted from the error-trap
+status information stack.</p>
+
+<p>Assume that a routine called <tt>T4EDM</tt> exists, with the
+following code:</p>
+
+<pre>
+T4EDM ; test error trapping
+X <b>WRITE</b> !,"Start test routine, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>SET</b> $ECODE="",SHOWN=0
+ <b>DO</b> L1
+ <b>WRITE</b> !,"At end of routine, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK="<b>,$ESTACK</b>
+ <b>QUIT</b>
+L1 <b>WRITE</b> !,"Now at label L1, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>SET $ETRAP</b>="w !,""Error trap from L1 ("",$STACK,""/"",$ESTACK,"")."" DO E1 DO SHOW($STACK)"
+ <b>DO</b> L2
+ <b>SET</b> SHOWN=0
+ <b>w</b> !,"NOTE: The error trap should have ended here."
+ <b>w</b> !,"Now let's generate a user-defined error:"
+ <b>SET $ECODE</b>=",User defined error,"
+ <b>w</b> !,"Now leaving subroutine L1, $STACK=",<b>$STACK</b>
+ <b>w</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>QUIT</b>
+L2 <b>NEW</b> <b>$ESTACK</b>,<b>$ETRAP</b>
+ <b>WRITE</b> !,"Now at label L2, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>s $et</b>="w !,""Error trap from L2 ("",$STACK,""/"",$ESTACK,"")."" do E2 s:'$ESTACK $ECODE="""" DO SHOW($STACK)"
+ <b>DO</b> L3
+ <b>WRITE</b> !,"Now leaving subroutine L2, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>QUIT</b>
+L3 <b>WRITE</b> !,"Now at label L3, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>SET</b> X="w !,""Now comes the error:"" set A=1/0"
+ <b>SET</b> Y="xecute X"
+ <b>SET</b> A="x Y"
+ <b>XECUTE</b> A
+ <b>WRITE</b> !,"Now leaving subroutine L3, $STACK=",<b>$STACK</b>
+ <b>WRITE</b> ", $ESTACK=",<b>$ESTACK</b>
+ <b>QUIT</b>
+E1 <b>WRITE</b> " E1 ",<b>$ECODE</b>,! <b>DO</b> TRACE <b>QUIT</b>
+E2 <b>WRITE</b> " E2 ",<b>$ECODE</b>,! <b>DO</b> TRACE <b>QUIT</b>
+TRACE <b>NEW</b> MAX,I,K,HERE
+ <b>QUIT</b>:SHOWN
+ <b>SET</b> MAX=<b>$STACK</b>(-1),HERE=<b>$STACK</b>
+ <b>FOR</b> K=0:1:MAX <b>DO</b>
+ . <b>WRITE</b> !,<b>$SELECT</b>(HERE=K:" * ",1:"&nbsp;&nbsp;&nbsp;"),<b>$JUSTIFY</b>(K,2),": ",<b>$STACK</b>(K)
+ . <b>FOR</b> I="PLACE","MCODE","ECODE" <b>W</b> !?9,<b>$STACK</b>(K,I)
+ . <b>QUIT</b>
+ <b>SET</b> SHOWN=1
+ <b>QUIT</b>
+SHOW(N) <b>WRITE</b> !,"In show, N=",N,",$STACK=",<b>$STACK</b>
+ <b>QUIT</b>
+</pre>
+
+<p>Execution of this routine will yield the following result:</p>
+
+<pre>
+do X
+
+Start test routine, $STACK=1, $ESTACK=1
+Now at label L1, $STACK=2, $ESTACK=2
+Now at label L2, $STACK=3, $ESTACK=0
+Now at label L3, $STACK=4, $ESTACK=1
+Now comes the error:
+Error trap from L2 (7/4). E2 ,<a href="../mdcerror.htm#M9">M9</a>,
+
+    0:
+          @ +1
+          do X
+
+    1: DO
+          X+3^T4EDM +1
+           DO L1
+
+    2: DO
+          L1+3^T4EDM +1
+           DO L2
+
+    3: DO
+          L2+4^T4EDM +1
+           DO L3
+
+    4: DO
+          L3+5^T4EDM +1
+           XECUTE A
+
+    5: XECUTE
+          @ +1
+          x Y
+
+    6: XECUTE
+          @ +1
+          xecute X
+
+    7: XECUTE
+          @ +2
+          w !,"Now comes the error:" set A=1/0
+          ,<a href="../mdcerror.htm#M9">M9</a>,
+    8: DO
+          E2^T4EDM +2
+          E2 WRITE " E2 ",$ECODE,! DO TRACE QUIT
+
+ *  9: DO
+          TRACE+3^T4EDM +2
+           FOR K=0:1:MAX DO
+
+In show, N=7, $STACK=8
+Error trap from L2 (6/3). E2 ,<a href="../mdcerror.htm#M9">M9</a>,
+
+In show, N=6, $STACK=7
+Error trap from L2 (5/2). E2 ,<a href="../mdcerror.htm#M9">M9</a>,
+
+In show, N=5, $STACK=6
+Error trap from L2 (4/1). E2 ,<a href="../mdcerror.htm#M9">M9</a>,
+
+In show, N=4, $STACK=5
+Error trap from L2 (3/0). E2 ,<a href="../mdcerror.htm#M9">M9</a>,
+
+In show, N=3, $STACK=4
+NOTE: The error trap should have ended here.
+Now let's generate a user-defined error:
+Error trap from L1 (2/2). e1 ,User defined error,.
+
+    0:
+          @ +1
+          do X
+
+    1: DO
+          X+3^T4EDM +1
+           DO L1
+
+    2: DO
+          L1+7^T4EDM +1
+           SET $ECODE=",User defined error,"
+          ,User defined error,
+    3: DO
+          E1^T4EDM +2
+          E1 WRITE " E1 ",$ECODE,! DO TRACE QUIT
+
+ *  4: DO
+          TRACE+3^T4EDM +2
+           FOR K=0:1:MAX DO
+
+In show, N=2, $STACK=3
+Error trap from L1 (1/1). E1 ,User defined error,
+
+In show, N=1, $STACK=2
+Error trap from L1 (0/0). E1 ,User defined error,
+
+In show, N=0, $STACK=1
+</pre>
+
+<p>Now, let s have a look at the stacking of variables and error-traps.<br>
+Assume that a routine called <tt>T1EDM</tt> exists, with the
+following code:</p>
+
+<pre>
+T1EDM ;
+ <b>WRITE</b> "Start: $STACK = ",<b>$STACK</b>
+ <b>WRITE</b> ", $ECODE = """,<b>$ECODE</b>,""","
+ <b>WRITE</b> !?5,"$ETRAP = """,<b>$ETRAP</b>
+ <b>WRITE</b> """, $ESTACK = ",<b>$ESTACK</b>,!
+ <b>SET</b> LEVEL=1
+ <b>SET $ETRAP</b>="GOTO ERROR"
+ <b>DO</b> X
+ <b>QUIT</b>
+ ;
+X <b>IF</b> LEVEL#3=0 <b>NEW $ESTACK</b>
+ <b>IF</b> LEVEL#4=0 <b>NEW LOCAL SET</b> LOCAL(LEVEL)=LEVEL
+ <b>SET</b> LOCAL(LEVEL,LEVEL)="Demo"
+ <b>IF</b> LEVEL=16 <b>NEW $ETRAP SET $ETRAP</b>="GOTO NESTERR"
+ <b>WRITE</b> !,"Level = ",LEVEL
+ <b>WRITE</b> ", $STACK = ",<b>$STACK</b>
+ <b>WRITE</b> ", $ECODE = """,<b>$ECODE</b>,""","
+ <b>WRITE</b> !?5,"$ETRAP = """,<b>$ETRAP</b>
+ <b>WRITE</b> """, $ESTACK = ",<b>$ESTACK</b>,!
+ <b>SET</b> LEVEL=LEVEL+1
+ <b>IF</b> LEVEL&lt;20 <b>DO</b> X
+ <b>ELSE</b>  <b>SET $ECODE</b>=",U13," ; User defined error code
+ <b>WRITE</b> !!,"Back: level = ",LEVEL
+ <b>WRITE</b> ", $STACK = ",<b>$STACK</b>
+ <b>WRITE</b> ", $ECODE = """,<b>$ECODE</b>,""","
+ <b>WRITE</b> !?5,"$ETRAP = """,<b>$ETRAP</b>
+ <b>WRITE</b> """, $ESTACK = ",<b>$ESTACK</b>,!
+ <b>QUIT</b>
+ ;
+ERROR <b>WRITE</b> !!,"Error: level = ",LEVEL
+ <b>WRITE</b> ", $STACK = ",<b>$STACK</b>
+ <b>WRITE</b> ", $ECODE = """,<b>$ECODE</b>,""","
+ <b>WRITE</b> !?5,"$ETRAP = """,<b>$ETRAP</b>
+ <b>WRITE</b> """, $ESTACK = ",<b>$ESTACK</b>
+ <b>WRITE</b> !,"Error location: """
+ <b>WRITE</b> <b>$STACK</b>(<b>$STACK</b>,"PLACE"),"""."
+ <b>WRITE</b> !,"MUMPS code: """
+ <b>WRITE</b> <b>$STACK</b>(<b>$STACK</b>,"MCODE"),"""."
+ <b>WRITE</b> !,"Error code: """
+ <b>WRITE</b> <b>$STACK</b>(<b>$STACK</b>,"ECODE"),"""."
+ <b>SET</b> R="LOCAL"
+ <b>FOR  SET</b> R=<b>$QUERY</b>(@R) <b>QUIT</b>:R=""  <b>DO</b>
+ . <b>WRITE</b> !,R," = ",@R
+ . <b>QUIT</b>
+ ;
+ <b>IF</b> <b>$STACK</b>&lt;7 <b>SET $ECODE</b>=""
+ ;
+ ; As long as the value of $ECODE is
+ ; non-empty, the system will execute
+ ; the error trap upon exit from the
+ ; error trap routine.
+ <b>QUIT</b>
+ ;
+NESTERR ;
+ <b>WRITE</b> !,"Nested error trap"
+ <b>WRITE</b> ", $STACK = ",<b>$STACK</b>
+ <b>QUIT</b>
+</pre>
+
+<p>Then the command <tt><b>DO</b> ^T1EDM</tt> will produce the
+following result:</p>
+
+<pre>
+Start: $STACK = 1, $ECODE = "",
+     $ETRAP = "", $ESTACK = 1
+
+Level = 1, $STACK = 2, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+
+Level = 2, $STACK = 3, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 3
+
+Level = 3, $STACK = 4, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+Level = 4, $STACK = 5, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+
+Level = 5, $STACK = 6, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+
+Level = 6, $STACK = 7, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+Level = 7, $STACK = 8, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+
+Level = 8, $STACK = 9, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+
+Level = 9, $STACK = 10, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+Level = 10, $STACK = 11, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+
+Level = 11, $STACK = 12, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+
+Level = 12, $STACK = 13, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+Level = 13, $STACK = 14, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+
+Level = 14, $STACK = 15, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+
+Level = 15, $STACK = 16, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+Level = 16, $STACK = 17, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 1
+
+Level = 17, $STACK = 18, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 2
+
+Level = 18, $STACK = 19, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 0
+
+Level = 19, $STACK = 20, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 1
+
+Nested error trap, $STACK = 20
+Nested error trap, $STACK = 19
+Nested error trap, $STACK = 18
+Nested error trap, $STACK = 17
+
+Error: level = 20, $STACK = 16, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+
+Error: level = 20, $STACK = 15, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+
+Error: level = 20, $STACK = 14, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+
+Error: level = 20, $STACK = 13, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+
+Error: level = 20, $STACK = 12, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+
+Error: level = 20, $STACK = 11, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+
+Error: level = 20, $STACK = 10, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+
+Error: level = 20, $STACK = 9, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+
+Error: level = 20, $STACK = 8, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+
+Error: level = 20, $STACK = 7, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+
+Error: level = 20, $STACK = 6, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+
+Back: level = 20, $STACK = 5, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+
+
+Back: level = 20, $STACK = 4, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+
+
+Back: level = 20, $STACK = 3, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 3
+
+
+Back: level = 20, $STACK = 2, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+</pre>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

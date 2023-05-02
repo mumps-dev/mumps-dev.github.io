@@ -1,0 +1,51 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$LOCK</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$LOCK</h1>
+
+<a name="^$L[OCK]"></a>
+<h2>^$L[OCK]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This structured system variable provides information about the
+LOCKs that are currently known to the M[UMPS] system.</p>
+
+<p><tt><b>WRITE</b> !,"Contents of the LOCK table:"<br>
+<b>SET</b> L="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> L=<b>$ORDER</b>(<b>^$LOCK</b>(L)) <b>QUIT</b>:L=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,L<br>
+. <b>QUIT</b></tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>If your implementation has granted you the privilege to do so,
+you may be able to remove an entry from the LOCK table by
+executing the command<br>
+<tt><b>KILL ^$LOCK</b>(name)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

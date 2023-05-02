@@ -1,0 +1,3715 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>M Technology and MUMPS Language FAQ</title>
+<h1>M Technology and MUMPS Language FAQ</h1><p>
+
+This version of the M[UMPS] FAQ has been copied from the most recent
+monthly distribution through "comp.lang.mumps". It was last updated on
+1 March 1997. The only differences between this version of the FAQ
+and the version in the repository is that this version has been
+reformatted for a HTML processor. (I also ran the text through
+a spell-checker and applied some minor spelling replacement suggestions.)<p>
+
+For the most recent version, follow the hyper text link
+mentioned in section 25.<p>
+
+Last-modified: <b>6-Apr-1998</b><br>
+Version: <b>1.9</b><br>
+Posting-Frequency: <b>monthly</b><p>
+
+This FAQ is copyright 1996-1998 by Gardner S. Trask III.
+All rights reserved.<br>
+Permission is granted for this FAQ to be redistributed provided:<p>
+
+<ol>
+<li>the redistribution is free, at no cost to the recipient;<br>
+<li>the redistribution includes the complete FAQ, without
+modification, including this notice;<br>
+<li>this FAQ is current, as determined by any of the following: it
+is less than 60 days old; or, it has been obtained directly from
+newsgroup comp.lang.mumps; or, you have queried the editor.<p>
+</ol>
+
+<hr>
+
+Post comments or suggestions to comp.lang.mumps or email to
+<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>.<p>
+
+NOTE: This document contains URLs and addresses that were accurate at the 
+time of the original inclusion. URLs and e-mail addresses change
+however, and will (when notified) be reflected in <a href="#_A10_">Appendix 10</a>.
+So, if you wish to reach a contributor, confirm addresses there.<p>
+
+<table border=0>
+<td> Editors: <td> Gardner Trask,
+<td> <a href="mailto:trask@world.std.com">trask@world.std.com</a> <tr>
+<td> &nbsp; <td> Jon Diamond,
+<td> <a href="mailto:Jdiamond@btinternet.com">Jdiamond@btinternet.com</a>
+</table>
+
+<hr>
+Questions that need answers:<p>
+<ul>
+<li>Hierarchtical / Relational / Post-relational: Where does M fit?
+<li>Brief descriptions of specific, real-world, non-hospital
+applications;
+<li>More information on performance/speed/benchmarks<br>
+<li>Concise descriptions or capsule commentaries on major M
+products, strengths/weaknesses, as seen by users (not vendors).
+<li>Should we include vendor white papers in the FAQ?
+<li>What do we do to add to the FAQ?
+<li>New Web Sites
+<li>Notable Mentions for Appendix 9
+<li>Anything about OMEGA
+</ul>
+
+<hr>
+
+Changes since version 1.8: 2 Jan 1998
+<ul>
+<li>Some e-mail changes in Part II
+<li>Mondo typos
+<li>Addition of new section 34 - M as a web scripting language
+</ul>
+
+<hr>
+
+Sources/contributors/reviewers/participants:<p>
+
+Ben Bishop<br>
+Jon Diamond<br>
+John D. Godfrey<br>
+Gavin Greig<br>
+Russell Haddleton<br>
+Brett Hunt<br>
+Scott P. Jones<br>
+John E. Kemker, III<br>
+Mark Komarinski<br>
+Jeff Loeb<br>
+Keith F. Lynch<br>
+Ed de Moel<br>
+Steve J. Morris<br>
+Kevin O'Gorman<br>
+Doug Preiser<br>
+Aaron Seidman<br>
+Kate Schell<br>
+Tilman Schmidt<br>
+Arthur B. Smith<br>
+Daniel P.B. Smith<br>
+Richard J. Tomlinson<br>
+Gardner Trask<br>
+David Whitten<p>
+
+Indirect Contributors: Those for whom postings and approved e-mail was
+included.<p>
+
+Ellis A. Bauman<br>
+Dennis J. Brevik<br>
+Etienne Cherdlu<br>
+Floyd Dennis<br>
+Rod Dorman<br>
+Lev Jacob<br>
+Monika Kratzmann<br>
+Paul Perrin<p>
+
+<hr>
+
+<h2>Table of contents</h2>
+
+<a href="#_1_">1.</a> What is M?<br>
+<a href="#_2_">2.</a> Where can I get a no-cost version of M?<br>
+<a href="#_3_">3.</a> What is comp.lang.mumps? How can I subscribe to it?<br>
+<a href="#_4_">4.</a> What are some books about M?<br>
+<a href="#_5_">5.</a> What do M programmers love about M?<br>
+<a href="#_6_">6.</a> What things about M are generally disliked?<br>
+<a href="#_7_">7.</a> Why is M called a "database language?"<br>
+<a href="#_8_">8.</a> Is M an RDBMS?<br>
+<a href="#_9_">9.</a> Is M compiled or interpreted?<br>
+<a href="#_10_">10.</a> How fast is M?<br>
+<a href="#_11_">11.</a> Does M support MicroSoft Windows and other GUIUs?<br>
+<a href="#_12_">12.</a> Are there any M magazines or journals?<br>
+<a href="#_13_">13.</a> Which is the "official" name, M or MUMPS?<br>
+<a href="#_14_">14.</a> Is M a mainstream language?<br>
+<a href="#_15_">15.</a> Is M useful for non-medical applications?<br>
+<a href="#_16_">16.</a> Is M object-oriented?<br>
+<a href="#_17_">17.</a> Is M structured?<br>
+<a href="#_18_">18.</a> Is M suitable for multiuser systems?<br>
+<a href="#_19_">19.</a> Does M work on LANs?<br>
+<a href="#_20_">20.</a> Is M standard?<br>
+<a href="#_21_">21.</a> Is M portable?<br>
+<a href="#_22_">22.</a> How does M compare to SQL?<br>
+<a href="#_23_">23.</a> How does M compare to BASIC?<br>
+<a href="#_24_">24.</a> How does M compare to X-Base?<br>
+<a href="#_25_">25.</a> Are there M-based 4GLs and application generators?<br>
+<a href="#_26_">26.</a> Are there M bulletin boards? M FTP sites?
+M WEB sites? M Newsgroups?<br>
+<a href="#_27_">27.</a> "What happened in 1841?"<br>
+<a href="#_28_">28.</a> How do I list a global directory on this unfamiliar M system?<br>
+<a href="#_29_">29.</a> Do comments really affect efficiency?<br>
+<a href="#_30_">30.</a> What is the MDC?<br>
+<a href="#_31_">31.</a> A Brief History of M<br>
+<a href="#_32_">32.</a> How exactly does $ORDER work?<br>
+<a href="#_33_">33.</a> M as a first computer language<p>
+<a href="#_34_">34.</a> M as a web scripting language<p>
+
+<a href="#_A1_">Appendix 1:</a> List of M Vendors<br>
+<a href="#_A2_">Appendix 2:</a> The M Technology Association<br>
+<a href="#_A3_">Appendix 3:</a> USA Local M Users Groups<br>
+<a href="#_A4_">Appendix 4:</a> Is the official name of the language "M" or "MUMPS?"<br>
+<a href="#_A5_">Appendix 5:</a> A "secret decoder ring:" highlights of the M language<br>
+<a href="#_A6_">Appendix 6:</a> An example of "textbook" M coding style<br>
+<a href="#_A7_">Appendix 7:</a> An example of "traditional" M coding style<br>
+<a href="#_A8_">Appendix 8:</a> MUMPS, A Solution Looking For A Problem<br>
+<a href="#_A9_">Appendix 9:</a> Testimonials, Accolades, and Articles from outside the community<br>
+<a href="#_A10_">Appendix 10:</a> Contact information: e-mail and URLs<br>
+<a href="#_A11_">Appendix 11:</a> FAQ Change history<p>
+
+<hr>
+
+<a name="_1_"></a>
+<h2>1. What is M?</h2>
+M is a procedural, interpreted general-purpose programming language
+oriented towards database applications. Its characteristic features
+are:<p>
+<ul>
+<li>untyped variables, converted automatically between numeric and string;<p>
+<li>multi-dimensional associative arrays;<p>
+<li>persistent variables ("globals")<p>
+<li>good string handling capabilities: better than BASIC,
+not as good as SNOBOL4 (e.g. no full regular expressions;)<p>
+<li>"indirection:" can use strings computed at runtime as part of
+M program text;<p>
+<li>built-in multiuser/multitasking support.<p>
+</ul>
+<center>
+<b><i>[<a href="mailto:ts@gb1.sema.de">Tilman Schmidt</a>,
+ed. <a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+Though M historically was a character-based, closed environment (it
+seems to me that this phrase could apply to nearly every programming
+environment that is more than ten years old), this can no longer be said
+of more recent M implementations.  With the advent of ODBC, all
+competitive implementations of M can now be accessed from tools that are
+commonly available on PC workstations.<p>
+
+In addition, with the release of MSM-Workstation in 1996, by Micronetics
+Design Corporation, M is now fully OLE compliant.  Previously, MSM could
+be accessed as an OLE object via the MSM-API.  Now, M can also act as an
+OLE controller through MSM-Workstation.  The same product allows the
+developer to create M-based applications for MS Windows and MS Windows
+NT that can be distributed royalty free.  M-based applications can now
+be distributed as shareware.<p>
+
+The MSM suite of products from Micronetics continues to evolve with the
+technology.  In 1997, MSM-PDQ/Web was released, providing easy access to
+M-data via the Web.  Later the same year, access to MSM databases via
+Java was made available as well.<p>
+
+In sum, M is no longer a character-based, closed technology.  To the
+end-user, there is no visible distinction between an M-based
+application, and a non-M application.  M is a powerful, dynamic	aaaa
+technology which is now easily accessible to the most common workstation
+and server environments in use today.<p>
+
+<center>
+<b><i>[Brett Hunt, Micronetics, 29 October 1997]</i></b><p>
+</center>
+
+<hr>
+
+M has many good points: high productivity, low hardware requirements, good
+scalability. But M also has some weaknesses: low transaction reliability,
+character-based screens, poor integration with other environments, and few
+development tools.<p>
+<center>
+<b><i>[Thomas C. Salander, M Computing, June 1994, p.74]</i></b><p>
+</center>
+
+<hr>
+
+M is a lousy language with one great data type.<p>
+<center>
+<b><i>[<a href="mailto:sjm2@shore.net">Steve J. Morris</a>]</i></b><p>
+</center>
+
+<hr>
+
+<h3><center>MUMPS</center></h3>
+   
+(Or "M") Massachusetts General Hospital Utility Multi-Programming
+System.<p>
+   
+A programming language with extensive tools for the support of
+database management systems. MUMPS was originally used for medical
+records and is now widely used where multiple users access the same
+databases simultaneously, e.g. banks, stock exchanges, travel
+agencies, hospitals.<p>
+   
+Early MUMPS implementations for PDP-11 and IBM PC were complete
+operating systems, as well as programming languages, but current-day
+implementations usually run under a normal host operating system.<p>
+   
+A MUMPS program hardly ever explicitly performs low-level operations
+such as opening a file - there are programming constructs in the
+language that will do so implicitly, and most MUMPS programmers are
+not even aware of the operating system activity that MUMPS performs.<p>
+   
+Syntactically MUMPS has only one data-type: strings. Semantically, the
+language has many data-types: Text strings, binary strings, floating
+point values, integer values, Boolean values. Interpretation of
+strings is done inside functions, or implicitly while applying
+mathematical operators. Since many operations involve only moving data
+from one location to another, it is faster to just move uninterpreted
+strings. Of course, when a value is used multiple times in the context
+of arithmetical operations, optimized implementations will typically
+save the numerical value of the string.<p>
+   
+MUMPS was designed for portability. Currently, it is possible to share
+the same MUMPS database between radically different architectures,
+because all values are stored as text strings. The worst an
+implementation may have to do is swap pairs of bytes. Such multi-CPU
+databases are actually in use, some offices share databases between
+VAX, DEC Alpha, SUN, IBM PC and HP workstations.<p>
+   
+Versions of MUMPS are available on practically all hardware, from the
+smallest (IBM PC, Apple Macintosh, Acorn Archimedes), to the largest
+mainframe. MSM (Micronetics Standard MUMPS) runs on IBM PC RT and
+R6000; DSM (Digital Standard Mumps) on the PDP-11, VAX, DEC Alpha,
+and Windows-NT; Datatree MUMPS from InterSystems runs on IBM PC; and
+MGlobal MUMPS on the Macintosh. Multi-platform versions include
+M/SQL, available from InterSystems, PFCS <mumps@pfcs.com> and MSM.<p>
+   
+Greystone Technologies' GT/M runs on VAX and DEC Alpha. This is a
+compiler whereas the others are interpreters. GT/SQL is their SQL
+pre-processor.<p>
+   
+ISO standard 11756 (1991). ANSI standard: "MUMPS Language Standard",
+X11.1 (1977, 1984, 1990, 1995?).<p>
+   
+The MUMPS User's Group is known as the M Technology Association.<p>
+   
+Mailing list: MUMPS-L@UGA.BITNET.<p>
+   
+Usenet newsgroups: comp.lang.mumps, comp.std.mumps.<p>
+   
+(10 Jan 1995)<p>
+   
+[Submitted by: <a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>,
+Original Author unknown]<p>
+
+<hr>
+
+<a name="_2_"></a>
+<h2>2. Where can I get a no-cost version of M?</h2>
+
+<h2>InterSystems DT-Student</h2>
+
+MS-DOS implementation of M with capacity restrictions and a licensing
+agreement prohibiting commercial use. Documentation is on-disk and includes
+both an M language manual and a programmer's manual. Requests for copies
+should be made in writing by mail or fax to Tommy Smith, InterSystems
+Corporation, One Memorial Drive, Cambridge, MA 02042. Phone 617 621-0600, Fax
+617 494-1631. DT-Student can also be obtained via anonymous FTP from
+/pub/dtstudent at openmsql.intersys.com; in URL format,<p>
+
+<center>
+<tt>ftp://openmsql.intersys.com//pub/dtstudent/</tt><p>
+</center>
+
+As of 8/94, it also appears to be available for downloading from the
+InterSystems BBS +1 617-225-0475, the NEMUG BBS +1 508-921-6681, and the
+MTA-NA BBS +1 301-942-5359.<p>
+
+[10/97]<br>
+The ftp site listed for InterSystems DT-Student is no longer current.
+openmsql.intersys.com site has moved to ftp.intersys.com, but
+the student version seems not to be there.<br>
+[per email from epc2@juno.com]<p>
+
+<h2>Micronetics MSM-Explorer</h2>
+
+Call the MTA-NA office (not Micronetics) at +1 301-431-4070 to order a
+complimentary copy and to get information on other student versions. The
+address for Micronetics Design Corporation itself is: 1375 Piccard Drive,
+Rockville, MD 20850, 301-258-2605, fax +1 301-840-8943.
+
+[10/97]<br>
+Micronetics MSM-Explorer is available by anonymous ftp from
+ftp.micronetics.com in /misc/MSM/Explorer in files:
+EXP1.EXE, EXP2.EXE, LICENSE.MSM (needed beyond 10/31/97) and README.TXT.
+(move files to c:\exp and unpack)<br>
+[per email from epc2@juno.com]<p>
+
+<h2>UCD MicroMUMPS</h2>
+
+True public domain version. (8/94) Available for downloading from the NEMUG
+BBS +1 508-921-6681, and the MTA-NA BBS +1 301-942-5359 Also available for
+$xx from D-M Information Systems, 1403 Fifth Street, Box 1918, Davis, CA
+95617, +1 916-753-0362. There is no support. D-M describes the documentation
+as consisting of two READ.ME files. According to the author, this is not a
+full implementation of the current M, but is specifically intended for novices
+and is easier to use than the versions derived from commercial systems. It is
+best used in conjunction with the book, "ABCs of MUMPS: An Introduction for
+Novice and Intermediate Programmers," by Richard F. Walters, Digital Press,
+1989, ISBN 1-55558-017-3. This book can be ordered from MTA-NA (see below).<p>
+
+<hr>
+
+<a name="_3_"></a>
+<h2>3. What is comp.lang.mumps? How can I subscribe to it?</h2>
+
+(11/94) comp.lang.mumps is a "USENET newsgroup." It was created in July,
+1994. It is an unmoderated newsgroup; anyone can post messages to it and
+anyone can read all the messages posted to it. The newsgroup's charter is
+given below. The charter is what was voted on by the USENET community
+when the group was created. As with all unmoderated newsgroups, the
+health of the newsgroup depends on goodwill, courtesy, and voluntary
+adherence to the spirit of the charter.<p>
+
+Since its inception, comp.lang.mumps has been a friendly newsgroup with a
+comfortable volume, typically one to five messages per day. Recent topics
+have included: M coding standards/practices/conventions; rumors about
+possible M vendor mergers; job postings; and inquiries about specific
+problems with particular M implementations.<p>
+
+<h2>CHARTER of comp.lang.mumps</h2>
+
+The proposed unmoderated newsgroup comp.lang.mumps will be
+open to discussions on almost all topics related to versions of
+the M technology and the M language (also known as MUMPS).
+Appropriate topics would include, but not be limited to,<p>
+
+<ul>
+<li>advocacy<br>
+<li>bindings to GUI platforms (M Windowing API)<br>
+<li>discussions of commercial products<br>
+<li>object-oriented extensions<br>
+<li>PC networking issues<br>
+<li>programming techniques<br>
+<li>tools<br>
+<li>etc.<p>
+</ul>
+
+The only topic that is excluded is:<p>
+<ul>
+<li>discussion of the standard for the M (MUMPS) language, ANSI
+X11.1 which should be discussed in the existing group
+comp.std.mumps.<p>
+</ul>
+
+Subsequent custom has established that informal discussions of standards-
+related issues are very welcome in this newsgroup. MDC members have
+suggested that they welcome informal discussions be conducted in
+comp.lang.mumps, while formal proposals should be posted to
+comp.std.mumps. It is also clear that the membership welcomes job
+postings and job information.<p>
+
+<h2>Subscribing to comp.lang.mumps</h2>
+
+There are different kinds of Internet access. One common situation is a
+company that "has Internet access" via their internal e-mail system. Such
+arrangements often are e-mail only; if so, you must use the "MUMPS-L
+gateway" access method described below. Other sites have direct access to
+the USENET newsgroups. This is common for academic and government sites,
+and commercial services. Find out whether your site has direct access to
+the newsgroups. If you have it, this is the best way to read and post to
+comp.lang.mumps.<p>
+
+If you are on a typical UNIX host at an academic or government
+institution, one way to check is to type the names of the most popular
+"newsreaders" -- rn, trn, tin, and nn -- at the command prompt and see
+if any of them are installed. If not, you probably do not have USENET
+access and should use the MUMPS-L gateway. If you find that a newsreader
+is installed, consult an Internet-savvy colleague, system administrator
+or help desk for more information.<p>
+
+(11/94) Most of the commercial services, including America On-Line,
+CompuServe, DELPHI, and Prodigy now offer direct newsgroup access.
+Details for CompuServe are noted below.<p>
+
+<h2>The MUMPS-L gateway</h2>
+
+(8/94) Anybody with Internet E-mail can participate in comp.lang.mumps by
+making use of a gateway and mailing list provided by American University
+and BITnet. Out of courtesy to the host organization, please use this
+method only if you cannot get access to comp.lang.mumps in any other
+way.<p>
+
+For those who <b><i>cannot</i></b> get comp.lang.mumps in
+<b><i>any</i></b> other way:<p>
+
+To receive MUMPS-L and comp.lang.mumps:<p>
+
+Send an e-mail message To: LISTSERV@uga.cc.uga.edu
+The subject line doesn't matter.
+The message text should consist of the single line: <tt>SUBSCRIBE
+MUMPS-L</tt><p>
+
+Within a short time, you'll get an automated acknowledgement from the
+list server confirming your subscription and giving other information,
+and you'll start getting the comp.lang.mumps and MUMPS-L posts.<p>
+
+To post a message to MUMPS-L and comp.lang.mumps:
+Send an e-mail message To: <tt>MUMPS-L@uga.cc.uga.edu</tt><p>
+
+<b>Important: Notice the difference in the addresses.</b> To start and
+stop subscriptions, you address the request to <tt>LISTSERV</tt>.<p>
+
+Thanks to:
+<ul>
+<li>American University, for hosting and operating the gateway;<br>
+<li>Jim McIntosh, <a href="mailto:jim@american.edu">jim@american.edu</a>,
+for administering it;<br>
+<li>Harold Pritchett,
+<a href="mailto:harold@uga.cc.uga.edu">harold@uga.cc.uga.edu</a>,
+owner and administrator of the MUMPS-L list;<br>
+<li>and the BITnet organization generally.<p>
+</ul>
+
+<h2>Compuserve</h2>
+
+(1/95) Some users have advised making sure that you understand
+CompuServe's rates, terms, and conditions before using CompuServe to
+access comp.lang.mumps, as the charges may be higher than anticipated. As
+of 11/28/94, according to a CompuServe representative (Julie Borders),
+Newsgroup access is an "extended service" charged by the hour at the same
+rate as other extended services. "To send Internet e-mail it is $.15 for
+the first 7500 characters and $.05 for each additional 2500 characters.
+It is the same rate to receive Internet e-mail." --
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]<p>
+
+(11/94) CompuServe now offers direct newsreader access to the Usenet
+newsgroups. CompuServe subscribers may already using the MUMPS-L gateway,
+as described above. If you are doing this now and are satisfied with this
+system, there's no need to change.<p>
+
+Here are the steps I took to read comp.lang.mumps on CIS. Depending on
+exactly how you're set up (for example, whether you're using CIM), the
+details may be different for you, but everything should be clear once
+you <tt>GO USENET</tt>.<p>
+
+For me: the steps were<br>
+<li>I typed "GO USENET"<br>
+<li>I chose #6, "USENET Newsreader"<br>
+<li>I read some pages of warnings, disclaimers, and advice<br>
+<li>I chose #3, "Subscribe to newsgroups"<br>
+<li>I chose #1, "Subscribe to one known newsgroup"<br>
+<li>I typed "comp.lang.mumps" in response to the prompt "Newsgroup
+name"<br>
+<li>I typed "m" to return to the previous menu<br>
+<li>I chose #1, "Access your USENET newsgroups."<br>
+<li>It listed "comp.lang.mumps (18 articles) " as the only newsgroup
+I'm subscribed to, then offered choices.<br>
+<li>I chose #3, "Read articles"<p>
+</ul>
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_4_"></a>
+<h2>4. What are some books about M?</h2>
+
+A review of Richard F. Walters' new book, <i>M Programming:
+A Comprehensive Guide</i> (Digital Press, ISBN 1-55558-167-6) to
+http://www.amazon.com:<p>
+
+The book I've been waiting for.<p>
+
+M is a delightful applications language. Recently I've been struggling
+with C++ STL, trying to use the "map" container to get perhaps a tenth
+of the functionality you get from an ordinary M variable, and, believe
+me, I miss M.<p>
+
+This is the M book we've all been waiting for, and it delivers exactly
+what it promises. It is, as the blurb says, "the only source M
+programmers at all levels need."<p>
+
+The style and presentation reminds me a little of Stoustrup's book on
+C++: the organization and style are tutorial, but not elementary. It
+is up-to-date with the current standard.<p>
+
+What I particularly admire about it, and what is all too rare in
+computer books (especially those written by professors of computer
+science) is that it displays an intelligent awareness of real-world
+commercial implementations of M. Too many books either describe a
+pure-standards abstraction on the one hand, or a specific vendor
+extension on the other. Walters identifies popular M implementations
+by name and calls attention to variations where appropriate. Like M
+itself, Walters' book is directed at real programmers trying to solve
+real problems in the real world.<p>
+
+There are a few places where one can see that the book is an
+(extensive) rewrite of his older book, rather than a completely new
+work. I thought it was harder to locate the "argumentless DO" than it
+should have been, and I felt there should have been a coherent
+discussion in one place explaining the (historically weird) relations
+between the various forms of DO, and when $T is and isn't stacked.
+Similarly, it is disconcerting to see on page 199 that the "NEW"
+command is described as a "recent extension... not yet formally
+included in the standard." These are cosmetic problems that do not
+seriously mar the book I've been waiting for.<p>
+
+[Daniel P. B. Smith]<p>
+
+The following books can be ordered from any M Technology Association.
+Contact them for prices. In the USA, contact: M Technology Association,
+1738 Elton Road, Suite 205, Silver Spring, MD 20903. Telephone
++1-301-431-4070.<p>
+
+MUMPS POCKET GUIDE - 1990 by Joel Achtenberg, revised by Thomas C. Salander
+(MTA item #2018)<p>
+
+A COOKBOOK OF MUMPS by David B. Brown & Donald H. Glaeser, D.Sc.(MTA item
+#2024)<p>
+
+<h3>Introductions and Tutorials</h3><p>
+
+<b>M Programming: A Comprehensive Guide</b><p>
+
+M Programming: A Comprehensive Guide is a complete update to ABC's of MUMPS<p>
+
+While ABC's of MUMPS was an introduction for novice and
+intermediate M programmers, M Programming: A Comprehensive Guide,
+has a new section containing advanced material. This new section
+addresses features such as transaction   processing, networking,
+structured system variables, and interfaces to other standards.
+Five new chapters have been added, covering an overview of M for
+readers familiar with other languages; M and the Windows
+environment; interaction between M and the underlying system;
+transaction processing; interfacing M with other standards; and
+error handling. Sections on interactive programming and futures
+have been extensively updated. M Programming: A Comprehensive
+Guide is an invaluable resource for everyone who is learning or
+using M.<p>
+
+<b>M[UMPS] by Example</b><p>
+
+Need to know how M can be used? Need lots of examples to show you
+how? M[UMPS] by Example is your answer!! This book can be used as
+a first step to explain the language elements, including the most
+current additions. Here you'll find out how to use the
+language and take advantage of its strong points. You will also be
+shown the spectrum of M -- from the very beginnings to the latest
+-- as well as developments that are currently being formulated.
+Created by Ed de Moel, past Chair of the MUMPS Development
+Committee (MDC), this book is up-to-date Information.<p>
+
+<b>ABC's of MUMPS</b><p>
+
+This book is no longer available.<br>
+See the new title, M Programming: A Comprehensive Guide to 
+order.<p>
+
+<b>The Complete MUMPS</b><p>
+
+This excellent book is both a learning tool and a reference
+manual. It explores the basics of M's unique file structure,
+using examples and exercises to demonstrate specific functions.
+The well organized appendices and index provide rapid access to
+specific information needed to develop complex applications. The
+text includes functions of the 1990 standard.<p>
+
+<b>Introduction to Standard MUMPS</b><p>
+
+Subtitled: A Guide for the Novice, this work introduces beginning
+programmers to key aspects to M as a programming language and an
+operating system. Each chapter leads users through a series of
+exercises and follows with review questions based on the new
+material. Appendices include additional review questions and
+solutions to each chapter's mini-tutorials. This is an important
+starter' volume for anyone interested in the M language.<p>
+
+<b>The MUMPS Handbook of Efficiency Techniques</b><p>
+ 
+This handbook contains 125 ways to make M applications run
+faster, based on actual case studies of M installations over an
+11 year period. Plus, this book contains code for a software
+package called ANALYZER that determines which M code is slowing
+down the programs within an application. If you need to finetune
+an existing application or create a new one, this book's for 
+you!<p>
+
+<b>Standard M Pocket Guide</b><p>
+
+This is the must have pocket reference for any M programmer! Use
+this pocket-sized booklet covering the 1995 standard for a quick
+reference, or use it to refresh your understanding of the
+elements of the language. It's a practical guide for beginning and
+ experienced programmers alike. And inexpensive enough to afford
+a copy for everyone!<p>
+ 
+<b>M Programming Language Standard ANSI/MDC X11.1-1995</b><p>
+
+This 1995 reference work contains a three section description of
+various aspects of the M computer programming language. Section
+1, the M Language Specification, consists of a stylized English
+narrative of the M language. Section 2, the M Portability
+Requirements, identifies constraints on the implementation and
+use of the language for the benefit of parties interested in
+achieving M portability. Section 3 is a binding to ANSI X3.64
+(Terminal Device Control Mnemonics).<p>
+
+<b>How To Make A Computer Work For You -- An Introduction to the
+File Manager System</b><p>
+
+Learn how to computerize your own information management needs
+with the power of VA FileMan. This introductory volume is
+especially well-suited for non-programmers who can learn how to
+design, edit, and retrieve database information. It's the perfect
+supplement to your VA FileMan documentation!<p>
+
+<b>FileMan Database Management -- System User's Technical 
+Manual</b><p>
+
+Discover the uses and features that make VA FileMan today's
+database management system of choice. You'll learn the basics and
+advanced concepts about data input and retrieval options,
+database setup, programmer tools, and the data dictionary.<p>
+ 
+<b>FileMan: Database Manager User Manual Volume II</b><p>
+
+The VA FileMan manual introduces two different groups of people
+to the VA FileMan database manager: those with newly acquired
+interest in learning about advanced database managers; and
+experienced database managers. Volume II covers advanced database
+theory and practice to provide a comprehensive reference for the
+non-programmer user of VA FileMan.<p>
+
+<b>MDC Type A's</b><p>
+ 
+MDC Type A Document Collection: Extensions to ANSI/MDC 
+X11.1-1995<br>
+Aren't you wondering how the NEXT ANSI Standard will be
+different from the 1995 Standard? Well, the answer is Now
+Available. The documents in this collection are approved by the
+MDC as proposed enhancements and extensions to the current ANSI
+Standard, ANSI/MDC X11.1-1995 M Programming Language. They are
+part of the current MDC Standard. Also included in this
+collection are the documents that are approved by the MDC as
+proposed enhancements and extensions to the current ANSI
+Standards, ANSI/MDC X11.2-1995 Open MUMPS Interconnect and
+ANSI/MDC X11.6-1994 M Windowing API. They are all part of the
+current MDC Standards.<p>
+
+<hr>
+
+<h2>5. What do M programmers love about M?</h2>
+
+High productivity, low hardware requirements, good scalability.<p>
+
+<center>
+<b><i>[Thomas C. Salander in M Computing, June 1994, p.74]</i></b><p>
+</center>
+
+I still program with other languages (Pascal, C, APL, LISP, and so on),
+but almost always find myself saying, 'but it's so much easier in
+MUMPS!' ... it's just plain quicker to implement most applications
+MUMPS. MUMPS is a powerful computing language designed to solve
+real-world problems.<p>
+
+<center>
+<b><i>[John Lewkowicz, The Complete MUMPS, p. xii]</i></b><p>
+</center>
+
+When I was first at the VA, Greg here gave me a 1 page batch of M code
+and asked if I could do it any faster in C. Two weeks, a lot of aspirin,
+and two compilers later, I had 'barely' working code (it would only run
+*once*).<p>
+
+<center>
+<b><i>[<a href="mailto:komarimf@craft.camp.clarkson.edu">Mark Komarinski</a>]</i></b><p>
+</center>
+
+M is powerful and succinct. It's excellent for general hacking. If I
+suddenly get a hankering for the first thousand digits of pi, or for all
+the order 4 magic squares, or for a table of word frequencies in a
+document, I don't know of any language I can accomplish this in
+faster.<p>
+
+<center>
+<b><i>[<a href="mailto:kfl@access.digex.net">Keith F. Lynch</a>]</i></b><p>
+</center>
+
+<tt>f p=2,3:2 s q=1 x "f f=3:2 q:f*f>p!'q  s q=p#f" w:q p,?$x\8+1*8</tt><p>
+[part of Keith Lynch's .signature; it prints a table of primes,
+including code to format it neatly into columns --
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]<p>
+
+I really like the way that the global tree is "just there" without any
+file opening, record declarations, and the like.<p>
+
+<center>
+<b><i>[<a href="mailto:kevin@kosman.uucp">Kevin O'Gorman</a>]</i></b><p>
+</center>
+
+Indirection. Execute strings. String subscripts. Enormously valuable. No
+other language has all of them.<p>
+
+<center>
+<b><i>[Ricardo Garcia]</i></b><p>
+</center>
+
+I haven't touched MUMPS since the late 70's. I`ve been missing globals
+ever since. While I was using MUMPS I implemented a simple programming
+tool couple of pages of MUMPS code. I've missed that tool ever since, as
+well as how easy it was to implement.<p>
+
+<center>
+<b><i>[<a href="mailto:sjm2@shore.net">Steve J. Morris</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_6_"></a>
+<h2>6. What things about M are generally disliked?</h2>
+
+Low transaction reliability, character-based screens, poor integration
+with other environments, and few development tools.<p>
+
+<center>
+<b><i>[Thomas C. Salander in M Computing, June 1994, p.74]</i></b><p>
+</center>
+
+Are all vendors utilities crap? Having worked with DTM, DSM, MSM it
+seems lots of effort went into the M and no thought went into the
+programmer utilities.<p>
+
+<center>
+<b><i>[<a href="mailto:richard@rtsysgen.demon.co.uk">Richard J. Tomlinson</a>]</i></b><p>
+</center>
+
+When I look back on my Fortran code from school I am a little embarrassed
+but I understand it. When I look back on my MUMPS I can't even read it
+without slow token by token translation. It's amazing to me how fluent I
+was when I wrote it and how fluent I'm not when I read it.<p>
+
+<center>
+<b><i>[<a href="mailto:sjm2@shore.net">Steve J. Morris</a>]</i></b><p>
+</center>
+
+It's possible to write completely obfuscated MUMPS code, and too many
+MUMPS programmers do it. Some even brag about nobody else being able to
+read their code. Fortunately for those of us in the VA who have to
+maintain that code, they are becoming a minority.<p>
+
+<center>
+<b><i>[<a href="mailto:kemker.j@atlanta.va.gov">John E. Kemker, III</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_7_"></a>
+<h2>7. Why is M called a "database language?"</h2>
+
+M[UMPS] is a programming language with a strong emphasis on text
+handling and database management. However, M[UMPS] is <b><i>not</i></b>
+a data base management system. The disadvantage of being a programming
+language is that it takes more expertise to apply the language to create
+a working data base, but the advantage of not being a dedicated database
+management system is that it is infinitely more flexible.<p>
+
+<center>
+<b><i>[<a href="mailto:demoel@jacquardsystems.com">Ed de Moel</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_8_"></a>
+<h2>8. Is M an RDBMS?</h2>
+
+The so-called DBMS component of M is another name for the feature of
+persistent associative array variables, i.e. arrays that can be indexed
+by strings, on an arbitrary number of levels, and that survive the
+termination of the program, being transparently stored on a permanent
+medium (hard disk).<p>
+
+This feature is comparable to what ISAM (Indexed Sequential Access
+Method) packages offer for other languages, but it is more powerful than
+ISAM and it is seamlessly integrated into the language. It is *not* a
+relational database system, although it can serve as a basis for
+implementing one and does so in several commercial products.<p>
+
+<center>
+<b><i>[<a href="mailto:ts@gb1.sema.de">Tilman Schmidt</a>]</i></b><p>
+</center>
+
+Databases that have a lot of many-to-many relations, and/or a lot of
+sparse information (fields that are more often empty than filled in) do
+not fit the relational model well. While a relational database can
+represent this data, it does it with great complexity or inefficiency.<p>
+
+The sparse hierarchical array structure assumed by M is a much more
+natural fit for this type of data.<p>
+
+<center>
+<b><i>[<a href="mailto:art@vets.vetmed.missouri.edu">Arthur B. Smith</a>]</i></b><p>
+</center>
+
+The M standards suite includes a standard for embedded SQL, and embedded
+SQL is provided in commercial products such as InterSystems' M/SQL and
+KBase's KB/SQL.<p>
+
+<center>
+<b><i>[<a href="mailto:whitten@netcom.com">David Whitten</a>]</i></b><p>
+</center>
+
+Initial development of the "relational model" of databases appeared to
+place MUMPS at a disadvantage, but recent advances in so-called
+non-first-normal form, a reference to hierarchical structures
+characteristic of MUMPS, open the door for MUMPS to take a leadership role
+in current research in that field.<p>
+
+<center>
+<b><i>[Richard F. Walters, "The ABCs of MUMPS"]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_9_"></a>
+<h2>9. Is M compiled or interpreted?</h2>
+
+M was designed to be interpreted. Real compilation of an M program into
+a machine program for the target machine is not feasible due to the
+following of M's features:<p>
+
+<ul>
+<li>The XECUTE verb allows execution of a runtime string value as an M
+program, and indirection allows substitution of runtime string values
+into the executed source code. Therefore a complete M interpreter must
+be present at runtime, anyway.<p>
+
+<li>Indirection allows variable names and labels to be taken from string
+variables, so all names of variables and labels in the source text must
+be available at runtime, i.e. stored within the compiled program.<p>
+
+<li>The $TEXT function allows access to the program source text at
+runtime, so in principle the whole source must be kept together with the
+compiled program.<p>
+</ul>
+
+In practice, most M interpreters precompile programs into an
+intermediate, binary form that is more compact to store, and more
+efficient to execute. The requirement of keeping the source text around
+is relaxed by conventions limiting the use of $TEXT to comment lines, or
+to comments starting with two semicolons, and M interpreters often offer
+the option of keeping just these parts of the source (which of course
+breaks programs not respecting the convention).<p>
+
+<center>
+<b><i>[<a href="mailto:ts@gb1.sema.de">Tilman Schmidt</a>]</i></b><p>
+</center>
+
+Greystone has a product that compiles to .EXE files that are comparable
+in size to C source .EXEs.<p>
+
+<center>
+<b><i>[<a href="mailto:whitten@netcom.com">David Whitten</a>]</i></b><p>
+</center>
+
+Most of the versions of MUMPS these days are pre-compilers; a tokenized
+version of the routine is actually stored separately and usually runs
+faster.<p>
+
+<center>
+<b><i>[<a href="mailto:aci@shore.net">Ben Bishop</a>]</i></b><p>
+</center>
+
+The reasons to use a pseudo-code approach instead of trying to generate
+machine code has a lot to do with memory efficiency - M has a well
+deserved reputation for requiring very little in the way of hardware
+resources, such as RAM. It also has a lot to do with what people do in
+M. If you do profiles on M applications, you find that much of the time
+they are doing things that wouldn't be helped by trying to compile to
+assembly code anyway (they are accessing globals, doing I/O, etc.).
+Also, with a good C implementation of M, I can port to a new Unix
+platform in a day or so (and then take a few weeks more if we want to
+assembly optimize the most commonly executed simple tokens - which I
+have done for most of the current architectures (Intel, Alpha, Mips,
+RS/6000-PowerPC, Motorola 68K, Motorola 88K, and Sparc). That would not
+be possible with an implementation that actually compiled to machine
+code. (Look at the delays of moving VC++ 2.0 to non-Intel
+architectures). Finally, with pseudo-code (we call ours m-code), you can
+share a compiled routine across all platforms (as we do with our M/SQL
+code).<p>
+
+<center>
+<b><i>[<a href="mailto:scott@intersys.com">Scott P. Jones</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_10_"></a>
+<h2>10. How fast is M?</h2>
+
+One company developing heavily in MUMPS ran tests to determine
+performance characteristics of MUMPS vs. Oracle. MUMPS ran approximately
+six times faster. Digital's DSM (Digital Standard MUMPS) consistently
+sets benchmark records for transaction processing.<p>
+
+<center>
+<b><i>[<a href="mailto:kemker.j@atlanta.va.gov">John E. Kemker, III</a>]</i></b><p>
+</center>
+
+In benchmarking MUMPS and alternatives such as RPG, BASIC, COBOL and
+FORTRAN, Casimir Alonso reports that "A user choosing MUMPS for
+interactive data base applications can expect up to five times more
+power from a given computer" and that "the applications development took
+about one-third the amount of time forecast for the use of other
+languages...." with the MUMPS database occupying "only one-half to
+one-quarter of the disk space required by others.<p>
+
+<center>
+<b><i>[Casimir Alonso, A Case for MUMPS, Computerworld, January 9, 1984,<br>
+as cited by William J. Harvey and Frederick G. Kohun<br>
+in the article<br>
+"MUMPS," from Encyclopedia of Microcomputers, 1993.]</i></b><p>
+</center>
+
+Very rough tests suggest that DTM is about twice as fast as Visual
+BASIC's implementation of the BASIC language. These tests involve simple
+code, coded similarly in each language, that exercise fundamental
+operations that are common to, and natural in, both languages (FOR loops
+involving arithmetic and fundamental string operations). On a 33MHz
+386DX, Visual BASIC runs at very roughly 1000-2000 commands/second, DTM
+about twice that. Double that for a 486 DX2, quadruple that for a
+Pentium.<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_11_"></a>
+<h2>11. Does M support MicroSoft Windows and other GUIUs?</h2>
+
+A 1994 addition to the M standard, the M Windowing API (MWAPI), defines
+an interface between the M language and windowing systems.<p>
+
+InterSystems and Micronetics offer versions of M that implement the
+MWAPI in a MicroSoft Windows environment. Digital has an implementation
+[is it commercially released? Details?] for Windows NT.<p>
+
+The M Windowing API and its commercial implementations are relatively
+new and have rough edges. The MWAPI has the advantage of portability and
+platform-independence, but has some limitations associated with the
+"least-common-denominator" approach.<p>
+
+A unique feature of the MWAPI is that this "API" does not consist of
+subroutine calls (except for a few incidental functions). MWAPI
+programming consists mainly of performing sets and kills into a
+"structured system variable," which looks like a standard M global. For
+example, to set the title of a window to "M Technology Demonstration,"
+you write<p>
+
+<tt>s ^$WINDOW("main","TITLE")="M Technology Demonstration"</tt><p>
+
+To make its dimensions 300 by 200, you write<p>
+
+<tt>s ^$WINDOW("main","SIZE")="300,200"</tt><p>
+
+The MWAPI is currently offered for MicroSoft Windows by InterSystems and
+Micronetics, and for Windows NT by Digital Equipment Corporation. It is
+often presented as the windowing future for M technology.<p>
+
+<h2>Visual-Basic-like approaches</h2>
+
+InterSystems' "Visual M" is a set of tools which link M with MicroSoft
+Visual Basic, creating an integrated dual-language environment. M code
+can be accessed and edited from within the VB design environment, can
+access VB control properties, and can be triggered by VB events.<p>
+
+Micronetics' MSM-Workstation product provides a Visual-Basic-like
+environment entirely based on M and the MWAPI.<p>
+
+<h2>"WRITE-slash" approaches</h2>
+
+InterSystems' "DT-Windows," MGlobal's MGM-PC (for MS-Windows) and MGM-Mac
+(for the Macintosh) use a feature of the M standard that allows the
+language to be extended for device-specific purposes by means of the
+"write-slash" syntax. In DT-Windows and MGM, the windowing system is
+treated as a "device" with an unusually rich repertoire of
+device-specific commands. Although DT-Windows and MGM are conceptually
+similar, they are incompatible with each other. They are ad-hoc language
+extensions. Neither seems to have set a <i>de facto</i> standard. Why do these
+products (DT-Windows and MGM) provide a nonstandard approach? The
+answer, in part, is that they were introduced prior to the finalization
+of the MWAPI standard. Why do they still exist? Because they are closer
+to their underlying windowing platform than the MWAPI, they arguably
+provide better performance and broader access to the GUI system's
+functionality.<p>
+
+Examples from the DT-Windows manual and MGM product literature,
+respectively, show how an "OK" button is added to a dialog box:<p>
+
+DT-Windows: <tt>w /waddbutton(2,65,40,10,20,1,1,1,0,0,0,"OK",1)</tt><p>
+
+MGM: <tt>W /DBUTTON("OK",2,9)</tt><p>
+
+<hr>
+
+<a name="_12_"></a>
+<h2>12. Are there any M magazines or journals?</h2>
+
+The M Technology Association publishes "M Computing," a technical
+journal. Members receive it free. See Appendix 2.<p>
+
+MTA-Europe publishes "M Professional" a news/technical journal in
+English 3 times a year. MTA-Europe members receive it free. Non-members
+can order a subscription.<p>
+
+Other MTAs also produce newsletters, mostly in local languages. Contact
+them directly for more information.<p>
+
+<hr>
+
+<a name="_13_"></a>
+<h2>13. Which is the "official" name, M or MUMPS?</h2>
+
+This topic seems to be the M community's very own little religious war.
+The following represents the editor's opinion. Other views, including
+one from a member of the MUMPS Development Committee, are represented in
+Appendix 4.<p>
+
+M and MUMPS are alternate names for the same language.<p>
+
+M, the newer name, is now very widely accepted in the M community. The
+name change was introduced to address long-standing problems with the
+name MUMPS. The name MUMPS gave many the impression that the language was
+specifically for hospitals and health care applications. Many also felt
+it was undignified.<p>
+
+M/MUMPS has evolved rapidly, with new ANSI standards being successfully
+issued in 1977, 1984, 1990, and a new standard now in canvass, which will
+probably issue in 1995. It is not the same language that it was in
+1967.<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_14_"></a>
+<h2>14. Is M a mainstream language?</h2>
+
+1991 worldwide revenue in the M marketplace was estimated at $1 billion,
+projected to grow to $2 billion by 1996.<p> Approximately 2,000
+individuals/organizations belong to M Technology Association-North
+America, with approximately another 1,000 belonging to other MTAs.<p>
+
+Versions of the M language are available from twelve vendors on every
+significant hardware platform. Some versions provide direct support for
+non- English languages, for example German, Russian, Japanese.<p>
+
+But: "The national meeting of the MTA draws fewer attendees than the
+northeast regional meeting of the SAS Users' Group."<p>
+
+<center>
+<b><i>[Thomas C. Salander, M Computing, June 1994, p. 72].</i></b><p>
+</center>
+
+<hr>
+
+<a name="_15_"></a>
+<h2>15. Is M useful for non-medical applications?</h2>
+
+Although it originated in a medical environment, nothing in the language
+is specific to medical applications. Non-medical applications can be,
+and have been, implemented successfully in M.<p>
+
+The Gartner Group report, "1992 MUMPS Assessment and Opportunity," notes:
+"[M-based trust software from NCS] is used by several of the top 200 U.S.
+banks to control more than 375 accounts totaling $600 billion in trust
+assets. Lloyds of London, Barclays, and Bank of Bermuda ... use M
+systems... M moved into communication, shipping and transportation, law
+enforcement and other areas in the 1970s and 1980s. The Veteran's
+Administration, Discovery Channel, Coca-Cola and Schweppes, Ltd. Star
+Shipping, and the Law School Admission Service are among the M users."<p>
+
+A recent M Technology Association press release describes how M Systems
+Plus won a contract with American Express's Travel Related Service
+Division (AMEX) in Atlanta contract to convert 2,000 cruise bookings
+acquired from a West Coast firm. It is said that the M System was
+designed and developed within two and a half weeks, and was up and
+running on schedule, processing over 500 telephone booking inquiries the
+first day. It has since been expanded to include brochure fulfillment,
+customer service, word processing, questionnaires that gauge customer
+reaction, and agent telephone activity tracking.<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+
+<hr>
+
+<a name="_16_"></a>
+<h2>16. Is M object-oriented?</h2>
+
+No. A working group within MDC (the MUMPS development committee) is,
+however, actively considering object-oriented extensions.<p>
+
+One vendor, ESI is marketing a development system, ESIObjects, that
+allows fully object-oriented programming in M. ESI, 5 Commonwealth Road,
+Natick, MA 01760, +1-508-651-1400, FAX +1-508-651-0708<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+However, M has many of the characteristics of newer OO languages. For
+example: dynamic memory usage, late-binding, encapsulation
+possibilities.<p>
+
+<center>
+<b><i>[<a href="mailto:Jdiamond@btinternet.com">Jon Diamond</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_17_"></a>
+<h2>17. Is M structured?</h2>
+
+Yes, no, maybe, sort of. M syntax is not for purists or academicians.<p>
+
+If you want to code in a structured style:<p>
+<ul>
+<li>you may not love M's syntax, but you can live with it;<br>
+<li>the necessary features are there;<br>
+<li>they do, however, have an "add-on" or "makeshift" flavor.<p>
+</ul>
+
+M does not enforce a structured style. And because the features that
+support structured programming were absent from the MUMPS of the early
+eighties, there is a substantial body of unstructured legacy code still
+in use, and a substantial number of M programmers comfortable with what
+might be called the "traditional" coding style.<p>
+
+The M "ELSE" statement is a simple executable statement. It is not
+syntactically paired with an IF. The semantics are, approximately: a
+special system value, $TEST, is reminiscent of the "condition bits" in
+some processor. An IF statement sets the value of $TEST according to
+whether the condition was true or false. An ELSE statement is equivalent
+to IF '$TEST (the apostrophe is the "not" operator). Unfortunately, the
+traditional MUMPS subroutine does not push and pop the state of $TEST.
+Thus,<p>
+
+<tt>If a>b Write !,"a is greater."<br>
+Else  Write !,"b is greater."</tt><p>
+
+performs as expected, but<p>
+
+<tt>If a>b Do REPORT1<br>
+Else  Do REPORT2</tt><p>
+
+may not, particularly if the <tt>REPORT1</tt> subroutine itself contains If
+statements of its own.<p>
+
+This problem is solved by a feature called the "argumentless Do."
+Actually the argumentless Do plays three separate roles in M
+programming:<p>
+
+<ol>
+<li>It can do the job performed by continuation lines in other
+languages;<br>
+<li>It provides a mechanism for multiline IF's and FOR's;<br>
+<li>because an argumentless Do, unlike a standard Do (!), does stack
+and pop the value of $TEST, it can be used to write structures that look
+and act like nested IF-THEN-ELSE statements in other languages.<p>
+
+<tt>If condition1 Do<br>
+. If condition2 Do<br>
+. . &lt;code&gt;</tt> ;executes if condition1 and 2 are both true<br>
+<tt>. . &lt;code&gt;<br>
+. . &lt;code&gt;<br>
+. Else  Do<br>
+. . &lt;code&gt;</tt> ;executes if condition1 is true but not condition2<br>
+<tt>. . &lt;code&gt;<br>
+. . &lt;code&gt;<br>
+Else  Do<br>
+. &lt;code&gt;</tt> ;executes if condition1 is false<br>
+<tt>. &lt;code&gt;<br>
+. &lt;code&gt;</tt><p>
+</ol>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+Is MUMPS structured? I think it is. We haven't outlawed the GOTO true,
+but we have named subroutines, controlled loops (while loop is the same
+as argumentless FOR with a QUIT), iterated loops (FOR), Parameter
+Passing to subroutines, functions with return values... We also have line
+scoping on IFs, ELSEs and FORs. What else do you need to be
+structured?<p>
+
+<center>
+<b><i>[<a href="mailto:whitten@netcom.com">David Whitten</a>]</i></b><p>
+</center>
+
+What about declaration of variables? What about scope of variables aside
+from line scope?<p>
+
+I'm not convinced that the "while" exactly counts as a feature of MUMPS
+- in fact, an argumentless FOR with a QUIT is a "repeat...until", for a
+"while" you would need to perform an initial IF. Do such composite
+statements really count as proper controlled loops?<p>
+
+Even if MUMPS is technically structured, it goes (IMHO) against the
+spirit of structured programming with commands reduced to a single letter
+whenever possible, short variable names encouraged, and no white space.
+The significance of the space character (in argumentless commands) is
+completely counter intuitive.<p>
+
+I can't say that technically you're not correct in mentioning the above
+features but one of the primary aims of structured programming is to make
+support of existing code easier. In my experience, MUMPS encourages
+hacking and badly designed code.<p>
+
+<center>
+<b><i>[<a href="mailto:ggreig@mcs.dundee.ac.uk">Gavin Greig</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_18_"></a>
+<h2>18. Is M suitable for multiuser systems?</h2>
+
+Yes. An important feature of the M language is that the standard language
+core includes multiuser and multitasking features. These facilitate
+writing portable distributed-processing applications.<p>
+
+A "JOB" command allows one process to initiate other, independent
+processes. Processes can arbitrate access to resources with each other
+via a "LOCK" command.<p>
+
+There is no specific formal interprocess communication. Interprocess
+communication is achieved via the LOCK mechanism and shared use of
+"global" data (which are available to all processes)<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_19_"></a>
+<h2>19. Does M work on LANs?</h2>
+
+Yes. The primary method of implementation might be termed "remote global
+access." Globals residing on a remote system can be accessed and locked
+simply by using extended syntax to refer to them. For example,
+<tt>^HERE(name,address)</tt> refers to a piece of data on my local
+system, while <tt>^|DENVER|THERE(name,address)</tt> might refer to a
+piece of data on a remove system.<p>
+
+Thus, the same programming techniques used to build multiuser and
+multiprocess applications on a single system can be used to build
+distributed network systems.<p>
+
+In addition to this explicit networking most vendors allow for implicit
+network referencing, allowing system managers to choose the location of
+data independent of the application programs.<p>
+
+A networking protocol standard, "Open MUMPS Interconnect," provides
+least- common-denominator capability so that systems from different
+vendors can participate on the same network. In addition, for competitive
+reasons, most vendors support the major protocols of their
+competitors.<p>
+
+An M-based LAN system in use at Brigham and Women's hospital, with 3,000
+PC clients and over 100 servers, is a well-known and very successful
+application of the technology.<p>
+
+There are also a number of systems with M operating in more complex
+client/server situations, with M acting as a front-end to other systems
+and also a back-end via RPC etc to applications created using other
+tools, for example Visual Basic, C++ and so on.<p>
+
+<hr>
+
+<a name="_20_"></a>
+<h2>20. Is M standard?</h2>
+
+1977: accepted as an ANSI standard, ANSI/MDC X11.1<p>
+
+1984: revised ANSI standard ANSI/MDC X11.1-1984<p>
+
+1986: approved as a Federal Information Processing Standard (FIPS)<p>
+
+1990: revised ANSI standard ANSI/MDC X11.1-1990<p>
+
+1992: accepted as an international standard, ISO/IEC 11756-1992<p>
+
+1993: revised FIPS 125-1<p>
+
+1995: revised standard in ANSI canvass procedure for approval as
+ANSI/MDC X11.1-1994 (or maybe 1995) and distributed for comments in ISO as
+ISO/IEC 11756-1995.<p>
+
+1995: M Standard: December 1995, ANSI approved X11.1 (1995 Programming
+Language) and X11.2 (Open MUMPS Interconnect)<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>, compiled from others' comments]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_21_"></a>
+<h2>21. Is M portable?</h2>
+
+As a standardized language, M is portable as long as only the features
+defined in the standard are used. In practice, the portability of M
+programs is typically as good as or better than that of C, and much
+better than BASIC, because, unlike BASIC for example, standard MUMPS is
+sufficiently rich to implement real-world applications mostly without
+resorting to vendor-specific extensions.<p>
+
+<center>
+<b><i>[<a href="mailto:ts@gb1.sema.de">Tilman Schmidt</a>]</i></b><p>
+</center>
+
+The contents of the ISO standard is IDENTICAL to the contents of the
+ANSI standard. This is another thing that makes M[UMPS] special: it is
+not uncommon that nationally accepted versions of standards differ in
+details from their internationally accepted counterparts.<p>
+
+<center>
+<b><i>[<a href="mailto:demoel@jacquardsystems.com">Ed de Moel</a>]</i></b><p>
+</center>
+
+MUMPS has better portability than C or any other language I'm aware of.
+The VA has successfully run the same 15000 routine system on almost every
+platform imaginable. VA Kernel and FileMan, the core of Decentralized
+Hospital Computer Program (DHCP) and CHCS (The DoD version of DHCP) and
+IHS (Indian Health Services) has been run, with very few changes, on
+machines ranging from PC's (over 80 VA Medical Centers running on 486's)
+to VAXen (other VA's running VMS) to Alpha AXP's (the replacement for the
+VAXen and some 486 sites) to IBM RS/6000's running AIX (DoD with CHCS
+from SAIC).<p>
+
+<center>
+<b><i>[<a href="mailto:kemker.j@atlanta.va.gov">John E. Kemker, III</a>]</i></b><p>
+</center>
+
+MUMPS is available for at least the following platforms:
+<ul>
+<li>MSDOS v2.0+ (single-user or multi-user)<br>
+<li>Unix - Altos, AT&T 3B2, Bull XPS and DPX/2, Control Data 4000,
+Data General AViiON, Digital Equipment VAX/Alpha,
+Hewlett Packard 9000, IBM RS/6000, ICL DRS 6000,
+Motorola Delta, Phillips P9000, MIPS, Nixdorf Targon 31,
+NCR Tower, Pyramid, Sequent, Siemens, Sun,
+Texas Instruments 1500, Unisys 5000 and 6000<br>
+<li>Apple Macintosh OS<br>
+<li>VMS - Digital Equipment VAX/Alpha<br>
+<li>VM - IBM mainframe<br>
+<li>Netware<br>
+<li>Windows 3.1<br>
+<li>Windows NT<p>
+</ul>
+
+<center>
+<b><i>[<a href="mailto:Jdiamond@btinternet.com">Jon Diamond</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_22_"></a>
+<h2>22. How does M compare to SQL?</h2>
+
+M is a full-featured procedural general-purpose programming language.
+SQL is a declarative language for relational database queries only, and
+must be embedded in a general-purpose programming language in order to
+achieve Turing completeness.<p>
+
+M accesses its database at low level, almost like programming in ISAM
+level. SQL works on the relational level, a higher level of
+abstraction.<p>
+
+<hr>
+
+<a name="_23_"></a>
+<h2>23. How does M compare to BASIC?</h2>
+
+Both are procedural, interpreted applications languages.<p>
+
+Both have a line-oriented, verb-object type syntax.<p>
+
+M has additional features: better string handling, multidimensional
+string-indexed arrays, persistent variables, multitasking, multi-user
+support, dynamic code.<p>
+
+M offers greater standardization and portability. Although there is an
+ANSI standard for BASIC, it is of little practical importance because
+few vendors conform to it, it is not rich enough to permit development of
+real-world applications within the standard, and there is a tradition of
+non-standard vendor extensions.<p>
+
+The state of M standardization is superior. The Veterans'
+Administration, in particular, took a leadership role in writing
+validation suites that assure vendor conformance to the standard.<p>
+
+Vendor choice: BASIC is currently dominated by a single company,
+MicroSoft. There are other vendors but few have any practical
+importance. M is available from a wider range of vendors.<p>
+
+<hr>
+
+<a name="_24_"></a>
+<h2>24. How does X-base compare to M?</h2>
+
+Compare M with the Xbase languages<p>
+
+Answering complex questions is one of the biggest reasons we invest in the
+time and expense of using a database management system. Several types of
+graphical products exist today to help you query your database. Of these,
+dedicated front-end query and reporting tools such as Borland ReportSmith
+for Windows and Intersolve Q+E are probably the best-known in corporate
+environments. Such tools are typically client applications designed to query
+data from corporate databases residing on client servers. Typically, these
+products have no built-in data-management capabilities; many require you to
+have a detailed knowledge of your database and the workings of relational
+databases in general.<p>
+
+PC-based database management systems let you construct queries and produce
+reports. You need a fair amount of database savvy to construct a query that
+produces the right result. Fortunately, the products are getting better at
+making this process easier. The two leading PC-based database management
+systems are Microsoft Access 2.0 and Borland Paradox for Windows 5.0.<p>
+
+A query is a request for information from a database. Methods for specifying
+a query have improved over time. Traditionally, one would have used SQL, or
+structured query language. In the late 1970s, IBM Research developed a new
+query technique called QBE, or query by example. In QBE, one supplies query
+details by filling in a table with values. For instance, to locate rows where
+the state value is New York, one would move to the State column and enter NY.
+To find salaries greater than $40000, one would enter > 40000. The basic idea
+of QBE is to make the dialogue easy to learn and reduce any reliance on
+keywords or language syntax.<p>
+
+It is possible to set up a database in M using a tool such as the VA Fileman
+package. Reports can be generated by means of the Report Writer feature of
+VA Fileman. Related records in a database are organized together to form
+a file, or in MUMPS terms a global. A field is a unique observation or data
+element. A record is comprised of one or more fields, a file (or global in M)
+is a collection of records and a database is the collection of all files
+comprising an application.<p>
+
+<center>
+<b><i>[<a href="mailto:loeb@san-diego.va.gov">Jeff Loeb</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_25_"></a>
+<h2>25. Are there M-based 4GLs and application generators?</h2>
+
+DASL (DSM Application Software Library). Based on DSM (Digital Standard
+M), it allows one to build database applications by defining data items
+and interactively designing screen placement. DASL runs on VMS and Unix
+platforms.<p>
+
+"I used to build applications with DASL... One of the things I really
+liked about DASL is that it handled a lot of routine stuff, allowing me
+to build applications in about 30% of the time that it would have taken
+with straight M coding -- which, in turn, is considerably faster than
+coding in most other languages :^) Because DASL is written in M it was
+easy to modify to add special features."<p>
+
+<center>
+<b><i>[Aaron Seidman]</i></b><p>
+</center>
+
+Others include:<p>
+<ul>
+<li>InterSystems Open M/SQL.<br>
+<li>Micronetics ViEW.<br>
+<li>Hoskyns MDM.<br>
+<li>Cybertools CyberM.<br>
+<li>Veterans Administration Kernel (public-domain).<p>
+</ul>
+
+<center>
+<b><i>[<a href="mailto:Jdiamond@btinternet.com">Jon Diamond</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_26_"></a>
+<h2>26. Are there M bulletin boards? M FTP sites?
+M Web Pages? M Newsgroups?</h2>
+
+[01/95] <a href="mailto:art@vets.vetmed.missouri.edu">Arthur B. Smith</a>,
+has recently launched what is probably the first general-purpose public
+M FTP site. You can reach it by anonymous ftp. The location, in URL
+format, is:<p>
+
+<center>
+<tt>ftp://vets.vetmed.missouri.edu//mumps/</tt><p>
+</center>
+
+For conventional ftp access, issue the command ftp
+vets.vetmed.missouri.edu. The beginning of a session looks like this:<p>
+
+<tt>ftp vets.vetmed.missouri.edu<br>
+Connected to vets.vetmed.missouri.edu.<br>
+Name (vets.vetmed.missouri.edu:dpbsmith): anonymous<br>
+331 Anonymous Login OK, send id as password.<br>
+Password: [type in your e-mail address here]<br>
+230-User logged in<br>
+230- Welcome to the University of Missouri-Columbia Department of<br>
+230- Veterinary Medicine and Surgery FTP Server.</tt><p>
+
+As of 1/95, this location appears to contain everything from the NEMUG BBS,
+as well as DT-STUDENT and the M FAQ. See the description of the NEMUG BBS,
+below. --
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]<p>
+
+(7/94) Approximately 150 M-related files available for download.<p>
+
+Examples:<p>
+
+<table>
+<td><tt>MUGLIB1.LZH</tt>
+<td>Part 1 of MUGLIB Disk 11. Use LHA to extract (06-20-92)<tr>
+
+<td><tt>XPORT.RO</tt>
+<td>Short M routine to change globals (06-27-93)<tr>
+
+<td><tt>UTILS.EXE</tt>
+<td>Various MUMPS utilities (08-17-92)<tr>
+
+<td><tt>CALC.EXE</tt>
+<td>M CALCULATOR - VER 3.00 - PKZIP EXE (11-14-92)<tr>
+
+<td><tt>COWRITER.EXE</tt>
+<td>This is a Free CoWriter Demo. (03-18-92)<tr>
+
+<td><tt>DSRECOV.ZIP</tt>
+<td>Recover crashed DataTree %dsbackups (09-09-92)<tr>
+
+<td><tt>DTM-EDTR.LZH</tt>
+<td>Full-Screen editor for DataTree MUMPS. Use LH (06-19-92)<tr>
+
+<td><tt>HASEDIT.EXE</tt>
+<td>MUMPS Editor from High Altitude. (10-19-90)<tr>
+
+<td><tt>KERM-MGB.LZH</tt>
+<td>KERMIT-M for CCSM MUMPS. Use LHA to extract f (06-19-92)<tr>
+
+<td><tt>MSMSHELL.UTL</tt>
+<td>MSM's Programmer Shell Utility (12-30-91)<tr>
+
+<td><tt>MUMPS53.LZH</tt>
+<td>UC Davis MicroMUMPS Ver 5.23 ($H Fix). (06-11-92)<tr>
+
+<td><tt>NOUS134.LZH</tt>
+<td>NOUS is a MUMPS Interpreter which contains Pr (09-23-92)<tr>
+
+<td><tt>STUDENT.EXE</tt>
+<td>DT-STUDENT. FREE MUMPS System. Auto Pkunzip. (09-15-92)<tr>
+
+<td><tt>TMM.LZH</tt>
+<td>TURBO-MicroMUMPS is a MUMPS Interpreter. (10-19-92)<tr>
+
+<td><tt>FMV20.ZIP</tt>
+<td>VA FileMan Verion 20 (09-23-93)<tr>
+
+<td><tt>FMPRO.LZH</tt>
+<td>VA FileMan Programmer Manual. Use LHA210.EXE (06-15-92)<tr>
+
+<td><tt>XMTECH32.LZH</tt>
+<td>MailMan 3.2 Technical Manual. Use LHA210.EXE (06-15-92)<tr>
+
+<td><tt>HURST.ZIP</tt>
+<td>MUMPS games and files for ISC's M/VX. (09-16-91)<tr>
+
+<td><tt>IDEAFACT.EXE</tt>
+<td>The Idea Factory by C. Volkstorf (03-23-92)<tr>
+
+<td><tt>MBBS792.TXT</tt>
+<td>Other known MUMPS BBS Boards as of 7/92 (07-24-92)<tr>
+
+<td><tt>POSTNET.ZIP</tt>
+<td>print USPS POSTNET barcodes using M (06-01-93)<tr>
+
+<td><tt>SSVN.TXT</tt>
+<td>Guy Gardner's paper on SSVN's for Windowing (03-04-92)
+</table>
+
+(All of the BBS'es listed here are in the USA. --
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>])<p>
+
+<hr>
+
+<b>DHCP BBS</b>: (801)583-0135<p>
+
+Focussed on the VA's Distributed Hospital Computer Program (DHCP); not a
+general-use M BBS.<p>
+
+<hr>
+
+<b>InterSystems BBS</b>:<p>
+General Users 617 225-0475<br>
+VARS 617 494-0867<p>
+
+<hr>
+
+<b>Micronetics on CompuServe</b>: <tt>GO PCVENH</tt>, Section 8 and DL 8<p>
+(7/94) CompuServe forum "PC Vendors (H)" is shared by a number of vendors;
+Micronetics occupies section 8 for messages, and DL 8 for files. The forum has
+received about five postings in the last two weeks, and is basically an
+extension of Micronetics' support services. Most threads begin as customer
+questions addressed to Micronetics support, and most files are product patches
+press releases, etc.<p>
+
+<hr>
+
+<b>Micronetics Customer Support BBS</b>: (301) 948-6825<p>
+
+(7/94) Content similar to Micronetics section on CompuServe. Primarily a
+customer support mechanism. [Micronetics Explorer, a student version of MSM,
+appears to be available for downloading from this BBS as EXP1.ZIP and
+EXP2.ZIP].<p>
+
+Some examples of files available for downloading:<p>
+
+<pre>
+%ZAB.RTN     MUMPS      624 05/94 Display $ZA bit settings for device...
+3C507.COM    MAIN      5.4K 03/91 3COM 3C507 Packet Driver
+408H.NOT     MUMPS     7.9K 05/94 Release notes for Version 4.0.8H
+AGENDAS.ASC  MUMPS      24K 09/91 MSM COURSE DESCRIPTIONS
+BISMMARK.RTN MUMPS     8.3K 04/94 Benchmark routines...
+COLOR.RTN    MUMPS     1.8K 02/94 COLOR DEMO -- GUI
+EXP1.ZIP     MUMPS     1.3M 12/93 Explorer File (Database) 1 of 2...
+EXP2.ZIP     MUMPS     1.0M 12/93 Explorer File (Executables) 2 of 2...
+GBMAINT1.RTN MUMPS     7.0K 05/94 GLB Compression fix for PC/Plus ver 4.0.9 only
+</pre>
+
+<hr>
+
+(8/94) 150 files for downloading, including VA FileMan 20.0 and no less than
+five versions of M:<p>
+
+<ul>
+<li>MUMPS Interpreters located in file area "MUMPS Programs &
+Utilities"<p>
+
+<li>MSM-EXPLORER Version 1.0 - File names for downloading are
+MSMEXP_1.EXE, MSMEXP_2.EXE and MSM_INST.HLP.<p>
+
+<li>DT Student Version 1.1 - File names for downloading are STUDENT1.LZH
+(DT Student part 1) and STUDENT2.LZH (VA FileMan 19 and Documentation
+part 2)<p>
+
+<li>NOUS Version 1.34 - File name for downloading is NOUS134.LZH<p>
+
+<li>TURBO-MicroMUMPS - Filename for downloading TMM.LZH<p>
+
+<li>UC Davis MicroMUMPS Version 5.23 - File name for downloading
+is MUMPS53.LZH<p>
+</ul>
+
+<hr>
+
+<b>New England MUG BBS</b><br>
+Discontinued due to the popularity of the Internet.<p>
+
+Sysop: Gardner Trask<br>
+Baud: 300, 1200, 2400 and 9600<br>
+8 bits, no parity, one stop bit<br>
+MNP5 error correction protocol 2400/9600 baud<br>
+24 hours, free<p>
+
+The New England M BBS was the largest and longest running BBS dedicated
+to the M community. It served as a communication point at a time when the
+Internet was still not available to the public. The popularity and
+explosion of the net made the BBS mute.<p>
+
+<b>M Newsgroups?</b><p>
+
+Currently, there is one newsgroup dedicated to M on the internet. It is:
+comp.lang.mumps
+Previously, a moderated newsgroup dealing with M standards was abandoned
+whem c.l.m.'s popularity grew.<p>
+
+<b>M Web Pages:</b><p>
+
+This list is never quite complete, and subject to old links. Please
+inform Gardner of any new, deleted, or modified Web Addresses
+(in no particular order):<p>
+
+<table>
+<td colspan=2><b>Vendors</b><tr>
+
+<td>www.intersys.com<td><a href="http://www.intersys.com">InterSystems Corp.</a><tr>
+<td>www.riosoft.softex.br/~x10tech/<td><a href="http://www.riosoft.softex.br/~x10tech/">Extensao Software Corporation</a><tr>
+
+<td colspan=2><b>M Language technical resources and enhancement projects</b><tr>
+
+<td>www.vmth.ucdavis.edu/M/mhttp.htm<td><a href="http://www.vmth.ucdavis.edu/M/mhttp.htm">Jim Self's MHTTP Server</a><tr>
+<td>www.mcenter.com/mtrc<td><a href="http://www.mcenter.com/mtrc">M Technology Resource Center</a><tr>
+<td>ftp://vets.vetmed.missouri.edu/mumps<td><a href="ftp://vets.vetmed.missouri.edu/mumps">FTP site for M files</a><tr>
+
+<td colspan=2><b>MDC, MTA, User Groups, and Standards Bodies</b><tr>
+
+<td>http://71.174.62.16/MDC/index.html<td><a href="index.html">Mumps Development Committee</a><tr>
+<td>www.members.aol.com/mta1994/mta.htm<td><a href="http://www.members.aol.com/mta1994/mta.htm">M Technology Association</a><tr>
+<td>www.mindspring.com/~mga<td><a href="http://www.mindspring.com/~mga">Mumps of Georgia Users Group</a><tr>
+<td>www.mtauki.co.uk/<td><a href="http://www.mtauki.co.uk/">MTA - UK & I</a><tr>
+<td>www.ua.ac.be/mta/<td><a href="http://www.ua.ac.be/mta/">MTA - Europe</a><tr>
+<td>www.klinik.uni-frankfurt.de/mug-d<td><a href="http://www.klinik.uni-frankfurt.de/mug-d">MUG of Deutschland</a><tr>
+<td>www.uku.fi/jarjestot/myhdistys/<td><a href="http://www.uku.fi/jarjestot/myhdistys/">MUG - Finland</a><tr>
+<td>www.montagar.com/~swmug<td><a href="http://www.montagar.com/~swmug">The Southwest Mumps Users Group</a><tr>
+<td>www.itl.nist.gov/<td><a href="http://www.itl.nist.gov/">Computer Information Laboratory</a><tr>
+<td>www.mcis.duke.edu/standards/guide.htm<td><a href="http://www.mcis.duke.edu/standards/guide.htm">Healthcare Informatics Standards</a><tr>
+<td>www.itl.nist.gov/div897/<td><a href="http://www.itl.nist.gov/div897/">Software Diagnostics & Conformance Testing Division  of NIST</a><tr>
+
+<td colspan=2><b>M publications, e-zines, software, etc.</b><tr>
+
+<td>www.geocities.com/SiliconValley/7041/mwm.html<td><a href="http://www.geocities.com/SiliconValley/7041/mwm.html">MWM: an electronic e-zine on M </a><tr>
+<td>www.members.aol.com/mta1994/public.htm<td><a href="http://www.members.aol.com/mta1994/public.htm">Books on M Technology</a><tr>
+<td>www.mtauki.co.uk/mtapubs.htm<td><a href="http://www.mtauki.co.uk/mtapubs.htm">Books on M Technology from MTA-UK&I</a><tr>
+<td>www.members.aol.com/mta1994/softwar.htm<td><a href="http://www.members.aol.com/mta1994/softwar.htm">M Technology Software</a><tr>
+<td>www.mtauki.co.uk/mtasoftw.htm<td><a href="http://www.mtauki.co.uk/mtasoftw.htm">M Technology Software from MTA-UK&I</a><tr>
+<td>ftp://vets.vetmed.missouri.edu/mumps<td><a href="ftp://vets.vetmed.missouri.edu/mumps">FTP site for miscellaneous M files</a><tr>
+<td>www.va.gov/dhcp/cdrom/software.htm<td><a href="http://www.va.gov/dhcp/cdrom/software.htm">MUMPS programs on the VA server</a><tr>
+<td>www.mtechnology.org/mtapubs.html<td><a href="http://www.mtechnology.org/mtapubs.html">M Publications from MTA-NA</a><tr>
+
+<td colspan=2><b>Classes/Tutorials</b><tr>
+
+<td>www.isc.rit.edu/~nat4087/MUMPS/<td><a href="http://www.isc.rit.edu/~nat4087/MUMPS/">Rochester Institute of Technology</a><tr>
+
+<td colspan=2><b>M people</b><tr>
+
+<td>www.geocities.com/SilliconValley/7041<td><a href="http://www.geocities.com/SilliconValley/7041">Chris Bonnici's M Home Page</a><tr>
+<td>www.cs.uni.edu/~okane<td><a href="http://www.cs.uni.edu/~okane">Kevin C. O'Kane</a><tr>
+<td>homepages.enterprise.net/andreww/<td><a href="http://www.homepages.enterprise.net/andreww/">Andrew Webb's Homepage</a><tr>
+<td>www.world.std.com/~seidman/aaron.html<td><a href="http://www.world.std.com/~seidman/aaron.html">Aaron Seidman 's Homepage</a><tr>
+<td>www.i1.net/~jelkins/<td><a href="http://www.i1.net/~jelkins/">The Jim Elkins Home Page </a><tr>
+
+<td colspan=2><b>Other Companies related to, using, enhancing M</b><tr>
+
+<td>www.atlasdev.com<td><a href="http://www.atlasdev.com">Atlas Development</a><tr>
+<td>www.connexsys.com<td><a href="http://www.connexsys.com">Connex Systems</a><tr>
+<td>www.seasystems.com<td><a href="http://www.seasystems.com">Sea Change Systems     </a><tr>
+<td>www.cytools.com<td><a href="http://www.cytools.com">Cybertools</a><tr>
+<td>www.kbsystems.com<td><a href="http://www.kbsystems.com">KB Systems</a><tr>
+<td>www.sentientsystems.com<td><a href="http://www.sentientsystems.com">Sentient Systems</a><tr>
+<td>www.tiac.net/users/kra/<td><a href="http://www.tiac.net/users/kra/">Kogan-Rose Associates</a><tr>
+<td>www.hwsl.co.uk/mgw<td><a href="http://www.hwsl.co.uk/mgw">M/Gateway Developments Ltd</a><tr>
+<td>www.henryelliottandco.com/<td><a href="http://www.henryelliottandco.com/">Henry Elliott &amp; Company</a><tr>
+<td>www.mcenter.com/tyler/<td><a href="http://www.mcenter.com/tyler/">The Tyler Group</a><tr>
+<td>www.mindspring.com/~mga/corp-01.html#CPU<td><a href="http://www.mindspring.com/~mga/corp-01.html#CPU">Career Professionals Unlimited</a><tr>
+<td>www.techassociates.com/<td><a href="http://www.techassociates.com/">Tech Associates</a><tr>
+<td>www.megaforceusa.com/<td><a href="http://www.megaforceusa.com/">MegaForce</a><tr>
+<td>www.dice.com/prc/<td><a href="http://www.dice.com/prc/">Professional Recruiting Consultants</a><tr>
+<td>www.members.gnn.com/Emergent/et-top.htm<td><a href="http://www.members.gnn.com/Emergent/et-top.htm">Emergent Technologies</a><tr>
+<td>www.beaconpartners.com/red.html<td><a href="http://www.beaconpartners.com/red.html">Beacon Partners Consultants</a><tr>
+<td>www.eskimo.com/~lci/<td><a href="http://www.eskimo.com/~lci/">LCI  Homepage</a><tr>
+<td>www.yonder.com/<td><a href="http://www.yonder.com/">Yonder Technologies</a><tr>
+<td>www.cyberspy.com/~kaycom/<td><a href="http://www.cyberspy.com/~kaycom/">Kay Communications</a><tr>
+<td>www.fthill.com/<td><a href="http://www.fthill.com/">Foothill Solutions</a><tr>
+<td>www.esitechnology.com<td><a href="http://www.esitechnology.com">ESI Technology</a><tr>
+<td>www.arnet.com/<td><a href="http://www.arnet.com/">Digi International</a><tr>
+<td>www.dht.com/<td><a href="http://www.dht.com/">Dynamic Healthcare</a><tr>
+<td>www.idx.com/<td><a href="http://www.idx.com/">IDX Systems</a><tr>
+<td>www.partners.org/bwh/home.html<td><a href="http://www.partners.org/bwh/home.html">Brigham and Women's Hospital</a><tr>
+<td>www.hboc.com<td><a href="http://www.hboc.com">HBO&amp;Company</a><tr>
+<td>www.kaiperm.org<td><a href="http://www.kaiperm.org">Kaiser Permanente</a><tr>
+<td>www.consult.hsc.wvu.edu/<td><a href="http://www.consult.hsc.wvu.edu/">WV Consult</a><tr>
+<td>www.va.gov/vama.htm#DHCP<td><a href="http://www.va.gov/vama.htm#DHCP">Department of Veterans Affairs</a><tr>
+<td>www.omegalegal.com/<td><a href="http://www.omegalegal.com/">Omega Legal System</a><tr>
+<td>www.isg-us.com/<td><a href="http://www.isg-us.com/">International Software Group</a><tr>
+<td>www.georgejames.com/marina/<td><a href="http://www.georgejames.com/marina/">George James Software</a><tr>
+<td>www.srcorp.com<td><a href="http://www.srcorp.com">System Resources Corporation</a><tr>
+<td>www.bender.brooks.af.mil/www/<td><a href="http://www.bender.brooks.af.mil/www/">MEDSITE</a><tr>
+<td>www.corningbesselaar.co.uk/<td><a href="http://www.corningbesselaar.co.uk/">Corning Pharmaceutical Services</a><tr>
+<td>www.labcorp.com/<td><a href="http://www.labcorp.com/">LabCorp</a><tr>
+<td>www.hogan1.atiin.com/uniband/<td><a href="http://www.hogan1.atiin.com/uniband/">UniBand</a><tr>
+<td>www.epic.net/asianterminals/<td><a href="http://www.epic.net/asianterminals/">Asian Terminals</a><tr>
+<td>www.ultranet.com/~scision/strate.html<td><a href="http://www.ultranet.com/~scision/strate.html">StrateCision</a><tr>
+<td>www.ctg.com/<td><a href="http://www.ctg.com/">Computer Task Group</a><tr>
+<td>www.intraco.com/<td><a href="http://www.intraco.com/">Intraco Systems</a><tr>
+<td>www.epicsys.com/<td><a href="http://www.epicsys.com/">Epic Systems</a><tr>
+<td>www.jacquardsystems.com/jsr.html<td><a href="http://www.jacquardsystemc.com/jsr.html">Jacquard Systems Research</a><tr>
+<td>www.partners.org<td><a href="http://www.partners.org">Partners Healthcare System, </a><tr>
+<td>www.sunquest.com<td><a href="http://www.sunquest.com">Sunquest Information Systems, Inc.</a><tr>
+</table><p>
+
+<hr>
+
+<a name="_27_"></a>
+<h2>27. "What happened in 1841?"</h2>
+
+In M, the current date and time is contained in a special system
+variable, $H (for "HOROLOG"). The format is a pair of integers separated
+by a comma, e.g. "54321,12345"  The first number is the number of days
+since December 31st, 1840, i.e. day number 1 is January 1st, 1841; the
+second is the number of seconds since midnight.<p>
+
+But why 1841?  According to Steve Clay,
+<a href="mailto:sbc@pobox.com">sbc@pobox.com</a>, the
+following answer appeared in the "Just Ask!" column of the September 1993
+issue of "M Computing," a publication of the M Technology Association,
+Silver Spring, MD 20903 (Phone: 301-431-4070), in the form of a letter
+from James M. Poitras:<p>
+
+"Starting in early 1969, our group created the Chemistry Lab application
+at Massachusetts General Hospital (MGH), which was the first package in
+the MGH MUMPS with Global Data Storage and many of the features of the
+language today...<p>
+
+"When we started programming, there were no utility programs of any
+type. We had to write them all: time, date, verify database, global
+tally, print routine, etc. I ended up writing initial versions of most of
+these.<p>
+
+<hr>
+
+"When I decided on specifications for the date routine, I remembered
+reading of the oldest (one of the oldest?) U.S. citizen, a Civil War
+veteran, who was 121 years old at the time. Since I wanted to be able to
+represent dates in a Julian-type form so that age could be easily
+calculated and to be able to represent any birth date in the numeric
+range selected, I decided that a starting date in the early 1840s would
+be 'safe.' Since my algorithm worked most logically when every fourth
+year was a leap year, the first year was taken as 1841. The zero point
+was then December 30, 1840...<p>
+
+"That's the origin of December 31, 1840 or January 1, 1841. I wasn't
+party to the MDC negotiations, but I did explain the logic of my choice
+to members of the Committee."<p>
+
+<hr>
+
+<a name="_28_"></a>
+<h2>28. How do I list a global directory on this unfamiliar M system?</h2>
+
+Although the M language itself is standardized, the operating environment
+and utilities, alas, are not. And they are nonstandardized in the worst
+way: the actual functionality doesn't vary much across vendors, but the
+details do.<p>
+
+Gardner Trask has provided the following guide:<p>
+
+<table border=2>
+<th> Function <th> MSM <th> DSM <th> MVX/MSQL <th> DTM <tr>
+<td> Utility Menu <td> %UTL <td> %UTL <td> UTIL <td> zzu <tr>
+<td> Routine Directory <td> %RD/%ROU <td> %RD/%RDX <td> %RD/%RDISP <td> %rd <tr>
+<td> Routine Print <td> %RP <td> %RS/%ZTPP <td> %RO/ZP <td> %rsave <tr>
+<td> Routine Change <td> %RCHANGE <td> %RCE <td> %RCHANGE <td> %rsearch <tr>
+<td> Routine COmpare <td> %RCMP <td> %RCMP <td> %RCMP <td> %rloadcompare <tr>
+<td> Global Directory <td> %GD/%GLO <td> %GD <td> %GD/%GDISP <td> %gd <tr>
+<td> Global List <td> %GL <td> %G <td> %G <td> %g <tr>
+<td> Global Edit <td> %GEDIT <td> %GEDT <td> %GED <td> %gedit <tr>
+<td> Global Change <td> %GCHANGE <td> %ZGE <td> %GCHANGE <td> %gedit <tr>
+<td> Global Transfer <td> %GCOPY <td> %GC <td> %GOQ/%GIQ
+</table>
+<br>
+
+<center>
+<b><i>[<a href="mailto:trask@world.std.com">Gardner Trask</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_29_"></a>
+<h2>29. Do comments really affect efficiency?</h2>
+
+<i>In case anyone is not familiar with Scott Jones, let me say, in a
+offhand, understated way, that he knows what he is talking
+about --
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i><p>
+
+A number of people have talked about the performance/maintenance issues
+with comments, so I thought I'd clear things up a bit, at least for the
+implementations that I deal with (ISM, DTM).<p>
+
+Double semi-colon comments are placed in-line into the object code, so
+it is best (from a maintenance view as well) to have a separate label for
+each logical section of data, followed by lines of ;; data, that is not
+in any path of execution.<p>
+
+For normal comments, if they are at the end of a line that already has
+code on it - there is absolutely NO effect at all on performance, so
+comment to your hearts content.<p>
+
+If the comment is all that is on the line, there is still a beginning of
+line token - which can be expensive, especially in frequently executed loops.
+The reason is that the BOL token does a lot of work after every so many
+lines, such as allow the next process to run (on systems like DTM), or
+check for ^C, ^RESJOB, or other inter-process communication.<p>
+
+For long runs of comments, such as the maintenance section at the top of
+a well written routine, if you have M/SQL (for ISM, DTM, DSM or MSM), you
+can simply use the macro pre-processor and bracket the code in<p>
+<tt>
+#if 0<br>
+ ...<br>
+#endif<p>
+</tt>
+
+This technique totally eliminates the overhead, but it does mean
+that the maintenance section is not present in the M source, only in the
+macro source (this can be an advantage if you ship M source to
+customers, but don't want them to see all of your descriptions of bug
+fixes). Alternatively, try not to start execution on the first line, but
+use a label after the comment section. (i.e. DO entry^foobar instead of
+DO ^foobar)<p>
+
+<center>
+<b><i>[<a href="mailto:scott@intersys.com">Scott P. Jones</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_30_"></a>
+<h2>30. What is the MDC?</h2>
+
+The MUMPS Development Committee (MDC) is responsible for defining the M
+Standard. Unlike other language standards bodies (such as ANSI and ISO),
+the MDC is dominated by users - systems developers, rather than
+implementors. Anyone with an interest in the M language can join the MDC
+and all members have a single vote.<p>
+
+MTA-North America acts as the MDC Secretariat and publishes all documents
+pertaining to ANSI X11.1, including the Standard, bindings specifications
+(for example, X Windows, SQL and GKS) and MDC proceedings.<p>
+
+There are also counterparts to the MDC in Europe, Brazil and Japan
+(MDCCs) which feed in non-US contributions and have voting rights at the
+MDC.<p>
+
+<center>
+<b><i>[<a href="mailto:Jdiamond@btinternet.com">Jon Diamond</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_31_"></a>
+<h2>31. A Brief History of M</h2>
+
+As told in a series of e-mail exchanges in comp.lang.mumps in Sept/Oct 1996.
+Accuracy is not ensured.<p>
+
+<hr>
+
+<b>From: <a href="mailto:monika@INTERSYS.COM">Monika Kratzmann</a></b><p>
+
+We are looking for some historical information on the evolution of M
+to be published in an article.  It seems natural to turn to the members of
+this newsgroup inviting you to provide any information on this you may have.
+Your consideration in providing us with your knowledge about the history of
+M is deeply appreciated.<p>
+
+Thank you one and all.<p>
+
+Monika Kratzmann<br>
+InterSystems Corporation<p>
+
+<hr>
+
+<b>From: <a href="mailto:ellis.bauman@AUP.WISC.EDU">Ellis A. Bauman, 608-829-5334</a></b><p>
+
+It's not clear what specific kinds of info you're looking for, but here's a
+brief note on the beginnings, at least as far as I recall:<p>
+
+The language was developed at Massachusetts General Hospital in a lab run by
+Dr. Octo Barnett.  It was developed with federal grant money --- hence was in
+the public domain, and the name MUMPS stems from<br>
+<center>
+<b><u>M</u></b>assachusetts General Hospital <b><u>U</u></b>tility
+<b><u>M</u></b>ulti-<b><u>P</u></b>rogramming <b><u>S</u></b>ystem</center><p>
+
+Among the chief developers was Neil Pappilardo who later left Mass Gen, and
+started Meditech, adding some proprietary features to MUMPS and calling the
+result MIIS (Meditech Interactive Information System) --- marketing medical
+records systems to hospitals, clinics, medical labs, etc.<p>
+
+At Mass Gen, the language was used to deal with clinical medical data --- hence
+its strengths in string handling (lots of text data), sparse arrays (not every
+patient undergoes every possible lab test), and other such features.  The
+original platform was (at least I think it was) a PDP-15.  It was later ported
+to the PDP-11 and other similar "minis" such as the Data General machines like
+Novas and Eclipses.<p>
+
+As the idea spread among other medical researchers, people began adding other
+features, and there soon developed a whole bunch of "dialects" which frustrated
+the researchers because they couldn't exchange software very easily.  To solve
+that problem, the MUMPS Users' Group was formed and efforts to standardize the
+language began.  Dr. Barnett was among those who was most forceful in arguing
+for the creation of MUG and the standardization effort.  I do not remember who
+first proposed that ANSI approval be pursued.  The current MTA organization is
+what MUG has evolved into, via the name change.  I believe Joan Zimmerman was
+the first MUG staff member, and she wrote (or edited?) some of the first MUMPS
+tutorial materials published by MUG.<p>
+
+There is probably lots more material, and details, available from the MTA
+"archives", and other people who were involved in those early days.  Perhaps
+some of the other newsgroup members will know how to contact some of the people
+I've mentioned.  For example, there is a short history in Chapter 1 of "The
+Complete MUMPS" by John Lewkowitz.  There are also some historical notes in
+the MUMPS FAQ (for example, "What happened in 1841?").<p>
+
+I hope the above is both accurate and helpful.<p>
+
+<hr>
+
+<b>From: <a href="mailto:rodd@panix.com">Rod Dorman</a></b><p>
+
+
+As I recall it, the original platform was the PDP-9.<p>
+
+<hr>
+
+<b>From: <a href="mailto:lev@TRENDLINE.CO.IL">Lev Jacob</a></b><p>
+
+I think the original plarform was a PDP-8.
+When the language was adopted by DEC it was a stand-alone OS called
+MUMPS-11 on PDP's.<p>
+
+I can't remember MUMPS for Novas but I can remember MUMPS for Tandem Main
+Frames with a Multi-Cpu built in functionality.<p>
+
+Good luck.<p>
+
+Jacob Lev.<p>
+
+<hr>
+
+<b>From: <a href="mailto:dbrevik@ix.netcom.com">Dennis J. Brevik</a></b><p>
+
+The original platform was a PDP-9.  When the MGH version was picked up by 
+DEC it was productized onto the PDP-15.  A couple years later it was 
+rewritten by DEC for the PDP-11.  The systems were standalone.  The date 
+that DEC officially picked up a magtape of MUMPS (PDP-9) from LCS at MGH 
+was October 3, 1970.  It was a pleasant fall day.  The PDP-15 MUMPS 
+system was installed at its first site (Health Data Management Systems of 
+Denver) in May 1971.  It took two hours to install, amazing everybody on 
+the site, who were expecting a week or two effort.<p>
+
+Dr. Octo Barnett was in charge at the Laboratory of Computer Science at 
+MGH.  Neil Papalardo and Bob Greenes were major contributors.  Neil went 
+on to form Medical Information Technology (Meditech), Greenes was a 
+medical doctor as well as holding a PhD in computer science - both 
+degrees awarded simultaneously from Harvard.  Bob went on to be President 
+of Automated Health Systems of Wakefield MA and Burlingame CA.<p>
+
+In a Boston meeting in Fall 1972 Bruce Waxman of NIH told the audience in 
+no uncertain terms that if they wanted to get NIH money for their 
+computer projects they damned well better be using MUMPS, that NIH was 
+not interested in reinventing THAT wheel, thank you.  MUMPS took off.<p>
+
+I was the original product line and technical leader on MUMPS-15 at DEC. 
+Paul Stylos was the technical leader for MUMPS-11.  Evelyn Dow was the 
+original Marketing representative.  And let us not forget Dave Ensor of 
+Scotland, who made significant technical contributions.  The DEC 
+executive who originally saw the value in MUMPS was Stan Olsen.  Sam 
+Moulton was also on the technical side.<p>
+
+Respecfully,<p>
+
+Dan Brevik<p>
+
+<hr>
+
+<b>From: <a href="mailto:ellis.bauman@AUP.WISC.EDU">Ellis A. Bauman, 608-829-5334</a></b><p>
+
+Well, Jacob, all I can say is that when I first encountered MUMPS (in the early
+to mid 1970s), it was MIIS on a PDP-15, and I later worked on a Data General
+machine, also MIIS.  Both of those were stand-alone systems, dedicated to MUMPS
+(or at least a MUMPS-like, derivative, language).<p>
+
+<hr>
+
+<b>From: <a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a></b><p>
+
+Hi, Monika... There is a 16-page article, "History of the Development of
+Medical Information Systems at the Laboratory of Computer Science at
+Massachusetts General Hospital" by G. Octo Barnett, MD, in "A History
+of Medical Informatics," edited by Bruce I Blum and Karen Duncan,
+published by the ACM Press (Addison-Wesley), 1990, ISBN 0-201-50128-7.
+I bought it on sale for five bucks at Quantum.  It's almost certainly
+out of print but it couldn't hurt to ask Quantum if they have any more
+copies kicking around.<p>
+
+According to the article, the first implementation, of a language called
+MUMPS, by Neil Pappalardo, was on a PDP-7.  Not a PDP-15 or a PDP-9, a
+PDP-7.<p>
+
+He traces its origins from JOSS through BBN's Telecomp and StringComp.<p>
+
+Richard Walters' "An ABC of MUMPS" contains a "Brief History of MUMPS"
+on pp. 20-22 with a family tree showing the root in Rand Corporation
+JOSS, through BBN JOSS, via TELCOMP and STRINGCOMP to MGH MUMPS.<p>
+
+<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a><p>
+
+<hr>
+
+<b>From: <a href="mailto:gz64@cityscape.co.uk">Etienne Cherdlu</a></b><p>
+
+Now this brings back some memories.  I remember using TELCOMP back in 
+1969 (27 years ago).  We used it, via a dial up line, on a PDP-7 (TELCOMP 
+II) and later on a PDP-10 (TELCOMP III).<p>
+
+I don't remember much about the machines that we used other than that we 
+leased time from a company called Time Sharing Limited of Great Portland 
+Street, London. I also have a note from that time about on-line storage 
+charges. It cost 30p (about 45 cents) per 640 byte block per month!<p>
+
+The family resemblance between TELCOMP and M is just about recognizable 
+especially if you were familiar with MUMPS-11.<p>
+
+The following is a fragment of TELCOMP code that was written on 12 
+December 1971:<p>
+
+<pre>
+1.04 TYPE #,"ENTER ONE OF THE FOLLOWING:-";MENU
+1.05 TYPE FORM X FOR X=1:1:4 FOR END=10^15
+1.06 READ GRNO IN FORM 15
+1.065 DONE IF GRNO=END
+1.07 TO STEP 1.06 IF GRNO>4
+1.08 TO PART GRNO+1
+
+2.01 DO PART 50
+2.02 READ N,K
+2.03 DO PART 51
+2.04 TO PART 15
+
+..
+
+15.01 LINE FOR X=1:1:3
+15.02 TYPE MINPL,MAXPL IN FORM 17
+15.03 TYPE FORM 17
+15.04 DO PART GRNO+15 FOR X=MNPL:STPL:MXPL
+
+16.01 Y=(X^N)+K
+16.02 Y1[X]=(((Y-MNPL)/(MXPL-MNPL))*2)-1
+
+..
+
+FORM 15
+ITEM NUMBER?   #####
+FORM 17
+MINIMUM ##### MAXIMUM ######
+</pre>
+
+Comparison with M:<br>
+<ol>
+<li>No variable declaration.  No data typing (String support in TELCOMP 
+III?)
+<li>Sparse local arrays.  No globals.  File I/O was conventional, I think.
+<li>For loop construct.
+<li>TYPE command identical to MUMPS-11
+<li>Part/Step numbering identical to MUMPS-11
+<li>Form Input/Output feature was unique to TELCOMP.
+<li>Do label+offset still exists in M today.
+</ol><p>
+
+Clearly some of the origins of M can be seen in TELCOMP.  Does anyone 
+know where the idea for globals originated?  What elements did other 
+languages, such as JOSS bring to M?<p>
+
+Regards<br>
+Etienne Cherdlu<p>
+
+<hr>
+
+<b>From: <a href="mailto:Jdiamond@btinternet.com">Jon Diamond</a></b><p>
+
+This takes me back too! Oh for the good old days - when programmers were 
+really programmers, disks were 2.5Mb in size and part numbers ranged from 
+0.01 to 327.67 (or some such obvious number)!!!!<p>
+
+Well, the comment is not totally accurate - line numbers only had 2 
+decimal places if you're being really picky.<p>
+
+BTW I used to know magic numbers - 84, 84*84 84*84*84 etc FWIW. I've now 
+forgotten what they were, but I'm sure some of you MUMPS-11 people must 
+remember? I do know why I needed to know them, but that's another 
+story...<p>
+
+Jon Diamond, Cap Gemini UK<br>
+Go Proverb: "On the second line 6 die, 8 live"<p>
+
+<hr>
+
+<a name="_32_"></a>
+<h2>32. How Exactly does $ORDER work?</h2>
+
+The first thing to be aware of is "arrays" as they work in
+other languages: when you have a "set" of components (like
+the states in the USA) you want to use a method of reference
+that allows you to manipulate the "set" as a unit when that
+is convenient, and its members when you are dealing with
+the properties of the individual members of that set.<P>
+
+Now, in languages like Pascal and C, you would create an
+array with 50 members, and you would build a table:<br>
+<table>
+<td><tt>State[0]</tt> =<td>(pointer to string)<td><tt>"Alabama"</tt><tr>
+<td><tt>State[1]</tt> =<td><td><tt>"Alaska"</tt><tr>
+<td>...<tr>
+<td><tt>State[49]</tt> =<td><td><tt>"Wyoming"</tt>
+</table><br>
+and probably some associated tables:<br>
+<table>
+<td><tt>Capital[0]</tt> =<td><tt>"Montgomery"</tt>;<td><tt>Abbrev[0]</tt> =<td><tt>"AL"</tt>;<tr>
+<td><tt>Capital[1]</tt> =<td><tt>"Juneau"</tt>;<td><tt>Abbrev[1]</tt> =<td><tt>"AK"</tt>;<tr>
+<td>...<tr>
+<td><tt>Capital[49]</tt> =<td><tt>"Cheyenne"</tt>;<td><tt>Abbrev[49]</tt> =<td><tt>"WY"</tt>;
+</table><p>
+
+If you want to loop through these arrays, you don't need
+any special functions: there are 50 elements in each,
+and <tt>"for i = 0 to 49"</tt> or <tt>for (i = 0; i < 50; i++)</tt> will do
+just fine.<p>
+
+In M[UMPS], arrays can be done in the same fashion, in which case
+For i=0:1:49 would do just fine to loop through all states,
+but it is much more common to use a different method of
+indexing the array(s), using a string as an index.
+You could store the array as:<br>
+<table>
+<td><tt>State["AL"]</tt> =<td><tt>"Alabama/Montgomery"</tt><tr>
+<td><tt>State["AK"]</tt> =<td><tt>"Alaska/Juneau"</tt><tr>
+<td>...<tr>
+<td><tt>State["WY"]</tt> =<td><tt>"Wyoming/Cheyenne"</tt>
+</table><br>
+(or, if your method of usage would make that more convenient
+you could use <tt>State["Alaska"]="AK/Juneau"</tt> or
+<tt>State["Juneau"] = "AK/Alaska"</tt> for that matter).<p>
+
+However you "index" the array, the addressing will not be as
+simple and straightforward as in traditional languages:<br>
+<ul>
+<li>Your language processor will need to build an internal table to
+link storage positions to defined indexes.
+<li>This table will typically be invisible to the programmer,
+but you will want to query it with questions like:
+<i>"I am at element "xxx", what is the next one that you have?"</i>
+</ul><p>
+
+Or, a simple loop across all states would look like:<br>
+<tt>Set index="" For  Set index=$order(State(index)) Quit:index=""  do...</tt><p>
+
+The function $order looks at this internal table, and tells you
+what the next index is after the one that you specify.<p>
+
+So... At the first call, the specified index is "" (empty string),
+and $order will look for the first entry in the table. Currently
+this is <tt>"AK"</tt>. After <tt>"AK"</tt>, $order would find
+<tt>"AL"</tt>, <tt>"AR"</tt>, <tt>"AZ"</tt>,
+etcetera, up to <tt>"WY"</tt>.<br>
+When called with the "last" index (<tt>"WY"</tt>), $order would return
+the value "" (empty string) to signal that it could find no more
+members.<p>
+
+Now, that seems fair for an array like this, and we'll always have
+the same 50 members, and always find the same ones in the same
+order, so why go through all this bother?<br>
+Well, that will become clear when you're dealing with sets that
+are more dynamic in nature. Suppose that Good Old Fidel finally
+steps down and Cuba requests membership as a state, there would
+be a storm of protests, but let's assume that the request would
+be approved. In most other languages, we would have to do a
+lot of recoding to insert Cuba in the "proper" place in the
+new array of states. In M[UMPS], all we have to do is<br>
+<tt>Set State("CU")="Cuba/Havana"</tt><p>
+
+<tt>$order(State("CT"))</tt> currently returns <tt>"DE"</tt>, but after this
+insertion, it would suddenly return <tt>"CU"</tt>, and <tt>$order(State("CU"))</tt>
+would return <tt>"DE"</tt>: by the way of indexing that M[UMPS] does for
+you "behind the scenes", indexes are always stored in alphabetic
+order, and you won't have to worry where things are, or how
+to get them into the proper sequence.<p>
+
+Of course, this is where it starts to matter what value you
+use for an index:<br>
+<ul>
+<li>quite often, you won't store a value "as it is entered"
+For instance, converting a proper name to "all upper case"
+(or all lower case for that matter).
+In this example, I used upper case only abbreviations,
+but if the full name of the state were the index, there
+is no predicting whether an end-user would type Alaska,
+alaska, ALASKA, or (very popular typo:) ALaska.
+<li>- it matters which "property" you use for an index.
+If the input to your program is "the abbreviation", you'll
+be fine with this set-up, but if you're doing taxes, and
+the input to your program is the city to which the forms are
+to be sent (which is not even always the capital), you may
+very well want to build a support-table that has your
+"search" data as a subscript, and the essential index into
+the "real" table as a value
+</ul><p>
+
+In this example, I also used another "idiosyncracy" of M[UMPS]:
+I stored "State/Capital" into one single value. You would use
+the function $Piece to separate out these values. Whether you
+would use a set-up like I depicted above, or<br>
+<tt>State(abbreviation,"Cap")=capital<br>
+State(abbreviation,"Name")=name</tt>
+is up to the needs of your application.<p>
+
+Of course (and I don't want to say that M[UMPS] is an object
+oriented language, it's 30 years old now, and definitely showing
+its age), this is a feature that you see a lot nowadays in
+object oriented programming as well: you pass the complete object,
+and leave it to the recipient-software to figure out which
+properties of the object are interesting to it.<p>
+
+[<a href="mailto:"demoel@jacquardsystems.com">Ed de Moel</a>]<p>
+
+<hr>
+
+<a name="_33_"></a>
+<h2>33. M[UMPS] as a first computer language.</h2>
+
+A lively debate concerning M as a first language for non computer types 
+had varied and interesting opinions. Here are some of them;<p>
+
+<hr>
+
+From:  Paul Perrin<p>
+
+I think M is a *perfect* language to learn about fundamental programming 
+principles.<p>
+
+Software engineering can come later - and is abusable in any language.<p>
+
+A computer handles three types of execution - sequential, conditional 
+and iterative. Each type can be demonstrated (and learned) in M with 
+<u>no</u> messing about - no 'declarations', no 'introductions', no 
+'directives', no compiling etc...<p>
+
+Experienced programmers <u>forget</u> how they learned to program - Ken 
+Knecht's 1979 definition of a string in 'Microsoft Basic' from the 
+dilithium Press as 'a group of alphanumeric characters surrounded by 
+double quotes' left me blank for weeks - what did he mean by group?<p>
+
+Character mode M is (at least) as good as the original 'basic's were for 
+discovering what computers can 'decide' and 'think' and 'store'.<p>
+
+Don't listen to the experts -- they forget from whence they came.<p>
+
+Show him M (and follow up with Java).<p>
+
+Regards<p>
+
+Paul Perrin<p>
+
+<hr>
+
+From: fbdennis@REMOVETOREPLYmindspring.com (Floyd Dennis)<p>
+ 
+Paul Perrin  wrote:<p>
+
+&gt;I think M is a *perfect* language to learn about fundamental programming<br>
+&gt;principles.<p>
+
+For some reason, it surprises me that I tend to agree. &lt;g&gt;  Before a
+"beginner" can even begin to grasp such things as "structured
+programming", "top-down", etc., they have to get a good feel for the
+basics.  Things like Control, ALU, I/O, and Storage.  M brings you a
+lot closer to the basics than many higher(?)-level languages.<p>
+
+Also - for educational purposes, interpreted languages are great.
+Nothing is going to give a better instant gratification kick than
+being able to type a command directly and get an immediate answer. &lt;g&gt;<p>
+
+&gt;&lt;snip&gt;<br>
+&gt;Show him M (and follow up with Java).<br>
+&gt;<p>
+
+<b>THAT</b> will send him running back to M in a hurry.  :)<p>
+
+Floyd Dennis<p>
+
+<hr>
+
+<a name="_34_"></a>
+<h2>34. M as a web scripting language</h2>
+
+M has been used quite sucessfully as a web server / web scripting
+language as of late. I look for more additions to the FAQ
+concerning this.<p>
+
+First up is a description of the work done by Kevin O'Kane in this 
+area:<p>
+
+M-based Internet Extentions / languages<p>
+
+<ol>
+<li>http://www.cs.uni.edu/~okane/<br>
+<i><b>Kevin C. O'Kane</b><br>
+Resume<br>
+Schedule and Contact Information</i><p>
+
+This site contains a research Mumps interpreter for medical
+informatics applications. This interpreter  is for a subset
+dialect of Mumps and is designed to provide medical records
+access for Internet and Intranet Web servers.   This system works
+directly through the Web Server Cgi-Bin interface without the
+need for intermediate programs or files, unlike other systems.
+Versions are available for download for several systems as listed
+below.  The system is small, reliable, portable and extremely
+fast. A recent test of this system operating under Linux with the
+Apache web server on an unoptimized Pentium 120 gave data base
+response times in excess of 25 data base transactions per second.
+This result is scalable to larger processors and faster
+commercial servers. Due to the hierarchical nature of the data
+base, the data base is easily distributed among multiple servers.
+See the documentation links below for complete details including
+downloading a prototype medical records system written in
+MumpsVM.<p>
+
+<b>Documentation</b>: MumpsVM Language Manual Including Prototype
+Medical Record System<br>
+	 
+[Steve Graham, <Steve.Graham@airmail.net>, January 26, 1998]
+</ol><p>
+
+<hr>
+
+<a name="_A1_"></a>
+<h2>Appendix 1: List of M Vendors</h2>
+
+[1/08/95] InterSystems has acquired Digital's DSM product line.<p>
+
+Digital Equipment Corporation was formerly listed first (alphabetically)
+in this section. According to material published by InterSystems
+corporation on 1/2/95, specifically the files dsmpr.txt, dsmqam.txt, and
+dsmlet.txt in their public FTP area, "Digital Equipment Corporation and
+InterSystems have formed a strategic partnership to expand the worldwide
+use of M Technology, particularly in the enterprise client/server arena.
+Simultaneously, InterSystems has acquired the DSM software product line,
+Digital's implementation of M."<p>
+
+"DSM will be marketed and sold by InterSystems' world-wide network of
+direct sales staff and distributors. In addition, Digital will continue
+to sell DSM in Japan and to certain customers under existing multi-year
+contracts."<p>
+
+<b>dsmqam.txt</b> lists the following contacts for more information:<p>
+
+<b>Gerry Sunderland<br>
+Digital Equipment Corporation</b><br>
+151 Taylor Street  TAY1-1/B6<br>
+Littleton, MA  01460-1407  USA<br>
+Telephone: 508-952-4119<p>
+
+<b>Paul Schaut<br>
+InterSystems Corporation</b><br>
+One Memorial Drive<br>
+Cambridge, MA 02142 USA<br>
+Telephone: 617-621-0600<br>
+Fax: 617-494-1631<br>
+Internet: <a href="mailto:schaut@intersys.com">schaut@intersys.com</a><p>
+
+Digital Equipment Corporation: see InterSystems corporation<p>
+
+<b>Extensao Informatica e Tecnologia</b><br>
+Rua da Gloria 290/10 andar<br>
+20241 Rio de Janeiro RJ, Brazil<br>
+Phone: +55-21-224-9321<br>
+Fax: +55-21-224-6044<br>
+Contact: <b>Luiz Carlos Lobo Filho</b><p>
+
+<b>Greystone Technology Corporation</b><br>
+100 Unicorn Park Drave<br>
+Woburn, MA 01801-6707, USA<br>
+Phone: +1 617-637-9000<br>
+Fax: +1 617-937-9022<br>
+Contact: <b>Chris Neikam</b><p>
+
+<b>International Business Machines</b><br>
+1701 North St.<br>
+Mail Drop G98G Bldg 017<br>
+Endicott, NY 13760, USA<br>
+Phone: +1 607-752-5179<br>
+Contact: <b>Frank Samuel</b><br>
+Also: Offices is most countries<p>
+
+<b>InterSystems Corporation</b><br>
+One Memorial Drive<br>
+Cambridge, MA 02142<br>
+Phone: +1 617-621-0600<br>
+Fax: +1 617-494-1631<br>
+Contact: <b>Maureen Flaherty</b><br>
+Also: Offices in UK, Germany<p>
+
+<b>MGlobal International, Inc.</b><br>
+P.O. Box 459<br>
+Orange, TX 77631<br>
+Phone: +1 409-883-8537<br>
+Fax: +1 409-883-3721<br>
+Contact: <b>David Brown</b><p>
+
+<b>MUMPS Systems Laboratory</b><br>
+39-15 Daikan-cho<br>
+Higashi-ku, Nagoya, Japan<br>
+Phone: +81-52-936-5660<br>
+Fax: +81-52-935-5435<br>
+Contact: <b>Ichiro Wakai, M.D</b><p>
+
+<b>Patterson, Gray and Associates</b><br>
+1701 E. Woodfield Road<br>
+Suite 850<br>
+Schaumburg, IL 60173, USA<br>
+Phone: +1 708-619-7500<br>
+Fax: +1 708-619-7530<br>
+Contact: <b>Jeffrey Shirk</b><p>
+
+<b>PFCS Corporation</b><br>
+Post Office Box 1806<br>
+Manchester, MO 63011-8806, USA<br>
+Phone: +1 314-230-8847<br>
+Fax: +1 314-230-9897<br>
+Contact: <b>Harlan Stenn</b><p>
+
+<b>VISO-DATA Computer AG</b><br>
+Rainergasse 1<br>
+A-1040 Vienna, Austria<br>
+Phone: +43-1-5055734<br>
+Fax: +43-1-5055734-34<br>
+Contact: <b>Sandy R. Schorr</b><p>
+
+<hr>
+
+<a name="_A2_"></a>
+<h2>Appendix 2: The M Technology Association</h2>
+
+For current pricing information, please contact the relevant group.<p>
+
+Membership for almost all MTAs includes:<p>
+
+<ul>
+<li>M Computing (technical journal)<br>
+<li>MTA's Annual Meeting (discount for members)<br>
+<li>The MTA Publications Library (discount for members)
+</ul><p>
+
+MTA-North America also provides<br>
+<ul>
+<li>MSources (member, vendor, and business directory)<br>
+<li>MTA's Job Referral Service<br>
+<li>M Resource File<br>
+<li>M Technology Association BBS<p>
+</ul>
+
+Other MTAs provide additional services. For example <b>M Professional</b>
+(technical journal from MTA-Europe).<p>
+
+M Technology Association<br>
+1738 Elton Road, Suite 205<br>
+Silver Spring, MD 20903-1725<br>
+USA<br>
+Phone: +1 301-431-4070<br>
+Fax: +1 301-431-0017<br>
+Home page: <a href="http://www.mtechnology.org">www.mtechnology.org</a><br>
+E-mail: <a href="mailto:mta@mtechnology.org">mta@mtechnology.org</a><br>
+Publication: M Computing<p>
+
+MTA-Europe<br>
+c/o datika nv<br>
+keerbergsesteenweg 19<br>
+B-3150 Haacht<br>
+Belgium<br>
+phone: + 32 16 60 61 12<br>
+fax: + 32 16 60 61 17<br>
+E-mail: <a href="mailto:brothstein@compuserve.com">brothstein@compuserve.com</a><br>
+Web page: http://www.mta-europe.org<p>
+
+There are official MTAs and MUGs associated with MTA-Europe in Belgium, the
+Netherlands and Finland.  Spain and Italy have local groups who are not
+officially associated with MTA-Europe.  And of course, UK+Ireland and
+Germany have there own, realtively large groups, which are no longer
+affiliated with MTA-E.<p>
+
+There are also reported MTAs in Brazil, Bulgaria, China, Czech/Slovak 
+Republics, Germany, Ireland, Israel, Italy, Japan, and Russia.
+Confirmation would be appreciated.<p>
+
+Please contact either of the above addresses for current information.<p>
+
+<hr>
+
+<a name="_A3_"></a>
+<h2>Appendix 3. USA Local M Users Groups</h2>
+
+<table>
+<td valign=top width=45%><b>Baltimore-Washington MUG</b><br>
+Contact: <b>Susan Schluederberg</b><br>
+The Connections Group, Ltd.<br>
+1100 Sunsett Drive<br>
+Bel Air, MD 21014<br>
+Phone #: 410-838-6062
+
+<td valign=top width=45%><b>COSTAR Users' Group</b><br>
+Contact: <b>COSTAR Users' Group</b><br>
+23715 W. Malibu Road, Suite 246<br>
+Malibu, CA 90265<br>
+Phone #: 310-456-9322 or 810-869-6301<tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>Chicago Area LUG</b><br>
+Contact: <b>John Campbell</b> on BBS<br>
+Phone #: 312-929-6793
+
+<td valign=top><b>DECUS MUMPS SIG</b><br>
+Contact: <b>Mitch Bell</b><br>
+200 Rector Place, #9P<br>
+New York, NY 10280<br>
+Phone #: 212-657-3321<tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>Central Florida MUG</b> (Orlando-Tampa)<br>
+213 East Bay Street<br>
+Winter Gardens, FL 34787<br>
+Contact: <b>Mike Minor</b> or <b>Mark Gerszewski</b><br>
+Phone #: 407-656-4990 or 813-978-9181
+
+<td valign=top><b>Delaware Valley MUG</b><br>
+Contact: <b>D-V MUG Coordinator</b><br>
+P.O. Box 323<br>
+Reading, PA 19607-0323<br>
+Phone: 215-748-2145<tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>MUMPS of Georgia (MGA)</b><br>
+8351 Roswell Road  Suite 221<br>
+Atlanta, Georgia 30350<br>
+Secretary's phone: (770) 968-3715<br>
+<a href="mailto:mga@mindspring.com">e-mail</a> and
+<a href="http://www.mindspring.com/~mga/">web-site</a>
+
+<td valign=top><b>LA MUG</b> (Los Angeles)<br>
+Make suggestions for topics/mtg.times<br>
+Contact: <b>Steve Atlas</b><br>
+5408 Rozie Avenue<br>
+Woodland Hills, CA 91367<br>
+Phone #: 818-883-1206<tr>
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>Minnesota M Users' Group</b><br>
+(Minneapolis-St. Paul)<br>
+Contact: <b>Chris Hawkins</b><br>
+P.O. Box 14486<br>
+Minneapolis, MN 55414<br>
+Phone #: 612-627-6166
+
+<td valign=top><b>New England MUG</b> (Boston)<br>
+Contact: <b>Gardner Trask</b> 508-927-7637<br>
+7 Galloupe Avenue<br>
+Beverly, MA. 01915<tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>Pacific Northwest MUG</b> (Seattle)<br>
+Contact: <b>Arden Forrey</b><br>
+Health Info. Admin. Program<br>
+Dept. of Health Services<br>
+School of Public Health and<br>
+Community Medicine<br>
+1107 NE 45th St., #355<br>
+Seattle, WA 98105<br>
+Phone #: 206-543-8810
+
+<td valign=top><b>Pittsburgh Regional MUG</b><br>
+Contact: <b>Valerie Harvey</b><br>
+Computer Information Systems<br>
+Robert Morris College<br>
+600 5th Avenue<br>
+Pittsburgh, PA 15219-3099<br>
+Phone #: 412-262-8467<tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>San Francisco Area MUG</b><br>
+Contact: <b>Julie Dijailia</b><br>
+51 Ridgewood Avenue<br>
+San Francisco, CA 94112<br>
+Phone #: 415-262-8467
+
+<td valign=top><b>Southwest MUG</b> (Dallas-Fort Worth)<br>
+Contact: <b>Sidney E. Dane</b><br>
+4070 Walnut Lane<br>
+Midlothian, Texas 76065<br>
+Phone +1 (817) 652-6194<br>
+<a href="http://www.montagar.com/~swmug/index.htm">Home Page</a><tr>
+
+<td> &nbsp; <td> &nbsp; <tr>
+
+<td valign=top><b>Sunshine MUG</b> (Southern Florida)<br>
+Contact: <b>Mark Fedora</b><br>
+Phone #: 305-882-5319<br>
+Eastern Financial Credit Union<br>
+700 South Poinciana Blvd.<br>
+Miami Springs, FL 33166
+
+<td valign=top><b>Tri-State LUG (New York)</b><br>
+Contact: <b>Mitch Bell</b><br>
+200 Rector Place, #9P<br>
+New York, NY 10280<br>
+Phone #: 212-657-3321
+</table>
+
+<hr>
+
+<a name="_A4_"></a>
+<h2>Appendix 4: Is the official name of the language "M" or "MUMPS?"</h2>
+
+This is the M community's very own little religious war. Not everyone
+prefers the name M. Many feel strongly about the issue. Ed de Moel says
+that "within the M[UMPS] community, there is a strong sentiment that
+MUMPS is not the right name for the language; there is an (equally?)
+strong sentiment that MUMPS is a better name than any of the proposed
+alternatives."<p>
+
+All of the following opinions can and have been supported:<p>
+
+<ul>
+<li>The name became M in 1993.<br>
+<li>The name will become M when the new ANSI standard is adopted.<br>
+<li>Both M and MUMPS are officially accepted names.<br>
+<li>M is only an "alternate name" or "nickname" for the language.<p>
+</ul>
+
+The following samples show the diversity of opinions. I have given Ed de
+Moel, a member of the MUMPS Development Committee, the last word.
+(However, it is possible to find other views within the MDC
+membership).<p>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+I'm curious as to how long it will take "M" to fully replace "MUMPS". I
+was disappointed that [comp.lang.mumps] wasn't created with that name.<p>
+
+<center>
+<b><i>[<a href="mailto:rfh2y@uvacs.cs.virginia.edu">Russell Haddleton</a>]</i></b><p>
+</center>
+
+The name of the language is MUMPS. 'M Technology' is a marketing ploy
+that ignores the language; what it's called doesn't change what it IS.
+(The MDC has NOT changed the name of the language as far as I know --
+they permitted M as an alternate name)<p>
+
+<center>
+<b><i>[<a href="mailto:aci@shore.net">Ben Bishop</a>]</i></b><p>
+</center>
+
+The name of the group should be comp.lang.m. I understand the issue of
+"grep'ing" on M prohibitive, but I can't see throwing out all the hard
+work of the MTA. M is the name.<p>
+
+<center>
+<b><i>[<a href="mailto:trask@world.std.com">Gardner Trask</a>]</i></b><p>
+</center>
+
+DSM stands for Digital Standard M now. In recent advertising DataTree
+refers to their product as DataTree M.<p>
+
+I thought the official name of the language was M too, but this is not
+the case. The primary name for the language is still MUMPS. The ANSI
+standard refers to the language as MUMPS with M as an alternate name.
+The M Technology Association decided to use M as the primary _reference_
+to the language MUMPS.<p>
+
+<center>
+<b><i>[<a href="mailto:preiser@cancer.unm.edu">Doug Preiser</a>]</i></b><p>
+</center>
+
+> Can anyone think of something you can do in some other language<br>
+> that you can't do in MUMPS ?<p>
+
+Well, let's try using 'M' instead of MUMPS for a start, before any
+XJ-11 people start flaming.<p>
+
+<center>
+<b><i>[<a href="mailto:rick@rnason.demon.co.uk">Richard Nason</a>]</i></b><p>
+</center>
+
+M is a well-accepted nickname for a programming language called MUMPS.
+MUMPS, in turn, is an acronym that stands for Massachusetts (General
+Hospital) Utility Multi Programming System.<p>
+
+MUMPS is a language that goes by many names. Since a number of years,
+there has been a strong movement to change the name of the language to
+something else than MUMPS, countered by an equally strong movement to
+keep the name as is was.<p>
+
+The first official request to change the name of the language to "M" was
+in 1980, when Terry Ragon (now president of InterSystems) wrote a letter
+to the MUMPS Development Committee, requesting this change. At that
+moment in time, it was decided to keep the name MUMPS, but the movement
+to change the name did not disappear.<p>
+
+Over the years, there has been a number of informal requests to change
+the name of the language, but, oddly, there never was a formal proposal
+to do this before the MUMPS Development Committee (the only body that can
+change the name of the language).<p>
+
+The only thing that happened officially was that the nickname "M" became
+accepted as an alternate name. The language is still officially called
+MUMPS. Other official designations are ANSI X11.1 (1990) and ISO 11756
+(1991).<p>
+
+Several of the user's groups have adopted the nickname, and changed their
+name to reflect that adoption, so we now have a MTA (USA), MTA-Japan,
+MTA-Europe, but Germany uses MUG-Deutschland (M Users Group) and
+Soyuz-DIAMS in Russia.<p>
+
+The most recent formal resolution that was passed by the MUMPS
+Development Committee regarding the name was to use the nickname
+throughout the document that is currently being circulated through the
+canvass process as the new draft ANSI standard. Evidently, this strongly
+promotes the use of the nickname over the 'real' name, but it still
+doesn't change the name of the language.<p>
+
+Maybe one day, someone will submit a formal proposal to the MUMPS
+Development Committee, but until such a proposal is submitted and
+favorably voted upon, "M" will remain a (well accepted) nickname for
+MUMPS.<p>
+
+<center>
+<b><i>[<a href="mailto:demoel@jacquardsystems.com">Ed de Moel</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_A5_"></a>
+<h2>Appendix 5: A "secret decoder ring:" highlights of the M language</h2>
+
+This incomplete, informal sketch seeks to give programmers familiar with
+other languages a feeling for what M is like. It doesn't tell you enough
+to write M code; it may help you to read it. Neither the language
+description and the descriptions of each feature are complete, and many
+very significant features have been omitted for brevity.<p>
+
+<b>Data types</b>: one universal datatype, interpreted/converted to
+string, integer, or floating-point number as context requires. Like
+Visual BASIC "variant" type.<p>
+
+<b>Booleans</b>: In IF statements and other conditionals, any nonzero
+value is treated as True. a&lt;b yields 1 if a is less than b, 0
+otherwise.<p>
+
+<b>Declarations: none</b>. Everything dynamically created on first
+reference.<p>
+
+<b>Lines</b>: important syntactic entities. Multiple statements per line
+are idiomatic. Scope of IF and FOR is "remainder of current line."<p>
+
+<b>Case sensitivity</b>: Commands and intrinsic functions are
+case-insensitive. Variable names and labels are case-sensitive. No
+specified meaning for upper vs. lower-case and no widely accepted
+conventions. Percent sign (%) is legal as first character of variables
+and labels.<p>
+
+<b>Postconditionals</b>: <tt>SET:N<10 A="FOO"</tt> sets A to
+<tt>"FOO"</tt> if N is less than 10; <tt>DO:N>100 PRINTERR</tt> performs
+<tt>PRINTERR</tt> if N is greater than 100. Provides a conditional whose
+scope is less than the full line.<p>
+
+<b>Arrays</b>: created dynamically, stored sparsely as B-trees, any
+number of subscripts, subscripts can be strings or integers. Always
+automatically stored in sorted order. $ORDER and $QUERY functions allow
+traversal.<p>
+
+<tt>for I=10000:1:12345 set SQTABLE(I)=I*I<BR>
+set ADDRESS("Smith","Daniel")="dpbsmith@world.std.com"</tt><p>
+
+<b>Local arrays</b>: names not beginning with caret; stored in process
+space; private to your process; expire when process terminates; available
+storage depends on partition size but is typically small (32K)<p>
+
+<b>Global arrays</b>: ^ABC, ^DEF. Stored on disk, available to all
+processes, persist when process terminates. Very large globals (hundreds
+of megabytes) are practical and efficient. This is M's main "database"
+mechanism. Used instead of files for internal, machine-readable
+recordkeeping.<p>
+
+<b>Indirection</b>: in many contexts, <tt>@VBL</tt> can be used and
+effectively substitutes the contents of <tt>VBL</tt> into the statement.
+<tt>SET XYZ="ABC" SET @XYZ=123</tt> sets the variable ABC to 123.
+<tt>SET SUBROU="REPORT" DO @SUBROU</tt> performs the subroutine named
+<tt>REPORT</tt>. Operational equivalent of "pointers" in other
+languages.<p>
+
+<b>Piece function</b>: Treats variables as broken into pieces by a
+separator.<p>
+
+<tt>$PIECE(STRINGVAR,"^",3)</tt> means the "third caret-separated piece
+of <tt>STRINGVAR</tt>." Can appear as an assignment target. After<p>
+<center>
+<tt>SET X="dpbsmith@world.std.com"</tt><p>
+</center>
+
+<tt>$PIECE("world.std.com",".",2)</tt> yields <tt>"std"</tt>.<br>
+<tt>SET $P(X,"@",1)="office"</tt> causes
+X to become <tt>"office@world.std.com"</tt>.<p>
+
+<b>Order function</b>:<br>
+<tt>Set STUFF(6)="xyz",STUFF(10)=26,STUFF(15)=""<p>
+
+$Order(STUFF(""))</tt> yields 6, <tt>$Order(STUFF(6))</tt> yields 10,
+<tt>$Order(STUFF(8))</tt> yields 10, <tt>$Order(STUFF(10))</tt> yields
+15, <tt>$Order(STUFF(15))</tt> yields <tt>""</tt>.<p>
+
+<tt>Set I="" For  Set I=$O(STUFF(I)) Quit:I=""  Write !,I,?10,STUFF(I)</tt><p>
+
+The argumentless For iterates until stopped by the Quit. Prints a table
+of I and STUFF(I) where I is successively 6, 10, and 15.<p>
+
+<b>Commands</b>: may be abbreviated to one letter, case-insensitive.<p>
+
+<table>
+<td width=45%> <tt>DO XYZ</tt>
+<td width=45%> call subroutine at label XYZ <tr>
+<td> <tt>DO PQR(arg1,arg2,arg3)<tt>
+<td> call with parameter passing <tr>
+<td> <tt>ELSE  stmnt1 stmnt2 stmnt3<tt>
+<td> opposite of last IF <tr>
+<td> <tt>FOR  stmnt1 stmnt2 stmnt3</tt>
+<td> repeat until a QUIT breaks you out<tr>
+<td> <tt>FOR i=1:1:100 stmnt1 ...</tt>
+<td> iteration, i=1, 2, 3, ... 100<tr>
+<td> <tt>GOTO</tt>
+<td> yes, there is one<tr>
+<td> <tt>IF cnd stmnt1 stmnt2 stmnt3</tt>
+<td> conditionally execute rest of line<tr>
+<td> <tt>KILL vbl</tt>
+<td> return vbl to "undefined" state<tr>
+<td> <tt>NEW vbl1,vbl2,vbl3</tt>
+<td> stack old values, create fresh "undefined" state. Pop on QUIT.<tr>
+<td> <tt>QUIT</tt>
+<td> return from subroutine<tr>
+<td> <tt>QUIT value</tt>
+<td> return from extrinsic function<tr>
+<td> <tt>READ "Prompt:",X</tt>
+<td> on current I/O stream, first write <tt>"Prompt:"</tt>,
+then read line into variable X<tr>
+<td> <tt>SET a=22,name="Dan",(c,d)=0</tt>
+<td> variable assignment<tr>
+<td> <tt>USE 23</tt>
+<td> switch I/O stream to device 23<tr>
+<td> <tt>WRITE !,"x=",x</tt>
+<td> output to current I/O stream. ! means new line<tr>
+<td> <tt>XECUTE("set a=5 do xyz")</tt>
+<td> execute arbitrary data as M code<p><tr>
+</table>
+<br>
+
+<b>Operators</b>: No precedence, executed left to right, parenthesize as
+desired. 2+3*10 yields 50.<p>
+
+<table>
+<td width=45%> <tt>+  -  *  /</tt>
+<td width=45%> sum, difference, product, quotient<tr>
+<td> <tt>\</tt>
+<td> integer division, 1234\10 yields 123<tr>
+<td> <tt>#</tt>
+<td> modulo<tr>
+<td> <tt>_</tt>
+<td> concatenation, "nice"_2_"use" --> "nice2use"<tr>
+<td> <tt>& ! ' <  ></tt>
+<td> and, or, not, less, greater, equal<tr>
+<td> <tt>[</tt>
+<td> string contains. "ABCD"["BC" --> 1<tr>
+<td> <tt>]</tt>
+<td> string lexically follows. "Z"]"A" --> 1<tr>
+<td> <tt>?</tt>
+<td> pattern match operator
+</table>
+<br>
+
+<b>Intrinsic (built-in) functions</b>: Important structural components of the
+language (not commonly found in other languages):<p>
+
+<table>
+<td width=45%> <tt>$DATA(V)</tt>
+<td width=45%> tests if a variable V is defined (has data) or not<tr>
+<td> <tt>$ORDER, $QUERY</tt>
+<td> traverse arrays in sorted order<tr>
+<td> <tt>$ORDER(A("abc"))</tt>
+<td> value V is the next subscript, following "abc", according to the M
+collating sequence, such that a(V) is defined<tr>
+<td> <tt>$PIECE</tt>
+<td> see above<tr>
+<td> <tt>$SELECT(c1:v1,c2:v2,1:v3)</tt>
+<td> if c1 is true yields v1, else if c2 is true yields v2, otherwise
+yields v3<tr>
+<td> <tt>$TEXT(FOO+3)</tt>
+<td> returns text of source code at line FOO+3
+</table>
+<br>
+
+Convenience functions similar to library functions in other
+languages:<p>
+
+<table>
+<td width=45%> <tt>$ASCII, $CHAR</tt>
+<td width=45%> text-to-ASCII-code and inverse<tr>
+<td> <tt>$EXTRACT(STRING,5,10)</tt>
+<td> characters 5 through 10 of STRING;<br>
+may be assignment target<tr>
+<td> <tt>$FIND(string,find,from)</tt>
+<td> substring search<tr>
+<td> <tt>$FNUMBER</tt>
+<td> floating point formatting<tr>
+<td> <tt>$LENGTH(string)</tt>
+<td> just what you think<tr>
+<td> <tt>$RANDOM(100)</tt>
+<td> random # in range 0 to 99 inclusive<tr>
+<td> <tt>$TRANSLATE("abcd","ab","AB")</tt>
+<td> character substitution; yields "ABcd"
+</table>
+<br>
+
+<center>
+<b><i>[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]</i></b><p>
+</center>
+
+<hr>
+
+<a name="_A6_"></a>
+<h2>Appendix 6: An example of "textbook" M coding style</h2>
+
+This is based on an example from a well-known M textbook, "The Complete
+MUMPS" by John Lewkowicz. It shows how M can support a "modern"
+appearance and coding style. See notes below for more detail. Lines are
+numbered for reference only; the line numbers are NOT part of the M
+code.<p>
+
+<pre>
+ 1 zsample ;dpb;09:18 PM  6 Aug 1994
+ 2
+ 3         ;Test the Stats routine:
+ 4         ;Calculate 1000 points w. approx. Gaussian distribution,
+ 5         ;then call Stats on the result
+ 6         ;Execution time: 5 seconds with DTM on a 33 MHz 386DX
+ 7
+ 8         New Data,i,j,output
+ 9         For i=1:1:1000 Set Data(i)=$$Normal
+10         Do Stats("Data",.output)
+11         Write !,output
+12         Quit
+13
+14         ;----------------------------------------
+15         ;Based on Lewkowicz, "The Complete MUMPS," examples 9.15-9.17
+16         ;Modified slightly:
+17         ;Used argumentless Do instead of two If's for Num>1 block
+18         ;Corrected calculation of the standard error
+19         ;----------------------------------------
+20
+21 Stats(Ref,Results) ; Calculate simple Statistics on Array nodes
+22         New High,i,Low,Mean,Num,StdDev,StdErr,s,Sum,SumSQ,Var
+23         Set High=-1E25,Low=1E25,(Sum,SumSQ,Num)=0,s=""
+24         For  Set s=$O(@Ref@(s)) Q:s=""  Do StatsV(@Ref@(s))
+25         If 'Num Set Results="" Goto StatsX
+26         Set Mean=Sum/Num
+27         Set (StdDev,StdErr,Var)=""
+28         If Num>1 Do
+29         . Set Var=-Num*Mean*Mean+SumSQ/(Num-1)
+30         . Set StdDev=$$SQroot(Var)
+31         . Set StdErr=StdDev/$$SQroot(Num)
+32         Set Results=Num_";"_Low_";"_High_";"_Mean
+33         Set Results=Results_";"_Var_";"_StdDev_";"_StdErr
+34         Goto StatsX
+35 StatsV(Val) ;Process an individual value
+36           Set Val=$$NumChk(Val) Quit:Val=""
+37          Set Num=Num+1,Sum=Sum+Val,SumSQ=Val*Val+SumSQ
+38          Set:Val<Low Low=Val Set:Val>High High=Val
+39          Quit
+40 StatsX   Quit
+41
+42 SQroot(Num) ;Return the SQUARE ROOT of abs(Num)
+43         New prec,Root Set Root=0 Goto SQrootX:Num=0
+44         Set:Num<0 Num=-Num Set Root=$S(Num>1:Num\1,1:1/Num)
+45         Set Root=$E(Root,1,$L(Root)+1\2) Set:Num'>1 Root=1/Root
+46         For prec=1:1:6 Set Root=Num/Root+Root*.5
+47 SQrootX      Quit Root
+48
+49 NumChk(Data,Range,Dec) ;Check for valid NUMBER
+50         Set Data=$TR(Data,"+ $,")
+51         Goto NumChkE:Data'?.E1N.E,NumChkE:Data'?."-".N.".".N
+52         If $D(Dec),Dec?1N.N g NumChkE:$L($P(Data,".",2))>Dec
+53         Set:'$D(Range) Range="" Set:Range="" Range="-1E25:1E25"
+54         If $P(Range,":")'="" Goto NumChkE:Data<$P(Range,":")
+55         If $P(Range,":",2)'="" Goto NumChkE:Data>$P(Range,":",2)
+56         Set Data=+Data Goto NumChkX
+57 NumChkE      Set Data=""
+58 NumChkX Quit Data
+59      ;
+60      ;----------------------------------------
+61      ;
+62      ;Part of demo/test code, Dan Smith, 8/26/94
+63 Normal() ;Return random # with approximately Gaussian distribution
+64         New i,x,n ;n=# iterations
+65         Set x=0,n=3 ;Higher n = slower, better Gaussian approximation
+66         ;$random(1201) has approx. mean=600, variance=120000
+67         For i=1:1:n*n Set x=x+$random(1201)-600
+68         Set x=x/(346.4101615*n) ;variance now 1
+69         Quit x<p>
+</pre>
+
+[Lines 21-58 are from Examples 9.15, 9.17 and 9.18 of "The Complete
+MUMPS," by John Lewkowicz, ISBN 0-13-162141-6, 1989, Prentice-Hall,
+Englewood Cliff, New Jersey and are copyright 1989 by Prentice-Hall,
+Inc. Permission to use these examples has been solicited from
+Prentice-Hall, but no reply has been received. This Appendix may be
+modified or omitted in future versions if Prentice-Hall objects to its
+inclusion].<p>
+
+Notes:<p>
+
+Line 8:<p>
+
+Command names: Command names in M are case-insensitive, and may either be
+spelled out in full or abbreviated to a single character. Thus, the NEW
+command could be written as "NEW" or "New" or "new" or "N" or "n".
+Lewkowicz consistently spells them out in full, with mixed case.<p>
+
+NEW command: This is not a declaration, but an executable command. In M,
+this is the way you effectively make a variable private to a subroutine.
+On entry to zsample, the variables Data, i, j, and output may or may not
+have values. The New command stacks the old identity of these variables,
+which now become undefined. zsample may freely use the variables. On
+Quit-ing from the subroutine, any values the subroutine established for
+them are discarded and the old values restored.<p>
+
+It is good practice to New the variables used for temporary storage
+within a subroutine, and some programmers do this systematically.
+Lewkowicz does it, and alphabetizes the order of the names in the New
+list to make maintenance easier.<p>
+
+Lines 8, 10, and 21: Passing an array reference as an argument. "Stats"
+is a subroutine which takes a parameter list. It is designed to work
+generally using any array, local or global, or array reference. The
+argument that is passed is a string; here, the string "Data", which
+names a local array. Within the subroutine, the "subscript indirection"
+mechanism is used; i.e. because Ref has been set equal to the string
+"Data", the expression @Ref@(s) refers to Data(s). If Ref were set to
+"^Permanent", the expression @Ref@(s) would refer to ^Permanent(s). Ref
+could also be set to an array subnode.<p>
+
+Line 28: An "argumentless DO."  This structure causes the set of lines
+beginning with periods to be executed. Argumentless "DO's" can be nested.
+They stack and restore the value of $T. Using these tools it is possible
+to write nested "If-Else" structures that behave as expected.<p>
+
+<pre>
+    If condition1 Do
+    . If condition2 Do
+    . . &lt;code&gt; ;executes if condition1 and 2 are both true
+    . . &lt;code&gt;
+    . . &lt;code&gt;
+    . Else  Do
+    . . &lt;code&gt; ;executes if condition1 is true but not condition2
+    . . &lt;code&gt;
+    . . &lt;code&gt;
+    Else  Do
+    . &lt;code&gt; ;executes if condition1 is false
+    . &lt;code&gt;
+    . &lt;code&gt;
+</pre>
+
+<hr>
+
+<a name="_A7_"></a>
+<h2>Appendix 7: An example of "traditional" M coding style</h2>
+
+<pre>
+%DTC
+%DTC    ; SF/XAK - DATE/TIME OPERATIONS ;1/16/92  11:36 AM
+        ;;19.0;VA FileMan;;Jul 14, 1992
+        D       I 'X1!'X2 S X="" Q
+        S X=X1 D H S X1=%H,X=X2,X2=%Y+1 D H S X=X1-%H,%Y=%Y+1&X2
+        K %H,X1,X2 Q
+        ;
+C       S X=X1 Q:'X  D H S %H=%H+X2 D YMD S:$P(X1,".",2) X=X_"."_$P(X1,".",2) K X1,X2 Q
+S       S %=%#60/100+(%#3600\60)/100+(%\3600)/100 Q
+        ;
+H       I X<1410000 S %H=0,%Y=-1 Q
+        S %Y=$E(X,1,3),%M=$E(X,4,5),%D=$E(X,6,7)
+        S %T=$E(X_0,9,10)*60+$E(X_"000",11,12)*60+$E(X_"00000",13,14)
+TOH     S %H=%M>2&'(%Y#4)+$P("^31^59^90^120^151^181^212^243^273^304^334","^",%M)+%D
+        S %='%M!'%D,%Y=%Y-141,%H=%H+(%Y*365)+(%Y\4)-(%Y>59)+%,%Y=$S(%:-1,1:%H+4#7)
+        K %M,%D,% Q
+        ;
+DOW     D H S Y=%Y K %H,%Y Q
+DW      D H S Y=%Y,X=$P("SUN^MON^TUES^WEDNES^THURS^FRI^SATUR","^",Y+1)_"DAY"
+        S:Y<0 X="" Q
+7       S %=%H>21608+%H-.1,%Y=%\365.25+141,%=%#365.25\1
+        S %D=%+306#(%Y#4=0+365)#153#61#31+1,%M=%-%D\29+1
+        S X=%Y_"00"+%M_"00"+%D Q
+        ;
+YX      D YMD S Y=X_% G DD^%DT
+YMD     D 7 S %=$P(%H,",",2) D S K %D,%M,%Y Q
+T       F %=1:1 S Y=$E(X,%) Q:"+-"[Y  G 1^%DT:$E("TODAY",%)'=Y
+        S X=$E(X,%+1,99) G PM:Y="" I +X'=X D DMW S X=%
+        G:'X 1^%DT
+PM      S @("%H=$H"_Y_X) D TT G 1^%DT:%I(3)'?3N,D^%DT
+N       F %=2:1 S Y=$E(X,%) Q:"+-"[Y  G 1^%DT:$E("NOW",%)'=Y
+        I Y="" S %H=$H G RT
+        S X=$E(X,%+1,99)
+        I X?1.N1"H" S X=X*3600,%H=$H,@("X=$P(%H,"","",2)"_Y_X),%=$S(X<0:-1,1:0)+(X\86400),X=X#86400,%H=$P(%H,",")+%_","_X G RT
+        D DMW G 1^%DT:'% S @("%H=$H"_Y_%),%H=%H_","_$P($H,",",2)
+RT      D TT S %=$P(%H,",",2) D S S %=X_% I %DT'["S" S %=+$E(%,1,12)
+        Q:'$D(%(0))  S Y=% G E^%DT
+PF      S %H=$H D YMD S %(9)=X,X=%DT["F"*2-1 I @("%I(1)*100+%I(2)"_$E("><",X+2)_"$E(%(9),4,7)") S %I(3)=%I(3)+X
+        Q
+TT      D 7 S %I(1)=%M,%I(2)=%D,%I(3)=%Y K %M,%D,%Y Q
+NOW     S %H=$H,%H=$S($P(%H,",",2):%H,1:%H-1)
+        D TT S %=$P(%H,",",2) D S S %=X_$S(%:%,1:.24) Q
+DMW     S %=$S(X?1.N1"D":+X,X?1.N1"W":X*7,X?1.N1"M":X*30,+X=X:X,1:0)
+        Q
+COMMA   ;
+        S %D=X<0 S:%D X=-X S %=$S($D(X2):+X2,1:2),X=$J(X,1,%),%=$L(X)-3-$E(23456789,%),%L=$S($D(X3):X3,1:12)
+        F %=%:-3 Q:$E(X,%)=""  S X=$E(X,1,%)_","_$E(X,%+1,99)
+        S:$D(X2) X=$E("$",X2["$")_X S X=$J($E("(",%D)_X_$E(")",%D+1),%L) K %,%D,%L
+        Q
+HELP    S DDH=$S($D(DDH):DDH,1:0),A1="Examples of Valid Dates:" D %
+        S A1="  JAN 20 1957 or 20 JAN 57 or 1/20/57"_$S(%DT'["N":" or 012057",1:"") D %
+        S A1="  T   (for TODAY),  T+1 (for TOMORROW),  T+2,  T+7, etc." D %
+        S A1="  T-1 (for YESTERDAY),  T-3W (for 3 WEEKS AGO), etc." D %
+        S A1="If the year is omitted, the computer "_$S(%DT["P":"assumes a date in the PAST.",1:"uses the CURRENT YEAR.") D %
+        I %DT'["X" S A1="You may omit the precise day, as:  JAN, 1957" D %
+        I %DT'["T",%DT'["R" G 0
+        S A1="If the date is omitted, the current date is assumed." D %
+        S A1="Follow the date with a time, such as JAN 20@10, T@10AM, 10:30, etc." D %
+        S A1="You may enter a time, such as NOON, MIDNIGHT or NOW." D %
+        I %DT["S" S A1="Seconds may be entered as 10:30:30 or 103030AM." D %
+        I %DT["R" S A1="Time is REQUIRED in this response." D %
+0       Q:'$D(%DT(0))
+        S A1=" " D % S A1="Enter a date which is "_$S(%DT(0)["-":"less",1:"greater")_" than or equal to " D %
+        S Y=$S(%DT(0)["-":$P(%DT(0),"-",2),1:%DT(0)) D DD^%DT:Y'["NOW"
+        I '$D(DDS) W Y,"." K A1 Q
+        S DDH(DDH,"T")=DDH(DDH,"T")_Y_"." K A1 Q
+        ;
+%       I '$D(DDS) W !,"     ",A1 Q
+        S DDH=DDH+1,DDH(DDH,"T")="     "_A1 Q
+</pre>
+
+[NOTE: this example is extracted from VA FileMan Version 19.0. There is
+no copyright notice in the text of the source code or any of the
+accompanying documents; FMANPROG.TXT and FMANUSER.TXT each specifically
+contain the statement "VA FileMan is a public domain software package
+that is developed and maintained by the Department of Veterans Affairs."
+ I therefore believe no permission is required to reproduce this
+passage.--
+[<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a>]<p>
+
+1) The "New" command is not used; all variables are treated as universal
+in scope.<p>
+
+2) There is no use of the DO parameter passing mechanism, and no use of
+extrinsic functions. Information is passed in and out of subroutines by
+setting variables.<p>
+
+Practices 1 and 2 make it difficult to understand which variables are
+used for input, which for output, and which are for temporary local
+processing (and could just as well be private to the routine). They also
+make it difficult to add new code to a project because of the
+possibility of variable name conflicts.<p>
+
+3) M commands are uniformly abbreviated to a single character.<p>
+
+4) Variable names are short, frequently a single character. The single
+percent sign is used as a variable name, and also as an array.<p>
+
+5) Labels are short. Some label consist of single characters or even
+single numerals. The percent sign is used as a label.<p>
+
+Practices 3, 4, and 5 make the code difficult to read for novices, but
+are much less of a problem for experienced M programmers.<p>
+
+It can be argued practice 3 is beneficial because it aids in visual
+identification of "argumentless" commands. In M, "argumentless" commands
+("Do", "Quit", "For") are semantically different from same commands with
+arguments ("Do REPORT","Quit retvalue", "For I=1:1:100"). Unfortunately,
+the M white space rules say that a command and its arguments must be
+separated by precisely one space, and an "argumentless" command is
+identified by being followed by two or more spaces.<p>
+
+6) Some lines are considerably in excess of 80 characters and wrap when
+displayed or printed.<p>
+
+Line scope is significant in M; "For" and "If" operate on the rest of the
+current line. Multistatement lines are natural to M, and M permits lines
+to be up to 255 characters long. When the natural logic of a statement
+calls for more than eighty characters, the programmer can choose to write
+a long line, or rework the logic to avoid this. The argumentless DO and
+block structure make this easy to do; for example<p>
+
+<tt>I X?1.N1"H" S X=X*3600,%H=$H,@("X=$P(%H,"","",2)"_Y_X),%=$S(X<0:-<br>
+1,1:0)+(X\86400),X=X#86400,%H=$P(%H,",")+%_","_X G RT</tt><p>
+
+can be rewritten as<p>
+
+<pre>
+        If X?1.N1"H" Do  Go RT
+        . Set X=X*3600,%H=$H,@("X=$P(%H,"","",2)"_Y_X)
+        . Set %=$S(X<0:1,1:0)+(X\86400)
+        . Set X=X#86400,%H=$P(%H,",")+%_","_X
+</pre>
+
+However, some programmers see no need for this, and just as there are
+syntax purists, there are efficiency purists who will point out that the
+rewritten version must take at least some additional execution time and
+must consume at least some additional program space.<p>
+
+7) There are eleven goto (G) statements. Note that six of them transfer
+control to labels in routines other than %DTC itself.<p>
+
+8) The only uses of comments are the two heading lines, and in blank
+lines used to separate subroutines for readability.<p>
+
+<a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a><p>
+
+<hr>
+
+<a name="_A8_"></a>
+<h2>Appendix 8: MUMPS, A Solution Looking For A Problem</h2>
+<center><i><b>by Chris Richardson</b></i><p></center>
+
+This article on MUMPS appeared in an old issue of a computer newsletter.<p>
+
+<i>(Copyright (c) 1993 Personal Systems, the monthly journal of the San
+Diego Computer Society; all rights reserved. Permission to reproduce
+this article is granted to other non-profit organizations such as
+computer user groups for non-commercial use as long as credit to the
+author and group is given and provided a copy of the newsletter is
+sent to us at: San Diego Computer Society, ATTN: Editor, Personal
+Systems; 5694 Mission Center Road; Suite 602, Box 350; San Diego, CA
+92108)</i><p>
+
+What is MUMPS?  Is it a programming language that thinks it is a
+database, or is it a database that thinks it is a programming
+language?  Actually, it is both.  And it is an ANSI Standard Language
+to boot.<p>
+
+What does that mean to anyone who is knocking out little
+applications on a home PC or Apple?  Well, the nice thing about an
+ANSI Standard language is that the code you write on the Apple in
+standard MUMPS transports nicely to the IBM PC without any change.
+And if that other system is a mainframe, like a Vax or a large IBM
+system, your application will work there also.<p>
+
+Where did MUMPS come from and what does MUMPS stand for?  MUMPS was
+originally developed in the middle 60's on a National Institute of
+Health Grant at Massachusetts General Hospital.  It was originally
+designed to run on a large machine (at that time...) 4K of memory
+(that is 4,000 bytes, not megabytes) and 100 megabyte disk storage.<p>
+
+If it was written by a hospital, does it only do hospital problems?
+It was designed to solve the problem of tracking patient data.  How
+does patient data differ from auto supply inventory or a check book?
+A patient can have many attributes that describe each encounter.  For
+instance, suppose a patient gets admitted to a hospital with a
+traditional square record database, and is known to have six
+allergies, but there is only room for five allergies in the record.<p>
+
+Which allergy will you elect not to record?  If this patient dies
+because of that one allergy that you did not record, your hospital may
+change ownership in settling his estate.  For the majority of
+patients, the space reserved for the five allergies will not be used
+and is wasted space.  That means that your hospital will be buying
+more disk space a lot sooner.<p>
+
+In the MUMPS environment, the database disk space is not allocated
+until it is needed (run-time).  This means that the patient record
+expands to fit the amount of data required for that patient.  If the
+space is not used, it is not allocated.  If you have 12 patients in
+your database, you have only the space for these 12 records allocated.<p>
+
+In most traditional databases, you must allocate as many records as you
+expect before the first record is allocated.  With MUMPS, many databases can
+be described but they will not take up any space until actual records are
+created.  There is no theoretic maximum number of records that a specific
+database can contain.  It is only bound by the actual amount of disk space
+that is available to be assigned.  Talk about getting 10 pounds in a 5 pound
+sack.<br>
+Many database environments already exist for the PC, why should you be
+interested in another?  MUMPS is unlike most other databases in that it is
+also a special type of programming language called an interpreter.  OK, we
+hear the moans from the BASIC programming crowd. And did you think you got
+rid of interpreters when BASIC compilers came out.  Well, you didn't.
+Interpreters don't have to be slow and most database environments actually
+do go interpretive when they service user queries.  Anyway, even if
+the MUMPS interpreter was slow (which it isn't) the levels of run-time
+and error-time support is worth the difference.<br>
+When a MUMPS application stops for some reason, the symbol table remains
+intact at the line of code being executed when the error occurred.
+In the event of an error, control may be passed to another routine to capture
+the conditions of the failure or even attempt to recover from the error
+condition.  Traditionally, MUMPS database applications have a short
+mean-time-to-repair (MTTR) of just a few minutes and a long up-time record.
+Also, in many cases, the application that blew up can be re-started from
+where it left off.<p>
+
+What does MUMPS look like?<br>
+MUMPS has only a single data type, strings (of characters).  This makes the
+conversion from one data type to another easier.
+Most MUMPS commands may be abbreviated to a single character.  Or spell them
+out if you choose.  Code generation is quick.
+MUMPS commands can be easily combined to form more complex and complicated
+structures.  Each line of code is a block of code.
+MUMPS makes little distinction between data and code.  Code can be created
+and executed from a database or the symbol table at run-time.  Data can be
+stored in a routine and accessed at run-time.<br>
+MUMPS is a sparse matrix array processor.  This means that arrays are
+allocated at run-time; the arrays may be created in any order.  Array
+element 1000000 can be created and then element 2 can be created and yet the
+array only has 2 elements in it.<br>
+Because there are only string data types, the subscripts of a MUMPS array are
+strings.  What a concept!  You can subscript an array by "APPLES" and
+"ORANGES", and "AVOCADOS".  Now for the good news, when those subscripts are
+created, they are sorted alphabetically.  MUMPS means never having to say
+you're sorting.<br>
+The language is still growing.  Every ANSI Standard has a built-in sunset of
+seven years.  That means that if nothing is done with a standard in seven
+years, it ceases to be a standard.  Well, MUMPS has had an ANSI standard for
+1977, 1984, 1990, and the MUMPS Development Committee is attempting to
+release a 1993 standard.  Additional standards for WINDOWING, Networking,
+and Transaction Processing are currently in process.<br>
+MUMPS is transportable.  It doesn't matter if MUMPS code is running under
+MS-DOS, Windows NT, UNIX, VMS, VM, or nearly any operating system you might
+mention, the code and database will still run.  In fact, in some
+implementations MUMPS is also the operating system.<br>
+Who uses MUMPS?  Probably a lot more than you might think.  How about
+the Veteran's Administration.  Well, the VA did such a good job of
+putting a Fourth Generation Language together in MUMPS that the Indian
+Health Service decided to use it, then the U.S. Public Health
+Service, and finally the Department of Defense for the Army, Navy, and
+Air Force hospitals and clinics around the world.  By the way, the
+VA's 4GL, File Manager is in the public domain.  If you can find a
+source, you can get it free!  Another advantage is that the package is
+distributed as source code because MUMPS is an interpreter.<p>
+
+Is it just for hospitals?  No, MUMPS is an excellent choice for nearly
+any database operation, especially if not every aspect of the
+situation is known.  MUMPS is being used by banks and credit unions.
+Do you travel on airlines?  You have probably been scheduled on a
+MUMPS system.  All of the postage stamp sales for the U.S. Postal
+Service are tallied on a MUMPS system each evening.  Auto parts houses
+keep track of their inventories with MUMPS systems. Language
+translators have been implemented in MUMPS and it also works
+well with artificial intelligence projects.<p>
+
+If MUMPS was developed here, is it only used in this country?  The
+national health services of Finland and England, as well as a few
+other countries are currently using MUMPS.  Ever gamble in the
+gambling houses in London?  They use MUMPS to track high rollers from
+one gambling house to the next.  The British Stock Exchange also uses
+MUMPS.  The largest department store chain in Spain uses MUMPS.  The
+Russians acquired a copy of MUMPS and modified it to run their
+national health services and track containerized freight.<p>
+
+If MUMPS is so good, why haven't I heard of it?  This is an
+interesting point.  The computer industry lives on some very simple
+rules, 1) sell products with follow-on (things that need other things
+to work properly or better) and 2) sell items that make it difficult
+to migrate to another vendor's hardware or software (also known as
+product loyalty).  MUMPS provides the programming language,
+the database, the screen handler, and soon, windows of any platform
+that will have a MUMPS interpreter (which is just about any platform).
+MUMPS code is extremely transportable.  Standard MUMPS code works fine
+on whatever platform you run it on.<p>
+
+When a MUMPS implementation is installed to replace an existing
+traditional system, usually there are sufficient resources for the
+MUMPS environment, with plenty of resources left for future expansion.<p>
+
+Alright, I'm sold.  Where can I get MUMPS for my system?  Now for some
+good news, there is an evaluation version of MUMPS for MS-DOS that is
+free, especially if you happen to be a student.  The vendor only asks
+that you register your use of the product.<p>
+
+By the way, there is extensive documentation available for this
+product.  There is a MUMPS Users' Group (now called the M Technology
+Association) which can be contacted at:<p>
+
+MUMPS Users' Group of North America<br>
+1738 Elton Road, Suite 205<br>
+Silver Spring, MD 20903<br>
+Phone: (301)-431-4070<br>
+Fax:   (301)-431-0017<br>
+
+<i>(Author Profile:  Chris Richardson is a Software Engineer with Science
+Applications International Corporation in San Diego and is a member of
+the MUMPS Development Committee, the ANSI Standards writing
+organization for the MUMPS language.  He has worked for NASA, the U.S.
+Public Health Service, the U.S. Navy, Army, and the Air Force as
+well as Computer Sciences Corporation and Singer-Link in Houston.  He
+has taught Real-time FORTRAN and MUMPS to professionals in the
+industry and government).</i><p>
+
+<hr>
+
+<a name="_A9_"></a>
+<h2>Appendix 9: Testimonials, Accolades, and Articles
+from outside the community</h2>
+
+This section is dedicated to mentioning articles, white papers, research, 
+et al that is no produced by the M Community, but by someone in the "Real 
+World". I will accept submissions of articles, pointers, etc. for 
+published matertials (electronic or physical) as of 1/1/96 on.<p>
+
+Older submissions may be included if they are of a unique, or highly 
+informative nature.<p>
+
+<ol>
+<li><b>Computer Language Rating Table</b><p>
+Source:	Newsgroups: comp.lang.mumps<br>
+Date: Mon, 7 Oct 1996 09:06:20 -0500<p>
+
+Try looking at http://www.spr.com/library/langtbl.htm.  It contains a
+language ranking, based on the amount of effort required to code a
+function point and M ranks very well.<p>
+<li><b>?</b>
+</ol><p>
+
+<hr>
+
+<a name="_A10_"></a>
+<h2>Appendix 10: Contact information: E-mail and URL addresses</h2>
+
+This document contains URLs and addresses that were acurate at the 
+time of the original inclusion. URLs and e-mail addresses change
+however, and will (when notified) be reflected in this appendix.
+So, if you wish to reach a contributor, confirm addresses there.<p>
+
+Ellis A. Bauman: <a href="mailto:ellis.bauman@uwmf.wisc.edu">ellis.bauman@uwmf.wisc.edu</a><br>
+Ben Bishop: <a href="mailto:aci@shore.net">aci@shore.net</a><br>
+Dennis J. Brevik: <a href="mailto:dbrevik@ix.netcom.com">dbrevik@ix.netcom.com</a><br>
+Steve Clay: <a href="mailto:sbc@pobox.com">sbc@pobox.com</a><br>
+Etienne Cherdlu: <a href="mailto:gz64@cityscape.co.uk">gz64@cityscape.co.uk</a><br>
+Floyd Dennis: <a href="mailto:fbdennis@mindspring.com">fbdennis@mindspring.com</a><br>
+Jon Diamond: <a href="mailto:jdiamond@btinternet.com">Jdiamond@btinternet.com</a><br>
+Rod Dorman: <a href="mailto:rodd@panix.com">rodd@panix.com</a><br>
+John D. Godfrey: <a href="mailto:Godfrey@msmail.vet.cornell.edu">Godfrey@msmail.vet.cornell.edu</a><br>
+Gavin Greig: <a href="mailto:ggreig@mcs.dundee.ac.uk">ggreig@mcs.dundee.ac.uk</a><br>
+Russell Haddleton: <a href="mailto:rfh2y@uvacs.cs.Virginia.EDU">rfh2y@uvacs.cs.Virginia.EDU</a><br>
+Brett Hunt: <a href="mailto:BrettH@Micronetics.com">BrettH@Micronetics.com</a><br>
+Lev Jacob: <a href="mailto:lev@TRENDLINE.CO.IL">lev@TRENDLINE.CO.IL</a><br>
+Scott P. Jones: <a href="mailto:scott@intersys.com">scott@intersys.com</a><br>
+John E. Kemker, III: <a href="mailto:kemker.j@atlanta.va.gov">kemker.j@atlanta.va.gov</a><br>
+Mark Komarinski: <a href="mailto:komarimf@craft.camp.clarkson.edu">komarimf@craft.camp.clarkson.edu</a><br>
+Monika Kratzmann: <a href="mailto:monika@INTERSYS.COM">monika@INTERSYS.COM</a><br>
+Jeff Loeb: <a href="mailto:JEFFREY.L.LOEB@cpmx.saic.com">JEFFREY.L.LOEB@cpmx.saic.com</a><br>
+Keith F. Lynch: <a href="mailto:kfl@access.digex.net">kfl@access.digex.net</a><br>
+Jim McIntosh: <a href="mailto:jim@american.edu">jim@american.edu</a><br>
+Ed de Moel: <a href="mailto:demoel@jacquardsystems.com">demoel@jacquardsystems.com</a><br>
+Steve J. Morris: <a href="mailto:sjm2@shore.net">sjm2@shore.net</a><br>
+Kevin O'Gorman: <a href="mailto:kevin@kosman.uucp">kevin@kosman.uucp</a><br>
+Paul Perrin: <a href="mailto:Admin@admatic.com">Admin@admatic.com</a><br>
+Doug Preiser: <a href="mailto:preiser@cancer.unm.edu">preiser@cancer.unm.edu</a><br>
+Harold Pritchett: <a href="mailto:harold@UGA.CC.UGA.EDU">harold@UGA.CC.UGA.EDU</a><br>
+Aaron Seidman: <a href="mailto:seidman@world.std.com">seidman@world.std.com</a><br>
+Kate Schell: <a href="mailto:cschell@jacquardsystems.com">cschell@jacquardsystems.com</a>, <a href="http://jacquardsystems.com">http://jacquardsystems.com</a><br>
+Tilman Schmidt: <a href="mailto:ts@gb1.sema.de">ts@gb1.sema.de</a><br>
+Arthur B. Smith: <a href="mailto:ART@vets.vetmed.missouri.edu">ART@vets.vetmed.missouri.edu</a><br>
+Daniel P.B. Smith: <a href="mailto:dpbsmith@world.std.com">dpbsmith@world.std.com</a><br>
+Richard J. Tomlinson: <a href="mailto:Richard@rtsysgen.demon.co.uk">Richard@rtsysgen.demon.co.uk</a><br>
+Gardner Trask: <a href="mailto:trask@shore.net">trask@shore.net</a><br>
+David Whitten: <a href="mailto:whitten@netcom.com">whitten@netcom.com</a><p>
+
+<hr>
+
+<a name="_A11_"></a>
+<h2>Appendix 11: FAQ Change History</h2>
+
+Changes since version 1.7: 1 Nov 1997
+<ul>
+<li>Addition of Brett Hunt's comments to question 1 and 11
+<li>Rogue typos
+<li>Email changes in part II
+</ul><p>
+
+Changes since version 1.6: 1 Aug 1997<p>
+<ul>
+<li>Typos, edits, new URLs and e-mail addresses submitted by 
+you, the viewing audience.
+<li>Addition of a review by <a href="mailto:dpbsmith@world.std.com">Daniel P.B. Smith</a> for the books section. 
+READ IT !!   
+<li>Move section 30 up to 24 and renumber for a more logical flow.
+<li>categorized and cleaned up of web references in section 26.
+</ul><p>
+
+Changes since version 1.5: 1 May 1997<p>
+<ul>
+<li>Typo's, edits, and new e-mail addresses. Keep those cards and
+letters coming.
+<li>New Section 32 on how $ORDER really works.
+<li>New Section 33 on M as a Learning Language.
+<li>Redo of Section 4 to include new books available.
+<li>Some more URL edits and additions to section.
+<li>Implementation of a great idea from Dan Baer about an e-mail and
+URL appendix.<br>
+Basically, I will now refer to people and companies by name,
+and add an appendix of e-mail and URL addresses. A One-Stop-shop for contact
+information.
+<li>Changes to all sections to remove 'hard-coded' e-mail addresses.
+<li> Change history moved to Appendix 11. Only current changes will
+appear at top of FAQ.
+</ul><p>
+
+<hr>
+
+Changes since version 1.4: 1 Jan 1997<p>
+<ul>
+<li>Typo's, edits, and new e-mail addresses. Keep those cards and letters
+coming.
+<li>Additional (author unknown) defenition to section 1. what is M?
+</ul>
+
+<hr>
+
+Changes since version 1.3: 1 Oct 1996<p>
+
+<ul>
+<li>Expansion of Section 25 to include M Web addresses and Newsgroups
+<li>Additon of Section 31: A Brief History of M
+<li>Addition of Appendix 9: Testimonials and Articles
+<li>Minor editorial changes and spelling corrections.
+<li>Removed Editorial History prior to 1995
+</ul>
+
+<hr>
+
+Changes since Version 1.2: 1 Jul 1996:<p>
+<ul>
+<li>Addition of X-base vs. M answer - Question 30<br>
+<li>Addition of Appendix 8 - Mumps, A Solution Looking For A Problem,
+By Chris Richardson<br>
+<li>Request for new blood<br>
+<li>Change to Mumps of GA address<br>
+<li>General cleanup and spellcheck.<p>
+</ul>
+
+<hr>
+
+Changes since Version 1.1: 1 Jan 1995:<p>
+<ul>
+<li>Change to the Connections Group address
+<li>Request for thoughts on inclusion of MSM white papers.
+</ul><p>
+
+<hr>

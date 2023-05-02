@@ -1,0 +1,612 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>An M Implementation of Object-Oriented Programming</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 3, Number 1, February 1995, pages 13-19</h3>
+
+<h2>An M Implementation of<br>Object-Oriented Programming,</h2>
+
+<h3>by Don Gall</h3>
+
+<table>
+<tr><td><i><b>The Blind Men and the Elephant<br>
+by John Godfrey Saxe</b><br>
+<br>
+It was six men of Hindostan, to learning much inclined,<br>
+Who went to see the elephant, (though all of them were blind)<br>
+That each by observation might satisfy his mind.<br>
+... it seems the elephant is very like a wall.<br>
+... this wonder of an elephant is very like a spear.<br>
+... the elephant is very like a snake.<br>
+... the elephant is very like a tree.<br>
+... this marvel of an elephant is very like a fan.<br>
+... the elephant is very like a rope.<br>
+<br>
+And so these men of Hindostan disputed loud and strong,<br>
+Each in his own opinion exceeding stiff and strong,<br>
+Though each was partly in the right and all were in the wrong.</i></td></tr>
+</table>
+
+<h3>Introduction</h3>
+
+<p>
+<img src="../../DonGall.jpg" width=88 height=128 align=left>
+The literature of object-oriented programming has brought with
+it a few new terms, the redefinition of a few old terms, and a
+few new concepts. Much of what is presented under this broad
+umbrella of object-orientation is simply a more precise
+formulation of older concepts and goals that good programmers
+have dealt with for at least three decades. As an example, most
+of us moved to modular (or re-usable) programs after realizing
+that it was not efficient to maintain thirty or forty programs,
+all with similar or identical sections of logic. In addition, we
+quickly learned that a large programming project could be
+completed more efficiently if it were first broken down into
+smaller logical elements with predefined interactions. It is not
+surprising that these two examples are parts of object-oriented
+programming.</p>
+
+<p>The terminology of object-orientation includes the definitions
+of words such as object, class, instantiation, abstraction,
+encapsulation, hierarchy, modularity, re-usability, typing,
+concurrency, inheritance, and persistence. This paper does not
+provide a discourse on object-oriented programming. A number of
+authors &#150; notably Booch, Meyer, Cox, and Khoshafian &#150; already
+have produced extensive literature on the subject.
+[<a href="#r1">1</a>, <a href="#r2">2</a>, <a href="#r3">3</a>,
+<a href="#r4">4</a>]
+Similarly, I will not attempt to inject opinions as to the
+relative importance of these object-oriented concepts to
+&quot;true object-oriented programming&quot;. There is sufficient
+disagreement among the four texts cited for the reader to realize
+that there is not one generally accepted definition of
+object-oriented programming. Object-oriented programming has
+lived up to the twelve-year-old prediction of Rentsch:
+&quot;Everyone will be in favor of it. Every manufacturer will
+promote his product as supporting it. Every manager will pay lip
+service to it. Every programmer will practice it (differently).
+And no one will know just what it is.&quot;
+[<a href="#r5">5</a>]</p>
+
+<p>Object-oriented programming has become the modern version of
+the tale of the six blind men and the elephant. This article
+presents yet another blind man's view of the &quot;elephant.&quot;
+This particular blind man brings with him the prejudices of
+thirty-nine years of dealing with real-world programming
+problems, with more than half of those years spent in the M
+programming language environment.</p>
+
+<h3>The Evolution Toward Objects</h3>
+
+<p>About sixteen years ago, my firm began its movement toward
+object-oriented programming. This was done not because of
+awareness of the field, but rather as an attempt to eliminate
+many tedious tasks of programming. Early efforts went into
+developing programmer tools to do those things which we, as
+programmers, least liked to do.</p>
+
+<p>The first of these tools was a questionnaire driver, which
+allowed us to quickly structure a series of questions for user
+input and error-checking. This questionnaire driver was later
+expanded to provide for screen-formatted entry and editing, and
+to generate review screens and a data dictionary as side
+benefits. Most developers of software tools during this period
+pursued a methodology for creating a program or programs for each
+set of questions that formed a user input screen. We elected to
+use some of the unique attributes of M to develop generic
+programs, which used a specially formatted set of data to provide
+the entry and edit functions for any question set. This move
+toward &quot;parameter-driven software&quot; has turned out to be
+a fortuitous choice. Our subsequent development of a single-menu
+program and a number of report writers followed this
+parameterized approach. The development effort described here
+follows this same path.</p>
+
+<p>Four years ago, we began to explore how the extensive and
+sometimes conflicting information in the object-oriented
+literature could be used to improve our software and
+software-development methodology. All of the hype about
+object-oriented programming has caused us to search for a magic
+bullet. What we found was a collection of very special BBs. In
+retrospect, this should not have been unexpected.
+Database-management systems deal with the mathematical- and
+computer-modelling of information. Those of you who have spent
+any time using computers to solve partial differential equations
+will recognize that the methods used to solve elliptic partial
+differential equations are not applicable to the solution of
+hyperbolic differential equations. Why then should we expect to
+find one grandiose methodology applicable to the incredibly broad
+array of problems worked on by computer programmers?</p>
+
+<p>We gave up on finding a magic bullet and focused our attention
+on examining the very special BBs to determine which of these
+would help us reach our objectives. In order to proceed, we first
+had to establish the objective we were hoping to reach. In broad
+terms, these objectives were to:</p>
+
+<ul>
+<li>Minimize the programmer time required to develop a correct
+application;</li>
+<li>Minimize the programmer time required to customize and
+maintain an application;</li>
+<li>Improve the overall reliability of the software;</li>
+<li>Furnish a relational view of our hierarchical database
+structure for SQL and other &quot;more mainstream&quot;
+development tools and applications; and</li>
+<li>Provide a generalized report writer any application could
+use.</li>
+</ul>
+
+<p>Our first efforts were directed at the deficiencies of the
+existing software. The three major deficiencies may be
+summarized as:</p>
+
+<ul>
+<li>Inadequate use of inheritance of methods (routines) and
+re-usable routines;</li>
+<li>A complete lack of encapsulation; and</li>
+<li>A data dictionary that was adequate for programmer use but of
+no value for SQL-type data exportation or for an internal-report
+writer.</li>
+</ul>
+
+<p>With the exception of the questionnaire driver, a generalized
+table-maintenance structure and a generalized menu driver, the
+existing software made little use of generalized procedures that
+could be inherited by multiple, similar applications. Although M
+allows the passing of parameters to extrinsic functions, this
+functionality had not been properly exploited in the existing
+software.</p>
+
+<p>The most glaring weakness in our software was a complete lack
+of encapsulation. Encapsulation requires that only those methods
+(programs) within a class have knowledge of the structure of the
+data within the class. The structure of our many globals was
+embedded in the logic of almost every program. As one bad
+example, the modification of the data dictionary for our General
+Ledger would have required changing at least seventy-five other
+programs. It is not surprising that the structure of the General
+Ledger was not changed in seventeen years.</p>
+
+<p>The concept of encapsulation is antithetical to M because M
+makes it so easy for a programmer to access global data. Given
+the current philosophy of M, the only way to enforce
+encapsulation is by decree. It is a decree worth issuing. We
+quickly placed encapsulation high on our list of object-oriented
+programming requirements. For the class of problems that we deal
+with, we believe that encapsulation is an absolute necessity and
+will later describe how we approached this issue.</p>
+
+<p>In addition to encapsulation, we added three other elements of
+object-oriented programming that had not been present in our
+previous software. These were a formal declaration of classes,
+the introduction of data types, and the formalization of
+inheritance.</p>
+
+<h3>Implementation</h3>
+
+<p>Before proceeding on to the implementation of these changes,
+let me define some classes that will be used as examples. First,
+it is important to note that the definition of a particular class
+of objects is somewhat arbitrary. For example, does the Vendor
+Class contain vendor demographic information only or does it also
+contain unpaid and paid invoice history? The best solution may
+well vary depending upon the available tools and what
+functionality you need with your software. For this article, I
+will define the following classes of objects:</p>
+
+<ul>
+<li>Vendor Demographics Class contains the Vendor ID, name,
+address, phone numbers, etc.</li>
+<li>Vendor Invoice Journal Class contains the invoice date,
+invoice number, Vendor ID, invoice amount, etc.; this class is
+linked to the Vendor Demographics Class and to the General Ledger
+Chart of Accounts Class.</li>
+<li>Vendor Unpaid Invoices Class contains the Vendor ID, invoice
+number, amount due, date due, etc.; this class is linked to the
+Vendor Demographics Class and to the Vendor Invoice Journal
+Class.</li>
+<li>Vendor Paid Invoices Class contains the Vendor ID, invoice
+number, amount paid, date paid, etc.; this class is linked to the
+Vendor Demographics Class, the Vendor Invoice Journal Class, and
+to the Cash Disbursements Class.</li>
+<li>Cash Disbursements Class contains the check date, check
+amount, check number, checking account General Ledger Number,
+Vendor ID, list of invoices paid, etc.; this class is linked to
+the Vendor Paid Invoices Class, to the Vendor Invoice Journal
+Class, to the General Ledger Chart of Accounts Class, and to the
+General Ledger Totals Class.</li>
+<li>General Ledger Chart of Accounts Class contains the General
+Ledger Number, Description, etc.</li>
+<li>General Ledger Totals Class contains the General Ledger
+Number and totals by journal by date; this class is linked to the
+General Ledger Chart of Accounts Class.</li>
+</ul>
+
+<h3>Formal Definition of a Class</h3>
+
+<p>Our formal definition of a class includes the class ID, the
+description of the class, a definition of the attributes of the
+class and a data dictionary for the class. This information is
+stored in a class definition global (<tt>^UCL</tt>) by class ID
+(<tt>CLSID</tt>) along with other information about the class,
+which will be defined subsequently. The attributes of a class
+(often referred to as instance variables) are primarily the
+indexes and fields needed to specify the state of the object and
+thus also the data dictionary. Each attribute definition
+includes:</p>
+<ul>
+<li>Attribute ID;</li>
+<li>Attribute Name;</li>
+<li>Primary Class ID (allows accessing instances from other super
+classes);</li>
+<li>Attribute ID from other class (if accessing from a super
+class);</li>
+<li>Data Type (from a programmer-defined table); and</li>
+<li>Other optional fields defining, for example, the expected
+format, a typical error message, etc.</li>
+</ul>
+
+<p>The ability to specify the Primary Class ID as a super class
+of another class has been very powerful and will be described in
+more detail later.</p>
+
+<p>M has great flexibility because it has no data-typing of
+variables. Data-typing of attributes was added to improve the
+programmer efficiency and to enhance the capabilities of the
+general report writer. The most commonly used data types are:</p>
+
+<table>
+<tr><td width=40 valign=top><tt>$</tt></td>
+<td>Dollars (stored as pennies, displayed as dollars)</td></tr>
+<tr><td width=40 valign=top><tt>D4</tt></td>
+<td>4-digit dates (stored as YRMO, displayed as MO-YR)</td></tr>
+<tr><td width=40 valign=top><tt>D6</tt></td>
+<td>6-digit dates (stored as YRMODA, displayed as MO-DA-YR)</td></tr>
+<tr><td width=40 valign=top><tt>ISF</tt></td>
+<td>Index sequential variable (0 level = counter)</td></tr>
+<tr><td width=40 valign=top><tt>NI</tt></td>
+<td>Numeric Integer format</td></tr>
+<tr><td width=40 valign=top><tt>NF</tt></td>
+<td>Numeric Floating point format</td></tr>
+<tr><td width=40 valign=top><tt>ST</tt></td>
+<td>String Text Format</td></tr>
+<tr><td width=40 valign=top><tt>STn</tt></td>
+<td>n lines of String Text</td></tr>
+<tr><td width=40 valign=top><tt>STI</tt></td>
+<td>Infinite lines of String Text</td></tr>
+</table>
+
+<p>The data types are stored in a programmer-accessible table
+structure. Display algorithms and other programmer-supplied
+information are used to prompt the programmer with information
+during attribute and questionnaire definition. The general report
+writer uses this information to construct reports and to display
+report quantities.</p>
+
+<p>The data dictionary entries are defined in typical M global
+format in terms of the previously defined attributes and stored
+as strings in the class-definition global <tt>^UCL(CLSID)</tt>
+as:</p>
+
+<p align=center><tt>&quot;^XYX(attr_i, attr_j, ...) = attr_n~attr_m~...&quot;</tt></p>
+
+<p>where <tt>attr_i</tt>, <tt>attr_j</tt>, <tt>attr_n</tt>, etc.
+are previously defined attributes for this class. This format
+allows us to maintain our efficient hierarchical structure while
+simultaneously presenting a relational view to external SQL
+applications and to our internal report writer.</p>
+
+<p>Programmers use the programs to create the structure; screen
+format(s) of user screens use the attribute definition, the data
+types, and the data dictionary to assist in the construction and
+display format for each user screen.</p>
+
+<p>Next, look at the operations we need to perform on a class.
+These operations have been categorized in many ways by many
+authors. Our particular list is as follows:</p>
+
+<ul>
+<li>Create &#150; the ability create an instance of the class and
+cross-referenced files to be used by the class as well as the
+maintenance of editing of the instance and the cross-referenced
+files.</li>
+<li>Delete &#150; the ability to delete an instance of the class and
+the appropriate cross-referenced files used by the class.</li>
+<li>Locate &#150; the ability of another class to determine an
+instance of the class</li>
+<li>Inquire &#150; the ability of another class to inquire into the
+state of an instance of the class.</li>
+<li>Modify &#150; the ability of another class to change the state of
+an instance of the class.</li>
+<li>Report &#150; the ability to create and display screen or
+report-formatted output of the instance of the class and specific
+instances of those classes accessed by the class.</li>
+</ul>
+
+<h3>Create, Delete, and Modify Operations</h3>
+
+<p>In our particular implementation, the Create, Delete, and
+Modify operations for the classes Vendor Demographics and General
+Ledger Chart of Accounts are controlled by and encapsulated
+within those respective classes. No other classes are allowed to
+Create, Delete, or Modify the state of these classes.</p>
+
+<p>On the other hand, the creation of an instance of the Vendor
+Unpaid Invoice Class is initiated by the Vendor Invoice Journal
+Class and therefore created by a communication from that class.
+The same transaction also communicates a Modify message to the
+General Ledger Totals Class. In a similar manner, the Cash
+Disbursements Journal Class initiates the deletion of an instance
+of the Unpaid Vendor Invoice Class and the creation of an
+instance of the Vendor Paid Invoice Class while also modifying
+the General Ledger Totals Class.</p>
+
+<p>The object-oriented programming literature frequently
+describes communication between classes in terms of the sending
+and receiving of messages. Unfortunately, M is not (at least at
+the present) well suited to the rapid communication of messages
+between separate processes. Therefore, instead of sending
+messages between classes, we have elected to send messengers in
+the form of extrinsic functions. These extrinsic functions take
+the form:</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>S X=$$^GLMOD(parameter_list)</tt></p>
+
+<p>This particular example is a Modify operations created by the
+General Ledger Totals Class to enable other classes to change the
+state of an instance of the General Ledger Totals Class. Another
+class such as the Cash Disbursements Class may change only the
+amount of money in any General Ledger Account by invoking this
+extrinsic function with a suitable parameter list. The value
+returned signifies whether the General Ledger Class was able to
+complete this task.</p>
+
+<h3>Locate Operation</h3>
+
+<p>Classes such as the General Ledger Chart of Accounts must
+create a specific Locate extrinsic to enable other classes such
+as the Vendor Invoice Class to identify an instance of the class
+given either a General Ledger Account Number or an Account
+Description. The Locate extrinsic enables a user who is entering
+a vendor invoice to locate and choose the appropriate General
+Ledger Account to be debited in a particular transaction. A
+second Locate extrinsic created by the Vendor Demographics Class
+enables the user to select the appropriate Vendor ID.</p>
+
+<p>The General Ledger Locate extrinsic is:</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>S X=$$^GLF()</tt></p>
+
+<p>The extrinsic returns the user-determined General Ledger
+Account Number.</p>
+
+<h3>Inquire Operation</h3>
+
+<p>Because of the structure of the formalized class definition,
+it has been possible to construct an Inquiry function, which
+allows any class to inquire of any other related class. For
+example, a specific instance of the Vendor Invoice Journal Class
+contains the value of the Vendor ID and therefore can obtain the
+value of any attribute from the Vendor Demographics Class for
+that specific Vendor ID. This general Inquiry function is an
+extrinsic function defined by</p>
+
+<table>
+<tr><td colspan=3 align=center>
+<tt>S
+X=$$^UINQ(CLSID,def_attr,attr_value.ret_attr</tt><br></td></tr>
+<tr><td align=left colspan=2>where</td></tr>
+<tr><td valign=top align=right><tt>CLSID</tt></td>
+<td>is the Class ID of the class containing the information</td></tr>
+<tr><td valign=top align=right><tt>def_attr</tt></td>
+<td>one or more attribute IDs of <tt>CLSID</tt> needed to identify the
+specific instance</td></tr>
+<tr><td valign=top align=right><tt>attr_value</tt></td>
+<td>the instance value(s) of <tt>def_attr</tt></td></tr>
+<tr><td valign=top align=right><tt>ret_attr</tt></td>
+<td>the attribute ID or IDs of <tt>CLSID</tt> the invoking class wished to
+have returned in the variable <tt>x</tt></td></tr>
+</table>
+
+<h3>Report Operation</h3>
+
+<p>With the knowledge of the data dictionary and the class
+attributes, a general purpose report writer was much simpler to
+write. This report writer draws upon the ability of an attribute
+definition to specify an equality relationship of an attribute
+from a super class. Thus, all attributes from super classes used
+by the primary class are available to the report writer. For
+example, a report for the Vendor Invoice Journal Class can access
+the vendor name and address from the Vendor Demographics Class
+because it has knowledge of the vendor ID, and the Vendor ID
+attribute in the Vendor Invoice Journal Class contains the
+information that it is related to the Vendor ID attribute in the
+Vendor Demographics Class. In a similar manner, the Vendor
+Invoice Journal Class can access the description from the General
+Ledger Chart of Accounts Class with the knowledge of the General
+Ledger Account Number and its known link to the General Ledger
+Chart of Accounts Class.</p>
+
+<p>Reports may be created by invoking</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>D ^UPA(CLSID)</tt></p>
+
+<p>which allows the user to create and store any number of
+reports for the specific class. Any of the previously created
+reports are executed and printed by invoking</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>D ^UPP(CLSID)</tt></p>
+
+<h3>Formalizing Inheritance</h3>
+
+<p>As we developed a process for formally defining a class and
+began to examine how to best provide for these six general
+operations, we realized that the data structures associated with
+these classes also could be grouped into classes. These classes
+of classes, or metaclasses, differ from the classes previously
+defined in that the instance of a metaclass is not an object but
+rather another class. [<a href="#r6">6</a>]</p>
+
+<p>As an example of the use of metaclasses, we can state that
+both the Vendor Demographics Class and the General Ledger Chart
+of Accounts Class have a single variable as an index in our data
+structure:</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>^VENDOR(ID) </tt>= data fields<br>
+&nbsp;&nbsp;&nbsp;<tt>^GLCHART(ACCT)</tt> = data fields.</p>
+
+<p>These and many other examples within our software such as
+Client Demographics, Attorney Table, and Type of Law Table can be
+grouped into a metaclass we refer to as the Single Index
+Metaclass (SIM). The definition of this Single Index Metaclass is
+actually broader than might be inferred from the two examples. It
+can also include examples in which additional constant (literal)
+indexes are defined such as:</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>^VENDOR(ID,&quot;NAME) </tt>= vendor name<br>
+&nbsp;&nbsp;&nbsp;<tt>^VENDOR(ID,&quot;ADDR&quot;) </tt>= vendor address fields<br>
+&nbsp;&nbsp;&nbsp;<tt>^VENDOR(ID,&quot;PHONE&quot;)</tt> = vendor phone number
+fields.</p>
+
+<p>The Vendor Invoice Journal, Vendor Unpaid Invoice, and Vendor
+Paid Invoice Classes are instances of a metaclass we have termed
+the Double Index Sequential Metaclass (DISM). This structure is
+a many-to-many-to-one structure. The Vendor Invoice Journal can
+have any number of accounts and amounts to be debited for each
+invoice entered, and there can be any number of invoices for any
+given date. In M global structure, this is represented as:</p>
+
+<p>&nbsp;&nbsp;&nbsp;<tt>^VENDINV(DATE,I)</tt> = specific invoice fields<br>
+&nbsp;&nbsp;&nbsp;<tt>^VENDINV(DATE,I,J)</tt> = specific account and amount
+fields.</p>
+
+<p>This general structure is also present in the Cash
+Disbursements Journal, the Cash Receipts Journal, and in a number
+of other areas of our software.</p>
+
+<p>Thus far, we have found it useful to define only these two
+metaclasses. A possibly more appropriate point to make is why we
+found it useful to define any metaclasses. To understand this,
+consider the six operations we defined (Create, Delete, Locate,
+Inquire, Modify, Report). Creating a metaclass enables us to
+write a generalized M routine for an operation that then applies
+to all classes that are instances of that metaclass. This is
+accomplished by structuring the parameters contained in the
+formal class definition file.</p>
+
+<p>Both the SIM and DISM Create routines (and the few additional
+classes which have programmed Create routines) employ a set of
+programmer-defined questionnaires based upon information from the
+class attributes definitions. A single extrinsic function paints
+the input screen, executes all questions, and returns the answer
+as a string to the SIM or DISM (or programmed) Create routine.</p>
+
+<p>Generic SIM and DISM Delete and Locate routines have been
+developed.</p>
+
+<h3>Summary</h3>
+
+<p>We now view our software development on three levels:</p>
+
+<ul>
+<li>Operations that apply to all classes</li>
+<ul>
+<li>Inquire</li>
+<li>Report</li>
+</ul>
+<li>Operations that apply to a Single Index Metaclass (SIM) and
+operations that apply to a Double Index Sequential Metaclass
+(DISM)</li>
+<ul>
+<li>Create</li>
+<li>Delete</li>
+<li>Locate</li>
+</ul>
+<li>Operations that apply to a specific class</li>
+<ul>
+<li>Create</li>
+<li>Delete</li>
+<li>Locate</li>
+<li>Modify</li>
+</ul>
+</ul>
+
+<p>None of the ability to execute &quot;normal&quot; M programs
+is lost. But the tedium of developing one more enter, edit,
+review, or print program has all but disappeared.</p>
+
+<p>The other major impact this development effort has produced is
+that we can now realistically consider developing
+&quot;plug-compatible&quot; components. The components of our
+previous law-firm package were so intertwined that is was
+difficult to modify one section without rewriting major parts of
+the entire system.</p>
+
+<p>With the newer structure, we have developed a General Ledger
+Class that only communicates by extrinsic functions with other
+classes. The Accounts Payable module is composed of a number of
+classes and communicates with the General Ledger and the existing
+Accounts Receivable through extrinsics. In this manner, we are
+able to modify the various components of the system one at a
+time, changing only the interacting portions as we go.</p>
+
+<p>In all fairness, it must be pointed out that the transition to
+object-oriented programming has been neither painless nor pure.
+Object-oriented programming requires programmers to approach
+issues from a different point of view. There must be a continuing
+education and reinforcement of the principles of the methodology.
+The tendency of M programmers to violate encapsulation is a good
+example of this. Second, our implementation is not pure! In a
+few instances, such as the application of cash receipts, we have
+made the conscious decision to violate encapsulation in order to
+improve performance.</p>
+
+<p>The results thus far have been a significant decrease in the
+number of programs needed, in the complexity of the programs we
+now write, and in the time required to develop an application.
+There has been a significant increase in the re-usability of our
+programs. There has been a minimal change in the fundamental
+structure of our existing data. And, programmers spend more time
+thinking and less time typing.</p>
+
+<hr>
+
+<p><a href="http://www.omegalegal.com"><img src="../../omega.gif" align=left></a>
+<i><a href="mailto:dgall@omegalegal.com">Don Gall</a>,
+Sc.D., is president of <a href="http://www.omegalegal.com">Omega Legal Systems</a>,
+Suite 406, 7272 E. Indian School Road, Scottsdale, AZ 85251;
+phone 602-946-6772; fax 602-947-1427.
+He wrote for this publication on comparing COBOL and Relational
+Database Software in November 1992.</i></p>
+
+<hr>
+
+<h3>Endnotes</h3>
+
+<a name=r1></a>
+<p>[1] G. Booch, <i>Object Oriented Design with Applications </i>(Redwood City, CA: Benjamin/Cummings, 1991).</p>
+
+<a name=r2></a>
+<p>[2] B. Meyer, <i>Object Oriented Software Construction
+</i>(New York, NY: Prentice Hall, 1988).</p>
+
+<a name=r3></a>
+<p>[3] B. Cox, <i>Object-Oriented Programming: An Evolutionary
+Approach </i>(Reading, MA: Addison-Wesley Press, 1986).</p>
+
+<a name=r4></a>
+<p>[4] S. Khoshafian and R. Abnous, <i>Object Orientation:
+Concepts, Languages, Databases, User Interfaces </i>(New York,
+NY: John Wiley &amp; Sons, Inc., 1990).</p>
+
+<a name=r5></a>
+<p>[5] T. Rentsch, &quot;Object-Oriented Programming,&quot;
+<i>SIGPLAN Notices </i>17:12 (September 1982): 51.</p>
+
+<a name=r6></a>
+<p>[6] G. Booch, 1991, p.119.</p>
+
+</body></html>

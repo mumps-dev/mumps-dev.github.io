@@ -1,0 +1,145 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -W-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter W</h1>
+
+<p><a href="#wattribute">wattribute</a>,
+<a href="#wevclass">wevclass</a>,
+<a href="#wident">wident</a>,
+<a href="#windowtype">windowtype</a>,
+<a href="#wname">wname</a>,
+<a href="#writeargument">writeargument</a></p>
+
+<hr>
+<a name="wattribute"></a>
+<h2>wattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for a characteristic
+attribute of a window. This metalanguage symbol occurs as an expression
+that evaluates to either one of the values <tt>"ACTIVE"</tt>,
+<tt>"BCOLOR"</tt>, <tt>"COLOR"</tt>, <tt>"DEFBUTTON"</tt>,
+<tt>"DISPLAY"</tt>, <tt>"EVENT"</tt>, <tt>"FCOLOR"</tt>,
+<tt>"FFACE"</tt>, <tt>"FSIZE"</tt>, <tt>"FSTYLE"</tt>, <tt>"ICON"</tt>,
+<tt>"ICONIFY"</tt>, <tt>"ID"</tt>, <tt>"ITITLE"</tt>,
+<tt>"MENUBAR"</tt>, <tt>"MIN"</tt>, <tt>"MODAL"</tt>, <tt>"NEXTG"</tt>,
+<tt>"PARENT"</tt>, <tt>"POS"</tt>, <tt>"PRESOURCE"</tt>,
+<tt>"RESIZE"</tt>, <tt>"SCROLL"</tt>, <tt>"SIZE"</tt>,
+<tt>"SIZEMIN"</tt>, <tt>"SIZEWIN"</tt>, <tt>"TIED"</tt>,
+<tt>"TITLE"</tt>, <tt>"TYPE"</tt>, <tt>"UNITS"</tt> or
+<tt>"VISIBLE"</tt>, or to an implementation-specific value (starts with
+<tt>"Z"</tt>), or to an application-specific value (starts with
+<tt>"Y"</tt>).</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Added <tt>"PTYPE"</tt>, <tt>"TBCOLOR"</tt> and <tt>"TFCOLOR"</tt> as possible
+values for window attribute codes.</p>
+
+<hr>
+<a name="wevclass"></a>
+<h2>wevclass</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents the name of an event class.
+Possible class names may be <tt>"COMM"</tt> (events related to devices),
+<tt>"HALT"</tt> (events that are generated when processes
+terminate), <tt>"IPC"</tt> (events communicated by other
+processes), <tt>"INTERRUPT"</tt> (events that are generated when
+a process is interrupted in an implementation-specific fashion),
+<tt>"POWER"</tt> (events generated when loss of electrical power
+is imminent), <tt>"TIMER"</tt> (events that are generated when a
+timer's waiting time has elapsed), <tt>"USER"</tt> (events
+that are generated through the <b>ETRIGGER</b> command)
+and <tt>"WAPI"</tt> (events related to windowing).</p>
+
+<hr>
+<a name="wident"></a>
+<h2>wident</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a name in the context of any windowing
+activity. Such a name consists of alphabetic characters and digits and may
+start with a % sign.</p>
+
+<hr>
+<a name="windowtype"></a>
+<h2>windowtype</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that identifies the type of a
+window. This metalanguage symbol occurs as an expression that evaluates to
+either of the values <tt>"APPLICATION"</tt> or <tt>"MTERM"</tt>, or to an
+implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="wname"></a>
+<h2>wname</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a name of a window. Names of windows
+consist of alphabetic characters and digits and may start with a % sign.</p>
+
+<p>For portability, the number of characters in the name of a window is limited
+to 31 characters.</p>
+
+<hr>
+<a name="writeargument"></a>
+<h2>writeargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>WRITE</b> command. Examples of valid arguments for the <b>WRITE</b> command
+appear in an earlier section. The argument of the <b>WRITE</b> command is
+either one of a list described below, or an indirection operator (<tt>@</tt>)
+followed by an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+
+<p>A directly specified <b>WRITE</b> argument can be a format specification, an
+expression, or an asterisk followed by an expression.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A format specification can also be a reference to a device control function
+(see the metalanguage symbols
+<a href="m.htm#mnemonicspace"> mnemonicspace</a> and
+<a href="c.htm#controlmnemonic"> controlmnemonic</a>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "W" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

@@ -1,0 +1,86 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%COLLATE^CHARACTER</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%COLLATE^CHARACTER</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as an
+override mechanism for collating strings.</p>
+
+<p>This function returns the collating value that would apply to a
+string in the specified environment. The environment specified
+may be:
+<ul>
+<li>absent, in which case the collating scheme for the current
+process prevails</li>
+
+<li>the name of a global variable, in which case the collating scheme
+for that global variable will be used</li>
+
+<li>the name of a character set profile, in which case the collating
+scheme for that character set profile will be used</li>
+</ul></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET</b> S="abc",A="a¤o"</tt></td>
+<td>&nbsp;</td>
+<td align=left>&nbsp;</td></tr>
+
+<tr><td align=right><tt><b>SET</b> ISO="ISO 8859-1"</tt></td>
+<td>&nbsp;</td>
+<td align=left>&nbsp;</td></tr>
+
+<tr><td align=right><tt><b>$%COLLATE^CHARACTER</b>(S,"^P")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABC"</tt></td></tr>
+
+<tr><td align=right><tt><b>$%COLLATE^CHARACTER</b>(S)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"abc"</tt></td></tr>
+
+<tr><td align=right><tt><b>$%COLLATE^CHARACTER</b>(A,ISO)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ano000060"</tt></td></tr>
+</table></p>
+
+<p>In the string <tt>"ano000060"</tt>, there are three parts, one for each
+iteration of the collation algorithm. The first part (<tt>"ano"</tt>) is
+the "pure" character value, the second part (<tt>"000"</tt>) is the
+upper/lower case value of the letters, and the third part
+(<tt>"060"</tt>) is the weight of the diacritical marks.</p>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="collate.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

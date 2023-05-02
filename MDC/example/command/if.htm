@@ -1,0 +1,68 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>I[F]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A=5 <b>SET</b> B=3 <b>WRITE</b> "..."</tt><br>
+The most common method to make several actions dependent on one
+test.</p>
+
+<p><tt><b>IF</b> (A&gt;5)&amp;(A&lt;16) <b>WRITE</b>
+"6 <img src="leq.xbm"> value <img src="leq.xbm"> 15"<br>
+<b>IF</b> A&gt;5 <b>IF</b> A&lt;16 <b>WRITE</b> "6 <img src="leq.xbm"> value <img src="leq.xbm"> 15"<br>
+<b>IF</b> A&gt;5,A&lt;16 <b>WRITE</b> "6 <img src="leq.xbm"> value <img src="leq.xbm"> 15"</tt><br>
+The above three lines have practically the same effect. All three
+test whether or not the value of a local variable is between two
+values, and write a message if this is the case. In the first
+example, however, the test <tt>A&lt;16</tt> is also evaluated
+when <tt>A&lt;5</tt>, whereas in the other two cases, because the
+first IF command on the line was unsuccessful, the rest of the
+line was already being skipped.<br>
+There is no difference between the second and third line, other
+than that the third line is more compact.</p>
+
+<p>The advantage of not evaluating expressions if an earlier test in
+the same line yielded a <i>false</i> result may become obvious in
+cases like:<br>
+<tt><b>IF</b> X=3,^|"FARAWAY"|GLOBAL(1,2,3) <b>DO</b>
+ACTION</tt><br>
+By putting the 'simple' test at the beginning of the line,
+transactions across the network may be prevented in those cases
+where there is no need to execute them.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>IF</b> VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,</tt><br>
+<tt><b>IF</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

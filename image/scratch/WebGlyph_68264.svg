@@ -1,0 +1,28 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="39" height="35" xmlns="http://www.w3.org/2000/svg">
+ <!-- Gardiner/Zz376515 at (0,8) in red, scale=.08, mirror=0 -->
+ <path d="M 5 23.2
+          A 5.36 5.36 0 1 0 15.72 23.2
+          A 5.36 5.36 0 1 0 5 23.2"
+       stroke="red" fill="white" stroke-width="1" fill-opacity="0.0"/>
+ <path d="M 22.52 23.44
+          A 5.68 5.68 0 1 0 33.88 23.44
+          A 5.68 5.68 0 1 0 22.52 23.44"
+       stroke="red" fill="white" stroke-width="1" fill-opacity="0.0"/>
+ <line x1="10.04" y1="23.36" x2="11.88" y2="23.12" style="stroke:red;stroke-width:1" />
+ <line x1="11.88" y1="23.12" x2="15.96" y2="12.48" style="stroke:red;stroke-width:1" />
+ <line x1="12.28" y1="11.28" x2="18.36" y2="13.52" style="stroke:red;stroke-width:1" />
+ <line x1="18.36" y1="13.52" x2="19.8" y2="12.72" style="stroke:red;stroke-width:1" />
+ <line x1="12.2" y1="11.36" x2="12.44" y2="10" style="stroke:red;stroke-width:1" />
+ <line x1="14.6" y1="15.92" x2="26.28" y2="15.44" style="stroke:red;stroke-width:1" />
+ <line x1="26.28" y1="15.44" x2="28.84" y2="23.44" style="stroke:red;stroke-width:1" />
+ <line x1="28.84" y1="23.44" x2="18.92" y2="23.68" style="stroke:red;stroke-width:1" />
+ <line x1="18.92" y1="23.68" x2="14.2" y2="17.36" style="stroke:red;stroke-width:1" />
+ <line x1="26.2" y1="15.52" x2="26.04" y2="13.92" style="stroke:red;stroke-width:1" />
+ <line x1="25.08" y1="13.92" x2="27.72" y2="14.08" style="stroke:red;stroke-width:1" />
+ <line x1="19.96" y1="22.16" x2="19.24" y2="22.16" style="stroke:red;stroke-width:1" />
+ <line x1="19.24" y1="22.16" x2="18.76" y2="25.12" style="stroke:red;stroke-width:1" />
+ <line x1="18.76" y1="25.12" x2="18.12" y2="25.28" style="stroke:red;stroke-width:1" />
+ <line x1="26.28" y1="15.52" x2="19" y2="23.68" style="stroke:red;stroke-width:1" />
+
+</svg>

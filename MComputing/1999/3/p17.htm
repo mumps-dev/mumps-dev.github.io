@@ -1,0 +1,244 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- Entering the new Millennium with a new MDC Standard</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 7, number 3, June 1999, pages 17-18</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+ntering the new Millennium with a new MDC Standard</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>As I am writing this column,
+it is almost a year ago that
+I last attended a meeting of
+the MDC. That is, I have missed
+the only meeting that has been held
+between June of last year and this
+summer. This does make it hard to
+report on current progress in the
+committee, but I'll try anyway.</p>
+
+<p>Just because there haven't been
+many meetings doesn't mean that
+there hasn't been any activity. In
+September of last year, the
+committee voted to "freeze" the set
+of extensions that were approved at
+that moment, and consolidate them
+into a new standard. Whether or not
+that new consolidated document
+will be presented for consideration
+as a new ANSI standard will
+depend on the level of interest in
+the industry. For the time being, we
+have a new MDC standard.</p>
+
+<p>This new document incorporates
+106 new extensions into the ANSI
+standards that were approved
+around 1995. As yet, I haven't seen
+many of these implemented in any
+of the major commercial versions,
+and that is the reason why the
+MDC is a bit reluctant to introduce
+the new document into the ANSI
+arena: without obvious support
+from the industry, there is little gain
+in having a standard that exists on
+paper only.</p>
+
+<h3>The Latest Additions</h3>
+
+<p>The most notable additions to the
+new MDC standard, in my opinion,
+are the ones that increase the
+possibilities for M[UMPS]
+programs to interact with the world
+outside of the familiar
+confinements.</p>
+
+<p>The ASSIGN command allows a
+M[UMPS] program to access a
+handle to an object (that will
+typically exist outside of the
+M[UMPS] world). In a trial
+implementation, I have used this
+new feature to manipulate a
+"commercial off the shelf" text
+processor to produce reports about
+information in a M[UMPS]
+database. Accessing this text
+processor through its (OLE) object
+handles and entry-points allowed
+me to use all the formatting
+features of this text processor, and
+I didn't have to worry about typical
+details such as letter size, line
+breaks and page breaks.</p>
+
+<p>The "Sockets" interface allows a
+M[UMPS] program to make use of
+communication channels that are
+based on the TCP/IP protocol. In a
+trial implementation, I have used
+this new feature to transmit
+information across a network, and
+I am currently working on a project
+where this feature is being used to
+implement transmission of images
+throughout a hospital based on the
+DICOM standards.</p>
+
+<p>Neither the "ASSIGN" command,
+nor the "Sockets" binding makes
+any significant changes to the
+syntax of "M[UMPS] as we know
+it", but the semantical implications
+of both extensions mean that a
+wealth of options that were
+inaccessible before (or only
+accessible through non-portable
+interfaces) could now be utilized in
+standard programs. (It would really
+be nice to see the trial
+implementations be adapted to
+reflect all details of the documents
+that made it into the new MDC
+standard.)</p>
+
+<h3>Other extensions</h3>
+
+<p>106 extensions sounds like a large
+number (and it is). About half of
+these extensions are really
+elaborations or clarifications that
+resolve questions that were raised
+by people attempting to translate
+the text of the standard from
+English into their language, and by
+people who attempted to implement
+the current ANSI standard.</p>
+
+<p>These clarifications aside, there are
+still over 50 actual new additions to
+the language in this new MDC
+standard.</p>
+
+<p>I'm certain that everyone will find
+their own favorites among these
+extensions (I mentioned some of
+mine earlier in this column). Below
+are more extensions that I really
+like.</p>
+
+<h3>$REFERENCE</h3>
+
+<p>Special variable $REFERENCE
+can be used to find the name of  the
+global variable that defined the
+current value of the "naked
+indicator" (or made that value
+undefined, as the case may be).
+Since this special variable may also
+occur as an argument to the NEW
+command, it has become possible
+to write subroutines that use global
+variables without changing the
+naked indicator:</p>
+
+<p><tt>SUB NEW $REFERENCE<br>
+&nbsp;...<br>
+&nbsp;QUIT</tt></p>
+
+<p>will have the effect that the naked
+indicator will be restored to its
+previous state (either the name of a
+global variable, or an empty string
+when the naked indicator was
+undefined) when the QUIT
+command is executed.</p>
+
+<h3>Mathematical Functions</h3>
+
+<p>The addition of a slew of
+mathematical library functions
+opens quite a number of new
+possibilities. Based on criticism on
+the 1990 ANSI standard, the
+committee set out to add all
+mathematical functions that occur
+in the standards for FORTRAN,
+Ada and C as standard library
+functions for M[UMPS]. Granted,
+if the library functions are
+implemented as M[UMPS] code,
+they may not be as fast as one
+would expect from software written
+in FORTRAN, Ada or C, but with
+the current speed of CPUs, this is
+becoming less and less of an issue.
+(Of course, the standard does invite
+implementors to use more efficient
+code than the samples that are
+provided with the standard.)</p>
+
+<h3>User Definable I/O and
+"structured variables"</h3>
+
+<p>I/O has been part of the standard
+from the very beginning, and the
+1995 standard introduced the
+concept of "structured system
+variables". As nice as these features
+may be, there is always a desire to
+use these concepts in a way that
+"slightly exceeds" the standardized
+definition.</p>
+
+<p>Up to now, one had to entice ones
+implementor to make specific ("Z")
+extensions to turn any such desires
+into an accessible implementation.
+Using these "user definable"
+extensions, however, an end-user
+can provide code that conforms to
+the language standard and that
+implements any such desires. The
+mechanism that enables the "user
+defined" extensions is left
+"implementation-specific" in the
+new standard, but the extensions
+themselves can be standard.</p>
+
+<h3>Where Can I See All This?</h3>
+
+<p>The text of the above-mentioned
+extensions, and all other ones that
+are included in the new MDC
+standards is available from the
+MTA office for a price that covers
+the photocopying and mailing
+expenses. The stack of paper is
+currently about 750 pages, so that
+price is no longer a trivial one.</p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+</body>
+</html>

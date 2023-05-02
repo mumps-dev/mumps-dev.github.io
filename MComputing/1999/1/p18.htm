@@ -1,0 +1,602 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 7, Number 1, Pages 18-25</h3>
+
+<h2>Omega Common Architectural Framework (CAF)<br>
+Design Guide: Symbol Table</h2>
+
+<h3>by Rick Marshall</h3>
+
+<p><i>The reader is hereby notified that the following language specification is a
+work in progress of the Object Oriented  Language Subcommittee of the MUMPS
+Development Committee. It is a partial specification of what may become the
+MDC Omega  Standard. This specification is dynamic in nature and may not
+correspond with the latest specification available.</i></p>
+
+<p><i>Because of the evolutionary nature of MUMPS specifications, the reader is
+further reminded that changes are likely to occur in the specification
+released herein prior to a complete republication of the MDC Omega Standard.</i></p>
+
+<p><i>Copyright 1998 by the MUMPS Development Committee. This document may be
+reproduced in any form so long as acknowledgment of the source is made.
+Anyone reproducing this release is requested to reproduce this introduction.</i></p>
+
+<h3>Status</h3>
+
+<p>This document is the first of a series aimed at recording the Omega group's
+oral culture so folks who haven't been intimately involved in the work can
+learn about it in time to help guide the design of the Omega Draft Standard.
+It is based on the work of Subcommittee 16 (Object-Oriented Language) of the
+MUMPS Development Committee.</p>
+
+<p>This second version of the document relies heavily on advice from Valerie
+Harvey on how to interpret network trees as trees and from Maury Pepper and
+Art Smith on how to do this with acceptable efficiency.</p>
+
+<h3>Introduction</h3>
+
+<p>Of all the architectural changes about which folks get excited when
+discussing Omega, the one least often mentioned but that has the greatest
+impact and involves the most work is the symbol table redesign.</p>
+
+<p>This is the basis for being able to model such things as changing variable
+scoping to be block and method oriented rather than free form. It is also
+the basis for far more difficult yet equally essential things such as
+changing from X11.1's flat two-table model to a truly hierarchical model
+capable of shifting context from one object to the next by following
+property references, and then to a true network, able to represent the
+persistent object references in properties and relationships that bind an
+object database together.</p>
+
+<p>In short, most of the changes required to model OO stem from two things:
+object contexts and references.</p>
+
+<h3>The Logic Behind the X11.1 Symbol Table</h3>
+
+<p>The X11.1 Symbol Table is about perfect for its purpose.</p>
+
+<p>It describes trees in which the most common starting context is the top
+level name. This context works well for modeling references to an individual
+node because any individual node can easily be reached in the model through
+its name, which effectively specifies a path from the top level name down to
+the desired node of the tree. This context also works well for most
+situations in which an entire variable tree is being manipulated, since
+call-by-reference, the exclusive KILL command, and the NEW command may only
+operate on top level names. Subtree situations, such as the MERGE command,
+the naked reference, subscript indirection, and the $ORDER and $QUERY
+functions, operate on contiguous tuples within the value table and so again
+are easily described in the existing model.</p>
+
+<p>Thus, although the model itself is a relationship between two flat tables,
+it quite easily describes most of the tree contexts and operations in which
+we find ourselves in M systems. Any shift of the current context away from
+the top level list of names (such as during a MERGE) is temporary, and in
+most cases the subsequent context needed will again be the top level names.
+This is a situation in which optimizing for a default context is ideal.
+As MDCC-E so notably described in their proposal "Taking M Beyond the Year
+2000," this model was never intended to be used for OO situations. My work
+on the Omega CAF (Common Architectural Framework) has pinpointed the
+dissonance at the introduction of shifting contexts and network
+relationships. These both undermine the usefulness of having a default
+context, and the latter demands a data structure representation that X11.1's
+symbol table can only model poorly at best.</p>
+
+<h3>Encapsulation: The Logic of Object Contexts</h3>
+
+<p>An object oriented system needs the default behavior of variables to be
+encapsulation rather than universal access, which is the inverse of the
+original MUMPS model.</p>
+
+<p>Encapsulation is a cornerstone not only of object orientation but of modern
+computer science as well. In the late 1960s Dijkstra wrote about the need to
+control the complexity of systems through information hiding and extended
+these ideas into the notion of interfaces that separate the definition of a
+software capability from its implementation. This increases the ease with
+which a programmer can both learn the system, since most of the details are
+now hidden, and also evolve the system, since most software modules are tied
+together only through narrowly defined sets of features, leaving the rest of
+the software details changeable so long as they continue to meet the
+definition of the guaranteed interface.</p>
+
+<p>Without encapsulation, systems become incredibly difficult to learn and
+enhance. The idea of encapsulation has proven to be one of the five most
+important advances in computer science of the last thirty years (along with
+graphical user interfaces, network computing, miniaturization, and the shift
+in costs from hardware to peopleware; although the latter is an effect of
+miniaturization, its significance is so profound that it deserves separate
+mention).</p>
+
+<p>Not surprisingly then, object orientation, designed to advance modular
+programming, used encapsulation as a cornerstone of its technology. Starting
+with the two classical OO languages Simula and Smalltalk, not only are
+variables tightly scoped, but from outside an interface you can't even tell
+whether they exist. The designers of Smalltalk took that principle to such
+an extreme that they didn't even include the idea of publicly visible
+properties; values can only be accessed as the result of sending messages to
+objects.</p>
+
+<p>Most modern programming languages claiming to be OO abandon this principle
+of OO and expose internal variables for access and manipulation. The few
+recent OO languages worthy of the name preserve the Smalltalk philosophy but
+extend it by allowing the exposure of property names while implicitly
+mediating all access to those properties by accessor methods. This level of
+indirection hides the structure of those properties, and, indeed, whether
+those properties exist at all other than as interface constructs.</p>
+
+<h3>Encapsulation: The Logic of Omega
+Object Contexts</h3>
+
+<p>When the members of MDC's Subcommittee 16 (Object-Oriented Language) voted
+on whether to pursue a pure OO model that would preserve encapsulation, such
+as Smalltalk or its modern successors, or a hybrid model that would allow
+direct access to variables, such as Visual BASIC, C++, and kin, they voted
+for the pure OO approach. Thus Omega will enforce encapsulation.</p>
+
+<p>Enforced encapsulation creates a situation in which there is no default
+context that is usually ideal for accessing the variables needed for
+computation. Since computation occurs within methods that are in turn bound
+up within objects, the correct context for variable access is the context
+within the object whose method is executing. Because methods are distributed
+according to the principle of abstraction, they are scattered across the
+objects in the system, residing within the objects that need those
+capabilities. Because no one object contains the lion's share of behavior in
+the system, there is no object whose context makes an ideal or even an
+acceptable default variable context. Thus, pure object orientation demands a
+fluid variable context.</p>
+
+<p>The very structure of the X11.1 symbol table assumes a default -- the top level
+names -- and thus is inappropriate for object orientation. Instead, Omega will
+need to be able to treat any individual object's context as a separate
+symbol table so that each object's methods have an accurate frame of
+reference for accessing and modifying the state that should be visible to
+them. As Mr. Jerry Goodnough pointed out in his ten OO model documents
+(published several times by the MDC), this suggests a model involving a
+symbol table for each object.</p>
+
+<p>Furthermore, another implication of pursuing a pure OO model is that Omega
+will retain M's (and Smalltalk's) simplicity by having all data types be
+interpretable as a single data type: the object. Thus, every variable node
+is an object and must have its own symbol table. A direct translation from
+X11.1 to X11.7, taking into account just object contexts, will change the
+symbol table from two flat tables to a tree of symbol tables, each of which
+can store a list of subscripts and property names (the need to allow for
+nested property names is introduced by the principle of abstraction, whose
+origins in record structures predates OO). This creates a tree of symbol
+tables.</p>
+
+<h3>Encapsulation: The Logic of
+Object References</h3>
+
+<p>Encapsulation as interpreted by pure OO systems also implies that objects,
+far from being passive records that can be copied, modified, or destroyed at
+will, are active entities that decide whether or not to carry out the
+behavior requests sent to them in messages. One object cannot own another
+the way a process owns a string variable in M; at best, one object can have
+a relationship with another. This kind of relationship is best modeled not
+by the notion of setting a variable equal to a value but by the notion of
+setting a variable equal to a reference to the object, such as writing down
+the phone number of a colleague. These object references (often referred to
+by longtime Omega working group members as orefs) open another can of worms
+that profoundly impacts the symbol table.</p>
+
+<p>The main problems raised by object references are 1) the problem of exposing
+pointer details that might compromise encapsulation, 2) the impact of
+keeping a single data type, and 3) the need to be able to model what now
+become arbitrary networks of object references.</p>
+
+<h3>The Problem with Pointers</h3>
+
+<p>As the authors of Java decided, pointers can violate encapsulation. If their
+contents can be inspected, then the programmer can learn things about the
+implementation of the system and can even manipulate the pointers
+mathematically to generate new pointers to objects they should not have
+access to. Therefore, the creators of Java abandoned the C++ notion of
+pointers in favor of references. A reference is essentially an encapsulated
+pointer, a pointer whose implementation is hidden and whose definition
+includes only a minimal set of methods. It may be copied, passed, used or
+deleted, but it may not be viewed or manipulated.</p>
+
+<p>Omega's relationship to M is much like Java's relationship to C, in that the
+designers of each sought to extend the base language's capabilities without
+retaining the problems of the original language or introducing new ones.
+Unlike C, M never had an explicit pointer data type, so Omega cannot inherit
+from it the problems of manipulation and violation. Still, Omega must
+introduce the notion of referring to objects, and so would do well to follow
+the Java model of using encapsulated pointers. As we will see in the months
+ahead, encapsulated pointers buy us tremendous power not immediately obvious
+from this discussion.</p>
+
+<h3>The Reference Data Type</h3>
+
+<p>Must Omega introduce references as a data type, the way Java and other
+languages do? Despite the conventional wisdom of the current culture of
+conformity, there is not always safety in numbers. As Christopher Alexander
+writes in "The Timeless Way of Building," solutions should be tailored to
+fit specific needs, and the needs of a language containing the strengths of
+M are not identical to those of one with the strengths of C. The Omega
+principle of simplicity advises us to be cautious about introducing any new
+language construct, to seek ways of overloading existing constructs to yield
+more powerful and intuitive constructs.</p>
+
+<p>The X11.1 symbol table contains built-in pointers, the pointers from the
+name table to the value table, that can be manipulated in a limited way but
+cannot be viewed or manipulated arithmetically. A call-by-reference
+operation establishes an alias between two different names by manipulating
+these pointers, the associated QUIT command detaches the alias, and the NEW
+command does likewise in a stacked fashion. Further, both call-by-reference
+and call-by-value perform implicit NEW commands that manipulate the symbol
+table pointers, and the two are syntactically distinguished by a "." prefix
+not yet used elsewhere in the language.</p>
+
+<p>With the permission of the Omega working group I've pursued a strategy of
+avoiding the introduction of a reference data type by extending the use of
+the symbol table pointer and the "." prefix used in call-by-reference into a
+generalized object reference system. This reference syntax is restricted to
+situations that do not result in violations of pointer encapsulation (e.g.,
+it is prohibited in the WRITE statement and modified in the SET statement).
+Since where permitted it is a general semantic capability, call-by-value and
+call-by-reference are no longer special details of parameter passing but
+instead become one of many situations in which object references are
+permitted and useful.</p>
+
+<p>The semantic details of object references are beyond the scope of this
+document, but some of the implications for the structure of the symbol table
+should be clear. One implication that may not be so clear is that the
+widespread use of references breaks down the value of modeling the symbol
+table with a tree structure.</p>
+
+<h3>Out of the Trees</h3>
+
+<p>Not even the X11.1 symbol table truly describes a tree, but with the
+widespread use of object references in X11.7, all pretense of
+tree-orientation must be abandoned. Omega, like all OO systems, provides a
+specialized form of network, and the symbol table must reflect that.</p>
+
+<p>Even in X11.1 the use of call-by-reference means the symbol table creates
+situations in which a given node may have more than one name, a situation
+prohibited by the definition of a tree. Nevertheless, because parameter
+passing is a comparatively new feature introduced in the 1990 Standard, and
+call-by-reference only modifies one pointer at a time, the symbol table
+model can still assume that the default situation produces a tree structure
+and treat call-by-reference as a special case. Furthermore, because
+call-by-reference only affects the pointer between a name and a node of
+degree 1 (and its descendants), the bulk of the symbol table cannot be
+affected by call-by-reference, and the only deviation from tree definition
+is to give nodes more than one parent without creating cycles (in which a
+parent is descended from one of its own children). Thus, even after the
+introduction of call-by-reference, a tree still describes most of the symbol
+table most of the time.</p>
+
+<p>That cannot be said for X11.7 or most other OO languages, in which object
+references are widely used to describe complex relationships among objects.
+The ability to assign references from any object to any other quickly
+creates a complex network of relationships that does not remotely resemble a
+tree. Clearly some changes need to be made to the symbol table structure to
+model this new set of relationships among variables. This requires a careful
+analysis of the X11.1 symbol table structure and what we need for X11.7.</p>
+
+<h3>Network Trees</h3>
+
+<p>My analysis of the new relationships suggests we need to coin a term to
+describe this data structure, which authors of other languages work hard not
+to explore. After some research and consultation I'm proposing "network
+tree" for reasons that will become clear.</p>
+
+<p>As could be inferred from the process of modification we're using to derive
+the X11.7 from X11.1, the new data structure is related to the previous one.
+Both, it turns out, are special cases of the same general case.</p>
+
+<p>A tree consists of data nodes related by pointers (directed arcs) in such a
+way that 1) each node but one is pointed to by one other node, and 2) the
+remaining node (called the root) is pointed to by no nodes and from it every
+other node in the tree can be reached by following enough pointers.</p>
+
+<p>If you remove the two restrictions, the resulting data structure is the
+general case, called a network or directed graph (or digraph). Although at
+first glance this appears to describe the X11.7 symbol table with its
+arbitrary references between objects, further study reveals the X11.7 symbol
+table falls somewhere between trees and networks.</p>
+
+<p>First, networks can have isolated nodes or groups of nodes such that there
+is no set of pointers connecting the various groups of nodes. This is not
+the case in the X11.7 symbol table, which is created from an empty symbol
+table through a process of adding new objects through the properties of
+existing ones (when one includes the initial symbol table itself as an
+object -- the process or user or connection). Such a network is described as
+contiguous -- every node in the network points to or is pointed to by at least
+one other node.</p>
+
+<p>Second, even contiguous networks need not have a root, a node from which
+every other node can eventually be reached by following pointers. Pointers
+establish one-way relationships. For there to be a root, there needs to be
+enough pointers in the right direction to reach all the nodes. Because of
+the way an Omega symbol table is built up, it is not only contiguous but
+also rooted.</p>
+
+<p>Thus, the X11.7 symbol table describes a rooted, contiguous, directed graph,
+or, put another way, a tree that allows cycles and multiple parents. It is
+from the latter description that I've derived the name of this data
+structure.</p>
+
+<h3>Tree Interpretation of Network Trees</h3>
+
+<p>A network tree best describes the structure of the X11.7 symbol table in
+Omega Version 4, the draft I'm currently working on. But in the OO world
+describing the structure is not enough to ensure understanding; we must also
+describe its behavior. Until we have confirmed that the operations we intend
+to perform can be described in terms of the new structure, we can't be sure
+we haven't painted ourselves into a corner.</p>
+
+<p>Just as X11.1 had array operations defined by taking an array interpretation
+of part of a tree (e.g., $ORDER), so X11.7 has tree operations defined by
+taking a tree interpretation of part of a network tree (e.g., $QUERY). As
+long as we can take such an interpretation in a reliable way, we can be sure
+the tree operations will make the transition to X11.7.</p>
+
+<p>A tree interpretation of a network tree involves keeping all the nodes but
+ignoring extraneous references until all that's left is a tree, a process
+called pruning, appropriately enough. The pruning has to deal with the two
+differences between trees and network trees cited above: cycles and multiple
+parents. The MDC's work at the June 1998 Special Meeting uncovered two
+additional requirements for this pruning.</p>
+
+<p>First, since most network trees can be pruned to more than one possible tree
+(i.e., with all the same nodes but in different relationships of parents and
+children), we need a pruning algorithm with a predictable result. For
+example, if we build a network tree by starting with a tree and adding more
+references without adding or removing nodes, our pruning algorithm should
+result in the same tree no matter how many references have been added.</p>
+
+<p>Second, since these data structures are to be used in actual production, not
+just in theoretical work, the pruning algorithm must be quick.</p>
+
+<h3>A "MUMPSy" Network Tree</h3>
+
+<p>As Mr. Pepper and Mr. Smith described at the June 1998 meeting, no pruning
+algorithm can meet all of these requirements unless the network tree itself
+encodes some kind of guidance. The tree references must be easily
+distinguished from the network references, which we will do by physically
+separating the two kinds of references into tree references and network
+references.</p>
+
+<p>Any reference from a subscripted node (any subscript reference, e.g.,
+Version(1)) will be considered a tree reference and must follow the
+definition of a tree: the node it references will be treated as a child
+node, and that node cannot be an ancestor of its parent (cycles are
+prohibited) nor can it be the child of any other subscripted node (multiple
+parents are prohibited).</p>
+
+<p>Any reference from a named node (any name reference, e.g., Version) will be
+considered a network reference and need not follow the restrictions of a
+tree reference: cycles and multiple parents are allowed. For example, any
+named node can reference any node, named or subscripted, including itself.</p>
+
+<p>Attentive readers will notice that this is precisely the definition of the
+X11.1 symbol table. The only difference is that in X11.7 any node may have
+not only subscripted children (e.g., Version (1,"Date") is a child of
+Version(1)) but also named children (e.g., Version.Count is a child of
+Version, and Version(1,"Date").PageCount is a child of Version(1,"Date")).</p>
+
+<p>In structural terms, then, any Omega node can be seen as 1) an individual
+variable with a value, 2) the root of a tree of nodes linked only by
+subscript references, and 3) the root of a network tree of nodes linked by
+subscript and name references. Array and tree functions will operate only
+upon the tree descendants of a given node. Notice that the tree
+interpretation no longer includes all the network tree's nodes; for example,
+Version.Count is not a tree descendant of Version.</p>
+
+<p>Because such a tree interpretation is possible, we know that those language
+constructs that operate upon trees can be written in terms of the
+interpretation, rather than the network itself, and will therefore survive
+the transition from X11.1 to X11.7. Once a tree interpretation is possible,
+we know an array interpretation is also possible and so account for all the
+primary X11.1 data structures and their operations. Any operations new to
+X11.7, such as network and object functions, can be written to the network
+tree structure from the outset.</p>
+
+<h3>The New X11.7 Symbol Table</h3>
+
+<p>The members of SC16 voted to have Omega implement a pure OO system rather
+than a hybrid, one in which the architecture was designed for objects from
+the ground up rather than trying to backfit objects into an otherwise
+incompatible architecture. At the same time, since the original goal behind
+Omega is to introduce OO capabilities to M, Omega must retain any M
+capabilities not hostile to objects.</p>
+
+<p>Generating a symbol table capable of meeting both of these goals was clearly
+a prerequisite for being able to process with the objects it stores. I
+believe this network tree architecture meets these design goals, but would
+like review and critique from the broader M community. Is the resulting
+structure clear and correct? Is it as simple as possible without sacrificing
+capability? Are there parts of this explanation that need to be expanded? We
+crave your feedback.</p>
+
+<h3>Postscript: The Principle of Least
+Astonishment</h3>
+
+<p>Mr. Fred Hiltz is fond of citing the Principle of Least Astonishment, a
+cousin of Occam's Razor, in support of or opposition to proposals in the
+MDC. The principle reads, paraphrased, that when offered a selection of
+otherwise equivalent choices for how to implement a new feature, choose the
+one that would least astonish those who need to learn or use that feature.
+This valuable general principle gives us a guideline for how to apply the
+Omega principle of simplicity; a powerful way to simplify the Omega design
+is to look for those language features in M that beginners (or experts)
+often have difficulty learning or remembering and change it in Omega to be
+less confusing.</p>
+
+<p>The Omega working group has learned to spot such situations easily by
+looking for 1) situations that violate otherwise universal patterns, 2)
+multiple syntactic constructs that provide the same underlying capability in
+different ways, and 3) constructs we find ourselves occasionally misusing
+even after years of practice. A number of these can be fixed by applying or
+extending capabilities of this new symbol table:</p>
+
+<p><b>Passing, NEWing, and exclusive KILLing Things Other than Names</b>: Beginners
+often stumble over the fact that X(3) can neither be passed by reference,
+nor NEWed, nor included in the exclusion list of an exclusive KILL. With
+X11.7's network tree symbol table, this restriction is no longer necessary,
+since it was based on X11.1's default context of the name table.</p>
+
+<p><b>Passing Globals by Reference</b>: VA FileMan, at least, has had to go to some
+lengths in its new DataBase Server (DBS) calls to simulate passing a global
+by reference. Why not just allow it and remove the oddity of
+call-by-reference that it accepts locals but not globals.</p>
+
+<p><b>NEWing Globals</b>: Passing globals by reference requires an implicit NEWing of
+a global to have a meaning. Why not allow explicit NEWing of a global and
+remove yet another oddity? NEWing a global would make the global name appear
+undefined while keeping a reference to the value and descendants on the
+local process's stack. When the local process hits the right QUIT, the
+global name is rebound to its value and descendants. This sets the stage for
+another requirement of passing globals by reference.</p>
+
+<p><b>Assigning One Global Name to Reference Another</b>: Just as X11.7 allows
+statements like S X.=Y to bind X to Y's value and descendants in an explicit
+version of the operation that implicitly occurs in pass-by-reference, why
+not allow S ^X.=^Y to do the same with globals? Whatever value and
+descendants ^X used to have are killed, and it is aliased to ^Y. If this
+were preceded by a N ^X, then ^X's value and descendants return when the
+current method QUITs. These kinds of increased global manipulation
+capabilities not only remove counter-intuitive limitations that must
+otherwise be learned, they also acknowledge M's (and Omega's) focus on the
+active manipulation of persistent data by shedding excessive cautions rooted
+in an old intuition that manipulation of private, transient data is somehow
+more natural than manipulating shared, persistent data.</p>
+
+<p><b>Naked References</b>: A perpetual source of errors, such a valuable shorthand is
+nevertheless of increasing importance in an environment such as Omega in
+which you can find yourself writing not only long subscript lists but long
+property lists. Even Smalltalk had a cousin of the naked reference designed
+to give a shorthand for long property lists. The main defects are 1) its
+volatility, the way it changes as a side effect of other activities, and 2)
+that you can only have one at a time. The cleanest solution is to eliminate
+it, because the ability to set one variable to reference another allows you
+to create as many stable "nakeds" at a time as you want. This also solves
+the problem that M provides no local naked, since either global or local
+variables can be referenced to one another.</p>
+
+<p><b>Subscript Indirection</b>: Subscript indirection solves a problem closely
+related to that solved by the naked reference, but it does so using the
+syntax of indirection. It does not, however, use the semantics of
+indirection. Subscript indirection is not analogous to the other forms, as
+many on the MDC will tell you, and if we want to simplify the definition of
+indirection in Omega then subscript indirection poses a problem.
+Fortunately, the same solution to the naked reference problem works here:
+eliminate subscript indirection and use variable referencing instead.</p>
+
+<p><b>LOCKing Locals</b>: X11.1 is a little vague about the effects of LOCKing a local
+variable because locals are not shared. Thus, locking a global is portable
+and predictable but locking a local is not. With the advent of threading we
+now have situations in which locals can be shared among multiple threads
+within a process. Locking a local thus becomes not only meaningful but
+useful, and removes another idiosyncrasy.</p>
+
+<p><b>Encapsulating Behavior</b>: A great example of M's code-data fluidity is the way
+data can be treated as code (XECUTE) and code as data ($TEXT), but why
+should we store them in two different kinds of data structures, thereby
+requiring redundant language constructs? Besides, in OO code is supposed to
+reside within object encapsulation and be subject to active object decision-
+making rather than be passively executed and manipulated by software.
+Eliminating routines, XECUTE, and $TEXT, and instead storing code in
+variables (local or global) as a new class of object simplifies the system
+and brings its architecture more in line with OO philosophy.</p>
+
+<p><b>An OO Description of the Symbol Table</b>: X11.1 itself describes the symbol
+table in fragments of text, some redundant, all over the Standard; some of
+the explanation resides in the chapter on local variable handling, but the
+rest is scattered about in descriptions of the NEW command, parameter
+passing, etc. If OO is good for making programming languages easier to read,
+shouldn't it be good for making standards easier to read too? The symbol
+table should be described in X11.7 as an object with public and private
+properties and methods to make it easier to understand.</p>
+
+<h3>Postpostscript: Mixing References to Globals with Locals</h3>
+
+<p>I think I'm leaning toward a new take. Our new network trees have the idea
+that not all nodes are equal, since network nodes (named ones) can be
+aliased anywhere, but tree nodes (subscripted ones) can only be aliased such
+that no two tree nodes alias the same object. Effectively, the tree is less
+fluid than the network such that you can simulate a tree using only named
+nodes, but you can't simulate a network using the tree nodes. The closest
+you can come is to attach some network nodes to a tree node and link that
+into the network (e.g., X(3) will always be part of a tree, but you can
+always hook on X(3).WAHOO which is free to point anywhere).</p>
+
+<p>In the same vein, we can let globals alias to locals and vice versa and yet
+keep conceptual elegance and integrity that I can best illustrate with four
+examples:</p>
+
+<p>1) S X.=Y. This case is no big deal. X and Y are both private and transient,
+and aliasing them together doesn't change that.</p>
+
+<p>2) S ^DIC(19,42).STATE.=^DIC(5,15). This case is also no big deal. Both
+variables are shared and persistent, and aliasing them together doesn't
+change that. Note that we can only link option 42 with state 15, both of
+which are tree nodes, via STATE, a network node.</p>
+
+<p>3) S X.=^DIC(19,42,10,3). Here's the first important case. Even though the
+object referenced by X is persistent and shared, X itself remains transient
+and private; it is only the reference, and when the current environment
+drops away (e.g., if X is just a method variable) X will become undefined,
+meaning this reference to the object disappears but the object remains
+because of ^DIC(19,42,10,3). Thus, even after aliasing the local and global
+variable, they each retain their intrinsic properties.</p>
+
+<p>4) S ^DIC(19,42,10,3).SYNONYM=X. Here's the breakthrough case. The object
+referenced by X was transient and private because only X had ahold of it.
+When we alias over this menu item's synonym, the object picks up this shared
+and persistent reference and thus becomes shared and persistent.</p>
+
+<p>This is not through any magic reference counting, but through precisely the
+same garbage collection mechanism mentioned in reference to data cells in
+the X11.1 symbol table model; when a data cell has no more references to it
+either from the name table or from the stack it may be recycled by the
+garbage collector. Thus, the object becomes global in the usual MUMPSy way
+we would expect.</p>
+
+<p>X, however, remains private and transient, and when the current symbol table
+is recycled its reference to the object drops away. Thus, again, both
+variables retain their intrinsic nature through the aliasing and implicit
+dealiasing, and the object itself behaves in the way we intuitively expect
+of data cells in a symbol table.</p>
+
+<h3>Postpostpostscript: Subscript Values
+and Collation</h3>
+
+<p>In X11.1 all values have a defined collation sequence to allow them to be
+stored in subscripts in a meaningful way. If all variables are objects, then
+how do they collate, and what happens if I S PATIENT(NEW)="", where NEW is
+an object of class PATIENT? Is this even meaningful, or do I get an error?</p>
+
+<p>Every object has a unique OID, or Object Identifier, a string of characters
+that uniquely identifies that object across all Omega systems for all time.
+Unlike the oref, which is a hidden value that links two objects together,
+the OID is a string value, and therefore collatable according to the rules
+described in X11.1. At the September 1998 MDC meeting, SC16 expressed a
+preference for having the OID be the string interpretation of its
+corresponding oref.</p>
+
+<h3>Afterword</h3>
+
+<p>Issues like this one remain in a fluid state in which options have been
+discussed in the weekly calls and have become a part of the Omega working
+group's oral culture but have not yet been compelled by the schedule to
+solidify into an architectural decision. I hope documents like this one will
+help record that oral culture for your perusal and will inspire you to bring
+your own culture and insight to bear on the creation of Omega. If we succeed
+in our design goals, the Omega extension to M will create a path of
+evolution into the future that allows M to survive and interoperate with
+other modern systems as an equal partner.</p>
+
+<p>To succeed we need to bring to bear the collective wisdom of our creative M
+and OO communities. Tell us what's on your mind.</p>
+
+<p>Rick Marshall is a Hardhat (www.hardhats.org) and member of the MTA Board of
+Directors; he works for the VA Medical Center in Seattle.</p>
+
+</body></html>

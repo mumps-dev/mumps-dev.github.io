@@ -1,0 +1,62 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%MTXUNIT^MATH</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%MTXUNIT^MATH</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as part of the
+library for Matrix Mathematics.</p>
+
+<p>This function creates a (sparse) unit matrix.</p>
+
+<p><tt><b>SET</b> X=<b>$%MTXUNIT^MATH</b>(.RESULT,4)</tt> will create a
+"full" 4x4 unit matrix:</p>
+
+<pre>
+1   0   0   0
+0   1   0   0
+0   0   1   0
+0   0   0   1
+</pre>
+
+<p><tt><b>SET</b> X=<b>$%MTXUNIT^MATH</b>(.RESULT,4,1)</tt> will create a
+"sparse" 4x4 unit matrix: (a cell containing "#" means no defined value):</p>
+
+<pre>
+1   #   #   #
+#   1   #   #
+#   #   1   #
+#   #   #   1
+</pre>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="mtxunit.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

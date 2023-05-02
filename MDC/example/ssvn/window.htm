@@ -1,0 +1,265 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$WINDOW</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$WINDOW</h1>
+
+<h3><a href="ssvnt1.htm">Window attributes</a><br>
+<a href="ssvnt2.htm">Gadget attributes</a><br>
+<a href="ssvnt3.htm">Choice attributes</a><br>
+<a href="ssvnt4.htm">Event attributes</a><br>
+<a href="ssvnt5.htm">Event information</a></h3>
+
+<hr>
+
+<a name="^$W[INDOW]"></a>
+<h2>^$W[INDOW]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This structured system variable provides information about the
+windows that are currently known to the M[UMPS] process.</p>
+
+<p>Most of the examples below will use this window:</p>
+
+<p>[ graphic to be inserted later ]</p>
+
+<p>which is defined in the global variable <tt>^BURGER</tt> as:</p>
+
+<pre>
+^BURGER("MESSAGE","G","OK","EVENT","SELECT")="POPUP^BURGER"
+^BURGER("MESSAGE","G","OK","POS")="50,5"
+^BURGER("MESSAGE","G","OK","SIZE")="100,30,PIXEL"
+^BURGER("MESSAGE","G","OK","TITLE")="OK"
+^BURGER("MESSAGE","G","OK","TYPE")="BUTTON"
+^BURGER("MESSAGE","G","TEXT","CANCHANGE")=0
+^BURGER("MESSAGE","G","TEXT","POS")="5,2"
+^BURGER("MESSAGE","G","TEXT","TYPE")="TEXT"
+^BURGER("MESSAGE","MODAL")="PARENT"
+^BURGER("MESSAGE","PARENT")="ORDER"
+^BURGER("MESSAGE","POS")="12,0"
+^BURGER("MESSAGE","RESIZE")=0
+^BURGER("MESSAGE","SIZE")="60,7"
+^BURGER("MESSAGE","UNITS")="CHAR"
+^BURGER("MESSAGE","VISIBLE")=0
+
+^BURGER("ORDER","G","BURGER","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","BURGER","POS")="240,160"
+^BURGER("ORDER","G","BURGER","SIZE")="110,25"
+^BURGER("ORDER","G","BURGER","TITLE")="Burger  $1.00"
+^BURGER("ORDER","G","BURGER","TYPE")="CHECK"
+^BURGER("ORDER","G","CUSTOMER","CHARMAX")=60
+^BURGER("ORDER","G","CUSTOMER","EVENT","CHANGE")="CUST^BURGER"
+^BURGER("ORDER","G","CUSTOMER","POS")="140,30"
+^BURGER("ORDER","G","CUSTOMER","SIZE")="220,25"
+^BURGER("ORDER","G","CUSTOMER","TITLE")="Customer Name:"
+^BURGER("ORDER","G","CUSTOMER","TPOS")="LEFT"
+^BURGER("ORDER","G","CUSTOMER","TYPE")="TEXT"
+^BURGER("ORDER","G","DRINKS","CHOICE",1)="Coke         $0.75"
+^BURGER("ORDER","G","DRINKS","CHOICE",2)="Pepsi        $0.70"
+^BURGER("ORDER","G","DRINKS","CHOICE",3)="Orange       $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",4)="Water        $0.00"
+^BURGER("ORDER","G","DRINKS","CHOICE",5)="Root Beer    $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",6)="Sprite       $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",7)="Bass Ale     $3.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",8)="Meisterbrau  $3.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",9)="Budweiser    $1.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",10)="Red Wine     $2.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",11)="White Wine   $2.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",12)="Pink Wine    $1.75"
+^BURGER("ORDER","G","DRINKS","POS")="40,120"
+^BURGER("ORDER","G","DRINKS","SIZE")="140,140"
+^BURGER("ORDER","G","DRINKS","TITLE")="Drinks"
+^BURGER("ORDER","G","DRINKS","TYPE")="LIST"
+^BURGER("ORDER","G","DRINKS","VALUE",4)=""
+^BURGER("ORDER","G","FRIES","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","FRIES","POS")="240,130"
+^BURGER("ORDER","G","FRIES","SIZE")="110,25"
+^BURGER("ORDER","G","FRIES","TITLE")="Fries        $0.50"
+^BURGER("ORDER","G","FRIES","TYPE")="CHECK"
+^BURGER("ORDER","G","ORDER","EVENT","SELECT")="ORDER^BURGER"
+^BURGER("ORDER","G","ORDER","POS")="280,280"
+^BURGER("ORDER","G","ORDER","SIZE")="60,25"
+^BURGER("ORDER","G","ORDER","TITLE")="Order"
+^BURGER("ORDER","G","ORDER","TYPE")="BUTTON"
+^BURGER("ORDER","G","PIE","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","PIE","POS")="240,190"
+^BURGER("ORDER","G","PIE","SIZE")="110,25"
+^BURGER("ORDER","G","PIE","TITLE")="Pie          $0.50"
+^BURGER("ORDER","G","PIE","TYPE")="CHECK"
+^BURGER("ORDER","G","TOTAL","POS")="40,280"
+^BURGER("ORDER","G","TOTAL","SIZE")="100,40"
+^BURGER("ORDER","G","TOTAL","TITLE")="Total: $ 0.00"
+^BURGER("ORDER","G","TOTAL","TYPE")="LABEL"
+^BURGER("ORDER","M","MENU1","CHOICE",1)="Options"
+^BURGER("ORDER","M","MENU1","CHOICE",1,"SUBMENU")="MENU2"
+^BURGER("ORDER","M","MENU2","CHOICE",1)="Clear"
+^BURGER("ORDER","M","MENU2","CHOICE",1,"EVENT","SELECT")="CLEAR^BURGER"
+^BURGER("ORDER","M","MENU2","CHOICE",2)="Exit"
+^BURGER("ORDER","M","MENU2","CHOICE",2,"EVENT","SELECT")="EXIT^BURGER"
+^BURGER("ORDER","MENUBAR")="MENU1"
+^BURGER("ORDER","POS")="20,30"
+^BURGER("ORDER","RESIZE")=0
+^BURGER("ORDER","SIZE")="400,400"
+^BURGER("ORDER","TITLE")="Fast Food Order"
+^BURGER("ORDER","UNITS")="PIXEL"
+^BURGER("ORDER","VISIBLE")=1
+^BURGER("ORDER","VISIBLE","TYPE")="CHECK"
+</pre>
+
+<p>and is manipulated by the program:</p>
+
+<p><tt>BURGER ; Written by Thomas Salander,<br>
+ ; after an original by Guy Gardner<br>
+ ;<br>
+ ; Copy the window definition from a global variable<br>
+ ; into the ^$WINDOW structure<br>
+ ;<br>
+ <b>MERGE ^$WINDOW</b>("ORDER")=^BURGER("ORDER")<br>
+ ;<br>
+ ; Copy the window definition for the message pop-up<br>
+ ; window as well. This window has its 'visible'<br>
+ ; flag off, so that it does not yet appear.<br>
+ ;<br>
+ <b>MERGE ^$WINDOW</b>("MESSAGE")=^BURGER("MESSAGE")<br>
+ ;<br>
+ ; Start call-back processing<br>
+ ;<br>
+ <b>ESTART</b><br>
+ ;<br>
+ ; Return here after handling call-backs.<br>
+ ; Delete windows and terminate program.<br>
+ ;<br>
+ <b>KILL ^$WINDOW</b>("ORDER"),<b>^$WINDOW</b>("MESSAGE")<br>
+ <b>QUIT</b><br>
+ ;<br>
+EXIT ; Call-back for exit item in menu<br>
+ <b>ESTOP</b><br>
+ <b>QUIT</b><br>
+ ;<br>
+CLEAR ; Call-back for Clear item in menu<br>
+ <b>NEW</b> ITEM,T<br>
+ <b>FOR</b> ITEM="DRINKS","FRIES","BURGER","PIE" <b>DO</b><br>
+ . <b>KILL ^$WINDOW</b>("ORDER","G",ITEM,"VALUE")<br>
+ . <b>QUIT</b><br>
+ <b>SET</b> T="Total: $0.00"<br>
+ <b>SET ^$WINDOW</b>("ORDER","G","TOTAL","TITLE")=T<br>
+ <b>QUIT</b><br>
+ ;<br>
+CUST ; Call-back for change in Customer Name:<br>
+ ; text gadget<br>
+ ;<br>
+ <b>NEW</b> VALUE,TXT<br>
+ <b>SET</b>
+VALUE=<b>^$WINDOW</b>("ORDER","G","CUSTOMER","VALUE")<br>
+ <b>QUIT</b>:VALUE=""&nbsp;&nbsp;; Nothing selected<br>
+ <b>QUIT</b>:VALUE?1.A1","1.A&nbsp;&nbsp;; All is well<br>
+ ;<br>
+ ; Set up to display the modal message window<br>
+ ; First, change the message<br>
+ ;<br>
+ <b>SET</b> TXT="Please enter name in form Last,First only."<br>
+ <b>SET ^$WINDOW</b>("MESSAGE","G","TEXT","VALUE")=TXT<br>
+ ;<br>
+ ; Now display the message window<br>
+ ;<br>
+ <b>SET ^$WINDOW</b>("MESSAGE","VISIBLE")=1<br>
+ ;<br>
+ ; Now wait for the event<br>
+ ;<br>
+ <b>ESTART</b><br>
+ ;<br>
+ ; When we return from this event handler,<br>
+ ; our event data is restored to the state<br>
+ ; it was before the call.<br>
+ ; Since the results are not valid, prevent<br>
+ ; the change of focus.<br>
+ ;<br>
+ <b>KILL ^$EVENT</b>("OK")<br>
+ <b>QUIT</b><br>
+ ;<br>
+TOTAL ; Call-back for all check boxes and list box<br>
+ ; When data changes in order...<br>
+ ; used to update the Total<br>
+ ;<br>
+ <b>NEW</b> WIN,TOT,ITEM,TITLE,D<br>
+ <b>SET</b> WIN=<b>^$EVENT</b>("WINDOW")<br>
+ <b>SET</b> TOT=0<br>
+ ;<br>
+ ; Loop through the check-boxes<br>
+ ;<br>
+ <b>FOR</b> ITEM="FRIES","BURGER","PIE" <b>DO</b><br>
+ . <b>QUIT</b>:'<b>^$WINDOW</b>(WIN,"G",ITEM,"VALUE")&nbsp;&nbsp;; not on<br>
+ . <b>SET</b> TITLE=<b>^$WINDOW</b>(WIN,"G",ITEM,"TITLE")<br>
+ . <b>SET</b> TOT=TOT+<b>$PIECE</b>(TITLE,"$",2) ; add price<br>
+ . <b>QUIT</b><br>
+ ;<br>
+ ; If a drink was ordered, add the price<br>
+ ;<br>
+ <b>SET</b> D="DRINKS"<br>
+ <b>IF ^$WINDOW</b>(WIN,"G",D,"VALUE") DO<br>
+ . <b>SET</b> ITEM=<b>$ORDER</b>(<b>^$WINDOW</b>(WIN,"G",D,"VALUE",""))<br>
+ . <b>SET</b> TITLE=<b>^$WINDOW</b>(WIN,"G",D,"CHOICE",ITEM)<br>
+ . <b>SET</b> TOT=TOT+<b>$PIECE</b>(TITLE,"$",2) ; add price<br>
+ . <b>QUIT</b><br>
+ ;<br>
+ <b>SET</b> TOT=<b>$JUSTIFY</b>(TOT,0,2)<br>
+ <b>SET</b>:TOT&lt;1 TOT=0_TOT <b>SET</b> TOT="Total: $ "_TOT<br>
+ <b>SET ^$WINDOW</b>(WIN,"G","TOTAL","TITLE")=TOT<br>
+ <b>QUIT</b><br>
+ ;<br>
+ORDER ; Call-back for push button Order<br>
+ <b>NEW</b> WIN,ITEM,D<br>
+ <b>SET</b> WIN=<b>^$WINDOW</b>("WINDOW")<br>
+ ;<br>
+ ; Loop through the check-boxes<br>
+ ;<br>
+ <b>FOR</b> ITEM="FRIES","BURGER","PIE" <b>DO</b><br>
+ . <b>QUIT</b>:'<b>^$WINDOW</b>(WIN,"G",ITEM,"VALUE")&nbsp;&nbsp;; Not on<br>
+ . <b>SET</b> ^ORDER(<b>$JOB</b>,ITEM)=1<br>
+ . <b>QUIT</b><br>
+ ;<br>
+ ; Was a drink ordered?<br>
+ ;<br>
+ <b>SET</b> D="DRINKS"<br>
+ <b>SET</b> ITEM=<b>$ORDER</b>(<b>^$WINDOW</b>(WIN,"G",D,"VALUE",""))<br>
+ <b>IF</b> ITEM <b>DO</b>&nbsp;&nbsp;; Yes, a drink was ordered<br>
+ . <b>SET</b> ITEM=<b>^$WINDOW</b>(WIN,"G",D,"CHOICE",ITEM)<br>
+ . ; Strip price<br>
+ . <b>SET</b> ^ORDER(<b>$JOB</b>,<b>$PIECE</b>(ITEM," ",1))=1<br>
+ . <b>QUIT</b><br>
+ ;<br>
+ <b>DO</b> CLEAR<br>
+ <b>QUIT</b><br>
+ ;<br>
+POPUP ; Call-back from the modal message window<br>
+ <b>SET ^$WINDOW</b>(<b>^$EVENT</b>("WINDOW"),"VISIBLE")=0<br>
+ <b>ESTOP</b><br>
+ <b>QUIT</b></tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

@@ -1,0 +1,122 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $TRANSLATE</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $TR[ANSLATE]</h1>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a translated version of the value of the
+input-string.</p>
+
+<p><tt><b>SET</b> UP="ABCDEFGHIJKLMNOPQRSTUVWXYZ"<br>
+<b>SET</b> LO="abcdefghijklmnopqrstuvwxyz"<br>
+<b>SET</b> X="ABCdef"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>(X,LO,UP)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABCDEF"</tt></td></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>(X,UP,LO)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"abcdef"</tt></td></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>(X,LO)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABC"</tt></td></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>(X,UP)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"def"</tt></td></tr>
+</table></p>
+
+<p>Note that case conversion using
+<tt><b>$CHAR</b>(<b>$ASCII</b>(X)+32)</tt> and
+<tt><b>$CHAR</b>(<b>$ASCII</b>(X)-32)</tt>
+only works within the
+strictly bounded 128 character ASCII set. Case conversion using
+<b>$TRANSLATE</b> will always work, regardless of the character
+set being used.</p>
+
+<p>Assume that <tt>X="12/26/94"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>("Yy/Mm/Dd","Mm/Dd/Yy",X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"94/12/26"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> X=122694<br>
+<b>$TRANSLATE</b>("efabcd","abcdef",X)</tt></td>
+<td>&nbsp;</td>
+<td valign=bottom align=left><tt>"941226"</tt></td></tr>
+</table>
+<b>Note</b>: in this example, start with the string <tt>"efabcd"</tt>.
+Replace all <tt>"a"</tt>s with the first character of the value of X,
+all <tt>"b"</tt>s with the second character, et cetera.</p>
+
+<p><tt><b>SET</b> (FORWARD,BACKWARD)=""<br>
+<b>FOR</b> K=0:1:255 <b>SET</b> FORWARD=FORWARD_<b>$CHAR</b>(K)<br>
+<b>FOR</b> K=0:1:255 <b>SET</b> BACKWARD=<b>$CHAR</b>(K)_BACKWARD<br>
+<b>$TRANSLATE</b>(FORWARD,BACKWARD,"ABCDE") = "EDCBA"</tt></p>
+
+<p><tt><b>$TRANSLATE</b>(string,<b>$TRANSLATE</b>(string,"0123456789"))</tt>
+will return only the digits that occur in the value of <tt>string</tt>.
+Note that this result is not necessarily the same as the value
+of <tt>+string</tt>.</p>
+
+<p><tt><b>SET</b> X="abc123cde654ghi"<br>
+<b>$TRANSLATE</b>(X,<b>$TRANSLATE</b>(X,"1234567890"))</tt>
+returns <tt>123654</tt></p>
+
+<p>The "inner" <b>$TRANSLATE</b> returns a value that is the
+original value of <tt>X</tt>, with all digits removed.<br>
+The "outer" <b>$TRANSLATE</b> returns a value that is the
+original value of <tt>X</tt>, with all characters removed that
+occur in the return value of the inner <b>$TRANSLATE</b>.<br>
+Effectively, this combination of two nested <b>$TRANSLATE</b>s
+will return only those characters from the original value of
+<tt>X</tt> that occur in the value of the second parameter of in
+"inner" <b>$TRANSLATE</b>.</p>
+
+
+<p>Examples with naked references:</p>
+
+<p><b>$TRANSLATE</b>(VALUE,OLD)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$TRANSLATE</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<p><b>$TRANSLATE</b>(VALUE,OLD,NEW)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b>
+^(3,4)=<b>$TRANSLATE</b>(^(5,6),^(7,8),^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

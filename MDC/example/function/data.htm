@@ -1,0 +1,228 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $DATA</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $DATA</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a code that describes the existence of
+descendants and values of variables.</p>
+
+<p>Assume that the following elements of <tt>Y</tt> are defined:<br>
+<tt>Y(0)=0<br>
+Y(1)=1<br>
+Y(2)=2<br>
+Y(1,2,3)=123</tt></p>
+
+<p>Then the function <b>$DATA</b> will return the following
+results:</p>
+
+<p><tt>Y(0)</tt> has a value and no elements exist with indices like
+(0,...):</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$DATA</b>(Y(0))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+</table></p>
+
+<p><tt>Y(1)</tt> has a value and at least one element exists with
+indices like (1,...), viz. <tt>Y(1,2,3)</tt>:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$DATA</b>(Y(1))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>11</tt></td></tr>
+</table></p>
+
+<p><tt>Y(2)</tt> has a value and no elements exist with indices like
+(2,...):</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$DATA</b>(Y(2))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+</table></p>
+
+<p><tt>Y(1,2)</tt> has no value, but at least one element exists
+with indices like (1,2,...), viz. <tt>Y(1,2,3)</tt>:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$DATA</b>(Y(1,2))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>10</tt></td></tr>
+</table></p>
+
+<p><tt>Y(1,2,3)</tt> has a value and no elements exist with indices
+like (1,2,3,...):</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$DATA</b>(Y(1,2,3))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+</table></p>
+
+<p>Assume that no local variables exist and that each new example
+(except for the last) adds a new element to the set.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right>Conditions:</td>
+<td>&nbsp;</td>
+<td align=left>Function-values:</td></tr>
+
+<tr><td align=right><tt>Y</tt> not defined</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(Y)=0</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=100</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(Y)=1</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y="AB"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(Y)=1</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> A(1)="ABC"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(A(1))=1</tt></td></tr>
+
+<tr><td align=right>&nbsp;</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(A)=10</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> B(1,2)="BC"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B(1,2))=1</tt></td></tr>
+
+<tr><td align=right>&nbsp;</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B(1))=10</tt></td></tr>
+
+<tr><td align=right>&nbsp;</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B))=10</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> B(1)="CD"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B(1))=11</tt></td></tr>
+
+<tr><td align=right><tt><b>KILL</b> B(1,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B(1,2))=0</tt></td></tr>
+
+<tr><td align=right>&nbsp;</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B(1))=1</tt></td></tr>
+
+<tr><td align=right>&nbsp;</td>
+<td>&nbsp;</td>
+<td align=left><tt><b>$DATA</b>(B)=10</tt></td></tr>
+</table></p>
+
+<p><b>$DATA</b> with a global variable as the parameter:</p>
+
+<p><tt><b>KILL</b> ^A <b>SET</b> ^A(1,2,3)="Value"</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><table width=90%>
+<tr><th valign=bottom width=40%>Command</th>
+<th width=20%>Value of<br><tt>X</tt></th>
+<th width=40%>Value of the<br><i>naked indicator</i></th></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A)</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left>not defined</td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^(1))</tt></td>
+<td align=center>error</td>
+<td align=left>not defined</td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A(1))</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left><tt>"^A("</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A(99))</tt></td>
+<td align=center><tt>0</tt></td>
+<td align=left><tt>"^A("</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A(1))</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left><tt>"^A("</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^(1,2))</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left><tt>"^A(1,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^(2))</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left><tt>"^A(1,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^(2,3))</tt></td>
+<td align=center><tt>1</tt></td>
+<td align=left><tt>"^A(1,2,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^3))</tt></td>
+<td align=center><tt>1</tt></td>
+<td align=left><tt>"^A(1,2,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^(4))</tt></td>
+<td align=center><tt>0</tt></td>
+<td align=left><tt>"^A(1,2,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A(1,2))</tt></td>
+<td align=center><tt>10</tt></td>
+<td align=left><tt>"^A(1,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> ^A(1,2,3,4)=""</tt></td>
+<td align=center>&nbsp;</td>
+<td align=left><tt>"^A(1,2,3,"</tt></td></tr>
+
+<tr><td align=left><tt><b>SET</b> X=<b>$DATA</b>(^A(1,2,3))</tt></td>
+<td align=center><tt>11</tt></td>
+<td align=left><tt>"^A(1,2,"</tt></td></tr>
+</table></p>
+
+<p><b>$DATA</b>(GLVN)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$DATA</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

@@ -1,0 +1,11 @@
+FILE    K ^UTILITY($J)
+        F PTDP=END:0 S PTDT=$O(^DIA(FILE,"C",PTDT),-1) Q:PTDT<START!'PTDT  D
+        . F DIA=0:0 S DIS=$O(^DIA(FILE,"C",PTDT,DTA)) Q:'DIA  D
+        . . Q:'$D(^DIA(FILE,DIA,0))
+        . . S ENT=+^(0) I $D(^UTILITY($J,FILE,ENT))!'$D(@GLOB@(ENT)) Q
+        . . S ^UTILITY($J,FILE,ENT)=""
+        . . D @ROU
+        . . Q
+        . Q
+        Q
+        ;

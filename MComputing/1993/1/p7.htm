@@ -1,0 +1,441 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 1, Number 1, Pages 7-12</h3>
+
+<h2>What Internationalizing M Means to Japan </h2>
+
+<h3>by Ichiro Wakai</h3>
+
+<h3>Introduction</h3>
+
+<p>The timing is certainly propitious. As this paper is being written, William Jefferson Clinton is about to be inaugurated as the
+42nd president of the United States of America, and Japan's
+Crown Prince has just been betrothed in a long-awaited marriage.
+In addition, a matter of days ago, the Hawaiian American, Chad
+Rowen, won the rank of 62nd grand champion (Yokozuna) in Sumo,
+the traditional Japanese form of wrestling. Rowen, who wrestles
+under the name Akebono ("dawn"), is the first non-Japanese ever
+to be accorded the rank of Yokozuna. This is a very good sign
+that Japan is being internationalized, abandoning its
+protectionism (if it exists). Indeed, 1993 promises to be an
+auspicious year for positive developments.</p>
+
+<p>When it was announced over the FORUM network that the
+International Standards Organization (ISO) had approved the MUMPS
+1990 Standard, many in Japan suspected that the letters "dis" had
+been omitted from the word "approved." Since Japan, despite the
+valiant efforts of Dr. Ogushi in Tokyo, had voted not to approve
+the standard, the Japanese MUMPS community was despondent about
+the future of M in Japan. The ostensible reason for Japan's
+delegation failing to endorse M was the lack of multi-octet
+character set handling features as a part of the standard. This
+decision was made despite the knowledge that all M versions
+extant in Japan since 1986 were correctly processing the JIS
+X0208 (Japanese Industry Standard 2-byte) character set. There
+may have been other, unknown reasons for the Japan delegation's
+decision to disapprove the M Standard, but these factors remain
+unknown, demanding insightful analysis.</p>
+
+<p>The uncertainty prevailed among Japanese M users until the
+MUG-Japan (MUG-J) meeting held last July in Chiba (near Tokyo),
+where Jon Diamond, chair of MUG IF (the International
+Federation) and of the MDC subcommittee SC-12 (responsible for
+internationalization), presented the keynote address in which
+he assured the Japanese community that ISO approval was real, and
+that M was indeed moving toward incorporating language elements
+fostering internationalization. Had a Japanese ISO/JTCI
+(Commission) delegation representative been present, he would
+surely have been profoundly impressed by Mr. Diamond's
+discussion and he would have been in complete agreement with the
+principles outlined in that address, since the ideas presented by
+Mr. Diamond exceeded the hopes of the Japan delegation in terms
+of high-level language support of internationalization. The full
+translation of his address is being printed in the Japanese
+Journal of M Technology. Mr. Diamond stressed to the members of
+MDCC-J (the Japanese arm of the MUMPS Development Committee)
+that "economy" and "politics" are just as important as
+"technology" for the development of M Technology.</p>
+
+<p>With respect to economics, we are well aware that M costs
+today only one-hundredth of its price a short eight years ago
+(even less when power and air-conditioning requirements of
+equipment are taken into consideration). Downsizing has occurred in every sphere of computing. What about the numbers of
+simultaneous users on a system? M technology has no rival.
+Distributed databases? Again, M has no rival we are aware of.
+What about the best-known application package in M? We know of no
+database package like VA FileMan or Kernel which enjoys such
+widespread popularity, at least in the United States. While many
+individuals in other programming environments pride themselves
+on developing their own unique software, M technology has been so
+simulating of the creative minds in this development that
+sharing, reuse, or recycling has not accelerated in the M
+community except through the controlled transference by vendors.
+How much more effective it might have been here in Japan if even
+three hospitals had committed to develop a Japanese pharmacy system based on the FileMan package, with some readily identifiable name or logo.</p>
+
+<p>Have we ever seriously analyzed the total cost/performance
+improvements provided by an M installation? Never, since it is
+considered demeaning for engineers or scientists to discuss money
+and economic benefits in association with their "art" of
+computing. Though irrational, it was considered "proper" to
+ignore the costs incurred by their institutions for these in-house developments as compared to potential benefits of shared
+development costs. We have been very far removed from the role of
+"economic animals. " There has been in Japan a national network
+incompatibility that prevented data transfer between systems
+using differing character codes. A FileMan-based pharmacy
+system would never become portable as long as data transmission
+among machines remains handicapped because of differences of
+internal code representation among M machines.</p>
+
+<p>Recently, Dr. Kawamura, chair of MUG-J, proposed to the MUG-J
+board that there should be a technology fair, aimed at promoting
+the business value of M technology -- a kind of international trade
+fair to boost economic developments based on M. Dr. Yamamoto,
+chair of the organizing committee of the 1993 MUG-J meeting (on
+September 17 to 19 in Izumo City) announced that a large space
+would be available for the business users of M technology. This
+"M Technology Fair '93," widely publicized in all Japanese media
+and directly supervised by Chairman Kawamura, should be quite
+different from exhibits that have been prominent in previous
+MUG-J annual meetings. Publicity must be the mother of business
+promotion for M technology.</p>
+
+<p>"Politics" has been one of the areas we are least proud of,
+partly because M technology has been centered in western Japan,
+whereas the center of decision making and industrial politics is
+in Tokyo, geographically short but politically a long distance
+[away]. Over the past few years, individuals living closer to the
+Tokyo political center missed few opportunities to lobby before
+the Information Technology Standards Commission of Japan
+(ITSCJ). Dr. Ogushi, who represented M technology supporters,
+had been assured that whatever decision was made with respect to
+M technology would be based on full discussion and agreement with
+M technology in Japan. All documents pertaining to M technology
+were collected in the Japan Institute of Industrial Technology
+and the Parliamental Library of Japan. In collaboration with
+MUG IF Chair Jon Diamond, Dr. Ogushi worked with MUG
+representatives of Japan to develop appropriate political and
+diplomatic overtures to the Section of Information Standards of
+the Institute of Industrial Technology on August 3, 1992, in
+Tokyo. They opened an official dialogue on making M technology a
+Japan Industry Standard, working in close cooperation with the
+Ministry of International Trade and Industry (MITI). NEC-Japan,
+IBM-Japan, Sumitomo Electric Industry, NEX, Hitachi, and Fujitsu
+also are participating in this dialogue.</p>
+
+<p>In spite of Dr. Ogushi's hopeful assumption that ITSCJ would
+be pleased to add the MDCC-J Type-A release to the current ISO
+MUMPS to make a JIS standard MUMPS, ITSCJ's policy is against
+modifying of or adding any part to the ISO M specification to
+enable use of M technology in Japan, but it relies entirely on
+the ISO function to achieve internationalization without
+resorting to the isolated and homemade modification of the
+standard within Japan.</p>
+
+<p>In other words, ITSCJ is mandating that the solution on the
+national character sets should be completed in the ISO arena, and
+not to resort to an MDCC-J Type-A sort of local preoccupation,
+like ANSI should not be preoccupied with the ASCII character set
+only. Factual information was given on the implications of the
+conditions ISO imposed on ANSI, and that ANSI and the MDC
+accepted, for the adoption of ANSI 1990 M as an ISO standard by
+fully "internationalizing" the M standard, by removing the
+restriction to ASCII character sets and adapting all the language
+elements with character set used to work with other national
+character sets.</p>
+
+<p>In light of this position, it is no wonder that the Japanese
+delegation to ISO SC22 has been working so hard to develop
+support of multibyte extensions (not specifically Japanese) in
+the name of true internationalization of information processing
+standards. The SC22/C Working Group of Japan submitted a DP
+Multibyte Support Extension of ANSI C at ISO/TC97 three years
+ago. ITSCJ would prefer to see a generic multilingual system that
+could be adapted to local needs. It seems not such a long gap
+between bilingual and multilingual systems. According to R.F.
+Walters, who cooperated in developing the first bilingual
+English-Japanese system of M technology ten years ago, however,
+building a multilingual system for M may not be too far in the
+future, requiring only a little additional incentive and hard
+work. It depends on market demand and affordability for the
+users. The more national barriers come down in the world, the
+greater the need for multilingual support, and the faster the
+demand will grow in response.</p>
+
+<p>I believe that the current efforts of MDC are so important for
+the growth of M technology in the world that it is important for
+me to make known some of my own views on this complex subject.
+The remainder of this paper outlines some of those thoughts.</p>
+
+<p>The ITSCJ advocates a position that computer applications
+must, insofar as possible, be designed to be portable, that the
+basic designs should support portability, and the platforms on
+which they operate also must support facile transfer to different
+cultural and linguistic environments. They argue that users will
+be more accepting of applications that are easily adapted to
+their own languages and cultures. Internationalization of
+computer software, then, is a requirement of the growing
+diversity of end users. This premise holds for many European
+countries as well as East Asian countries like Japan, China,
+and Korea. In a single country such as China there are several
+different character sets in use by a number of minority
+populations: the Taiwanese Chinese character set is different
+from the GB Hanzi sets. To have a multilingual character set on
+one computer is ideal, but it is not realistic. It may be
+understood that ITSCJ's position is notjust an idealism to
+solve the problem of portability lying in software but
+idealistically to solve the inherent portability problems in
+character code representation. In my view, each user has a more
+limited requirement -- that his own national character set be
+available for his use (in conjunction with the ASCII character
+set). The realistic economic achievement would be to provide
+user-select[ed] character sets at the time a system is installed,
+or else to make the specific character set required by the user
+loadable at an extra cost for that user. The transferrable
+portion across cultures would be only the computer software,
+unless the character sets are loaded for a specific use of that
+character set in a database application.</p>
+
+<p>With this underlying premise, I would like to trace the evolution of M technology developments in the arena of 
+internationalization, adding my own personal commentary on these
+developments.</p>
+
+<h3>Current Problems of Japanese Character Set Codes</h3>
+
+<p>It is not a simple matter to consider how M extensions might
+solve manipulation of commonly used Japanese character sets,
+because the diversity of characters already in use is overwhelming. Consider the following list of character sets. An M
+implementation might have to deal with JIS X0201 (8-bit
+half-spaced phonetic Katakana), X0208, and X0212-1990 (16-bit
+full-spaced characters which include punctuation, Latin, Russian,
+and Greek alphabetics, Hiragana and Katakana alphabetics, and two
+levels of Kanji character groups). These character codes can be
+stored using various internal representations, including the most
+recent Extended UNIX Code (EUC), Shift-JIS (shifted JIS), JIS
+(with Shift-IN/OUT for network systems), DSM Kanji (Digital
+Equipment Corporation's original for DSM-J) and IBM code (the
+IBM original version for NVVM-J). Manufacturers of mainframe
+and office-use computers such as Hitachi, Fujitsu, NEX, Mitsubishi, Toshiba, and others use the Japanese character sets and
+code systems in different ways from each other. When, in 1986,
+MDCC-J attempted to develop a common internal representation of
+character sets, we found that the manufacturers had already
+succeeded in dividing the country among themselves to a
+significant degree.</p>
+
+<p>The MDCC-J Type-A Release dealing with the Japanese extensions to M relied on the monolithic approach promised by ISO
+for future character set combination into a single, large,
+multinational character set for the internal representation of
+the character codes. For example, in 1988 CCSM-2 of MGlobal
+adopted Shift-JIS internal representation approach for Japanese
+characters. This approach works only with MSDOS-J personal
+computers (all of which use Shift-JIS). For input and output to
+other, non-DOS environments (those using EUC, DSM, MIVM-J or
+network systems), CCSM-2 had to rely on character code
+conversions in order to facilitate normal READ and WRITE
+operations. It is possible to manage character code conversion
+using OPEN/USE command parameters and system configuration
+conventions. However, providing code conversion schemes for all
+the character codes referenced above and for A specific devices,
+media, networks, and other protocols is a time-consuming and expensive process. Without automatic, transparent conversions for
+all these interconnections, no Open MUMPS Interconnect (OMI) is
+possible.</p>
+
+<p>The enthusiasm of ITSCJ to standardize the multi-octet character set in the ISO arena in the name of internationalism is at
+the same time the ITSCJ policy on the current fragmentation of
+Japanese and foreign manufacturers in dealing with the various
+character sets for Japan and other countries. This monotheistic
+pressure in the name of ISO seems the only way to end the
+internal war among the rival barons in Japan and to achieve a
+convergent internal representation of the Japanese character
+sets.</p>
+
+<p>Since Mr. Diamond referred to the current status of the Unicode-modified version of ISO-10646, any reference of ISO M to
+such a standard ISO character set would be a good excuse for
+making M technology accepted as one of the JIS-approved
+languages (Japan imposed TR 10176). One integrated character
+coding system could make M implementations free of code
+conversions alluded to earlier, just as there are no conversions
+required in an ASCII-only environment. The most recent version of
+Windows-NT adopted Unicode as a standard character set.</p>
+
+<p>The current thinking among Japanese data-processing groups is
+that the OEMs based on EUC codes are losing out to Windows-NT
+with its Unicode character set. The internationalization based
+on a single character code, as hoped for by MDCC-J in 1986, seems
+to be just around the corner.</p>
+
+<h3>Names</h3>
+
+<p>ITSCJ recommends that file names, host names, user names,
+etc., could be better represented by using national languages, so
+that people in different cultures could understand the meaning of
+these names more easily. Some Japanese extensions to M, e.g.,
+MGlobal's CCSM-2, allow routine names, labels, and variable names
+to appear in Kanji. Other implementations limit the use of
+non-ASCII strings to data strings only. The latter provides
+greater transferability of software across cultures. This
+benefit should be developed with a keen understanding of the
+conflicting demands of user satisfaction and system performance,
+since users, once aware of the possible degradation of
+performance, might accept restrictions in the use of
+culture-specific variable and routine/label names.</p>
+
+<h3>Collating Sequence</h3>
+
+<p>The collation sequence for a character set plays an important
+role in M-based text processing. It is closely allied with the
+$ORDER function, and also relates to the "follows" operator.
+Defining collating sequences for different natural languages is
+not an easy process; in German-speaking cultures a number of
+different collation sequences are used, often concurrently in the
+same country. Collation is significantly more difficult in the
+large East Asian character sets used in Chinese, Japanese, and
+Korean. In the case of Japanese, it is a controversial matter as
+to whether collation of JIS Kanji should depend on the code value
+of the characters.</p>
+
+<p>Even greater problems arise when Japanese Kanji, Chinese
+Hanzi, and Korean Hanja are combined in a single character set.
+Japanese Kanji has more than two pronunciations for nearly all
+characters. "Yama," the word for mountain in Japanese, is
+represented in Kanji by a character that can be pronounced
+"Yama," "San," or "Zan," depending on its usage. The same Kanji
+character can be pronounced "An" in the proper name Ando or
+"Yasu" in the proper name Yasui. Japanese telephone directories
+and patient name directories are collated according to the
+pronunciation of the name (using an A-I-U-E-0 Kana [t]able of 50
+Soundex values). A global file for such a directory has the
+soundex spelling for the subscript and the Kanji characters for
+the value of the variable name. The "follows" operator is used
+mostly for soundex codes by which we classify textual material
+and also for dictionaries of vocabulary and terminologies.
+Structured Query Language (SQL) is facing a similar problem in
+its international standardization. These problems are complex,
+requiring not only collation algorithms for individual cultural
+character sets, but a proper sequencing of different character
+sets in a multilingual setting.</p>
+
+<h3>Culturally Dependent Aspects</h3>
+
+<p>Dates, times, currency, measurement systems, decimal notation, writing method, and other conventions are closely tied to
+the cultural background of each nation. Zero suppression before a
+decimal point for $JUSTIFY was not supported and therefore
+changed to meet the need of European countries.</p>
+
+<p>Brazil voted against ISO approval of M because $FNUMBER did
+not include a decimal point in the <i>ncodeatoms</i>, although other
+means for achieving this purpose are available in M. These few
+cases illustrate the importance of the culturally specific
+features of a language such as M. The request from Japan, France,
+Sweden and Brazil for the support of non-ASCII character sets,
+even limiting their use only for character strings, indicates
+that the market for M technology would expand when the cultural 
+-- and business-dependent aspects of M in the database applications
+for different cultures are fulfilled to a greater degree than now
+exists.</p>
+
+<h3>Input Mechanism</h3>
+
+<p>Several European countries may require reassignment of key
+positions for local character sets (for instance in German, the
+"Z" and "Y" are transposed because of the different frequency
+of usage of those characters in that language). There is no need,
+however, for special treatment of the QWERTY keyboard to manage
+input of Kanji, Hanzi, and Hanja, or Hangul (phonetic Korean),
+since those cultures have already developed input methods using
+the conventional keyboard. These [f]ront [e]nd [p]rocessors are
+well developed and are available for any operating system in a
+variety of different methods. It should not be forgotten that
+Hebrew character strings are [displayed] right-to-left. SE would
+need extraction of characters in right-to-left order, indicating
+the demands for a generic language standard to be applied for
+localized functionalities.</p>
+
+<h3>Extended and Localized Functions</h3>
+
+<p>External devices may print or display different sizes and
+types of characters when they are "internationalized." Despite
+its powerful stiing-handling capability, M has not yet developed
+the mechanism for incorporating character size in the control of
+output devices. (M does not even handle correctly
+proportionally spaced fonts representing ASCII characters.) The
+height of character string required for different fonts varies.
+In Japanese, 16-bit JIS characters may require widths up to twice
+the size of ASCII characters. $ZWIDTH, long used in the MDCC-J
+extensions, returns the width of a string to be displayed or
+printed. $ZPOSITION returns the number of characters from the
+first character to be displayed or printed in the specified
+field. Such local language extensions of M functions in Japan
+might serve as starting points for international use if
+proportional space characters are to be used. By simply removing
+the "Z" prefixing these functions, they might serve as useful
+aids in many character display situations. The function $ZPL (a
+switch for physical-logical handling of strings, as in UC-Davis
+MicroMUMPS) illustrates the need for a string composed of 1-byte
+and multibyte characters, nonextant in the ASCII characters
+environment.</p>
+
+<h3>Localized Extensions</h3>
+
+<p>Local adaptation of a generic bilingual system would be necessary before the generic multilingual standardization stage, for
+such [a] function as $ZECODE for the error message variable, in
+which the character "Z" means implementation-specific. $z
+syntaxes are already so crowded among the implementations that
+there may be needed a local-national-cultural letter such as "Y"
+possibly followed by the sign of the character set, national,
+or cultural groups, for the MDC-approved standard functionalities
+for local adaptation of the generic ISO standard. If the
+extrinsic function syntax is robust and reliable enough for
+transferability, most of the locally adaptable functions may
+be developed on this feature of the parameter passing. My view
+[is that] the robust transferability [of] such important
+functions by the extrinsic function could be best protected from
+corruption in the system vendors' responsible set of utilities.
+Culturally or universally valuable functions, once developed on
+the extrinsic functions, will have to be standardized as
+intrinsic functions or intrinsic special variables of such "Y"
+extensions, or using the structured system variable ^$CHARACTER
+(MDC/X11/91-21) that can localize many problems into a single
+cultural profile.</p>
+
+<h3>Last but Not Least</h3>
+
+<p>Blessed is the role of MDC as it successfully hurdles the multiple barriers facing internationalization. JIS approval of M
+technology depends largely on MDC's success in internationalization. The regulation at the Section of Information Standard, Institute of Industrial Technology, MITI, does not admit
+any modification or addition to the ISO/IEC document, except
+correct translation. The 8-year-old MDCC-J Type-A extension of
+the JIS character sets as a temporarily grafted Japanese
+extension to the ASCII character set in the ANSI M standard will
+have to be more logically accommodated in the ISO M standard,
+because MITI's policy does not allow any local elaboration of ISO
+documents specifically for Japan. This position dictates
+significantly that, unless ideals of internationalization
+suitable for Japanese processing are approved at the ISO level,
+the language would not be approved as a Japan Industry Standard
+(JIS). This policy requires that the MTA-Japan's members must
+participate more actively in the politics of change and
+enthusiastically and energetically help shape M technology's
+plans for evolution in the arena of internationalization. In
+spite of vigorous participation from Japan in the development of
+the C language, this ISO standard has not been approved as a
+Japan Industry Standard because there remain uncorrected flaws
+in the ISO standard specification.</p>
+
+<p>It is for this reason that previous MDCC-J comments and proposals, including the 1989 proposal for internationalization,
+need to be considered for the benefit of all M users and international security.</p>
+
+<hr>
+
+<p><i>Ichiro Wakai, M.D., is the founder and head of MUMPS Systems
+Laboratory since 1977, in Nagoya, Japan. He also was instrumental
+in forming the MUMPS Users' Group-Japan, serving as its first
+executive director for many years. He has sponsored many
+international MUMPS conferences and has been active in promoting
+MUMPS both in Japan and worldwide. He served as chairman of the
+MUG IF during 1990-91.</i></p>
+
+</body></html>

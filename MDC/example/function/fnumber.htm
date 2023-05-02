@@ -1,0 +1,251 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $FNUMBER</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $FN[UMBER]</h1>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a formatted reproduction of the string
+passed as a parameter. The actual formatting depends on further
+parameters.</p>
+
+<p>The first parameter is intended to be a numeric value. The
+second parameter tells whether or not to include
+thousands-separators, and what to do with the sign. The third
+parameter, if any, indicates the number of decimal digits to be
+included in the result (i.e. where to round the number from the
+first parameter).</p>
+
+<p>The second parameter is a string value. When this value
+contains a comma, "thousands" separators will be included in the
+output value. When this value includes a plus sign, the sign for
+positive numbers will be included. When this value includes a
+minus sign, the sign for negative values will be omitted. When
+this value includes a <tt>"p"</tt> or a <tt>"P"</tt>, the output
+value will have parentheses around negative values (no
+minus-sign, however), and there will be space-characters around
+positive values. When this value includes a <tt>"t"</tt> or a
+<tt>"T"</tt>, the sign will trail the output value, rather than
+precede it.</p>
+
+<p><tt><b>SET</b> X=987654123.45</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FNUMBER</b>(X,",")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"987,654,123.45"</tt></td></tr>
+
+<tr><td align=right><tt><b>$TRANSLATE</b>(Y,",.",".,")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"987.654.123,45"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> X=123.456</tt><br>
+
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"P")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~123.456~"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"T")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456~"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,",")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"+123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"-")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"P")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"(123.456)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"T")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456-"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,",")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"-")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.456"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.46"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"P",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"(123.46)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"T",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.46-"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,",",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.46"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"+",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.46"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"-",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.46"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.45600"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"P",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"(123.45600)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"T",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.45600-"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,",",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.45600"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"+",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-123.45600"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"-",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123.45600"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X,"P-")</tt></td>
+<td>&nbsp;</td>
+<td align=left>error (<a href="../mdcerror.htm#M2">M2</a>)</td></tr>
+</table></p>
+
+<p>If the second parameter is an empty string, no editing takes place:
+
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-X*3,"")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-370.368"</tt></td></tr>
+</table></p>
+
+<p>Note: the three parameter form forces a leading zero on numbers
+between <tt>-1</tt> and <tt>+1</tt>; the two parameter form does
+not.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(.123,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"+.123"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(.123,"+",3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"+0.123"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTFY</b>(.123,7)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;0.123"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTFY</b>(.123,7,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;&nbsp;0.12"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTFY</b>(.123,7,4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;0.1230"</tt></td></tr>
+</table></p>
+
+<p>0, zero, is neither negative nor positive:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-1,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-1"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(0,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"0"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(1,"+")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"+1"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(-1,"-")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"1"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(0,"-")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"0"</tt></td></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(1,"-")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"1"</tt></td></tr>
+</table></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FNUMBER</b>(X,"T",-2)</tt></td>
+<td>&nbsp;</td>
+<td align=left>error (reserved)</td></tr>
+</table></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

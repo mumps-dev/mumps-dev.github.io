@@ -1,0 +1,278 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>From Terminal to MWAPI</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 8, Number 1, March 2000</h3>
+
+<h2>From Terminal to MWAPI</h2>
+<h3>by Harm Kirchhoff</h3>
+
+<h2>Abstract:</h2>
+
+<p>MWAPI is simple and quick to learn. The article discusses
+difficulties and techniques by implementing a Message Box
+function in MWAPI.</p>
+
+<p>I am gradually switching an accounting software application
+that has a character-based user interface (CHUI) to a graphical
+user interface (GUI). For this purpose I initially tested Visual
+Basic&#174 (VB), and was not satisfied as programs tend to have
+too much code and the link to the underlying M database was
+complicated and time consuming. On the other hand MWAPI
+guarantees a direct link between database and display.
+MSM-Workstation (which you can download free of charge from
+Intersystems web site: <a 
+href="http://www.intersys.com">www.intersys.com</a>) comes with
+an integrated GUI tool but it does not produce MWAPI compatible
+code and does not work with Japanese characters. As I place some
+hope in FreeM and Linux compatibility is a strong argument for
+me.</p>
+
+<p>MWAPI makes GUI programming for M-developers easy. It still
+has deficiencies, but it is a simple and powerful alternative for
+integrating GUI displays into existing terminal applications. It
+is so simple to program that a GUI builder is not necessary.</p>
+
+<p>However, neither MWAPI nor other GUI development tools offer a
+complete substitute for the CHUI. CHUI is the only display
+offering total control over input and output, where every
+character cell is programmable. It is ideal if you develop highly
+customized applications, whereas GUIs or MWAPI force a programmer
+to put up with a definite number of Controls or Gadgets, the
+response for which is defined. Please note that MWAPI uses the
+term "Gadget" for what is called "Control" in VB (Labels,
+Textboxes, etc.).</p>
+
+<p>MWAPI serves well to simplify code in existing terminal
+applications and is a powerful alternative in cases where
+programs do not depend on total control of the display. Using
+MWAPI, CHUI and GUI windows can be displayed at the same time,
+enabling a gradual change to a GUI application, while older code
+may still run as a CHUI application. I would like to discuss in a
+small series of articles the practical problems a MWAPI
+programmer will encounter when trying to switch from a terminal
+to a MWAPI environment. I intend to discuss the problems by
+providing an example of code and explaining it. I shall outline
+problems encountered.</p>
+
+<p>To program MWAPI,  James Hay's <i>Reference MWAPI</i>  is a
+must. A helpful introduction can be found in Richard F. Walters
+<i>M Programming</i>. The reader should spend an hour reading
+chapter 23 "M and Windows Environments" to understand the
+following code better. Both books can be ordered through the <a 
+href="http://www.mtechnology.org">M Technology
+Association.</a></p>
+
+<p>A first and easy step was to replace the existing warning and
+message box function by an MWAPI alternative. This example serves
+well to give an impression of how to introduce MWAPI into an
+existing application by converting a single function, while
+leaving the rest of the application untouched. The underlying
+application can use CHUI, while the message boxes will be
+displayed in a genuine GUI window of their own. </p>
+
+<p><tt>I $$^MsgBox(1,0,0,"Message")</tt> will produce the box below:</p>
+
+<img src="feat02.gif">
+
+<pre>
+MsgBox(mode,x1,y1,str)
+ 
+    ;The function will pop up a small window, displaying a message.
+    ;The message str can be a variable for single line or an array(1-x)
+    ;for multi line messages.
+    ;
+    ;Arguments:
+    ;mode     	0:YES-NO
+    ;         	1:wait for keystroke to confirm
+    ;         	2:pop up for 1 sec and go on.
+    ;x1,y1    	x and y coordinates of the upper-left corner.
+    ;               (0,0) will cause adjustment in middle of screen.
+    ;str()    	array containing several lines
+    ;         	or variable containing only one line
+    ;Returns:
+    ;"RET" 	        as default or if mode=0 when user confirmed
+    ;"ESC"          if mode=0 when user denied.
+    
+    N (mode,x1,y1,str,CONST)
+    
+    ;single line: convert to array
+    I $L($G(str)) S str(2)=str,str(1)=" ",str(3)=" "
+    ;find out length of window: set len to length of longest line
+    S len=0
+    F i=1:1 Q:$G(str(i))=""  S:$L(str(i))&gt;len len=$L(str(i))
+    S:len&gt;78 len=78	;acceptable maximum
+    S:len^lt;10 len=10	;acceptable minimum
+    S lino=i-1 S:lino&gt;22 lino=22	;max. number of lines
+    ;set help message, depending on mode
+    S:mode=0 x="YES=J/1/RET or  NO=N/0/ESC"
+    S:mode=1 x="PRESS any Key to get on"
+    S:mode=2 x=""
+    S:len&lt;($L(x)+2) len=$L(x)+2	;verify len 
+    	
+    Q $$PopUp(.str,x1,y1,len,lino,x,mode)
+    	   
+PopUp(Msg,X,Y,Len,Lino,Title,Mode)	
+    ;This subroutine handles MWAPI. It builds up the window and handles
+    ;user's input.
+
+    N (Msg,X,Y,Len,Lino,Title,Mode,CONST)
+    
+    ;ensure a minimum width
+    S:Len&lt;10 Len=10
+    ;center window into the middle to screen
+    S:X=0 X=(80-Len-2)\2
+    S:Y=0 Y=(24-Lino)\2
+    ;make sure that values are within range
+    S:(X&lt;1)!(X&gt;75) X=30
+    S:(Y&lt;1)!(X&gt;22) Y=10
+    ;Define the window:
+    ;Note: If you leave TITLE empty, the window will not have a title bar.
+    ;The default attributes are defined in the global named ^WINS.
+    ;A relevant excerpt of the global is provided below.
+    ;Storing all default data in a global frees the code of unnecessary
+    ;set commands and makes it easy to read and maintain.
+    
+    ;First merge the default global into a temporary array:
+    M win("MsgBox")=^WINS("MsgBox")
+    ;Then, work with this array to complete it with necessary attributes
+    ;to make it fit for being displayed, otherwise necessary MWAPI attributes
+    ;would be missing and an error would occur.
+    ;You can work and assemble MWAPI attributes just like strings.
+    ;Here, POS and SIZE are adapted to the size of the message.
+    S win("MsgBox","POS")=X_","_Y
+    S win("MsgBox","SIZE")=(Len+2)_","_(Lino+2)
+    S win("MsgBox","G","Msg","SIZE")=(+Len)_","_(Lino+1)_",CHAR" 
+    S win("MsgBox","G","Help","POS")="0,"_(Lino+1)_",CHAR"
+    S win("MsgBox","G","Help","SIZE")=(+Len+2)_",1,CHAR" 
+    ;Compile the help message
+    S y=""
+    F c=1:1 Q:$G(Msg(c))=""  S y=y_$J("",(Len-$L(Msg(c)))\2)_Msg(c)_$C(13,10)
+    S win("MsgBox","G","Msg","TITLE")=y
+    S Title=$J("",(Len-$L(Title))\2)_Title	;center
+    S win("MsgBox","G","Help","TITLE")=Title
+    ;Show the message box by merging it into the ^$W system variable.
+    ;The ^$W varaible can be read and written like a normal global.
+    ;In later articles, examples of such manipulations will be covered.
+    M ^$W("MsgBox")=win("MsgBox")
+    ;Under windows, displaying a window is not enough. The window
+    ;must receive the focus, so that all user input will create events
+    ;in that window. 
+    S ^$DI($PD,"FOCUS")="MsgBox"
+    
+    S ret="RET"	;default return
+    I Mode=2 H 1	;show for 1 sec
+    ;If a response by the user is required (mode=0 or mode=1)
+    ;ESTART causes the execution to pause and wait for user events.
+    ;The code following the ESTART command will only be executed,
+    ;when an ESTOP command is reached.
+    E  ESTART
+    
+    ;KILL the window to delete it. It is not always good to kill the
+    ;window. If the application frequently needs it, it will save time
+    ;if the window is just hidden, by setting the window's "VISIBLE"
+    ;property to 0 (false). If the window is needed the next time,
+    ;setting "VISIBLE"=1 will make it visible again. The window
+    ;will not need to be created all over again.
+    K ^$W("MsgBox")
+  
+    F  R *c:0  Q:c=-1	;flush input buffer
+    ;Flushing the input buffer after closing the window is practical. 
+    ;I simply had some unpredictable keyboard responses before.
+
+    Q ret
+	
+KeyBoard
+    ;Keyboard handling in MWAPI is simple.
+    ;S ^WINS("MsgBox","EVENT","CHAR")=KeyBoard^MsgBox
+    ;will cause the program to jump to the label KeyBoard when a 
+    ;"CHAR" event occurs.
+
+    S char=^$E("KEY")
+    ;in mode=1 any response will do.
+    I Mode=1  ESTOP  Q
+    ;mode can only be 0 now
+    I (char="0")!(char="N")!(char="n")!(char=$C(27)) S ret="ESC" ESTOP 
+    I (char="1")!(char="J")!(char="j")!(char=$C(13)) S ret="CR"  ESTOP
+</pre>
+
+<p>Keyboard handling under MWAPI is less comfortable than under,
+for example, VB. There is no KeyPreview property which guarantees
+that key events are directed to the window before they are passed
+on to the gadget. Under MWAPI only the element which has the
+focus receives the event and the kind of events a gadget can
+receive is limited depending on the gadget which is a big
+disadvantage. For example, a ListBox can not receive KEYDOWN or
+CHAR events. This requires some tricks to work around, as will be
+discussed in the next article. </p>
+
+<p>^$E("KEY") is tricky. Some responses are not as documented in
+James Hay's <i>Reference MWAPI</i>. Mote that under MSM
+Workstation, the pressing ESC key will not create a KEYDOWN
+event, however it will create a CHAR event with ^$E("KEY")=$C(27)
+and $C(13) when ENTER or NUMENTER was pressed.</p>
+
+<p>For this project, the constant attributes of each window are
+stored in a global called ^WINS. As ^WINS contains all my
+windows, I separate them visually by a line of minus characters.
+Storing constant data in a global (as shown below) will keep the
+code readable.</p>
+
+<pre>
+^WINS("MsgBox")	--------------------------------------------------------------
+^WINS("MsgBox","COLOR")	0,65535,0
+^WINS("MsgBox","EVENT","CHAR")	KeyBoard^MsgBox
+^WINS("MsgBox","FFACE")	M,FIXED
+^WINS("MsgBox","FSIZE")	10
+^WINS("MsgBox","FSTYLE")	NORMAL
+^WINS("MsgBox","G","Help","BCOLOR")	0,0,65535
+^WINS("MsgBox","G","Help","FCOLOR")	65535,65525,65535
+^WINS("MsgBox","G","Help","TYPE")	LABEL
+^WINS("MsgBox","G","Msg","BCOLOR")	0,65535,0
+^WINS("MsgBox","G","Msg","FCOLOR")	0,0,65535
+^WINS("MsgBox","G","Msg","POS")	1,0
+^WINS("MsgBox","G","Msg","TYPE")	LABEL
+^WINS("MsgBox","ICONIFY")	0
+^WINS("MsgBox","MODAL")	APPLICATION
+^WINS("MsgBox","RESIZE")	0
+^WINS("MsgBox","TYPE")	APPLICATION
+^WINS("MsgBox","UNITS")	CHAR
+</pre>
+
+<p>Using FIXED font and CHAR as units makes it is easier to
+calculate the proportions of a window or gadget. Units: PIXEL,
+POINTS and REL require more design time.</p>
+
+<p>A frequent source of errors under the MSM-Workstation
+environment can be the presence of an invisible character, such
+as an empty character or a tab, at the beginning or end of an
+attribute string. This can happen if you use the
+MSM-Workstation's global window to type in the global and
+accidentally insert a space or tab at the start or end.</p>
+
+<p>A big advantage of MWAPI is that the construction of windows
+is just like that of any global. Thus, one can use string
+operations, even indirection. This feature offers unlimited
+flexibility to design and create windows at run time.  If you
+come from VB or other GUI development tools you will need a long
+time to realize the full potential of this approach. For example,
+nowadays I hardly ever program windows.  I have written an
+interpreter which will read a mask definition of few lines using
+the $TEXT function and will automatically produce the global
+defining the window and gadgets, display it, handle all the input
+and return an array containing the new input. MWAPI is
+wonderful.</p>
+
+<p>Bibliography<br>
+Hay, James M. <i>Reference MWAPI</i>, (Woburn, MA, Digital Press, 1998)<br>
+Walters, Richard F. <i> M Programming: a comprehensive guide</i>, (Woburn, MA, Digital Press, 1997)</p> 
+
+<p><i>Harm Kirchhoff is an accountant who has participated in
+developing an in-house accounting system. He has moved to Japan
+in November 1999 for a change in culture. Email:
+<a href="mailto:harmkirchhoff@aol.com">harmkirchhoff@aol.com</a></i></p>
+
+<p>VisualBasic is a registered trademark of Microsoft</p>
+</body></html>

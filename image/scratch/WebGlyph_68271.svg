@@ -1,0 +1,10 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="19" height="46" xmlns="http://www.w3.org/2000/svg">
+ <!-- Gardiner/Zz376515 at (0,15.2) in green, scale=.08, mirror=0 -->
+ <line x1="9.16" y1="40" x2="9.16" y2="17.2" style="stroke:green;stroke-width:1" />
+ <line x1="13.24" y1="20.8" x2="5" y2="20.8" style="stroke:green;stroke-width:1" />
+ <line x1="5" y1="26.56" x2="13.24" y2="26.56" style="stroke:green;stroke-width:1" />
+ <line x1="13.24" y1="32.32" x2="5" y2="32.32" style="stroke:green;stroke-width:1" />
+ <line x1="5" y1="38.08" x2="13.24" y2="38.08" style="stroke:green;stroke-width:1" />
+
+</svg>

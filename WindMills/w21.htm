@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>NEW! Exclusive!</title></head>
+<body background="windmill.gif">
+
+<img alt="Ed de Moel" src="edf3.jpg" width="88" height="128" align="left"/>
+<h1>Wind<img alt="M" src="mta.gif" width="22" height="17" align="bottom"/>ills</h1>
+<p><i>M Computing, Volume 7, number 2, April 1999, pages 21-23</i></p>
+
+<h2>NEW! Exclusive!<br/>
+<i>by Ed de Moel</i></h2>
+
+<p>A familiar caption? A reason to immediately dismiss this
+column?</p>
+
+<p>Most of us probably no longer believe in the superlatives that
+the world of advertising throws at us every day... Well, that's
+not what I wanted to write about this time. The topic I wanted to
+address has to do with a question I keep getting: "<i>When does
+one use a "normal" KILL or NEW command, and when is an
+"exclusive" one appropriate?</i>"</p>
+
+<p>Indeed, the answer is the same as in almost all my columns
+that attempt to answer any questions: "it depends..."</p>
+
+<h3>NEWed Variables?</h3>
+
+<p>What does a NEW command really do? The standard says that a NEW
+command creates a "new" environment for a local variable. In
+addition, when the program QUITs from the current execution level,
+the original environment will be re-established, which is to
+say:</p>
+
+<ul>
+<li>if the variable in question didn't exist before, it will
+disappear</li>
+
+<li>if the variable did exist before, its original value will
+re-appear</li>
+
+<li>if the variable did exist before as an array, all the original
+subscripts and their values will re-appear</li>
+</ul>
+
+<p>If a NEW command is issued multiple times at the same
+execution level, the effect of the first NEW command will be as
+described above, and all subsequent ones will appear to have the
+same effect as a KILL command for the same variable. (In some
+implementations, the effect is actually exactly the same, in
+others there is some additional stack and symbol table
+activity.)</p>
+
+<p>The most important issue, I think, is that the difference
+between:</p>
+
+<p><tt> ... DO SUB<br/>
+ ...<br/>
+ Q<br/>
+SUB ...<br/>
+ ...<br/>
+ KILL LOCAL,VARS<br/>
+ Q</tt></p>
+
+<p>and</p>
+
+<p><tt> ... DO SUB<br/>
+ ...<br/>
+ Q<br/>
+SUB NEW LOCAL,VARS<br/>
+ ...<br/>
+ Q</tt></p>
+
+<p>is that in the first case, the "original" values of LOCAL and
+VARS will be lost and gone forever, whereas the latter case will
+re-establish any values that might have been there before the
+subroutine was called.</p>
+
+<p>I have seen very few situations where the former situation was
+preferable over the latter one, so I have become an advocate of
+the NEW command, and typically discourage the use of a KILL
+command.</p>
+
+<p>(So... I prefer NEWed variables over KILLed locals... call me a
+dirty old man!)</p>
+
+<h3>The KILLing Continues</h3>
+
+<p>In reality, we have to deal with lots of code that was written
+before the NEW command was invented. So, while KILLing variables,
+what are the do's and don'ts?</p>
+
+<p>In every environment where KILL commands are being used, there
+are a couple of local variables that should never disappear.
+Sometimes, this is in order to safeguard the variables that
+maintain the end-user's identity and permissions, in some cases
+there are other security issues involved, but in all cases, there
+are just some variables that should never be killed. So... what's
+wrong with</p>
+
+<p><tt>KILL (USERID,PRIVS)</tt></p>
+
+<p>Well, those two might be the obvious ones that the overall
+internal standards committees may care about, but the application
+at hand probably also has some variables that</p>
+
+<ul>
+<li>establish a preferred output device for the current user
+(maybe it is already OPENed, or maybe there just is a variable
+hanging around that tells us which device to OPEN when
+needed)</li>
+
+<li>remember a "command line history", so that the end-user can
+hit "up-arrow" a couple of times to repeat a recent command</li>
+
+<li>remember the identification of the "current customer" for
+whom a number of subsequent tasks are being performed by the same
+end-user</li>
+
+<li>remember the current page number, so that subsequent parts of
+a large report that is being compiled will be numbered
+consecutively</li>
+
+<li>et cetera, et cetera, I'm certain that each reader will be
+able to add his/her own special local variable usage to this
+list.</li>
+</ul>
+
+<p>Since the exclusive KILL inevitably has a tendency of removing
+more than intended, and is by definition irrecoverable, I would
+generally recommend against it.</p>
+
+<p>Typically, a justified place for exclusive KILL commands is in
+a menu processor, at the top of a loop where control always
+returns, whether a called procedure completes normally, or
+through an error trap. At such a point, one would typically
+remove all "acquired" variables, LOCKs, and, if the
+implementation supports it, close all devices that might have
+been OPENed within a program that has been called from that
+menu.</p>
+
+<p>Any place else? Usually not...</p>
+
+<h3>So, what's NEW?</h3>
+
+<p>The main difference between NEW and KILL in the context of this
+column will be that KILL is irrecoverable, and that NEW aims at
+recovering the original context.</p>
+
+<p>But what about "exclusive NEW"?</p>
+
+<p>As a general matter of software engineering, the best usage
+would be to start every subroutine with a slate that is as clean
+as possible, and only allows a few variables top "permeate".
+(Those variables should be limited to the ones that are known to
+be part of the "data interface" for the subroutine at hand.)</p>
+
+<p>However, this "best usage" would require that one insists that
+each and every subroutine would look like:</p>
+
+<p><tt>
+SUB(PARA,METER,LIST) ;<br/>
+ NEW (ANY,THING,GENERAL)<br/>
+ ...<br/>
+ Q</tt></p>
+
+<p>thus passing all "true" parameters through a parameter list,
+and passing all local variables that are "global" (in the meaning
+of that word in languages like "C") by filtering them through the
+"exclusive NEW command".</p>
+
+<p>As long as the list of "general" local variables is
+manageable, this would be a reasonable approach. When one starts
+to think about "third-party" utilities, it becomes extremely hard
+to try and enforce such a standard. After all, if I want to sell
+my little program that does "something useful" to multiple
+customers, and customer A has a list of variables that looks like
+<tt>(A,B,C,D,E)</tt> and customer B's list is more like
+<tt>(A,C,E,P,Q,R)</tt>, whereas customer C's list would be
+<tt>(K,L,M)</tt>, I could of course make a list that looks like
+<tt>(A,B,C,D,E,K,L,M,P,Q,R)</tt>, but then I still should not be
+surprised when I run into problems with customer D whose list is
+<tt>(X,Y,Z)</tt>...</p>
+
+<p>So, in general, even if it appears to be "better" practice
+from a theoretical perspective, day-to-day practice is not in
+favor of exclusive KILLs, or NEWs. Argument-less ones turn out to
+be mostly special cases of the exclusive ones.</p>
+
+<h3>M[UMPS] does not need any declarations... or does it?</h3>
+
+<p>One of the things that has been touted for a long time as a
+boon of the language M[UMPS] is that this language has no
+"declarations". Although I haven't said so explicitly yet, I have
+mostly argued against the use of the KILL command as something
+that might be generally useful, and limited the use of the NEW
+command to its explicit form, and that does come pretty close to
+what other languages do call "declarations"... </p>
+
+<p>Of course, M[UMPS] does not need any declarations. The
+language will work just fine without any of that baggage, thank
+you very much. But I am a programmer, and I seem to be
+experienced enough that I typically get called in to look at other
+people's code that "used to work".</p>
+
+<p>Guess what: I got to think that I have a lot easier time
+getting things "back to work" when there are enough indicators
+that tell me what are the expected local variables when a
+procedure is called, when there is a description that tells me
+which local variables are intended to be created by a subroutine,
+and when a subroutine attempts to NEW all variables that are
+intended to be "local" to that procedure.</p>
+
+<p>Granted, a programmer might have missed a variable that should
+have been NEWed. But when there is an "explcit" NEW command at the
+start of every subroutine, and you find a local variable that
+isn't mentioned there, it sure is a hell of a lot easier to limit
+your search of which variables might be causing any
+problems...</p>
+
+<p>(Now, about chasing variables. That is a matter for an article
+about debugging. Will there be one in this issue, or will that be
+in the next?)</p>
+
+<hr/>
+
+<p><a href="http://www.jacquardsystems.com"><img src="jsr2.gif" alt="Jacquard Systems Research"
+align="left"/></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a href="mailto:demoel@jacquardsystems.com">by e-mail</a>.</i></p>
+
+<hr/>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $PRINCIPAL</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $PRINCIPAL</h1>
+
+<a name="$P[RINCIPAL]"></a>
+<h2>$P[RINCIPAL]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This variable identifies the principal (initial) input/output
+device of a M[UMPS] process.</p>
+
+<p>Many programs use the non-standard extension that the principal
+device can be accessed by executing the command <tt><b>USE</b>
+0</tt>. This practice led to a number of ambiguous conditions
+(e.g. does <tt>"LPT1:"</tt> identify the printer or the principal
+device (<tt>+"LPT1:"=0</tt>)?). The standardized way of making
+the principal device current is to <tt><b>USE
+$PRINCIPAL</b></tt>.</p>
+
+<p><tt><b>USE</b> "LPT1"</tt> ; (DOS)<br>
+<tt><b>USE</b> "SYS$PRINT"</tt> ; (VMS)<br>
+<tt><b>USE</b> "\dev\usr\pharm\prtr"</tt> ; (UNIX)<br>
+<tt><b>IF</b> 'device</tt> ... ; does that really mean 'principal
+device'? In the above examples it probably does not.</p>
+
+<p>Sometimes, we just need to know 'where we are':<br>
+<tt><b>DO</b> ^OWNPROG<br>
+<b>DO</b> ^%LIBPROG<br>
+<b>USE $PRINCIPAL WRITE</b> !,"Do we need to say more?"</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] Language Standard.</p>
+
+<p>The initial value of <b>$PRINCIPAL</b> is
+implementation-dependent. However, if a job is initiated by
+another M[UMPS] process, then the new job will inherit the value
+of <b>$PRINCIPAL</b> from the initiating job, and if a job is
+initiated from a specific device, the value of <b>$PRINCIPAL</b>
+will be the identifier for that device. Otherwise, the value of
+<b>$PRINCIPAL</b> is not specified.
+
+<b>Note</b>: <b>$PRINCIPAL</b> is a constant, i.e. the initial
+value of <b>$PRINCIPAL</b> cannot be modified at any time.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

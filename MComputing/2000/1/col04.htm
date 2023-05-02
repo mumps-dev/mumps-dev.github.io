@@ -1,0 +1,182 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- Going... going... but far from gone</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 8, Number 1, March 2000</h3>
+
+<h2>Wind<img alt="M" src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+Going... going... but far from gone</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>Once again, I'm about to get
+onto an airplane and there
+is a laptop dangling from
+my shoulder, so it must be time to
+write another Windmills column.
+This time, I'm not returning from
+an MDC meeting, but from the
+annual  meeting of the Radiological
+Society of North America. Now...
+why should I write a column about
+this conference? Is there such a
+strong link between M[UMPS] and
+Radiology?  In one way, there is no
+connection, M[UMPS] just isn't the
+right tool for the kinds of computer
+activities that are the typical grist of
+the radiological world.</p>
+
+<p>In another way, M[UMPS] is the
+database for a number of archive
+and retrieval systems that maintain
+the information needed by
+radiologists to do their daily work.
+Currently, I am working with a
+group within the Veterans
+Administration that is adding the
+ability to acquire, display and
+manipulate images in the context of
+the Hospital Information System (VistA, 
+formerly known as DHCP)
+that the VA has been using over the
+past (almost) 20 years.</p>
+
+<p>Displaying the images, of course, is
+done by special software that
+knows about windows, pixels,
+bitmaps, palettes, and all such
+details. The images themselves are
+stored in binary files on a disk
+(typically in a jukebox), and not in
+a database. The database, stores the names of these
+files. These names are assigned 
+in such a way that the M[UMPS]
+software can easily associate a
+patient with his/her images, and
+also in such a way that it is easy to
+keep track of which images were
+acquired in the context of which
+part of the medical history of the
+patient. In order to display an
+image, the M[UMPS] software will
+call external software, passing it the 
+filename that can be retrieved from
+the M[UMPS] database.</p>
+
+<p>Within the VA's Imaging system,
+the typical mode of operation is to
+have a mixture of software. On one
+end, there are the traditional
+M[UMPS] programs that take care
+of the database related activities,
+and in some cases the procedural
+script of activities that need to be
+performed, and on the other side
+there are other programs, to which
+tasks are handed off that require
+special processing. Such tasks
+could be ones that require special
+interaction with hardware, or that
+require special number crunching.
+These external programs are
+typically written in languages like
+C or C++, or using third-party
+components, such as Active-X
+controls.</p>
+
+<p>For instance, when an X-ray
+machine transmits an image to the
+VistA system, a C program 
+receives the binary data and create
+the file that contains the image.
+Before this file can be created, the
+C program tells the M[UMPS]
+server what it knows about the
+image (patient identification and
+source of image) and receives in
+exchange the name of the
+subdirectory where this file is to be
+stored, while the database server
+enters some information about the
+image to the appropriate patient
+record. The database also contains
+information about the various
+machines that produce the images,
+such as the way these machines
+encode their images, and as a
+result, the C program may  receive
+instructions from the M[UMPS]
+server to apply certain "filters" to
+the image data before the image file
+is created, so that all images on the
+jukebox are stored in a normalized
+format.</p>
+
+<p>The point of this story is this: we
+have entered into a world where
+M[UMPS] is being used as one of
+many technologies, and where each
+technology is being used for its
+particular strength. Control is being
+transferred from one software
+environment to another; each
+environment executes its part of a
+complex task, and to the end-user,
+only the "front-end" of the software
+will be visible.</p>
+
+<p>The end-user sees the window with
+the dialog that selected a patient,
+and possibly a special episode of
+patient care, and at the click of a
+button, a new window pops up that
+displays an image that pertains to
+the medical activity at hand... Who
+says that M[UMPS] is tied to a
+"roll and scroll" user interface?</p>
+
+<p>Increasingly, I see software that
+uses one of many tools to create a
+user-interface (Delphi<sup>TM</sup>, Visual
+Basic<sup>TM</sup> and MSM-Workstation<sup>TM</sup>
+as well as PDQWeb<sup>TM</sup> and
+WebLink<sup>TM</sup> are the ones I see most
+frequently). This "modern"
+software communicates through
+one of the various "multiple-tier"
+models with a M[UMPS] database,
+and thus delivers a product that has
+the speed and efficiency of the
+traditional M[UMPS] engines,
+combined with the appeal and ease-of-use of the type of user interfaces
+that are currently popular.</p>
+
+<p>In short, it still would appear that
+the rumors of the demise of the M[UMPS] language 
+are greatly exaggerated. But, on the
+other hand, it seems that M[UMPS]
+is becoming more and more
+invisible... Yeah, that would
+probably be the best way to
+describe the current situation.</p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+</body>
+</html>

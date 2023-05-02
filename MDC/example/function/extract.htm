@@ -1,0 +1,293 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $EXTRACT</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $E[XTRACT]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns substrings of strings that are specified as
+parameters.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>("ABCDEFG",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"B"</tt>.</td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>("ABCDEGF",2,5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"BCDE"</tt></td></tr>
+</table></p>
+
+<p>Assume that <tt>X="ABCDEF12345GHI"</tt>.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,20)</tt></td>
+<td>&nbsp;</td>
+<td align=left>empty string</td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,10,99)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"45GHI"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>("",2,3)</tt></td>
+<td>&nbsp;</td>
+<td align=left>empty string</td></tr>
+</table></p>
+
+<p>Assume that <tt>X="12345619481021MIN123a"</tt> and contains a
+'fixed length' data record:</p>
+
+<p>Registration-number<br>
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,1,6)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>123456</tt></td></tr>
+</table>
+
+Birth date<br>
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,7,14)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>19481021</tt></td></tr>
+</table>
+
+Gender<br>
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,15)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"M"</tt></td></tr>
+</table>
+
+Department<br>
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,16,17)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"IN"</tt></td></tr>
+</table>
+
+Room-number<br>
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,18,21)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"123a"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> X="ABCDE"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"B"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,1,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"AB"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,1,4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABCD"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,0,100)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABCDE"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,1.92)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,99)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,-3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(X,3,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> A(1)="2BC"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$EXTRACT</b>(A(1),A(1))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"B"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET </b>X="98765"</tt><br>
+In the examples below, the tilde-character (~) is displayed
+where the resulting strings contain spaces, so that the number
+if space-characters becomes visible.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$EXTRACT</b>(X,3,7)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>Y="765"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=Y_"~~~~~"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>Y="765~~~~~"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$EXTRACT</b>(Y,1,5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>Y="765~~"</tt></td></tr>
+</table></p>
+
+<p>or, in one formula:<br>
+<center>
+<tt><b>SET</b> Y=<b>$EXTRACT</b>(<b>$EXTRACT</b>(X,3,7)_"~~~~~",1,5)</tt>
+</center></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] Language Standard:</p>
+
+<p>It is allowed to specify a reference to <b>$EXTRACT</b>
+on the left hand side of the equal sign in a <b>SET</b> command.</p>
+
+<p><tt><b>SET</b> X="ABCDEFG"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="ABaDEFG"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2)="xxx"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="AxxxaDEFG"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2,6)=""</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="AEFG"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> X="ABCDEFG"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2,3)="PQ"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="APQDEFG"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2,6)="="</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="A=G"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,11,12)="PQ"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="A=G~~~~~~~PQ"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2)="PQ"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="APQG~~~~~~~PQ"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X)="ZzZ"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="ZzZPQG~~~~~~~PQ"</tt></td></tr>
+</table></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$EXTRACT</b>(VALUE)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$EXTRACT</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<p><b>$EXTRACT</b>(VALUE,CHAR)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$EXTRACT</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<p><b>$EXTRACT</b>(VALUE,FROM,TO)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$EXTRACT</b>(^(5,6),^(7,8),^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<p><b>SET $EXTRACT</b>(VALUE,FROM,TO)=VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET $EXTRACT</b>(^(3,4),^(5,6),^(7,8))=^(9,10)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4: if <tt>^ABC(1,5,7,8)</tt> &lt;<tt> ^ABC(1,5,6)</tt> or if
+<tt>^ABC(1,5,7,8)</tt> &lt; <tt>1</tt><br>
+; don't store, naked indicator is <tt>^ABC(1,5,7,9,</tt><br>
+; else continue<br>
+; 5. fetch/store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

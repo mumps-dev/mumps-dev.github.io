@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>Questions and Answers</title></head>
+<body background="windmill.gif">
+
+<img alt="Ed de Moel" src="edf3.jpg" width="88" height="128" align="left"/>
+<h1>Wind<img alt="M" src="mta.gif" width="22" height="17" align="bottom"/>ills</h1>
+<p><i>M Computing, Volume 4, number 3, July 1996, pages 14-16</i></p>
+
+<h2>Questions and Answers<br/>
+<i>by Ed de Moel</i></h2>
+
+<p>This issue, I would like to answer a number of questions that
+seem to keep popping up in the M[UMPS] community.</p>
+
+<h3>What is the current standard?</h3>
+
+<p>That is an interesting question: for the past five years, the
+"current" language standard used to be the one that we all knew
+as "ANSI X11.1-1990", then, last December, the new one was
+approved, the approval was appealed, the appeal was heard and
+denied, and a new appeal was announced...</p>
+
+<p>So, where does that leave us?</p>
+
+<p>At this point in time, it is safe to say that the current
+standard for the M[UMPS] language is ANSI X11.1-1995 (the one
+that was approved on 8 December 1995). If the appeal that has
+been announced is indeed filed, the standard will become
+"suspended" again, and from there on matters will depend on
+whether or not that appeal will be successful.</p>
+
+<p>People who have to worry about the legal details in contracts
+would be wise to consider language enhancements like the MERGE
+command, functions like $NAME, $QLENGTH, $QSUBSCRIPT and reverse
+$ORDER, special variables like $PRINCIPAL, $DEVICE and $KEY,
+error trapping and windowing extensions and other structured
+system variables as "Type A Extensions" for a little while
+longer, but programmers who are working on products that will
+appear on the market in the near future would be equally wise to
+use those language extensions to their advantage.</p>
+
+<h3>Will M[UMPS] become Object Oriented?<br/>
+And when?</h3>
+
+<p>Well, the "when" question is way too hard to answer. If we see
+"object Orientation" as a style of programming that can be
+achieved by sheer discipline, the obvious answer is that this can
+be done in ANSI standard M[UMPS] today, but that was most
+probably not the intent of those who have asked me this question
+over the past months...</p>
+
+<p>The MDC has been working on Object Oriented M[UMPS] for a
+number of years now. The first (and highest) hurdle is still to
+agree on certain issues of definition:</p>
+
+<ul>
+<li>What is an "object"?</li>
+
+<li>Can we achieve "object orientation" in traditional
+M[UMPS]?</li>
+
+<li>Should we create a language that is altogether new, so
+that the object oriented extensions will not be restricted
+by traditional features of the M[UMPS] language?</li>
+
+<li>Should we use a currently available commercial object
+oriented product as the basis of our development? If so,
+which one?</li>
+</ul>
+
+<p>And several more...</p>
+
+<p>Some possible answers to these questions have appeared in
+articles in this journal, and I'm certain that more will
+follow.</p>
+
+<p>Those who have access to UseNet (also known as NetNews) on the
+InterNet may have seen the discussions that the members of the
+Task Group on Object Oriented Programming are currently
+conducting. Currently, there are some general discussions going
+on in the news-group <tt>comp.lang.mumps</tt> and more detailed
+ones through the mailing-list <tt>mdc-oo</tt>, which is
+maintained by one of the members of the Task Group. In order to
+participate in the discussions in the news-group, just add the
+name of the M[UMPS] group to your list of subscriptions and to
+join the discussions on the mail-list, send an e-mail message
+to</p>
+
+<p align="center"><tt>Majordomo@ldl.HealthPartners.COM</tt></p>
+
+<p>containing the request:</p>
+
+<p align="center"><tt>subscribe mdc-oo your@e.mail.address</tt></p>
+
+<p>and, of course, those who don't have access to the InterNet,
+can always subscribe to the (paper) mailings of the MDC.</p>
+
+<h3>How does one write a portable routine generator in
+M[UMPS]?</h3>
+
+<p>This is a question that I get quite often. Every
+implementation has methods to create and modify routines, but
+those all are implementation-specific. And everyone who is trying
+to improve the performance and consistency of their software by
+generating code based on pre-defined information are attempting
+to create and store M[UMPS] routines...</p>
+
+<p>All programmers who are involved in this kind of code
+genration will be pleased to know that, in October of last year,
+the MDC approved the commands RS[AVE] and RL[OAD] as standardized
+extensions to the language, so that routine creation and
+modification is no longer completely implementation-specific. Of
+course, it may be a while before all implementors will provide
+these commands, but the basis is there.</p>
+
+<p>The RL[OAD] command copies the content of a routine into a
+local or global variable:</p>
+
+<p align="center"><tt>RLOAD ROUTINE:VARIABLE</tt></p>
+
+<p>would store the text of the routine named <tt>ROUTINE</tt> into
+a local array called <tt>VARIABLE</tt>, in such a way that
+<tt>VARIABLE(1)</tt> contains the value of
+<tt>$TEXT(+1^ROUTINE)</tt>, <tt>VARIABLE(2)</tt> the second line,
+etcetera, as many lines as there are in the routine.</p>
+
+<p>Similarly,</p>
+
+<p align="center"><tt>RSAVE ROUTINE:VARIABLE</tt></p>
+
+<p>would take the information in the local array called
+<tt>VARIABLE</tt> and store that as the routine named
+<tt>ROUTINE</tt>.</p>
+
+<p>Adding a line to a routine is now as simple as:</p>
+
+<pre>
+        KILL LOCAL
+        RLOAD MYROUT:LOCAL
+        SET LOCAL(1.5)=" ; This is inserted"
+        RSAVE MYROUT:LOCAL
+</pre>
+
+<p>When <tt>RSAVE</tt>ing the routine, the system will take the
+nodes in the array (in the sequence that $ORDER would encounter),
+and store them as successive lines (with integer line numbers) in
+the routines.</p>
+
+<p>The <tt>RLOAD</tt> command, on the other hand, only affects
+those nodes in the array into which it actually stores
+information, hence:</p>
+
+<pre>
+        KILL LOCAL
+        SET LOCAL(1.5)=" ; This is inserted"
+        RLOAD MYROUT:LOCAL
+        RSAVE MYROUT:LOCAL
+</pre>
+
+<p>would work equally well.</p>
+
+<p>In addition to the name of the routine and the array, some
+more parameters will become available. Although the exact
+keywords are not yet standardized, the general syntax will be:</p>
+
+<p align="center"><tt>RSAVE ROUTINE:VARIABLE:(keyword=value)</tt></p>
+
+<p>Two keyword=value pairs that immediately come to mind, of
+course, would be to store a routine as "executeable code only",
+and the specification of which character-set to use when storing
+the routine.</p>
+
+<h3>Some Compiled Languages are so Clever about the Evaluation of
+Logical Expressions... Can't we do the Same?</h3>
+
+<p>Anyone who has worked with compiled languages will know that
+an expression like:</p>
+
+<p align="center"><tt>if ( A or (B and C) or D )</tt></p>
+
+<p align="center"><tt>if ( X and (P or Q) and R )</tt></p>
+
+<p>will cause code to be generated that will "branch away" as
+soon as one of the "or" components has shown a "true", or
+respectively, one of the "and" components has shown a "false",
+value.</p>
+
+<p>In M[UMPS], expressions are evaluated strictly left-to-right,
+and every component of every expression is completely evaluated,
+unless it is explicitly stated that a part of an expression may
+be "skipped". At the moment, the only cases where parts may be
+skipped are in the context of the $SELECT function. Of course,
+the same seems to happen in the case of</p>
+
+<p align="center"><tt>IF A,B,C</tt></p>
+
+<p align="center">and <tt>GOTO A:X,B:P!Q,C:R</tt></p>
+
+<p>but in those cases the "optimization" is really a feature of
+the concatenation of multiple commands that are each evaluated
+separately.</p>
+
+<p>To answer the question: "Can't we do the Same?", I would say:
+Yes, of course. But we would need to specify explicit syntax and
+conditions for this optimization to happen, and we need to be
+extremely careful to remain "backward compatible", because there
+is a lot of software around that expects the naked indicator to
+be affected by the evaluation of each and every part of the
+various expressions that a routine has to go through.</p>
+
+<p>I would welcome any ideas to generate technical proposals to
+add this type of optimization to the M[UMPS] language.</p>
+
+<hr/>
+
+<p><a href="http://www.jacquardsystems.com"><img src="jsr2.gif" alt="Jacquard Systems Research"
+align="left"/></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a href="mailto:demoel@jacquardsystems.com">by e-mail</a>.</i></p>
+
+<hr/>
+
+</body>
+</html>

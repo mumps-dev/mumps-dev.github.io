@@ -1,0 +1,95 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$EVENT</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$EVENT</h1>
+
+<a name="^$E[VENT]"></a>
+<h2>^$E[VENT]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This structured system variable provides information about the
+events that may occur in the current M[UMPS] system.</p>
+
+<p><tt><b>WRITE</b> !,"An event was just recognized."<br>
+<b>SET</b> T=<b>^$EVENT</b>("TYPE"),C=<b>^$EVENT</b>("CLASS")<br>
+<b>SET</b> S=<b>^$EVENT</b>("SEQUENCE")<br>
+<b>WRITE</b> !,"Event number ",S,", event type was ",T<br>
+<b>WRITE</b> " and event-class was ",C,"."<br>
+<b>SET</b> W=<b>$GET</b>(<b>^$EVENT</b>("WINDOW"))<br>
+<b>IF</b> W'="" <b>WRITE</b> !,"Event occurred in window ",W,"."<br>
+<b>SET</b> E=<b>$GET</b>(<b>^$EVENT</b>("ELEMENT"))<br>
+<b>IF</b> E'="" <b>WRITE</b> !,"Event was associated with ",E,"."<br>
+<b>SET</b> K=<b>^$EVENT</b>("KEY")<br>
+<b>IF</b> K'="" <b>WRITE</b> !,"Depressed keys: ",K,"."<br>
+<b>SET</b> P=<b>^$EVENT</b>("PPOS")<br>
+<b>WRITE</b> !,"Cursor located at (",P,")."<br>
+<b>SET</b> K=<b>^$EVENT</b>("PSTATE")<br>
+<b>IF</b> K'="" <b>WRITE</b> !,"Depressed mouse buttons: K,"."<br>
+<b>IF</b> T="SELECT" <b>DO</b><br>
+. <b>WRITE</b> !,"The choice was ",<b>^$EVENT</b>("CHOICE"),"."<br>
+. <b>QUIT</b><br>
+<b>IF</b> (T="CHANGE")!(T="UNFOCUS") <b>DO</b><br>
+. <b>SET</b> N=<b>^$EVENT</b>("NEXTFOCUS")<br>
+. <b>WRITE</b> !,"Focus transferred to ",N,"."<br>
+. <b>QUIT</b><br>
+<b>IF</b> T="FOCUS" <b>DO</b><br>
+. <b>SET</b> P=<b>^$EVENT</b>("PRIORFOCUS")<br>
+. <b>WRITE</b> !,"Focus transferred from ",P,"."<br>
+.<b> QUIT</b><br>
+<b>IF</b> <b>$DATA</b>(<b>^$EVENT</b>("OK")) <b>QUIT</b><br>
+; Perform event-specific clean-up activities<br>
+<b>QUIT</b></tt></p>
+
+Approved for addition in a future ANSI M[UMPS] Language standard.</p>
+
+<p>The ability to process events in an asynchronous fashion is
+introduced. The commands <b>ABLOCK</b>, <b>ASTART</b>,
+<b>ASTOP</b> and <b>AUNBLOCK</b> allow for starting and stopping
+recognition of certain events. The structured system variable
+<b>^$JOB</b> is used to register the entry point this is intended
+to be started when a certain event occurs. Nodes in
+<b>^$EVENT</b> are used to specify other specific behavior of the
+various events.</p>
+
+<p><tt><b>^$EVENT</b>(<b>"EVENTDEF"</b>,<b>"TIMER"</b>,timerid,<b>"INTERVAL"</b>)</tt>
+identifies the duration of the waiting period for a specific 
+timer.</p>
+
+<p><tt><b>^$EVENT</b>(<b>"EVENTDEF"</b>,<b>"TIMER"</b>,timerid,<b>"ACTIVE"</b>)</tt>
+indicates whether a specific timer is currently active (boolean 
+value).</p>
+
+<p><tt><b>^$EVENT</b>(<b>"EVENTDEF"</b>,<b>"TIMER"</b>,timerid,<b>"AUTO"</b>)</tt>
+is the value that would be re-set automatically into
+<tt><b>^$EVENT</b>(<b>"EVENTDEF"</b>,<b>"TIMER"</b>,timerid,<b>"INTERVAL"</b>)</tt>
+when its value decrements to a value that is not positive (note
+that 0 is not a positive number in M[UMPS]).</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

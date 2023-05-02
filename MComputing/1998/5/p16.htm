@@ -1,0 +1,342 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, Number 5, Pages 16-19</h3>
+
+<h2>The Next 5 Years</h2>
+
+<h3>by Alan Simon</h3>
+
+<p>How will database technology change during the next half decade . . . and
+what will it mean for your applications?</p>
+
+<p>A funny thing happened on the way to the millennium. No, I'm not talking
+about the Year 2000 problem. How funny that will be depends on your sense of
+humor, plus how serious the problem will really be. I'm talking about
+database technology.</p>
+
+<p>What's that, you say? Everyone uses databases these days? Well, I agree -
+sort of. We're closing out a decade in which we've seen the rise of the
+Internet, client/server computing going mainstream, and the birth of whole
+new subsegments of computing applications (call centers, sales force
+automation packages, and client/server enterprise resource applications).
+Yet one thing never ceases to amaze me: for the most part, DBMSs are still
+primarily used as glorified file management systems.</p>
+
+<p>Admittedly, the hundred or so applications I look at each year as part of my
+data warehousing activities are only an infinitesimal portion of the
+hundreds of thousands, or even millions, of applications out there in
+business organizations worldwide. But it's always striking when I look at an
+application's schema definitions, whether for a dozen relational tables or
+several hundred. I almost always see bare bones data definition language
+(DDL), such as CREATE TABLE and CREATE INDEX statements with a list of the
+columns and their data types and sizes, and perhaps a few NOT NULL clauses.</p>
+
+<p>But where are the CHECK clauses? Where are the constraints for the various
+forms of referential integrity and database-resident management of business
+rules? Outside the DDL statements, I occasionally see some stored procedure
+usage, but that's about it.</p>
+
+<p>Now before you start emailing me that your individual database applications
+make use of all of these capabilities and more, remember that I'm going by
+what I'm seeing in the marketplace, primarily at large corporations. Of
+course there are applications in the marketplace with database environments
+rich in business rule management and server-side logic. My point is that
+when you consider the capabilities inherent in most leading DBMS products,
+there is a significant gap between the breadth of their actual use in the
+marketplace and the total potential for their use.</p>
+
+<p>There are several reasons for this limited usage of overall capabilities.
+First, a surprisingly large number of relational client/server applications
+are basically ports of mainframe applications - either database or file
+system-based-to distributed platforms. And the teams doing the conversions
+have only performed the essential conversion activities, such as creating a
+set of table definitions with the appropriate columns. Database-enforced
+range of values? Sorry, the data being converted is suspect, and that would
+affect database loading and the overall project time. Referential integrity?
+Primary and secondary key definitions? Not with the concerns about data
+quality in the columns that need to be used as key fields.</p>
+
+<p>As data warehousing took hold, the need to do frequent loads (actually,
+reloads) of a database's contents during relatively modest time windows
+provided the impetus for these newly created databases (those of the data
+warehouse) to be structured with the minimum set of defining business logic.
+It would be nice to have a robust set of declarations for each column in
+each warehouse table, such as the permissible ranges or lists of values and
+cross-table integrity constraints. But most data warehousing implementers
+find that the overhead associated with these capabilities either directly
+precludes their usage because of insufficient load time windows or are
+commonly inadvisable because there's no time to restart a loading process if
+it is abnormally terminated because of problems.</p>
+
+<p>Likewise, the philosophy of "it's a read-only database, and not really the
+system of record for this data" has long permeated the data warehousing
+world and deemed the inclusion of advanced database capabilities in such
+environments unnecessary.</p>
+
+<h3>A Brief Look Back</h3>
+
+<p>What's interesting about today's database usage is that at the turn of this
+decade, just before the 1990 recession hit U.S. business, the database
+vendor community was poised to bring the fruits of its collective research
+and advanced development during the 1980s to the marketplace. All the
+advanced information management capabilities -- distributed databases,
+"artificial intelligence" databases, and the first hybrid object/relational
+DBMSs -- were supposed to be the cornerstones of applications by the time the
+new millennium arrived.</p>
+
+<p>As often happens, though, market forces undo the best-laid plans of mice and
+men (and product managers). First, the client/server revolution took hold,
+with vendors and user communities alike scrambling to make cross-platform
+database access usable and viable in real-world applications. Initially
+scorned by many, ODBC became the default means by which client/server
+database access was accomplished, and a significant amount of development
+effort in the vendor community went into reworking centralized DBMS products
+into those suitable for operations within distributed, multiplatform
+environments.</p>
+
+<p>The phenomenal growth of the Internet from a place where one might go to
+check out some innovative advertisement pages to an environment of
+technologies comprising the next generation of application development
+caused the vendor community to scramble once again. It focused its efforts
+on new generations of enterprise architectures interaction between Web
+servers and database servers, as well as connectivity between Java and
+databases.</p>
+
+<p>Along the way, significant effort was also focused on moving parallel
+database architectures from the labs to products; on adjusting query
+optimizers to be able to handle complex, multitable joins common to data
+warehousing environments; and providing interfaces between proprietary data
+structures such as multidimensional databases with those of their core DBMS
+engines.</p>
+
+<p>Looking back, it appears that a combination of market forces and a
+collective application implementation community still coming to grips with
+relational technology going mainstream led the business world to do little
+more than take baby steps into a new generation of database technology.</p>
+
+<h3>A Look Ahead: The Basics</h3>
+
+<p>Now we're poised on the brink of a new millennium. What does that mean for
+the evolution of database usage?</p>
+
+<p>Experience has shown that the furthest we can look ahead with any kind of
+certainty in most areas of computing technology is about five years. I took
+a look back at the subjects I covered in one of my earlier books, Strategic
+Database Technology: Management for the Year 2000 (Morgan Kaufmann, 1995)
+that discussed how databases and information management systems would evolve
+in the 1990s. Some, like the discussion of hypertext and hypermedia, have
+already become commonplace. Others, like the future direction of the Xbase
+language and the standard that was then underway...well, let's just say that
+the times, they have a-changed.</p>
+
+<p>What is notable is that many industry directions seem to have been
+"mothballed" for a short while because of a focus on evolving database
+technology better supporting data warehousing and the Internet. I believe
+we're about to see a resurgence of vendor activity and interest within the
+application implementation community in many of these areas.</p>
+
+<p>Here are several "safe" predictions as we look ahead to the next five years:</p>
+
+<p>The relational model will remain the dominant database form. Hierarchical
+and network products are passé for all but legacy applications that haven't
+undergone migration. "Pure" object-oriented databases have found their niche
+in multimedia applications. Special-purpose database models, such as
+multidimensional systems (remember not too long ago when they were supposed
+to be the only workable products for data warehousing environments?), are
+relegated to use in small-scale data marts, sometimes in concert with
+relational databases where the "real" warehouse contents are stored.</p>
+
+<p>Make no mistake: The relational model is a hands-down winner in the
+marketplace. (An anecdote for those of you who have been involved with
+databases since the early 1980s: Remember when a major source of dissent in
+the database community was the argument by some academics and consultants
+that early RDBMSs were only "based on the relational model" and therefore
+weren't really entitled to the "relational" label because they didn't
+support all of the foundations of the defining papers of the relational
+model?)</p>
+
+<p>SQL is here to stay. I know, I know, the SQL3 standard is, shall we say,
+voluminous (some argue unimplementable). SQL is syntactically complex (some
+argue overly complex) for many types of database operation. Divergence from
+the SQL standard is legendary among DBMS vendors, and yes, it's fun to argue
+about how concepts like "null" aren't properly and fully handled by SQL. But
+the tens of millions of programs, from full-scale production applications to
+data access queries through SQL-based reporting tools, aren't going
+anywhere.</p>
+
+<p>RDBMS engines will continue to get "smarter" about query and transaction
+plan preparation and execution. Remember that from the time vendors first
+started experimenting with relational implementations in the mid-1970s to
+the time relational technology went mainstream in the early '90s, a heck of
+a lot of vendor work went into the query and transaction plan portions of
+those engines. Where the hierarchical and network DBMS products used
+physical pointers by which programmers specified rigid and
+difficult-to-modify access paths through the database's contents, relational
+implementations demand flexibility and require the DBMS engine to develop
+data access plans based on a complex set of criteria (how many tables are
+part of the query, whether the operation is read-only SELECT or one in which
+data will be updated).</p>
+
+<p>Like it or not, it took the vendor community close to 15 years of steady
+work to get to the point where engines were sufficiently "intelligent" to
+provide adequate performance to support real-world transaction processing.
+And then along comes data warehousing, with its multitable joining among
+fact and dimension tables. Before you know it, hundreds of person-years of
+vendor development are devoted to enhancing the products to handle
+warehousing-like queries.</p>
+
+<p>Looking ahead, these optimizers will continue to be enhanced to more
+efficiently support cross-platform distributed access as part of the same
+transaction , as well as being better able to support complex distributed
+transaction processing models like chained transactions for wide-scale,
+multiplatform updates.</p>
+
+<h3>The Next Generation</h3>
+
+<p>What can we expect the databases of 2003 to look like? The following ideas
+aren't revolutionary; in fact, everything here dates back to the research
+and advanced development of the mid- to late-1980s. Many capabilities can be
+found in commercially available products.</p>
+
+<p>Distributed DBMSs will make a comeback. In many of my writings and
+presentations, I call attention to the roots of data warehousing being in
+the failure of distributed DBMS technology leaving us with a
+what-do-we-do-now situation with regard to the "islands of data problem."
+Distributed and heterogeneous database systems are starting to make a
+comeback with a host of new products from established vendors and start-ups.
+These products synthesize contents from databases on different platforms as
+part of a single informational or analytical operation, rather than having
+to precopy all of that information into a single database, as in classical
+data warehousing.</p>
+
+<p>Many of the problems that undermined distributed DBMSs have been overcome.
+Things like slow performance on processors and in networks, attempts to
+create read/write distributed environments, and a misunderstanding of
+customer needs by the vendor community no longer exist. Watch for a more
+robust set of products that will let you synthesize information across
+platforms without having to do all of today's data warehousing
+preliminaries.</p>
+
+<p>"Self-mining" databases will become commonplace. Those of you who have been
+around for a while remember knowledge base management systems (KBMSs), or
+artificial intelligence databases. The first commercially viable steps into
+active databases came with acceptance and usage of stored procedures. Data
+mining is on most organizations' interest lists, with popular opinion
+swinging back the other way from expert systems and artificial intelligence
+being out of favor. Watch for data mining capabilities, both statistical and
+AI-related, to work their way into the database engines.</p>
+
+<p>Mobile databases will be better supported. There are a number of
+complexities inherent in mobile database applications that are still a bit
+out of the mainstream of RDBMS products. For one thing, mobile databases
+need to be synchronized with the contents of a server. And complex mobile
+applications require bidirectional flows of data among the mobile platforms
+and servers, often in both "push" and "pull" models. Moreover, simple
+exchanges of data by "docking" may not be sufficient for the needs of the
+mobile applications.</p>
+
+<p>Watch for the query and transaction subsystems (discussed above) of DBMS
+products to continue to be enhanced to support nonstandard distributed
+applications, such as those based on a mobile user community rather than a
+fixed population on a local- or wide-area physical network.</p>
+
+<p>In-memory databases will become commonplace for read-only, nonvolatile
+environments. Much of the concern about performance in data warehousing
+environments will be alleviated when their contents are stored in memory.
+Perhaps nonvolatile memory will take hold by then, but even if that doesn't
+happen, the operational risks associated with data warehouse contents being
+stored in memory are significantly lower than with transactional, "system of
+record" data.</p>
+
+<p>Colocation of transactional and informational data will commonly occur.
+Advances in parallel processing hardware will let you store production data
+on part of a single platform, with all the appropriate performance tuning
+for production applications. There will also be separate versions of the
+data, designed and tuned for informational or analytical purposes on other
+portions of that same platform. The advantage? Avoiding the need to copy
+data from one platform to another across a network.</p>
+
+<p>Drill-through from specialized structures to relational databases will be
+commonplace. We're only at the beginning of "the era of
+drill-through" -- environments in which different types of database
+environments will have their contents linked together by features inherent
+in the products and their supporting environment, rather than kludgey,
+difficult-to-maintain custom code. Whether it's single-vendor environments
+or multivendor, standards-based systems, expect to see significantly more
+applications in which specialized, highly efficient (but somewhat rigid)
+structures are used for common operations. Yet underneath, the flexibility
+of the relational model can support unpredictable, high-volume data
+management needs.</p>
+
+<p>Database security capabilities will be strengthened. Ironically, much of the
+research and prototyping in secure databases during the 1980s went into the
+area of military applications. I don't want to downplay the significance of
+and the need for database security in those environments, but the most
+serious security problems today are in commercial applications, including
+Internet-based electronic commerce environments. The simplistic
+discretionary access control model of most DBMSs (as implemented through SQL
+GRANT-REVOKE) is only part of the answer to multienterprise security with an
+element of financial risk.</p>
+
+<p>Expect to see better cohesion between the traditional database security
+capabilities with those of operating systems and networks.</p>
+
+<p>Temporal databases will become commonplace. Even though capabilities for
+supporting temporal (time-oriented) data already exist in many products,
+they are seldom used in mainstream applications. Typically, time is handled
+by setting up separate tables (for example, END-OF-LAST-MONTH-INVENTORY) and
+developers handling temporal operations through SQL or a query tool front
+end. In contrast, a temporal database has time as an inherent part of the
+infrastructure and a temporal version of SQL (for example, a WHEN operation
+allowing access to various states of data at certain times in the past).
+Considering that many business intelligence applications built on top of a
+data warehouse are temporal in nature, you would expect to see much wider
+use of these capabilities today. Part of the reason temporal databases
+haven't taken hold is that multidimensional databases have mostly served the
+need to handle time, with time being one of the more commonly supported
+dimensions. A time dimension works well for regular, controlled data updates
+such as refreshing the data warehouse every month and having a rolling
+24-month history maintained in the warehouse. However, consider environments
+like operational data stores with realtime feeds from multiple production
+sources. They might have the need to maintain a limited amount of history
+where updates aren't predictable and can't be easily represented using a
+dimension table. Such environments are tailor-made for temporal databases.</p>
+
+<p>VLDB capabilities will continue to increase. Expect to see every leading
+DBMS product engineered to handle multiterabyte databases easily.</p>
+
+<p>At least one unforeseen significant development will occur. I made the
+comment earlier about market forces driving database technology usage during
+the 1990s in a somewhat different path than the vendors had planned at the
+outset of the decade. Something will occur during the next five years in the
+area of database technology that just isn't on the horizon today. You can
+count on it.</p>
+
+<h3>Bet on Advancement</h3>
+
+<p>So there you have it. A look back and a look forward; something old,
+something new. Whatever happens during the next five years, you can
+certainly expect that database technology will be in the midst of the next
+wave of advancements in the world of computing.</p>
+
+<hr>
+
+<p><i>Alan Simon is vice president of Worldwide Data Warehousing Solutions at
+Cambridge Technology Partners. He is the author of 22 books, including a new
+expanded edition of How to be a Successful Computer Consultant (McGraw-Hill,
+1998). You can reach him
+at <a href="mailto:asimon@ctp.com">asimon@ctp.com</a>.</i></p>
+
+<hr>
+
+<p>Reprinted with permission from Database Programming &amp; Design, October, 1998,
+vol. 12, no.10 &copy; 1998 Miller Freeman, Inc. All rights reserved. Database
+Programming &amp; Design is now known as Intelligent Enterprise Magazine. This
+and similar articles may be found
+at: <a href="http://www.intelligententerprise.com">www.intelligententerprise.com</a>.</p>
+
+</body></html>

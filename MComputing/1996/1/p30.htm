@@ -1,0 +1,148 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- Or Else...</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 4, number 1, March 1996, pages 30-31</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+Or Else...</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>This time, I'd like to talk about the <tt>IF</tt> command, or,
+rather, about the <tt>ELSE</tt> command. In many programming
+languages, there are IF, THEN and ELSE commands. Typically, they
+are tightly connected to one another, and allow for nested usage
+of control structures based on different conditions. In M[UMPS],
+however, the operation of <tt>ELSE</tt> is defined in terms of a
+special variable (<tt>$TEST</tt>), which in turn is defined as a
+status variable. The status that it represents may be the result
+of the most recent <tt>IF</tt> command, but also the result of a
+<tt>OPEN</tt>, <tt>LOCK</tt> or <tt>READ</tt> command if one of
+those was issued with a time-out. The language standard that was
+first approved by ANSI in 1990 added a stacking mechanism to the
+definition of <tt>$TEST</tt> in the context of extrinsic
+variables, extrinsic functions and argumentless <tt>DO</tt>
+commands.</p>
+
+<p>Before the M[UMPS] language contained extrinsic functions, the
+only way to return values out of a subroutine was by establishing
+a protocol that a specific variable would contain the resulting
+value upon completion of that subroutine. Many users of M[UMPS]
+will have seen code like:</p>
+
+<p><center><tt>FOR I=0:0 WRITE !,Q READ X DO CHECK QUIT:$T</tt></center></p>
+
+<p>i.e., keep reading an answer to a question, until a correct
+answer has been entered. In this context, the variable <tt>Q</tt>
+would contain the prompt-text, the variable <tt>X</tt> would
+receive the user-input and the subroutine <tt>CHECK</tt> would
+check the answer, and leave a "true" or "false" condition in
+special variable <tt>$TEST</tt> that would indicate whether or
+not the answer that was entered was valid.</p>
+
+<p>Of course, with "modern" M[UMPS], it would make more sense to
+write this line of code as</p>
+
+<p><center><tt>FOR&nbsp;&nbsp;WRITE !,Q READ X QUIT:$$CHECK(X)</tt></center></p>
+
+<p>so that the subroutine has its parameter passed by value, and
+returns the validity check value as a function-result.</p>
+
+<p>But... although it is now possible to write more modular code,
+we still want our "old" code to keep executing the same way it
+did before.</p>
+
+<h3>Stack as stack can</h3>
+
+<p>The point I am trying to get to is that there have been many
+requests before the MDC to change the behavior of If-Then-Else
+constructions, so that the behavior would become closer to what
+students learn nowadays in computer science classes when looking
+at languages like Pascal and C.</p>
+
+<p>One approach that has been offered as a modification to the
+M[UMPS] language was to make the value of <tt>$TEST</tt> be
+stacked on all <tt>DO</tt> commands. The Committee discussed this
+approach several times over the past years, and kept running into
+the problem that it would not be acceptable to break a lot of
+existing code (like the example I showed earlier in this column).
+As a result, this approach was never accepted.</p>
+
+<p>One other question that typically arose in such discussions
+was "if we are going to stack one special variable, aren't there
+any other ones that we would want to be stacked as well?" The
+only other one that really is a candidate would be <tt>$IO</tt>.
+And... for this variable the result was invariably the same as
+for <tt>$TEST</tt>: there are too many subroutines that are
+called for the specific purpose of selecting a new input or
+output device, to consider stacking the value of <tt>$IO</tt> on
+<tt>DO</tt> commands.</p>
+
+<h3>Other approaches</h3>
+
+<p>One other approach would be to introduce a "blocking"
+mechanism into the language: the "then" part would be one block
+of code, and an <tt>ELSE</tt> command that would follow the end
+of such a block would work on the same value of <tt>$TEST</tt>
+that was used by the "then" part. This particular approach has
+been discussed within the Committee for almost 5 years now, and
+at every new discussion, new considerations kept popping up, that
+showed a need for further refinement of the proposal in question.
+The current document that presents this approach seems to be
+close to a final version.</p>
+
+<p>Another approach that was considered was to rename the
+<tt>ELSE</tt> command to become the <tt>EXCEPT</tt> command. The
+abbreviation would still be "E" and no code would behave any
+different. This approach was rejected on the basis that it did
+not address the basic underlying problem: to make M[UMPS] behave
+the way that is taught in current-day computer theory.</p>
+
+<p>The remaining new approaches are to leave all existing
+commands as they are, and add some new features. The most viable
+one seems to be the suggestion to add the <tt>THEN</tt>,
+<tt>OTHERWISE</tt> and <tt>ENDIF</tt> commands and the special
+variable <tt>$CONDITION</tt>. This new set of commands would
+stack the value of <tt>$CONDITION</tt> when a <tt>THEN</tt>
+command is executed, and would use this value from the stack when
+an <tt>OTHERWISE</tt> command is executed, and pop it off the
+stack when an <tt>ENDIF</tt> command is executed.</p>
+
+<p>At the next MDC meeting (March 1996), it is extremely likely
+that the merits of proposals along these lines will be discussed.
+If you wish to see more technical details about the proposals in
+question, feel free to request copies of the most recent
+documents from the MDC secretariat (the MTA will need to charge
+for photocopying and postage expenses). If you wish to make
+certain that your views will be considered at this meeting as
+well, please send your contribution to the MDC Secretariat before
+7 February 1996, so that it can be included in the "pre-meeting
+mailing".</p>
+
+<p>The MDC Secretariat is housed at the MTA offices:<br>
+1738 Elton Road, Suite 205<br>
+Silver Spring, Maryland 20903<br>
+Telephone: 1 (301) 431-4070<br>
+Telefax: 1 (301) 431-0017</p>
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif"
+ align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+<hr>
+
+</body>
+</html>

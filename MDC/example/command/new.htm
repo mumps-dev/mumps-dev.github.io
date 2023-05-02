@@ -1,0 +1,163 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>N[EW]</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>NEW</b> A,B,C<br>
+<b>NEW</b><br>
+<b>NEW</b> (A,B,C)</tt></p>
+
+<p>Note that <tt><b>NEW</b> A(1)</tt> or&nbsp;&nbsp;<tt><b>NEW</b>
+(A(1),B)</tt> is not allowed.<br>
+<tt><br>
+&nbsp;<b>KILL</b> X<br>
+&nbsp;<b>DO</b> SUB<br>
+&nbsp;<b>WRITE $DATA</b>(X)<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB <b>NEW</b> X<br>
+&nbsp;<b>SET</b> X=1<br>
+&nbsp;<b>QUIT</b></tt><br>
+Within the subroutine, a new instantiation of local variable
+<tt>X</tt> is created; at the <b>QUIT</b> command that terminates
+the subroutine, that instantiation is deleted. So, after execution
+of the subroutine, local variable <tt>X</tt> is undefined again,
+and the value 0 will be written.<br>
+<tt><br>
+&nbsp;<b>SET</b> A="President" <b>DO</b> SUB<br>
+&nbsp;<b>WRITE</b> A<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB <b>NEW</b> A<br>
+&nbsp;<b>SET</b> A="Prime minister"<br>
+&nbsp;<b>QUIT</b></tt><br>
+Within the subroutine, a new instantiation of local variable
+<tt>A</tt> is created; at the <b>QUIT</b> command that terminates
+the subroutine, that instantiation is deleted. So, after execution
+of the subroutine, local variable <tt>A</tt> is once again equal
+to <tt>"President"</tt>, and that value will be written.<br>
+<tt><br>
+&nbsp;<b>SET</b> A="President"<br>
+&nbsp;<b>DO</b> SUB1(.A)<br>
+&nbsp;<b>WRITE</b> !,A<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB1(B) <b>DO</b> SUB2 <b>WRITE</b> !,B<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB2 <b>NEW</b> B<br>
+&nbsp;<b>SET</b> B="Prime minister"<br>
+&nbsp;<b>QUIT</b></tt><br>
+Within the subroutine <tt>SUB2</tt>, a new instantiation of local
+variable <tt>B</tt> is created; at the <b>QUIT</b> command that
+terminates this subroutine, that instantiation is deleted. So,
+after execution of the subroutine <tt>SUB2</tt>, local variable
+<tt>B</tt> is once again equal to <tt>"President"</tt>, and that
+value will be written.</p>
+
+<p>After this, control is returned to the main routine. Since the
+value of parameter variable <tt>B</tt> didn't change within the
+subroutine <tt>SUB1</tt>, the value of local variable <tt>A</tt>
+is not affected, and the value <tt>"President"</tt> will be
+written once again.</p>
+
+<p>Names that appear in a "formal parameter list" are NEWed
+implicitly. The example below illustrates this feature. Assume
+that the following routine is executed:</p>
+
+<pre>
+DEMONEW ; Show Implicit NEW
+ <b>NEW</b> t1,t2
+ <b>SET</b> top=1 <b>DO</b> Show("At top")
+ <b>SET</b> t1="One",t2="Two" <b>DO</b> Second(.t1,t2)
+ <b>DO</b> Show("Back at top")
+ <b>QUIT</b>
+ ;
+Second(p1,p2) ;
+ <b>DO</b> Show("At start of Second")
+ <b>KILL</b> top
+ <b>SET</b> top="top" <b>DO</b> Third
+ <b>DO</b> Show("At end of Second")
+ <b>QUIT</b>
+ ;
+THIRD ;
+ <b>DO</b> Show("In Third")
+ <b>NEW</b> p1,p2,top <b>DO</b> Show("In Third after New")
+ <b>KILL</b>
+ <b>DO</b> Show("In Third after Kill")
+ <b>QUIT</b>
+ ;
+Show(Text) ;
+ <b>WRITE</b> !!,Text
+ <b>WRITE</b> !,"p1:",<b>$GET</b>(p1,"&lt;undefined&gt;")
+ <b>WRITE</b> ", p2:",<b>$GET</b>(p2,"&lt;undefined&gt;")
+ <b>WRITE</b> ", t1:",<b>$GET</b>(t1,"&lt;undefined&gt;")
+ <b>WRITE</b> ", t2:",<b>$GET</b>(t2,"&lt;undefined&gt;")
+ <b>WRITE</b> ", top:",<b>$GET</b>(top,"&lt;undefined&gt;")
+ <b>QUIT</b>
+ ;
+</pre>
+
+<p>The result of running this program would be:</p>
+
+<pre>
+><b>DO</b> ^DEMONEW
+
+At top
+p1:&lt;undefined&gt;, p2:&lt;undefined&gt;, t1:&lt;undefined&gt;, t2:&lt;undefined&gt;, top:1
+
+At start of Second
+p1:One, p2:Two, t1:One, t2:Two, top:1
+
+In Third
+p1:One, p2:Two, t1:One, t2:Two, top:top
+
+In Third after New
+p1:&lt;undefined&gt;, p2:&lt;undefined&gt;, t1:One, t2:Two, top:&lt;undefined&gt;
+
+In Third after Kill
+p1:&lt;undefined&gt;, p2:&lt;undefined&gt;, t1:&lt;undefined&gt;, t2:&lt;undefined&gt;, top:&lt;undefined&gt;
+
+At end of Second
+p1:&lt;undefined&gt;, p2:Two, t1:&lt;undefined&gt;, t2:&lt;undefined&gt;, top:top
+
+Back at top
+p1:&lt;undefined&gt;, p2:&lt;undefined&gt;, t1:&lt;undefined&gt;, t2:&lt;undefined&gt;, top:top
+>
+</pre>
+
+<p>Since the <b>NEW</b> command operates only on local variables,
+there are no examples with naked references.</p>
+
+<p>Approved addition for a future M[UMPS] Language Standard.</p>
+
+<p>The special variable <b>$TEST</b> may occur as an argument
+of the <b>NEW</b> command.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

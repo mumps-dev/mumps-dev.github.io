@@ -1,0 +1,107 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>AB[LOCK]</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language
+standard, as a part of the "event
+processing" extensions.</p>
+
+<p>This command "blocks" an event. When an event is "blocked"
+for a process, that process will not be interrupted to execute
+code for that event when one occurs.
+If a registered event occurs for a
+process while it is "blocked", it will be queued for later
+processing. If an un-registered event occurs while it is
+"blocked", it will be ignored. Events are registered by assigning
+values to nodes in structured system variable <b>^$JOB</b>. Events are
+"un-blocked" using the command <b>AUNBLOCK</b>.</p>
+
+<p><b>Note</b>: every <b>ABLOCK</b> command increases the "block"
+counter for an event. In order to "un-block" an event, every
+<b>AUNBLOCK</b> command decreases that counter. Events are only
+"un-blocked" when the value of that counter is equal to zero.</p>
+
+<p>The example below assumes that the underlying system is
+capable of receiving a warning of imminent power loss from an
+"un-interruptible power supply" which is providing the system
+with power and that the system is capable of responding by
+generating an event. The event class in this case is 
+<tt>"POWER"</tt>, and
+the corresponding event-ID is equal to 1. A given process may
+want to execute a routine <tt>^SHTDN</tt> to save its essential
+information if and when such an event occurs. The following code
+sample indicates how such an event can be processed
+asynchronously:</p>
+
+<pre>
+ ; Register the procedure to process a POWER event
+ ; for this process
+ <b>SET ^$JOB</b>(<b>$JOB</b>,"EVENT","POWER",1)="^SHTDN"
+ ; Enable this event for
+ ; Asynchronous Event Processing
+ <b>ASTART</b> "POWER"
+</pre>
+
+<p>From this point on, if the un-interruptible power supply
+generates the <tt>POWER</tt> event, this process will transfer control
+(asynchronously) to the routine <tt>^SHTDN</tt>.</p>
+
+<p>Now, keep in mind that event handling routines implicitly
+invoke an argumentless <b>ABLOCK</b> command when they are
+entered as the result of an event. When they exit, there
+is an implicit <b>AUNBLOCK</b> command for all events.
+In other words, while you're processing an event, you're
+temporarily blind to any events that might happen; this
+prevents getting yourself into an un-ending eddy of nested
+events. So, if this process also has
+handlers for other event classes that should be interrupted
+by <tt>POWER</tt> events, those event handlers should contain code 
+like:</p>
+
+<pre>
+ ; Enable POWER events in this handler
+ <b>AUNBLOCK</b> "POWER"
+ ... ; the body of the event handles goes here
+ ; Now block POWER events again, so that the
+ ; implicit AUNBLOCK won't distort the "block-count"
+ <b>ABLOCK</b> "POWER"
+ <b>QUIT</b>
+</pre>
+
+<p>The above example shows processing of events of the class
+<tt>"POWER"</tt>, The "event processing extension" defines the
+event classes <tt>"COMM"</tt> (events related to devices),
+<tt>"HALT"</tt> (events that are generated when processes
+terminate), <tt>"IPC"</tt> (events communicated by other
+processes), <tt>"INTERRUPT"</tt> (events that are generated when
+a process is interrupted in an implementation-specific fashion),
+<tt>"POWER"</tt> (events generated when loss of electrical power
+is imminent), <tt>"TIMER"</tt> (events that are generated when a
+timer's waiting time has elapsed)  and <tt>"USER"</tt> (events
+that are generated through the <b>ETRIGGER</b> command).</p>
+
+<hr>
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

@@ -1,0 +1,232 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, Number 3, Pages 15-17</h3>
+
+<h2>Using M to Keep up with Laboratory Automation</h2>
+
+<h3>by Max Rivers</h3>
+
+<h3>Abstract</h3>
+
+<p>As medical laboratories become more and more automated, both the quantity
+and complexity of raw data generated continues to increase. This paper
+discusses a utility written using M's flexible database capacities,
+particularly the ability to store data in both static and dynamic forms.
+This set of utilities automates the collection of data from several
+laboratory-testing machines, using a rule database to calculate results. The
+analysis process, which when done manually can take a technician up to 12
+hours per sample plate, is accomplished in less than a second using the
+programs described. Results are then automatically transmitted into a
+commercial lab system for reporting. Besides an increase in speed, testing
+shows that accuracy of results and compliance with complex rules also
+result.</p>
+
+<p>This project was initiated by Athena Diagnostics, Inc. in Worcester
+Massachusetts, because the introduction of a Tecan Automated Pipetting
+machine vastly increased the number of samples that could be prepared for
+analysis by each technician.</p>
+
+<p>Pipetting is a process labs use to transfer small quantities of liquids
+(blood or serum, for instance) for the purpose of testing for abnormalities.
+The pipette, which looks like a glass straw, is inserted into the test tube
+containing the samples, and a vacuum extracts a measured amount. This sample
+is then expelled onto a plastic plate that has small depressions on it,
+called cells. Each cell contains a chemical that will attach to one element
+of the sample-the one being tested for. Another chemical is then added which
+darkens according to the amount of the abnormality present. The plates are
+then inserted into a machine called a Plate Reader that shines light up
+through the plate and takes readings of the resulting light intensities.
+These numbers then require analysis according to pre-determined algorithms
+to determine if the amount of abnormality is a significant indication of the
+disease.</p>
+
+<p>The manual process requires lab technicians to pipette each sample one at a
+time. The Tecan automates the pipetting process by accepting a rack of test
+tubes, each with a bar-coded label. The Tecan scans the entire rack's bar
+codes with one pass of a wand. It then pipettes eight samples at a time,
+automatically diluting them to specification and depositing the samples onto
+plates according to its map database.</p>
+
+<p>The Tecan is capable of creating 40 plates at a time. The output from the
+Tecan is a set of files, one per plate, consisting of a map of where
+accessions are located on each bar-coded plate.</p>
+
+<p>After incubating, the plates are optically scanned for the density by the
+Plate Reader, and a file of raw density values is generated. Because of the
+limited range of responses required by the Plate Reader's menu of questions,
+it was decided to print out the responses in a bar-coded font into a
+notebook using one page for each test. This allows the end users to process
+the large number of plates that come off the Tecan without any actual
+typing. It also ensures consistency of input.</p>
+
+<h3>Collecting Data from Multiple Machines</h3>
+
+<p>In this project, DataTree M was used on a Pentium PC running Windows 95. The
+PC is on the same network as the Tecan and Plate Reader machines, so that
+the M program can combine their information and produce the results.</p>
+
+<p>The Tecan produces one file per plate, which contains the plate's bar-coded
+ID and a map of which accessions are in what position on each plate.</p>
+
+<p>The Plate Reader outputs the plate's ID and a matrix of density values for
+each position on the plate. The automated calculation program, dubbed
+AutoCalc, reads in both sets of files. Using each Plate's ID as the key,
+AutoCalc reconnects the accession numbers to each sample's density reading
+and then proceeds to analyze the data.</p>
+
+<h3>Storing Flexibility into M's Databases</h3>
+
+<p>Everywhere possible, information was stored as data, rather than hard-coded.
+For instance, the locations of the Tecan and Plate Reader files are stored
+in a database accessible under password-protected Manager options,
+anticipating the eventuality of changing locations of machines, upgrading,
+network configuration changes, etc. By creating this information as data,
+rather than code, the program can be maintained by end users.</p>
+
+<p>The second level of information stored as data in this project are Test
+Definitions. Each laboratory test has about fifty different data items
+defining it, including demographic data to identify tests and technical data
+used in calculation formulas. By storing as much of this information as
+possible as data elements, the program can be kept up-to-date by end users
+on a daily basis.</p>
+
+<p>By using M's capability to store data in an executable form, even the names
+of the analysis routines were stored as data. This allows for new tests to
+be added over time, without having to alter the previously validated code.
+New analysis programs can be coded and tested, and then come online as soon
+as they are added as a new entry into the test database.</p>
+
+<h3>The Rule Database</h3>
+
+<p>As more and more tests were added to the database, it became clear that
+there was a set of rules that were being used for many different tests:
+analysis of control levels, comparing dilutions, etc.</p>
+
+<p>Rather than copying the same code over for each new test, a rule database
+was developed. Once a rule has been coded and validated, subsequent lab
+tests can call this codelet without the need either for recoding or
+revalidation. Corrections in any of these subroutines are immediately
+reflected in all the tests that use it.</p>
+
+<p>Three other benefits accrue from this method:</p>
+
+<p>1. The first is shortened development time. Since the database and analysis
+engines are already developed, adding tests requires calls to mostly
+existing code.</p>
+
+<p>2. The analysis routines themselves are shrunk down into a very readable set
+of calls to rules. By naming the rules in a way that clearly describes their
+function, the routines look very much like the original specification in
+English (e.g., Check_Controls, Compute_Averages, etc.).</p>
+
+<p>3. By commenting the rule code using consistent form, an M program was
+written which reads the AutoCalc routines as data, and produces a listing of
+the computation process. This kind of documentation is required by lab
+overseeing agencies. Because the documentation is generated by the actual
+code that does the analysis, it is always up-to-date.</p>
+
+<h3>Running Modes</h3>
+
+<p>In order to accommodate the varying needs of the staff, and also because of
+differences in the way certain tests are performed, the AutoCalc utility is
+programmed to run in Batch Single Plate or Real-Time Modes.</p>
+
+<p>Batch processing allows for large numbers of identical plates to be created
+by the Tecan, read by the Plate Reader and stored into a file for processing
+later.</p>
+
+<p>Real-Time mode is used on plates that need to be incubated variable amounts
+of time. The technicians take the plate off the Tecan, wait the prescribed
+amount of time, and then read them. In Real-Time mode, the AutoCalc program
+continually scans the Plate Reader's disk. As soon as a new plate is read by
+the Plate Reader and its data exported to DOS, the AutoCalc program
+processes its data and displays its analysis, including whether or not the
+plate's controls are within range. If so, their results are filed. If not,
+it can alert the users when to next read the plate.</p>
+
+<p>Since a large number of samples are done on each plate, it is possible to
+define rules which accept some of the samples when they are incubated
+enough, freeze those results, and then let the plate process longer until
+the rest of the samples come in range. (This is very difficult to do
+manually.)</p>
+
+<p>Single plate mode allows for non-Tecan plates to be processed. Since these
+plates do not have the accession number mapped by the Tecan, the users must
+enter them, either by hand, or with a barcode wand.</p>
+
+<h3>Data Output</h3>
+
+<p>Ultimately, software systems exist to produce output. This set of utilities
+also includes a laser output capability that prints a depiction of the
+plate, complete with data values calculated at each step of the process
+(averages, differences, etc.). The quality of laser output allows for the
+use of fonts and shading to highlight positive and faulty results for ease
+of reading.</p>
+
+<p>Besides producing plate images, management reports are automatically
+generated, with statistics to aid laboratory managers.</p>
+
+<h3>Transmitting Results to Laboratory Database</h3>
+
+<p>The final step in the processing of a sample is getting the results back
+into the lab system (in this case Antrim's Laboratory Database). Since most
+vendors do not like sites to write directly into their files, an automated
+script for data entry through user screens was devised.</p>
+
+<p>AutoCalc outputs the results down to a series of DOS files. Using ProComm's
+scripting language, these files are read and then transmitted as though a
+user was typing them into the lab system. This way, Antrim's screens can
+validate the data entered, without using up the valuable time of trained
+laboratory technicians to type results.</p>
+
+<p>These scripts are also driven by the same M database that drives the rest of
+AutoCalc. Scripting information is output with each day's results, so the
+definitions are always up-to-date. This means that a new test that is added
+into the M dictionary will automatically be filed, printed and transmitted
+correctly, without any need for test-specific programming.</p>
+
+<h3>Rerunning Failed Samples</h3>
+
+<p>Inevitably, some samples fail the analysis process because of any number of
+problems: contamination, bad sample material, or because further dilutions
+are required. These failed accessions and the reasons for failure are
+exported by AutoCalc to a separate DOS file. A rescheduling script automates
+the rerunning of these samples by interacting with Antrim's rescheduling as
+if it were a user. AutoCalc also outputs detailed explanations about what
+caused the failure, for later manager reporting.</p>
+
+<h3>Conclusion</h3>
+
+<p>Automation of laboratory processes, which can greatly increase the quantity
+of specimens a lab can process, can cause bottlenecks when it comes time to
+analyze and record all the data generated.</p>
+
+<p>Using some of M's unique database capabilities, it is possible to analyze
+these data as fast as they are generated. This results in the increased
+consistency of the application of rules and even allows for rule-sets that
+are too complex for users to apply manually. Results, as well as
+rescheduling, can then be automatically entered into any commercial lab
+database system.</p>
+
+<p>By using barcode wands, this entire process can be accomplished with little
+or no actual data entry by users (eliminating the potential for mistakes).</p>
+
+<p>Using laser output, large amounts of detailed information can be reported
+about the analysis process, with important data highlighted for ease of
+reading. Automated managers reports, as well as printouts of the rules used
+in each tests analysis create an audit trail for QA compliance reports and
+assure increased reliability of results over manual systems.</p>
+
+<p>This automation process has resulted in increases in speed, accuracy of
+results, and greater compliance with complex rules.</p>
+
+<p><i>Max Rivers is CEO of Simple Windows, Inc. located in
+western Mass., as well
+as being an M consultant for over 15 years. He can be reached
+at <a href="mailto:maxrivers@aol.com">maxrivers@aol.com</a>.</i></p>
+
+</body></html>

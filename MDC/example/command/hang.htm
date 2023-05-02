@@ -1,0 +1,77 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>H[ANG]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Note: The amount of seconds to be specified may be a fractional
+number. Many operating environments (especially those running on
+UnixTM platforms) do not support fractional seconds. This is a
+limitation of the operating environment, not a limitation of
+M[UMPS]. For portability, therefore, one cannot rely on the
+ability to use fractional numbers in this context.</p>
+
+<p><tt><b>WRITE</b> DATA<br>
+<b>HANG</b> 15<br>
+<b>WRITE $CHAR</b>(5)<br>
+<b>READ</b> RESPONSE#1::1<br>
+<b>IF</b> RESPONSE=<b>$CHAR</b>(6) <b>QUIT</b> "OK"<br>
+<b>IF</b> RESPONSE=<b>$CHAR</b>(21) <b>QUIT</b> "NAK
+received"<br>
+<b>QUIT</b> "Device timed out"</tt><br>
+Check that a device responds according to protocol within defined
+timing constraints.</p>
+
+<p>Note: In general it is not a good idea to use<br>
+<tt><b>IF</b> ERROR <b>WRITE</b> ERRORMSG <b>HANG</b> 20<br>
+<b>WRITE</b> # ; Clears screen<br>
+<b>QUIT</b></tt><br>
+This example will give the user 20 seconds to read the error
+message, but it is better to use<br>
+<tt><b>IF</b> ERROR <b>DO</b><br>
+. <b>WRITE</b> ERRORMSG<br>
+. <b>WRITE</b> !,"Press &lt;return&gt; to continue: "<br>
+. <b>READ</b> DUMMY:20<br>
+. <b>QUIT</b><br>
+<b>WRITE</b> # ; Clears screen<br>
+<b>QUIT</b></tt><br>
+In this case, the user can clear the screen when he/she has read
+the message, and does not have to wait until the full 20 seconds
+have passed. Of course, if the error message is important enough,
+one may wish to leave out the time-out altogether.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>HANG</b> DELTATIME<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>HANG</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

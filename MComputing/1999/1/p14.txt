@@ -1,0 +1,42 @@
+Content-type: text/html &!&!
+<html>
+<script language='JavaScript'>
+<! --  &!
+function labmore(lab,date) {
+str="/cgi-bin/labmore1.exe?ptid=&~ptid~&lab="+lab+"&D="+date;
+
+labmwin=open(str,'labm','screenX=0,screenY=200,height=120,width=630,resizable=yes,status=no,location=no,toolbar=no,scrollbars=yes');
+labmwin.focus();
+}&!
+
+function labcht() {
+str="/cgi-bin/flow2l.exe&ptid=&~ptid~";
+
+labchtwin=open(str,'labc','screenX=0,screenY=200,height=254,width=628,resizable=yes,status=no,
+location=no,toolbar=no,scrollbars=
+yes');
+labchtwin.focus();
+...
+// -- >
+</script>
+...
+Set test=-1, i=1
+
+<center><form><table border bgcolor=silver><font size=1><tr>
+<td align=center><font size=2>
+<input type=Button onClick="labcht()" value=" ALL Labs "></td>
+
+L107    Set test=$Next(^patient(ptid,"lab",test))
+        If test<0 Write "</form></tr></table></center>" Goto labend
+
+<td align=center><font size=1>
+<font size=1> &~test~<br>
+<font size=2>
+<input type=Button onClick="labmore('&~$zh(test)~','&~$zh(Date)~')" value="
+* ">
+</td>
+        Set i=i+1
+        If i>12 Write "</tr><tr><td></td>" Set i=0
+        Goto L107
+
+        labend  ...

@@ -1,0 +1,96 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>G[OTO]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>GOTO</b> LABEL</tt></p>
+
+<p><tt><b>GOTO</b> LABEL+OFFSET</tt><br>
+Note that use of the <tt>LABEL+OFFSET</tt> syntax may have
+unintended ramifications when lines of code are inserted between
+the line with the <tt>LABEL</tt> and the line that was indicated
+by <tt>LINE+OFFSET</tt> before the insertion.</p>
+
+<p><tt><b>GOTO</b> ^PROGRAM</tt></p>
+
+<p><tt><b>GOTO</b> LABEL^PROGRAM</tt></p>
+
+<p><tt><b>GOTO</b> LABEL+OFFSET^PROGRAM</tt></p>
+
+<p><tt><b>GOTO</b> @ARGUMENT</tt></p>
+
+<p><tt><b>GOTO</b> @INDLABEL^PROGRAM</tt></p>
+
+<p><tt><b>GOTO</b> @INDLABEL^@INDPROG</tt></p>
+
+<p><b>Note</b>: a reference like +OFFSET^ROUTINE is acceptable
+as a parameter for <b>$TEXT</b>, but not as an argument for
+the commands <b>DO</b> and <b>GOTO</b>.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Assume that the following code occurs in a routine called
+<tt>ROUTINE1</tt><tt><br>
+&nbsp;;...<br>
+&nbsp;<b>GOTO</b> LABEL1^ROUTINE2<br>
+&nbsp;;...<br>
+&nbsp;<b>DO</b><br>
+&nbsp;. ;...<br>
+LABEL3 . ;...<br>
+&nbsp;. <b>IF</b> CONDITION <b>GOTO</b> LABEL3<br>
+&nbsp;. ;...<br>
+&nbsp;. <b>IF</b> CONDITION <b>GOTO</b> LABEL3^ROUTINE1<br>
+&nbsp;. ; ...<br>
+&nbsp;. <b>GOTO</b> LABEL2^ROUTINE3</tt><br>
+The first <b>GOTO</b> command will transfer control to
+<tt>LABEL1</tt> in <tt>ROUTINE2</tt>.<br>
+Assuming that no lines of <i>level</i> 1 occur between the
+argumentless <b>DO</b> command and the further <b>GOTO</b>
+commands, the second <b>GOTO</b> command will transfer control to
+<tt>LABEL3</tt> in <tt>ROUTINE1</tt>, as will the third<br>
+<b>GOTO</b> command. The fourth <b>GOTO</b> command will cause an
+error (<a href="../mdcerror.htm#M45">M45</a>).</p>
+
+<p><tt>EXAMPLE <b>DO</b><br>
+&nbsp;. <b>GOTO</b> DEST<br>
+DEST <b>QUIT</b></tt><br>
+This example will cause an error (<a href="../mdcerror.htm#M45">M45</a>) to occur. It is not
+allowed to jump outside of an indented block by means of a
+<b>GOTO</b> command.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>GOTO</b> DESTINATION<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>GOTO</b> @^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

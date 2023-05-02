@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>Implicit bindings and conversions?</title></head>
+<body background="windmill.gif">
+
+<img alt="Ed de Moel" src="edf3.jpg" width="88" height="128" align="left"/>
+<h1>Wind<img alt="M" src="mta.gif" width="22" height="17" align="bottom"/>ills</h1>
+<p><i>M Computing, Volume 6, number 4, October 1998, pages 14-15</i></p>
+
+<h2>Implicit bindings and conversions?<br/>
+<i>by Ed de Moel</i></h2>
+
+<p>One of the articles in this issue presents an interesting
+idea: using the programming environment to convert values in
+related "units" automatically to our personally preferred unit.
+In our various "locales" we all use our own favorite units
+(Europeans like to weigh things in kilograms, Americans prefer to
+weigh in pounds, etcetera). When we interact with one another, we
+prefer not to be bothered with such details, and would like to
+express entities in "standard" units.</p>
+
+<p>Well... what is the standard? In most European countries, the
+national standard <b><i>is</i></b> the kilogram, and in the USA,
+the national standard <b><i>is</i></b> pounds and ounces... And
+in some cases, the local favorite may be one that everybody uses,
+but that just happens to be different from the official
+standard.</p>
+
+<p>The sequence of instructions:</p>
+
+<pre>
+        Set Weight1=...
+        Set Weight2=...
+        If Weight1&gt;Weight2 ...
+</pre>
+
+<p>seems straightforward enough, and if we would be able to define
+<tt>Weight1</tt> as <tt>"1.01kg"</tt> and <tt>Weight2</tt> as
+<tt>"2.3pound"</tt>, that would indeed be extremely nice. But,
+what would the outcome of this comparison be?</p>
+
+<p>An American pound is 0.3732 kilograms, so the comparison would
+be "true". A British pound is 0.4536 kilograms, which would make
+the comparison "false", and a German pound is 0.5 kilograms,
+which would also make the comparison "false".</p>
+
+<p>An obvious solution to this problem is to add an explicit list
+of names for units to the standard, which will make it clear
+which name refers to which version of which unit (we would
+probably see abbreviations like <tt>lbUK</tt>, <tt>lbUS</tt> and
+<tt>lbGer</tt>).</p>
+
+<p>That sounds straightforward enough, but, so far, the MDC has
+attempted to "bind" only to other official standards. This means
+that units like "British pound" and "American pound" would
+probably find their way into such a list, but a unit like "German
+pound" would not, because it was officially abandoned quite a
+while ago.</p>
+
+<p>Now, how would my mother deal with such a scheme? Even though
+the Dutch pound was officially abandoned 30 years before she was
+born, she still asks for any weight in kilograms: "<i>How many
+pounds is that?</i>" Indeed, old habits die hard...</p>
+
+<p>So, if we want to use an "implicit conversion algorithm" as an
+extension to our programming language, and we want to be user
+friendly, we will probably have to maintain a list of "locally
+preferred units" in addition to the list of official standards
+that we might bind to.</p>
+
+<h3>When?</h3>
+
+<p>The first question everyone always asks when a new idea pops
+up is: "When will we be able to use this?"</p>
+
+<p>In this case, the answer may be a surprise: for any environment
+where a database management system is being used that checks
+values before they are entered into a database, or when values are
+compared to values in the database, the answer is "<i>right
+now</i>!".</p>
+
+<p>Just add a call to an extrinsic function or subroutine to both
+the input transformation and the output transformation, and
+presto! The input transformation would scan the input value for
+the occurrence of a unit, append a "default" unit when none is
+present, and then convert the value to the unit that is used
+internally in the database. The output transformation would
+convert the value to the unit that is desirable for output
+purposes. It would be up to the preferences for the application
+whether the output transformation would append a visible
+representation of the name of the unit to the produced value.</p>
+
+<h3>And later?</h3>
+
+<p>In the future, a lot more interesting options are likely to
+become available.</p>
+
+<p>Suppose that we have an object that describes a person, then
+we could have the method that defines the value of the property
+"weight" do the "input" validation and conversion implicitly, and
+the methods that fetch the values of the various properties could
+perform the output transformations implicitly. In other words:</p>
+
+<p>Assume that <tt>Person</tt> is an object describing a
+patient</p>
+
+<p><tt>Set Person.Weight=...</tt></p>
+
+<p>would implicitly check the value on the right hand side of the
+equal sign, and convert the value to an internal convention.</p>
+
+<p>There could be a public method that defines a default unit, to
+be used when a value is entered without an explicitly specified
+unit.</p>
+
+<p><tt>If Person.Weight&gt;Norm</tt></p>
+
+<p>would invoke the method that obtains the value of the property
+"Weight", which would implicitly convert the internal value to
+the units that the application expects for its calculations.</p>
+
+<p>There could be a public method that has a parameter that
+decides whether or not the name of a unit is presented in the
+"output" value, and whether this name will be an abbreviated form
+(lb or kg) or fully spelled (pounds or kilograms).</p>
+
+<p>How long before we can really do this? Well, stay tuned.
+Objects in M[UMPS] are closer than they appear!</p>
+
+<hr/>
+
+<p><a href="http://www.jacquardsystems.com"><img src="jsr2.gif" alt="Jacquard Systems Research"
+align="left"/></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a href="mailto:demoel@jacquardsystems.com">by e-mail</a>.</i></p>
+
+<hr/>
+
+</body>
+</html>

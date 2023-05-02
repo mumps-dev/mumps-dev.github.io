@@ -1,0 +1,46 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $TLEVEL</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $TLEVEL</h1>
+
+<a name="$TL[EVEL]"></a>
+<h2>$TL[EVEL]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The value of this variable identifies the current depth of
+nesting of <b>TSTART</b> commands (but... keep in mind, there
+is only at most one transaction active at any given time).</p>
+
+<p><tt><b>IF $TLEVEL WRITE</b> !,"Don't nest these activities"
+<b>QUIT</b><br>
+<b>TSTART</b> *:<b>TRASACTIONID</b>="MONOPOLY"</tt><br>
+Every <b>TSTART</b> command increments the value of special
+variable <b>$TLEVEL</b> (initial value is 0).</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

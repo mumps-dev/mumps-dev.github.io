@@ -1,0 +1,163 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, Number 5, Pages 25-27</h3>
+
+<h2>The FileMan Audit Trail</h2>
+
+<h3>by George Timson</h3>
+
+<h3>Introduction</h3>
+
+<p>The ability of VA FileMan to capture data changes in an "audit trail" file
+is sometimes disregarded, even by experienced users of FileMan. Part of the
+reason that the Audit-Trail capability is not more widely used is the fact
+that there are some shortcomings in the VA code. Some new changes to VA
+FileMan, which address these shortcomings, are described here. In addition,
+we use real-world examples to suggest how the auditing capability simplifies
+an important and difficult job: synchronizing and consolidating the contents
+of various files into one "Master Patient" file.</p>
+
+<h3>The Audit Trail as a File</h3>
+
+<p>There is a pleasing consistency in the fact that FileMan's Audit Trail is
+"FileMan-compatible." Auditing treats every captured data change as an
+Entry in a FileMan-format file. The audit trail of File 19, for example, is
+stored under the "root" global node ^DIA(19). Each entry in this audit file
+describes one change to one data element somewhere in File 19 at one
+particular moment. Thus, there can be many times as many entries in the
+audit trail file as in the file it describes. Each audit entry, at minimum,
+records user, field, entry number, and time of change.
+Data Dictionary 1.1 describes the structure of any audit-trail file. Such a
+file can be searched and printed, just like any FileMan file. A typical use
+is to look at all the records which a certain user (say, user number 666)
+has touched in the last 24 hours (<a href="p25.txt">Figure 1</a>):</p>
+
+<h3>Forthcoming Enhancements to VA FileMan Auditing</h3>
+
+<p>One great difficulty with the Audit-Trail feature is very simply stated: it
+is too difficult to read the output. When a user selects "CAPTIONED" output
+from a FileMan INQUIRY and includes Audit-Trail display, the Audit-Trail
+entries also show up in a "CAPTIONED" display such
+as (<a href="p26.txt">Figure 2</a>).</p>
+
+<p>Once you've studied Data Dictionary 1.1, you understand that the above
+example is the report of just one audit event; some inquiries show dozens.
+Moreover these audit reports appear at the very end of the actual data
+display. A new patch to VA FileMan will print the audit information
+immediately under each field being reported (most recent change first) and
+in a much more succinct fashion. The above display, for example, would be
+supplanted by:</p>
+
+<p><tt>HEALTH CARE PROVIDER: SMITH,BOB<br>
+&nbsp;&nbsp;&nbsp;Changed from "JONES, HARRY" on Oct 21, 1998@14:54:00 by User #1</tt></p>
+
+<p>Forthcoming improvements to auditing also include the following:</p>
+
+<p>1. Although the user of the INQUIRE option is asked the question DISPLAY
+AUDIT TRAIL?, that question has not been asked under the PRINT option, when
+[CAPTIONED] is selected as the desired Print Template. This oversight has
+been corrected.</p>
+
+<p>2. The first Auditing sub-option is called FIELDS BEING AUDITED. It
+produces a list of which fields in a file, or in a range of files, have
+auditing turned on. However, it does not show any subfields that are being
+audited within a multiple. This bug has also been corrected.</p>
+
+<p>3. FileMan users who run under the VA Kernel Menu Management system will,
+after patch "21*55" is installed, see in each new audit-trail entry the name
+of the Kernel OPTION or PROTOCOL that was in effect when the data-entry
+event was recorded in the audit trail.</p>
+
+<h3>Using Auditing to Trigger Updates to a Master file</h3>
+
+<p>The job of synchronizing the contents of various files, either within the
+same MUMPS system or across a network, is one that many MUMPS developers
+struggle with. Synchronization to a "master" registry can be especially
+needed in "mature systems." These "systems" often consist of a
+heterogeneous set of files whose structure and uses have been re-designed
+many times over the years.</p>
+
+<p>I consult with the users of one such legacy system. The City of Berkeley,
+Health and Human Services Division has used public-domain VA FileMan and
+COSTAR to develop various patient databases over a period of fifteen years.
+The development has been ad hoc, driven by many disparate needs, and the
+only unity the system could claim until this year was the fact that all the
+databases reside on the same DTM system on the same server. Yet each of
+eight different MUMPS files dealt with "patients" -- patients who had TB tests
+done on them, patients who were seen as high-risk infants, patients seen at
+a walk-in clinic, at a high school, and so on.</p>
+
+<p>The greatest obstacle to complete integration of these databases was, as
+often in these situations, political. No user wants to relinquish control
+over "his" data. Each subset of users wants to retain sole control of
+updating his own file(s). Yet all would benefit from "seeing" what was in
+the other files.</p>
+
+<p>The solution was based on building a Master Patient file from the
+contents of each of the separate files. The essential work was to write a
+general program that, given an entry in any of these files, would extract
+Name, Date of Birth, SSN, and Sex and point to a corresponding entry in the
+Master File, building it if one were not already there. Once that program
+was written, a pass through every entry in each of the eight files generated
+a Master database of about 50,000 unduplicated patients. (The current
+population of Berkeley, by the way, is about 100,000.) Virtually all the
+software that dealt with the eight separate files was left untouched, but
+now inquiries can be made to the Master File to locate a given patient
+across the separately-maintained sub-systems.</p>
+
+<p>Implementing this much was not trivial. But, after the initial build of the
+Master File, another problem remained: how would we keep it in synch with
+the eight other files, all of which were still growing? Our answer was to
+track the ongoing changes to those files with the Audit Trail. After all,
+we already had the code that took an entry in one of the files and pointed
+it to a Master Patient. What we needed was to know when to fire off this
+program to process new or changed entries.</p>
+
+<p>Many FileMan-based applications have been written to effect this kind of
+"record-triggering," but they have usually been based on special MUMPS or
+TRIGGER cross-references to be set up on the file(s) being tracked. In other
+words, the files must have substantial changes made to their Data
+Dictionaries. In a widely-deployed network, it is often difficult to
+co-ordinate these kinds of data-dictionary changes. Using FileMan's built-in
+Audit Trail functionality is a more elegant and efficient solution to this
+kind of problem. The auditing functionality gives our System Manager all its
+usual benefits of user supervision, security, and quality control, while
+adding "for free" the master-patient update feature.</p>
+
+<p>The routine that examines the Audit Trail runs as a separate background job.
+We schedule it to run once an hour, figuring that a 60 minute time lag
+between the first recording of a patient and his appearance in the Master
+File is acceptable.</p>
+
+<p>The routine segment
+below (<a href="p27.txt">Figure 3</a>) reproduces the essence of how this
+background job tracks the Audit Trail. The key concept is that there is
+already built into FileMan auditing a "C" cross-reference on each File's
+audit trail, that indexes the date/time of every change. START and END are
+date/time-formatted variables. Each hour, we take our former END time and
+make it our START time and set END=NOW. FILE is the number of the File; GLO
+is its global root. ROU is the name of the update routine that pertains to
+FILE. Just for fun, we use the "backwards-$ORDER" syntax.</p>
+
+<h3>Conclusion</h3>
+
+<p>Of course, we haven't yet mentioned one major penalty of turning on the
+Audit Trail: the process eats up disk storage significantly. However, since
+VA FileMan's auditing capability was first introduced, the price of a
+megabyte of on-line storage has decreased by at least two orders of
+magnitude. Whereas a systems manager or developer might have shied away
+from the data-storage cost of auditing, he might do well to take a second
+look at this FileMan feature, especially in light of the display
+improvements now offered.</p>
+
+<hr>
+
+<p><i>George Timson was the principal author of VA FileMan. He is now an
+independent consultant living in Berkeley, CA.
+(<a href="mailto:gtimson@pacbell.net">gtimson@pacbell.net</a>)</i></p>
+
+</body></html>

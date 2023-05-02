@@ -1,0 +1,72 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System Variables</title>
+<body background="mbe.gif">
+<h1>Structured System Variables</h1>
+
+<p>Structured system variables (<u>ssvn</u> in metalanguage
+terminology) behave like global variables when used as parameters
+of the functions <b>$DATA</b> and <b>$ORDER</b>. When used in
+arguments of <b>SET</b>, <b>MERGE</b> and <b>KILL</b> commands,
+their behavior is different: either such usage is not allowed,
+but if it is allowed, there usually is a side-effect that is
+specific for the structured system variable in question.</p>
+
+<p>In general, the structured system variables provide a directory
+for a specific aspect of the M[UMPS] language. In a number of
+cases, the structured system variables are used to manipulate
+'meta-information' about the entities that are described in
+them.</p>
+
+<p>Names of structured system variables may be returned by
+references to the function <b>$QUERY</b>. In such cases, a "canonic"
+form of the name will be returned, in which all parts that may be
+abbreviated are spelled out fully, and in which all parts that
+are case insensitive are spelled in upper case only.</p>
+
+<hr>
+
+<h2><a href="ssvn/characte.htm">^$C[HARACTER]</a>,
+<a href="ssvn/device.htm">^$D[EVICE]</a>,
+<a href="ssvn/display.htm">^$DI[SPLAY]</a>,
+<a href="ssvn/event.htm">^$E[VENT]</a>,
+<a href="ssvn/global.htm">^$G[LOBAL]</a>,
+<a href="ssvn/job.htm">^$J[OB]</a>,
+<a href="ssvn/library.htm">^$LI[BRARY]</a>,
+<a href="ssvn/lock.htm">^$L[OCK]</a>,
+<a href="ssvn/routine.htm">^$R[OUTINE]</a>,
+<a href="ssvn/system.htm">^$S[YSTEM]</a>,
+<a href="ssvn/window.htm">^$W[INDOW]</a>,
+<a href="ssvn/y.htm">^$Y[...]</a></h2>
+
+<hr>
+
+<p><a href="ssvn/ssvnt1.htm">Window attributes</a><br>
+<a href="ssvn/ssvnt2.htm">Gadget attributes</a><br>
+<a href="ssvn/ssvnt3.htm">Choice attributes</a><br>
+<a href="ssvn/ssvnt4.htm">Event attributes</a><br>
+<a href="ssvn/ssvnt5.htm">Event information</a></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various structured system variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO 
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

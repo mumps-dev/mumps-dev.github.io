@@ -1,0 +1,424 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 7, Number 1, Pages 11-17</h3>
+
+<h2>An M Compiler for Internet Server Applications</h2>
+
+<h3>by Kevin C. O'Kane</h3>
+
+<h3>Abstract</h3>
+
+<p>This paper presents the development of a compiler that
+translates M code that is subsequently compiled to binary
+executables on a host system (e.g., Windows 98/NT, Linux,
+Solaris, etc). During compilation, the M routines are linked to
+library routines that provide b-tree-based global array access and
+the usual M functions. ODBC/SQL support is also included. This
+permits M programs to load/store the global arrays from/to any
+ODBC/SQL-compliant server. Also, the compiler supports an inline
+HTML scripting facility for use with web servers where HTML
+statements may be interspersed with ordinary M code and contain M
+expressions that are evaluated and replaced in the HTML and
+written back to the invoking web server. Built-in routines
+automatically extract from the server environment parameters
+passed from browsers in HTML FORMS and instantiate these values
+in the M environment. Inline C/C++ code fragments may also be
+used to enhance functionality, including objects.</p>
+
+<h3>Introduction</h3>
+
+<p>M (formerly known as MUMPS) is a general-purpose programming
+language that supports a native hierarchical database facility.
+It is supported by a large user community (mainly biomedical),
+and a diversified installed application software base. The
+language originated in the mid-'60s at the Massachusetts General
+Hospital [1, 2] and it became widely used in both clinical and
+commercial settings. Many implementations exist for the language
+[3] and it is available on many computer platforms. There are
+both ANSI, ISO (ISO/IEC 11756:1992) and DOD approved standards
+[4, 5, 6] for M.</p>
+
+<p>As originally conceived, M differed from other mini-computer
+based languages of the late 1960s by providing: 1) an easily
+manipulated hierarchical database that was well suited to
+representing medical records; 2) flexible string handling
+support; and (3) multiple concurrent tasks in limited memory on
+very small machines. Syntactically, M is based on an earlier
+language named JOSS and has an appearance that is similar to
+early versions of Basic that were also based on JOSS.</p>
+
+<p>Initially, the structure of the language was limited by the
+constraints imposed by the primitive minicomputers and operating
+systems on which it was originally implemented. An early design
+goal for M was to provide multi-user, time-shared access despite
+the very limited memory and mainly single-user operating systems
+available at the time. Consequently, early implementations of M
+were mainly standalone, interpreter-based, dedicated operating
+systems. In these implementations, each user was assigned a very
+small region of memory for both code and local data. Source code
+was loaded from external storage and stored in memory in source
+form. Since M programs were mainly interactive and dominantly
+database access-dependent, direct interpretation of source code
+did not introduce serious performance penalties. Typically,
+program partitions were less than 4,000 bytes, including all
+data, stacks, code and buffers, thus allowing multiple
+time-shared partitions on even the smallest machines. Because of
+memory limitations, applications usually consisted of many small,
+task-specific programs that were modular, compact, highly
+abbreviated, concise and focused on a limited objective. Program
+modules then, as now, were loaded frequently from a library.
+Applications typically consisted of a tree-like hierarchy of
+program modules that often corresponded to the structure of the
+underlying database in an early form of object-oriented
+programming. An excellent example of an early system structured
+this way can be found in the structure of the COSTAR System [7]
+that employed well over a thousand tightly coupled and
+encapsulated separate code modules to service an ambulatory
+patient record database. A more recent example is the widely used
+Veterans Administration Distributed Hospital Computer Program
+(DHCP) system which consists of several thousand M routines.</p>
+
+<h3>M Implementations</h3>
+
+<p>Initially, all M implementations were pure interpreters. As M
+evolved, various methods were developed to partly compile M code
+to intermediate representations, similar to Java byte codes or
+UCSD Pascal P code. However, due to indirection and the Xecute
+command, the interpretive nature of the language was always
+present. Indirection permits an M program to dynamically
+construct and execute M expressions and commands.</p>
+
+<p>The compiler presented here initially began as an interpreter
+implementation [8,9,10,11,12,13]. The interpreter was used to
+develop several web-based medical record applications in M
+[14,15,16,17] and also for document indexing projects [18,19]. In
+the networking applications, efficiency, speed of execution and
+size of the program module are each critical to the number of
+server transactions that can be supported per second. Similarly,
+document indexing applications, based on the work of G. Salton
+[20] and others, are very CPU-intensive and speed of execution is
+also critical. In some cases, document indexing programs can
+execute for one or more days even on a high-speed workstation.
+Both types of applications are very dependent upon database
+access which led to another extension, the ability to load and
+store the global arrays from SQL servers [21,22] via ODBC
+calls.</p>
+
+<p>Both the document indexing and internet applications led to
+the recent rewrite of an M interpreter (developed by this author
+in the 1980's) into a compiler. The compiler generates C code as
+output. The C code is then compiled and linked with library
+routines to create binary executables. The binaries execute as
+much as five times faster than the same code running on the
+interpreter, and the overall size of each module is generally much
+smaller than the interpreter as a whole. The resulting C code has
+about ten times the number of lines as the original M code,
+although many lines involve very primitive operations.</p>
+
+<p><a href="p13.txt">Figure 1</a> gives a brief example of some C
+code output. The original M program was considerably longer and
+only a few statements are shown here for illustration. A complete
+example is available at the web site listed below. The comment
+lines give the line number and original M commands. Following the
+comments are the resulting lines of C code. Variables used
+exclusively by the compiler begin with underscore characters to
+distinguish them from M local variable names.</p>
+
+<p>The compiler includes most of the traditional M globals array
+and string processing features, but it does not support any form
+of indirection. To support indirection would mean retaining the
+interpreter as part of each compiled module and this would
+introduce considerable overhead and size. While many M programs
+use indirection, it is one of the features of the language that
+is hard to justify in terms of modern programming practices.</p>
+
+<p>In this author's opinion, M development diverged from the
+larger programming language community in the mid- '80s and
+attempted to construct a language that was at odds with commonly
+accepted programming standards and practices. M should have
+converged with other developing standards rather than separating
+itself from them. Indirection, including Xecute, although
+originating in the earliest dialects of M, should have been among
+the first to go. It is inherently at odds with good programming
+practices and it means that any implementation of the language
+must always include an interpreter with every implementation.
+Without the ability to have freestanding compilations of M
+programs, which implies standardized subroutine linkage,
+predictable memory allocation of data structures and compatible
+data typing, many opportunities are lost because M programs
+cannot properly link with other environments. Successive layers of
+increasingly less standard features have been added to the point
+that the language has nearly vanished.</p>
+
+<h3>Use with Web Servers and Browsers</h3>
+
+<p>One of the main purposes for this development effort was to
+build a web server-side M host that exploits the facilities of
+the web server to provide networking and the end user's browser
+to provide a graphical user interface. This version of M supports
+two ways in which to accomplish these goals:</p>
+
+<p>First, the interface with the Web server environment is
+automatic. When a user at a browser enters data into an HTML
+FORM, the data is sent to the web server that, in turn, invokes
+an application program through the so-called common graphics
+interface (CGI). The data entered by the browser user is made
+available to the invoked application through environment
+variables. The application program extracts the values from the
+environment variables, processes the data and sends a web page in
+HTML to the web server that, in turn, transmits it to the
+originating browser.</p>
+
+<p>Web-based applications using this M compiler have immediate
+access, in the compiled M program, to the data values in the web
+server environment variables. Initialization routines in the
+compiled module prologue extract the data from the web server
+environment, translate it to ASCII, and make it available in the
+M program via function calls where the programmer gives the name
+of the data field and the function replies with the value
+received from the server.</p>
+
+<p>Secondly, this version supports inline HTML. When an M
+application is invoked by a web server, the web server captures
+all the standard output of the M application and passes it to a
+browser. The M application, therefore, must write to the standard
+output text which browsers can interpret; that is, HTML. The
+compiler when parsing an M source program permits lines of source
+code to be written in either M or HTML. The M code lines are
+compiled while the HTML code lines are translated into standard
+output print statements. If during compilation the compiler
+detects an M expression embedded in an HTML code line, the
+compiler generates the C code to evaluate the expression at
+runtime and substitute the result into the HTML. This permits the
+M programmer to easily construct complex browser displays with
+data generated by the M program.</p>
+
+<p>For example, <a href="p14.txt">Figure 2</a> contains a section
+of a larger program that displays a patient record data to a
+browser. In this fragment, a list of test names (test) performed
+for some patient (ptid) on or after some date (date) are
+displayed in a table with a button for each test name. An
+additional button for all tests is also presented. If the browser
+user clicks on one of the buttons, the appropriate M routine is
+invoked and passed as parameters the name of the test and the
+date. The end user browser buttons are created by JavaScript
+routines, two of which are shown. When the button is clicked, it
+is the JavaScript routine that actually sends the message to the
+server with the name of the compiled M program to execute and the
+parameters. The M part of the program is very simple. It cycles
+through (using $Next) each of the patient's test name values.
+Upon encountering the inline HTML code, the M compiler generates
+print statements containing the HTML code. Remember, when this
+program runs, it will do so as a result of an invocation by the
+web server. All output generated by this program will be captured
+by the web server and sent to the browser that originated the
+request. If the compiler detects in the inline HTML statement an
+M expression, it generates the code necessary to evaluate the
+expression and generates print statements to print the result in
+place of the expression. M expressions are detected by the
+leading &amp;~ and the trailing ~ characters. The function $zh
+encodes the value of the string argument into the mixed ASCII
+character and hexadecimal format required by HTML (that is,
+non-alphanumeric characters in parameter lists must be encoded in
+hexadecimal; the blank is encoded as a plus sign).</p>
+
+<h3>Database Access</h3>
+
+<p>The compiler allows three options for global array access. The
+first of these is no database. Programs compiled with this option
+have no access to global variables. Consequently, the support
+routines for global array processing are not linked into the
+final executable, thereby making the executable much smaller and
+faster loading. Also, as there is no opening or closing of the
+globals and no initialization of the buffers and other
+environmental code, overall execution time of the compiled module
+is reduced.</p>
+
+<p>The second option includes the standalone b-tree global array
+processing routines in the compiled executable. This includes
+full global array processing, storage and retrieval. The user may
+select the directory in which the globals are placed. If other
+compiled modules access the same global array files, the global
+array routines synchronize file access. All globals are stored in
+b-trees with stored data residing in one file and the keys in
+another. The key and data files may be placed on separate disk
+drives to improve performance.</p>
+
+<p>The third option allows temporary global arrays that are
+created upon initiation of the M program and deleted upon
+termination. These may be either disk or virtual memory resident.
+This would mainly be used in conjunction with loading and storing
+the globals from another database system as discussed next.</p>
+
+<p>With the second two options, global arrays may be loaded from
+and/or stored into a relational database management system
+server. Upon initiation, the M program can load global arrays
+from the server, manipulate the globals using the traditional M
+database view, and, finally, store all or part of the globals
+arrays on the server before termination. The compiler supports z
+function extensions to load, store, and search an ODBC-compliant
+SQL server.</p>
+
+<p>For applications where the primary storage of data is on an
+SQL server, the temporary globals array option has the least
+overhead. For some applications, such as a practitioner with a
+laptop making rounds to remote locations without online access,
+preloading the laptop global arrays and then updating the server
+at the end of the day would be a viable option.</p>
+
+<p>For specialized applications, the global array processing
+library provided with the compiler could be substituted with a
+locally written package or interfaced to a larger system. The
+communication between the compiled M program and the global array
+routine is simple and straightforward.</p>
+
+<h3>Inline C Code and System Facilities</h3>
+
+<p>The M compiler translates the M program to C source code that
+is subsequently translated to binary executables on the host
+system. The M program variables are C character string variables
+and must be declared with a special Z command. Consequently, M
+variables may also be accessed by, passed to, and loaded from
+other C environment functions. The M compiler permits inline C
+code to be interspersed with the M and HTML code (C code lines
+have a special character at their beginning) and M expressions
+will be evaluated and their values substituted into the C code as
+with HTML code lines. C control and block structures may also be
+used.</p>
+
+<p>M programs can be compiled to functions, callable from other
+system environments. Thus, for example, a Windows-based
+application written in C or C++ can call upon M functions and
+pass and receive data from the M functions in a normal manner.
+This would allow any application to take advantage of global
+arrays.</p>
+
+<h3>Summary</h3>
+
+<p>Copies of the compiler for several host operating systems and
+associated library routines are available without charge
+from: <a href="http://www.cs.uni.edu/~okane">http://www.cs.uni.edu/~okane</a>.
+Updates and improvements will be
+posted to this address as they are developed. Future work will
+involve optimizing the C output of the compiler and extending its
+features. A complete Internet-based clinical information system,
+originally implemented for the web-server-side M interpreter, is
+being refitted for use with the compiler and it will be the
+subject of a further report.</p>
+
+<h3>References</h3>
+
+<p>1. J. Bowie, and G. O. Barnett, "MUMPS - An Economical and
+Efficient Time-Sharing Language for Information Management,"
+<i>Computer Programs in Biomedicine</i> 6, (1976): 11-21.</p>
+
+<p>2. G. Octo Barnett, and R.A.Greenes, "High Level Programming
+Languages," <i>Computers and Biomedical Research</i>, 3 (1970):
+488-497.</p>
+
+<p>3. M Technology Association, <i>M Sources '94</i>, M
+Technology Association, 1738 Elton Road, Suite 205, Silver
+Spring, Maryland 20903, Tel: (301) 431-4070., Fax: (301) 431-0017
+(1994)</p>
+
+<p>4. MUMPS Development Committee, <i>ANSI/MDC X11.1-1995
+American National Standard for Information Systems - Programming
+Languages -- M</i>, M Technololgy Association,1738 Elton Rd.,
+Suite 205, Silver Spring, MD 20903
+(<a href="http://www.mtechnology.org">http://www.mtechnology.org</a>)</p>
+
+<p>5. MUMPS Development Committee, <i>ANSI/MDC X11.4-1995 : MUMPS
+- X Window System Binding</i>, M Technology Association, 1738
+Elton Rd., Suite 205, Silver Spring, MD 20903
+(<a href="http://www.mtechnology.org">http://www.mtechnology.org</a>)</p>
+
+<p>6. MUMPS Development Committee, <i>ANSI/MDC X11.3-1994 :
+Graphical Kernel Systems (GKS) - MUMPS Language Binding</i>, M
+Technology Association, 1738 Elton Rd., Suite 205, Silver Spring,
+MD 20903
+(<a href="http://www.mtechnology.org">http://www.mtechnology.org</a>)</p>
+
+<p>7. G.O. Barnett, et al., "COSTAR -- A Computer-Based Medical
+Information System for Ambulatory Care," <i>Proceedings of the
+IEEE</i>, 67, 9 (1979).</p>
+
+<p>8. K.C. O'Kane, "An RT-11 Single User Standard MUMPS
+Interpreter," <i>MUMPS Users' Group Quarterly</i>, 10, (1980):
+5-6.</p>
+
+<p>9. K.C. O'Kane, "A Portable FORTRAN Based Implementation of
+MUMPS," <i>MUMPS Users' Group Quarterly</i>, 12 (1982): 19-21.</p>
+
+<p>10. K.C. O'Kane, "A MUMPS Language Development and
+Experimentation Laboratory," <i>MUMPS Users' Group Quarterly</i>,
+12, 4(1983): 47-51.</p>
+
+<p>11. K.C. O'Kane, "MUMPS Under IBM VM/CMS," <i>MUMPS Users'
+Group Quarterly</i>, 13, 1 (1983): 55-57.</p>
+
+<p>12. K.C. O'Kane, "A Portable Hybrid MUMPS Development System
+Host," <i>Proceedings of IEEE Computer Society 7th International
+Computer Software Applications Conference</i>, (1983): 60-65.</p>
+
+<p>13. K.C. O'Kane, "A C Based MUMPS Interpreter," <i>MUMPS
+Users' Group Quarterly</i>, 14, 2 (1984): 23-24.</p>
+
+<p>14. K.C. O'Kane, E.E. McColligan, and G.A. Davis,
+"Implementing a Distributed Intranet Based Information System,"
+<i>Topics in Health Information Management</i>, 17, 2 (1996):
+54-62.</p>
+
+<p>15. K.C. O'Kane, and E.E. McColligan, "A Case Study of a MUMPS
+Intranet Patient Record," <i>Journal of the Healthcare
+Information and Management Systems Society</i>, 11, 3, (1997):
+81-95.</p>
+
+<p>16. K.C. O'Kane, and E.E. McColligan, "A Web Based Mumps
+Virtual Machine," <i>Proceedings of the American Medical
+Informatics Association 1997 Fall Symposium</i>, D. R. Masys,
+ed., Abstract: p 881, Text: CDROM Document D004079.pdf (Hanley
+&amp; Belfus, Philadelphia 1997)</p>
+
+<p>17. K.C. O'Kane, and E.E. McColligan, "A Web Access Script
+Language to Support Clinical Application Development,"
+<i>Computer Methods and Programs in Biomedicine</i>, 55, (1998):
+85-97.</p>
+
+<p>18. K.C. O'Kane, "The Design of a Text-Based Information
+Storage and Retrieval System in MUMPS," <i>MUMPS Users' Group
+Quarterly</i>, 21, 4 (1991): 21-26.</p>
+
+<p>19. K.C. O'Kane, "A Language for Implementing Information
+Retrieval Software," <i>Online Review</i>, 16, 3 (1992):
+127-137.</p>
+
+<p>18. Roger Sanders, <i>ODBC 3.5 Developer's Guide
+(Warehousing/Data Management)</i>, (July 1998) Computing
+McGraw-Hill; ISBN: 0070580871</p>
+
+<p>19. K.C. O'Kane, "Design for a Relational Data Base System in
+MUMPS," <i>MUMPS Users' Group Quarterly</i>, 15, 2 (1985): 33.</p>
+
+<p>20. Gerard Salton, <i>Automatic Text Processing: The
+Transformation, Analysis, and Retrieval of Information by
+Computer</i>, (Reading, MA: Addison-Wesley, 1988).</p>
+
+<p>21. K.C. O'Kane, "An Expert Systems and Relational Data Base
+Management Facility for MUMPS," <i>Computers in Biology and
+Medicine</i>, 16, 3 (1986): 205-213.</p>
+
+<p>22. K.C. O'Kane, and E.E. McColligan, "MUMPS Using SQL RDBMS
+Data Warehousing," in preparation.</p>
+
+<hr>
+
+<p><i>Kevin C. O'Kane is a professor of computer science at the University of
+Northern Iowa and has been active in medical informatics for twenty years.
+His web page
+is: <a href="http://www.cs.uni.edu/~okane">http://www.cs.uni.edu/~okane</a>.</i></p>
+
+</body></html>

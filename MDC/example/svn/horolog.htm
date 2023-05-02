@@ -1,0 +1,110 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $HOROLOG</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $HOROLOG</h1>
+
+<a name="$H[OROLOG]"></a>
+<h2>$H[OROLOG]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The value of this variable is a code for the current date and
+time.</p>
+
+<p><tt><b>$HOROLOG</b>="51281,44745"</tt> on Wednesday, May
+27<sup>th</sup>, 1981 at 25 minutes and 45 seconds past 12
+(noon).<br>
+<tt><b>$HOROLOG</b>="53690,86401"</tt> on the last second of
+1987 (but it is extremely unlikely that anybody actually
+implemented the concept of "leap-seconds".<br>
+<tt><b>$HOROLOG</b>="1,1"</tt> on the first second of Friday,
+January 1<sup>st</sup>, 1841.<br>
+<tt><b>$HOROLOG</b>="0,43200"</tt> at noon on Thursday, December
+31<sup>st</sup>, 1840.<br>
+<tt><b>$HOROLOG</b>="-30,44745"</tt> on Tuesday, December
+1<sup>st</sup>, 1841 at 25 minutes and 45 seconds past 12
+(noon).</p>
+
+<p>Note that the sequence at the transition between two days 
+is:<br>
+<tt>"<i>n</i>,86398"</tt> = 23:59:58 or 11:59:58 PM<br>
+<tt>"<i>n</i>,86399"</tt> = 23:59:59 or 11:59:58 PM<br>
+<tt>"<i>n</i>+1,0"</tt> = midnight, or 24:00:00 or 00:00:00 or 12:00:00 AM<br>
+<tt>"<i>n</i>+1,1"</tt> = 00:00:01 or 00:00:01 AM</p>
+
+<p>Interesting values:</p>
+
+<p><table>
+<tr><th>$HOROLOG</th>
+<th>Date and time</th></tr>
+
+<tr><td><tt>"50000,50000"</tt></td>
+<td>24 November 1977, 13:53:20</td></tr>
+
+<tr><td><tt>"51000,51000"</tt></td>
+<td>19 August 1980, 14:10:00</td></tr>
+
+<tr><td><tt>"52000,52000"</tt></td>
+<td>16 May 1983, 14:26:40</td></tr>
+
+<tr><td><tt>"53000,53000"</tt></td>
+<td>9 February 1986, 14:43:20</td></tr>
+
+<tr><td><tt>"54000,54000"</tt></td>
+<td>5 November 1988, 15:00:00</td></tr>
+
+<tr><td><tt>"55000,55000"</tt></td>
+<td>2 August 1991, 15:16:40</td></tr>
+
+<tr><td><tt>"56000,56000"</tt></td>
+<td>28 April 1994, 15:33:20</td></tr>
+
+<tr><td><tt>"57000,57000"</tt></td>
+<td>22 January 1997, 15:50:00</td></tr>
+
+<tr><td><tt>"58000,58000"</tt></td>
+<td>19 October 1999, 16:06:40</td></tr>
+
+<tr><td><tt>"59000,59000"</tt></td>
+<td>15 July 2002, 16:23:20</td></tr>
+
+<tr><td><tt>"60000,60000"</tt></td>
+<td>10 April 2005, 16:40:00</td></tr>
+
+<tr><td><tt>"54610,45296"</tt></td>
+<td>12:34:56, 7/8/90 (USA: 8 July 1990)</td></tr>
+
+<tr><td><tt>"54640,45296"</tt></td>
+<td>12:34:56, 7/8/90 (rest of the world: 7 August 1990)</td></tr>
+</table></p>
+
+<p>Be careful with pattern matches: typically, the value of
+<b>$HOROLOG</b> will match <tt>5N1P5N</tt>, but a really safe
+check should be <tt>0.1"-"1.N1","1.5N</tt>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

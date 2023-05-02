@@ -1,0 +1,80 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%REPLACE^STRING</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%REPLACE^STRING</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as part of the library
+for String Handling.</p>
+
+<p>This function returns a translated version of the value of its
+parameter.</p>
+
+<p>Suppose that it is necessary to print German umlauted characters
+on a printer that is not able
+to produce such characters, in such a case the Umlaut on the
+character is usually replaced by
+the vowel "e" following the character. Hence:</p>
+
+<p><tt><b>KILL</b> SPEC<br>
+<b>SET</b> SPEC(1,1)="&auml;",SPEC(1,2)="ae"<br>
+<b>SET</b> SPEC(2,1)="&ouml;",SPEC(2,2)="oe"<br>
+<b>SET</b> SPEC(3,1)="&uuml;",SPEC(3,2)="ue"<br>
+<b>SET</b> SPEC(4,1)="&Auml;",SPEC(4,2)="AE"<br>
+<b>SET</b> SPEC(5,1)="&Ouml;",SPEC(5,2)="OE"<br>
+<b>SET</b> SPEC(6,1)="&Uuml;",SPEC(6,2)="UE"</tt></p>
+
+<p><tt><b>WRITE $%REPLACE^STRING</b>(X,.SPEC)</tt></p>
+
+<p>would write the text in <tt>X</tt>, with all umlauted characters
+translated into two characters.</p>
+
+<p>The same function could be used for simplifying output-strings
+containing device-dependent
+functions:</p>
+
+<p><tt><b>KILL</b> S<br>
+<b>SET</b> S(1,1)="&lt;UP-ARROW&gt;",S(1,2)=<b>$CHAR</b>(27)_"[A"<br>
+<b>SET</b> S(2,1)="&lt;DOWN-ARROW&gt;",S(2,2)=<b>$CHAR</b>(27)_"[B"<br>
+<b>SET</b> S(3,1)="&lt;RIGHT-ARROW&gt;",S(3,2)=<b>$CHAR</b>(27)_"[C"<br>
+<b>SET</b> S(4,1)="&lt;LEFT-ARROW&gt;",S(4,2)=<b>$CHAR</b>(27)_"[D"<br>
+<b>SET</b> S(5,1)="&lt;ESCAPE&gt;",S(5,2)=<b>$CHAR</b>(27)<br>
+<b>SET</b> S(6,1)="&lt;LINE-FEED&gt;",S(6,2)=<b>$CHAR</b>(10)<br>
+<b>SET</b> X=<b>$%REPLACE^STRING</b>(INPUT,.S)</tt></p>
+
+<p>would produce a value in <tt>X</tt> with some  human readable 
+device control commands
+translated into the code-sequences that would be sent to an
+external device.</p>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="replace.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

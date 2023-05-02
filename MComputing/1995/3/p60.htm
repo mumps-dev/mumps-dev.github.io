@@ -1,0 +1,165 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Windmills -- End-of-the-Century Blues</title></head>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 3, number 3, June 1995, pages 60-61</h3>
+
+<h2>Wind<img src="../../wmmta.gif" width="22" height="17" align=baseline>ills<br>
+End-of-the-Century Blues</h2>
+
+<img src="../../EdDeMoel.jpg" width=88 height=128 align=left>
+
+<h3>by Ed J.P.M. de Moel</h3>
+
+<p>The year 2000 is coming. All around us there are panicky
+voices: will our software be able to know what the meaning of
+29-FEB-00 is? Will our automated procedures start sending
+messages to the parents of our very senior citizens, enticing
+them to buy the kind of toys and educational materials that are
+so useful for tots and pre-schoolers?</p>
+
+<p>The answer, of course, is that <i>it depends</i>.</p>
+
+<p>There are many ways of storing information about dates and
+events in computers. In M[UMPS], there are several popular
+ways:</p>
+
+<p><ul>
+<li>using $H[OROLOG]</li>
+<li>using FileMan</li>
+<li>using <i>human-readable</i> text strings</li>
+</ul></p>
+
+<p>If software uses $H[OROLOG] for the internal representation of
+dates, there is a slight penalty for the conversion when data is
+entered or presented, but it is extremely easy to compute the
+difference between two internal dates as a number of days, and
+from there, and conversions to months and years are not too hard
+either.</p>
+
+<p>If software uses FileMan format for the internal
+representation, the conversion from external representation to
+internal representation is fairly straightforward, and there is a
+slight conversion penalty when a difference between two dates
+needs to be computed. One additional feature that comes with the
+FileMan date-format is the option to store <i>imprecise
+dates</i>.</p>
+
+<p>If software uses <i>human-readable</i> text strings, however,
+there may be some problems. There are many forms that each are
+perfectly usable as a date format, but some are more resilient
+than others. First, there is the order of the parts: 7/8/90
+stands for the 7th of August of 1990 in Europe, while it
+represents the 8th of July in the USA. As long as the usage of
+software stays within national boundaries, there is no problem
+concerning this difference in interpretation, but as soon as
+software starts to be used internationally, it becomes important
+that a format is chosen that is unambiguous to all users (the
+project that I work on uses FileMan format internally, and for
+external representation always writes the month as a three
+character abbreviation, so that it is clear which part of a date
+is the day and which is the month, even if the parts don't appear
+in the favorite sequence from the human reader's perspective).</p>
+
+<p>And there, just above, I have done it:
+when I wrote 7/8/90, is that 1890,
+1990 or 2090? Mostly, that is an interpretation that is left to
+the <i>user-friendly</i> input modules. If we ask for a
+birthdate, and a user enters <tt>8/8/99</tt>, our software
+automatically assumes that it must be in the past, and will find
+1899 more likely than 1999; on the other hand, if the software
+were to ask for a date when an ongoing activity will end, a date
+in the future would be assumed by default...</p>
+
+<p>But not all cases are so self-evident. In those cases, the
+standard method of performing data-entry on our project insists
+that we show the user what the computer assumes, and ask for a
+confirmation:</p>
+
+<p><center><tt>Please confirm: 8-AUG-1999//</tt></center></p>
+
+<p>and allow the user to override by entering <tt>8-AUG-1899</tt>,
+for instance.</p>
+
+<p>As long as, internally, the software has enough information to
+know which century a date is in, the software will be able to
+make correct decisions based on those dates, and won't try to
+recruit senior citizens for enrollment in the local kindergarten,
+even if it would <i>display</i> their birthday as
+<tt>2-FEB-2</tt>... If the software would actually <i>store</i>
+the date like that internally, some interesting problems can be
+expected to start happening soon.</p>
+
+<p>In M[UMPS] we have so many ways of doing it right... I can
+only hope that that's what we're doing.</p>
+
+<h3>And, More on the Canvass</h3>
+
+<p>By the time that this will be printed, a lot more will be
+known, but at the time I am writing this, we are just entering
+the <i>re-canvass</i> phase.</p>
+
+<p>So, what is going on with the draft standards? During the
+second half of 1994, the MUMPS Development Committee (MDC) has
+circulated 5 draft standards among the canvass-lists for the
+various standards.</p>
+
+<p>Two, the GKS draft standard and the X Window draft binding
+received no objections, and were forwarded to ANSI for
+confirmation as an ANSI standard. Both were accepted by ANSI, so,
+currently we have an ANSI X11.3-1994 GKS binding and an ANSI
+X11.4-1994 X Window binding.</p>
+
+
+<p>That leaves three draft standards:</p>
+
+<p><ul>
+<li>X11.1, the language, originally two objections,</li>
+<li>X11.2, OMI, two objections, and</li>
+<li>X11.6, MWAPI, originally one objection.</li>
+</ul></p>
+
+<p>For all objections, we entered into a discussion by mail with
+the various objectors. In this way we we were able to resolve two
+of the objections. One objection to the language standard was a
+request to allow for a specific syntactic construct. The objector
+agreed with us that this kind of modification is best realized by
+sending a proposal to modify the language to the subcommittee
+that addresses these issues and let it work its way through the
+established process. The other objection that could be resolved
+was the one to the MWAPI. This one is not easily explained in a
+column like this, but the essentials of the correspondence back
+and forth will be published in this magazine.</p>
+
+<p>So... at the moment I am writing this, I am also preparing the
+mail-packages for the re-canvass of the remaining two draft
+standards. The packages contain the texts of the remaining
+objections and the responses that the MDC eventually sent to the
+objectors. In addition, there is some information about a
+standards-related appeal that one of the objectors has initiated.
+It is now up to the members of the canvass-groups to decide
+whether they stick to their original vote (in favor of acceptance
+of the document being canvassed), or to support one or both of the
+objections and change their vote. By the time you will read this,
+the votes will be cast, and we will know whether we have a new
+M[UMPS] language standard and OMI standard, or not.</p>
+
+<hr>
+
+<p><a href="http://www.jacquardsystems.com"><img src="../../jsr2.gif" 
+align=left></a><i>Ed de Moel is past chairman of the MDC
+and works with Jacquard Systems Research.
+His experience includes developing software for research in medicine
+and physics.
+Over the past ten years, Ed's has mostly focused on the production
+of tools for data management and analysis, and tools for the support
+of day-to-day operation of medical systems.
+Ed can be
+reached <a HREF="mailto:demoel@jacquardsystems.com.">by e-mail</a>.</i></p>
+
+<hr>
+
+</body>
+</html>

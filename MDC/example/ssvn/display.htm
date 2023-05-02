@@ -1,0 +1,83 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$DISPLAY</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$DISPLAY</h1>
+
+<a name="^$DI[SPLAY]"></a>
+<h2>^$DI[SPLAY]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This structured system variable provides information about the
+displays that are currently known to the M[UMPS] process.</p>
+
+<p><tt><b>WRITE</b> !,"Currently known displays:"<br>
+<b>SET</b> D=""<br>
+<b>FOR</b>&nbsp;&nbsp;<b>SET</b> D=<b>$ORDER</b>(<b>^$DISPLAY</b>(D)) <b>QUIT</b>:D=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,D<br>
+. <b>SET</b> K=<b>$DATA</b>(<b>^$DISPLAY</b>(D,"KEYBOARD"))<br>
+. <b>IF</b> K <b>WRITE</b> ?30,"has a keyboard attached.",!<br>
+. <b>SET</b> P=<b>$DATA</b>(<b>^$DISPLAY</b>(D,"PEN"))<br>
+. <b>IF</b> P <b>WRITE</b> ?30,"has a pen attached.",!<br>
+. <b>SET</b> M=<b>$DATA</b>(<b>^$DISPLAY</b>(D,"PTR"))<br>
+. <b>IF</b> M <b>WRITE</b> ?30,"has a mouse attached.",!<br>
+. <b>SET</b> C<b>=^$DISPLAY</b>(D,"COLORTYPE")<br>
+. <b>SET</b> N=<b>^$DISPLAY</b>(D,"SPECTRUM")<br>
+. <b>WRITE</b> ?30,"This display shows ",C," colors"<br>
+. <b>WRITE</b> " in ",N," shades."<br>
+. <b>SET</b> W=<b>^$DISPLAY</b>(D,"PLATFORM")<br>
+. <b>WRITE</b> !?30,"Windowing system is ",W,"."<br>
+. <b>SET</b> U=<b>^$DISPLAY</b>(D,"UNITS")<br>
+. <b>SET</b> S=<b>^$DISPLAY</b>(D,"SIZE")<br>
+. <b>WRITE</b> !?30,"Area is ",<b>$PIECE</b>(S,",",1)," ",U<br>
+. <b>WRITE</b> " by ",<b>$PIECE</b>(S,",",2)," ",U,"."<br>
+. <b>WRITE</b> !?30,"Child-windows will inherit:"<br>
+. <b>SET</b> BACK=<b>^$DISPLAY</b>(D,"BCOLOR")<br>
+. <b>SET</b> FORE=<b>^$DISPLAY</b>(D,"FCOLOR")<br>
+. <b>WRITE</b> !?30,"Background color ",BACK"<br>
+. <b>WRITE</b> ", foreground color ",FORE,".",!<br>
+. <b>SET</b> APP=<b>^$DISPLAY</b>(D,"COLOR")<br>
+. <b>WRITE</b> !?30,"Application area color: ",APP<br>
+. <b>QUIT</b></tt></p>
+
+<p>In addition, information about displayable fonts is available:</p>
+
+<p><tt><b>SET</b> F="",T="TYPEFACE"<br>
+<b>FOR&nbsp;&nbsp;SET</b> F=<b>$ORDER</b>(<b>^$DISPLAY</b>(D,T,F) <b>QUIT</b>:F=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,"Font face is ",F,": "<br>
+. <b>SET</b> ANY=0<br>
+. <b>SET</b> S=""<br>
+. <b>FOR&nbsp;&nbsp;SET</b> S=<b>$ORDER</b>(<b>^$DISPLAY</b>(D,T,F,S)) <b>QUIT</b>:S=""&nbsp;&nbsp;<b>DO</b><br>
+. . <b>WRITE $SELECT</b>(ANY:", ",1:" size(s) ")<br>
+. . <b>WRITE</b>:<b>$X</b>&gt;60 !?10 <b>WRITE</b> S <b>SET</b> ANY=1<br>
+. . <b>QUIT</b><br>
+. <b>QUIT</b><br>
+<b>QUIT</b></tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

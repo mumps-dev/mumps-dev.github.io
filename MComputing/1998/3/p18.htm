@@ -1,0 +1,251 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<body background="../../mb.gif">
+<p><img src="../../mast050.jpg"></p>
+
+<h3>Volume 6, Number 3, Pages 18-20</h3>
+
+<h2>"Richard Walters:<br>
+... every problem can just as easily be considered an opportunity."</h2>
+
+<h3>by Wilhelm Pastoors</h3>
+
+<p>Editor's Note:
+<i>The following interview was taken from a web page version
+published by M-B&ouml;rse, the magazine published by MUG-Germany. The editors
+of M Computing have made a few minor grammatical and word usage changes to
+the text, but the context is unchanged.</i></p>
+
+<p>Dr. Richard ("Dick") Walters, Professor of UC Davis, who happened to be in
+Frankfurt/Germany immediately after InterSystems had announced their
+takeover of Micronetics on Friday, June 19th 1998, was interviewed by the
+journal of the MUG Germany immediately after the announcement.</p>
+
+<p>M-B&ouml;rse was represented by Dr. Wolfgang Kirsten, now chairman of MUG
+Germany, and Wilhelm Pastoors, one of the coeditors of M-B&ouml;rse. Since we
+believe that what Dr. Walters said in the interview may be of interest to
+the M Community, we decided to publish the interview on the net.</p>
+
+<p><b>M-B&ouml;rse</b>: projects like LINUX, FreeBSD, PERL, gcc - to name just a
+few -- demonstrate that there are other non-commercial ways to achieve really
+efficient computer systems. When will the IT World see "freeMumps"?</p>
+
+<p>Dr. Walters: At this point, given the announcement we heard an hour ago, I
+can't give you a direct answer. I can speculate, though: there are two
+directions that the M community might go. One is to say we have only one
+commercial vendor, that commercial vendor does not support the MDC and the
+statement that they published about the acquisition of Micronetics doesn't
+even mention the MDC. They feel that MDC moves too slowly for the commercial
+market, as they stated in their document.
+So, there are two things that might happen: one is that MDC will die; the
+other is that the M community will say we can't let that happen, since M
+cannot evolve with the name Cach&eacute; replacing M and becoming a commercial
+product, not an ISO standard.</p>
+
+<p>There are many computer scientists who have worked with the M language who
+feel that it is a major contribution and would like to stay a part of that
+evolutionary process. If the M Community decides to try to preserve the M
+standard, there are again, two options.</p>
+
+<p>The first is to support the remaining commercial versions or to help develop
+potentially new ones; the second is to support a public domain effort that
+might lead to several versions of M and its global handler. These two
+options are not mutually exclusive; in fact, they could easily be addressed
+in parallel.</p>
+
+<p>Let's consider the second option first.</p>
+
+<p>Some years back, a small group formed a distributed partnership that we
+called Generic Universal MUMPS, or GUM for short. There were about four or
+five contributors, including LD Landis, a former student of mine (Terris
+Linenbach), Steve Morris, Dr. Cui Zhang (a Computer Science professor at
+Sacramento State University), myself and others.</p>
+
+<p>GUM has been led mainly by LD Landis, but it has been housed on a UC Davis
+ftp site (and will soon be on another web server at UC Davis). This project
+got as far as completing a working version of a "Global Handler," that is to
+say, an implementation of the M global structure in such a way that data
+could be stored in a MUMPS structure, with the functionality of creating and
+modifying globals and manipulating them via $ORDER, $DATA, $QUERY, and $GET.
+The GUM team intended also to implement an M compiler so that all language
+elements, not just the database, would be available in a public domain
+version.</p>
+
+<p>GUM has not yet achieved its goal of implementing a compiler, but the global
+handler has gone through some improvements, a process that is continuing.
+With the Intersystems announcement, interest in GUM has heightened
+considerably, and the M community needs to ask itself: is this a viable way
+for us to proceed today?</p>
+
+<p>I don't know the history of the PERL language but it would be an interesting
+one to explore because PERL came out of nowhere. Five years ago there was no
+PERL. Now there is PERL on almost every machine. There is even a user's
+group meeting scheduled this Fall. How did that happen, what could we learn
+in the M community that might make us want to try to apply this model in the
+evolution of M?</p>
+
+<p>I have set up the web page for GUM code to be downloaded from a server at UC
+Davis. I offer this to the M community as a way to provide software using
+freeware models like GNU or BSD (details remain to be worked out). I think
+that such an effort is worthy of support, and I hope that people in the M
+community will join in seeking grant support for people to develop versions
+of M to place in the public domain.</p>
+
+<p><b>M-B&ouml;rse</b>: You stated that the global handler is too slow.</p>
+
+<p><b>DW</b>: No, what I said was that earlier M implementations at UC Davis were too
+slow to serve as starting points for a new M compiler. We had several
+versions of MicroMUMPS running on a good many different machines, but their
+performance was much slower than existing M implementations of their time,
+and the code was written using a technique that was cumbersome. Another
+implementation of M by a student at UC Davis generated P code which was then
+interpreted. This version also proved to be orders of magnitude too slow to
+serve as a base for the present effort.</p>
+
+<p>Actually, the GUM global handler is quite fast, certainly fast enough for a
+public domain version.</p>
+
+<p><b>M-B&ouml;rse</b>: What is a global handler?</p>
+
+<p><b>DW</b>: In M, the term "global" refers to what in other languages is referred to
+as persistent data. Global variables are stored after a program that
+created them halts, and they can be shared by multiple users. (M "local
+variables" are the equivalent of global variables in other languages, in
+that they are available to all procedures running in a workspace.)</p>
+
+<p>The GUM global handler creates a B-Tree structure of the hierarchical M
+globals, storing them using the same "canonic" sorting, based on numerics,
+then ASCII code values to sort string subscripts. This structure
+outperforms relational model joins, as has been shown in many studies. GUM
+allows globals to be created and modified, and it also allows them to be
+retrieved using the functionality of standard M functions such as $ORDER,
+$DATA, and $QUERY. With these functions, I can work with M-type data, but I
+don't need other M commands (besides the equivalent of SET and KILL). I can
+use a C call to $ORDER and go out and get my data - implicitly persistent
+data - from a C call that goes to the global handler. So in the M language
+the concept of persistent data is independent of the concept of the
+interpreter.</p>
+
+<p>When I say that we have a global handler I say that we have a database that
+is fully functional but I don't have the MUMPS commands, operators, and
+other features that are part of the language.</p>
+
+<p><b>M-B&ouml;rse</b>: A part of the LINUX project was that different universities
+coordinated an effort in which their computer science students created
+various parts of the total system. So from different universities came
+different parts that contributed to the whole project.</p>
+
+<p>Now, the Frankfurt University Hospital supports Mumps, through the efforts
+of people such as Prof. Giere and Dr. Kirsten -- could you imagine that there
+might be a coordinated action by - for example -- the departments of
+informatics at Frankfurt University and UC Davis and other universities . .
+. to get some more support for the realization of the idea of a free mumps?</p>
+
+<p><b>DW</b>: I am not sure -- I think that today's announcement will act as catalyst for
+actions of this type, but probably involving a much broader segment of the M
+community.</p>
+
+<p>One of things what LINUX has in its favor is that LINUX is UNIX based. UNIX
+is taught in computer science departments around the world. Historically,
+when Bell Telephone first developed UNIX, they sold it for $20,000 to
+businesses as an operating system . They also sold a license to the entire
+University of California for about $150 for unlimited licenses. In other
+words: they gave it away to the educational world saying "it is yours, you
+can go develop it, you can work with it however you want, here is the
+source code, have fun!" BSD is one outgrowth of that effort. As a result,
+UNIX became the principal operating system taught and used in computer
+science departments around the world, and with time it gained a larger share
+of the commercial marketplace as well.</p>
+
+<p>MUMPS, on the other hand, ran on dedicated computers with a proprietary
+operating system, and computer science departments were not willing to
+dedicate an entire computer just to M. As a result, there has been little
+interest in the M language in computer science departments. A few
+individuals, such as Kevin O'Kane (then at the University of Tennessee) and
+my group at UC Davis developed public domain versions of M, but there were
+very few.</p>
+
+<p><b>M-B&ouml;rse</b>: So, we can see that the computer scientist base for developing an
+M Database is much smaller than it was for LINUX. We have to go by personal
+contacts. The situation is that Frankfurt University Hospital supports Mumps
+very actively, and there may be a chance to make personal contacts to the
+department of computer informatics at [Goethe] University in Frankfurt to
+show what's going and maybe there is one professor who might say: "ok, I
+will support it, I will direct my students to work on that project." We have
+to build a net of such people.</p>
+
+<p><b>DW</b>: . . . Yes, I think that the Goethe University has a very good potential
+to serve as such a center. I hope we can interest others in this effort as
+well. The GUM project started as a distributed effort, and even if I retire
+in a couple of years, it should be able to continue without me.</p>
+
+<p><b>M-B&ouml;rse</b>: But you are the person identified with the GUM project. Who is
+the owner of GUM?</p>
+
+<p><b>DW</b>: The University of California is because of me. Not because I did it but
+because I got people to get started on it. It has a life of its own. I also
+think that M is important and I don't want to see it die. I'm willing to put
+an administrative effort into it, and it is a working model at present. But
+I cannot contribute to the actual compiler development. That would require
+help from groups and institutions such as Goethe University and the growing
+members of the GUM team.</p>
+
+<p><b>M-B&ouml;rse</b>: At the moment situation is that there are only a few active
+members of the group. If we could find a few more to join, it would
+significantly improve the situation, right?</p>
+
+<p><b>DW</b>: Yes. All of these people have their other jobs, I don't think they have
+had time during the past two years to work on the compiler. It takes an
+extra effort, an extra incentive to say: "right, instead of going home and
+playing with my children I'm going to stay for an extra 5 hours and work on
+the compiler". That's something that may happen, we may get people,
+especially after today's announcement.</p>
+
+<p><b>M-B&ouml;rse</b>: Just to get an idea of the effort involved: how much work has to
+be done? There is a lot of overhead created when a software product is
+manufactured for the commercial market. Sales Representatives, technicians
+who install and support, consult. Just to break it down: how many people do
+you think work at Micronetics or Intersystems departments of development?</p>
+
+<p><b>DW</b>: I truly don't know. Not a large percentage of the total group in any
+one company. I have heard that Micronetics had two lead developers and
+about 18 others working on various versions. DSM, so I understand, had about
+seven working on the system, and DTM perhaps a few less.</p>
+
+<p>I think we might be able to get enough people to develop one or more public
+domain compilers. With the incentive we now have, many people are saying:
+we can't let this happen, we can't let Mumps die, I think we can have a
+version that was operational for the MDC to start to work with in less than
+a year. And that assumes that we have a leader who knows something about it,
+and who can assign to other people different parts of the parsing, the
+lexical analysis and so on, I think that could be done. It looks as though
+we do have such a leader willing to head the team (LD Landis), so we are
+off to a good start.</p>
+
+<p>If you like to learn more about the gum project you may subscribe to their
+mailing list. Send an EMail to:<br>
+<a href="mailto:majordomo@ldl.HealthPartners.com">majordomo@ldl.HealthPartners.com</a><br>
+leave "subject" free<br>
+<tt>subscribe gump &gt;your email address&lt;</tt><br>
+and put in your address instead of <tt>&gt;...&lt;</tt></p>
+
+<p>Their website is <a href="http://www.rosecroft.net">www.rosecroft.net</a>.</p>
+
+<p>People who prefer to discuss in German are invited to
+join the free-m list.</p>
+
+<p>Send an EMail to:<br>
+<a href="mailto:majordomo@ramiris.silicon.org">majordomo@ramiris.silicon.org</a><br>
+leave "subject" free<br>
+<tt>subscribe free-m &gt;your email address&lt;</tt></p>
+
+<p>At present the website for the German readers is
+<a href="http://lugg.tg.fh-giessen.de/~lugg103/">http://lugg.tg.fh-giessen.de/~lugg103/</a>.</p>
+
+<hr>
+
+<p><i>Wilhelm Pastoors is co-editor of M B&ouml;rse.<br>
+Dr. Wolfgang Kirsten is Chairman of MUG Germany.</i></p>
+
+</body></html>

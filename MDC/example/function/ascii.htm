@@ -1,0 +1,125 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $ASCII</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $A[SCII]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns the internal code number for a character in
+a string.<br>
+The standard defines a one-to-one correspondence between the
+codes 0 through 127 and the characters from the (7-bit) ASCII
+set. Code numbers &gt;127 are character-set-specific; code numbers
+&lt;0 do not indicate valid characters. The special value -1
+indicates a reference to a character that does not occur in the
+string that is passed as the first parameter.</p>
+
+<p>Assume that <tt>X="ABCDE"</tt><br>
+
+<table width=90%>
+<tr><th align=right width=40%>Reference</th>
+<th align=left width=20%>Value</th>
+<th align=left width=30%>Remarks</th></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X)</tt></td>
+<td align=left><tt>65</tt></td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,1)</tt></td>
+<td align=left><tt>65</tt></td>
+<td>"A"</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,2)</tt></td>
+<td align=left><tt>66</tt></td>
+<td>"B"</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,3)</tt></td>
+<td align=left><tt>67</tt></td>
+<td>"C"</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,0)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,6)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,-2)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,1.92)</tt></td>
+<td align=left><tt>65</tt></td>
+<td><tt>"A"</tt> in position 1</td></tr>
+</table></p>
+
+<p>Assume that <tt>X=""</tt><br>
+
+<table width=90%>
+<tr><th align=right width=40%>Reference</th>
+<th align=left width=20%>Value</th>
+<th align=left width=30%>Remarks</th></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,N)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+</table></p>
+
+<p>Assume that <tt>X="AB"</tt><br>
+
+<table width=90%>
+<tr><th align=right width=40%>Reference</th>
+<th align=left width=20%>Value</th>
+<th align=left width=30%>Remarks</th></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,0)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,3)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,-7)</tt></td>
+<td align=left><tt>-1</tt></td>
+<td>no character there...</td></tr>
+
+<tr><td align=right><tt><b>$ASCII</b>(X,1.92)</tt></td>
+<td align=left><tt>65</tt></td>
+<td>1.92 truncates to 1</td></tr>
+</table></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$ASCII</b>(VALUE)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$ASCII</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<p><b>$ASCII</b>(VALUE,POS)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$ASCII</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>
