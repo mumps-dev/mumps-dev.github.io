@@ -1,0 +1,503 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$CHARACTER</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$CHARACTER</h1>
+
+<a name="^$C[HARACTER]"></a>
+<h2>^$C[HARACTER]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This structured system variable provides information about
+character sets.<br>
+(Note that all usage of characters and strings in M[UMPS] is
+defined in terms of characters, not in terms of bytes; for the
+M[UMPS] language, it is not relevant whether a character is
+stored in a single byte, or in multiple bytes.)</p>
+
+<p>In most character sets, the first 128 codes correspond to the
+ASCII set:</p>
+
+<p><table border=2>
+<tr><th width=5%>&nbsp;</th>
+<th width=5%>0</th>
+<th width=5%>1</th>
+<th width=5%>2</th>
+<th width=5%>3</th>
+<th width=5%>4</th>
+<th width=5%>5</th>
+<th width=5%>6</th>
+<th width=5%>7</th>
+<th width=5%>8</th>
+<th width=5%>9</th>
+<th width=5%>10</th>
+<th width=5%>11</th>
+<th width=5%>12</th>
+<th width=5%>13</th>
+<th width=5%>14</th>
+<th width=5%>15</th></tr>
+
+<tr><td>0</td>
+<td>Null</td>
+<td>SOH</td>
+<td>STX</td>
+<td>ETX</td>
+<td>EOT</td>
+<td>ENQ</td>
+<td>ACK</td>
+<td>Bell</td>
+<td>BS</td>
+<td>HT</td>
+<td>LF</td>
+<td>VT</td>
+<td>FF</td>
+<td>CR</td>
+<td>SO</td>
+<td>SI</td></tr>
+
+<tr><td>16</td>
+<td>DLE</td>
+<td>DC1</td>
+<td>DC2</td>
+<td>DC3</td>
+<td>DC4</td>
+<td>NAK</td>
+<td>SYN</td>
+<td>ETB</td>
+<td>CAN</td>
+<td>EM</td>
+<td>SUB</td>
+<td>ESC</td>
+<td>FS</td>
+<td>GS</td>
+<td>RS</td>
+<td>US</td></tr>
+
+<tr><td>32</td>
+<td>&nbsp;</td>
+<td>!</td>
+<td>"</td>
+<td>#</td>
+<td>$</td>
+<td>%</td>
+<td>&amp;</td>
+<td>'</td>
+<td>(</td>
+<td>)</td>
+<td>*</td>
+<td>+</td>
+<td>,</td>
+<td>-</td>
+<td>.</td>
+<td>/</td></tr>
+
+<tr><td>48</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>:</td>
+<td>;</td>
+<td>&lt;</td>
+<td>=</td>
+<td>&gt;</td>
+<td>?</td></tr>
+
+<tr><td>64</td>
+<td>@</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+<td>M</td>
+<td>N</td>
+<td>O</td></tr>
+
+<tr><td>80</td>
+<td>P</td>
+<td>Q</td>
+<td>R</td>
+<td>S</td>
+<td>T</td>
+<td>U</td>
+<td>V</td>
+<td>W</td>
+<td>X</td>
+<td>Y</td>
+<td>Z</td>
+<td>[</td>
+<td>\</td>
+<td>]</td>
+<td>^</td>
+<td>_</td></tr>
+
+<tr><td>96</td>
+<td>`</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+<td>i</td>
+<td>j</td>
+<td>k</td>
+<td>l</td>
+<td>m</td>
+<td>n</td>
+<td>o</td></tr>
+
+<tr><td>112</td>
+<td>p</td>
+<td>q</td>
+<td>r</td>
+<td>s</td>
+<td>t</td>
+<td>u</td>
+<td>v</td>
+<td>w</td>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>{</td>
+<td>|</td>
+<td>}</td>
+<td>~</td>
+<td>DEL</td></tr>
+</table></p>
+
+<p>Many character sets contain 256 characters, the 'upper' 128,
+however, are quite different in the various sets:</p>
+
+<p>(<b>Note</b>: the HyperText medium that is used to reproduce this
+text imposes certain restrictions on which symbols can be
+displayed. Those special symbols that cannot be rendered within
+the confines of the HyperText browser will appear as two
+asterisks (**). The printed version of this text will display all
+special symbols as the correct graphics.)</p>
+
+<p>ISO-8859-1-USA:
+click <a href="ssvnx1.htm">here</a> for this table.</p>
+
+<p>DOS<sup>TM</sup>:
+click <a href="ssvnx2.htm">here</a> for this table.</p>
+
+<p>DEC<sup>TM</sup>:
+click <a href="ssvnx3.htm">here</a> for this table.</p>
+
+<p>Apple Macintosh<sup>TM</sup>:
+click <a href="ssvnx4.htm">here</a> for this table.</p>
+
+<p>EBCDIC<sup>TM</sup>:
+click <a href="ssvnx6.htm">here</a> for this table.</p>
+
+<p><tt><b>WRITE</b> !,"The following character sets are available:"<br>
+<b>SET</b> SET=""<br>
+<b>FOR</b>&nbsp;&nbsp;<b>SET</b> SET=<b>$ORDER(^$CHARACTER</b>(SET))
+<b>QUIT</b>:SET=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !?5,SET<br>
+. <b>QUIT</b></tt></p>
+
+<p><tt><b>^$CHARACTER</b>("DEC","INPUT","DOS")="$$DOS2DEC^MYSET"</tt><br>
+Convert a value that is found in a "DOS" encoded variable, so
+that it may be manipulated in a "DEC" encoded environment.<br>
+Internal expansion: <tt><b>SET</b> work=$$DOS2DEC^MYSET(fetch)</tt><br>
+This conversion will be executed implicitly when one is working
+in a "DEC" encoded environment, and a command like <tt><b>SET</b>
+X=^XXX(subs)</tt> is executed, while global variable
+<tt>^XXX</tt> is "DOS" encoded.</p>
+
+<p><tt><b>$GET</b>(<b>^$CHARACTER</b>("MYSET","INPUT","OTHERSET"))=""</tt><br>
+When no input conversion algorithm is specified in the structured
+system variable, no implicit conversion takes place when moving
+information from one type of environment to the other.</p>
+
+<p><tt><b>^$CHARACTER</b>("DEC","OUTPUT","DOS")="$$DEC2DOS^MYSET"</tt><br>
+Convert a value that is being manipulated in a "DEC" encoded
+environment, so that it may be stored in a "DOS" encoded
+variable.<br>
+Internal expansion: <tt><b>SET</b> store=$$DEC2DOS^MYSET(work)</tt><br>
+This conversion will be executed implicitly when one is working
+in a "DEC" encoded environment, and a command like <tt><b>SET</b>
+^XXX(subs)=X</tt> is executed, while global variable
+<tt>^XXX</tt> is "DOS" encoded.</p>
+
+<pre>
+DEC2DOS(STRING) ; Convert DEC to DOS
+ <b>NEW</b> DOS,DEC
+;
+; Character:
+;               &Agrave;   &Aacute;   &Acirc;   &Atilde;   &Auml;  &Aring;   &AElig;   &Ccedil;   &Egrave;
+ <b>SET</b> DOS=<b>$CHAR</b>(065,065,065,065,142,143,146,128,069)
+ <b>SET</b> DEC=<b>$CHAR</b>(192,193,194,195,196,197,198,199,200)
+;
+;                   &Eacute;   &Ecirc;   &Euml;   &Igrave;  &Iacute;   &Icirc;   &Iuml;   &Ntilde;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(144,069,069,073,073,073,073,165)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(201,202,203,204,205,206,207,209)
+;
+;                   &Ograve;   &Oacute;   &Ocirc;   &Otilde;  &Ouml;   &OElig;   &Oslash;   &Ugrave;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(079,079,079,079,153,079,079,085)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(210,211,212,213,214,215,216,217)
+;
+;                   &Uacute;   &Ucirc;   &Uuml;   &Yuml;   &szlig;   &agrave;   &aacute;   &acirc;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(085,085,154,089,225,133,160,131)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(218,219,220,221,223,224,225,226)
+;
+;                   &atilde;   &auml;   &aring;   &aelig;  &ccedil;   &egrave;   &eacute;   &ecirc;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(097,132,134,145,135,138,130,136)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(227,228,229,230,231,232,233,234)
+;
+;                   &euml;   &igrave;   &iacute;   &icirc;   &iuml;   &ntilde;   &ograve;   &oacute;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(137,141,161,140,139,164,149,162)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(235,236,237,238,239,241,242,243)
+;
+;                   &ocirc;   &otilde;   &ouml;   &ouml;   &oslash;   &ugrave;   &uacute;   &ucirc;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(147,111,148,111,237,151,163,150)
+ <b>SET</b> DEC=DEC_$CHAR(244,245,246,247,248,249,250,251)
+;
+;                   &uuml;   &yuml;
+ <b>SET</b> DOS=DOS_<b>$CHAR</b>(129,152)
+ <b>SET</b> DEC=DEC_<b>$CHAR</b>(252,253)
+;
+ <b>QUIT $TRANSLATE</b>(STRING,DEC,DOS)
+</pre>
+
+<p>In this example, input-conversion and output-conversion look very
+much alike. Things get more interesting when character-idioms
+that are one character in one set translate into multiple
+characters in the other set (umlauts, ligatures, characters with
+a special form at the end of a word, etcetera).</p>
+
+<p><tt><b>^$CHARACTER</b>("MYSET","OUTPUT","OTHERSET")=""</tt><br>
+When no output conversion algorithm is specified in the
+structured system variable, no implicit conversion takes place
+when moving information from one type of environment to the
+other.</p>
+
+<p><tt><b>^$CHARACTER</b>("MYSET","IDENT")="$$IDENT^MYSET"</tt><br>
+Check whether a character is a valid one to occur in a name
+(other than <tt>%</tt>, the upper case and lower case alphabetics
+and the digits <tt>0</tt> through <tt>9</tt>), which are always
+valid.<br>
+Internal expansion: <tt><b>SET</b> check=$$IDENT^MYSET($ASCII(char))</tt></p>
+
+<p><tt>IDENTM(ASCII) ; For M<br>
+ <b>QUIT</b> 0</tt></p>
+
+<p><tt>IDENTDOS(ASCII) ; For DOS<br>
+ <b>IF</b> ASCII&gt;127,ASCII&lt;166 <b>QUIT</b> 1<br>
+ QUIT 0</tt></p>
+
+<p><tt>IDENTDEC(ASCII) ; For DEC<br>
+ <b>IF</b> ASCII&gt;191,ASCII&lt;222,ASCII'=208 <b>QUIT</b> 1<br>
+ <b>IF</b> ASCII&gt;222,ASCII&lt;254,ASCII'=240 <b>QUIT</b> 1<br>
+ <b>QUIT</b> 0</tt></p>
+
+<p><tt><b>^$CHARACTER</b>("MYSET","IDENT")=""</tt><br>
+If no identification algorithm is specified, the characters that
+are used for identifiers in the ASCII (or <tt>"M"</tt>) character
+set are assumed.</p>
+
+<p><tt><b>^$CHARACTER</b>("MYSET","PATCODE","P")="$$PATP^MYSET"</tt><br>
+In order to verify whether a character matched the <u>patcode</u>
+<tt>P</tt>, the function that is specified in this node of
+^$CHARACTER is used.<br>
+Internal expansion: <tt><b>SET</b> check=$$PATP^MYSET(<b>$ASCII</b>(char))</tt><br>
+This check will be executed implicitly when an expression like
+<tt>X?1P</tt> is evaluated.</p>
+
+<p>Valid codes for the third subscript (the patcode) are any one
+'identifier' character codes (except for <tt>Y</tt> and
+<tt>Z</tt>) (including the ones pre-defined in the ANSI
+standard). See <tt><b>^$CHARACTER</b>(..."IDENT")</tt> for the
+specification of which characters can be used in identifiers.<br>
+Codes like <tt>ZxxxZ</tt> (<tt>xxx</tt> may be any sequence of
+valid 'identifier' characters) are reserved for implementation-
+specific extensions.<br>
+Codes like <tt>YxxxY</tt> (<tt>xxx</tt> may be any sequence of
+valid 'identifier' characters) are reserved for application-
+specific extensions.</p>
+
+<p><tt>PATU(ASCII) ; For DEC<br>
+ <b>IF</b> ASCII&gt;64,ASCII&lt;91 <b>QUIT</b> 1<br>
+ <b>IF</b> ASCII&gt;191,ASCII&lt;222,ASCII'=208 <b>QUIT</b> 1<br>
+ <b>QUIT</b> 0</tt></p>
+
+<p><tt>PATL(ASCII) ; For DEC<br>
+ <b>IF</b> ASCII&gt;96,ASCII&lt;123 <b>QUIT</b> 1<br>
+ <b>IF</b> ASCII&gt;223,ASCII&lt;254,ASCII'=240 <b>QUIT</b> 1<br>
+ <b>QUIT</b> 0</tt></p>
+
+<p><tt><b>$GET</b>(<b>^$CHARACTER</b>("MYSET","PATCODE",patcode))=""</tt><br>
+When no pattern check algorithm is defined for a certain pattern
+code, no characters in the character set will match that pattern
+code.</p>
+
+<p><tt><b>^$CHARACTER</b>("MYSET","COLLATE")="$$COLLATE^MYSET"</tt><br>
+Convert a string to an internal format that is used for
+establishing a collation sequence.<br>
+Internal expansion: <tt><b>SET</b>
+intern=$$COLLATE^MYSET(string)</tt></p>
+
+<p><tt><b>$GET</b>(<b>^$CHARACTER</b>("MYSET","COLLATE"))=""</tt><br>
+When no specific collating transformation is defined, the string
+itself is used for collating purposes.</p>
+
+<p><tt>NOCASE(STRING) ; Case insensitive collating<br>
+ <b>SET</b> UP="ABCDEFGHIJKLMNOPQRSTUVWXYZ"<br>
+ <b>SET</b> LO="abcdefghijklmnopqrstuvwxyz"<br>
+ <b>QUIT</b> <b>$TRANSLATE</b>(STRING,LO,UP)</tt></p>
+
+<p><tt>FRENCH(STRING) ; French collating<br>
+ <b>NEW</b> CHARI,CHARN,FIRST,LO,P1,P2,SECOND,THIRD,TMP,UP<br>
+ ; Collating according to the algorithm by<br>
+ ; Alain LaBont&eacute;<br>
+ ; As published by ISO on 12 August 1988<br>
+ <b>SET</b> LO="abcdefghijklmnopqrstuvwxyz"<br>
+ <b>SET</b> UP="ABCDEFGHIJKLMNOPQRSTUVWXYZ"<br>
+ <b>SET</b> TMP=<b>$LENGTH</b>(STRING)+2<br>
+ <b>FOR&nbsp;&nbsp;QUIT</b>:STRING'["&AElig;"&nbsp;&nbsp;<b>DO</b><br>
+ . <b>SET</b> P1=<b>$PIECE</b>(STRING,"&AElig;",1)<br>
+ . <b>SET</b> P2=<b>$PIECE</b>(STRING,"&AElig;",2,TMP)<br>
+ . <b>SET</b> STRING=P1_"AE"_P2 <b>QUIT</b><br>
+ <b>FOR&nbsp;&nbsp;QUIT</b>:STRING'["&aelig;"&nbsp;&nbsp;<b>DO</b><br>
+ . <b>SET</b> P1=<b>$PIECE</b>(STRING,"&aelig;",1)<br>
+ . <b>SET</b> P2=<b>$PIECE</b>(STRING,"&aelig;",2,TMP)<br>
+ . <b>SET</b> STRING=P1_"ae"_P2 <b>QUIT</b><br>
+ <b>FOR&nbsp;&nbsp;QUIT</b>:STRING'["&OElig;"&nbsp;&nbsp;<b>DO</b><br>
+ . <b>SET</b> P1=<b>$PIECE</b>(STRING,"&OElig;",1)<br>
+ . <b>SET</b> P2=<b>$PIECE</b>(STRING,"&OElig;",2,TMP)<br>
+ . <b>SET</b> STRING=P1_"OE"_P2 <b>QUIT</b><br>
+ <b>FOR&nbsp;&nbsp;QUIT</b>:STRING'["&oelig;"&nbsp;&nbsp;<b>DO</b><br>
+ . <b>SET</b> P1=<b>$PIECE</b>(STRING,"&oelig;",1)<br>
+ . <b>SET</b> P2=<b>$PIECE</b>(STRING,"&oelig;",2,TMP)<br>
+ . <b>SET</b> STRING=P1_"oe"_P2 <b>QUIT</b><br>
+ <b>SET</b> CHARI="&Acirc;&acirc;&Agrave;&agrave;&Ccedil;&ccedil;&Eacute;&eacute;&Ecirc;&ecirc;&Egrave;&egrave;&Euml;&euml;&Icirc;&icirc;&Iuml;&iuml;&Ocirc;&ocirc;&Ucirc;&ucirc;&Ugrave;&ugrave;&Uuml;&uuml;&Yuml;&yuml;"<br>
+ <b>SET</b> CHARN="AaAaCcEeEeEeEeIiIiOoUuUuUuYy"<br>
+ <b>SET</b> ACCNT="3322551133224433443333224444"<br>
+ <b>SET</b> THIRD=<b>$TRANSLATE</b>(STRING,CHARI,CHARN)<br>
+ <b>SET</b> FIRST=<b>$TRANSLATE</b>(THIRD,UP,LO)<br>
+ <b>SET</b> TMP=<b>$TRANSLATE</b>(STRING,<b>$TRANSLATE</b>(STRING,CHARI))<br>
+ <b>SET</b> SECOND=<b>$REVERSE</b>(<b>$TRANSLATE</b>(TMP,CHARI,ACCNT))<br>
+ <b>SET</b> TMP=<b>$TRANSLATE</b>(<b>$JUSTIFY</b>("",26)," ",8)<br>
+ <b>SET</b> THIRD=<b>$TRANSLATE</b>(THIRD,LO,TMP)<br>
+ <b>SET</b> TMP=<b>$TRANSLATE</b>(TMP,8,9)<br>
+ <b>SET</b> THIRD=<b>$TRANSLATE</b>(THIRD,UP,TMP)<br>
+ <b>QUIT</b> FIRST_SECOND_THIRD</tt></p>
+
+<p>The 1995 ANSI M[UMPS] language specification defines the character
+set profiles for the character sets "ASCII" (based on ANSI X3.4-1990),
+"M" (which is identical to "ASCII", except for the collation order)
+and "JIS90" (based on JIS X0201-1990 and JIX X0208-1990).</p>
+
+<p>Additions in a future ANSI M[UMPS] language specification.</p>
+
+<p>A number of characters has been added to the list of valid characters
+in the name of a character set (but not as the first character of that
+name):
+<tt>"-"</tt> (hyphen, dash), <tt>"_"</tt> (underscore), <tt>"%"</tt>,
+<tt>"*"</tt>, <tt>"."</tt>, <tt>"/"</tt>, <tt>":"</tt>, <tt>"$"</tt>,
+<tt>"!"</tt> and <tt>"@"</tt>.</p>
+
+<p>The collating algorithm for ISO-8859-1-USA has been defined as a three 
+stage process: first the "base" letter counts, then the case, and then 
+the diacritical marks.
+"&AElig;" is collated as if it were "AE",
+"&aelig;" is collated as if it were "ae" and
+"&szlig;" is collated as if it were "ss".
+This selection of collating ligatures conforms to ISO 6937.
+Pattern matches conform to ISO's rules, i.e.
+"**", "**", "**", "**", "**", "**", "**" and "**"
+are defined as punctuation characters, not as numeric characters,
+and "**"
+are defined as a punctuation character, not as a lower case alphabetic.
+Two character set profiles are added to the language: "ISO-8859-USA" and 
+"ISO-8859-USA/M". "ISO-8859-USA" collates equivalent to "ASCII" and
+"ISO-8859-USA/M" collates equivalent to "M".</p>
+
+<p>The order (weight) of the diacritical marks is:</p>
+
+<p><table width=90%>
+<tr><td align=right>1:</td>
+<td align=left> ligature (&AElig;, &aelig;, &szlig;)</td></tr>
+
+<tr><td align=right>2:</td>
+<td> none</td></tr>
+
+<tr><td align=right>3:</td>
+<td> stroke (&ETH;, &eth;, &THORN;, &thorn;)</td></tr>
+
+<tr><td align=right>4:</td>
+<td> acute (&Aacute;, &aacute;, &Eacute;, &eacute;,
+&Iacute;, &iacute;, &Oacute;, &oacute;, &Uacute;, &uacute;, &Yacute;,
+&yacute;)</td></tr>
+
+<tr><td align=right>5:</td>
+<td> grave (&Agrave;, &agrave;, &Egrave;, &egrave;,
+&Igrave;, &igrave;, &Ograve;, &ograve;, &Ugrave;, &ugrave;)</td></tr>
+
+<tr><td align=right>6:</td>
+<td> caret or circonflex (&Acirc;, &acirc;, &Ecirc;,
+&ecirc;, &Icirc;, &icirc;, &Ocirc;, &ocirc;, &Ucirc;, &ucirc;)</td></tr>
+
+<tr><td align=right>7:</td>
+<td> diaeresis, trema or umlaut (&Auml;, &auml;,
+&Euml;, &euml;, &Iuml;, &iuml;, &Ouml;, &ouml;, &Uuml;, &uuml;,
+&Yuml;, &yuml;)</td></tr>
+
+<tr><td align=right>8:</td>
+<td> tilde (&Atilde;, &atilde;, &Ntilde;, &ntilde;,
+&Otilde;, &otilde;)</td></tr>
+
+<tr><td align=right>9:</td>
+<td> ring (&Aring;, &aring;)</td></tr>
+
+<tr><td align=right>10:</td>
+<td> cedilla (&Ccedil;, &ccedil;)</td></tr>
+
+<tr><td align=right>11:</td>
+<td> slash (&Oslash;, &oslash;)</td></tr>
+</table></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

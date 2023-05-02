@@ -1,0 +1,569 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -D-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter D</h1>
+
+<p><a href="#dattribute">dattribute</a>,
+<a href="#dechar">dechar</a>,
+<a href="#Defining_occurrence">Defining occurrence</a>,
+<a href="#Descendant">Descendant</a>,
+<a href="#device">device</a>,
+<a href="#deviceattribute">deviceattribute</a>,
+<a href="#devicecommand">devicecommand</a>,
+<a href="#devicekeyword">devicekeyword</a>,
+<a href="#deviceparam">deviceparam</a>,
+<a href="#deviceparameters">deviceparameters</a>,
+<a href="#devicexpr">devicexpr</a>,
+<a href="#devn">devn</a>,
+<a href="#digit">digit</a>,
+<a href="#display">display</a>,
+<a href="#displaycolor">displaycolor</a>,
+<a href="#dkeyword">dkeyword</a>,
+<a href="#dlabel">dlabel</a>,
+<a href="#dmode">dmode</a>,
+<a href="#doargument">doargument</a>,
+<a href="#drawarc">drawarc</a>,
+<a href="#drawbcolor">drawbcolor</a>,
+<a href="#drawbitmap">drawbitmap</a>,
+<a href="#drawbox">drawbox</a>,
+<a href="#drawcommand">drawcommand</a>,
+<a href="#drawfface">drawfface</a>,
+<a href="#drawfillpattern">drawfillpattern</a>,
+<a href="#drawfsize">drawfsize</a>,
+<a href="#drawfstyle">drawfstyle</a>,
+<a href="#drawline">drawline</a>,
+<a href="#drawmode">drawmode</a>,
+<a href="#drawnum">drawnum</a>,
+<a href="#drawoval">drawoval</a>,
+<a href="#drawpencolor">drawpencolor</a>,
+<a href="#drawpensize">drawpensize</a>,
+<a href="#drawpicture">drawpicture</a>,
+<a href="#drawpie">drawpie</a>,
+<a href="#drawpoint">drawpoint</a>,
+<a href="#drawtext">drawtext</a>,
+<a href="#drawtype">drawtype</a>,
+<a href="#drawunits">drawunits</a></p>
+
+<hr>
+<a name="dattribute"></a>
+<h2>dattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a display attribute. Such an
+attribute is identified by an expression that evaluates to one of
+<tt>"BCOLOR"</tt>, <tt>"CLIPBOARD"</tt>, <tt>"COLOR"</tt>,
+<tt>"COLORTYPE"</tt>, <tt>"FCOLOR"</tt>, <tt>"FOCUS"</tt>,
+<tt>"KEYBOARD"</tt>, <tt>"PEN"</tt>, <tt>"PLATFORM"</tt>,
+<tt>"PRESOURCE"</tt>, <tt>"PTR"</tt>, <tt>"SIZE"</tt>,
+<tt>"SPECTRUM"</tt>, <tt>"TYPEFACE"</tt>, <tt>"UNITS"</tt>, or to an
+implementation-specific value (starts with <tt>"Z"</tt>), or to an
+application-specific value (starts with <tt>"Y"</tt>).</p>
+
+<p>To be modified in a future ANSI M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>The values <tt>"FFACE"</tt>, <tt>"FSIZE"</tt>, <tt>"FSTYLE"</tt>,
+<tt>"PTYPE"</tt>, <tt>"TBCOLOR"</tt> and <tt>"TFCOLOR"</tt> are added to the
+list of possible attribute codes.</p>
+
+<hr>
+<a name="dechar"></a>
+<h2>dechar</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the value of one of the
+directives of the FORMAT library function. The value represented
+by this metalanguage symbol is the "decimal separator character",
+a single character that is used to separate the integer parts
+from the decimal fractions in numbers.</p>
+
+<hr>
+<a name="Defining_occurrence"></a>
+<h2>Defining occurrence</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The <i>defining occurrence</i> of a label is the occurrence in a routine where
+the label is specified (left of the line start white space). In any routine,
+any specific label may occur at most once in a <i>defining occurrence</i>.</p>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The error code for multiple defining occurrences of the same label is
+<a href="../mdcerror.htm#M57">M57</a>.</p>
+
+<hr>
+<a name="Descendant"></a>
+<h2>Descendant</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>A variable has a name and optionally subscripts.</p>
+
+<p>When two variables have the same name, and one has more subscripts than the
+other, while all subscipts that the one with lesser subscripts has occur in
+the other variable with the same variable, then the variable with more
+subscripts is called a descendant of the variable with less subscripts.</p>
+
+<p>For example, assume that the following elements of Y are defined:</p>
+
+<p><tt>Y(0)=0</tt><br>
+<tt>Y(1)=1</tt><br>
+<tt>Y(1,2)=2</tt><br>
+<tt>Y(1,2,3)=123</tt></p>
+
+<p>Then <tt>Y(1,2,3)</tt> is a descendant of <tt>Y</tt>, of <tt>Y(1)</tt> and of
+<tt>Y(1,2)</tt>, but not of <tt>Y(0)</tt> and <tt>Y(1,2)</tt> is a descendant
+of <tt>Y</tt> and <tt>Y(1)</tt>.</p>
+
+<hr>
+<a name="device"></a>
+<h2>device</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an implementation-specific device
+identifier.</p>
+
+<hr>
+<a name="deviceattribute"></a>
+<h2>deviceattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a keyword that identifies a device
+parameter to which a value can be assigned. A device keyword looks like a
+name.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>A device keyword may also be preceded with a slash.</p>
+
+<hr>
+<a name="devicecommand"></a>
+<h2>devicecommand</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a command that may be
+executed in the context of
+a <a href="c.htm#controlmnemonic">controlmnemonic</a>. Possible
+commands in this context are <b>OPEN</b>, <b>USE</b> and <b>CLOSE</b>.</p>
+
+<hr>
+<a name="devicekeyword"></a>
+<h2>devicekeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a keyword that identifies a device
+parameter. A device keyword looks like a name.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>A device keyword may also be preceded with a slash.</p>
+
+<hr>
+<a name="deviceparam"></a>
+<h2>deviceparam</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a device parameter. A device parameter
+looks like an expression, a keyword, or a sequence of a keyword, equal sign
+(<tt>=</tt>) and an expression that signifies the value to be attached to the
+keyword in question.</p>
+
+<hr>
+<a name="deviceparameters"></a>
+<h2>deviceparameters</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any implementation-specific parameters to
+be observed for a certain device or file. A specification of such parameters
+may be either a single expression, or a list of expressions (separated by
+colons), enclosed in parentheses.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Instead of the just the simple expressions, there may be device parameters. If
+a device parameter is a simple expression, its meaning is still
+implementation-specific. If a device parameter is a keyword or a
+keyword=value combination, its meaning is standardized and portable.</p>
+
+<hr>
+<a name="devicexpr"></a>
+<h2>devicexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to an
+implementation-specific identification for a device.</p>
+
+<hr>
+<a name="devn"></a>
+<h2>devn</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates
+to the name of a device. Such an expression may be preceded by
+a specification of the environment where the device is known.
+Names of environments are enclosed in vertical bars.</p>
+
+<hr>
+<a name="digit"></a>
+<h2>digit</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the 10 numeric characters (0
+through 9).</p>
+
+<hr>
+<a name="display"></a>
+<h2>display</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the identification of a device that is
+used for the presentation of windows. (It is the metalanguage name for the
+piece of hardware that is called a "display" or "monitor".) This metalanguage
+symbol occurs as an expression that is only limited in that its value must be
+valid to be used as a subscript. This value is typically used as the first
+subscript of <tt>^$DISPLAY</tt>.</p>
+
+<hr>
+<a name="displaycolor"></a>
+<h2>displaycolor</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a specification of the capability of a
+display to show colours or shades of grey. This metalanguage symbol occurs as
+an expression that evaluates to either one of the values <tt>"COLOR"</tt>,
+<tt>"GREY"</tt> or <tt>"MONO"</tt>, or is an implementation-specific value
+(starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="dkeyword"></a>
+<h2>dkeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"DRAW"</tt>.</p>
+
+<hr>
+<a name="dlabel"></a>
+<h2>dlabel</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a specification of a label, either
+"directly" or "indirectly".</p>
+
+<hr>
+<a name="dmode"></a>
+<h2>dmode</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the effect on existing pixels
+in the drawing area that is caused by any additional drawing activity. This
+metalanguage symbol occurs as an expression that evaluates to either
+<tt>"SOLID"</tt> or <tt>"XOR"</tt>, or to an implementation-specific value
+(starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="doargument"></a>
+<h2>doargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>DO</b> command. Examples of valid arguments for the <b>DO</b> command
+appear in an earlier section. The argument of the <b>DO</b> command is either
+a destination, or an indirection operator (<tt>@</tt>) followed by an
+expression that evaluates to a list (separated by commas) of such arguments.</p>
+
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>The argument of the <b>DO</b> command is either a destination, optionally
+followed by a parameter list, or an indirection operator (<tt>@</tt>) followed
+by an expression that evaluates to a list (separated by commas) of such
+arguments.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The destination of a <b>DO</b> command may also be an external subroutine.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The argument of the <b>DO</b> command may also be a method of an
+object.</p>
+
+<p><tt><b>DO</b> word.Insert("Hello World.")</tt><br>
+executes the method <tt>Insert</tt> of the object that
+is accessible through the value of local variable <tt>word</tt>.</p>
+
+<hr>
+<a name="drawarc"></a>
+<h2>drawarc</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"ARC"</tt>.</p>
+
+<hr>
+<a name="drawbcolor"></a>
+<h2>drawbcolor</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"BCOLOR"</tt>.</p>
+
+<hr>
+<a name="drawbitmap"></a>
+<h2>drawbitmap</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"BITMAP"</tt>.</p>
+
+<hr>
+<a name="drawbox"></a>
+<h2>drawbox</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"BOX"</tt>.</p>
+
+<hr>
+<a name="drawcommand"></a>
+<h2>drawcommand</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a command to be executed in a window that
+involves some drawing activity. This metalanguage symbol occurs as an
+expression that evaluates to one of <tt>"ARC"</tt>, <tt>"BCOLOR"</tt>,
+<tt>"BITMAP"</tt>, <tt>"BOX"</tt>, <tt>"DMODE"</tt>, <tt>"DRAWTEXT"</tt>,
+<tt>"FCOLOR"</tt>, <tt>"FFACE"</tt>, <tt>"FILLPAT"</tt>, <tt>"FSIZE"</tt>,
+<tt>"FSTYLE"</tt>, <tt>"LINE"</tt>, <tt>"OVAL"</tt>, <tt>"PENSIZE"</tt>,
+<tt>"PICTURE"</tt>, <tt>"PIE"</tt> or <tt>"POINT"</tt>, or to an
+implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="drawfface"></a>
+<h2>drawfface</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"FFACE"</tt>.</p>
+
+<hr>
+<a name="drawfillpattern"></a>
+<h2>drawfillpattern</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"FILLPAT"</tt>.</p>
+
+<hr>
+<a name="drawfsize"></a>
+<h2>drawfsize</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"FSIZE"</tt>.</p>
+
+<hr>
+<a name="drawfstyle"></a>
+<h2>drawfstyle</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"FSTYLE"</tt>.</p>
+
+<hr>
+<a name="drawline"></a>
+<h2>drawline</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"LINE"</tt>.</p>
+
+<hr>
+<a name="drawmode"></a>
+<h2>drawmode</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"DMODE"</tt>.</p>
+
+<hr>
+<a name="drawnum"></a>
+<h2>drawnum</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric expression that indicates the
+sequence in which certain drawing commands are executed.</p>
+
+<p>The commands in <tt>^$WINDOW(window,"G",gadget,"DRAW",seq)</tt> are executed
+in numerical order of the final subscript (<tt>seq</tt>). The value of this
+final subscript is represented by <b>drawnum</b>.</p>
+
+<p>For portability, the number of drawing commands in this context should not
+exceed 2,047.</p>
+
+<hr>
+<a name="drawoval"></a>
+<h2>drawoval</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"OVAL"</tt>.</p>
+
+<hr>
+<a name="drawpencolor"></a>
+<h2>drawpencolor</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"FCOLOR"</tt>.</p>
+
+<hr>
+<a name="drawpensize"></a>
+<h2>drawpensize</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"PENSIZE"</tt>.</p>
+
+<hr>
+<a name="drawpicture"></a>
+<h2>drawpicture</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"PICTURE"</tt>.</p>
+
+<hr>
+<a name="drawpie"></a>
+<h2>drawpie</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's
+Interface standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"PIE"</tt>.</p>
+
+<hr>
+<a name="drawpoint"></a>
+<h2>drawpoint</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"POINT"</tt>.</p>
+
+<hr>
+<a name="drawtext"></a>
+<h2>drawtext</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"DRAWTEXT"</tt>.</p>
+
+<hr>
+<a name="drawtype"></a>
+<h2>drawtype</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the type of drawing commands
+that can be specified. This metalanguage symbol occurs as an expression that
+evaluates to either the value <tt>"MDRAW"</tt> or to an
+implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="drawunits"></a>
+<h2>drawunits</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"UNITS"</tt>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "D" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

@@ -1,0 +1,130 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $JUSTIFY</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $J[USTIFY]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a formatted reproduction of the string
+passed as a parameter. The actual formatting depends on further
+parameters.</p>
+
+<p><tt><b>SET</b> X=12.35</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,6)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~12.35"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12.35"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12.35"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12.35"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,7,4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12.3500"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,7,3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~12.350"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,7,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~~12.35"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,7,1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~~~12.4"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,7,0)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~~~~~12"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(X,1,1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12.4"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> Y=197</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(Y,7,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~197.00"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(Y,2,0)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"197"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> Z="A"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(Z,5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~~~~A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$JUSTIFY</b>(Z,5,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"~0.00"</tt></td></tr>
+</table></p>
+
+<p>Inverse function for adjustment of numeric values:
+<tt><b>$TRANSLATE</b>(<b>$JUSTIFY</b>(123,9)," ")=123</tt></p>
+
+<p>Note that
+<tt>+<b>$JUSTIFY</b>(123,9) =
++"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;123" = 0</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$JUSTIFY</b>(VALUE,LENGTH)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$JUSTIFY</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<p><b>$JUSTIFY</b>(VALUE,LENGTH,DECIMALS)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$JUSTIFY</b>(^(5,6),^(7,8),^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

@@ -1,0 +1,309 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -G-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter G</h1>
+
+<p><a href="#gcolor">gcolor</a>,
+<a href="#gkeyword">gkeyword</a>,
+<a href="#gksdat">gksdat</a>,
+<a href="#gksenum">gksenum</a>,
+<a href="#gksfile">gksfile</a>,
+<a href="#gksint">gksint</a>,
+<a href="#gksnam">gksnam</a>,
+<a href="#gksnum">gksnum</a>,
+<a href="#gksplst">gksplst</a>,
+<a href="#gkspnt">gkspnt</a>,
+<a href="#gksstr">gksstr</a>,
+<a href="#glvn">glvn</a>,
+<a href="#gname">gname</a>,
+<a href="#gnamind">gnamind</a>,
+<a href="#gotoargument">gotoargument</a>,
+<a href="#graphic">graphic</a>,
+<a href="#gtype">gtype</a>,
+<a href="#gvn">gvn</a>,
+<a href="#gvnexpr">gvnexpr</a></p>
+
+<hr>
+<a name="gcolor"></a>
+<h2>gcolor</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the level of the green component of a
+color. A color component level is an integer value
+(0 <img src="leq.xbm"> value <img src="leq.xbm"> 65,535).</p>
+
+<hr>
+<a name="gkeyword"></a>
+<h2>gkeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"G"</tt>.</p>
+
+<hr>
+<a name="gksdat"></a>
+<h2>gksdat</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents a data record. This entity can be any
+expression.</p>
+
+<hr>
+<a name="gksenum"></a>
+<h2>gksenum</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents an entity that has one out of a number of
+possible values (an enumerated list of possible values). This entity can be
+any expression.</p>
+
+<hr>
+<a name="gksfile"></a>
+<h2>gksfile</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents the name of a file. This entity can be any
+expression.</p>
+
+<hr>
+<a name="gksint"></a>
+<h2>gksint</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents an integer number that is bounded by
+constraints within the GKS standard.This entity can be the integer
+interpretation of any expression.</p>
+
+<hr>
+<a name="gksnam"></a>
+<h2>gksnam</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents a name that matches constraints as
+specified within the GKS standard. This entity can be any expression.</p>
+
+<hr>
+<a name="gksnum"></a>
+<h2>gksnum</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents a number that is bounded by constraints
+within the GKS standard.This entity can be the numeric interpretation of any
+expression.</p>
+
+<hr>
+<a name="gksplst"></a>
+<h2>gksplst</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents a list of points (separated by commas). A
+point is represented by a list of integer numbers (separated by commas). Since
+the GKS processor knows which type of coordinates is being used
+(two-dimensional or three-dimensional), there is no ambiguity about which
+commas separate coordinates, and which commas separate points.</p>
+
+<hr>
+<a name="gkspnt"></a>
+<h2>gkspnt</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents a point. A point is represented by a list
+of integer numbers (separated by commas). The number of values depends on the
+projection space (two-dimensional, three-dimensional) that is currently being
+used.</p>
+
+<hr>
+<a name="gksstr"></a>
+<h2>gksstr</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents an expression; the value of this
+expression is not restricted to be anything specific.</p>
+
+<hr>
+<a name="glvn"></a>
+<h2>glvn</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents either a global or a local variable
+name.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A <b>glvn</b> can refer to a local variable, to a global variable, or to a
+structured system variable.</p>
+
+<hr>
+<a name="gname"></a>
+<h2>gname</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of a gadget. Names of gadgets
+consist of alphabetic characters and digits and may start with a % sign.</p>
+
+<p>For portability, the number of characters in the name of a gadget is limited
+to 31 characters.</p>
+
+<hr>
+<a name="gnamind"></a>
+<h2>gnamind</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a part of an indirect reference to a
+global variable. In the context of an indirection of the type
+<tt>@name@(subscripts)</tt>, this metalanguage symbol corresponds to the part
+between the indirection operators. This entity may be a regular local variable
+name (see metalanguage symbol <a href="r.htm#rlvn"> rlvn</a>,
+a regular global variable name (see metalanguage symbol
+<a href="r.htm#rgvn"> rgvn</a>)
+or an <a href="e.htm#expritem"> expritem</a>).
+In this context, the value between the indirection operator must evaluate to a
+name of a global variable, possibly with a list of subscripts enclosed in
+parentheses.</p>
+
+<hr>
+<a name="gotoargument"></a>
+<h2>gotoargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>GOTO</b> command. Examples of valid arguments for the <b>GOTO</b> command
+appear in an earlier section. The argument of the <b>GOTO</b> command is
+either a destination, or an indirection operator (<tt>@</tt>) followed by an
+expression that evaluates to a list (separated by commas) of such arguments.</p>
+
+<hr>
+<a name="graphic"></a>
+<h2>graphic</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the 95 ASCII printable characters,
+including the character "Space", often represented as SP, <b>SP</b> or "&nbsp;".</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A graphic character is any character in the ASCII/M character set that does
+not have internal code 0 through 31 or internal code 127.</p>
+
+<p>To be modified in a future ANSI M[UMPS] language standard.</p>
+
+<p>A graphic character is any character that does not match the pattern code
+1C.</p>
+
+<hr>
+<a name="gtype"></a>
+<h2>gtype</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the type of a gadget. This
+metalanguage symbol occurs as an expression that evaluates to either one of
+<tt>"BUTTON"</tt>, <tt>"CHECK"</tt>, <tt>"DOCUMENT"</tt>, <tt>"FRAME"</tt>,
+<tt>"GENERIC"</tt>, <tt>"LABEL"</tt>, <tt>"LIST"</tt>, <tt>"LISTBUTTON"</tt>,
+<tt>"LISTENTRY"</tt>, <tt>"LONGLIST"</tt>, <tt>"RADIO"</tt>,
+<tt>"SCROLL"</tt>, <tt>"SYMBOL"</tt> or <tt>"TEXT"</tt>, to to an
+implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Added <tt>"TABLE"</tt> as a possible value for gadget type codes.</p>
+
+<hr>
+<a name="gvn"></a>
+<h2>gvn</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a global variable name (possibly with a
+list of subscripts enclosed in parentheses), including the leading caret (^).
+An <b>gvn</b> may be either a "straight" global variable name, a
+<i>naked reference</i>, or an indirected reference to a global variable.</p>
+
+<p>Examples:</p>
+
+<p><tt>^ABC<br>
+@("^PQR")<br>
+^ABC(1,2,3)<br>
+@"^PQR(4,5,6)"<br>
+^(4,5)<br>
+@"^(6,7)"</tt></p>
+
+<p>Modified in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a global variable name (possibly with a
+list of subscripts enclosed in parentheses), including the leading caret (^).
+An <b>gvn</b> may be either a regular global variable name (see metalanguage
+symbol <a href="r.htm#rgvn"> rgvn</a>)
+or an indirected reference to a regular global variable name.</p>
+
+<p>Examples:</p>
+
+<p><tt>^ABC<br>
+@("^PQR")<br>
+^ABC(1,2,3)<br>
+@"^PQR(4,5,6)"<br>
+@"^KLM"@(8,9,10)<br>
+@"@""^XYZ""@(11,23)"<br>
+^(4,5)<br>
+@"^(6,7)"</tt></p>
+
+<hr>
+<a name="gvnexpr"></a>
+<h2>gvnexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the name
+of a global variable.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The name of the global variable, in this context, is unsubscripted.</p>
+
+<hr>
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "G" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

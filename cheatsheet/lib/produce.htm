@@ -1,0 +1,114 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%PRODUCE^STRING</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%PRODUCE^STRING</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as part of the library
+for String Handling.</p>
+
+<p>This function returns a translated version of the value of its
+parameter.</p>
+
+<p>This function could be used to reduce multiple separators to
+single ones:</p>
+
+<p><tt><b>KILL</b> SPEC<br>
+; Two blanks will be reduced to a single one<br>
+<b>SET</b> SPEC(1,1)="  ",SPEC(1,2)=" "<br>
+; translate all relevant separators into blanks<br>
+<b>SET</b> X=<b>$TRANSLATE</b>(X,"!?,.;:()","        ")<br>
+; and reduce multiple blanks to singletons<br>
+<b>SET</b> X=<b>$%PRODUCE^STRING</b>(X,.SPEC)</tt></p>
+
+<p>A soundex algorithm for English names:</p>
+
+<p><table>
+<tr><td valign=top>1.</td>
+<td>Remove non-alpha and convert lower case to upper case</td></tr>
+
+<tr><td valign=top>2.</td>
+<td>Examine first letters<br>
+PH --> F<br>
+CE --> S<br>
+KN --> N<br>
+WR --> R<br>
+C --> K</td></tr>
+
+<tr><td valign=top>3.</td>
+<td>Ignore all other vowels (A, E, I, O and U)</td></tr>
+
+<tr><td valign=top>4.</td>
+<td>Then replace<br>
+MP --> M<br>
+ST --> S<br>
+DG --> D<br>
+TCH --> CH<br>
+GHT --> HT</td></tr>
+
+<tr><td valign=top>5.</td>
+<td>Then make the following equivalent<br>
+B, F, P and V<br>
+C, G, J, K, Q, S, X and Z<br>
+D and T<br>
+M and N</td></tr>
+
+<tr><td valign=top>6.</td>
+<td>Finally, remove multiple consecutive occurences of
+the same character</td></tr>
+</table></p>
+
+<p><tt>SOUNDEX(A) <b>NEW</b> B,C,UP,LOW,I,S1,S2<br>
+&nbsp;<b>SET</b> UP="ABCDEFGHIJKLMNOPQRSTUVWXYZ"<br>
+&nbsp;<b>SET</b> LOW="abcdefghijklmnopqrstuvwxyz"<br>
+&nbsp;<b>SET</b> A=<b>$TRANSLATE</b>(A,LOW_"-., ()'",UP)<br>
+&nbsp;<b>FOR</b> I=1:1:5 <b>SET</b> C(I,1)=<b>$PIECE</b>("PH C CE KN WR"," ",I)<br>
+&nbsp;<b>FOR</b> I=1:1:5 <b>SET</b> C(I,2)=<b>$PIECE</b>("F. K S. N. R."," ",I)<br>
+&nbsp;<b>SET</b> I=<b>$%REPLACE^STRING</b>(<b>$EXTRACT</b>(A,1,2),.C)<br>
+&nbsp;<b>SET $EXTRACT</b>(A,1,2)=I<br>
+&nbsp;<b>SET</b> A=<b>$TRANSLATE</b>(A,"AEIOUY.")<br>
+&nbsp;<b>FOR</b> I=1:1:5 <b>DO</b><br>
+&nbsp;. <b>SET</b> C(I,1)=<b>$PIECE</b>("MP ST DG TCH GHT"," ",I)<br>
+&nbsp;<b>FOR</b> I=1:1:5 <b>DO</b><br>
+&nbsp;. <b>SET</b> C(I,2)=<b>$PIECE</b>("M. S. D. CH. HT." ",I)<br>
+&nbsp;<b>SET</b> A=<b>$%REPLACE^STRING</b>(A,.C)<br>
+&nbsp;<b>SET</b> S1="BFPVCGJKQSXZDTMN."<br>
+&nbsp;<b>SET</b> S2="BBBBCCCCCCCCDDMM"<br>
+&nbsp;<b>SET</b> A=<b>$TRANSLATE</b>(A,S1,S2)<br>
+&nbsp;<b>FOR</b> I=1:1:26 <b>DO</b><br>
+&nbsp;. <b>SET</b> C(I,1)=<b>$CHAR</b>(64+I,64+I)<br>
+&nbsp;. <b>SET</b> C(I,2)=<b>$CHAR</b>(64+I)<br>
+&nbsp;<b>SET</b> A=<b>$%PRODUCE^STRING</b>(A,.C)<br>
+&nbsp;<b>QUIT</b> A</tt></p>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="produce.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

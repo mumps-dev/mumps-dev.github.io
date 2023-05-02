@@ -1,0 +1,370 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>D[O]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>DO</b> LABEL</tt></p>
+
+<p><tt><b>DO</b> LABEL+OFFSET</tt><br>
+Note that use of the <tt>LABEL+OFFSET</tt> syntax may have
+unintended ramifications when lines of code are inserted between
+the line with the <tt>LABEL</tt> and the line that was indicated
+by <tt>LINE+OFFSET</tt> before the insertion.</p>
+
+<p><tt><b>DO</b> ^PROGRAM</tt></p>
+
+<p><tt><b>DO</b> LABEL^PROGRAM</tt></p>
+
+<p><tt><b>DO</b> LABEL+OFFSET^PROGRAM</tt></p>
+
+<p><tt><b>DO</b> @ARGUMENT</tt></p>
+
+<p><tt><b>DO</b> @INDLABEL^PROGRAM</tt></p>
+
+<p><tt><b>DO</b> @INDLABEL^@INDPROG</tt></p>
+
+<p><b>Note</b>: a reference like +OFFSET^ROUTINE is acceptable
+as a parameter for <b>$TEXT</b>, but not as an argument for
+the commands <b>DO</b> and <b>GOTO</b>.</p>
+
+<p>The 1990 M[UMPS] language standard added:</p>
+
+<p><tt><b>DO</b> LABEL(actuallist)</tt></p>
+
+<p><tt><b>DO</b> @INDLABEL(actuallist)</tt></p>
+
+<p><tt><b>DO</b> @X(A)</tt><br>
+Does not do parameter passing. Uses indirect array element.</p>
+
+<p><tt><b>DO</b> @X(.A)</tt><br>
+Does parameter passing.</p>
+
+<p><tt><b>DO</b> @X(B)(A)</tt><br>
+Does routine indirect <tt>X(B)</tt> passing the value of
+<tt>A</tt>.</p>
+
+<p><tt><b>DO</b> @X^@Y</tt><br>
+Does label <tt>@X</tt> in routine <tt>@Y</tt>.</p>
+
+<p><tt><b>DO</b> @X^@Y(A)</tt><br>
+Does label <tt>@X</tt> in routine <tt>@Y(A)</tt>.</p>
+
+<p><tt><b>DO</b> @X^@Y(.A)</tt><br>
+Does label <tt>@X</tt> in routine <tt>@Y</tt> passing <tt>A</tt>
+by reference.</p>
+
+<p><tt><b>DO</b> @X^@Y(B)(A)</tt><br>
+Does label <tt>@X</tt> in routine <tt>@Y(B)</tt> passing the
+value of <tt>A</tt>.</p>
+
+<p>An offset is an integer expression. This means that the following
+three invocations all address the same entry point:<br>
+<tt><b>DO</b> A+1^B<br>
+<b>DO</b> A+1.5^B<br>
+<b>DO</b> A+1.9999999999^B</tt></p>
+
+<p>Assume that the following label exists<br>
+<tt>SUB(A,B) ;</tt></p>
+
+<p>The subroutine call <tt><b>DO</b> SUB(12)</tt> will have the
+result that, within the subroutine, the formal parameter
+<tt>B</tt> will initially be undefined (i.e. <tt><b>$DATA</b>(B)
+= 0</tt>).</p>
+
+<p>The subroutine call <tt><b>DO</b> SUB(1,2,43)</tt> will cause an
+error, because there is no matching formal parameter for the
+actual parameter <tt>43</tt>.</p>
+
+<p>Assume that a M[UMPS] routine contains the command<br>
+<center><tt><b>DO</b> ^EXAMPLE(1)</tt></center><br>
+and that routine<tt> EXAMPLE</tt> looks like<br>
+<tt>FIRST ; author ; date/time ; function<br>
+EXAMPLE(X) ;<br>
+&nbsp;<b>WRITE</b> !,X<br>
+&nbsp;<b>QUIT</b></tt><br>
+The <b>DO</b> command will cause an error
+(<a href="../mdcerror.htm#M20">M20</a>) when the (sub)routine is called
+and control is transferred to the first line. Because an actual
+parameter is specified, that first line (regardless of what the
+actual label is on that line) should have a formal parameter
+list. The absence of a parameter list on the line to which
+control is transferred will cause the error condition.</p>
+
+<p>Assume that a M[UMPS] routine contains the command<br>
+<center><tt><b>DO</b> ^EXAMPLE(1)</tt></center><br>
+and that routine<tt> EXAMPLE</tt> looks like<br>
+<tt>FIRST(X) ; author ; date/time ; function<br>
+&nbsp;;<br>
+&nbsp;<b>WRITE</b> !,X<br>
+&nbsp;<b>QUIT</b></tt><br>
+The <b>DO</b> command will cause the value <tt>1</tt> to be displayed.
+Regardless of the actual label on the first line, the parameter is passed
+through the parameter list on the first line of the routine.</p>
+
+<p><tt>&nbsp;<b>SET</b> VA=1 <b>DO</b><br>
+&nbsp;. <b>DO</b> SUB<br>
+&nbsp;. <b>QUIT</b><br>
+&nbsp;<b>WRITE</b> VA<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB <b>SET</b> VA=2<br>
+&nbsp;<b>QUIT</b></tt><br>
+The value 2 will be written. While the command <tt><b>DO</b>
+SUB</tt> occurs at a line with <i>level</i> 2, the <b>DO</b>
+command invokes a new block of code, which happens to start at
+<i>level</i> 1; there is no implicit <b>QUIT</b> command because
+the line at label <tt>SUB</tt> is of a lower <i>level</i> than
+the line containing the <b>DO</b> command. Within an 'indented
+block', subroutines may be called, even if they reside in other
+routines.<br>
+<tt><br>
+&nbsp;<b>SET</b> EXP2=0<br>
+&nbsp;<b>IF</b> EXP1 <b>DO</b><br>
+&nbsp;. <b>WRITE</b> !,"First: ",<b>$TEST</b><br>
+&nbsp;. <b>IF</b> EXP2<br>
+&nbsp;. <b>WRITE</b> !,"Second: ",<b>$TEST</b><br>
+&nbsp;. <b>WRITE</b> !,"Today is ",$$DAY,"."<br>
+&nbsp;. <b>QUIT</b><br>
+&nbsp;<b>WRITE</b> !,"Third: ",<b>$TEST</b><br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+DAY() <b>NEW</b> DAYS<br>
+&nbsp;<b>SET</b> DAYS="Thurs Fri Satur Sun Mon Tues Wednes"<br>
+&nbsp;<b>QUIT $PIECE</b>(DAYS," ",<b>$HOROLOG</b>#7+1)_"day"</tt><br>
+If local variable <tt>EXP1</tt> is <i>false</i>, this example
+will write:<br>
+<tt>Third: 0</tt><br>
+If local variable <tt>EXP1</tt> is <i>true</i>, this example will
+write:<br>
+<tt>First: 1<br>
+Second: 0<br>
+Today is xxxxxday.<br>
+Third: 1</tt><br>
+The value of <b>$TEST</b> is stacked within the argumentless
+<b>DO</b> command, and reset to its original value when control
+returns back from the indented block to the next higher
+level.<br>
+<tt><br>
+&nbsp;<b>SET</b> A="President"<br>
+&nbsp;<b>DO</b> SUB1(.A)<br>
+&nbsp;<b>WRITE</b> !,A<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+SUB1(B) <b>KILL</b> B<br>
+&nbsp;<b>SET</b> B="Prime minister"<br>
+&nbsp;<b>QUIT</b></tt><br>
+Local variable <tt>A</tt> is passed <i>by reference</i> to
+subroutine <tt>SUB1</tt>. Even though the value of the variable
+is removed by means of the <b>KILL</b> command, the '<i>by
+reference</i>' link remains in effect. Thus, when the value
+<tt>"Prime minister"</tt> is assigned to parameter variable
+<tt>B</tt>, it is actually assigned to local variable <tt>A</tt>,
+which means that the value <tt>"Prime minister"</tt> will be
+written.<br>
+<tt><br>
+&nbsp;<b>SET</b> SUM=$$ADD(A,A)<br>
+&nbsp;<b>SET</b> WHICH=$$WHICH(12,34)<br>
+&nbsp;<b>QUIT</b><br>
+ADD(P,Q) <b>QUIT</b> P+Q<br>
+WHICH(Z,Z) <b>WRITE</b> Z<br>
+&nbspSET RESULT=Z
+&nbsp;<b>QUIT</b> RESULT</tt><br>
+While it makes perfect sense to pass the same value multiple
+times as an actual parameter, it is considered to be erroneous to
+have multiple formal parameters with the same name.</p>
+
+<p>While the 1990 ANSI M[UMPS] language standard does not specify
+any behavior in such a case, the 1995 ANSI M[UMPS] language
+standard specifies that multiple occurrences of the same name in
+a formal parameter list is an error.</p>
+
+<p>If an implementation does not return an error (pre-1995
+implementation), it is to be expected that the value <tt>34</tt>
+(because the parameterlist is scanned left-to-right, the
+rightmost occurrence of the name wins) will be written.<br>
+<tt><br>
+&nbsp;<b>SET</b> Y="President"<br>
+&nbsp;<b>DO</b> WHICH(.Y,"Court Jester")<br>
+&nbsp;<b>WRITE</b> !,Y<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+WHICH(Z,Z) <b>WRITE</b> !,Z<br>
+&nbsp;<b>QUIT</b></tt><br>
+In this example, the above mentioned phenomenon is taken one step
+further. Although this usage is considered to be erroneous (and
+post-1995 implementations will produce an error), pre-1995
+implementations may allow such usage.</p>
+
+<p>Within the subroutine 'the rightmost occurrence of the name
+wins', and the value <tt>"Court Jester"</tt> will be displayed.
+However, this is only because of the link between the parameter
+variable and the values passed.<br>
+The original local variable <tt>Y</tt> is not changed in any way,
+and the main routine will display the value
+<tt>"President"</tt>.</p>
+
+<p><tt>ELECTION <b>SET</b> X="Mr. Sun"<br>
+&nbsp;<b>DO</b> VOTE(.X)<br>
+&nbsp;<b>WRITE</b> X<br>
+&nbsp;<b>QUIT</b><br>
+VOTE(Y) <b>SET</b> Y="Mr. Moon"<br>
+&nbsp;<b>QUIT</b></tt><br>
+The value <tt>"Mr. Moon"</tt> will be written. Local variable
+<tt>X</tt> is passed <i>by reference</i> to the subroutine
+<tt>VOTE</tt>, and all changes that are made to parameter
+variable <tt>Y</tt> will be visible in the local variable to
+which it is bound '<i>by reference</i>'.</p>
+
+<p>Upon return from a subroutine or function, the "NEWed" variables
+are reset to their original state. If such a state was
+"undefined", then the variable in question will no longer have
+any value that was assigned within a subroutine or procedure.</p>
+
+<p><tt> <b>KILL</b><br>
+ <b>SET</b> A=1,B=2 <b>DO</b> SUB(B,.C,D)<br>
+ <b>WRITE $DATA</b>(A),", ",<b>$DATA</b>(B),", ",<b>$DATA</b>(C),", "
+ <b>WRITE $DATA</b>(D),", ",<b>$DATA</b>(E),", ",<b>$DATA</b>(F)<br>
+ <b>WRITE</b> !,"B=",B,", D=",D<br>
+ <b>QUIT</b><br>
+SUB(A,C,F) <b>SET</b> A=3,B=5,C=7,D=9,F=11<br>
+ <b>QUIT</b></tt></p>
+
+<p>will produce:</p>
+
+<p><tt>1, 1, 1, 1, 0, 0<br>
+B=5, D=9</tt></p>
+
+<p>Note that local variable <tt>C</tt> is passed by reference, so
+the assignment within the subroutine is still visible after the
+<b>QUIT</b> from the subroutine, and local variable <tt>D</tt> is
+passed by reference, so the assignment <tt>F=11</tt> is to a
+local copy within the subroutine, which disappears when the
+<b>QUIT</b> command is executed, and the assignment <tt>D=9</tt>
+is to the original variable, so that this assignment will be
+persistent after the subroutine has completed.</p>
+
+<p>Assume that a routine contains the command:<br>
+<tt><b>DO</b> A+$$B^C</tt><br>
+One might wonder how to interpret this address. Seemingly, there
+are two possible interpretations:<br>
+<ul>
+<li><tt>$$B</tt> lines past label <tt>A</tt> in routine <tt>C</tt></li>
+<li><tt>$$B^C</tt> lines past label <tt>A</tt> in the current routine</li>
+</ul><br>
+Because of the way that the "offset" is defined, the "longest"
+sequence of characters that fits the syntax of an integer
+expression is used to calculate the offset, i.e. the second
+interpretation is the one supported by the language standard.</p>
+
+<p>The behavior of <b>$TEST</b> is different when the <b>DO</b>
+command does not have an argument:</p>
+
+<p><tt><b>IF</b> A=B <b>DO</b> ONE<br>
+<b>ELSE</b>&nbsp;&nbsp;<b>DO</b> TWO</tt></p>
+
+<p>In this example, the code following the <b>ELSE</b> command
+will be executed:
+<ul>
+<li>when A happens to be unequal to B</li>
+<li>when something happens inside subroutine ONE
+that has the effect that the value of <b>$TEST</b> becomes
+"false"</li>
+</ul></p>
+
+<p><tt><b>IF</b> A=B <b>DO</b><br>
+&nbsp;. <b>DO</b> ONE<br>
+&nbsp;. <b>QUIT</b><br>
+<b>ELSE</b>&nbsp;&nbsp;<b>DO</b><br>
+&nbsp;. <b>DO</b> TWO<br>
+&nbsp;. <b>QUIT</b></tt></p>
+
+<p>In this example, the code following the <b>ELSE</b> command
+will only be executed when A happens to be unequal to B.
+Any changes to the value of <b>$TEST</b> that may happen inside
+subroutine ONE are "undone" when control reverts to the
+level where the argument-less <b>DO</b> command was executed.
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>Parameters may be omitted:<br>
+Assume that the following label occurs:<br>
+<tt>LABEL(P,Q,R,S,T,U)</tt> ; Entry in ROUTINE</p>
+
+<p>Most commonly, the subroutine would be invoked using a reference
+like: <tt><b>DO</b> LABEL^ROUTINE(A,B,C,D,E,F)</tt></p>
+
+<p>According to the 1990 ANSI M[UMPS] language standard, trailing
+parameters may be omitted:<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,B)</tt><br>
+causes that within the subroutine: <b>$DATA</b>(R)=0,
+<b>$DATA</b>(S)=0, <b>$DATA</b>(T)=0 and <b>$DATA</b>(U)=0</p>
+
+<p>The addition is that any parameter may be omitted:<br>
+<tt><b>DO</b> LABEL^ROUTINE(A,B,,D,E,.F)</tt><br>
+causes that within the subroutine: <b>$DATA</b>(R)=0,
+<b>$DATA</b>(S)=1, <b>$DATA</b>(T)=1 and
+<b>$DATA</b>(U)=<b>$DATA</b>(F)</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>The special variable <b>$TEST</b> may occur as an argument of the
+<b>NEW</b> command.<br>
+<tt><br>
+&nbsp;<b>SET</b> T="$TEST should be "<br>
+&nbsp;<b>IF</b> REASON <b>DO</b> SUB1 <b>WRITE</b> !,T,"1:
+",<b>$TEST</b>,"."<br>
+&nbsp;<b>ELSE&nbsp;&nbsp;DO</b> SUB2 <b>WRITE</b> !,T,"1:
+",<b>$TEST</b>,"."<br>
+&nbsp;<b>QUIT</b><br>
+SUB1<b> WRITE</b> !,T,"1: ",<b>$TEST</b>,"."<br>
+&nbsp;<b>NEW $TEST</b><br>
+&nbsp;<b>IF</b> 0 ; Force $TEST to a new value<br>
+&nbsp;<b>QUIT</b><br>
+SUB2 <b>WRITE</b> !,T,"0: ",<b>$TEST</b>,"."<br>
+&nbsp;<b>IF</b> 1 ; Force $TEST to a new value<br>
+&nbsp;<b>QUIT</b></tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>DO</b> ROUTINE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,</tt><br>
+<tt><b>DO</b> @^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<p><b>DO</b> ROUTINE(PARAMETERS)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>DO</b> ^routine(^(3,4),^(5,6))</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,5,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

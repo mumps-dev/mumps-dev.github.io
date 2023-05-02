@@ -1,0 +1,49 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $EREF</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $EREF</h1>
+
+<a name="$ER[EF]"></a>
+<h2>$ER[EF]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>The value of this special variable is the name of the node in
+<b>^$WINDOW</b> that was involved in the most recent error that
+occurred.</p>
+
+<p>Assuming that there is no button defined with the name
+<tt>"something wrong"</tt>, <br>
+<tt><b>SET ^$WINDOW</b>("DEMO","DEFBUTTON")="something
+wrong"</tt><br>
+will cause an error with <b>$ECODE</b> containing
+<tt>",M52,"</tt> and <b>$EREF</b> equal to the canonic form of
+the name of the above reference to <b>^$WINDOW</b>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

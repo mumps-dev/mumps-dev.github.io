@@ -1,0 +1,215 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -A-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter A</h1>
+
+<p><a href="#actual">actual</a>,
+<a href="#actualkeyword">actualkeyword</a>,
+<a href="#actuallist">actuallist</a>,
+<a href="#actualname">actualname</a>,
+<a href="#algoref">algoref</a>,
+<a href="#alpha">alpha</a>,
+<a href="#alphanum">alphanum</a>,
+<a href="#alternation">alternation</a>,
+<a href="#applicationattribute">applicationattribute</a>,
+<a href="#argument">argument</a>
+<a href="#assignargument">assignargument</a>,
+<a href="#assigndestination">assigndestination</a>,
+<a href="#assignleft">assignleft</a></p>
+
+<hr>
+
+<a name="actual"></a>
+<h2>actual</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a parameter in an "actual" parameter
+list (formal parameter list: at the label of the invoked subroutine or
+function; actual parameter list: in the call to that subroutine or
+function).</p>
+
+<p>An actual parameter is either an expression (passed by value) or a name of a
+local variable, preceded by a dot (passed by reference).</p>
+
+<hr>
+<a name="actualkeyword"></a>
+<h2>actualkeyword</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a keyword in a parameter
+of a method of an object. Such a keyword can be either a name
+or a string literal.</p>
+
+<hr>
+<a name="actuallist"></a>
+<h2>actuallist</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an actual parameter list (formal parameter
+list: at the label of the invoked subroutine or function; actual parameter
+list: in the call to that subroutine or function).</p>
+
+<p>An actual parameter list starts with a parenthesis open, then follows a list
+of actual parameters, separated by commas, and ends with a parenthesis
+close.</p>
+
+<hr>
+<a name="actualname"></a>
+<h2>actualname</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a parameter that is passed by
+reference.</p>
+
+<hr>
+<a name="algoref"></a>
+<h2>algoref</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the algoritm that will be executed to
+obtain a certain result. An algorithm is typically a reference to an extrinsic
+function (potentially using the external calling syntax), occasionally an
+intrinsic function would be used. In cases where an algorithm specification is
+required, but no algorithm is currently available, the empty string may be
+specified instead of the algorithm specification.</p>
+
+<hr>
+<a name="alpha"></a>
+<h2>alpha</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the 52 upper and lower case
+alphabetic characters in the ASCII set.</p>
+
+<p>Removed in the 1995 ANSI M[UMPS] language standard (see the meta-language
+symbol <a href="i.htm#ident"> ident</a>).</p>
+
+<hr>
+<a name="alphanum"></a>
+<h2>alphanum</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents either an alphabetic character or a
+digit.</p>
+
+<hr>
+<a name="alternation"></a>
+<h2>alternation</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a specification of multiple alternate
+patterns that may occur to satisfy part of a pattern match specification.</p>
+
+<p>A list of alternate patterns looks like a list of pattern atoms (separated by
+commas) enclosed in parentheses.</p>
+
+<p>Modification in a future ANSI M[UMPS] language standard.</p>
+
+<p>A list of alternate patterns looks like a list of pattern specifications
+(separated by commas) enclosed in parentheses.</p>
+
+<p>Note: The limitation to pattern atoms in the 1995 ANSI M[UMPS] language
+standard was unintended.</p>
+
+<hr>
+<a name="applicationattribute"></a>
+<h2>applicationattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an application specific attribute for a
+window characteristic specification. Its value must be valid for usage as a
+subscript, and its first letter must be an uppercase <tt>"Y"</tt>.</p>
+
+<hr>
+<a name="argument"></a>
+<h2>argument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an argument of a M[UMPS] command. An
+argument follows either the syntax of a specific command's argument (see
+<b>closeargument</b>, <b>doargument</b>, etcetera), or starts with an
+indirection operator (<tt>@</tt>) followed by an expression that
+evaluates to a list (separated by commas) of such specific arguments.</p>
+
+<hr>
+<a name="assignargument"></a>
+<h2>assignargument</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument
+of the <b>ASSIGN</b> command. Examples of valid arguments for the
+<b>ASSIGN</b> command appear in an earlier section. The argument
+of the <b>ASSIGN</b> command is either a destination as described
+below, followed by an equal sign (<tt>=</tt>), followed by an
+expression, or an indirection operator (<tt>@</tt>) followed by
+an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+
+<p>The destination can be either a local variable
+(possibly subscripted), or a property of an object,
+or a list of such entities (separated by commas; enclosed in 
+parentheses).</p>
+
+<hr>
+<a name="assigndestination"></a>
+<h2>assigndestination</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the target of
+an argument of the <b>ASSIGN</b> command. Such a target
+may be either a single local variable or property of
+an object, or a list (enclosed in parentheses; separated
+by commas) of destinations.</p>
+
+<hr>
+<a name="assignleft"></a>
+<h2>assignleft</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an entity that may
+appear on the left-hand side of the equal sign in an argument
+of the <b>ASSIGN</b> command. Such an entity may be either a
+local variable or a property of an object.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "A" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

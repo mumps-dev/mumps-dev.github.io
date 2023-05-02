@@ -1,0 +1,155 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $QUERY</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $Q[UERY]</h1>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns information about other defined information
+in a data-structure, based on the collating sequence in use for
+that data-structure.</p>
+
+<p>Assume that a global variable ^A exists as depicted in the
+diagram with the function <b>$ORDER</b>. The code:<br>
+<tt><b>SET</b> REF="^A"<br>
+<b>FOR</b> I=1:1:20 <b>SET</b> REF=<b>$QUERY</b>(@REF)
+<b>WRITE</b> " ",REF</tt><br>
+will produce the following print-out:</p>
+
+<p><tt> ^A(-34) ^A(-4) ^A(-3) ^A(-2) ^A(2) ^A(3) ^A(3,1)<br>
+ ^A(3,2) ^A(3,10) ^A(3,10,3) ^A(4) ^A(34) ^A("-5A")<br>
+ ^A("5A") ^A("A") ^A("AB") ^A("AD) ^A(B")&nbsp;&nbsp;^A(-34)</tt></p>
+
+<p><tt><b>KILL</b> ^ABC<br>
+<b>SET</b> ^ABC(1,2,3)="Demo"<br>
+<b>SET</b> X=<b>$QUERY</b>(^ABC(1,""))</tt><br>
+The effect of this reference to the function <b>$QUERY</b> is not
+portable. Use of the empty string as a subscript is only portable
+in the context of the function <b>$ORDER</b>.<br>
+While some implementations may return the value
+<tt>"^ABC(1,2,3)"</tt> in local variable <tt>X</tt>, others may
+return an error.</p>
+
+<p><tt><b>KILL</b> ^X<br>
+<b>SET</b> ^X(1,2,1)=""<br>
+<b>SET</b> ^X(1,2,2)=""<br>
+<b>SET</b> ^X(1,3)=""<br>
+<b>SET</b> A=<b>$QUERY</b>(^X(1,1))</tt><br>
+will return the value <tt>"^X(1,2,1)"</tt> in local variable
+<tt>A</tt>.</p>
+
+<p><tt><b>KILL</b> ^X<br>
+<b>SET</b> ^X("-80 apples")="X"<br>
+<b>SET</b> ^X(-30)="N"<br>
+<b>SET</b> ^X(-7)="A"<br>
+<b>SET</b> ^X(-3.5)="B"<br>
+<b>SET</b> ^X(0)="W"<br>
+<b>SET</b> NAM="^X"<br>
+<b>FOR&nbsp;&nbsp;SET</b> NAM=<b>$QUERY</b>(@NAM) <b>QUIT</b>:NAM="" <b>WRITE</b> " ",@NAM<br>
+ N A B W X</tt><br>
+Note that the string <tt>"-80 apples"</tt> collates after the
+highest number.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The return value of <b>$QUERY</b> contains an environment
+specification if and only if the parameter value contains an
+environment specification.</p>
+
+<p>Assume that a process is operating in an environment
+called <tt>"first"</tt> and that the following variables exist:<br>
+<tt>lvn(1) = "local"<br>
+^one = 1<br>
+^one(1) = 1<br>
+^one(3) = 3</tt></p>
+
+<p>Also, assume that in an environment called <tt>"second"</tt> the
+following variables exist:<br>
+^two = 2<br>
+^two(2) = 22<br>
+^two(2,2,2,2)=2222</p>
+
+
+<table width=90%>
+<tr><th align=right width=40%>Reference</th>
+<th align=left width=20%>Value</th></tr>
+
+<tr><td align=right><tt><b>$QUERY</b>(lvn)</tt></td>
+<td align=left><tt>"lvn(1)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$QUERY</b>(^one)</tt></td>
+<td align=left><tt>"^one(1)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$QUERY</b>(^|"first"|one)</tt></td>
+<td align=left><tt>"^|""first""|one(1)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$QUERY</b>(^|"second"|two)</tt></td>
+<td align=left><tt>"^|""second""|two(2)"</tt></td></tr>
+
+<tr><td align=right><tt><b>$QUERY</b>(^one(^|"second"|two))</tt></td>
+<td align=left><tt>"^one(3)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> x=^|"second"|two(2)<br>
+<b>SET</b> y=<b>$QUERY</b>(^(2))</tt></td>
+<td align=left><tt>y="^two(2,2,2,2)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> x=<b>$QUERY</b>(^|"second"|two)<br>
+<b>SET</b> y=<b>$QUERY</b>(lvn)</tt></td>
+<td align=left><tt>x="^|""second""|two(2)"<br>
+y="lvn(1)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> x=<b>$QUERY</b>(^|"second"|two)<br>
+<b>SET</b> y=<b>$QUERY</b>(^one)</tt></td>
+<td align=left><tt>x="^|""second""|two(2)"<br>
+y="^one(1)"</tt></td></tr>
+
+</table></p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>KILL</b> ^ABC<br>
+<b>SET</b> ^ABC(1,2,3)="Demo"<br>
+<b>WRITE</b> "--&gt;""",<b>$REFERENCE</b>,""""<br>
+--&gt;"^ABC(1,2,3)"<br>
+<b>SET</b> A=<b>$QUERY</b>(^ABC(1))<br>
+<b>WRITE</b> "--&gt;""",A,""", and
+""",<b>$REFERENCE</b>,"""."<br>
+--&gt;"^ABC(1,2,3)", and "".</tt><br>
+After a reference to the function <b>$QUERY</b>, the naked
+indicator becomes undefined, which means that <b>$REFERENCE</b>
+becomes equal to the empty string.</p>
+
+<p>Reverse <b>$QUERY</b> will work in a manner analogous to reverse
+<b>$ORDER</b>:<br>
+<tt><b>$QUERY</b>(^A("-5A"),-1) = "^A(34)"</tt></p>
+
+<p>When the function <b>$QUERY</b> returns the name of a standardized
+structured system variable, the name will be returned in a
+"canonical" form. In its canonical form, the parts of these names
+that may be abbreviated will be fully spelled, and those parts of
+these names that are case insensitive will be converted to upper
+case only.</p>
+
+<p>E.g. <tt><b>$QUERY</b>(<b>^$C</b>("M"))</tt> could return
+<tt>"<b>^CHARACTER</b>("M",<b>"COLLATE"</b>)"</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$QUERY</b>(GLVN)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> x=<b>$QUERY</b>(^(3,4))</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. the naked indicator becomes undefined after a reference to <b>$QUERY</b>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

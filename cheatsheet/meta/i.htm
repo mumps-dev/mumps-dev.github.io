@@ -1,0 +1,215 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -I-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter I</h1>
+
+<p><a href="#ident">ident</a>,
+<a href="#ifargument">ifargument</a>,
+<a href="#implementationattribute">implementationattribute</a>,
+<a href="#implementationdrawcommand">implementationdrawcommand</a>,
+<a href="#implementationvalue">implementationvalue</a>,
+<a href="#initialrecordvalue">initialrecordvalue</a>,
+<a href="#insel">insel</a>,
+<a href="#insert">insert</a>,
+<a href="#intexpr">intexpr</a>,
+<a href="#intlit">intlit</a>,
+<a href="#iocommand">iocommand</a>
+<a href="#item">item</a></p>
+
+<hr>
+<a name="ident"></a>
+<h2>ident</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character that may occur in an
+identifier (in a name). The characters from the ASCII/M character set with
+internal codes 65 through 90 and 97 through 122 are always valid characters
+for identifiers. Additional characters can be defined through
+<tt>^$CHARACTER(characterset,"IDENT",algorithm)</tt>.</p>
+
+<p>Note: While the definition of <b>name</b> allows for any identifier
+characters, the portability section prohibits the use of lower case characters
+in names.</p>
+
+<hr>
+<a name="ifargument"></a>
+<h2>ifargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>IF</b> command. Examples of valid arguments for the <b>IF</b> command
+appear in an earlier section. The argument of the <b>IF</b> command is either
+an expression, or an indirection operator (<tt>@</tt>) followed by an
+expression that evaluates to a list (separated by commas) of such arguments.</p>
+
+<hr>
+<a name="implementationattribute"></a>
+<h2>implementationattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an implementation-specific attribute.
+Implementation-specific attributes are typically names that start with an
+uppercase Z.</p>
+
+<hr>
+<a name="implementationdrawcommand"></a>
+<h2>implementationdrawcommand</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for a drawing command that is
+implementation-specific. This metalanguage symbol occurs as an expression that
+evaluates to a value that starts with <tt>"Z"</tt>.</p>
+
+<hr>
+<a name="implementationvalue"></a>
+<h2>implementationvalue</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a value that is implementation-specific.
+Implementation-specific values typically start with an uppercase Z.</p>
+
+<hr>
+<a name="initialrecordvalue"></a>
+<h2>initialrecordvalue</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the intrinsic
+functions <b>$DEXTRACT</b> and <b>$DPIECE</b>. This parameter
+corresponds to the initial value of the data record that is about
+to be modified by the function in question.</p>
+
+<hr>
+<a name="insel"></a>
+<h2>insel</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that identifies an insertion point
+and a selection range. This metalanguage symbol occurs as an expression that
+evaluates to a string containing two integer values, separated by a comma. The
+first integer value must be <img src="geq.xbm"> 0.</p>
+
+<hr>
+<a name="insert"></a>
+<h2>insert</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an integer value that identifies an
+insertion point. This value is <img src="geq.xbm"> 0.</p>
+
+<hr>
+<a name="intexpr"></a>
+<h2>intexpr</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the integer interpretation of an
+expression. In order to produce the integer interpretation of an expression,
+first the expression is evaluated, and then reduced to its canonical numeric
+representation; after this, any fractional part is removed.</p>
+
+<p><table width=90% border=2>
+<tr><th align=right> String value</th>
+<th align=left> Integer interpretation</th></tr>
+
+<tr><td align=right> 123</td>
+<td align=left>  123</td></tr>
+
+<tr><td align=right> "5 apples"</td>
+<td align=left>  5</td></tr>
+
+<tr><td align=right> 5.23</td>
+<td align=left>  5</td></tr>
+
+<tr><td align=right> -5.23</td>
+<td align=left>  -5</td></tr>
+
+<tr><td align=right> 1.7</td>
+<td align=left>  1</td></tr>
+
+<tr><td align=right> -1.7</td>
+<td align=left>  -1</td></tr>
+</table></p>
+
+<hr>
+<a name="intlit"></a>
+<h2>intlit</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an integer numeric literal, i.e. a string
+of digits.</p>
+
+<p>An <b>intlit</b> is not necessarily a canonic representation of a number.</p>
+
+<p>Valid <b>intlit</b>s are:</p>
+
+<p><tt>12345<br>
+0<br>
+00123<br>
+00000</tt></p>
+
+<hr>
+<a name="iocommand"></a>
+<h2>iocommand</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a name of a command that
+performs input or output. Currently these commands are 
+<b>READ</b> and <b>WRITE</b>.</p>
+
+<hr>
+<a name="item"></a>
+<h2>item</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a member of a list of choices. One such
+member can be any sequence of characters, including the empty string.</p>
+
+<p>For portability, the number of menu choices per window is limited to 255.<br>
+For portability, the number of choices in a list box, list entry box or long
+list box is limited to 1023.<br>
+For portability, the number of choices in a list button is limited to 31.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "I" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

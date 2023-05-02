@@ -1,0 +1,116 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>O[PEN]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Clarifications (no change intended) in a future ANSI M[UMPS]
+language standard:</p>
+
+<p>When a device is currently "OPEN", and another OPEN command is
+issued by the process that "owns" the device, and in the later
+OPEN command the device parameters are different than in the
+original one, the system will behave as if the device is
+virtually CLOSEd and then re-OPENed with the new parameters. If
+the new parameters are incompatible with the device, error
+processing will occur "as usual".</p>
+
+<p>Any keywords in the argument of the command are processed in 
+strict left-to-right order. When multiple equivalent parameters 
+are encountered, the last occurrence processed will define the 
+action(s) to be taken.</p>
+
+<p>For examples, see the examples with the <b>USE</b> command.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>The ability to specify "user-defined" <u>mnemonicspace</u>s is added.
+It will be possible to specify to an implementation to use entries in a
+specific routine (let's call it <tt>USER</tt> for the purpose of this 
+discussion) for the processing of the commands <b>OPEN</b>, <b>USE</b>
+and <b>CLOSE</b> and the various <u>controlmnemonic</u>s for specific 
+combinations of device and <u>mnemonicspace</u>.</p>
+
+<p>When this feature is active, the <u>controlmnemonic</u>
+<tt>/ABC(P1,P2)</tt> will be executed as <tt><b>DO</b> 
+ABC^USER(P1,P2)</tt>, and the command <tt><b>OPEN</b> 
+device:(PARAM1:KEY2=VALUE2)</tt> will be executed as:
+<pre>
+<b>DO</b>
+. <b>NEW</b> X,Y
+. <b>SET</b> (X,Y)=2 ; Number of deviceparameters
+. <b>SET</b> X(1)="PARAM1" ; First deviceparameter
+. <b>SET</b> X(2)="KEY2",Y(2)=VALUE2
+. <b>DO</b> %OPEN^USER(device,.X,.Y,"")
+. <b>QUIT</b>
+</pre>
+
+The name of a device may contain an environment specification<br>
+<tt><b>OPEN</b> |"LONDON"|MTA47</tt></p>
+
+<p>The addition of a binding to TCP/IP socket devices includes a
+number of new deviceparameters.</p>
+
+<p>The deviceparameters are: ATTACH, CONNECT, DELIMITER, IOERROR,
+LISTEN, DETACH and SOCKET.
+For examples, see the <a href="use.htm">USE command</a>.</p>
+
+<p>For a program that parses a programming language, it is hard
+to see the difference between:<br>
+<tt>...:(abc=xyz):...</tt><br>
+and<br>
+<tt>...:(<b>FILENAME</b>="C:\temp\ABC.TMP"):...</tt><br>
+In the former example, the text between the parentheses should be
+an expression that happens to return a boolean value, whereas in
+the latter example, the text between the parentheses could be a
+"keyword equals value" combination that has a meaning in certain
+mnemonicspaces.</p>
+
+<p>In order to make it easier to indicate this difference, the
+option to precede a devicekeyword with a slash has been
+introduced. This would make the latter example look like:<br>
+<tt>...:(<b>/FILENAME</b>="C:\temp\ABC.TMP"):...</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>OPEN</b> DEVICE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>OPEN</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<p><b>OPEN</b> DEVICE:PARAMETERS<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>OPEN</b> ^(3,4):^(5,6)</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,5,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

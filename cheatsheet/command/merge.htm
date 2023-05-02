@@ -1,0 +1,81 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>M[ERGE]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Initialize the arrays <tt>^A</tt> and <tt>^B</tt> as:</p>
+
+<p><tt><b>KILL</b> ^A,^B<br>
+<b>SET</b> ^A(1,2)="First"<br>
+<b>SET</b> ^A(1,2,4)="Second"<br>
+<b>SET</b> ^B(5,6,7)="Third"<br>
+<b>SET</b> ^B(5,6,8)="Fourth"<br>
+<b>SET</b> ^B(5,6,7,8,1)="Fifth"<br>
+<b>SET</b> ^B(5,6,7,8,9)="Sixth"</tt></p>
+
+<p>The command <tt><b>MERGE</b> ^A(1,2)=^B(5,6,7)</tt> will cause
+the contents of <tt>^A</tt> to be modified into:<br>
+<tt>^A(1,2)="Third"<br>
+^A(1,2,4)="Second"<br>
+^A(1,2,8,1)="Fifth"<br>
+^A(1,2,8,9)="Sixth"</tt></p>
+
+<p>A subsequent <tt><b>MERGE</b> ^A(1,2,3)=^B(5,6,7,8)</tt> will
+cause the contents of <tt>^A</tt> to be modified into:</p>
+
+<p><tt>^A(1,2)="Third"<br>
+^A(1,2,3,1)="Sixth"<br>
+^A(1,2,3,9)="Fifth"<br>
+^A(1,2,4)="Second"<br>
+^A(1,2,8,1)="Fifth"<br>
+^A(1,2,8,9)="Sixth"</tt></p>
+
+<p>Note that no node <tt>^A(1,2,3)</tt> is created.</p>
+
+<p><tt><b>KILL</b> TMP<br>
+<b>SET</b> TMP("GLOBAL")="TESTGENV"<br>
+<b>SET</b> TMP("ROUTINE")="TESTRENV"<br>
+<b>SET</b> TMP("LOCK")="TESTGENV"<br>
+...<br>
+<b>MERGE ^$JOB</b>(<b>$JOB</b>)=TMP</tt><br>
+Set up the parameters for working in a different environment, and
+activate those parameters in a single command.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>MERGE</b> TO=FROM<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>MERGE</b> ^(3,4)=^(5,6)</tt><br>
+; Pretend <tt><b>SET</b> ^(3,4)=^(5,6)</tt> is executed<br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

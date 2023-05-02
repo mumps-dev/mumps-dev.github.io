@@ -1,0 +1,76 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>TH[EN]</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>The command <b>THEN</b> stacks the value of special variable
+<b>$TEST</b>. This value will be "popped" off the stack when
+execution moves to a different line of code (either through a
+<b>GOTO</b> command, or when the end of the current line is reached).</p>
+
+<p>Assume that the code segment below is executed.</p>
+
+<pre>
+ <b>FOR</b> A=1,0 <b>DO</b>
+ . <b>IF</b> A <b>WRITE</b> !,"TRUE 1" <b>IF</b> 0
+ . <b>ELSE  WRITE</b> !,"FALSE 1"
+ . <b>IF</b> A <b>THEN  WRITE</b> !,"TRUE 2" <b>IF</b> 0
+ . <b>ELSE  WRITE</b> !,"FALSE 2"
+ . <b>QUIT</b>
+</pre>
+
+<p>At the first iteration of the <b>FOR</b> loop, the value of <tt>A</tt>
+is true (1).
+The first <b>IF</b> command will cause the text <tt>"TRUE&nbsp;1"</tt>
+to be written, and the second <b>IF</b> command on that line will cause
+the value of special variable <b>$TEST</b> to be set to 0 (false).
+As a result, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;1"</tt> to be written.</p>
+
+<p>The next <b>IF</b> command will cause the text <tt>"TRUE&nbsp;2"</tt>
+to be written, and this time, the <b>THEN</b> command will stack
+the value of <b>$TEST</b> (which is at this point equal to 1).
+After this, the second <b>IF</b> command on that line will cause
+the value of special variable <b>$TEST</b> to be set to 0 (false).
+At this point, the end of the line is reached, and the value
+of <b>$TEST</b> will be popped off the stack, setting it back to 1 (true).
+As a result, on the next line, the <b>ELSE</b> command will cause
+the rest of that line to be ignored.</p>
+
+<p>At the second iteration of the <b>FOR</b> loop, the value of <tt>A</tt>
+is false (0).
+The first <b>IF</b> command will cause the rest of that line
+to be ignored, and, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;1"</tt> to be written.</p>
+
+<p>The next <b>IF</b> command will also cause the rest of that
+line to be ignored, and, on the next line, the <b>ELSE</b> command will cause
+the text <tt>"FALSE&nbsp;2"</tt> to be written.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

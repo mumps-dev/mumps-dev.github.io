@@ -1,0 +1,77 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $DEXTRACT</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $DE[XTRACT]</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This function works on substrings of strings that are
+specified as parameters. This function is intended to be used in
+conjunction with data structures that store multiple values in a
+single string. The main difference with the function
+<b>$EXTRACT</b> is that this function is capable of working on
+multiple substrings at the same time.</p>
+
+<p><tt><b>SET</b> FMT="5,,,-6,,,9"<br>
+<b>SET</b> X=<b>$DEXTRACT</b>("",FMT,A+5,B,,,,D)</tt><br>
+Stores values into a data record.<br>
+The first parameter specifies the starting string. The record
+format specification relies on the function <b>$EXTRACT</b> to define
+the record fields. The first parameter specifies the string in
+which the substitution will occur (an empty string in this
+example). The second parameter specifies the individual field
+widths, separated by commas. Omitted field specifiers default to
+the same width and alignment as their immediate predecessor.
+Positive numbers imply left-aligned fields, negative numbers
+imply right-aligned fields. As a result, fields 1, 2 and 3 are
+left-aligned and have a width of 5 characters, fields 4, 5 and 6
+have a width of 6 characters and are right-aligned, and field 7
+is left-aligned and has a width of 9 characters.</p>
+
+<p>This example would store the value of <tt>A+5</tt> into the
+first field, the value of <tt>B</tt> into the second field, and
+the value of <tt>D</tt> into the sixth field. In other words, the
+above example is equivalent to:</p>
+
+<p><tt><b>SET</b> X="",PAD=<b>$JUSTIFY</b>("",5)<br>
+<b>SET $EXTRACT</b>(X,1,5)=<b>$EXTRACT</b>(A+5_PAD,1,5)<br>
+<b>SET $EXTRACT</b>(X,6,10)=<b>$EXTRACT</b>(B_PAD,1,5)<br>
+<b>SET $EXTRACT</b>(X,28,33)=<b>$EXTRACT</b>(<b>$JUSTIFY</b>(D,6),1,6)</tt></p>
+
+<p><tt><b>SET</b> FMT="5,,-7,,4"<br>
+<b>SET $DEXTRACT</b>(FMT,^DB,A,B:4,,D)=X</tt><br>
+Extracts values out of a data record.<br>
+The value of local variable <tt>X</tt> is the data record that is being
+accessed, and the values of some data fields will be extracted
+and stored into other variables. The value of the first field (as
+described by the value of <tt>FMT</tt>) will be stored in global variable
+<tt>^DB</tt>; the value of the second field will be stored in local
+variable <tt>A</tt>, the value of the fourth field into local variable 
+<tt>B</tt>
+and the value of the sixth field into local variable <tt>D</tt>. In other
+words, the above example is equivalent to:</p>
+
+<p><tt><b>SET</b> t=$<b>EXTRACT</b>(X,1,5)<br>
+<b>FOR&nbsp;&nbsp;QUIT</b>:<b>$EXTRACT</b>(t,$LENGTH(t))'=" "&nbsp;&nbsp;<b>SET</b> t=<b>$EXTRACT</b>(t,1,<b>$LENGTH</b>(t)-1)<br>
+<b>SET</b> ^DB=t<br>
+<b>SET</b> t=<b>$EXTRACT</b>(X,6,10)<br>
+<b>FOR&nbsp;&nbsp;QUIT</b>:<b>$EXTRACT</b>(t,<b>$LENGTH</b>(t))'=" "&nbsp;&nbsp;<b>SET</b> t=<b>$EXTRACT</b>(t,1,<b>$LENGTH</b>(t)-1)<br>
+<b>SET</b> A=t<br>
+<b>SET</b> t=$<b>EXTRACT</b>(X,18,24)<br>
+<b>FOR&nbsp;&nbsp;QUIT</b>:<b>$EXTRACT</b>(t,1)'=" "&nbsp;&nbsp;<b>SET</b> t=<b>$EXTRACT</b>(t,2,<b>$LENGTH</b>(t))<br>
+<b>SET</b> B=t<br>
+<b>SET</b> t=<b>$EXTRACT</b>(X,29,32)<br>
+<b>FOR&nbsp;&nbsp;QUIT</b>:<b>$EXTRACT</b>(t,<b>$LENGTH</b>(t))'=" "&nbsp;&nbsp;<b>SET</b> t=<b>$EXTRACT</b>(t,1,<b>$LENGTH</b>(t)-1<br>
+<b>SET</b> D=t</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

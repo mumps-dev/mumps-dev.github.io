@@ -1,0 +1,322 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -C-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter C</h1>
+
+<p><a href="#cattribute">cattribute</a>,
+<a href="#charcode">charcode</a>,
+<a href="#chars">chars</a>,
+<a href="#charset">charset</a>,
+<a href="#charsetexpr">charsetexpr</a>,
+<a href="#charspec">charspec</a>,
+<a href="#ckeyword">ckeyword</a>,
+<a href="#closeargument">closeargument</a>,
+<a href="#colattribute">colattribute</a>,
+<a href="#colkeyword">colkeyword</a>,
+<a href="#color">color</a>,
+<a href="#commacode">commacode</a>,
+<a href="#command">command</a>,
+<a href="#commands">commands</a>,
+<a href="#comment">comment</a>,
+<a href="#control">control</a>,
+<a href="#controlmnemonic">controlmnemonic</a>,
+<a href="#CR">CR</a>,
+<a href="#cs">cs</a>,
+<a href="#curstr">curstr</a></p>
+
+<hr>
+<a name="cattribute"></a>
+<h2>cattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a choice attribute. Such a choice is
+identified by an expression that evaluates to one of <tt>"ACCELERATOR"</tt>,
+<tt>"ACTIVE"</tt>, <tt>"AID"</tt>, <tt>"EVENT"</tt>, <tt>"MARKER"</tt>,
+<tt>"SEPARATOR"</tt> or "SUBMENU", or is equal to an implementation-specific
+value (starts with <tt>"Z"</tt>), or is equal to an application-specific value
+(starts with <tt>"Y"</tt>).</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Added <tt>"RESOURCE"</tt> as a possible value for choice attribute codes.</p>
+
+<hr>
+<a name="charcode"></a>
+<h2>charcode</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the an identification of a key on the
+keyboard. This symbol occurs as an expression that evaluates to the
+identification of one of: a single key that is not a comma, the string
+<tt>"COMMA"</tt>, the name of a function key, or an implementation-specific
+value (starts with <tt>"Z"</tt>). This list is optionally preceded by a list
+of modifier-keys (separated by plus-signs). If there are any modifier-keys,
+there is a plus-sign between the name of the last modifier-key and the name of
+the key that is being modified.</p>
+
+<hr>
+<a name="chars"></a>
+<h2>chars</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents a sequence of zero or more characters.</p>
+
+<hr>
+<a name="charset"></a>
+<h2>charset</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a character set.</p>
+
+<p>The initial definition of <u>charset</u> allows
+only <a href="i.htm#ident">ident</a> characters and digits.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>More characters are allowed in the name of a character set.
+The first character may be a <tt>"%"</tt>, and <tt>"-"</tt>
+(hyphen), <tt>"_"</tt> (underscore), <tt>"%"</tt>, <tt>"*"</tt>,
+<tt>"."</tt>, <tt>"/"</tt>, <tt>"+"</tt>, <tt>":"</tt>,
+<tt>"$"</tt>, <tt>"!"</tt> and <tt>"@"</tt> are added to the list
+of allowable characters.</p>
+
+<hr>
+<a name="charsetexpr"></a>
+<h2>charsetexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that
+evaluates to the name of a character set.</p>
+
+<hr>
+<a name="charspec"></a>
+<h2>charspec</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a "pattern range". A pattern range
+is indicated by a specification enclosed in square brackets.
+Such a specification looks like
+either a single constant, or two constants separated by a colon.
+A <a href="s.htm#strconst">constant</a>, in this context, is
+either a string literal, or a reference to the intrinsic function
+<b>$CHAR</b>.</p>
+
+<hr>
+<a name="ckeyword"></a>
+<h2>ckeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"CHOICE"</tt>.</p>
+
+<hr>
+<a name="closeargument"></a>
+<h2>closeargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>CLOSE</b> command. Examples of valid arguments for the <b>CLOSE</b> command
+appear in an earlier section. The argument of the <b>CLOSE</b> command is
+either an expression, optionally followed by a list of expressions (separated
+by colons) enclosed in parentheses, or an indirection operator (<tt>@</tt>)
+followed by an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+
+<hr>
+<a name="colattribute"></a>
+<h2>colattribute</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"COLWIDTH"</tt> or to an implementation-specific value (starts with
+<tt>"Z"</tt>).</p>
+
+<hr>
+<a name="colkeyword"></a>
+<h2>colkeyword</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"COL"</tt>.</p>
+
+<hr>
+<a name="color"></a>
+<h2>color</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the specification of a color. A color
+specification is an expression that evaluates to a list (separated by commas)
+of three integer values; the first value represents the level of the red
+component of the color, the second value  represents the level of the green
+component of the color, the third value  represents the level of the blue
+component of the color. Each level is an integer value
+(0 <img src="leq.xbm"> value <img src="leq.xbm"> 65,535).</p>
+
+<hr>
+<a name="commacode"></a>
+<h2>commacode</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol occurs as an expression that evaluates to the string
+<tt>"COMMA"</tt>. This symbol is used in lists, when a comma is needed as a
+character in a list element, while the comma-character would act as a list
+element separator.</p>
+
+<hr>
+<a name="command"></a>
+<h2>command</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the general syntax of a command.</p>
+
+<p>Note that for all commands (except <b>FOR</b>), a certain equivelance holds.
+Assuming that "verb" replaces the actual command name:</p>
+
+<p><center><tt>verb arg1 verb arg2 verb arg3 ...</tt></center></p>
+
+<p>is defined to be equivalent to</p>
+
+<p><center><tt>verb arg1,arg2,arg3,...</tt></center></p>
+
+<hr>
+<a name="commands"></a>
+<h2>commands</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents one or more commands.</p>
+
+<hr>
+<a name="comment"></a>
+<h2>comment</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a segment of source code that is ignored
+while executing a M[UMPS] program. A comment starts with a semicolon, which
+must occur in a position where any M[UMPS] command could occur, and ends with
+the "end of line" marker that designates the end of the line on which
+the comment occurs. A comment may contain any printable graphic characters.</p>
+
+<p>Note: the ability to use of tabulation characters in comments may be an
+extension that almost all implementations offer, but it <b><i>is</i></b> a
+non-portable extension.</p>
+
+<hr>
+<a name="control"></a>
+<h2>control</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the 32 ASCII/M control characters.
+A control character can have internal code 0 through 31 or internal code
+127.</p>
+
+<p>To be modified in a future ANSI M[UMPS] language standard.</p>
+
+<p>A control character is any character that matches the pattern code 1C.</p>
+
+<hr>
+<a name="controlmnemonic"></a>
+<h2>controlmnemonic</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a device control function. The
+meaning and effect of device control functions is described in the definition
+of the <b>mnemonicspace</b> (function library) of which these control
+functions are a part.</p>
+
+<p>A <b>controlmnemonic</b> can start with either an alphabetic character or a
+question mark (<tt>?</tt>); any further characters should be alphabetic
+characters or digits.</p>
+
+<hr>
+<a name="CR"></a>
+<h2>CR</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the special character "Carriage Return".
+Since this character is normally not visible in printed text, the
+representation CR is used in the ANSI M[UMPS] language standard to indicate
+that this special character is present in a specific location.</p>
+
+<p>Starting from the 1990 ANSI M[UMPS] language standard, this symbol is spelled
+as <b>CR</b> (underscored).</p>
+
+<hr>
+<a name="cs"></a>
+<h2>cs</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the white space between commands. This
+amount of white space between commands may be one or more space characters.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>Spaces may occur at the end of a line.<br>
+<tt>___<b>SET</b>_X=1___<b>WRITE</b>_"Hello."___</tt></p>
+
+<hr>
+<a name="curstr"></a>
+<h2>curstr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the value of one of the
+directives of the FORMAT library function. The value represented
+by this metalanguage symbol is the "currency string", a string that
+is used to display the name of a currency at the appropriate
+place in the formatted result.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "C" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

@@ -1,0 +1,87 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>A[SSIGN]</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>The <b>ASSIGN</b> command is very much like the <b>SET</b>
+command, with the difference that a value that is stored into
+a variable by the <b>ASSIGN</b> command is a "handle" or "pointer"
+to an object, and a value that is stored by the <b>SET</b> command
+is always a string value.</p>
+
+<p>The example below starts an instance of Microsoft Word<sup>TM</sup>,
+and decides based on a run-time value, whether to work in "portrait"
+or in "landscape" mode:</p>
+
+<p><tt>Open(wide) <b>NEW</b> cm,doc,fst,inch,word<br>
+&nbsp;<b>SET</b> fst=0,inch=72,cm=inch/2.54<br>
+&nbsp;;<br>
+&nbsp;<b>ASSIGN</b> word=$zcreateobj("Word.Document")<br>
+&nbsp;<b>SET</b> word.Application.Visible=1<br>
+&nbsp;<b>SET</b> word.Application.WindowState=2<br>
+&nbsp;<b>ASSIGN</b> doc=word.Application.Activedocument<br>
+&nbsp;<b>IF</b> wide>9 <b>DO</b><br>
+&nbsp;. <b>SET</b> doc.PageSetup.Orientation=1<br>
+&nbsp;. <b>SET</b> doc.PageSetup.PageWidth=11*inch<br>
+&nbsp;. <b>SET</b> doc.PageSetup.PageHeight=8.5*inch<br>
+&nbsp;. <b>SET</b> doc.PageSetup.TopMargin=cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.BottomMargin=cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.LeftMargin=1.5*cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.RightMargin=1.5*cm<br>
+&nbsp;. <b>QUIT</b><br>
+&nbsp;<b>ELSE</b>&nbsp;&nbsp;<b>DO</b><br>
+&nbsp;. <b>SET</b> doc.PageSetup.Orientation=0<br>
+&nbsp;. <b>SET</b> doc.PageSetup.PageWidth=8.5*inch<br>
+&nbsp;. <b>SET</b> doc.PageSetup.PageHeight=11*inch<br>
+&nbsp;. <b>SET</b> doc.PageSetup.TopMargin=2*cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.BottomMargin=2*cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.LeftMargin=2*cm<br>
+&nbsp;. <b>SET</b> doc.PageSetup.RightMargin=2*cm<br>
+&nbsp;. <b>QUIT</b></tt></p>
+
+<p>Examples with naked indicators:</p>
+
+<p><b>ASSIGN</b> TO=FROM<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>ASSIGN</b> ^(3,4)=^(5,6)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<p><b>ASSIGN</b> (TO,LIST)=FROM<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>ASSIGN</b> (^(3,4),^(5,6))=^(7,8)</tt><br>
+; 1. fetch ^(7,8) = <tt>^ABC(1,7,8)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,7,3,4)</tt><br>
+; 3. store ^(5,6) = <tt>^ABC(1,7,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

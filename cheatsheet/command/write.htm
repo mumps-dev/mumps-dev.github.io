@@ -1,0 +1,217 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>W[RITE]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>WRITE</b> # ; Start at a new page<br>
+<b>WRITE</b> "This appears at the top of the page."<br>
+<b>WRITE</b> !!!!!<br>
+<b>WRITE</b> "Now we are 5 lines further down."<br>
+<b>WRITE</b> ?10,"And this line is indented (10
+positions)."</tt><br>
+The most common usages of the <b>WRITE</b> command.</p>
+
+<p><tt><b>WRITE</b> 3+4,A_B,!<br>
+<b>WRITE</b> !,$JUSTIFY(X,9)</tt><br>
+Expressions are allowed in arguments of the <b>WRITE</b>
+command.</p>
+
+<p>Note: The exclamation mark may appear anywhere in a sequence of
+arguments of the <b>WRITE</b> command. Choose one standard for
+your application (always at the beginning, or always the end) and
+stick to that. Which one you choose is not important; being
+consistent is.</p>
+
+<p><tt><b>WRITE</b> *65</tt><br>
+Although most implementations will interprete this command as
+<tt><b>WRITE</b> <b>$CHAR</b>(65)</tt>, the effect of this
+command is implementation-specific and device specific. In
+general, this syntax is not considered to be portable.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>USE</b> DEVICE::"X3.64" <b>WRITE /CUP</b>(5,10)</tt><br>
+Position the cursor at location (5,10) and update <b>$X</b> and
+<b>$Y</b> accordingly (<b>$X</b>=5, <b>$Y</b>=10).</p>
+
+<p><tt><b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(0),"Reset"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(1),"Bold"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(2),"Faint"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(3),"Italic"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(4),"Underscore"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(5),"Slow blink"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(6),"Rapid blink"<br>
+<b>USE</b> DEVICE::"X3.64" <b>WRITE /SGR</b>(7),"Reverse
+video"</tt><br>
+Turn on the various graphic renditions. Of course, not all
+devices can realize all attributes (it would be a neat trick to
+implement blinking on a laserprinter...), but these are the
+rendition codes that are defined in ANSI X3.64.</p>
+
+<p>Sample function to erase a display:<br>
+<tt><b>OPEN</b> TTY <b>USE</b> TTY::"X3.64"<br>
+<b>USE $PRINCIPAL WRITE</b> !,"Cursor to left upper corner."<br>
+<b>USE</b> TTY <b>WRITE /CUP</b>(1,1)<br>
+<b>USE $PRINCIPAL WRITE</b> !,"Erase screen."<br>
+<b>USE</b> TTY <b>WRITE /ED</b></tt></p>
+
+<p>Create a display with questions in bold-face and answers in
+reverse video:<br>
+<tt><b>WRITE /CUP</b>(1,1) <b>WRITE /ED</b><br>
+<b>FOR</b> I=1:1:QUESTIONS <b>DO</b><br>
+. <b>WRITE /CUP</b>(YQ(I),XQ(I))<br>
+. <b>WRITE /SGR</b>(1),QUESTION(I)<br>
+. <b>WRITE /CUP</b>(YA(I),XA(I))<br>
+. <b>WRITE /SGR</b>(7),ANSWER(I)<br>
+. <b>QUIT</b></tt></p>
+
+<p>The most common functions in ANSI X3.64 are itemized in
+<a href="../x364.htm">X3.64 description</a>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The ability to specify an "output time-out" is added. An output
+time-out is specified as a device parameter in an OPEN or USE
+command. Examples are shown with the <a href="use.htm">USE 
+command</a>.</p>
+
+<p>The addition of a binding to TCP/IP socket devices includes a
+number of new controlmnemonics.</p>
+
+<p><tt><b>USE</b> DEVICE::<b>"SOCKET" WRITE /LISTEN</b></tt><br>
+Switch to the mnemonicspace that handles TCP/IP connections
+(sockets), and establish the implementation-default queue depth
+for listening to incoming requests.</p>
+
+<p><tt><b>WRITE /LISTEN</b>(depth)</tt><br>
+Switch to the mnemonicspace that handles TCP/IP connections
+(sockets), and use the specified value for the queue depth for
+listening to incoming requests.</p>
+
+<p><tt><b>WRITE /WAIT</b></tt><br>
+Wait for an event to occur on any socket associated with the
+current device. When an event occurs, the value of special
+variable <b>$KEY</b> will indicate the nature of the event.</p>
+
+<p><tt><b>WRITE /WAIT</b>(duration)</tt><br>
+Wait for an event to occur on any socket associated with the
+current device, or until the time-out specified in the parameter
+elapses (whichever occurs first). When an event occurs, the value
+of special variable <b>$KEY</b> will indicate the nature of the 
+event.</p>
+
+<p>Whether or not a duration is specified, the value of <b>$KEY</b>
+will contain the substring <tt>"CONNECT"</tt> when a connection
+request is received by a "listening" server, and the value of
+<b>$KEY</b> will contain the substring <tt>"READ"</tt> when a
+message is received through a connectionless protocol.</p>
+
+<p>More examples are shown with the <a href="use.htm">USE
+command</a>.</p>
+
+Approved for addition in a future ANSI M[UMPS] Language standard.</p>
+
+<p>User-definable I/O handling has been added. When
+user-definable I/O handling is active:<br>
+<ul>
+<li>the command <tt><b>WRITE</b> #</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITEFF</b>^routine()</tt></li>
+<li>the command <tt><b>WRITE</b> !</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITENL</b>^routine()</tt></li>
+<li>the command <tt><b>WRITE</b> ?pos</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITETAB</b>^routine(pos)</tt></li>
+<li>the command <tt><b>WRITE</b> value</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITE</b>^routine(value)</tt></li>
+<li>the command <tt><b>WRITE</b> *value</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITES</b>^routine(value)</tt></li>
+</ul></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>WRITE</b> VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>WRITE</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<p>Addition in the 1994 ANSI M[UMPS] GKS Binding.</p>
+
+<p><tt>STAR(DEVICE,DISPLAY) ;<br>
+&nbsp;<b>NEW</b> BLUE,YELLOW,GREEN,A,B,C,WK1<br>
+&nbsp;;<br>
+&nbsp;; This routine draws a yellow star on a blue<br>
+&nbsp;; background and writes the title 'STAR' in<br>
+&nbsp;; green under the star.<br>
+&nbsp;;<br>
+&nbsp;; GKS level: ma<br>
+&nbsp;; The implementation must support at least one<br>
+&nbsp;; workstation of category output or outin.<br>
+&nbsp;;<br>
+&nbsp;<b>OPEN</b> DEVICE,DISPLAY             ; Implementation dependent<br>
+&nbsp;<b>USE</b> DEVICE::"GKS"<br>
+&nbsp;<b>SET</b> WK1="Workstation one"<br>
+&nbsp;; OPEN virtual GKS display<br>
+&nbsp;<b>WRITE /GOPGS</b>(DISPLAY,32)<br>
+&nbsp;<b>WRITE /GOPWK</b>(WK1,64,1)<br>
+&nbsp;<b>WRITE /ACWK</b>(WK1)<br>
+&nbsp;; Center the window and the origin<br>
+&nbsp;<b>WRITE /GSWN</b>(1,"(-1.25,1.25,-1.25,1.25)")<br>
+&nbsp;<b>WRITE /GSELNT</b>(1)<br>
+&nbsp;; Define the colours to be used<br>
+&nbsp;<b>SET</b> BLUE="0,0,1"<br>
+&nbsp;<b>SET</b> YELLOW="1,1,0"<br>
+&nbsp;<b>SET</b> GREEN="0,1,0"<br>
+&nbsp;<b>WRITE /GSCR</b>(WK1,0,BLUE)<br>
+&nbsp;<b>WRITE /GSCR</b>(WK1,1,YELLOW)<br>
+&nbsp;<b>WRITE /GSCR</b>(WK1,2,GREEN)<br>
+&nbsp;; Draw the star<br>
+&nbsp;<b>SET</b> A="INDIVIDUAL",B="BUNDLED"<br>
+&nbsp;<b>WRITE /GSASF</b>(B,B,B,B,B,B,B,B,B,B,A,B,A)<br>
+&nbsp;<b>WRITE /GSFAIS</b>("SOLID"),<b>/GSFACI</b>(1)<br>
+&nbsp;<b>SET</b> A=0.951057,B=0.309017,C=0.58775<br>
+&nbsp;<b>WRITE /GFA</b>(+A,+B,-A,+B,+C,-A,0,1,-C,+A)<br>
+&nbsp;; Title of graph<br>
+&nbsp;<b>WRITE /GSCHH</b>(0.15)<br>
+&nbsp;<b>WRITE /GSTXAL</b>("CENTRE","HALF")<br>
+&nbsp;<b>WRITE /GSTXCI</b>(2)<br>
+&nbsp;<b>WRITE /GTX</b>((0,1.1),"STAR")<br>
+&nbsp;; Close the graph and the virtual display<br>
+&nbsp;<b>WRITE /GDAWK</b>(WK1)<br>
+&nbsp;<b>WRITE /GCLWK</b>(WK1)<br>
+&nbsp;<b>WRITE /GCLKS</b><br>
+&nbsp;<b>CLOSE</b> DEVICE,DISLAY<br>
+&nbsp;<b>QUIT</b></tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

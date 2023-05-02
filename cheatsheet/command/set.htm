@@ -1,0 +1,223 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>S[ET]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Usual <b>SET</b> commands:</p>
+
+<p><tt><b>SET</b> X=1<br>
+<b>SET</b> ANSWER="Yes"</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><tt><b>SET</b> ^A(8)=8<br>
+<b>SET</b> ^(9)=9<br>
+<b>SET</b> ^(10,11)=1011<br>
+<b>SET</b> ^(^(2,3),^(4,5))=^(6.7)</tt></p>
+
+<p>In these <b>SET</b> commands, the naked indicator changes in the
+order described below:</p>
+
+<p><table>
+<tr><th align=center>Expression</th>
+<th align=center>Naked indicator</th>
+<th align=center>Resulting reference</th></tr>
+
+<tr><td align=center><tt><b>SET</b> ^A(8)=8</tt></td>
+<td align=center><tt>^A(</tt></td>
+<td align=center><tt>^A(8)</tt></td></tr>
+
+<tr><td align=center><tt><b>SET</b> ^(9)=9</tt></td>
+<td align=center><tt>^A(</tt></td>
+<td align=center><tt>^A(9)</tt></td></tr>
+
+<tr><td align=center><tt><b>SET</b> ^(10,11)=14</tt></td>
+<td align=center><tt>^A(10,</tt></td>
+<td align=center><tt>^A(10,11)</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> ^(^(2,3),^(4,5))=^(6.7)</tt></p>
+
+<p><table>
+<tr><th align=center>Expression</th>
+<th align=center>Naked indicator</th>
+<th align=center>Resulting reference</th></tr>
+
+<tr><td align=center><tt>^(2,3)</tt></td>
+<td align=center><tt>^A(10,2,</tt></td>
+<td align=center><tt>^A(10,2,3)</tt></td></tr>
+
+<tr><td align=center><tt>^(4,5)</tt></td>
+<td align=center><tt>^A(10,2,4,</tt></td>
+<td align=center><tt>^A(10,2,4,5)</tt></td></tr>
+
+<tr><td align=center><tt>^(6,7)</tt></td>
+<td align=center><tt>^A(10,2,4,6,</tt></td>
+<td align=center><tt>^A(10,2,4,6,7)</tt></td></tr>
+
+<tr><td align=center><tt>^("x","y")</tt></td>
+<td align=center><tt>^A(10,2,4,6,"x",</tt></td>
+<td align=center><tt>^A(10,2,4,6,"x","y")</tt></td></tr>
+</table></p>
+
+<p>(Assuming that <tt>^A(10,2,3)="x"</tt> and
+<tt>^A(10,2,4,5)="y"</tt>.)</p>
+
+<p>Addition in the 1984 ANSI M[UMPS] Language Standard:</p>
+
+<p>It is allowed to specify a reference to <b>$PIECE</b>
+on the left hand side of the equal sign in a <b>SET</b> 
+command.</p>
+
+<p><tt><b>SET</b> X="This is an test"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This is a test"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",2)="was no"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This was no test"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This&nbsp;&nbsp;test"</tt></td></tr>
+
+</table></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] Language Standard:</p>
+
+<p>It is allowed to specify a reference to <b>$EXTRACT</b>
+on the left hand side of the equal sign in a <b>SET</b> 
+command.</p>
+
+<p><tt><b>SET</b> X="ABCDEFG"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="ABaDEFG"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2)="xxx"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="AxxxaDEFG"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $EXTRACT</b>(X,2,6)=""</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="AEFG"</tt></td></tr>
+
+</table></p>
+
+Approved for addition in a future ANSI M[UMPS] Language Standard:</p>
+
+<p>It is allowed to specify a reference to <b>$QSUBSCRIPT</b>
+on the left hand side of the equal sign in a <b>SET</b> 
+command.</p>
+
+<p><tt><b>SET</b> N="^|""where""|ABC(11,22,33)"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $QSUBSCRIPT</b>(N,-1)="A"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>N="^|""A""|ABC(11,22,33)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $QSUBSCRIPT</b>(N,0)="xxx"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>N="^|""A""|xxx(11,22,33)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $QSUBSCRIPT</b>(N,2)=9</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>N="^|""A""|xxx(11,9,33)"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $QSUBSCRIPT</b>(N,10)=123</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>N="^|""A""|xxx(11,9,33,"","","","","","",123)"</tt></td></tr>
+</table></p>
+
+<p>More examples with naked indicators:</p>
+
+<p><b>SET</b> TO=FROM<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=^(5,6)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<p><b>SET</b> (TO,LIST)=FROM<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> (^(3,4),^(5,6))=^(7,8)</tt><br>
+; 1. fetch ^(7,8) = <tt>^ABC(1,7,8)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,7,3,4)</tt><br>
+; 3. store ^(5,6) = <tt>^ABC(1,7,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<p><b>SET $EXTRACT</b>(VALUE,FROM,TO)=VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET $EXTRACT</b>(^(3,4),^(5,6),^(7,8))=^(9,10)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3: if <tt>^ABC(1,5,6,7)</tt> &lt;<tt> ^ABC(1,5,6)</tt> or if
+<tt>^ABC(1,5,6,7)</tt> &lt; <tt>1</tt><br>
+; don't store, naked indicator is <tt>^ABC(1,5,7,9,</tt><br>
+; else continue<br>
+; 4. fetch/store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<p><b>SET $PIECE</b>(VALUE,STRING,FROM,TO)=VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET $PIECE</b>(^(3,4),^(5,6),^(7,8),^(9,10))=^(11,12)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. if <tt>^ABC(1,5,7,9,10)</tt> &lt; <tt>^ABC(1,5,7,8)</tt>
+or<br>
+; if <tt>^ABC(1,5,7,9,10)</tt> &lt; <tt>1</tt><br>
+; don't store, naked indicator is <tt>^ABC(1,5,7,9,11,</tt><br>
+; else continue<br>
+; 5. fetch/store ^(3,4) = <tt>^ABC(1,5,7,9,11,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,11,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

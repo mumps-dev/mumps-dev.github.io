@@ -1,0 +1,262 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -M-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter M</h1>
+
+<p><a href="#M">M</a>,
+<a href="#mant">mant</a>,
+<a href="#marker">marker</a>,
+<a href="#mergeargument">mergeargument</a>,
+<a href="#mkeyword">mkeyword</a>,
+<a href="#mname">mname</a>,
+<a href="#mnemonichar">mnemonichar</a>,
+<a href="#mnemonicspace">mnemonicspace</a>,
+<a href="#mnemonicspacename">mnemonicspacename</a>,
+<a href="#mnemonicspec">mnemonicspec</a>,
+<a href="#modaltype">modaltype</a>,
+<a href="#modifierkey">modifierkey</a>,
+<a href="#MTERM">MTERM</a>,
+<a href="#mumpsreturn">mumpsreturn</a>,
+<a href="#mval">mval</a></p>
+
+<hr>
+<a name="M"></a>
+<h2>M</h2>
+
+<p>Introduced in the 1994 ANSI GKS - M[UMPS] language binding.</p>
+
+<p>This metalanguage symbol represents an array of which the elements meet a
+certain constraint.</p>
+
+<p><b>v1</b> ::= <b>M</b> <b>gksnam</b> means: an array
+<b>v1</b>(1),<b>v1</b>(2),<b>v1</b>(3), ... of which the elements each contain
+a value that evaluates to a name that meets the constraints specified in the
+GKS standard.</p>
+
+<hr>
+<a name="mant"></a>
+<h2>mant</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a mantissa. A mantissa looks like either
+one or more digits, optionally followed by a period followed by one or more
+digits, or a period followed by one or more digits.</p>
+
+<p>This means that valid mantissas are:</p>
+
+<p><tt>123.456<br>
+.456<br>
+123</tt></p>
+
+<p>but not</p>
+
+<p><tt>.<br>
+1234.</tt></p>
+
+<hr>
+<a name="marker"></a>
+<h2>marker</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that identifies a method of
+highlighting elements on a display. This metalanguage symbol occurs as an
+expression that evaluates either to one of <tt>"M,BULLET"</tt>,
+<tt>"M,CHECK"</tt> or <tt>"M,DIAMOND"</tt>, or to a value that identifies an
+external resource.</p>
+
+<hr>
+<a name="mergeargument"></a>
+<h2>mergeargument</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>MERGE</b> command. Examples of valid arguments for the <b>MERGE</b> command
+appear in an earlier section. The argument of the <b>MERGE</b> command is
+either a name of a variable, followed by an equal sign (<tt>=</tt>), followed
+by a name of another variable, or an indirection operator (<tt>@</tt>)
+followed by an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+
+<hr>
+<a name="mkeyword"></a>
+<h2>mkeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evalates to the value
+<tt>"M"</tt>.</p>
+
+<hr>
+<a name="mname"></a>
+<h2>mname</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of a menu. Names of menus consist
+of alphabetic characters and digits and may start with a % sign.</p>
+
+<p>For portability, the number of characters in the name of a menu is limited to
+31 characters.</p>
+
+<hr>
+<a name="mnemonichar"></a>
+<h2>mnemonichar</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the ampersand character ("&").</p>
+
+<hr>
+<a name="mnemonicspace"></a>
+<h2>mnemonicspace</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a mnemonicspace. A
+mnemonicspace is a library containing functions for controlling a specific
+class of device or file. Such a library may or may not be bound to another
+standard.</p>
+
+<p>Currently the only known mnemonicspace is <tt>"X3.64"</tt>, which is the
+ANSI standard that offers the VT-100 compatible terminal controls.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>New mnemonicspaces are:</p>
+
+<p>...</p>
+
+<hr>
+<a name="mnemonicspacename"></a>
+<h2>mnemonicspacename</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the syntax for names of mnemonicspaces. A
+name of a mnemonicspace must start with an identifier character (see the
+metalanguage symbol <a href="i.htm#ident"> ident</a>
+and may be followed by zero or more
+characters that are identifier characters, digits, periods (<tt>.</tt>) or
+hyphens (<tt>-</tt>).</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The name of a <a href="#mnemonicspace">mnemonicspace</a> may
+also be a specification of a "portable mnemonicspace". Such a
+specification looks like a caret, followed by the name of a
+routine, optionally followed by another caret and the name of
+another routine. The name of the first routine in this context is
+the name of the routine that will be executed to process <a
+ href="c.htm#controlmnemonic">controlmnemonics</a> in this
+mnemonicspace.
+If a second name of a routine is specified, and a routine of
+that name exists on the current environment, this is intended
+to be the a user-written routine to be used instead of the
+(default) first routine.</p>
+
+<hr>
+<a name="mnemonicspec"></a>
+<h2>mnemonicspec</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the mnemonicspaces that may be in effect
+for a certain device or file. This specification is either an expression that
+evaluates to the name of one mnemonicspace or a list of such expressions
+(separated by commas) enclosed in parentheses.</p>
+
+<hr>
+<a name="modaltype"></a>
+<h2>modaltype</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the extent to which a window
+with the MODAL window attribute defined disables other windows. This
+metalanguage symbol occurs as an expression that evaluates to either one of
+<tt>"ANCESTORS"</tt>, <tt>"APPLICATION"</tt> or <tt>"PARENT"</tt>
+or to an implementation-specific value (starts with <tt>"Z"</tt>).</p>
+
+<hr>
+<a name="modifierkey"></a>
+<h2>modifierkey</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the name of a keyboard key that modifies
+the meaning of other keys. This symbol occurs as an expression that evaluates
+to one of the values <tt>"ALT"</tt>, <tt>"ALTR"</tt>, <tt>"COMMAND"</tt>,
+<tt>"COMPOSE"</tt>, <tt>"COMPOSER"</tt>, <tt>"CTRL"</tt>, <tt>"CTRLR"</tt>,
+<tt>"OPTION"</tt>, <tt>"SHIFT"</tt> or <tt>"SHIFTR"</tt>.</p>
+
+<hr>
+<a name="MTERM"></a>
+<h2>MTERM</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Application windows are the basic input/output mechanism of the MWAPI.
+Application windows can contain elements.</p>
+
+<p>MTERM windows are terminal emulation windows that accept M[UMPS] input/output
+commands. The creation of MTERM windows is reserved.</p>
+
+<hr>
+<a name="mumpsreturn"></a>
+<h2>mumpsreturn</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the return value of the
+function <b>$MUMPS</b>. Such a value consists of three substrings,
+separated by semi-colons. The first substring is an integer
+numeric value, the second is an error code ("S" followed by a
+number), the third piece may be any descriptive text (not
+containing commas or semi-colons).</p>
+
+<hr>
+<a name="mval"></a>
+<h2>mval</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any value that has the
+data type MVAL, i.e. any string value.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "M" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

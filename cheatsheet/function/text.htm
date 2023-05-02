@@ -1,0 +1,182 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $TEXT</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $T[EXT]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns the text of a line of M[UMPS] code.</p>
+
+<p>Assume that the following program is stored:</p>
+
+<pre>
+PGM  ;Author;Comment
+     <b>SET</b> WHERE=<b>$TEXT</b>(+0)
+1    <b>SET</b> Y=3 <b>WRITE</b> Y
+     <b>READ</b> X
+LAB1 <b>WRITE</b> !,X
+</pre>
+
+<p><tt><b>$TEXT</b>(PGM)="PGM ; Author;Comment"<br>
+<b>$TEXT</b>(LAB1)="LAB1 <b>WRITE</b> !,X"<br>
+<b>$TEXT</b>(PGM+1)="1 <b>SET</b> Y=3 <b>WRITE</b> Y"<br>
+<b>$TEXT</b>(+1)="PGM ; Author;Comment"<br>
+<b>$TEXT</b>(LAB1+1)=""<br>
+<b>$TEXT</b>(1+1)=" <b>READ</b> X"<br>
+<b>SET</b> B=3<br>
+<b>$TEXT</b>(+B)=" <b>READ</b> X"</tt></p>
+
+<p>If this program is executed, the value of <tt>WHERE</tt>,
+in the second line of the program, will become equal to the
+name of the routine (<tt>"PGM"</tt>).</p>
+
+<p>The following line of code will print a program:<br>
+<tt><b>FOR</b> I=1:1 <b>SET</b> X=<b>$TEXT</b>(+I)
+<b>QUIT</b>:X=""&nbsp;&nbsp;<b>WRITE</b> X,!</tt></p>
+
+<p><b>Notes</b>:<br>
+A line in a program looks like:</p>
+
+<p><i>Optional</i>: label with optional parameter list<br>
+<i>Mandatory</i>: line start character (space)<br>
+<i>Optional</i>: commands<br>
+<i>Optional</i> comment</p>
+
+<p>This means that:<br>
+<ul>
+<li>The "simplest" program line is a single space.</li>
+<li>A "valid" line cannot contain control-characters, not even a "tab"</li>
+<li>A "valid" line cannot contain spurious characters</li>
+</ul></p>
+
+<p>Many groups of programmers use conventions to make the content of the
+first line of a routine be according to a specific format, so that these
+"first lines" can be used for internal reports.</p>
+
+<p><tt>&nbsp<b>Write</b> !,"Routine",?12,"Author(s)",!
+&nbsp;<b>Set</b> R="" <b>For</b>&nbsp;&nbsp;<b>Set</b> R=<b>$Order</b>(<b>^$Routine</b>(R)) <b>Quit</b>:R=""&nbsp;&nbsp;<b>Do</b><br>
+&nbsp;.&nbsp;<b>Set</b> x=<b>$Text</b>(+1^@R) <b>Write</b> !,R,?12,<b>$Piece</b>(X,";",2)</tt></p>
+
+<p><b>Note</b>: Many of such conventions exist, and most can be supported by
+code written in ANSI standard M[UMPS]. The standard, however, does not
+endorse any specific format convention for the first line of a routine.</p>
+
+<p>Assume that the the source code of a section of a routine
+looks like:</p>
+
+<pre>
+ ...
+ <b>FOR</b> I=1:1 <b>SET</b> X=<b>$TEXT</b>(HDR+I) <b>QUIT</b>:X=" --"  <b>WRITE</b> !,X
+ ...
+HDR ;
+ End Of Year Report
+ Section XXX
+ --
+ ...
+</pre>
+
+<p>The three lines that follow the label <tt>HDR</tt> do <b><i>not</i></b>
+conform to the syntax of a M[UMPS] routine, and may cause problems when
+loading the source code as a routine into a M[UMPS] environemnt.</p>
+
+<p>Although this particular usage appears to have been quite popular at
+one time, there never was a language standard that supported such usage.</p>
+
+<p>Methods of performing the intended task that do conform to the
+ANSI language standard would be:</p>
+
+<pre>
+ ...
+ <b>FOR</b> I=1:1 <b>SET</b> X=<b>$TEXT</b>(HDR+I) <b>QUIT</b>:X=" --"  <b>DO</b>
+ . <b>WRITE</b> !,<b>$EXTRACT</b>(X,3,<b>$LENGTH</b>(X))
+ ...
+HDR ;
+ ;End Of Year Report
+ ;Section XXX
+ ;--
+ ...
+</pre>
+
+<p>Or simply:</p>
+
+<pre>
+ ...
+ <b>DO</b> HDR
+ ...
+HDR ;
+ <b>WRITE</b>!,"End Of Year Report"
+ <b>WRITE</b>!,"Section XXX"
+ <b>QUIT</b>
+ ...
+</pre>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>A special meaning is given to the reference <b>$TEXT</b>(+0).
+This reference will return the name of the currently executing
+routine.</p>
+
+<p>Modification in the 1990 M[UMPS] language standard.</p>
+
+<p>The 1984 language standard contained imprecise wording that 
+indicated that the spaces for a line-start should be compressed
+in the function value and be represented as one single space.
+This wording was changed to reflect the original intent, which is
+to represent a line "as it is in the source code".</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The following line of code will print a program:<br>
+<tt><b>FOR</b> I=1:1 <b>SET</b> X=<b>$TEXT</b>(+I^ROUT)
+<b>QUIT</b>:X=""&nbsp;&nbsp;<b>WRITE</b> X,!</tt></p>
+
+<p><b>Note</b>: a reference like +OFFSET^ROUTINE is acceptable
+as a parameter for <b>$TEXT</b>, but not as an argument for
+the commands <b>DO</b> and <b>GOTO</b>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>Trailing spaces are allowed at the end of a line.</p>
+
+<p>This means that it would be valid to create a routine containing
+commands like
+(in subroutine <tt>A</tt> the character &#164; has been used to
+make all space characters visible):</p>
+
+<p><tt> <b>XECUTE $TEXT</b>(A+1)_<b>$TEXT</b>(A+5)<br>
+ ...<br>
+ <b>QUIT</b><br>
+A&#164;;<br>
+&#164;<b>SET</b>&#164;START=1&#164;&#164;<br>
+&#164;<b>DO</b>&#164;VALIDATE1&#164;&#164;<br>
+&#164;<b>DO</b>&#164;VALIDATE2&#164;&#164;<br>
+&#164;<b>DO</b>&#164;QUERY7&#164;&#164;<br>
+&#164;<b>DO</b>&#164;RESET9&#164;&#164;<br>
+&#164;<b>DO</b>&#164;VALIDATE11&#164;&#164;<br>
+&#164;;;&#164;--&#164;end</tt></p>
+
+<p>and the code that would be <b>XECUTE</b>d would be:</p>
+
+<p><tt>&#164;<b>SET</b>&#164;START=1&#164;&#164;&#164;<b>DO</b>&#164;RESET9&#164;&#164;</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$TEXT</b>(LINEREF)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$TEXT</b>(@^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

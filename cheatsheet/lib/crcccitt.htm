@@ -1,0 +1,118 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%CRCCCITT^STRING</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%CRCCCITT^STRING</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard as part
+of the library for cyclic redundancy checks.</p>
+
+<p>This function computes a Cyclic Redundancy Code of the 8-bit
+character string <tt>string</tt>, using X<sup>16</sup> +
+X<sup>12</sup> + X<sup>5</sup> + 1 as the polynomial. The
+optional parameter <tt>seed</tt> may supply an initial value,
+which allows for running CRC calculations on multiple strings. If
+the parameter <tt>seed</tt> is not specified, a default value of
+65,535 (2<sup>16</sup>-1) is assumed. The value of <tt>seed</tt>
+is limited to 0 <img src="leq.xbm"> <tt>seed</tt> &lt; 2<sup>16</sup>.
+The function value will be between 0 and 2<sup>16</sup>.</p>
+
+<p>A typical method of transmitting data is to send data followed
+by a check-sum value, e.g.:</p>
+
+<pre>
+ <b>READ</b> Data <b>SET</b> L=<b>$LENGTH</b>(Data)
+ <b>SET</b> CRC=<b>$EXTRACT</b>(Data,L-1,L)
+ <b>SET</b> DATA=<b>$EXTRACT</b>(Data,1,L-2)
+ <b>IF $%CRCCCITT^STRING</b>(Data)'=CRC <b>DO</b> Error
+</pre>
+
+<p>A check-sum can also be calculated over multiple strings:</p>
+
+<pre>
+ <b>SET</b>(I,C)=0
+ <b>FOR  SET</b> I=<b>$ORDER</b>(X(I)) <b>QUIT</b>:'I  <b>DO</b>
+ . <b>SET</b> C=<b>$%CRCCCITT^STRING</b>(X(I),C)
+</pre>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>(123)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>23502</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>(1234)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>21321</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>(12345)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>17760</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>(" ")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>50578</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("1234567890123456789012345678901234567890")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>51307</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("ABCDEFGHIJKLMNOPQRSTUVWXYZ")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>55521</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("a")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>40311</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("abc")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>20810</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("abcd")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>11510</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("abcdef")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>13549</tt></td></tr>
+
+<tr><td align=right><tt><b>$%CRCCCITT^STRING</b>("abcdefghijklmnopqrstuvwxyz")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>21474</tt></td></tr>
+</table></p>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="crcccitt.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

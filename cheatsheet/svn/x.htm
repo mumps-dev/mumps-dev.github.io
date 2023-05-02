@@ -1,0 +1,74 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $X</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $X</h1>
+
+<a name="$X"></a>
+<h2>$X</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Note: the value <b>$X</b> is an approximation of the current
+location of the horizontal position of the cursor on the current
+I/O device. There are many examples where the value of <b>$X</b>
+deviates significantly from the actual horizontal position of the
+cursor. This is a problem that is somewhat relieved by an
+addition in the 1995 standard.</p>
+
+<p><tt>&gt; <b>FOR</b> I=1:1:50 <b>WRITE</b> I,"__" <b>IF</b>
+<b>$X</b>&gt;20 <b>WRITE</b> !<br>
+1__2__3__4__5__6__7__<br>
+8__9__10__11__12__13__<br>
+14__15__16__17__18__19__<br>
+20__21__22__23__24__25__<br>
+26__27__28__29__30__31__<br>
+32__33__34__35__36__37__<br>
+38__39__40__</tt></p>
+
+<p>The value of <b>$X</b> is defined to be an approximation of the
+horizontal cursor coordinate, and the standard provides no
+guarantees about the accuracy of this approximation.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This standard allows the value of <b>$X</b> to be re-defined in a
+<b>SET</b> command, so that, in case the value of <b>$X</b> lost
+synchronization with the actual value of the cursor, the
+programmer can correct the value of <b>$X</b>.</p>
+
+<p>If the cursor is positioned using any of the functions from the
+ANSI X3.64 standard, the standard defines that the value of
+<b>$X</b> will be updated accurately.</p>
+
+Approved for addition in a future ANSI M[UMPS] Language Standard.</p>
+
+<p>The initial value of <b>$X</b> is implementation-dependent.
+However, if the initial value of <b>$IO</b> is the empty string,
+then the initial value of <b>$X</b> is 0 (zero).</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

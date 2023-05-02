@@ -1,0 +1,429 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>ANSI X3.64</title>
+<body background="mbe.gif">
+<h1>ANSI X3.64</h1>
+
+<p>The most common functions in ANSI X3.64 are:</p>
+
+<p><tt><b>WRITE /CBT</b>(number)</tt><br>
+Cursor backward tabulation. The numeric parameter identifies the
+number of backward tabulator-jumps that is to be executed.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CHA</b>(number)</tt><br>
+Cursor horizontal absolute. The numeric parameter identifies the
+horizontal coordinate to which the cursor is positioned.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CHT</b>(number)</tt><br>
+Cursor horizontal tabulation. The numeric parameter identifies
+the number of tabulator-jumps that is to be executed.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CNL</b>(number)</tt><br>
+Cursor next line. The numeric parameter identifies the number of
+lines that the cursor is to move down.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CPL</b>(number)</tt><br>
+Cursor previous line. The numeric parameter identifies the number
+of lines that the cursor it to move up.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CPR READ</b> X</tt><br>
+Request cursor position report.<br>
+This command will cause that a control string is sent to the current
+device. In response, the device will send a control-string that
+identifies the current cursor position.<br>
+After the <b>READ</b> command completes, local variable X will be
+equal to the empty string, and special variable <b>$KEY</b> will
+contain the control string that was returned by the device.</p>
+
+<p><tt><b>WRITE /CTC</b>(code)</tt><br>
+Cursor tabulation control. The numeric code identifies the
+control action to be taken.<br>
+Default parameter value is 0.<br>
+Possible codes:<br>
+0 = Set horizontal stop at active position [default]<br>
+1 = Set vertical stop at active line<br>
+2 = Clear horizontal stop at active position<br>
+3 = Clear vertical stop at active position<br>
+4 = Clear all horizontal stops in active line<br>
+5 = Clear all horizontal stops for device<br>
+6 = Clear all vertical stops</p>
+
+<p><tt><b>WRITE /CUB</b>(number)</tt><br>
+Cursor backward. The numeric parameter identifies the number of
+positions that the cursor is to move back.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CUD</b>(number)</tt><br>
+Cursor down. The numeric parameter identifies the number of lines
+that the cursor is to move down.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CUF</b>(number)</tt><br>
+Cursor forward. The numeric parameter identifies the number of
+positions that the cursor is to move forward.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CUP</b>(vertical,horizontal)</tt><br>
+Cursor position. The first numeric parameter identifies the
+verticalcoordinate to which the cursor is to be moved. The second
+numeric parameter identifies the horizontal coordinate.<br>
+Default parameter values are 1 and 1.</p>
+
+<p><tt><b>WRITE /CUU</b>(number)</tt><br>
+Cursor up. The numeric parameter identifies the number of lines
+that the cursor is to move up.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /CVT</b>(number)</tt><br>
+Cursor vertical tabulation. The numeric paremeter identifies the
+number of tabulator-jumps that is to be executed.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /DA READ</b> X</tt><br>
+Request Device attributes.<br>
+This command will cause that a control string is sent to the current
+device. In response, the device will send a control-string that
+identifies the device attributes.<br>
+After the <b>READ</b> command completes, local variable X will be
+equal to the empty string, and special variable <b>$KEY</b> will
+contain the control string that was returned by the device.</p>
+
+<p><tt><b>WRITE /DAQ</b>(code)</tt><br>
+Define area qualification. The numeric parameter identifies the
+qualification for the selected area.<br>
+Default parameter value is 0.<br>
+Possible codes are:<br>
+0 = Accept all input [default]<br>
+1 = Accept no input (protected) and do not transmit (guarded)<br>
+2 = Accept graphics<br>
+3 = Accept numerics<br>
+4 = Accept alphabetics<br>
+5 = Right justify in area<br>
+6 = Zero fill in area<br>
+7 = Horizontal tab stop at start of area (start field)<br>
+8 = Accept no input (protected) but select for transmission
+(unguarded)<br>
+9 = Space fill in area</p>
+
+<p><tt><b>WRITE /DCH</b>(number)</tt><br>
+Delete character. The numeric parameter identifies the number of
+characters to be deleted.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /DL</b>(number)</tt><br>
+Delete line. The numeric parameter identifies the number of lines
+to be deleted.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /DSR READ</b> X</tt><br>
+Request device status report.<br>
+This command will cause that a control string is sent to the current
+device. In response, the device will send a control-string that
+identifies the device status.<br>
+After the <b>READ</b> command completes, local variable X will be
+equal to the empty string, and special variable <b>$KEY</b> will
+contain the control string that was returned by the device.</p>
+
+<p>Possible return-code values are:<br>
+0 = Ready, no malfunctions detected [default]<br>
+1 = Busy, try again later<br>
+2 = Busy, will notify when ready<br>
+3 = Malfunction, retry<br>
+4 = Malfunction, will notify when ready<br>
+5 = Please report status<br>
+6 = Please report active position</p>
+
+<p><tt><b>WRITE /EA</b>(code)</tt><br>
+Erase in area. The numeric parameter identifies which sub-area is
+to be erased.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = From active position to end [default]<br>
+1 = From start to active position<br>
+2 = All of qualified area inclusive</p>
+
+<p><tt><b>WRITE /ECH</b>(code)</tt><br>
+Erase character. The numeric parameter identifies the number of
+characters to be erased.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /ED</b>(code)</tt><br>
+Erase in display. The numeric parameter identifies which sub-area
+is to be erased.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = From active position to end [default]<br>
+1 = From start to active position<br>
+2 = All of display</p>
+
+<p><tt><b>WRITE /EF</b>(code)</tt><br>
+Erase in field. The numeric parameter identifies which sub-area
+is to be erased.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = From active position to end [default]<br>
+1 = From start to active position<br>
+2 = All of field inclusive</p>
+
+<p><tt><b>WRITE /EL</b>(code)</tt><br>
+Erase in line. The numeric parameter identifies which sub-area is
+to be erased.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = From active position to end [default]<br>
+1 = From start to active position<br>
+2 = All of line</p>
+
+<p><tt><b>WRITE /FNT</b>(font,size)</tt><br>
+Font selection. The first numeric parameter identifies the font
+to be selected. The second numeric parameter identifies the
+stylistic attributes that are to be activated for the font.<br>
+Default parameter values are 0 and 0.<br>
+Possible font-code values are:<br>
+0 = Primary font [default]<br>
+1 = First alternative font<br>
+2 = Second alternative font<br>
+3 = Third alternative font<br>
+4 = Fourth alternative font<br>
+5 = Fifth alternative font<br>
+6 = Sixth alternative font<br>
+7 = Seventh alternative font<br>
+8 = Eighth alternative font<br>
+9 = Ninth alternative font</p>
+
+<p><tt><b>WRITE /GSM</b>(horizontal,vertical)</tt><br>
+Graphic size modification. The first numeric parameter identifies
+the relative vertical size change as a percentage of the current
+size.The second numeric parameter identifies the relative
+horizontal size change as a percentage of the current size.<br>
+Default parameter values are 100 and 100.</p>
+
+<p><tt><b>WRITE /GSS</b>(number)</tt><br>
+Graphic size selection. The numeric parameter identifies the
+vertical size of the font to be selected, expressed in units of
+decipoints.<br>
+No default parameter value.</p>
+
+<p><tt><b>WRITE /HPA</b>(number)</tt><br>
+Horizontal position absolute. The numeric parameter identifies
+the horizontal coordinate to which the cursor is to be moved.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /HPR</b>(number)</tt><br>
+Horizontal position relative. The numeric parameter identifies
+the number of positions that the cursor is to be moved
+forward.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /HTS</b></tt><br>
+Horizontal tabulation set at current cursor position.</p>
+
+<p><tt><b>WRITE /HVP</b>(vertical,horizontal)</tt><br>
+Horizontal and vertical position. The first numeric parameter
+identifies the vertical coordinate to which the cursor is to be
+moved, the second numeric parameter identifies the horizontal
+position.<br>
+Default parameter values are 1 and 1.</p>
+
+<p><tt><b>WRITE /ICH</b>(number)</tt><br>
+Insert character. The numeric parameter identifies the number of
+characters to be inserted.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /IL</b>(number)</tt><br>
+Insert line. The numeric parameter identifies the number of lines
+to be inserted.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /JFY</b>(code)</tt><br>
+Justify. The numeric parameter is a code for the type of
+justification.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = Terminate all justification [default]<br>
+1 = Fill action on (text to or from other lines)<br>
+2 = Interword spacing<br>
+3 = Letter spacing<br>
+4 = Hyphenation<br>
+5 = Flush left margin<br>
+6 = Center text between margins<br>
+7 = Flush right margin<br>
+8 = Italian form (arbitrary word break with underscore)</p>
+
+<p><tt><b>WRITE /MC</b>(code)</tt><br>
+Media copy. The numeric parameter is a code for the type of copy
+operation.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = To primary auxiliary device [default]<br>
+1 = From primary auxiliary device<br>
+2 = To secondary auxiliary device<br>
+3 = From secondary auxiliary device<br>
+4 = Turn off copying received data stream to primary auxiliary
+device<br>
+5 = Turn on copying received data stream to primary auxiliary
+device<br>
+6 = Turn off copying received data stream to secondary auxiliary
+device<br>
+7 = Turn on copying received data stream to secondary auxiliary
+device</p>
+
+<p><tt><b>WRITE /NP</b>(number)</tt><br>
+Next page. The numeric parameter identifies the number of pages
+that the cursor is to be moved down.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /PP</b>(number)</tt><br>
+Previous page. The numeric parameter identifies the number of
+pages that the cursor is to be moved up.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /QUAD</b>(code)</tt><br>
+Quad - fill out. The numeric parameter is a code for the type of
+fill operation that is to be executed.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = Flush left [default]<br>
+1 = Flush left and fill with leader<br>
+2 = Center<br>
+3 = Center and fill with leader<br>
+4 = Flush right<br>
+5 = Flush right and fill with leader</p>
+
+<p><tt><b>WRITE /REP</b>(number)</tt><br>
+Repeat. The numeric parameter identifies the number of times that
+the preceding character is to be repeated.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /RM</b>(code)</tt><br>
+Reset mode. The parameter identifies the mode that is to be reset
+(turned off).<br>
+No default parameter value.<br>
+See <tt><b>WRITE /SM</b>(code)</tt> for a list of possible code
+values.</p>
+
+<p><tt><b>WRITE /SD</b>(number)</tt><br>
+Scroll down. The numeric parameter identifies the number of lines
+that the cursor is to scroll down.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /SEM</b>(code)</tt><br>
+Select editing extent mode. The numeric parameter is a code that
+defines the editing extent.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = Edit in display [default]<br>
+1 = Edit in line<br>
+2 = Edit in field (between horizontal tab stops)<br>
+3 = Edit in qualified area (defined by DAQ, SPA or EPA)</p>
+
+<p><tt><b>WRITE /SGR</b>(code,...)</tt><br>
+Set graphic rendition. The numeric parameters are codes for the
+combination of attributes that is to be activated.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = Primary rendition [default]<br>
+1 = Bold or increased intensity<br>
+2 = Faint or decreased intensity<br>
+3 = Italic<br>
+4 = Underscored<br>
+5 = Slow blink (slower than 150 per minute)<br>
+6 = Rapid blink (equal to or faster than 150 per minute)<br>
+7 = Negative (reverse) image<br>
+10 = Primary font (see FNT)<br>
+11 = First alternative font (see FNT)<br>
+12 = Secondary alternative font (see FNT)<br>
+13 = Third alternative font (see FNT)<br>
+14 = Fourth alternative font (see FNT)<br>
+15 = Fifth alternative font (see FNT)<br>
+16 = Sixth alternative font (see FNT)<br>
+17 = Seventh alternative font (see FNT)<br>
+18 = Eighth alternative font (see FNT)<br>
+19 = Ninth alternative font (see FNT)<br>
+20 = Fraktur</p>
+
+<p><tt><b>WRITE /SL</b>(number)</tt><br>
+Scroll left. The numeric paremeter identifies the number of
+positions that the cursor is to be scrolled to the left.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /SM</b>(code)</tt><br>
+Set mode. The parameter is a code for the mode that is to be set
+(turned on).<br>
+This function has no default parameter value.<br>
+Possible code values are:<br>
+1 = Guarded area transfer mode<br>
+2 = Keyboard action mode<br>
+3 = Control representation mode<br>
+4 = Insertion/replacement mode<br>
+5 = Status reporting mode<br>
+6 = Erasure mode<br>
+7 = Vertical editing mode<br>
+10 = Horizontal editing mode<br>
+11 = Positioning unit mode<br>
+12 = Send/receive mode<br>
+13 = Format effector action mode<br>
+14 = Format effector transfer mode<br>
+15 = Multiple area transfer mode<br>
+16 = Transfer termination mode<br>
+17 = Selected area transfer mode<br>
+18 = Tabulation stop mode<br>
+19 = Editing boundary mode<br>
+20 = Line feed/new line mode</p>
+
+<p><tt><b>WRITE /SPI</b>(number)</tt><br>
+Spacing increment. The numeric parameter identifies the number of
+units that the cursor is to move forward to represent a 'single
+fixed space'.<br>
+This function has no default parameter value.</p>
+
+<p><tt><b>WRITE /SR</b>(number)</tt><br>
+Scroll right. The numeric parameter identifies the number of
+positions that the cursor is to be scrolled to the right.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /SU</b>(number)</tt><br>
+Scroll up. The numeric parameter identifies the number of lines
+that the cursor is to be scrolled up.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /TBC</b>(code)</tt><br>
+Tabulation clear. The numeric parameter is a code for the
+tabulation clear action that is to be executed.<br>
+Default parameter value is 0.<br>
+Possible code values are:<br>
+0 = Clear horizontal tabulation stop at active position<br>
+1 = Clear vertical tabulation stop at active line<br>
+2 = Clear all horizontal tabulation stops in active line<br>
+3 = Clear all horizontal tabulation stops<br>
+4 = Clear all vertical tabulation stops</p>
+
+<p><tt><b>WRITE /TSS</b>(number)</tt><br>
+Thin space specification.The numeric parameter identifies the
+number of units that the cursor is to move forward to represent a
+'thin space'.<br>
+This function has no default parameter value.</p>
+
+<p><tt><b>WRITE /VPA</b>(number)</tt><br>
+Vertical position absolute. The numeric parameter identifies the
+vertical coordinate to which the cursor is to be moved.<br>
+Default parameter value is 1.</p>
+
+<p><tt><b>WRITE /VPR</b>(number)</tt><br>
+Vertical position relative. The numeric parameter identifies the
+number of lines that the cursor is to be moved.<br>
+Default parameter value is 1.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+</body></html>

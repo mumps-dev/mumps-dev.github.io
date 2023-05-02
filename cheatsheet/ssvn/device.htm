@@ -1,0 +1,135 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$DEVICE</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$DEVICE</h1>
+
+<a name="^$D[EVICE]"></a>
+<h2>^$D[EVICE]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This structured system variable provides information about the
+devices that are currently known to the M[UMPS] system. Such
+'knowledge' may be limited to those devices that are currently
+OPEN for a M[UMPS] process (definition in the standard), but many
+implementations also are capable of providing information that is
+available from the host operating system.</p>
+
+<p><tt><b>WRITE</b> !,"Currently known devices:"<br>
+<b>SET</b> D="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> D=<b>$ORDER</b>(<b>^$DEVICE</b>(D)) <b>QUIT</b>:D=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,D<br>
+. <b>SET</b> C=<b>$GET</b>(<b>^$DEVICE</b>(D,"CHARACTER"))<br>
+. <b>IF</b> C'="" <b>WRITE</b> ?30,"character set is """,C,"""."<br>
+. <b>QUIT</b></tt></p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>SET</b> MNEMO=<b>^$DEVICE</b>(device,"MNEMONICSPACE")<br>
+<b>WRITE</b> !,"Current mnemonicspace is ",MNEMO</tt></p>
+
+<p><tt><b>SET</b> SP="MNEMONICSPEC"<br>
+<b>WRITE</b> !,"Device ",device," currently supports:"<br>
+<b>SET</b> M=""
+<b>FOR</b>&nbsp;&nbsp;<b>SET</b> M=<b>$ORDER</b>(<b>^$DEVICE</b>(device,SP,M))
+<b>QUIT</b>:LIST=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !?5,"Mnemonicspace ",M<br>
+. <b>QUIT</b></tt></p>
+
+<p>Output time-out values are accessible through <b>^$DEVICE</b>.</p>
+
+<p><tt><b>WRITE</b> !,"Device",?12,"Time Out",?25,"Currently Stalled"<br>
+<b>SET</b> D="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> D=<b>$ORDER</b>(<b>^$DEVICE</b>(D)) <b>QUIT</b>:D=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>SET</b> T=<b>$GET</b>(<b>^$DEVICE</b>(D,"OUTTIMEOUT"))<br>
+. <b>SET</b> S=<b>$GET</b>(<b>^$DEVICE</b>(D,"OUTSTALLED"))<br>
+. <b>WRITE</b> !,D,?12,<b>$JUSTIFY</b>(T,5),?25,<b>$SELECT</b>(S:"Yes",1:"No")<br>
+. <b>QUIT</b></tt></p>
+
+<p><b>Note</b>: The nodes with subscripts <tt>"OUTTIMEOUT"</tt> and
+<tt>"OUTSTALLED"</tt> will only be defined if a process has established an
+output time-out value for the device in question.</p>
+
+<p>The addition of a binding to TCP/IP socket devices includes a
+new deviceparameter.</p>
+
+<p>The values of some of these parameters are accessible through
+<b>^$D[EVICE]</b>:</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"ATTACH"</b>)=value</tt><br>
+provides an implementation-specific value that identifies a
+specific socket that may currently be used.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"CONNECT"</b>)=value</tt><br>
+provides an implementation-specific value that contains 
+information about the current connection.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"DELIMITER"</b>)=value</tt><br>
+provides the list of I/O delimiters that may occur.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"DETACH"</b>)=value</tt><br>
+provides an implementation-specific value that identifies a 
+specific socket that is currently being disconnected.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"IOERROR"</b>)=value</tt><br>
+provides an identification of the I/O error trapping mode that is 
+currently being used (currently, only <tt>"TRAP"</tt> and 
+<tt>"NOTRAP"</tt> are standardized values; values beginning with 
+<tt>"Z"</tt> may also occur).</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"LISTEN"</b>)=value</tt><br>
+provides implementation-specific information about the protocol 
+being used for the current connection.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>)=index</tt><br>
+provides the index number of the socket that is currently
+being used.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"DELIMITER"</b>)=number</tt><br>
+provides the number of I/O delimiters stored in <b>^$D[EVICE]</b>.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"DELIMITER"</b>,n)=delimiter</tt><br>
+provides the <i>n</i>th I/O delimiter string.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"IOERROR"</b>)=value</tt><br>
+provides the I/O error trapping mode.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"LOCALADDRESS"</b>)=value</tt><br>
+provides the local network node address of the connection.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"PROTOCOL"</b>)=value</tt><br>
+provides the network protocol that is being used for the connection.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"REMOTEADDRESS"</b>)=value</tt><br>
+provides the remote network address of the connection.</p>
+
+<p><tt><b>^$D[EVICE]</b>(device,<b>"SOCKET"</b>,index,<b>"SOCKETHANDLE"</b>)=value</tt><br>
+provides an implementation-specific string that identifies the socket
+that is accessed through the current <tt>index</tt> number.</p>
+
+<p>For examples, see the <a href="../command/use.htm">USE command</a>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

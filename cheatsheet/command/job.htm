@@ -1,0 +1,96 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>J[OB]</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>JOB</b> LABEL^ROUTINE::20</tt><br>
+This command will attempt to create a new M[UMPS] process. If this cannot be
+completed within the time-out period (20 seconds), the special
+variable <b>$TEST</b> is set to <i>false</i>. If the process is
+created, the special variable <b>$TEST</b> is set to
+<i>true</i>.
+The newly created process will start processing the specified
+routine at the specified label.</p>
+
+<p><tt><b>JOB</b> LABEL^ROUTINE</tt><br>
+Execution is suspended until a new M[UMPS] process is
+successfully created.
+The newly created process will start processing the specified
+routine at the specified label.</p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>JOB</b> LABEL^ROUTINE(12,34,56)</tt><br>
+Execution is suspended until a new M[UMPS] process is
+successfully created.<br>
+The newly created process will start processing the specified
+routine at the specified label. Initial values for the formal
+parameters specified in the parameterlist at the specified label
+are passed (<i>by value</i>).</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>Jobs may be executed in a different environment.</p>
+
+<p><tt><b>JOB</b> LABEL^ROUTINE</tt><br>
+fetches the routine from the current routine environment and
+executes it in the current environment.</p>
+
+<p><tt><b>JOB</b> LABEL^|"SPECIAL"|ROUTINE</tt><br>
+fetches the routine from the environment called
+<tt>"SPECIAL"</tt> and executes it in the current environment.</p>
+
+<p><tt><b>JOB</b> |"ELSEWHERE"|LABEL^ROUTINE</tt><br>
+fetches the routine from the current routine environment and
+executes it in the environment called <tt>"ELSEWHERE"</tt>.</p>
+
+<p><tt><b>JOB</b> |"ELSEWHERE"|LABEL^|"SPECIAL"|ROUTINE</tt><br>
+fetches the routine from the environment called
+<tt>"SPECIAL"</tt> and executes it in the environment called
+<tt>"ELSEWHERE"</tt>.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>JOB</b> ENTRYREF<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>JOB</b> @^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<p><b>JOB</b> ENTRYREF:PARAMETERS<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,</tt><br>
+<tt><b>JOB</b> @^(3,4):^(5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,5,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

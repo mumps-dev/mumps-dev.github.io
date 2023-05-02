@@ -1,0 +1,39 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $WTFIT</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $WTF[IT]</h1>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This function returns a number that indicates which substring of
+the value specified as a parameter will fit in the specified
+space when reproduced in a specific font.</p>
+
+<p><tt><b>SET</b> TXT="This text needs to be printed."<br>
+<b>SET</b> F="COURIER",N="NORMAL",PT="POINT"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$WTFIT</b>(TXT,100,F,12,N,PT)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>14</tt></td></tr>
+</table></p>
+
+<p>This means that <tt><b>$EXTRACT</b>(TXT,1,14)</tt> will fit in
+the space of 100 points.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

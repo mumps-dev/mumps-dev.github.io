@@ -1,0 +1,1939 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Standard error codes</title><br>
+<body background="mbe.gif">
+<h1>Standard error codes</h1>
+
+<h2><a href="#M1">1</a>,
+<a href="#M2">2</a>,
+<a href="#M3">3</a>,
+<a href="#M4">4</a>,
+<a href="#M5">5</a>,
+<a href="#M6">6</a>,
+<a href="#M7">7</a>,
+<a href="#M8">8</a>,
+<a href="#M9">9</a>,
+<a href="#M10">10</a>,
+<a href="#M11">11</a>,
+<a href="#M12">12</a>,
+<a href="#M13">13</a>,
+<a href="#M14">14</a>,
+<a href="#M15">15</a>,
+<a href="#M16">16</a>,
+<a href="#M17">17</a>,
+<a href="#M18">18</a>,
+<a href="#M19">19</a>,
+<a href="#M20">20</a>,
+<a href="#M21">21</a>,
+<a href="#M22">22</a>,
+<a href="#M23">23</a>,
+<a href="#M24">24</a>,
+<a href="#M25">25</a>,
+<a href="#M26">26</a>,
+<a href="#M27">27</a>,
+<a href="#M28">28</a>,
+<a href="#M29">29</a>,
+<a href="#M30">30</a>,
+<a href="#M31">31</a>,
+<a href="#M32">32</a>,
+<a href="#M33">33</a>,
+<a href="#M34">34</a>,
+<a href="#M35">35</a>,
+<a href="#M36">36</a>,
+<a href="#M37">37</a>,
+<a href="#M38">38</a>,
+<a href="#M39">39</a>,
+<a href="#M40">40</a>,
+<a href="#M41">41</a>,
+<a href="#M42">42</a>,
+<a href="#M43">43</a>,
+<a href="#M44">44</a>,
+<a href="#M45">45</a>,
+<a href="#M46">46</a>,
+<a href="#M47">47</a>,
+<a href="#M48">48</a>,
+<a href="#M49">49</a>,
+<a href="#M50">50</a>,
+<a href="#M51">51</a>,
+<a href="#M52">52</a>,
+<a href="#M53">53</a>,
+<a href="#M54">54</a>,
+<a href="#M55">55</a>,
+<a href="#M56">56</a>,
+<a href="#M57">57</a>,
+<a href="#M58">58</a>,
+<a href="#M59">59</a>,
+<a href="#M60">60</a>,
+<a href="#M61">61</a>,
+<a href="#M62">62</a>,
+<a href="#M63">63</a>,
+<a href="#M64">64</a>,
+<a href="#M65">65</a>,
+<a href="#M66">66</a>,
+<a href="#M67">67</a>,
+<a href="#M68">68</a>,
+<a href="#M69">69</a>,
+<a href="#M70">70</a>,
+<a href="#M71">71</a>,
+<a href="#M72">72</a>,
+<a href="#M73">73</a>,
+<a href="#M74">74</a>,
+<a href="#M75">75</a>,
+<a href="#M76">76</a>,
+<a href="#M77">77</a>,
+<a href="#M78">78</a>,
+<a href="#M79">79</a>,
+<a href="#M80">80</a>,
+<a href="#M81">81</a>,
+<a href="#M82">82</a>,
+<a href="#M83">83</a>,
+<a href="#M84">84</a>,
+<a href="#M85">85</a>,
+<a href="#M86">86</a>,
+<a href="#M87">87</a>,
+<a href="#M88">88</a>,
+<a href="#M89">89</a>,
+<a href="#M90">90</a>,
+<a href="#M91">91</a>,
+<a href="#M92">92</a>,
+<a href="#M93">93</a>,
+<a href="#M94">94</a>,
+<a href="#M95">95</a>,
+<a href="#M96">96</a>,
+<a href="#M97">97</a>,
+<a href="#M98">98</a>,
+<a href="#M99">99</a>,
+<a href="#M100">100</a>,
+<a href="#M101">101</a>,
+<a href="#M102">102</a>,
+<a href="#M103">103</a>,
+<a href="#M104">104</a>,
+<a href="#M105">105</a>,
+<a href="#M106">106</a>,
+<a href="#M107">107</a>,
+<a href="#M108">108</a>,
+<a href="#M109">109</a>,
+<a href="#M110">110</a>,
+<a href="#M111">111</a>,
+<a href="#M112">112</a>.
+
+</h2>
+
+<hr>
+
+<a name="M1"></a>
+<h2>M1, Naked indicator undefined</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The naked indicator is undefined at the start of a M[UMPS]
+process, or after a reference to an unsubscripted global variable
+has been made.<br>
+The sequence of commands <tt><b>SET</b> ^A=3,^(4)=5</tt> would
+cause this error to occur.</p>
+
+<hr>
+
+<a name="M2"></a>
+<h2>M2, Invalid combination with P <u>fncodatom</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>An <u>fncodatom</u> is one of the special formatting parameters
+of the function <b>$FNUMBER</b>. Currently, the valid codes that
+may be specified as such are <tt>+</tt> (plus, force plus sign),
+<tt>,</tt> (comma, insert delimiters every three digits), <tt>-</tt>
+(minus, suppress minus sign), <tt>p</tt> or <tt>P</tt>
+(represent negative numbers in parentheses) and <tt>t</tt> or
+<tt>T</tt> (trailing sign). Any incompatible combination of these
+codes or any other character specified in the second parameter of
+the function <b>$FNUMBER</b> will cause this error to occur.</p>
+
+<p><tt><b>WRITE</b> <b>$FNUMBER</b>(AMOUNT,"+Q")<br>
+<b>WRITE</b> <b>$FNUMBER</b>(AMOUNT,"-t",3)<br>
+<b>WRITE</b> <b>$FNUMBER</b>(AMOUNT,"Z",2)</tt></p>
+
+<hr>
+
+<a name="M3"></a>
+<h2>M3, $RANDOM seed less than 1</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>$RANDOM</b>(6)</tt> returns one of the values 0, 1, 2, 3,
+4 or 5.<br>
+<tt><b>$RANDOM</b>(-6)</tt> does not return one of the values -5,
+-4, -3, -2, -1 or 0, but causes this error to occur.</p>
+
+<hr>
+
+<a name="M4"></a>
+<h2>M4, No true condition in $SELECT</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This error is most likely to occur in constructions like<br>
+<tt><b>WRITE
+$SELECT</b>(X&gt;50:"Large",X&lt;50:"Small")</tt><br>
+(Note: in the case that <tt>X=50</tt>).</p>
+
+<hr>
+
+<a name="M5"></a>
+<h2>M5, <u>lineref</u> less than zero</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This error means that, in the context of a reference to the
+function <b>$TEXT</b>, a reference was encountered that has a
+negative offset value.</p>
+
+<p><tt><b>WRITE</b> <b>$TEXT</b>(+LINECOUNT^MYROUT)</tt><br>
+(and the value of local variable <tt>LINECOUNT</tt> is
+negative).</p>
+
+<p>A reference a <b>DO</b>, <b>GOTO</b> or <b>JOB</b> command
+with a negative offset will cause an error with code 
+<a href="#M12">M12</a>.</p>
+
+<hr>
+
+<a name="M6"></a>
+<h2>M6, Undefined <u>lvn</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This error means that an attempt was made to obtain the value of
+a local variable, while that local variable has no defined value.
+Note that a variable that has no defined value may have
+descendants that do have a defined value.</p>
+
+<p><tt><b>KILL</b> X<br>
+<b>SET</b> X(12,13,14)=123<br>
+<b>SET</b>:<b>$DATA</b>(X(12)) ABC=X(12)</tt></p>
+
+<hr>
+
+<a name="M7"></a>
+<h2>M7, Undefined <u>gvn</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This error means that an attempt was made to obtain the value of
+a global variable, while that global variable has no defined
+value. Note that a variable that has no defined value may have
+descendants that do have a defined value.</p>
+
+<p><tt><b>KILL</b> ^X<br>
+<b>SET</b> ^X(12,13,14)=123<br>
+<b>SET</b>:<b>$DATA</b>(^X(12)) ABC=^X(12)</tt></p>
+
+<hr>
+
+<a name="M8"></a>
+<h2>M8, Undefined <u>svn</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The intrinsic special variables (<b>$X</b>, <b>$IO</b>, etcetera)
+always have a value. This error means that a reference was
+encountered to an entity that has the syntax of an intrinsic
+special variable name, but that does not exist as such, e.g.
+<b>$DEVICE</b> in an implentation that meets the 1990 standard,
+but not the 1995 standard, or $CPU.</p>
+
+<hr>
+
+<a name="M9"></a>
+<h2>M9, Divide by zero</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This error means that during the evaluation of an expression
+containing a division (either common (/) or integer division
+(\)), a 'righthand' operand was encountered that has a zero
+value.</p>
+
+<p><tt><b>SET</b> (TOTAL,NUMBER)=0<br>
+<b>SET</b> I="" <b>FOR SET</b> I=<b>$ORDER</b>(A(I))
+<b>QUIT</b>:I="" <b>DO</b><br>
+&nbsp;. <b>SET</b> N=N+1,TOTAL=TOTAL+A(I)<br>
+&nbsp;. <b>QUIT</b><br>
+<b>SET</b> AVERAGE=TOTAL/NUMBER</tt><br>
+This error will occur in the case that array A has no members.</p>
+
+<p><tt><b>SET</b> X="Apples"<br>
+<b>SET</b> Y=TOTAL\X+Y</tt></p>
+
+<p>This error will also occur for:</p>
+
+<p><tt><b>SET</b> X=N#0<br>
+<b>SET</b> X=0**-1</tt></p>
+
+<hr>
+
+<a name="M10"></a>
+<h2>M10, Invalid pattern match range</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>If, in a pattern specification, the number of occurrences of a
+part of a pattern is specified (number.number), the first number
+gives the lower bound, and the second number the upper bound. If
+the upper bound is less than the lower bound this error condition
+occurs.</p>
+
+<p><tt><b>IF</b> X?1.5A3N6.4A </tt></p>
+
+<hr>
+
+<a name="M11"></a>
+<h2>M11, No parameters passed</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When execution 'falls through' and reaches a line that starts
+with a label that has a parameter list, this error will occur.
+Labels with a parameter list should only be executed when invoked
+as a subroutine, or as an extrinsic function or extrinsic
+variable.</p>
+
+<hr>
+
+<a name="M12"></a>
+<h2>M12, Invalid <u>lineref</u> (negative offset)</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>DO</b>, <b>GOTO</b> or <b>JOB</b> command is executed,
+and the line that is specified is in the form
+<tt>LABEL+OFFSET^ROUTINE</tt>, this error will occur if the
+<tt>OFFSET</tt> has a negative value.</p>
+
+<p>A reference to the function <b>$TEXT</b> with a negative
+<tt>OFFSET</tt> will cause an error with code
+<a href="#M5">M5</a>.</p>
+
+<hr>
+
+<a name="M13"></a>
+<h2>M13, Invalid <u>lineref</u> (label not found)</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>DO</b>, <b>GOTO</b> or <b>JOB</b> command is executed,
+or when a reference to the function <b>$TEXT</b> is evaluated,
+and the line that is specified is in the form
+<tt>LABEL+OFFSET^ROUTINE</tt> or <tt>LABEL+OFFSET</tt>, this
+error will occur if either there is no label in the specified
+routine that corresponds to the specified label, or the value of
+<tt>OFFSET</tt> is so high that the reference no longer evaluates
+to a valid line in the specified routine.</p>
+
+<hr>
+
+<a name="M14"></a>
+<h2>M14, <u>line</u> <i>level</i> not 1</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>DO</b>, <b>GOTO</b> or <b>JOB</b> command is executed,
+and the line that is specified is in the form
+<tt>LABEL+OFFSET^ROUTINE</tt> or <tt>LABEL+OFFSET</tt>, this
+error will occur if the line that is specified does not have a
+<i>level</i> of 1, i.e. the line starts with one or more period
+characters. Lines that have a <i>level</i> higher than 1 can only
+be invoked by an argumentless <b>DO</b> command.</p>
+
+<p>The <i>level</i> of a line is equal to 'number of dots at the
+start of the line' plus 1.</p>
+
+<hr>
+
+<a name="M15"></a>
+<h2>M15, Undefined index variable</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>FOR</b> command is executed, and the range
+specification is of the form FROM:STEP or FROM:STEP:UNTIL, and it
+is not possible to assign a value to the index variable of the
+<b>FOR</b> loop, this error will occur.</p>
+
+<hr>
+
+<a name="M16"></a>
+<h2>M16, Argumented QUIT not allowed</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>QUIT</b> command is executed as the termination of an
+extrinsic function, the value specified in the argument of the
+<b>QUIT</b> command is the value that is returned to the
+environment that invoked the extrinsic function. When a
+<b>QUIT</b> command is executed in any other context, and an
+argument is present, this error will occur.</p>
+
+<hr>
+
+<a name="M17"></a>
+<h2>M17, Argumented QUIT required</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>QUIT</b> command is executed as the termination of an
+extrinsic function, the value specified in the argument of the
+<b>QUIT</b> command is the value that is returned to the
+environment that invoked the extrinsic function. When a
+<b>QUIT</b> command is executed in this context, and no argument
+is present, this error will occur.</p>
+
+<hr>
+
+<a name="M18"></a>
+<h2>M18, Fixed length READ not greater than zero</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a <b>READ</b> command is executed, and an argument is of the
+form <tt>VARIABLE#LENGTH</tt>, this error will occur if the value
+of <tt>LENGTH</tt> is less than 1.</p>
+
+<hr>
+
+<a name="M19"></a>
+<h2>M19, Cannot copy a tree or subtree into itself</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a MERGE command is executed, and there is an overlap between
+the source and the destination of the information to be copied,
+this error will occur.</p>
+
+<p><tt><b>MERGE</b> ^ABC(1,2,3)=^ABC(1,2,3,4,5,6)<br>
+<b>MERGE</b> ^ABC(1,2,3,4,5)=^ABC(1,2,3,4)<br>
+<b>MERGE</b> ^ABC(1,2,3)=^ABC(1,2,3)<br>
+<b>MERGE</b> ^|HERE|ABC(1,2,3)=^|THERE|ABC(1,2,3)</tt><br>
+(in the last example, the error will occur if the value of
+<tt>HERE</tt> happens to be equal to the value of
+<tt>THERE</tt>).</p>
+
+<hr>
+
+<a name="M20"></a>
+<h2>M20, <u>line</u> must have <u>formallist</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When an extrinsic function is invoked (e.g.
+<tt>$$XXX^YYY(P1,P2)</tt>), and the label in the routine that is
+invoked to calculate the function value does not have a parameter
+list (in this example, the label <tt>XXX</tt> in routine
+<tt>YYY</tt>), this error will occur.</p>
+
+<hr>
+
+<a name="M21"></a>
+<h2>M21, Algorithm specification invalid</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a label occurs with a parameter list (a formallist), and the
+same name occurs multiple times in this parameter list, this
+error will occur.</p>
+
+<p>Note that it does make sense to be able to have the same name
+multiple times in a parameter list when a function or subroutine
+is invoked (actuallist), but not in the formal parameter list at
+the start of that function or subroutine.</p>
+
+<p><tt><b>SET</b> SUM=$$ADD(A,A)</tt><br>
+is a valid function call.</p>
+
+<p><tt>ADD(X,X) <b>QUIT</b> X+X</tt><br>
+will cause this error to occur; most likely, this should have
+been<br>
+<tt>ADD(X,Y) <b>QUIT</b> X+Y</tt></p>
+
+<hr>
+
+<a name="M22"></a>
+<h2>M22, SET or KILL to <b>^$GLOBAL</b> when data in global</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The structured system variable <b>^$GLOBAL</b> contains
+information about global variables (allocation, protection,
+access control, etcetera). Certain information about global
+variables can only be entered into these structured variables
+before the global variables that they describe are actually
+created. When creating the global variable in question, the
+parameters specified in the structured system variable will be
+applied, and it may not generally be possible to undo this
+without completely re-creating the global variable in
+question.</p>
+
+<p>An attempt to define or delete such information in this
+structured system variable about a global variable that currently
+exists will cause this error to occur.</p>
+
+<hr>
+
+<a name="M23"></a>
+<h2>M23, SET or KILL to <b>^$JOB</b> for non-existent job number</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The structured system variable <b>^$JOB</b> contains
+information about M[UMPS] processes (execution status, ownership,
+etcetera). Information about M[UMPS] processes can only be
+defined or modified in these structured variables while the
+process in question exists in the system.</p>
+
+<p>An attempt to define or delete information in this structured
+system variable about a M[UMPS] process that currently does not
+exist will cause this error to occur.</p>
+
+<hr>
+
+<a name="M24"></a>
+<h2>M24, Change to collation algorithm while subscripted local
+variables defined</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The structured system variable <b>^$GLOBAL</b> contains
+information about global variables (allocation, protection,
+access control, etcetera). Certain information about global
+variables can only be entered into these structured variables
+before the global variables that they describe are actually
+created. When creating the subtree in question, the collation
+algorithm specified in the structured system variable will be
+applied, and it may not generally be possible to undo this
+without completely re-creating the global variable in
+question.</p>
+
+<p>The 1995 ANSI M[UMPS] language standard allows for a
+specification of a collation algorithm at the 'top level' of a
+global variable only.</p>
+
+<p>An attempt to define or delete information related to the
+collation algorithm of a subtree in a global variable in this
+structured system variable while that subtree exists will cause
+this error to occur.</p>
+
+<hr>
+
+<a name="M25"></a>
+<h2>M25, Attempt to modify currently executing routine</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error code means that an attempt was made to execute an 
+<b>RSAVE</b> command specifying the currently executing routine as the 
+routine to be re-created. When this error occurs, the routine in 
+question will not be modified.</p>
+
+<hr>
+
+<a name="M26"></a>
+<h2>M26, Non-existent <u>environment</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a reference is evaluated that contains an environment
+specification, and the specified environment does not currently
+exist, this error will occur.</p>
+
+<p>Note that this error will not occur while building a definition
+in a structured system variable.</p>
+
+<p>Networks may go down<br>
+<tt><b>SET</b> X=^|"LONDON"|CUSTOMER(ID)</tt></p>
+
+<p>Or an environment may not exist at all...<br>
+<tt><b>SET</b> X=^|"ATLANTIS"|CUSTOMER(ID)<br>
+<b>DO</b> ^|"ATLANTIS"|GETINFO</tt></p>
+
+<hr>
+
+<a name="M27"></a>
+<h2>M27, Attempt to rollback a transaction that is not
+restartable</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>One of the activities that may occur in the context of
+transaction processing is a <i>restart</i>. A restart is a second
+(or third, or...) attempt to process the complete
+<i>transaction</i>. Whether or not a <i>transaction</i> is
+actually restarted, depends on whether it is restartable. A
+<i>transaction</i> is restartable if the initiating <b>TSTART</b>
+command specifies a <u>restartargument</u>. A <i>restart</i> of a
+restartable <i>transaction</i> causes execution to resume with
+the initial <b>TSTART</b> command. A <i>restart</i> of a non-
+restartable <i>transaction</i> ends the <i>transaction</i> and
+causes this error to occur.</p>
+
+<p><tt><b>TSTART</b> (A,B,C):TRANSACTIONID="Example"<br>
+; ...<br>
+; set up transaction<br>
+;...<br>
+; Programmer can initiate restart<br>
+<b>IF</b> PROBLEMS <b>TRESTART</b><br>
+; ...<br>
+; Complete the transaction<br>
+<b>TCOMMIT</b></tt></p>
+
+<hr>
+
+<a name="M28"></a>
+<h2>M28, Mathematical function, parameter out of range</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>While the 1995 ANSI M[UMPS] language standard introduces the
+concept of external calls and external libraries, that standard
+does not yet define any specific external callable routines.</p>
+
+<p>A future ANSI M[UMPS] language standard will contain a set of
+mathematical functions that are accessible through the external
+call syntax.</p>
+
+<p>When one of these functions is called with one or more
+inappopriate parameters, this error will occur.</p>
+
+<p><tt><b>SET</b> X=$%SQRT^MATH(-1)<br>
+<b>SET</b> X=$%ARCSIN^MATH(5.3)</tt></p>
+
+<hr>
+
+<a name="M29"></a>
+<h2>M29, SET or KILL on <u>ssvn</u> not allowed by
+implementation</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>While the definition of the M[UMPS] language may allow for
+certain syntactical constructs, not all implementation will allow
+the use of these at all times.</p>
+
+<p>When an attempt is made to (re-)define or remove information in a
+structured system variable, while the implementation does not
+allow such activity, this error will occur.</p>
+
+<p><tt><b>KILL</b> <b>^$JOB</b>(JOBID)<br>
+<b>KILL</b> <b>^$ROUTINE</b>("%H")<br>
+<b>SET</b> <b>^$GLOBAL</b>("^DD","CHARACTER")="Old-Norse"</tt></p>
+
+<hr>
+
+<a name="M30"></a>
+<h2>M30, Reference to <u>glvn</u> with different collating
+sequence within a collating algorithm</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>In <tt><b>^$CHARACTER</b>(setname,"COLLATE")</tt>, an algorithm
+may be specified that will be used internally by the M[UMPS]
+system to establish the collating order of for a character-set.
+The string that will be used internally for collating purposes is
+computed by a function call equivalent to <tt><b>SET</b>
+internal=$$entry^routine(actualvalue)</tt>. If such a function is
+invoked, and a reference is evaluated to a variable that has a
+different collating algorithm than the one that is being
+computed, this error will occur.</p>
+
+<hr>
+
+<a name="M31"></a>
+<h2>M31, <u>controlmnemonic</u> used for device without a
+<u>mnemonicspace</u> selected</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Usage of the special device control functions
+(<u>controlmnemonic</u>) that are available through the
+<tt><b>WRITE</b> /function</tt> syntax can only take place after
+a function-library has been selected in a <b>USE</b> command or
+in an <b>OPEN</b> command. If such a function reference occurs,
+while no library (<u>mnemonicspace</u>) is activated, this error
+will occur.</p>
+
+<hr>
+
+<a name="M32"></a>
+<h2>M32, <u>controlmnemonic</u> used in user-defined
+<u>mnemonicspace</u> which has no associated line</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<hr>
+
+<a name="M33"></a>
+<h2>M33, SET or KILL to <b>^$ROUTINE</b> when <u>routine</u>
+exists</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The structured system variable <b>^$ROUTINE</b> contains
+information about routines (allocation, protection, access
+control, etcetera). Certain information about routines can only
+be entered into these structured variables before the routines
+that they describe are actually created. When creating the
+routine in question, the parameters specified in the structured
+system variable will be applied, and it may not generally be
+possible to undo this without completely re-creating the routine
+in question.</p>
+
+<p>An attempt to define or delete such information in this
+structured system variable about a routine that currently exists
+will cause this error to occur.</p>
+
+<hr>
+
+<a name="M34"></a>
+<h2>M34, --- currently unassigned ---</h2>
+
+<hr>
+
+<a name="M35"></a>
+<h2>M35, Device does not support <u>mnemonicspace</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>One of the parameters that can be specified on <b>OPEN</b> and
+<b>USE</b> commands is a list of names of <u>mnemonicspace</u>s.
+A <u>mnemonicspace</u> may be compared to a function library:
+<u>mnemonicspace</u>s contain functions (called
+<u>controlmnemonic</u>s) that may be applied to the device in
+question.</p>
+
+<p>When a <u>mnemonicspace</u> is specified in an <b>OPEN</b> or
+<b>USE</b> command, and that <u>mnemonicspace</u> is not
+supported by the device to which it is being applied, this error
+will occur.</p>
+
+<hr>
+
+<a name="M36"></a>
+<h2>M36, Incompatible <u>mnemonicspace</u>s</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>One of the parameters that can be specified on <b>OPEN</b> and
+<b>USE</b> commands is a list of names of <u>mnemonicspace</u>s.
+A <u>mnemonicspace</u> may be compared to a function library:
+<u>mnemonicspace</u>s contain functions (called
+<u>controlmnemonic</u>s) that may be applied to the device in
+question.</p>
+
+<p>When a combination of <u>mnemonicspace</u>s is specified in an
+<b>OPEN</b> or <b>USE</b> command, and one of these
+<u>mnemonicspace</u>s is not compatible with one or more of the
+other ones, this error will occur.</p>
+
+<hr>
+
+<a name="M37"></a>
+<h2>M37, READ from device identified by the empty string</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When the current device is closed, the value of <b>$IO</b> will
+be set to the empty string. The 1995 ANSI M[UMPS] language
+standard does not allow read operations to take place while the
+value of <b>$IO</b> is empty. If, under these circumstances, a
+<b>READ</b> command is executed, this error will occur.</p>
+
+<p><b><i>Note</i></b>: there is a proposal (March 1995: SC#12 Type
+B) that would allow read operations from a "null device".</p>
+
+<hr>
+
+<a name="M38"></a>
+<h2>M38, Invalid <u>ssvn</u> subscript</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The subscripts of local and global variables may be any string.
+There are some restrictions in that most implementations do not
+allow control characters in subscripts, and all implementations
+observe a maximum length for subscripts, but those are the only
+'normal' limitations.<br>
+For structured system variables, however, the subscripts are
+bound by semantical constraints: the first subscript in
+<b>^$ROUTINE</b> must be the name of a routine, for instance.
+When a reference is made to s structured system variable, and one
+of the subscripts does not meet its semantical constraints, this
+error will occur.</p>
+
+Approved for addition in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This error will occur when an attempt is made to register
+an event handler
+(<tt><b>SET ^$JOB</b>(process,<b>"EVENT"</b>,eventclass,eventid)=entrypoint</tt>)
+and the value of either <tt>class</tt> or <tt>id</tt> is not a
+valid one.</p>
+
+<hr>
+
+<a name="M39"></a>
+<h2>M39, Invalid $NAME argument</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a reference to the function <b>$NAME</b> is evaluated, and
+the second parameter of the function <b>$NAME</b> has a negative
+value, this error will occur.</p>
+
+<p><tt><b>SET</b> X=<b>$NAME</b>(^(2),SUB)</tt><br>
+while the value of <tt>SUB</tt> is less than 0.</p>
+
+<hr>
+
+<a name="M40"></a>
+<h2>M40, Call-by-reference in JOB <u>actual</u></h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The <b>JOB</b> command may be invoked to start at a specified
+label, with a parameterlist that specifies the initial values of
+certain variables in the newly started job. When one or more of
+the parameters specified in the actual parameter list when the
+<b>JOB</b> command is executed is passed by reference (preceded
+by a dot), this error will occur.</p>
+
+<hr>
+
+<a name="M41"></a>
+<h2>M41, Invalid LOCK argument within a TRANSACTION</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>In the context of transaction processing, it is not allowed to
+release resources within a <i>transaction</i>, if those resources
+were obtained outside of the <i>transaction</i> in question. This
+restriction is necessary to allow <i>transactions </i>to be
+restartable.</p>
+
+<p>When, within a <i>transaction</i>, a <b>LOCK</b> command is
+executed that releases a name from the LOCK list that was not
+entered into the LOCK list within the context of the current
+<i>transaction</i>, this error will occur.</p>
+
+<hr>
+
+<a name="M42"></a>
+<h2>M42, Invalid QUIT within a TRANSACTION</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><i>Transactions</i> are delimited by a <b>TSTART</b> and
+<b>TCOMMIT</b> commands. A <b>TCOMMIT</b> command must occur at
+the same or a deeper <b>DO</b> level than the corresponding
+<b>TSTART</b> command.</p>
+
+<p>When a <b>TSTART</b> command has been executed, and a <b>QUIT</b>
+command is executed that returns from the <b>DO</b> level at
+which the <b>TSTART</b> command was encountered, this error will
+occur.</p>
+
+<p><tt><b>DO</b> INIT,PROCESS,EXIT<br>
+<b>QUIT</b><br>
+;<br>
+INIT ... <b>TSTART</b> ... <b>QUIT</b><br>
+PROCESS ... <b>QUIT</b><br>
+EXIT ... <b>TCOMMIT</b> ... <b>QUIT</b></tt><br>
+The above processing model is not compatible with
+transaction processing. The complete definition of a
+<i>transaction</i> must be in one <b>DO</b>-able module.</p>
+
+<hr>
+
+<a name="M43"></a>
+<h2>M43, Invalid range ($X, $Y)</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>One addition to the 1995 ANSI M[UMPS] language standard is that it
+is now allowed to <tt><b>SET $X</b>=value</tt> and <tt><b>SET
+$Y</b>=value</tt>.</p>
+
+<p>When the value that is assigned to <b>$X</b> or <b>$Y</b> in this
+context is not a valid value for the variable in question, this
+error will occur.</p>
+
+<hr>
+
+<a name="M44"></a>
+<h2>M44, Invalid <u>command</u> outside of a TRANSACTION</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><i>Transactions</i> are delimited by a <b>TSTART</b> and
+<b>TCOMMIT</b> commands. A trancaction may be cancelled by means
+of a <b>TROLLBACK</b> command, or restarted by means of a
+<b>TRESTART</b> command.</p>
+
+<p>When a <b>TCOMMIT</b>, <b>TRESTART</b> or <b>TROLLBACK</b>
+command is encountered while no transaction is active (no
+<b>TSTART</b> command executed, or <b>$TLEVEL</b>=0), this error
+will occur.</p>
+
+<hr>
+
+<a name="M45"></a>
+<h2>M45, Invalid GOTO reference</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>One addition in the 1990 ANSI M[UMPS] language standard is that
+it has become possible to define blocks of code that can only be
+entered at one point by means of an argumentless <b>DO</b>
+command. Within such blocks, deeper nested blocks may be defined.
+Within one such block, control may be transferred using a
+<b>GOTO</b> command.</p>
+
+<p>When a <b>GOTO</b> command is executed, and the destination of
+the executed argument is a line within an 'indented' block, and
+the <b>GOTO</b> command does not originate from a line at the
+same level of indentation in the same 'indented' block, this
+error will occur.</p>
+
+<p>Note: in his article <i><b>GOTO Command Considered
+Harmful</b></i> (March 1968, Communications of the ACM, Volume
+11/3), Edsger W. Dijkstra warns against a certain improper usage
+of <b>GOTO</b> commands. This restriction in the language helps
+to prevent such improper usage.</p>
+
+<hr>
+
+<a name="M46"></a>
+<h2>M46, Invalid attribute name</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If an application attempts to assign a value to a reserved
+attribute name, this error will occur. After this, special
+variable <b>$EREF</b> will contain a value that indicates the
+reference to the structured system variable for which the error
+occurred.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?1.</p>
+
+<hr>
+
+<a name="M47"></a>
+<h2>M47, Invalid attribute value</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If a value domain is specified for an attribute, all values
+outside the specified domain are reserved. Unless specifically
+stated otherwise, if an application attempts to assign an
+attribute value outside of the specified domain of that
+attribute, this error will occur. After this, special variable
+<b>$EREF</b> will contain a value that indicates the reference to
+the structured system variable for which the error occurred.</p>
+
+<p>Assume that an application has defined two windows, A and B. If,
+for window A, the application attempts to assign a value to the
+PARENT attribute, naming window B as the parent, and the DISPLAY
+attributes for windows A and B are different, this error will
+occur. After this, special variable <b>$EREF</b> will contain a
+value that indicates the reference to the structured system
+variable for which the error occurred.</p>
+
+<p>If an application attempts to assign a value of <tt>"TRUE"</tt>
+to a TIED attribute, and the window's parent is a display, this
+error will occur. After this, special variable <b>$EREF</b> will
+contain a value that indicates the reference to the structured
+system variable for which the error occurred.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?2.</p>
+
+<hr>
+
+<a name="M48"></a>
+<h2>M48, Nonexistent window, element or choice</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>Values may be assigned to attributes by means of <b>SET</b> and
+<b>MERGE</b> commands. If an application attempts to assign a
+value in this way to an attribute of a window or element, while
+that window or element does not exist at the time that the
+command in question is executed, this error will occur. After
+this, special variable <b>$EREF</b> will contain a value that
+indicates the reference to the structured system variable for
+which the error occurred.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?3.</p>
+
+<hr>
+
+<a name="M49"></a>
+<h2>M49, Invalid attempt to set focus</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If an application attempts to set focus to a window or gadget
+that is not currently capable of receiving focus, this error will
+occur. After this, special variable <b>$EREF</b> will contain a
+value that indicates the reference to the structured system
+variable for which the error occurred.</p>
+
+<p>There are many reasons why a window or gadget may be unable to
+receive focus: it may be invisible, not active, disabled by the
+value of its MODAL attribute, or reside on a different
+display.</p>
+
+<p>If an application attempts to assign a value to a NEXTG attribute
+that does not identify a gadget that has been defined for the
+window in question, this error will occur. After this, special
+variable <b>$EREF</b> will contain a value that indicates the
+reference to the structured system variable for which the error
+occurred.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?4.</p>
+
+<hr>
+
+<a name="M50"></a>
+<h2>M50, Attempt to reference a non M-Term window in an OPEN
+command</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>An MTERM window is opened by specifying the <tt>"MTERM"</tt>
+<u>mnemonic-space</u> in an <b>OPEN</b> command. If the device
+that is being OPENed does not yet exist as a window in the
+structured system variable <b>^$WINDOW</b>, a window is created
+in <b>^$WINDOW</b>, with its window name equal to the name of the
+device specified in the <b>OPEN</b> command, and its TYPE
+attribute equal to <tt>"MTERM"</tt>.<br>
+If the device specified in the <b>OPEN</b> command already exists
+in <b>^$WINDOW</b>, and its TYPE attribute is not equal to
+<tt>"MTERM"</tt>, this error will occur. For this error, there is
+no corresponding value in special variable <b>$EREF</b>.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?5.</p>
+
+<hr>
+
+<a name="M51"></a>
+<h2>M51, Attempt to destroy M-Term window prior to CLOSE</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If the device specified in a <b>CLOSE</b> command designates an
+MTERM window that was created by the execution of an <b>OPEN</b>
+command, the window in question will be destroyed.<br>
+If the device specified in a <b>CLOSE</b> command designates an
+MTERM window that was created by the assignment of values to
+attributes in structured system variable <b>^$WINDOW</b>, the
+<b>CLOSE</b> command will not cause the window to be destroyed,
+and this error will occur. For this error, there is no
+corresponding value in special variable <b>$EREF</b>.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?6.</p>
+
+<hr>
+
+<a name="M52"></a>
+<h2>M52, Required attribute missing</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If an application attempts to assign a value to an attribute
+while not all criteria to be allowed to do so are met, this error
+will occur. After this, special variable <b>$EREF</b> will
+contain a value that indicates the reference to the structured
+system variable for which the error occurred.</p>
+
+<p>For a DEFBUTTON attribute the criteria that need to be met
+are:<br>
+<ul>
+<li>the gadget must be a 'child' of the window;</li>
+<li>the TYPE attribute of the gadget must be 
+<tt>"BUTTON"</tt>.</li>
+</ul></p>
+
+<p>For gadgets and for menus not displayed as menu bars or as
+submenus the criteria that need to be met are:<br>
+<ul>
+<li>a value must be assigned to the POS attribute when the gadget is
+created,</li>
+<li>both a horizontal and a vertical position must be 
+defined.</li>
+</ul></p>
+
+<p>For a symbol gadget the criterion that needs to be met is:<br>
+<ul>
+<li>the RESOURCE attribute must have a value.</li>
+</ul></p>
+
+<p>For a generic box or a group frame gadget the criterion that
+needs to be met is:<br>
+<ul>
+<li>a value must be assigned to the SIZE element attribute when the
+gadget is created.</li>
+</ul></p>
+
+<p>For all gadgets a criterion that needs to be met is:<br>
+<ul>
+<li>a value must be assigned to the TYPE element attribute when the
+gadget is created.</li>
+</ul></p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?7.</p>
+
+<hr>
+
+<a name="M53"></a>
+<h2>M53, Invalid argument for font function</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>Each of the functions <b>$WFONT</b>, <b>$WTFIT</b> and
+<b>$WTWIDTH</b> has a parameter that specifies the units in which
+some of the other parameters are expressed. The unit-
+specification parameter must be equal to either <tt>"PIXEL"</tt>
+or <tt>"POINT"</tt>. If any other value is specified for the
+unit-speficication parameter, this error will occur.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?8.</p>
+
+<hr>
+
+<a name="M54"></a>
+<h2>M54, Attempt to create non-modal child of a modal
+parent</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>If an application attempts to create a child window of a modal
+window which is not also a modal window, this error will occur.
+After this, special variable <b>$EREF</b> will contain a value
+that indicates the reference to the structured system variable
+for which the error occurred.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?9.</p>
+
+<hr>
+
+<a name="M55"></a>
+<h2>M55, Invalid nested ESTART command</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmers' Interface.</p>
+
+<p>During call back processing for events and prior to execution of
+a nested <b>ESTART</b> command, the FOCUS display attribute for
+the display on which the window appears that is associated with
+the event being processed, must be assigned a value which
+identifies a window that has its MODAL window attribute equal to
+<tt>"APPLICATION"</tt>. If the FOCUS attribute is not assigned
+such a value, this error will occur.</p>
+
+<p>In earlier printed versions of the 1995 ANSI M[UMPS] Windowing
+Application Programmers' Interface, this error was identified as
+M?10.</p>
+
+<hr>
+
+<a name="M56"></a>
+<h2>M56, Name length exceeds implementation's limit</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>In the 1977 ANSI M[UMPS] language standard, the length of a name
+(for routines, as well as local and global variables) was
+restricted to 8 characters. Implementations were not required to
+interpret any characters beyond the 8th while determining the
+unique meaning of a name.<br>
+in a future ANSI M[UMPS] language standard, the length of a name
+is no longer restricted. For portability, a maximum of 31
+characters is specified, but implementations may allow for longer
+names. If an application uses a name that is longer than the
+number of characters that a specific implementation allows
+(i.e. more than 31 characters), this error will occur.</p>
+
+<p>The purpose of this error is to warn about possible portability
+problems: if an application has taken advantage of an
+implementation that offers names longer than the portability
+limit, and subsequently is run on an application that binds names
+to a lower limit (either the portability limit, or a number
+between the portability limit and the 'roomier' implementation's
+limit), this error will occur, rather than that different
+variables are mapped onto the same internal unique identifier.</p>
+
+<hr>
+
+<a name="M57"></a>
+<h2>M57, More than one defining occurrence of label in
+routine</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>While the standard defines that for each label there may be at
+most one occurrence in a routine where the label in question
+occurs at the start of a line, the standard does not define when
+this specific error will occur.<br>
+Implementations that issue this error at all, will typically
+report this error when the routine in question is created.</p>
+
+<hr>
+
+<a name="M58"></a>
+<h2>M58, Too few formal parameters</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>When a parameterized entry is called with less actual parameters
+than formal parameters, the 'missing' parameters will be treated
+as having a <b>$DATA</b> attribute of 0 within the invoked
+procedure.<br>
+When a parameterized entry is called with mote actual parameters
+than formal parameters, this error will occur.</p>
+
+<hr>
+
+<a name="M59"></a>
+<h2>M59, Environment reference not permitted for this
+<u>ssvn</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><b>SET</b>ting, <b>KILL</b>ing and referencing "nodes"
+in structured system variables is only allowed when the
+semantics for the operation in question are explicitly
+defined. Any reference to a <u>ssvn</u>, where an
+environment is specified, and no semantics are defined
+for the meaning of an environment in that context,
+will cause this error to occur.</p>
+
+<hr>
+
+<a name="M60"></a>
+<h2>M60, Undefined <u>ssvn</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error means that an attempt was made to obtain the value of
+a structured system variable, while that variable has no defined value.
+Note that a variable that has no defined value may have
+descendants that do have a defined value.</p>
+
+<p><tt><b>SET</b> X=<b>^$ROUTINE</b><br>
+<b>SET</b> X=<b>^$ROUTINE</b>(somename)</tt></p>
+
+<hr>
+
+<a name="M61"></a>
+<h2>M61, Attempt to OPEN file with conflicting ACCESS
+parameters</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M62"></a>
+<h2>M62, Illegal value for ACCESS parameter while attempting to
+OPEN file</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M63"></a>
+<h2>M63, Illegal value for DISPOSITION parameter while attempting
+to CLOSE file</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M64"></a>
+<h2>M64, Illegal value for RENAME parameter while attempting to
+CLOSE file</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M65"></a>
+<h2>M65, Illegal value for VOLUME label</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M66"></a>
+<h2>M66, Illegal value for DENSITY parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M67"></a>
+<h2>M67, Illegal value for ACCESS parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M68"></a>
+<h2>M68, Illegal value for MOUNT parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M69"></a>
+<h2>M69, Attempted tape I/O while no tape mounted</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M70"></a>
+<h2>M70, Illegal value for BLOCKSIZE parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M71"></a>
+<h2>M71, Attempt to read data block larger than buffer
+size</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M72"></a>
+<h2>M72, Illegal value for recordsize parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M73"></a>
+<h2>M73, Invalid usage of <u>devicekeyword</u> NEWFILE</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M74"></a>
+<h2>M74, Illegal value for TRANSLATION parameter</h2>
+
+<p>The proposal to introduce this error code was rescinded in June
+1995.<br>
+While the error code remains reserved, this particular error will
+never occur.</p>
+
+<hr>
+
+<a name="M75"></a>
+<h2>M75, String length exceeds implementation's limit</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>For portability, the length of strings is limited. The 1977 ANSI
+M[UMPS] language standard limited this length to 255 characters,
+in a future ANSI M[UMPS] language standard, this limit will be
+raised to:<br>
+<ul>
+<li>510 characters for namevalues</li>
+<li>32,767 characters for values in local variables</li>
+<li>510 characters for values in global variables</li>
+<li>32,767 characters for values in structured system variables</li>
+</ul></p>
+
+<p>Implementations may offer longer strings than the portability
+limit.</p>
+
+<p>If an implementation attempts to create a string that is longer
+than the string length limit for the implementation in question,
+this error will occur.</p>
+
+<p>This error will not occur for any string that has a length greater than
+the portability limit, but less that the limit of the 
+implementation.</p>
+
+<p><tt> <b>SET</b> X="",<b>$ETRAP</b>="GOTO ERROR"<br>
+&nbsp;<b>WRITE</b> !,"This should work with the 1977 standard"<br>
+&nbsp;<b>FOR</b> I=1:1:255 <b>SET</b> X=X_<b>$CHAR</b>(I#26+65)<br>
+&nbsp;<b>DO</b> SHOW<br>
+&nbsp;<b>WRITE</b> !,"The next code-line is not portable with"<br>
+&nbsp;<b>WRITE</b> !,"the 1990 standard, but is"<br>
+&nbsp;<b>WRITE</b> !,"portable with the 1995 standard."<br>
+&nbsp;<b>FOR</b> I=256:1:510 <b>SET</b> X=X_<b>$CHAR</b>(I#26+65)<br>
+&nbsp;<b>DO</b> SHOW<br>
+&nbsp;<b>WRITE</b> !,"The next code-line is not portable with"<br>
+&nbsp;<b>WRITE</b> !,"the 1995 standard, but is"<br>
+&nbsp;<b>WRITE</b> !,"portable with the proposed millennium standard."<br>
+&nbsp;<b>FOR</b> I=511:1:32767 <b>SET</b> X=X_<b>$CHAR</b>(I#26+65)<br>
+&nbsp;<b>DO</b> SHOW<br>
+&nbsp;<b>WRITE</b> !,"The following remains non-portable:"<br>
+&nbsp;<b>FOR</b> I=1:1 <b>SET</b> X=X_<b>$CHAR</b>(I#26+65)<br>
+&nbsp;; The above line will cause error M75 to occur<br>
+&nbsp;;<br>
+SHOW <b>WRITE</b> !,"Now ",$LENGTH(X)," characters."<br>
+&nbsp;<b>QUIT</b><br>
+&nbsp;;<br>
+ERROR <b>DO</b> SHOW <b>SET $ETRAP</b>="" <b>QUIT</b></tt></p>
+
+<hr>
+
+<a name="M76"></a>
+<h2>M76, TCP socket state incorrect for CONNECT or LISTEN</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M77"></a>
+<h2>M77, TCP <u>deviceattribute</u> missing</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M78"></a>
+<h2>M78, TCP <u>devicekeyword</u> missing</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M79"></a>
+<h2>M79, TCP socket allocated to another device</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M80"></a>
+<h2>M80, Network error not otherwise specified</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M81"></a>
+<h2>M81, Unable to establish network connection</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M82"></a>
+<h2>M82, Network connection suspended: wait to resume</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M83"></a>
+<h2>M83, Network connection lost</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M84"></a>
+<h2>M84, Network protocol error: invalid client message</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M85"></a>
+<h2>M85, Network protocol error: invalid server message</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M86"></a>
+<h2>M86, Cannot relinquish device with I/O pending</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M87"></a>
+<h2>M87, Network buffer overflow</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M88"></a>
+<h2>M88, Non-existent <u>routine</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error means that an attempt was made to execute an <b>RLOAD</b>
+command which tried to copy a routine that does not exist into a local
+or global variable.</p>
+
+<hr>
+
+<a name="M89"></a>
+<h2>M89, Specified pattern is not a <u>subpattern</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M90"></a>
+<h2>M90, Invalid <u>namevalue</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when an attempt is made to replace the
+value of a subscript (<tt><b>SET $QSUBSCRIPT</b>(name,sequence)=new</tt>),
+and the namevalue that is specified in
+the reference to the intrinsic function <b>$QSUBSCRIPT</b> is not
+a valid one.</p>
+
+<hr>
+
+<a name="M91"></a>
+<h2>M91, Routine source is not available</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M92"></a>
+<h2>M92, Mathematical overflow</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when the result of a mathematical operation
+yields a result that is too large (in absolute value) to be
+represented as a number. Each of<br>
+<tt><b>SET</b> N=1 <b>FOR</b>&nbsp;&nbsp;<b>SET</b> N=N*2<br>
+<b>SET</b> N=-1 <b>FOR</b>&nbsp;&nbsp;<b>SET</b> N=N*2</tt><br>
+will eventually produce this error.</p>
+
+<p>On the other hand<br>
+<tt><b>SET</b> N=1 <b>FOR</b>&nbsp;&nbsp;<b>SET</b> N=N/2 <b>QUIT</b>:'N</tt><br>
+will eventually terminate when the value of <tt>N</tt> is small enough
+that the next division by two will yield a zero value.</p>
+
+<hr>
+
+<a name="M93"></a>
+<h2>M93, Mathematical underflow</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error code was reserved for the situation when the
+result of a mathematical operation
+yields a result that is too small (in absolute value) to be
+represented as a number.</p>
+
+<p>Later it was decided to follow the practice of allowing such
+results to be represented as a zero value.</p>
+
+<p><tt><b>SET</b> N=1 <b>FOR</b>&nbsp;&nbsp;<b>SET</b> N=N/2 <b>QUIT</b>:'N</tt><br>
+
+will eventually terminate when the value of <tt>N</tt> is small enough
+that the next division by two will yield a zero value.</p>
+
+<hr>
+
+<a name="M94"></a>
+<h2>M94, Attempt to compute zero to the zero<sup>th</sup> power</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when both operands of the exponentiation
+operator have a value that evaluates to 0 (zero).</p>
+
+<p><tt>"Five Apples"**"Three Pears"</tt></p>
+
+<p>will cause this error, while</p>
+
+<p><tt>"5 Apples"**"3 Pears" = 125</tt></p>
+
+<hr>
+
+<a name="M95"></a>
+<h2>M95, Exponentiation returns complex number with non-zero imaginary part</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when the result of an exponentiation
+operation is a complex number with a non-zero imaginary part.
+This may occur when a negative number is raised to a fractional
+power.</p>
+
+<p><table width=95%>
+<tr><th align=right width=50%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=50%>Value</th></tr>
+
+<tr><td align=right><tt>-1**3</tt></td>
+<td align=left><tt>-1</tt></td></tr>
+
+<tr><td align=right><tt>-1**4</tt></td>
+<td align=left><tt>1</tt></td></tr>
+
+<tr><td align=right><tt>-32**0.2</tt></td>
+<td align=left><tt>-2</tt></td></tr>
+
+<tr><td align=right><tt>-1**.5</tt></td>
+<td align=left>Error M95</td></tr>
+
+<tr><td align=right><tt>-8**(1/3)</tt></td>
+<td align=left>Error M95 (1/3 is never exactly the right value to make this result be <tt>-2</tt></td></tr>
+
+</table></p>
+
+<hr>
+
+<a name="M96"></a>
+<h2>M96, Attempt to assign value to already valued write-once <u>ssvn</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M97"></a>
+<h2>M97, Routine associated with user-defined <u>ssvn</u> does not exist</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M98"></a>
+<h2>M98, Resource unavailable</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M99"></a>
+<h2>M99, Invalid operation for context</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M100"></a>
+<h2>M100, Output time-out expired</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>The ability to specify an "output time-out" is added. An output
+time-out is specified as a device parameter in an OPEN or USE
+command. Examples are shown with the <a href="command/use.htm">USE 
+command</a>.</p>
+
+<p>When an output time-out occurs, i.e. the M[UMPS] system is not able
+to process output to a specific device within an established time-frame,
+this error will occur.</p>
+
+<p>Until this error is cleared through external action, the value of
+<tt>^$D[EVICE](device,"OUTSTALLED")</tt> will be 1 (true).</p>
+
+<hr>
+
+<a name="M101"></a>
+<h2>M101, Attempt to assign incorrect value to $ECODE</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more
+information about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M102"></a>
+<h2>M102, Simultaneous synchronous and asynchronous event class</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This error will occur when an attempt is made to register
+an error handler
+(<tt><b>SET ^$JOB</b>(process,<b>"EVENT"</b>,eventclass,eventid)=entrypoint</tt>)
+and the event is already registered for that process, using the
+opposite type of processing (i.e. attempting asynchronous processing while
+synchronous processing is already enabled, or the other way about).</p>
+
+<hr>
+
+<a name="M103"></a>
+<h2>M103, Invalid event identifier</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This error occurs when an attempt is made to trigger an event
+(see <b>ETRIGGER</b> command), and the value of the event-ID is not a
+valid one.</p>
+
+<p>Which values are valid for event-IDs depends on the
+event-class, and may be implementation-specific.</p>
+
+<hr>
+
+<a name="M104"></a>
+<h2>M104, IPC event identifier is not a valid job-number</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This error occurs when an attempt is made to trigger an event 
+for another process (see the <b>ETRIGGER</b> command), and the value of 
+the process-identifier is not a valid job-number.</p>
+
+<hr>
+
+<a name="M105"></a>
+<h2>M105, Object not currently accessible</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when a reference is made to an object
+and the referenced instance of that object is not currently
+accessible.</p>
+
+<p>A frequent cause for this to happen is that an external process deleted the
+object.</p>
+
+<hr>
+
+<a name="M106"></a>
+<h2>M106, Object does not support requested method or property</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when a reference is made to a method
+or property, and the referenced object doed not have such a
+method or property.</p>
+
+<hr>
+
+<a name="M107"></a>
+<h2>M107, Object has no default value</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when a reference to an object is made
+in a context where a value of data type MVAL is expected.
+When the object in question has a default property, the value
+of that property will be returned, otherwise this error will 
+occur.</p>
+
+<hr>
+
+<a name="M108"></a>
+<h2>M108, Value is not of data type OREF</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This error will occur when a reference is made to a value
+that is expected to be of data type OREF, while the actual
+value has a different data type.</p>
+
+<hr>
+
+<a name="M109"></a>
+<h2>M109, Undefined <u>devicekeyword</u></h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>When, in the context of an OPEN or USE command, a parameter
+is used that includes a <u>devicekeyword</u> that is not
+supported for the device and <u>mnemonicspace</u> in question,
+the implementation may or may not cause an error to occur.
+If the implementation forces an error to occur, this will
+be the error code that will be returned.</p>
+
+<hr>
+
+<a name="M110"></a>
+<h2>M110, Event identifier not available</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This error will occur when an attempt is made to register
+an event handler
+(<tt><b>SET ^$JOB</b>(process,<b>"EVENT"</b>,eventclass,eventid)=entrypoint</tt>)
+and there are no system-resources available to successfully register
+the event handler in question.</p>
+
+<hr>
+
+<a name="M111"></a>
+<h2>M111, Invalid number of days for date</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more information
+about this error condition. ~~~ ]</p>
+
+<hr>
+
+<a name="M112"></a>
+<h2>M112, Invalid number of seconds for time</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>[ ~~~ A future version of this booklet will contain more information
+about this error condition. ~~~ ]</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various error codes that are defined
+in the various M[UMPS] standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

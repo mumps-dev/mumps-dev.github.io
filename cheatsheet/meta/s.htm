@@ -1,0 +1,535 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -S-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter S</h1>
+
+<p><a href="#scrollbig">scrollbig</a>,
+<a href="#scrollby">scrollby</a>,
+<a href="#scrollmax">scrollmax</a>,
+<a href="#scrollmin">scrollmin</a>,
+<a href="#scrollrange">scrollrange</a>,
+<a href="#scrollsmall">scrollsmall</a>,
+<a href="#seloff">seloff</a>,
+<a href="#sepstr">sepstr</a>,
+<a href="#servicename">servicename</a>,
+<a href="#setargument">setargument</a>,
+<a href="#setdestination">setdestination</a>,
+<a href="#setdextract">setdextract</a>,
+<a href="#setdpiece">setdpiece</a>,
+<a href="#setev">setev</a>,
+<a href="#setextract">setextract</a>,
+<a href="#setleft">setleft</a>,
+<a href="#setpiece">setpiece</a>,
+<a href="#setqsub">setqsub</a>,
+<a href="#size">size</a>,
+<a href="#SP">SP</a>,
+<a href="#ssvn">ssvn</a>,
+<a href="#ssvname">ssvname</a>,
+<a href="#ssvnamind">ssvnamind</a>,
+<a href="#stackcode">stackcode</a>,
+<a href="#stackcodexpr">stackcodexpr</a>,
+<a href="#startangle">startangle</a>,
+<a href="#strconst">strconst</a>,
+<a href="#strlit">strlit</a>,
+<a href="#sublit">sublit</a>,
+<a href="#subnonquote">subnonquote</a>,
+<a href="#svn">svn</a>,
+<a href="#symbol">symbol</a>,
+<a href="#system">system</a>,
+<a href="#systemexpr">systemexpr</a></p>
+
+<hr>
+<a name="scrollbig"></a>
+<h2>scrollbig</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that indicates the value
+by which
+the VALUE attribute increases or decreases when an event occurs that causes
+"big" scrolling to occur (GOUPBIG, GODOWNBIG).</p>
+
+<hr>
+<a name="scrollby"></a>
+<h2>scrollby</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that that indicates the value
+bu which the
+VALUE attribute increases or decreases when an event occurs that causes
+scrolling to occur.This metalanguage symbol occurs as an expression that
+evaluates to a string consisting of two pieces, separated by commas. Both
+pieces are optional, but at least one must be present at all times. The first
+piece represents the value that is used when a "small" displacement
+event occurs. The second piece represents the value that is used when a
+"big" displacement event occurs.</p>
+
+<hr>
+<a name="scrollmax"></a>
+<h2>scrollmax</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that indicates the highest
+value in the value range that a scroll or long list box gadget will display.</p>
+
+<hr>
+<a name="scrollmin"></a>
+<h2>scrollmin</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that indicates the lowest
+value in the value range that a scroll or long list box gadget will display.</p>
+
+<hr>
+<a name="scrollrange"></a>
+<h2>scrollrange</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the value range that a scroll or long list
+box gadget will display. This metalanguage symbol occurs as an expression that
+evaluates to a string consisting of two pieces, separated by commas. Both
+pieces are optional, but at least one must be present at all times. The first
+piece represents the lowest value in the range. The second piece represents
+the highest value in the range.</p>
+
+<hr>
+<a name="scrollsmall"></a>
+<h2>scrollsmall</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that indicates the value
+by which
+the VALUE attribute increases or decreases when an event occurs that causes
+"small" scrolling to occur (GOUP, GODOWN).</p>
+
+<hr>
+<a name="seloff"></a>
+<h2>seloff</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an integer value that indicates a
+selection offset range (see also the metalanguage symbol
+<a href="i.htm#insel"> insel</a>.</p>
+
+<hr>
+<a name="sepstr"></a>
+<h2>sepstr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the value of one of the
+directives of the FORMAT library function. The value represented
+by this metalanguage symbol is the "seperator string", a string that
+contains a series of characters that are used (cyclically) to
+delimit entities of increasing orders of magnitude.</p>
+
+<hr>
+<a name="servicename"></a>
+<h2>servicename</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a
+property or a method of an object. Such a name may be either
+a M[UMPS] name, or a string literal.</p>
+
+<hr>
+<a name="setargument"></a>
+<h2>setargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>SET</b> command. Examples of valid arguments for the <b>SET</b> command
+appear in an earlier section. The argument of the <b>SET</b> command is either
+a destination as described below, followed by an equal sign (<tt>=</tt>),
+followed by an expression, or an indirection operator (<tt>@</tt>) followed by
+an expression that evaluates to a list (separated by commas) of such
+arguments.</p>
+
+<p>The destination can be either the name of a variable (possibly subscripted),
+or a list of names of variables (possibly subscripted, separated by commas)
+enclosed in parentheses.</p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>The destination can also be a specification of one or more pieces of
+information in a variable.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The destination can also be a specification of one or more characters in a
+variable.</p>
+
+<p>The destination can also be <b>$DEVICE</b>, <b>$ECODE</b>, <b>$ETRAP</b>,
+<b>$KEY</b>, <b>$X</b> or <b>$Y</b>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>...</p>
+
+<hr>
+<a name="setdestination"></a>
+<h2>setdestination</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element indicates where a SET command will store the
+information-specified on the right-hand side of the equal sign. The
+destination may be either a single one, or a list of destinations (separated
+by commas) enclosed in parentheses.</p>
+
+<p>For a complete list of all possible destinations in the context of the SET
+command, see the metalanguage symbol
+<a href="#setargument"> setargument</a>.</p>
+
+<hr>
+<a name="setdextract"></a>
+<h2>setdextract</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of a
+data record, of which one or more fields may be extracted in the
+context of a <b>SET $DEXTRACT</b> command.</p>
+
+<hr>
+<a name="setdpiece"></a>
+<h2>setdpiece</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of a
+data record, of which one or more fields may be extracted in the
+context of a <b>SET $DPIECE</b> command.</p>
+
+<hr>
+<a name="setev"></a>
+<h2>setev</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents one possible destination where the SET
+command may store information. This metalanguage symbol allows for the
+specification of <b>$ECODE</b> and <b>$ETRAP</b> in this context.</p>
+
+<p>For a complete list of all possible destinations in the context of the SET
+command, see the metalanguage symbol
+<a href="#setargument"> setargument</a>.</p>
+
+<hr>
+<a name="setextract"></a>
+<h2>setextract</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of a variable, of which
+one or more characters may be redefined in the context of a <b>SET</b>
+command.</p>
+
+<hr>
+<a name="setleft"></a>
+<h2>setleft</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents one possible destination where the SET
+command may store information.</p>
+
+<p>For a complete list of all possible destinations in the context of the SET
+command, see the metalanguage symbol
+<a href="#setargument"> setargument</a>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The destination of a <b>SET</b> command may also be a property of an
+object.</p>
+
+<p><tt><b>SET</b> word.bold=1</tt><br>
+accesses the object that
+is accessible through the value of local variable <tt>word</tt>
+and sets its property <tt>bold</tt> to 1 (true).</p>
+
+<hr>
+<a name="setpiece"></a>
+<h2>setpiece</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of a variable, of which
+one or more pieces of information may be redefined in the context of a
+<b>SET</b> command.</p>
+
+<hr>
+<a name="setqsub"></a>
+<h2>setqsub</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to the intrinsic
+function <b>$QSUBSCRIPT</b>, in the context of a <b>SET</b> command,
+in a reference where the value of one subscript is being replaced.</p>
+
+<hr>
+<a name="size"></a>
+<h2>size</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a specification of the dimensions of an
+entity. This metalanguage symbol occurs as an expression that evaluates to a
+string consisting of up to three pieces, separated by commas. All three pieces
+are optional, but at least one of the first two must be present at all times.
+The first piece represents the horizontal dimension. The second piece
+represents the vertical dimension. The third piece represents the units of
+measure.</p>
+
+<hr>
+<a name="SP"></a>
+<h2>SP</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the special character "Space". Since this
+character is normally not visible in printed text, the representation SP is
+used in the ANSI M[UMPS] language standard to indicate that this special
+character is present in a specific location.</p>
+
+<p>Starting from the 1990 ANSI M[UMPS] language standard, this symbol is spelled
+as <b>SP</b> (underscored).</p>
+
+<hr>
+<a name="ssvn"></a>
+<h2>ssvn</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a structured system variable.</p>
+
+<p>The structured system variables are <b>^$C[HARACTER]</b>(...),
+<b>^$D[EVICE]</b>(...), <b>^$G[LOBAL]</b>(...), <b>^$J[OB]</b>(...),
+<b>^$R[OUTINE]</b>(...) and <b>^$S[YSTEM]</b>(...).</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] Windowing Application Programmers Interface
+standard.</p>
+
+<p>Additional structured system variables are <b>^$DI[SPLAY]</b>(...),
+<b>^$E[VENT]</b>(...) and <b>^$W[INDOW]</b>(...).</p>
+
+<hr>
+<a name="ssvname"></a>
+<h2>ssvname</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a part of the name of a
+structured system variable. Possible values are <b>C</b> or
+<b>CHARACTER</b>, <b>D</b> or <b>DEVICE</b>, <b>G</b> or
+<b>GLOBAL</b>, <b>J</b> or <b>JOB</b>, <b>LI</b> or
+<b>LIBRARY</b>, <b>L</b> or <b>LOCK</b>, <b>R</b> or
+<b>ROUTINE</b>, <b>S</b> or <b>SYSTEM</b>.</p>
+
+<hr>
+<a name="ssvnamind"></a>
+<h2>ssvnamind</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a part of an indirect
+reference to a structured system variable. In the context of an
+indirection of the type @name@(subscripts), this metalanguage
+symbol corresponds to the part between the indirection operators.
+This entity may be a <a href="r.htm#rlvn">regular local variable 
+name</a>, a <a href="r.htm#rgvn">regular global variable 
+name</a> or an <a href="e.htm#expritem">expritem</a>. In this context, the
+value between the indirection operator must evaluate to a name of
+a structured system variable, possibly with a list of subscripts
+enclosed in parentheses.</p>
+
+<hr>
+<a name="stackcode"></a>
+<h2>stackcode</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the expression that qualifies which
+information about an error trap entry is to be reported. Valid codees are
+<tt>"PLACE"</tt>, <tt>"MCODE"</tt> and <tt>"ECODE"</tt>.</p>
+
+<hr>
+<a name="stackcodexpr"></a>
+<h2>stackcodexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the various codes that can be reported
+about an error trap. Valid codes are <tt>"PLACE"</tt>, <tt>"MCODE"</tt> and
+<tt>"ECODE"</tt>.</p>
+
+<hr>
+<a name="startangle"></a>
+<h2>startangle</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the initial angle in the context of a
+drawing command (ARC or PIE). The angle is measured in degrees. 0 degrees is
+horizontal along the positive axis, 90 degrees is vertical along the positive
+axis.</p>
+
+<hr>
+<a name="strconst"></a>
+<h2>strconst</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a string constant.
+A string constant appears in the context of "pattern ranges", and
+looks like either a string literal, or a reference to the intrinsic function
+<b>$CHAR</b>.</p>
+
+<hr>
+<a name="strlit"></a>
+<h2>strlit</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a string literal value. A string literal
+value is any sequence of printable characters (see the metalanguage symbol
+<a href="n.htm#nonquote"> nonquote</a>)
+enclosed in quotes. If the quote character itself is to occur
+within the string literal value, it must be entered twice adjacently.</p>
+
+<p><table width=90% border=2>
+<tr><th align=right> Value</th>
+<th align=left>String literal notation</th></tr>
+
+<tr><td align=right> abcde</td>
+<td><tt>"abcde"</tt></td></tr>
+
+<tr><td align=right> ab"cde</td>
+<td><tt>"ab""cde"</tt></td></tr>
+
+<tr><td align=right> <i>empty string</i></td>
+<td><tt>""</tt></td></tr>
+
+<tr><td align=right> "</td>
+<td><tt>""""</tt></td></tr>
+
+<tr><td align=right> ""</td>
+<td><tt>""""""</tt></td></tr>
+</table></p>
+
+<hr>
+<a name="sublit"></a>
+<h2>sublit</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a subscript string literal value. A
+subscript string literal value is any sequence of characters that are allowed
+in subscripts (see the metalanguage symbol
+<a href="#subnonquote"> subnonquote</a>) enclosed in
+quotes. If the quote character itself is to occur within the subscript string
+literal value, it must be entered twice adjacently.</p>
+
+<hr>
+<a name="subnonquote"></a>
+<h2>subnonquote</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character that is valid in a subscript
+and that is not the quote character (<b>$CHAR</b>(34) or <tt>""""</tt>).</p>
+
+<hr>
+<a name="svn"></a>
+<h2>svn</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a special variable name.</p>
+
+<p>The special variables are <b>$H[OROLOG]</b>, <b>$I[O]</b>, <b>$J[OB]</b>,
+<b>$S[TORAGE]</b>, <b>$T[EST]</b>, <b>$X</b> and <b>$Y</b>.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This standard introduces the special variables <b>$D[EVICE]</b>,
+<b>$EC[ODE]</b>, <b>$ES[TACK]</b>, <b>$ET[RAP]</b>, <b>$K[EY]</b>,
+<b>$P[RINCIPAL]</b>, <b>$Q[UIT]</b>, <b>$ST[ACK]</b>, <b>$SY[STEM]</b>,
+<b>$TL[EVEL]</b> and <b>$TR[ESTART]</b>.</p>
+
+<hr>
+<a name="symbol"></a>
+<h2>symbol</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an identification of the type of symbols
+available through the Windowing
+Application Programmer's Interface. It is a string that evaluates to either
+one of <tt>"M,ERROR"</tt>, <tt>"M,INFO"</tt>, <tt>"M,QUEST"</tt> or
+<tt>"M,WARN"</tt>, or to a value that identifies an external resource.</p>
+
+<hr>
+<a name="system"></a>
+<h2>system</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the implementation-specific syntax for
+values of the intrinsic special variable <b>$SYSTEM</b>.</p>
+
+<hr>
+<a name="systemexpr"></a>
+<h2>systemexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the name
+of system.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "S" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

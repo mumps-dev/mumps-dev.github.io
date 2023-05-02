@@ -1,0 +1,66 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>ETR[IGGER]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>This command causes an event to occur. For examples, see the
+structured system variable <b>^$WINDOW</b>. Depending on the type
+of event thst is to occur, the event specification will be
+in:<br>
+<tt><b>^$WINDOW</b> (window,"EVENT",type)<br>
+<b>^$WINDOW</b>(window,"G",gadget,"EVENT",type)<br>
+<b>^$WINDOW</b>(window,"T",timer,"EVENT",type)<br>
+<b>^$WINDOW</b>(window,"M",menu,"CHOICE",item,"EVENT",type)</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+
+<p>The ability to trigger events that are to be processed by
+other processes is introduced.</p>
+
+<p>Suppose that the value of local variable <tt>X</tt> is the process-ID
+of one process, and that this process is intended to process
+events that are triggered by another job. Let the value of local
+variable <tt>Y</tt> be the process-ID of this other job.</p>
+
+<p>Either process could issue a command like:<br>
+<tt><b>SET ^$JOB</b>(X,"EVENT","IPC",Y)="^PROGRAM"</tt></p>
+
+<p>When the process identified by Y issues the command<br>
+<tt><b>ETRIGGER</b> "<b>^$JOB</b>(X,""EVENT"",""IPC"",Y)"</tt><br>
+the process identified by <tt>X</tt> will start executing the
+routine <tt>^PROGRAM</tt>. When the process identified by
+<tt>X</tt> started recognition of <tt>IPC</tt> events with the
+command <tt><b>ESTART</b> "IPC"</tt>, this processing will occur
+synchronously, when the recognition was started with
+<tt><b>ASTART</b> "IPC"</tt>, this processing will occur
+asynchronously.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

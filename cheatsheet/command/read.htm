@@ -1,0 +1,111 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>R[EAD]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>READ</b> "Please enter your name: ",NAME<br>
+<b>WRITE</b> "Please enter your name: " <b>READ</b> NAME</tt><br>
+Both lines of code seemingly have the same effect. On some
+implementations, the former example has the side-effect to flush
+the type-ahead buffer.</p>
+
+<p><tt><b>READ</b> X#20</tt><br>
+Read a string of fixed length (do not wait for a terminator).</p>
+
+<p><tt><b>READ</b> X:20</tt><br>
+Read a string. When a 'terminator' key is pressed, the
+<b>READ</b> command will be satisfied. If, after 20 seconds, no
+'terminator' key has been pressed, the <b>READ</b> command will
+also be satisfied. In this case, the value returned in <tt>X</tt>
+is 'as many characters as have been entered before the time-out
+elapsed'.</p>
+
+<p><tt><b>READ</b> *X:20</tt><br>
+Read a single character. The value returned in <tt>X</tt> will be
+an integer number. If the time-out expires, this value will be
+<tt>-1</tt>.</p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>READ</b> X#1<br>
+<b>READ</b> *X</tt><br>
+Both lines of code read one single character. The first line
+always returns a string of length 1 in local variable <tt>X</tt>.
+The second line returns an integer value in local variable
+<tt>X</tt>; although practically all implementations return the
+ASCII code of the character processed, the value returned in
+local variable <tt>X</tt> is implementation-specific and device
+specific and it is not to be considered portable to rely on a
+specific value being returned.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>READ</b> ^ABC</tt><br>
+It is allowed to read values directly into global variables.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The ability to specify an "output time-out" is added. An output
+time-out is specified as a device parameter in an OPEN or USE
+command. Examples are shown with the <a href="use.htm">USE 
+command</a>.</p>
+
+<p>User-definable I/O handling has been added. When
+user-definable I/O handling is active:<br>
+<ul>
+<li>the command <tt><b>READ</b> variable[#count][:timeout]</tt><br>
+will be executed as<br>
+<tt><b>SET</b> variable=<b>$$%READ^routine</b>([count],[timeout])</tt></li>
+<li>the command <tt><b>READ</b> #</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITEFF</b>^routine(<b>1</b>)</tt></li>
+<li>the command <tt><b>READ</b> !</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITENL</b>^routine(<b>1</b>)</tt></li>
+<li>the command <tt><b>READ</b> ?pos</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITETAB</b>^routine(pos,<b>1</b>)</tt></li>
+<li>the command <tt><b>READ</b> "string"</tt><br>
+will be executed as<br>
+<tt><b>DO %WRITE</b>^routine("string",<b>1</b>)</tt></li>
+<li>the command <tt><b>READ</b> *variable[:timeout]</tt><br>
+will be executed as<br>
+<tt><b>SET</b> variable=<b>$$%READS</b>^routine(,[timeout])</tt></li>
+</ul></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>READ</b> VARIABLE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>READ</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

@@ -1,0 +1,91 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $SELECT</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $S[ELECT]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a value that is one of a number of
+specified choices.</p>
+
+<p><tt><b>SET</b> Y=<b>$SELECT</b>(A=3:5,1:0)</tt><br>
+If <tt>A=3</tt> then the function-value will be <tt>5</tt>. Under
+all other circumstances the function-value will be <tt>0</tt>.</p>
+
+<p><tt><b>SET</b> Y=<b>$SELECT</b>(X=7:"HI",1:"BYE")</tt><br>
+<tt>Y</tt> will receive the value <tt>"HI"</tt> when
+<tt>X=7</tt>. Under all other circumstances <tt>Y</tt> will
+receive the value <tt>"BYE"</tt>.</p>
+
+<p>Assume that <tt>X=1</tt>:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$SELECT</b>(X=1:8,2=3:8)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>8</tt></td></tr>
+
+<tr><td align=right><tt><b>$SELECT</b>(X=1:8,2=2:0)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>8</tt></td></tr>
+
+<tr><td align=right><tt><b>$SELECT</b>(X=2:8,2=2:0)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$SELECT</b>(X=2:8,2=3:0)</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (<a href="../mdcerror.htm#M4">M4</a>)</td></tr>
+</table></p>
+
+<p>Assume that <tt>Y="B"</tt> and <tt>X=1</tt>:<br>
+<tt><b>$SELECT</b>(X=3:8,Y="B":"Hello",X=1:13)</tt> yields
+<tt>"Hello"</tt>.<br>
+<tt><b>$SELECT</b>(X=Y:B(1),Y="A":P(2,3),1:3)</tt> yields
+<tt>3</tt>.</p>
+
+<p>Assume that <tt>^A(1)="One"</tt> and <tt>Y="Two"</tt>:<br>
+<tt><b>$SELECT</b>(X=1:^A(1),Y:S)</tt> yields <tt>"One"</tt>.<br>
+The naked indicator becomes <tt>"^A("</tt>.</p>
+
+<p>Assume that <tt>X=5</tt>.<br>
+<tt><b>$SELECT</b>(X&lt;5:"Small",X&gt;5:"Large")</tt> is
+erroneous<br>
+<tt><b>$SELECT</b>(X&lt;5:"Small",X&gt;5:"Large",X=5:"Equal")</tt>
+returns <tt>"Equal"</tt><br>
+<tt><b>$SELECT</b>(X'&gt;5:"Small",X'&lt;5:"Large",X=5:"Equal")</tt>
+returns <tt>"Small"</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$SELECT</b>(COND:VALUE,1:VALUE)<br>
+<tt>SET ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b>
+^(3,4)=<b>$SELECT</b>(^(5,6):^(7,8),1:^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; if ^ABC(1,5,6) is true:<br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; quit with naked indicator equal to <tt>^ABC(1,5,7,3,</tt><br>
+; else<br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+' 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt><br>
+Note that the eventual value of the naked indicator depends on
+the number of expressions that need to be evaluated.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

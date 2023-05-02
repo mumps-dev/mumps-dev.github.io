@@ -1,0 +1,186 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $ORDER</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $O[RDER]</h1>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns information about other defined information
+in a data-structure, based on the collating sequence in use for
+that data-structure.</p>
+
+<p>Assume that of global variable <tt>^A</tt> the following elements
+exist (see diagram):</p>
+
+<p><img src="order.gif"></p>
+
+<p>The code <tt><b>SET</b> ID=-1 <b>FOR</b> K=1:1:25 <b>SET</b>
+ID=<b>$ORDER</b>(^A(ID))</tt> will cause the following values to
+be assigned to the local variable <tt>ID</tt>:<br>
+<tt>"2"</tt>, <tt>"3"</tt>, <tt>"4"</tt>, <tt>"34"</tt>, <tt>"-5A"</tt>,
+<tt>"5A"</tt>, <tt>"A"</tt>, <tt>"AB"</tt>,
+<tt>"AD"</tt>, <tt>"B"</tt>, <tt>""</tt>, <tt>"-34"</tt>, <tt>"-4"</tt>,
+<tt>"-3"</tt>, <tt>"-2"</tt>, <tt>"2"</tt>,
+<tt>"3"</tt>, <tt>"4"</tt>, <tt>"34"</tt>, <tt>"-5A"</tt>,
+<tt>"5A"</tt>, <tt>"A"</tt>, <tt>"AB"</tt>, <tt>"AD"</tt> and
+<tt>"B"</tt>.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(-34))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-4</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(34))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"-5A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A("B"))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,1))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10,""))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10,3))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(-2))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A("-5A"))</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"5A"</tt></td></tr>
+</table></p>
+
+<p>Assume that a database contains a set of customer records,
+organized by name of customers</p>
+
+<p><tt>^Demog("AlphaName","BAKER")=988<br>
+^Demog("AlphaName","HUSKINS")=12345<br>
+^Demog("AlphaName","ROSSMAN")=123<br>
+^Demog("AlphaName","SHIMPACH")=345<br>
+^Demog("AlphaName","SOUTHERN")=876<br>
+^Demog("AlphaName","XANDER")=1098</tt></p>
+
+<p>In order to process only a specific sub-range of that data-set,
+code like the following segment could be considered:</p>
+
+<p><tt> <b>Write</b> "Enter first letter(s): " <b>Read</b> start<br>
+ <b>Set</b> name=start,done=0,index="AlphaName"<br>
+ <b>For&nbsp;&nbsp;Do&nbsp;&nbsp;Quit</b>:done<br>
+ . <b>Do</b>:$<b>Data</b>(^Demog(index,name))<br>
+ . . ; Process one customer<br>
+ . . <b>Quit</b><br>
+ . <b>Set</b> name=<b>$Order</b>(^Demog(index,name))<br>
+ . <b>Set</b>:<b>$Extract</b>(name,1,<b>$Length</b>(start)'=start done=1<br>
+ . <b>Quit</b></tt></p>
+
+<p>Of course, it is always possible that there are multiple customers
+with the same name, in which case it would make sense to organize
+the data as:</p>
+
+<p><tt>^Demog("AlphaName","BAKER",988)=""<br>
+^Demog("AlphaName","HUSKINS",12345)=""<br>
+^Demog("AlphaName","HUSKINS",12399)=""<br>
+^Demog("AlphaName","ROSSMAN",123)=""<br>
+^Demog("AlphaName","SHIMPACH",345)=""<br>
+^Demog("AlphaName","SOUTHERN",876)=""<br>
+^Demog("AlphaName","XANDER",106)=""<br>
+^Demog("AlphaName","XANDER",1098)=""</tt></p>
+
+<p>Note that in this structure all information is in the
+subscripts, and that the data-value, equal to empty strings
+for all elements, is really irrelevant.</p>
+
+<p>To process a sub-set, code like the following segment
+could be used:</p>
+
+<p><tt> <b>Write</b> "Enter first letter(s): " <b>Read</b> start<br>
+ <b>Set</b> name=start,done=0,index="AlphaName"<br>
+ <b>For&nbsp;&nbsp;Do&nbsp;&nbsp;Quit</b>:done<br>
+ . <b>Set</b> cust="" <b>For</b>&nbsp;&nbsp;<b>Do</b>&nbsp;&nbsp;<b>Quit</b>:cust=""<br>
+ . . <b>Set</b> cust=<b>$Order</b>(^Demog(index,name,cust))<br>
+ . . <b>Quit</b>:cust=""<br>
+ . . ; Process one customer<br>
+ . . <b>Quit</b><br>
+ . <b>Set</b> name=<b>$Order</b>(^Demog(index,name))<br>
+ . <b>Set</b>:<b>$Extract</b>(name,1,<b>$Length</b>(start)'=start done=1<br>
+ . <b>Quit</b></tt></p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard (reverse
+traversal):</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,1),1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10),1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10,""),1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10,3),1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,1),-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10),-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(3,10,""),-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt><b>$ORDER</b>(^A(""),-1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"B"</tt></td></tr>
+</table></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$ORDER</b>(GLVN)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$ORDER</b>(^(5,6))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

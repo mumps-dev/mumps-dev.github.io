@@ -1,0 +1,156 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>TS[TART]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Clarification (no change intended) in a future ANSI M[UMPS]
+language standard:</p>
+
+<p>Any keywords in the argument of the command are processed in 
+strict left-to-right order. When multiple equivalent parameters 
+are encountered, the last occurrence processed will define the 
+action(s) to be taken.</p>
+
+<p><tt><b>TSTART</b>
+():(<b>SERIAL</b>:<b>TRANSACTIONID</b>="DEMO")<br>
+<b>TSTART</b> *<br>
+<b>TSTART</b>
+(CUSTOMER,COUNT,TOTAL):<b>TRANSACTIONID</b>="NEXT"<br>
+<b>TSTART</b> CUSTOMER<br>
+<b>TSTART</b> CUSTOMER:<b>SERIAL</b></tt></p>
+
+<p>Assume that, initially:<br>
+<tt>^A = 1<br>
+^B = 2<br>
+^C(2,1)="XYZ"<br>
+^D</tt> is not defined</p>
+
+<p>The effect of:<br>
+<tt><b>TSTART<br>
+LOCK</b> (^A,^B,^C,^D)<br>
+<b>SET</b> ^A=^A+1<br>
+<b>SET</b> ^B=^A+2<br>
+<b>KILL</b> ^C<br>
+<b>SET</b> ^D=5<br>
+<b>LOCK<br>
+TCOMMIT</b></tt><br>
+will be that:<br>
+<tt>^A = 2<br>
+^B = 4<br>
+^C</tt> is not defined<br>
+<tt>^D = 4</tt></p>
+
+<p>If <tt>^C</tt> had many descendants, the <b>KILL</b> command
+might exceed the transaction size limitation. In this example,
+however, this limit is not even approached.</p>
+
+<p>Assuming the same initial conditions, the effect of:<br>
+<tt><b>TSTART<br>
+LOCK</b> (^A,^B,^C,^D)<br>
+<b>SET</b> ^A=^A+1<br>
+<b>SET</b> ^B=^A+2<br>
+<b>KILL</b> ^C<br>
+<b>SET</b> ^D=5<br>
+<b>TROLLBACK</b></tt><br>
+will be that the database contains the original values of all
+four global variables.</p>
+
+<p>Note that either a <b>TCOMMIT</b> or a <b>TROLLBACK</b> command
+is required, and that, in the absence of a <b>TCOMMIT</b>
+command, a <b>TROLLBACK</b> will be assumed.</p>
+
+<p>Assuming the same initial conditions, the effect of:<br>
+<tt><b>TSTART<br>
+LOCK</b> (^A,^B,^C,^D)<br>
+<b>SET</b> ^A=^A+1<br>
+<b>SET</b> ^B=^A+2<br>
+<b>KILL</b> ^C<br>
+<b>SET</b> ^D=5<br>
+<b>HALT</b></tt><br>
+will be that the database contains the original values of all
+four global variables.</p>
+
+<p>Assume that, initially:<br>
+<tt>^A = 1<br>
+^B = 2<br>
+^C(2,1)="XYZ"<br>
+^D</tt> is not defined<br>
+<tt>X = 15<br>
+Y = 27</tt></p>
+
+<p>The effect of:<br>
+<tt><b>TSTART</b> (X,Y)<br>
+<b>LOCK</b> (^A,^B)<br>
+<b>SET</b> ^A=^A+1,X=X*^A<br>
+<b>SET</b> ^B=^A+2,Y=Y-10-^B<br>
+<b>LOCK</b> (^C,^D):2<br>
+<b>IF</b> '<b>$TEST TRESTART</b><br>
+<b>KILL</b> ^C<br>
+<b>SET</b> ^D=4<br>
+<b>TROLLBACK</b></tt><br>
+will be that the database contains the original values of all
+four global variables. In addition, the values of <tt>X</tt> and
+<tt>Y</tt> will be reset to their original values. If, during
+this process, it is not possible to obtain a lock on the names
+<tt>^C</tt> and <tt>^D</tt> within the time allotted (2 seconds),
+the transaction is restarted, i.e. both global variables that
+could have been modified at that point, as well as both local
+variables are reset to their original status. There is no limit
+to the number of times that the transaction could be
+restarted.</p>
+
+<p>In the case of<br>
+<tt><b>TSTART</b> ():<b>SERIAL</b><br>
+<b>SET</b> FATAL=<b>$TRESTART</b>&gt;5<br>
+<b>IF</b> FATAL <b>WRITE</b> !,"Failed to update..."<br>
+<b>IF</b> FATAL <b>TROLLBACK&nbsp;&nbsp;QUIT</b><br>
+<b>SET</b> (COUNT,^A(0))=^A(0)+1,^A(COUNT)=X<br>
+<b>TCOMMIT</b></tt><br>
+there is a maximum to the number of restarts... Even if the
+restart is implicit in the transaction definition.</p>
+
+<p><tt><b>TSTART</b></tt> ; Restart not permitted<br>
+<tt><b>TSTART</b> ()</tt> ; Restart permitted, no local variables
+protected<br>
+<tt><b>TSTART</b> A</tt> ; Restart permitted, local variable
+<tt>A</tt> protected<br>
+<tt><b>TSTART</b> (A,B)</tt> ; Restart permitted, local variables
+<tt>A</tt> and <tt>B</tt> protected<br>
+<tt><b>TSTART</b> *</tt> ; Restart permitted, all local variables
+protected<br>
+<tt><b>TSTART</b> ():<b>SERIAL</b></tt> ; Restart permitted, no
+local variables protected<br>
+&nbsp;; Serializability ensured without explicit <b>LOCK</b>
+commands<br>
+<tt><b>TSTART</b> *:<b>SERIAL</b></tt> ; Restart permitted, all
+local variables protected<br>
+&nbsp;; Serializability ensured witough explicit <b>LOCK</b>
+commands</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

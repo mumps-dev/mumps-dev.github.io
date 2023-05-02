@@ -1,0 +1,497 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -R-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter R</h1>
+
+<p><a href="#radius">radius</a>,
+<a href="#RB">RB</a>,
+<a href="#rcolor">rcolor</a>,
+<a href="#readargument">readargument</a>,
+<a href="#readcount">readcount</a>,
+<a href="#recordfieldglvn">recordfieldglvn</a>,
+<a href="#recordfieldvalue">recordfieldvalue</a>,
+<a href="#relation">relation</a>,
+<a href="#repcount">repcount</a>,
+<a href="#restartargument">restartargument</a>,
+<a href="#rexpratom">rexpratom</a>,
+<a href="#rgvn">rgvn</a>,
+<a href="#rlvn">rlvn</a>,
+<a href="#rnref">rnref</a>,
+<a href="#routine">routine</a>,
+<a href="#routineargument">routineargument</a>
+<a href="#routineattribute">routineattribute</a>
+<a href="#routinebody">routinebody</a>,
+<a href="#routinehead">routinehead</a>,
+<a href="#routinekeyword">routinekeyword</a>
+<a href="#routinename">routinename</a>,
+<a href="#routineparam">routineparam</a>
+<a href="#routineparameters">routineparameters</a>
+<a href="#routineref">routineref</a>,
+<a href="#routinexpr">routinexpr</a>,
+<a href="#rowattribute">rowattribute</a>,
+<a href="#rowcol">rowcol</a>,
+<a href="#rowcolsize">rowcolsize</a>,
+<a href="#rowcolspec">rowcolspec</a>,
+<a href="#rowkeyword">rowkeyword</a>,
+<a href="#rssvn">rssvn</a></p>
+
+<hr>
+<a name="radius"></a>
+<h2>radius</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the radius in the context of a drawing
+command (ARC or PIE). The unit of measure for this value is determined by the
+value of the UNITS element attribute for the gadget in question.</p>
+
+<hr>
+<a name="RB"></a>
+<h2>RB</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the special character "Right bracket"
+("]"). This metalanguage element is used to avoid confusion between the
+metalanguage symbol that implies an optional element with the actual
+character.</p>
+
+<hr>
+<a name="rcolor"></a>
+<h2>rcolor</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the level of the red component of a color.
+A color component level is an integer value
+(0 <img src="leq.xbm"> value <img src="leq.xbm"> 65,535).</p>
+
+<hr>
+<a name="readargument"></a>
+<h2>readargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>READ</b> command. Examples of valid arguments for the <b>READ</b> command
+appear in an earlier section. The argument of the <b>READ</b> command is
+either one of a list described below, or an indirection operator (<tt>@</tt>)
+followed by an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+
+<p>A directly specified <b>READ</b> argument can be a string literal, a format
+specification, a name of a local variable (possibly subscripted), optionally
+followed by a colon and a time-out specification, or an asterisk followed by
+the name of a local variable (possibly subscripted), optionally followed by a
+colon and a time-out specification.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A name of a global variable may also occur as an argument of the <b>READ</b>
+command.</p>
+
+<p>A format specification can also be a reference to a device control function
+(see the metalanguage symbols
+<a href="m.htm#mnemonicspace"> mnemonicspace</a> and
+<a href="c.htm#controlmnemonic"> controlmnemonic</a>.</p>
+
+<hr>
+<a name="readcount"></a>
+<h2>readcount</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the number of characters that will satisfy
+the current argument of the <b>READ</b> command.</p>
+
+<p>The syntax definition of <b>readcount</b> includes the number sign
+(<tt>#</tt>) and the expression that evaluates to a numeric value.</p>
+
+<hr>
+<a name="recordfieldglvn"></a>
+<h2>recordfieldglvn</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the
+intrinsic functions <b>$DEXTRACT</b> and <b>$DPIECE</b>. This
+parameter is a list (separated by commas) of destinations where
+values from fields in data records may be stored. Such destinations
+are typically local or global variables.</p>
+
+<hr>
+<a name="recordfieldvalue"></a>
+<h2>recordfieldvalue</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the
+intrinsic functions <b>$DEXTRACT</b> and <b>$DPIECE</b>. This
+parameter is the value that will replace one field in a data
+record that is being manipulated by either of these functions.</p>
+
+<hr>
+<a name="relation"></a>
+<h2>relation</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the relational binary operators,
+i.e. one of <tt>=</tt>, <tt>&lt;</tt>, <tt>&gt;</tt>, <tt>[</tt>,
+<tt>]</tt> or <tt>]]</tt>.</p>
+
+<hr>
+<a name="repcount"></a>
+<h2>repcount</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the number of times that a certain pattern
+element may occur in the total pattern.</p>
+
+<p>Examples:</p>
+
+<p><table>
+<tr><td><tt>12</tt></td>
+<td>exactly 12</td></tr>
+
+<tr><td><tt>.</tt></td>
+<td>any number</td></tr>
+
+<tr><td><tt>5.</tt></td>
+<td>at least 5</td></tr>
+
+<tr><td><tt>.9</tt></td>
+<td>at most 9</td></tr>
+</table></p>
+
+<hr>
+<a name="restartargument"></a>
+<h2>restartargument</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a list of variables that is to be reset when
+a transaction is restarted.</p>
+
+<p>The specification of which variables to reset at a restart may look like:<br>
+<ul>
+<li> asterisk (<tt>*</tt>) to indicate all local variables</li>
+<li> one name of a local variable to indicate just that one
+variable</li>
+<li> a list of names of local variables (separated by
+commas) enclosed in parentheses to indicate that
+list of variables</li>
+<li> two adjacent parentheses open and close to indicate
+that no local variables are to be reset.</li>
+</ul></p>
+
+<hr>
+<a name="rexpratom"></a>
+<h2>rexpratom</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a part of an indirect reference to a
+global or local variable. In the context of an indirection of the type
+<tt>@name@(subscripts)</tt>, this metalanguage symbol corresponds to the part
+between the indirection operators. This entity may be a regular local variable
+name (see metalanguage symbol
+<a href="#rlvn"> rlvn</a>, a regular global variable name (see
+metalanguage symbol
+<a href="#rgvn"> rgvn</a> or an
+<a href="e.htm#expritem"> expritem</a>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The possibility that a <u>rexpratom</u> is a <a href="#rssvn">regular
+structured system variable name</a> is added.</p>
+
+<hr>
+<a name="rgvn"></a>
+<h2>rgvn</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a regular global variable
+name. A regular global variable name may look like a name of a
+global variable (possibly with a list of subscripts enclosed in
+parentheses); it may look like a <i>naked reference</i>, or it
+may look like an indirection operator, followed by an expression
+that evaluates to a name of a global variable (possibly with a
+list of subscripts enclosed in parentheses), or it may look line
+an indirection operator followed by an expression that evaluates
+to a name of a global variable (possibly followed by a list of
+subscripts enclosed in parentheses, followed by an indirection
+operator, followed by a list of subscripts enclosed in
+parentheses.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A non-naked reference to a global variable may include an environment
+specification.</p>
+
+<hr>
+<a name="rlvn"></a>
+<h2>rlvn</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a regular local variable
+name. A regular local variable name looks like either a name of a
+local variable (possibly with a list of subscripts enclosed in
+parentheses) or an indirection operator, followed by an
+expression that evaluates to a name of a local variable (possibly
+with a list of subscripts enclosed in parentheses), or it may
+look line an indirection operator followed by an expression that
+evaluates to a name of a local variable (possibly followed by a
+list of subscripts enclosed in parentheses, followed by an
+indirection operator, followed by a list of subscripts enclosed in
+parentheses.</p>
+
+<hr>
+<a name="rnref"></a>
+<h2>rnref</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a "regular" reference
+to a name. Such a reference can be either direct, or indirect.</p>
+
+<p>Names, in this context, may reference local as well as global
+variables, with or without an environment specification, and with
+or without a list of subscripts.</p>
+
+<hr>
+<a name="routine"></a>
+<h2>routine</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the unit of program interchange. It begins
+with a header (see metalanguage symbol
+<a href="#routinehead"> routinehead</a>), which is not
+executable, followed by the executable code (see metalanguage symbol
+<a href="#routinebody"> routinebody</a>, followed by an "end of routine"
+marker (see metalanguage symbol <b>eor</b>).</p>
+
+<hr>
+<a name="routineargument"></a>
+<h2>routineargument</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an argument of either
+of the commands <b>RSAVE</b> and <b>RLOAD</b>.</p>
+
+<p>Such arguments look like the name of a routine, followed by a
+colon and the name of an array, optionally followed by another
+colon and a <a href="#routineparameters">list of parameters</a>,
+or an indirection operator (@) followed by an expression that
+evaluates to a list (separated by commas) of such arguments.</p>
+
+<hr>
+<a name="routineattribute"></a>
+<h2>routineattribute</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of an attribute
+for which a value may be defined in a parameter of an argument of
+the commands <b>RSAVE</b> and <b>RLOAD</b>.</p>
+
+<hr>
+<a name="routinebody"></a>
+<h2>routinebody</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the executable part of a routine. The
+routine body consists of one or more lines of M[UMPS] code, followed by an
+"end-of-routine" marker (see metalanguage symbol
+<a href="e.htm#eor"> eor</a>.</p>
+
+<hr>
+<a name="routinehead"></a>
+<h2>routinehead</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the header of a routine. This header
+consists of a text string that is equal to the name of the routine, followed
+by an "end-of-line" marker (see metalanguage symbol
+<a href="e.htm#eol"> eol</a>.</p>
+
+<hr>
+<a name="routinekeyword"></a>
+<h2>routinekeyword</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of an keyword
+that may occur in a parameter of an argument of
+the commands <b>RSAVE</b> and <b>RLOAD</b>.</p>
+
+<hr>
+<a name="routinename"></a>
+<h2>routinename</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of a routine.</p>
+
+<hr>
+<a name="routineparam"></a>
+<h2>routineparam</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of an argument of
+the commands <b>RSAVE</b> and <b>RLOAD</b>.
+Such a parameter is either a <a href="#routinekeyword">keyword</a> or
+a combination of the name of an <a href="#routineattribute">attribute</a>,
+an equal sign and a value.</p>
+
+<hr>
+<a name="routineparameters"></a>
+<h2>routineparameters</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the list of parameters that
+may occur in arguments of the commands <b>RSAVE</b> and <b>RLOAD</b>.
+Such a parameter list is either a
+single <a href="#routineparam">parameter</a> or a
+list of <a href="#routineparam">parameters</a>, enclosed in parentheses
+and separated by colons.</p>
+
+<hr>
+<a name="routineref"></a>
+<h2>routineref</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to a routine, either
+"directly" or "indirectly".</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A reference to a routine may include an environment specification.</p>
+
+<hr>
+<a name="routinexpr"></a>
+<h2>routinexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the name
+of a routine.</p>
+
+<hr>
+<a name="rowattribute"></a>
+<h2>rowattribute</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"ROWHEIGHT"</tt> or to an implementation-specific value (starts with
+<tt>"Z"</tt>).</p>
+
+<hr>
+<a name="rowcol"></a>
+<h2>rowcol</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for the positioning of choices
+within a gadget. This metalanguage symbol occurs as an expression that
+evaluates to either of the values <tt>"COL"</tt> or <tt>"ROW"</tt>.</p>
+
+<hr>
+<a name="rowcolsize"></a>
+<h2>rowcolsize</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a numeric value that is one of the
+dimensions of the matrix in which the choices within a gadget are positioned.
+If the positioning is specified as <tt>"ROW"</tt>, this value identifies the
+number of rows, if the positioning is specified as <tt>"COL"</tt>, this value
+identifies the number of columns.</p>
+
+<hr>
+<a name="rowcolspec"></a>
+<h2>rowcolspec</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a specification of how choices are
+positioned within a gadget. This metalanguage symbol occurs as an expression
+that evaluates to a string consisting of up to three pieces, separated by
+colons. The first piece is always present and identifies the orientation (row
+or column). The second piece is optional and identifies the dimension along
+the main orientation. The third piece is optional and identifies the direction
+for area-fill activity (horizontal or vertical).</p>
+
+<hr>
+<a name="rowkeyword"></a>
+<h2>rowkeyword</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"ROW"</tt>.</p>
+
+<hr>
+<a name="rssvn"></a>
+<h2>rssvn</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a regular name for a
+structured system variable. A regular structured system variable
+name may look like a name of a structured variable (with a list
+of subscripts enclosed in parentheses); or it may look like an
+indirection operator, followed by an expression that evaluates to
+a name of a structured system variable (with a list of subscripts
+enclosed in parentheses), or it may look line an indirection
+operator followed by an expression that evaluates to a name of a
+structured system variable (possibly followed by a list of
+subscripts enclosed in parentheses, followed by an indirection
+operator, followed by a list of subscripts enclosed in
+parentheses.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "R" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

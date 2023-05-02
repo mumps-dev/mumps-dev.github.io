@@ -1,0 +1,589 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -L-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter L</h1>
+
+<p><a href="#L">L</a>,
+<a href="#label">label</a>,
+<a href="#labelref">labelref</a>,
+<a href="#LB">LB</a>,
+<a href="#leftexpr">leftexpr</a>,
+<a href="#leftrestricted">leftrestricted</a>,
+<a href="#LEVEL">LEVEL</a>,
+<a href="#levelline">levelline</a>,
+<a href="#LF">LF</a>,
+<a href="#li">li</a>,
+<a href="#libdatatype">libdatatype</a>,
+<a href="#library">library</a>,
+<a href="#libraryelement">libraryelement</a>,
+<a href="#libraryelementdef">libraryelementdef</a>,
+<a href="#libraryelementexpr">libraryelementexpr</a>,
+<a href="#libraryexpr">libraryexpr</a>,
+<a href="#libraryopt">libraryopt</a>,
+<a href="#libraryparam">libraryparam</a>,
+<a href="#libraryref">libraryref</a>,
+<a href="#libraryresult">libraryresult</a>,
+<a href="#line">line</a>,
+<a href="#linebody">linebody</a>,
+<a href="#linend">linend</a>,
+<a href="#lineref">lineref</a>,
+<a href="#lname">lname</a>,
+<a href="#lnamind">lnamind</a>,
+<a href="#lockargument">lockargument</a>,
+<a href="#logicalop">logicalop</a>,
+<a href="#longchars">longchars</a>,
+<a href="#ls">ls</a>,
+<a href="#lvn">lvn</a>
+<a href="#lvnexpr">lvnexpr</a></p>
+
+<hr>
+<a name="L"></a>
+<h2>L</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol indicates that an indefinite repetition of a certain
+entity may occur. E.g. <b>L</b> <b>name</b> means: a list of <b>name</b>s
+(separated by commas), and is equivalent with <b>name</b> [ , <b>name</b> ]
+...</p>
+
+<hr>
+<a name="label"></a>
+<h2>label</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a label in a M[UMPS] routine.<br>
+A label can be either a name or a string of digits.</p>
+
+<p>Note: Leading zeroes in a label are significant.<br>
+Note: If a label starts with a digit, it must be all digits.</p>
+
+<hr>
+<a name="labelref"></a>
+<h2>labelref</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to a label in a routine.</p>
+
+<p>Examples:</p>
+
+<p><tt>ABCDE<br>
+KLM^PQR<br>
+^XYZ</tt></p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A reference to a routine may include an environment specification like
+<tt>ABCDE^|"LONDON"|ROUTINE.</tt></p>
+
+<hr>
+<a name="LB"></a>
+<h2>LB</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the special character "Left bracket"
+("["). This metalanguage element is used to avoid confusion between the
+metalanguage symbol that implies an optional element with the actual
+character.</p>
+
+<hr>
+<a name="leftexpr"></a>
+<h2>leftexpr</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents one possible destination where the SET
+command may store information. This metalanguage symbol allows for the
+specification of references to <b>$EXTRACT</b>, <b>$PIECE</b>, <b>$ECODE</b>
+and <b>$ETRAP</b> in this context.</p>
+
+<p>For a complete list of all possible destinations in the context of the SET
+command, see the metalanguage symbol
+<a href="s.htm#setargument"> setargument</a>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The ability to use a reference to the intrinsic function <b>$QSUBSRIPT</b>
+as a <b>SET</b>-destination has been added.</p>
+
+<hr>
+<a name="leftrestricted"></a>
+<h2>leftrestricted</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents one possible destination where the SET
+command may store information. This metalanguage symbol allows for the
+specification of <b>$DEVICE</b>, <b>$KEY</b>, <b>$X</b> and <b>$Y</b> in this
+context.</p>
+
+<p>For a complete list of all possible destinations in the context of the SET
+command, see the metalanguage symbol
+<a href="s.htm#setargument"> setargument</a>.</p>
+
+<hr>
+<a name="LEVEL"></a>
+<h2>LEVEL</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>The LEVEL of a line in a M[UMPS] routine is equal to the number of level
+indicator marks following the line start white space plus one.</p>
+
+<p>The LEVEL of a line has a meaning in the context of the argumentless <b>DO</b>
+command, and in the context of the <b>GOTO</b> command.</p>
+
+<hr>
+<a name="levelline"></a>
+<h2>levelline</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a line in a routine that does not start
+with a label that carries a formal parameter list (there still may be a label
+without a parameter list in such a line). This type of line is called
+<b>levelline</b>, because the line may have level indicator marks (periods)
+following its line start white space.</p>
+
+<hr>
+<a name="LF"></a>
+<h2>LF</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the special character "Line Feed". Since
+this character is normally not visible in printed text, the representation LF
+is used in the ANSI M[UMPS] language standard to indicate that this special
+character is present in a specific location.</p>
+
+<p>Starting from the 1990 ANSI M[UMPS] language standard, this symbol is spelled
+as <b>LF</b> (underscored).</p>
+
+<hr>
+<a name="li"></a>
+<h2>li</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a level indicator mark. A level indicator
+mark is written as a period, followed by zero or more space characters.</p>
+
+<hr>
+<a name="libdatatype"></a>
+<h2>libdatatype</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the specification
+of the data type of a parameter or a result in the context of
+a reference to a library function or procedure.</p>
+
+<p>Possible data types are <b>BOOLEAN</b>, <b>COMPLEX</b>, <b>INTEGER</b>,
+<b>NAME</b>, <b>REAL</b> and <b>STRING</b>.</p>
+
+<p>The definition of this metalanguage element includes a colon
+preceding the name of the data type.</p>
+
+<hr>
+<a name="library"></a>
+<h2>library</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the name of a library.</p>
+
+<p>Such a name may be like any name in M[UMPS], it starts with
+either a percent sign or a letter, and further only contains
+<a href="i.htm#ident">ident</a> characters or digits.</p>
+
+<hr>
+<a name="libraryelement"></a>
+<h2>libraryelement</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the name of a function or
+procedure within a library.</p>
+
+<p>Such a name may be like any name in M[UMPS], it starts with
+either a percent sign or a letter, and further only contains
+<a href="i.htm#ident">ident</a> characters or digits.</p>
+
+<p>Names that start with a <tt>Z</tt> are reserved for implementors;
+names that start with a <tt>Y</tt> are reserved for users.</p>
+
+<hr>
+<a name="libraryelementdef"></a>
+<h2>libraryelementdef</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the definition
+of a function or procedure in a library.</p>
+
+<p>Such a definition contains the names of the element and
+the library, the data type of the result when the element is
+a function, and the data types of any parameters.</p>
+
+<hr>
+<a name="libraryelementexpr"></a>
+<h2>libraryelementexpr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents an expression
+that evaluates to a value that is equal to the name of a function
+or procedure in a library.</p>
+
+<hr>
+<a name="libraryexpr"></a>
+<h2>libraryexpr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents an expression
+that evaluates to a value that is equal to the name of a
+library.</p>
+
+<hr>
+<a name="libraryopt"></a>
+<h2>libraryopt</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents a specification that
+indicates whether a parameter of a function or procedure in
+a library is mandatory or optional.
+Possible values are <b>M</b> (for mandatory) and
+<b>O</b> (for optional).</p>
+
+<hr>
+<a name="libraryparam"></a>
+<h2>libraryparam</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the specification
+of the definition of a parameter in a function or procedure
+in a library. Such a definition consists of up to four parts:
+<ol>
+<li>pass by value or by reference</li>
+<li>name</li>
+<li>data type</li>
+<li>optional or mandatory</li>
+</ol>
+Of these items, only the name must appear, the other
+parts are optional.</p>
+
+<p>A complete definition of a parameter could look like:<br>
+<tt>angle:<b>REAL</b>:<b>M</b></tt><br>
+<tt>.OutArray:<b>INTEGER</b>:<b>O</b></tt></p>
+
+<hr>
+<a name="libraryref"></a>
+<h2>libraryref</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents a reference to a function
+or procedure within a library.</p>
+
+<p>Such a reference typically looks like 
+<tt>%elementname^libraryname</tt>.</p>
+
+<hr>
+<a name="libraryresult"></a>
+<h2>libraryresult</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage element represents the specification
+of the data type of the return value of a library function.</p>
+
+<p>Possible data types are <b>BOOLEAN</b>, <b>COMPLEX</b>, <b>INTEGER</b>,
+<b>NAME</b>, <b>REAL</b> and <b>STRING</b>.</p>
+
+<hr>
+<a name="line"></a>
+<h2>line</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a line of M[UMPS] code.</p>
+
+<p>A line of code looks like: optionally a label, then a "line start white
+space",  optionally followed by zero or more commands, optionally followed
+by a comment. Between the various commands, there is "command separating
+white space", if there is a comment, there is "command separating white
+space" between the last command on the line and that comment.</p>
+
+<p>The "line start white space" is exactly one space character.</p>
+
+<p>The "command separating white space" is exactly one space character.</p>
+
+<p>Examples:</p>
+
+<p>(The symbol _ is used in these examples to make the space character(s)
+visible):</p>
+
+<p><tt>_<br>
+_;_comment<br>
+LABEL_;_comment<br>
+_<b>SET</b>_X=1<br>
+_<b>SET</b>_X=1_<b>WRITE</b>__X<br>
+_<b>SET</b>_X=1_<b>WRITE</b>X_;_comment<br>
+_<b>ELSE</b>__<b>SET</b>_X=3</tt></p>
+
+<p>(Note: In the last example, there are two spaces following the verb ELSE. The
+first space separates the word ELSE from its (non-existent) argument, the
+second space separates that argument from the next command.)</p>
+
+<p>Additions in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>There may be a parameter list following the label.</p>
+
+<p>Following the "line start white space" there may be one or more "line
+indent markers". A "line indent marker" consists of a period,
+optionally followed by one or more space characters.</p>
+
+<p>The "line start white space" is one or more space characters.</p>
+
+<p>The "command separating white space" is one or more space characters.</p>
+
+<p>Examples:</p>
+
+<p>(The symbol _ is used in these examples to make the space character(s)
+visible):</p>
+
+<p><tt>____; comment<br>
+LABEL(A,B)_; comment<br>
+____<b>SET</b>_X=1<br>
+_<b>SET</b>_X=1___<b>WRITE</b>_X<br>
+_._.___<b>SET</b>_X=1_<b>WRITE</b>_ X____; comment<br>
+_<b>ELSE</b>__<b>SET</b>_X=3</tt></p>
+
+<p>but not:</p>
+
+<p><tt>_<b>SET</b>____X=2</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>Spaces may occur at the end of a line.<br>
+<tt>___<b>SET</b>_X=1___<b>WRITE</b>_"Hello."___</tt></p>
+
+<hr>
+<a name="linebody"></a>
+<h2>linebody</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the general structure of a line of M[UMPS]
+code. A line of M[UMPS] code consists of one or more commands and a comment,
+or just a comment.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A line of M[UMPS] code consists of one or more commands and a comment, or just
+a comment, or zero or more commands, followed by code to be processed by an
+external code processor.</p>
+
+<p>To be modified in a future ANSI M[UMPS] language standard.</p>
+
+<p>Trailing spaces are allowed at the end of a line of M[UMPS] code.</p>
+
+<hr>
+<a name="linend"></a>
+<h2>linend</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents the internal encoding for "end of
+line" within a routine. Although the standard does not specify how a
+routine should be stored internally in a system, the standard does specify
+that the data stream created for routine interchange between implementations
+should encode the "end of line" as a Carriage Return followed by a Line
+Feed.</p>
+
+<hr>
+<a name="lineref"></a>
+<h2>lineref</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to a line in a M[UMPS]
+program. Such a reference consists of a label (either directly or indirectly
+specified), optionally followed by an off-set specification.</p>
+
+<p>Since a <b>lineref</b> does not allow for a routine specification, this
+metalanguage symbol is limited to the lines in the current routine.</p>
+
+<p>Modification in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>The metalanguage symbol <b>lineref</b> no longer occurs, instead the more
+general entity <b>entryref</b> and the more specific entity <b>labelref</b>
+are used.</p>
+
+<hr>
+<a name="lname"></a>
+<h2>lname</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a name of a local variable, specified
+either directly or indirectly.</p>
+
+<hr>
+<a name="lnamind"></a>
+<h2>lnamind</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a part of an indirect reference to a local
+variable. In the context of an indirection of the type
+<tt>@name@(subscripts)</tt>, this metalanguage symbol corresponds to the part
+between the indirection operators. This entity may be a regular local variable
+name (see metalanguage symbol <a href="r.htm#rlvn"> rlvn</a>,
+a regular global variable name (see metalanguage symbol
+<a href="r.htm#rgvn"> rgvn</a>)
+or an <a href="e.htm#expritem"> expritem</a>).
+In this context, the value between the indirection operator must evaluate to a
+name of a local variable, possibly with a list of subscripts enclosed in
+parentheses.</p>
+
+<hr>
+<a name="lockargument"></a>
+<h2>lockargument</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>LOCK</b> command. Examples of valid arguments for the <b>LOCK</b> command
+appear in an earlier section. The argument of the <b>LOCK</b> command is
+either a name reference (see metalanguage symbol
+<a href="n.htm#nref"> nref</a> or a
+list of name rerefences (separated by commas) enclosed in parentheses,
+optionally followed by a colon and an expression, or an indirection operator
+(<tt>@</tt>) followed by an expression that evaluates to a list (separated
+by commas) of such arguments.</p>
+
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>An argument of the <b>LOCK</b> command may be preceeded by a plus (<tt>+</tt>)
+or minus (<tt>-</tt>) sign, to indicate addition or deletion of a LOCK.</p>
+
+<hr>
+<a name="logicalop"></a>
+<h2>logicalop</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any of the logical binary operators, i.e.
+one of <tt>!</tt> or <tt>&</tt>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The logical operator <tt>!!</tt> (exclusive or) is added
+to the list of possible operators.</p>
+
+<hr>
+<a name="longchars"></a>
+<h2>longchars</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's
+Interface.</p>
+
+<p>This metalanguage symbol represents a sequence of zero or more characters.</p>
+
+<p>For portability, the number of characters for the text value of a document
+gadget is limited to 32,767 characters.</p>
+
+<hr>
+<a name="ls"></a>
+<h2>ls</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the line start character (which is equal
+to a space). Note that many "pretty print" programs represent the line
+start "white space" as a tabulation, but internally, a line start is
+represented as a space.</p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>A line start may now consist of one or more spaces.</p>
+
+<hr>
+<a name="lvn"></a>
+<h2>lvn</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a local variable name (possibly with a
+list of subscripts enclosed in parentheses). An <b>lvn</b> may be
+either a "straight" local variable name, or an indirected reference to
+one.</p>
+
+<p>Examples:</p>
+
+<p><tt>ABC<br>
+@("PQR")<br>
+ABC(1,2,3)<br>
+@"PQR(4,5,6)"</tt></p>
+
+<p>Modified in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a local variable name (possibly with a
+list of subscripts enclosed in parentheses). An <b>lvn</b> may be either a
+regular local variable name (see metalanguage symbol
+<a href="r.htm#rlvn"> rlvn</a>, or an
+indirected reference to a regular local variable name.</p>
+
+<p>Examples:</p>
+
+<p><tt>ABC<br>
+@("PQR")<br>
+ABC(1,2,3)<br>
+@"PQR(4,5,6)"<br>
+@"KLM"@(8,9,10)<br>
+@"@""XYZ""@(11,23)"</tt></p>
+
+<hr>
+<a name="lvnexpr"></a>
+<h2>lvnexpr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression that
+evaluates to the name of a local variable.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "L" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

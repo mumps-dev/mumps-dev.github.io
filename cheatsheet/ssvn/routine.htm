@@ -1,0 +1,53 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Structured System variables -- ^$ROUTINE</title>
+<body background="../mbe.gif">
+<h1>Structured System variables -- ^$ROUTINE</h1>
+
+<a name="^$R[OUTINE]"></a>
+<h2>^$R[OUTINE]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This structured system variable provides information about the
+routines that are currently known to the M[UMPS] system.</p>
+
+<p><tt><b>WRITE</b> !,"Routine directory:"<br>
+<b>SET</b> R="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> R=<b>$O</b>(<b>^$ROUTINE</b>(R)) <b>QUIT</b>:R=""&nbsp;&nbsp;<b>DO</b><br>
+. <b>WRITE</b> !,R<br>
+. <b>SET</b> C=<b>$GET</b>(<b>^$ROUTINE</b>(J,"CHARACTER"))<br>
+. <b>IF</b> C'="" <b>WRITE</b> ?30,"character set is """,C,"""."<br>
+. <b>QUIT</b></tt></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>If your implementation has granted you the privilege to do so,
+you may be able to remove a routine from the system by executing
+the command<br>
+<tt><b>KILL ^$ROUTINE</b>(name)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special (system) variables
+that are defined in the M[UMPS] language standard (ANSI X11.1,
+ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

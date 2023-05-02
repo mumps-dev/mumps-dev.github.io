@@ -1,0 +1,283 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>U[SE]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Clarification (no change intended) in a future ANSI M[UMPS]
+language standard:</p>
+
+<p>Any keywords in the argument of the command are processed in 
+strict left-to-right order. When multiple equivalent parameters 
+are encountered, the last occurrence processed will define the 
+action(s) to be taken.</p>
+
+<p><tt><b>OPEN</b> VDU,PRINT<br>
+<b>FOR</b> I=1:1:END <b>FOR</b> DEV=VDU,PRINT <b>USE</b> DEV
+<b>WRITE</b> !,X(I)<br>
+<b>CLOSE</b> VDU,PRINT</tt><br>
+Print the same text on two devices.</p>
+
+<p><tt><b>OPEN</b> DEVICE::50 <b>ELSE&nbsp;&nbsp;WRITE</b> "Can't
+open..." <b>QUIT</b></tt><br>
+Attempt to open the device. If the device does not become
+available within the time-out period (50 seconds), stop trying
+and set the value of <b>$TEST</b> to false.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>OPEN</b> DEVICE:::"X3.64"<br>
+<b>USE</b> DEVICE::"X3.64"</tt><br>
+Open a device with the <u>mnemonicspace</u> <tt>"X3.64"</tt> (VT-
+100 compatible terminal).</p>
+
+<p>The most common functions in ANSI X3.64 are itemized in
+<a href="../x364.htm">X3.64 description</a>.</p>
+
+<p><tt><b>OPEN</b> DEVICE::10:("X3.64","GKS")</tt><br>
+This command opens a device and specified both the
+<u>mnemonicspace</u>s X3.64 and GKS. It also specifies a time-out
+of 10 seconds. X3.64 will be the initial <u>mnemonicspace</u> for
+the device; GKS may be selected in subsequent <b>USE</b>
+commands, and X3.64 may be re-selected. No other mnemonicspaces
+may be selected in subsequent <b>USE</b> commands.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>More <u>mnemonicspace</u>s are becoming available.</p>
+
+<p>The ability to specify "user-defined" <u>mnemonicspace</u>s is added.
+It will be possible to specify to an implementation to use entries in a
+specific routine (let's call it <tt>USER</tt> for the purpose of this 
+discussion) for the processing of the commands <b>OPEN</b>, <b>USE</b>
+and <b>CLOSE</b> and the various <u>controlmnemonic</u>s for specific 
+combinations of device and <u>mnemonicspace</u>.</p>
+
+<p>When this feature is active, the <u>controlmnemonic</u>
+<tt>/ABC(P1,P2)</tt> will be executed as <tt><b>DO</b> 
+ABC^USER(P1,P2)</tt>, and the command <tt><b>USE</b> 
+device:(PARAM1:KEY2=VALUE2)</tt> will be executed as:</p>
+
+<pre>
+<b>DO</b>
+. <b>NEW</b> X,Y
+. <b>SET</b> (X,Y)=2 ; Number of deviceparameters
+. <b>SET</b> X(1)="PARAM1" ; First deviceparameter
+. <b>SET</b> X(2)="KEY2",Y(2)=VALUE2
+. <b>DO</b> %USE^USER(device,.X,.Y,"")
+. <b>QUIT</b>
+</pre>
+
+<p>The name of a device may contain an environment specification<br>
+<tt><b>USE</b> |"LONDON"|MTA47</tt></p>
+
+<p>A time-out for output operations may be specified. In order for
+this capability to be available, the current device must have
+established a <a href="../meta/m.htm#mnemonicspace">mnemonicspace</a>
+that supports this feature.</p>
+
+<p><tt><b>Use</b> device:(<b>OUTPUTTIMEOUT</b>=duration)</tt></p>
+
+<p>will establish a time-out period of <tt>duration</tt> seconds. If
+any subsequent output-producing argument of a <b>READ</b> or
+<b>WRITE</b> command fails to complete execution within this
+time-out period, this condition will be visible in two fashions:<br>
+<ul>
+<li><b>^$DEVICE</b>(device,<b>"OUTSTALLED"</b>)=1</li>
+<li>an error occurs with ecode equal to <a href="../mdcerror.htm#M100">M100</a></li>
+</ul></p>
+
+<p>If the value of <tt>duration</tt> in the example above would not
+be greater than zero, no time-out would apply for the device in 
+question.</p>
+
+<p>The ability to specify an "output time-out" is added. An output
+time-out is specified as a device parameter in an OPEN or USE
+command.</p>
+
+<p><tt><b>OPEN</b> "TTY2":<b>OUTPUTTIMEOUT</b>=5:"X3.64"</tt><br>
+Assuming that the implementation allows for the
+<u>deviceparameter</u> <tt>OUTPUTTIMEOUT</tt> in the class
+library called <tt>"X3.64"</tt> (VT-100 compatible devices), an
+error with code <tt>M100</tt> will occur when an attempt is made
+to output data to the device called <tt>"TTY2"</tt>, and it is
+not possible to produce this output within 5 seconds.</p>
+
+<p>Until external action has cleared this error condition, the value
+of <tt><b>^$D[EVICE]</b>("TTY2",<b>"OUTSTALLED"</b>)</tt> will have the value 1 
+(true).</p>
+
+<p><tt><b>USE</b> "TTY2":<b>OUTPUTTIMEOUT</b>=0</tt><br>
+will cancel the recognition of output time-out conditions, and 
+will cause the system to wait until output to the device in 
+question has completed.</p>
+
+<p>The addition of a binding to TCP/IP socket devices includes a
+number of new deviceparameters.</p>
+
+<p>Below, a number of sample programs are shown that could be used
+as clients and servers in a network of programs that communicate
+through TCP/IP sockets.</p>
+
+<h3>Client Process</h3>
+
+<pre>
+ ; connect to any server providing the service
+ <b>SET</b> timeout=10
+ <b>OPEN</b> dev:(<b>connect</b>="myservice"):timeout:<b>"SOCKET"</b>
+ <b>IF</b> '<b>$TEST</b> <b>WRITE</b> !,"Unable to connect to server" <b>QUIT</b>
+ <b>USE</b> dev
+ ;==> WRITE/READ dialogue with server ...
+ <b>CLOSE</b> dev <b>QUIT</b>
+
+ ; restrict the search to TCP/IP servers
+ <b>OPEN</b> dev:(<b>connect</b>="myservice:IP:TCP")::<b>"SOCKET"</b>
+ <b>IF</b> '<b>$TEST</b> <b>WRITE</b> !,"Unable to connect to server" <b>QUIT</b>
+ <b>SET</b> sockindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ <b>SET</b> address=<b>^$DEVICE</b>(dev,sockindx,<b>"REMOTEADDRESS"</b>)
+ <b>USE</b> <b>$PRINCIPAL</b> <b>WRITE</b> !,"Connected to server at ",address
+ <b>USE</b> dev
+ ;==> WRITE/READ dialogue with server ...
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<p>or</p>
+
+<pre>
+ ; connect to a specific server and port
+ <b>OPEN</b> dev:(<b>connect</b>="128.200.1.5:IP:TCP:2001")::<b>"SOCKET"</b> <b>USE</b> dev
+ ;==> WRITE/READ dialogue with server ...
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<h3>Serial Server Process</h3>
+
+<pre>
+ <b>SET</b> timeout=10
+ ; obtain a socket
+ <b>OPEN</b> dev:(<b>listen</b>=":IP:TCP:2001"):timeout:<b>"SOCKET"</b>
+ <b>IF</b> '<b>$TEST</b> <b>WRITE</b> !,"Unable to open server port" <b>QUIT</b>
+ ; establish a queue depth of 3
+ <b>USE</b> dev <b>WRITE</b> <b>/listen</b>(3)
+ ; wait for a client connection
+ <b>FOR</b>  <b>USE</b> dev <b>WRITE</b> <b>/wait</b>(timeout) <b>QUIT</b>:<b>$DEVICE</b>  <b>IF</b> <b>$KEY</b>'="" d
+ . ;==> READ/WRITE dialogue with client ...
+ . <b>SET</b> sockindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ . <b>SET</b> sockhndl=<b>^$DEVICE</b>(dev,sockindx,<b>"SOCKETHANDLE"</b>)
+ . ; close current device
+ . <b>CLOSE</b> dev:(<b>socket</b>=sockhndl)
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<h3>Concurrent Server Process</h3>
+
+<pre>
+ <b>SET</b> timeout=10
+ ; obtain a socket
+ <b>OPEN</b> dev:(<b>listen</b>=":IP:TCP:2001"):timeout:<b>"SOCKET"</b>
+ <b>IF</b> '<b>$TEST</b> <b>WRITE</b> !,"Unable to open server port" <b>QUIT</b>
+ ; establish a queue depth of 3
+ <b>USE</b> dev <b>WRITE</b> <b>/listen</b>(3)
+ ; wait for a client connection
+ <b>FOR</b>  <b>USE</b> dev <b>WRITE</b> <b>/wait</b>(timeout) <b>QUIT</b>:<b>$DEVICE</b>  <b>IF</b> <b>$KEY</b>'="" d
+ . <b>SET</b> sockindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ . <b>SET</b> sockhndl=<b>^$DEVICE</b>(dev,sockindx,<b>"SOCKETHANDLE"</b>)
+ . <b>USE</b> dev:(<b>detach</b>=sockhndl)
+ . <b>JOB</b> server^srv(sockhndl)
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<p>In this example, the routine ^srv could look like</p>
+
+<pre>
+ ...
+server(sockhndl) ;
+ ...
+ <b>OPEN</b> dev:(<b>attach</b>=sockhndl)::<b>"SOCKET"</b>
+ <b>USE</b> dev
+ ;==> READ/WRITE dialogue with client
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<h3>Multi Protocol Server Process</h3>
+
+<pre>
+ <b>SET</b> timeout=10
+ <b>OPEN</b> dev:::<b>"SOCKET"</b>  ; acquire M[UMPS] device
+ <b>USE</b> dev:(<b>listen</b>=":IP:TCP:2001") ; Establish TCP protocol
+ <b>IF</b> <b>$DEVICE</b> <b>USE</b> <b>$PRINCIPAL</b> <b>WRITE</b> !,"Unable to listen for TCP connections" <b>CLOSE</b> dev <b>QUIT</b>
+ <b>SET</b> tcpindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ <b>SET</b> tcphndl=<b>^$DEVICE</b>(dev,tcpindx,<b>"SOCKETHANDLE"</b>)
+ <b>USE</b> dev:(<b>listen</b>=":SPX:1025") ; Establish SPX protocol
+ <b>IF</b> <b>$DEVICE</b> <b>USE</b> <b>$PRINCIPAL</b> <b>WRITE</b> !,"Unable to listen for SPX connections" <b>CLOSE</b> dev <b>QUIT</b>
+ <b>SET</b> spxindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ <b>SET</b> spxhndl=<b>^$DEVICE</b>(dev,spxindx,<b>"SOCKETHANDLE"</b>)
+ ; wait for a client connection on either protocol
+ <b>FOR</b>  <b>USE</b> dev <b>WRITE</b> <b>/wait</b>(timeout) <b>QUIT</b>:<b>$DEVICE</b>  <b>IF</b> <b>$KEY</b>'="" d
+ . <b>SET</b> sockindx=<b>^$DEVICE</b>(dev,<b>"SOCKETINDEX"</b>)
+ . <b>SET</b> sockhndl=<b>^$DEVICE</b>(dev,sockindx,<b>"SOCKETHANDLE"</b>)
+ . <b>IF</b> <b>$KEY</b>'="CONNECT" <b>USE</b> <b>$PRINCIPAL</b> <b>WRITE</b> "Shouldn't happen" <b>CLOSE</b> dev:(<b>socket</b>=sockhndl) <b>QUIT</b>
+ . <b>USE</b> dev:(<b>detach</b>=sockhndl)
+ . <b>JOB</b> server^srv(sockhndl) ; Same server as above example
+ <b>CLOSE</b> dev <b>QUIT</b>
+</pre>
+
+<p>For a program that parses a programming language, it is hard
+to see the difference between:<br>
+<tt>...:(abc=xyz):...</tt><br>
+and<br>
+<tt>...:(<b>FILENAME</b>="C:\temp\ABC.TMP"):...</tt><br>
+In the former example, the text between the parentheses should be
+an expression that happens to return a boolean value, whereas in
+the latter example, the text between the parentheses could be a
+"keyword equals value" combination that has a meaning in certain
+mnemonicspaces.</p>
+
+<p>In order to make it easier to indicate this difference, the
+option to precede a devicekeyword with a slash has been
+introduced. This would make the latter example look like:<br>
+<tt>...:(<b>/FILENAME</b>="C:\temp\ABC.TMP"):...</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>USE</b> DEVICE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>USE</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<p><b>USE</b> DEVICE:PARAMETERS<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>USE</b> ^(3,4):^(5,6)</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,5,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

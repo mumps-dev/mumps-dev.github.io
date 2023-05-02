@@ -1,0 +1,1608 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Operators</title>
+<body background="mbe.gif">
+<h1>Operators</h1>
+
+<p><a href="#plus">Arithmetic operator 'plus' (+)</a><br>
+<a href="#minus">Arithmetic operator 'minus' (-)</a><br>
+<a href="#times">Arithmetic operator 'times' (*)</a><br>
+<a href="#divide">Arithmetic operator 'divided by' (/)</a><br>
+<a href="#intdivide">Arithmetic operator 'integer divided by' (\)</a><br>
+<a href="#modulo">Arithmetic operator 'modulo' (#)</a><br>
+<a href="#power">Arithmetic operator 'to the power of' (**)</a><br>
+<a href="#concatenate">String operator 'concatenate' (_)</a><br>
+<a href="#becomes">Assignment operator 'becomes' (=)</a><br>
+<a href="#equal">Relational operator 'is equal to' (=)</a><br>
+<a href="#objequal">Relational operator 'object is equal to' (==)</a><br>
+<a href="#greater">Relational operator 'is greater than' (&gt;)</a><br>
+<a href="#less">Relational operator 'is less than' (&lt;)</a><br>
+<a href="#lesseq">Relational operator 'is less than or equal to'</a><br>
+<a href="#greatereq">Relational operator 'is greater than or equal to'</a><br>
+<a href="#pattern">Relational operator 'matches pattern' (?)</a><br>
+<a href="#contains">Relational operator 'contains' ([)</a><br>
+<a href="#follows">Relational operator 'follows' (])</a><br>
+<a href="#followseq">Relational operator 'follows or equal to' (]=)</a><br>
+<a href="#collates">Relational operator 'collates after' (]])</a><br>
+<a href="#collateseq">Relational operator 'collates after or equal to'</a><br>
+<a href="#and">Logical operator 'and' (&amp;)</a><br>
+<a href="#or">Logical operator 'or' (!)</a><br>
+<a href="#xor">Logical operator 'exclusive or' (!!)</a><br>
+<a href="#not">Logical unary operator 'not' (')</a><br>
+<a href="#indirect">Indirection operator (@)</a></p>
+
+<hr>
+
+<p>The M[UMPS] programming language knows a number of 'operators'.
+Some operators are the familiar arithmetic ones while others
+operate on strings or compare values. In M[UMPS], the operators
+can be mixed in any order, but keep in mind that some operators
+imply a specific interpretation of their operands. The only order
+of precedence for binary operators in M[UMPS] is the strict left-
+to-right evaluation, and unary operators only apply in a right-
+to-left order. If that order of precedence needs to be
+overridden, parentheses can be used to indicate that a sub-
+expression has to be evaluated first.</p>
+
+<p>Depending on where one went to school, different schemes for the
+order of computations were taught. The main different 'schools'
+that I am aware of are:</p>
+
+<p><table width=95%>
+<tr><th>&nbsp;</th>
+<th><i>Central Europe</i></th>
+<th>&nbsp;</th>
+<th><i>USA and Great Britain</i></th></tr>
+
+<tr><td>1.</td><td>Raising to a power</td><td>1.</td><td>Raising to a power
+(including taking roots)</td></tr>
+<tr><td>2.</td><td>Multiplication</td></tr>
+<tr><td>3.</td><td>Division</td></tr>
+<tr><td>4.</td><td>Take root</td><td>2.</td><td>Multiplication or division</td></tr>
+<tr><td>5.</td><td>Addition</td></tr>
+<tr><td>6.</td><td>Subtraction</td><td>3.</td><td>Addition or subtraction</td></tr>
+</table></p>
+
+<p>So that the result of: <tt>4/2*2</tt> is equal to <tt>1</tt> in
+The Netherlands (multiplication takes precedence over division),
+but equal to <tt>4</tt> in England (multiplication and division
+have no difference in precedence, so the left-to-right evaluation
+prevails).</p>
+
+<p>M[UMPS] evaluates strictly from left to right, so that
+<tt>1+1*2</tt> yields <tt>4</tt> and not <tt>3</tt>.</p>
+
+<p>When a different precedence is to be established, parentheses
+should be used: the expressions <tt>1+(1*2)</tt> and
+<tt>1*2+1</tt> will both yield <tt>3</tt>.</p>
+
+<p>Assume that <tt>K=34</tt>; the expression
+<tt>"_11_22_33_"["_"_K_"_"</tt> will evaluate as <tt>"134_"</tt>.
+The order of evaluation is: first evaluate
+<tt>"_11_22_33_"["_"</tt>, which yields <tt>1</tt> (<i>true</i>),
+then the rest of the expression becomes: <tt>1_K_"_"</tt>, which
+leads to the value <tt>"134_"</tt>.<br>
+If one wished to perform a check to verify that the value of
+<tt>K</tt> is contained in a list, parentheses are required:<br>
+<tt>"_11_22_33_"[("_"_K_"_")</tt> will return a true-or-false
+value (<b>bve</b>, <b>b</b>oolean <b>v</b>alued
+<b>e</b>xpression), which is only <i>true</i> when <tt>K</tt> has
+one of the values <tt>11</tt>, <tt>22</tt> or <tt>33</tt>.</p>
+
+<p>Assume that <tt>L=29</tt> and <tt>K=34</tt>; the series of
+commands<br>
+<center><tt><b>IF</b> K=L+3 <b>WRITE</b> !,"K=32"</tt></center><br>
+will result in the text <tt>"K=32"</tt> being printed, regardless
+of the value of <tt>K</tt>.<br>
+In this case, the order of evaluation is: first compare
+<tt>K=L</tt>, which will yield <tt>0</tt> (<i>false</i>), then
+the evaluation continues with <tt>0+3</tt>, which yields
+<tt>3</tt> (<i>true</i>), so that the commands following the
+<b>IF</b> command will always be processed.<br>
+The formula that was intended could be either <tt>L+3=K</tt> or
+<tt>K=(L+3)</tt>.</p>
+
+<hr>
+
+<a name="plus"></a>
+<h2>Arithmetic operator 'plus' (+)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1+1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>2+2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt>(-3)+(-4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-7</tt></td></tr>
+</table></p>
+
+<p>Unary usage</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>+1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+</table></p>
+
+<p>Forced numeric interpretation</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>+"27 apples"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>27</tt></td></tr>
+</table></p>
+
+<p>Resolve multiple leading signs</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>+++---+--+3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-3</tt></td></tr>
+</table></p>
+
+<p>Force numeric interpretation</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"2 apples"+"3 oranges"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>5</tt></td></tr>
+</table></p>
+
+<hr>
+
+<a name="minus"></a>
+<h2>Arithmetic operator 'minus' (-)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>3-1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>7-2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>5</tt></td></tr>
+
+<tr><td align=right><tt>2-7</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-5</tt></td></tr>
+
+<tr><td align=right><tt>(-3)-(-4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+</table></p>
+
+<p>Unary usage</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>-1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-1</tt></td></tr>
+</table></p>
+
+<p>Resolve multiple leading signs</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>+++---+--+3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-3</tt></td></tr>
+</table></p>
+
+<p>Force numeric interpretation</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"5 apples"-"3 oranges"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+</table></p>
+
+<hr>
+
+<a name="times"></a>
+<h2>Arithmetic operator 'times' (*)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>3*3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>9</tt></td></tr>
+
+<tr><td align=right><tt>7.5*2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>15</tt></td></tr>
+
+<tr><td align=right><tt>-2.5*2.5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-6.25</tt></td></tr>
+
+<tr><td align=right><tt>2.5*-2.5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-6.25</tt></td></tr>
+
+<tr><td align=right><tt>(-3)*(-4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>12</tt></td></tr>
+</table></p>
+
+<p>Force numeric interpretation</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"5 apples"*"3 oranges"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>15</tt></td></tr>
+</table></p>
+
+<hr>
+
+<a name="divide"></a>
+<h2>Arithmetic operator 'divided by' (/)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>9/3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt>5/2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2.5</tt></td></tr>
+
+<tr><td align=right><tt>5/-2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2.5</tt></td></tr>
+
+<tr><td align=right><tt>-5/2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2.5</tt></td></tr>
+</table></p>
+
+<p>No leading zero in canonic representation of numbers between -1
+and +1:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1/2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.5</tt></td></tr>
+
+<tr><td align=right><tt>-1/2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-.5</tt></td></tr>
+</table></p>
+
+<p>The number of digits is implementation-specific; 1977 ANSI
+standard guarantees 12 digits</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1/2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.5</tt></td></tr>
+
+<tr><td align=right><tt>1/3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.333333333333</tt></td></tr>
+
+<tr><td align=right><tt>1/128</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.0078125</tt></td></tr>
+</table></p>
+
+<p>Definitely not equal to 1:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1/3*3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.999999999999</tt></td></tr>
+</table></p>
+
+<p>Force numeric interpretation</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"15 apples"/"3 oranges"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>5</tt></td></tr>
+</table></p>
+
+<p>In 1995 standard:</p>
+
+<p>The 1995 standard guarantees 15 digits</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1/3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.333333333333333</tt></td></tr>
+</table></p>
+
+<p>Added in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>X/0</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (M9)</td></tr>
+</table></p>
+
+<hr>
+
+<a name="intdivide"></a>
+<h2>Arithmetic operator 'integer divided by' (\)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>9\3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt>5\2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>-5\2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2</tt></td></tr>
+
+<tr><td align=right><tt>1\2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt>-1\2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+</table></p>
+
+<p>Definitely not equal to 1</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>1\3*3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+</table></p>
+
+<p>Added in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>X\0</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (M9)</td></tr>
+</table></p>
+
+<hr>
+
+<a name="modulo"></a>
+<h2>Arithmetic operator 'modulo' (#)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This is probably the most mis-understood operator (or function)
+in many programming languages. FORTRAN and C have 'remainder'
+operators, Ada and M[UMPS] have a true 'modulo' operator. These
+two are not the same (although the result is identical when both
+operands are positive).</p>
+
+<p>The definition of <i>remainder</i> depends on <i>where you went
+to school</i>. If you learned math in Europe, you will have a
+radically different opinion about the sign of a remainder than if
+you went to school in the USA (when either or both of the
+operands are negative, that is, when both operands are positive,
+everyone agrees).<br>
+Both 'schools' are correct, and, as long as you follow your
+definition consistently, you will have no problems.<br>
+In M[UMPS], however, there is no <i>remainder</i> operator. There
+is the <i>modulo</i> instead.<br>
+The definition of <i>modulo</i> is based on Abelian group theory,
+and the true mathematical definition is little known outside of
+mathematical graduate schools (see for instance Donald Knuth's
+<b><i>The Art of Computer Programming</i></b>, Volume 1, page 23
+and further), but the following explanation is close enough for
+practical purposes:</p>
+
+<p>The mathematical definition of Modulo maps a potentially
+infinitely large set of numbers onto a (usually finite) subset.
+The subset is repeated cyclically to map every number from the
+original set onto a member of the subset.<br>
+<tt>number#sub</tt> means: map the number on the left-hand side
+onto the subset <tt><b>[0,sub)</b></tt> (0, zero inclusive, sub
+exclusive). If sub is negative, this should be
+<tt><b>(sub,0]</b></tt>, of course.<br>
+For example, <tt>number#5</tt> and <tt>number#-5</tt> would map
+as follows:</p>
+
+<p><table width=95%>
+<tr><td align=left>number</td>
+<td align=center>-9</td>
+<td align=center>-8</td>
+<td align=center>-7</td>
+<td align=center>-6</td>
+<td align=center>-5</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>5</td>
+<td align=center>6</td>
+<td align=center>7</td>
+<td align=center>8</td>
+<td align=center>9</td></tr>
+
+<tr><td align=left>number#(5)</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td>
+<td align=center>0</td>
+<td align=center>1</td>
+<td align=center>2</td>
+<td align=center>3</td>
+<td align=center>4</td></tr>
+
+<tr><td align=left>number#(-5)</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td>
+<td align=center>0</td>
+<td align=center>-4</td>
+<td align=center>-3</td>
+<td align=center>-2</td>
+<td align=center>-1</td></tr>
+</table></p>
+
+<p>Added in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>X#0</tt></td>
+<td>&nbsp;</td>
+<td align=left>Error (M9)</td></tr>
+</table></p>
+
+<hr>
+
+<a name="power"></a>
+<h2>Arithmetic operator 'to the power of' (**)</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>2**5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>32</tt></td></tr>
+
+<tr><td align=right><tt>2**3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>8</tt></td></tr>
+
+<tr><td align=right><tt>-2**3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-8</tt></td></tr>
+
+<tr><td align=right><tt>16**.25</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>-32**(1/5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2</tt></td></tr>
+
+<tr><td align=right><tt>-2**.5</tt></td>
+<td>&nbsp;</td>
+<td align=left>not specified</td></tr>
+
+<tr><td align=right><tt>-27**(1/3)</tt></td>
+<td>&nbsp;</td>
+<td align=left>not specified</td></tr>
+
+<tr><td align=right><tt>3**2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>9</tt></td></tr>
+
+<tr><td align=right><tt>2**3**4</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4096</tt></td></tr>
+
+<tr><td align=right><tt>4**0.5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>4**(-2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>.0625</tt></td></tr>
+
+<tr><td align=right><tt>27**(1/3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt> (if 1/3 is that exact...)</td></tr>
+
+<tr><td align=right><tt>2.5**2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>6.25</tt></td></tr>
+
+<tr><td align=right><tt>-1**3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-1</tt></td></tr>
+
+<tr><td align=right><tt>-8**(1/3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2</tt> or error</td></tr>
+</table></p>
+
+<p>Square root:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>4**.5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt>2**.5</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1.4142...</tt></td></tr>
+</table></p>
+
+<p>The standard does not (yet) define any behavior in the case of
+imaginary or complex results</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>-1**.5</tt></td>
+<td>&nbsp;</td>
+<td align=left>error or <tt>"0%1"</tt></td></tr>
+</table></p>
+
+<p>This should always work</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>32**.2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+</table></p>
+
+<p>But this depends on the precision that the implementation offers
+internally</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>-32**.2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>-2</tt> (or error)</td></tr>
+</table></p>
+
+<hr>
+
+<a name="concatenate"></a>
+<h2>String operator 'concatenate' (_)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>9_3</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>93</tt></td></tr>
+</table></p>
+
+<p>No separator remains</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"First"_"Second"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>FirstSecond</tt></td></tr>
+</table></p>
+
+<p>Unless embedded in either operand</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"First"_" Second"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>First Second</tt></td></tr>
+</table></p>
+
+<p>Or explicitly specified</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"First"_" "_"Second"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>First Second</tt></td></tr>
+</table></p>
+
+<hr>
+
+<a name="becomes"></a>
+<h2>Assignment operator 'becomes' (=)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>SET</b> X=1<br>
+<b>SET</b> X=A+B*23_" apples"</tt></p>
+
+<p><tt><b>SET</b> X=A=B</tt><br>
+Note: the first "=" sign is an assignment operator, the second
+"=" sign is a relational operator.</p>
+
+<hr>
+
+<a name="equal"></a>
+<h2>Relational operator 'is equal to' (=)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A=123 <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(B=938457:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="objequal"></a>
+<h2>Relational operator 'object is equal to' (==)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This operator only returns a true value if both operands are
+pointers to objects, and both pointer identify the same instance
+of the same object.</p>
+
+<p><tt><b>IF</b> docA==docB <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(graph1==graph4:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="greater"></a>
+<h2>Relational operator 'is greater than' (&gt;)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A&gt;123 <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(B&gt;938457:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="less"></a>
+<h2>Relational operator 'is less than' (&lt;)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A&lt;123 <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(B&lt;938457:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="lesseq"></a>
+<h2>Relational operator 'is less than or equal to'
+(&lt;=)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A&lt;=123 <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(B&lt;=938457:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="greatereq"></a>
+<h2>Relational operator 'is greater than or equal to'
+(&gt;=)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>IF</b> A&gt;=123 <b>SET</b> X=1<br>
+<b>SET</b> Y=<b>$SELECT</b>(B&gt;=938457:124,1:23746)</tt></p>
+
+<hr>
+
+<a name="pattern"></a>
+<h2>Relational operator 'matches pattern' (?)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The pattern-codes to be used in pattern-matching are:<br>
+<tt><b>A</b></tt>: the 26 upper and 26 lower-case alphabetic
+characters<br>
+<tt><b>C</b></tt>: the 33 control-characters<br>
+<tt><b>E</b></tt>: the 128 characters in the ASCII set<br>
+<tt><b>L</b></tt>: the 26 lower-case characters<br>
+<tt><b>N</b></tt>: the 10 digits<br>
+<tt><b>P</b></tt>: the 33 punctuation-characters<br>
+<tt><b>U</b></tt>: the 26 upper-case characters</p>
+
+<p>Modified for internationalization in the 1995 ANSI M[UMPS]
+language standard:<br>
+<tt><b>A</b></tt>: upper and lower-case characters<br>
+<tt><b>C</b></tt>: control-characters<br>
+<tt><b>E</b></tt>: all characters in the character set<br>
+<tt><b>L</b></tt>: lower-case characters<br>
+<tt><b>N</b></tt>: digits<br>
+<tt><b>P</b></tt>: punctuation-characters<br>
+<tt><b>U</b></tt>: upper-case characters</p>
+
+<p><center><tt>X?3N1"."2N.U</tt></center><br>
+1 (<i>true</i>) when the value of variable <tt>X</tt> matches a
+pattern that "looks like" 3 digits, one point, 2 digits and any
+number of upper-case symbols, 0 (<i>false</i>) otherwise:</p>
+
+<p><center><tt>X?2U1"-"2N1"-"2U</tt></center><br>
+1 (<i>true</i>) when  the value of variable <tt>X</tt> matches
+the pattern of a 1985 Dutch license plate, 0 (<i>false</i>)
+otherwise:</p>
+
+<p><center><tt>X?3N1"."1.5N</tt></center><br>
+1 (<i>true</i>) when  the value of variable <tt>X</tt> is a
+positive number, less than 1000 with at least 1 and at most 5
+digits following the decimal point, 0 (<i>false</i>)
+otherwise:</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard</p>
+
+<p>In order to support the Japanese character sets, two new
+pattern identifiers are added:</p>
+
+<p><img src="ka.gif" width=18 height=18> for Kanji
+(<b>$CHAR</b>(161) - <b>$CHAR</b>(223))<br>
+<img src="zen.gif" width=18 height=18> for JIS
+(<b>$CHAR</b>(8481) - <b>$CHAR</b>(32382))</p>
+
+<p>Additions in the 1995 ANSI M[UMPS] language standard (and
+correction in a future) ANSI M[UMPS] language standard:</p>
+
+<p>The concept of 'alternation' is introduced. An 'alternation' is a
+list of possible patterns that each are a valid match for a
+pattern.</p>
+
+<p><center><tt>X?2N1(3P2A,2P3A).E</tt></center><br>
+is equivalent to<br>
+<center><tt>(X?2N3P2A.E)!(X?2N2P3A.E)</tt></center></p>
+
+<p><tt>X?2N1"-"1(3N1"-"1N,1N1":"4N)</tt><br>
+would match <tt>"12-345-6"</tt> and <tt>"12-3:4567"</tt>.</p>
+
+<p><tt>X?.1(1"("3N1")".1(1"-",1"_"))3N.1(1"-",1"_")4N</tt><br>
+would match any of:<br>
+<center>
+<tt>5551212<br>
+555-1212<br>
+555_1212<br>
+(000)5551212<br>
+(000)555-1212<br>
+(000)555_1212<br>
+(000)-5551212<br>
+(000)-555-1212<br>
+(000)-555_1212<br>
+(000)_5551212<br>
+(000)_555-1212<br>
+(000)_555_1212</tt></center></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>In order to support the character ISO-8859-1/USA, a new
+pattern identifier is added:</p>
+
+<p><tt><b>I</b></tt>: "International" characters (any non-ASCII characters
+in ISO-8859-1/USA).</p>
+
+<p>It is made possible to exclude certain patterns:</p>
+
+<p><center><tt>X?.'C</tt></center><br>
+1 (<i>true</i>) when the value of variable <tt>X</tt> does not
+contain any control characters, 0 (<i>false</i>)
+otherwise:</p>
+
+<p><center><tt>X?1"Y".'"Y"1"Y"</tt></center><br>
+1 (<i>true</i>) when the value of variable <tt>X</tt> starts and
+ends with the letter <tt>"Y"</tt>, and no other occurrences of
+that letter are present in that value, 0 (<i>false</i>)
+otherwise:</p>
+
+<p>The concept of "ranges" is introduced. It is made possible to
+specify that a pattern is matched when one of a set of specified
+characters occurs:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"word"?.["aeiouAEIOU"]</tt></td>
+<td>&nbsp;</td>
+<td align=left>0 (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>"ff3a"?.["a":"f"]["A":"F"]N</tt></td>
+<td>&nbsp;</td>
+<td align=left>1 (<i>true</i>)</td></tr>
+</table></p>
+
+<p>The first pattern would be matched by strings that contain only
+vowels; the second pattern would be matched by purely hexadecimal
+numbers.</p>
+
+<p>As a new feature, it has been made possible to extract the
+substring that matches a specific sub-pattern from the string
+that is being "matched". When using this new feature, the name of
+the variable that is to receive the string-segment in question is
+named between parentheses following the pattern-atom that it is
+intended to match.</p>
+
+<p>Assume that the value of local variable <tt>X</tt> matches the
+following pattern: <tt>X?4N1","1.3N</tt>, i.e. 4 numeric digits, one comma
+and then between one and 3 more digits. The code segment:<br>
+<tt><b>IF</b> '(X?4N(ITEM)1","1.3N(QUANT(ITEM)) <b>DO</b> ...</tt><br>
+would cause the values of local variables <tt>ITEM</tt> and 
+<tt>QUANT(ITEM)</tt> to be set to <tt>ITEM=<b>$EXTRACT</b>(X,1,4)</tt>
+(the part that matches <tt>4N</tt>)
+and <tt>QUANT(ITEM)=<b>$EXTRACT</b>(X,6,<b>$LENGTH</b>(X))</tt>
+(the part that matches <tt>1.3N</tt>).</p>
+
+<p>Note that the assignment occurs as the pattern is being
+matched (strict left-to-right), so that the value of local
+variable <tt>ITEM</tt> is well defined when the pattern matching processor
+will attempt to assign a value to <tt>QUANT(ITEM)</tt>.</p>
+
+<hr>
+
+<a name="contains"></a>
+<h2>Relational operator 'contains' ([)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Assume that <tt>DIAGNOSIS="flu-patient"</tt>.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>DIAGNOSIS["pat"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>DIAGNOSIS["lu"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>DIAGNOSE["flute"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>DIAGNOSE["pantie"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<p>Note that all characters of both <tt>"pantie"</tt> and
+<tt>"flute"</tt> do occur in <tt>"flu-patient"</tt>; those of
+<tt>"flute"</tt> even occur in the same order. The contains
+operator insists not only that the symbols in the substring occur
+in that order, but also as a 'solid' substring.</p>
+
+<hr>
+
+<a name="follows"></a>
+<h2>Relational operator 'follows' (])</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Assume that <tt>TXT1="ABC"</tt> and <tt>TXT2="ABD"</tt>.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>TXT2]TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"ABCD"]TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p>Note that the lexicographical order of the texts <tt>"1"</tt>,
+<tt>"2"</tt> and <tt>"10"</tt> is: <tt>"1"</tt>, <tt>"10"</tt>,
+<tt>"2"</tt>, i.e.:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>10]1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>2]1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<hr>
+
+<a name="followseq"></a>
+<h2>Relational operator 'follows or equal to' (]=)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>10]=10</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>2]=1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]=2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>10]=1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>2]=2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>))</td></tr>
+</table></p>
+
+<hr>
+
+<a name="collates"></a>
+<h2>Relational operator 'collates after' (]])</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>Assume that <tt>TXT1="ABC"</tt> and <tt>TXT2="ABD"</tt>.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>TXT2]]TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"ABCD"]]TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"ABCD"]]1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>TXT1]]2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]]1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>2]]1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]]2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p>A future ANSI M[UMPS] language standard introduces an override
+mechanism for collating purposes. See the library functions
+<a href="lib/collate.htm"><tt>$%COLLATE^CHARACTER</tt></a> and
+<a href="lib/collate.htm"><tt>$%COMPARE^CHARACTER</tt></a>
+for more information
+about the override options.</p>
+
+<hr>
+
+<a name="collateseq"></a>
+<h2>Relational operator 'collates after or equal to'
+(]]=)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>TXT2]]=TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"ABCD"]]=TXT1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"ABCD"]]=1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>TXT1]]=2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]]=10</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>2]]=2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>10]]=2</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p>A future ANSI M[UMPS] language standard introduces an override
+mechanism for collating purposes. See the library functions
+<a href="lib/collate.htm"><tt>$%COLLATE^CHARACTER</tt></a> and
+<a href="lib/collate.htm"><tt>$%COMPARE^CHARACTER</tt></a>
+for more information
+about the override options.</p>
+
+<hr>
+
+<a name="and"></a>
+<h2>Logical operator 'and' (&amp;)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>0&amp;0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>0&amp;1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>1&amp;0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>1&amp;1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"5 apples"&amp;"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1&amp;"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"&amp;"trees"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>"0.125"&amp;1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"&amp;0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>"apples"&amp;0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<p>Careful with:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>A&gt;3&amp;B&lt;6</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (always<i> true</i>)</td></tr>
+</table></p>
+
+<p>(<tt>A&gt;3&amp;B</tt> is <tt>0</tt> or <tt>1</tt>, both
+<tt>0</tt> and <tt>1</tt> are <tt>&lt;6</tt>)<br>
+The value of <tt>(A&gt;3)&amp;(B&lt;6)</tt> depends on the values
+of <tt>A</tt> and <tt>B</tt></p>
+
+<hr>
+
+<a name="or"></a>
+<h2>Logical operator 'or' (!)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>0!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>0!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"5 apples"!"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1!"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"!"trees"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"0.125"!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"apples"!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<p>Careful with:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>A&gt;3!B&lt;6</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (always<i> true</i>)</td></tr>
+</table></p>
+
+<p>(<tt>A&gt;3!B</tt> is <tt>0</tt> or <tt>1</tt>, both <tt>0</tt>
+and <tt>1</tt> are <tt>&lt;6</tt>)<br>
+The value of <tt>(A&gt;3)!(B&lt;6)</tt> depends on the values of
+<tt>A</tt> and <tt>B</tt></p>
+
+<hr>
+
+<a name="xor"></a>
+<h2>Logical operator 'exclusive or' (!!)</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>0!!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>0!!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1!!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>1!!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>"5 apples"!!"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>1!!"3 pears"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"!!"trees"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"0.125"!!1</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>"5 apples"!!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>"apples"!!0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+</table></p>
+
+<p>Careful with:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>A&gt;3!!B&lt;6</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (always<i> true</i>)</td></tr>
+</table></p>
+
+<p>(<tt>A&gt;3!!B</tt> is <tt>0</tt> or <tt>1</tt>, both <tt>0</tt>
+and <tt>1</tt> are <tt>&lt;6</tt>)<br>
+The value of <tt>(A&gt;3)!!(B&lt;6)</tt> depends on the values of
+<tt>A</tt> and <tt>B</tt></p>
+
+<hr>
+
+<a name="not"></a>
+<h2>Logical unary operator 'not' (')</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>'12345</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> (<i>false</i>)</td></tr>
+
+<tr><td align=right><tt>'0</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+
+<tr><td align=right><tt>'"Apples"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt> (<i>true</i>)</td></tr>
+</table></p>
+
+<p>The logical or Boolean value of <tt>X</tt>:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>''X</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt> or <tt>1</tt></td></tr>
+</table></p>
+
+<p>The exclusive or of two values:</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<th width=5%>&nbsp;</th>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt>'X'='Y</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X</tt> xor <tt>Y</tt></td></tr>
+</table></p>
+
+<p>This operator can also be used to modify the meaning of other
+operators:</p>
+
+<p><tt>'=</tt> is not equal to<br>
+<tt>'&gt;</tt> is not greater than, i.e. is less than or equal to<br>
+<tt>'&lt;</tt> is not less than, i.e. is greater than or equal to<br>
+<tt>'?</tt> does not match the pattern<br>
+<tt>'[</tt> does not contain<br>
+<tt>']</tt> does not follow<br>
+<tt>'&amp;</tt> not and<br>
+<tt>'!</tt> not or</p>
+
+<p>Added in 1995:<br>
+<tt>']]</tt> does not collate after</p>
+
+<p>To be added in a future standard:<br>
+<tt>'&lt;=</tt> is not less than or equal to, i.e. is greater than<br>
+<tt>'&gt;=</tt> is not greater than or equal to, i.e. is less than<br>
+<tt>']=</tt> does not follow and is not equal to<br>
+<tt>']]=</tt> does not collate after and is not equal to<br>
+<tt>'!!</tt> not exclusive or</p>
+
+<hr>
+
+<a name="indirect"></a>
+<h2>Indirection operator (@)</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>Three types of indirection:</p>
+
+<p>Name indirection</p>
+
+<p><tt><b>SET</b> X="ABC"<br>
+IF 123+@X=456</tt></p>
+
+<p>Argument indirection</p>
+
+<p><tt><b>SET</b> SPACE="!!!",PAGE="#"<br>
+<b>WRITE</b> @<b>$SELECT</b>(ENOUGH:SPACE,1:PAGE)</tt></p>
+
+<p>Pattern indirection</p>
+
+<p><tt><b>SET</b> CODE="3U"_<b>$SELECT</b>(SPECIAL:"2N",1:"")_"5L"<br>
+<b>IF</b> X?@CODE</tt></p>
+
+<p>Addition in 1984 ANSI M[UMPS] language standard.</p>
+
+<p>Fourth type of indirection, subscripted reference indirection:</p>
+
+<p><tt><b>SET</b> ARRAY="PRICES"<br>
+<b>SET</b> PRICE=(100+SALESTAX/100)*@ARRAY@(1,2,3)</tt></p>
+
+<p><tt><b>SET</b> ARRAY="^CUSTOMER(123,45)"<br>
+<b>SET</b> TOTAL=TOTAL+@ARRAY@(2,3,4)</tt></p>
+
+Approved for addition in a future ANSI M[UMPS] Language standard.</p>
+
+<p>Fifth type of indirection, "generic" indirection.</p>
+
+<p>This new type of indirection involves a "catch-all" recovery 
+after all other types of indirection have been attempted by a 
+M[UMPS] language processor. When code is encountered that uses 
+indirection, and none of the above forms of indirection leads to 
+a valid interpretation of the code, the indirection operator and 
+the expression on which it operates are to be replaced by the 
+value of the expression in question, and then the line of code is 
+to be re-evaluated. This may lead to some surprising 
+possibilities:</p>
+
+<p><tt><b>SET</b> X1="Y"<br>
+<b>SET</b> X2="Z="<br>
+<b>SET</b> X3="SecretAccnt=1E9,N"<br>
+<b>SET</b> X4="N=1 HALT"<br>
+<b>SET</b> Y="Example"<br>
+<b>SET</b> Y1="Example1"<br>
+<b>SET</b> Z1="Program"<br>
+<b>SET</b> Z2="TAG^Program"<br>
+<b>SET</b> Z3="(1,2,3)"<br>
+<b>SET</b> Z4=",2,3,4)"</tt></p>
+
+<p>With these values:</p>
+
+<p><tt><b>SET</b> @X1="HELLO"</tt><br>
+will be executed as: <tt><b>SET</b> Y="HELLO"</tt></p>
+
+<p><tt><b>SET</b> @X2"HELLO"</tt><br>
+will be executed as: <tt><b>SET</b> Z="HELLO"</tt></p>
+
+<p><tt><b>SET</b> @X3="HELLO"</tt><br>
+will be executed as: <tt><b>SET</b> SecretAccnt=1E9,N="HELLO"</tt></p>
+
+<p><tt><b>SET</b> @(X1)1="Example"</tt><br>
+will be executed as: <tt><b>SET</b> Y1="Example1"</tt></p>
+
+<p><tt><b>DO</b> ^@(Z1)(1,2,3)</tt><br>
+will be executed as: <tt><b>DO</b> ^Program(1,2,3)</tt></p>
+
+<p><tt><b>DO</b> @(Z2)(1,2,3)</tt><br>
+will be executed as: <tt><b>DO</b> TAG^Program(1,2,3)</tt></p>
+
+<p><tt><b>DO</b> @(Z2)@Z3</tt><br>
+will be executed as: <tt><b>DO</b> TAG^Program(1,2,3)</tt></p>
+
+<p><tt><b>DO</b> @(Z2)("BLUE"@Z4</tt><br>
+will be executed as: <tt><b>DO</b> TAG^Program("BLUE",2,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various operators that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative and subject to
+be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an authoritative
+definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+</body></html>

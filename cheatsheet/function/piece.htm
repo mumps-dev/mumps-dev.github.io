@@ -1,0 +1,231 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $PIECE</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $P[IECE]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns a substring of the value passed as a
+parameter.</p>
+
+<p><tt><b>SET</b> X="ABC*DEF"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"*",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABC"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"*",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"DEF"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"*",3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt> (empty string)</td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"B",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> Y="B"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,Y,1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,Y,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"C*DEF"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"/",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"ABC*DEF"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> X="A.B.C.D"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,".",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,".",2,3)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"B.C"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,".",1,100)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A.B.C.D"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,".",-5,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"A.B"</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,".",3,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+
+<tr><td align=right><tt><b>$PIECE</b>(X,"",1,100)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>""</tt></td></tr>
+</table></p>
+
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>It is allowed to specify a reference to <b>$PIECE</b>
+on the left hand side of the equal sign in a <b>SET</b> command.</p>
+
+<p><tt><b>SET</b> ^DATA("SUB")="11^22^33^44^55"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(^DATA("SUB"),"^",3)=123</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"11^22^123^44^55"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(^DATA("SUB"),"^",3,4)="three^four"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"11^22^three^four^55"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(^DATA("SUB"),"^",3)="a^b^c"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"11^22^a^b^c^four^55"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(^DATA("SUB"),"^",2,4)=""</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"11^^c^four^55"</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> X="This is an test"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This is a test"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",2,3)="was no"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This was no test"</tt></td></tr>
+
+<tr><td align=right><tt><b>SET $PIECE</b>(x," ",3)="a"</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>X="This was a test"</tt></td></tr>
+</table></p>
+
+<p><tt><b>KILL</b> ^X<br>
+<b>SET</b> ^X(1,2,3)=9<br>
+<b>SET</b> ^X(1,2)=7<br>
+<b>SET $PIECE</b>(^(2),";",3,^X(1,2,3))=6<br>
+<b>WRITE</b> ^(2)</tt><br>
+Let's trace the order of evaluation, and see what happens to the
+naked indicator:<br>
+<tt><b>SET</b> ^X(1,2,3)=9</tt><br>
+naked indicator is <tt>^X(1,2,<br>
+<b>SET</b> ^X(1,2)=7</tt><br>
+naked indicator is <tt>^X(1,</tt></p>
+
+<p>fetch <tt>^X(1,2,3)</tt>; naked indicator is <tt>^X(1,2,</tt><br>
+fetch ^(2) = <tt>^X(1,2,2)</tt>, which is 'undefined'
+(error: <a href="../mdcerror.htm#M7">M7</a>)</p>
+
+<p>So, let's resolve that problem:<br>
+<tt><b>KILL</b> ^X<br>
+<b>SET</b> ^X(1,2,3)=9<br>
+<b>SET</b> ^X(1,2,2)=8<br>
+<b>SET</b> ^X(1,2)=7<br>
+<b>SET $PIECE</b>(^(2),";",3,^X(1,2,3))=6<br>
+<b>WRITE</b> ^(2)</tt><br>
+Now that all referenced variables are defined, the command is
+evaluated<br>
+as:<br>
+<tt><b>SET $PIECE</b>(^X(1,2,2),";",3,9)=6</tt><br>
+so that the value of <tt>^X(1,2,2)</tt> becomes
+<tt>"8;;6"</tt></p>
+
+<p><tt><b>SET</b> ^X("Y")=1<br>
+<b>SET $PIECE</b>(^X("Y"),";",2,1)=0<br>
+<b>WRITE</b> ^X("Y")</tt><br>
+will produce the value <tt>1</tt>. Because in the <b>SET
+$PIECE</b>, the until value is less than the from value, no
+information is changed, and the naked indicator is unaffected.</p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$PIECE</b>(VALUE,STRING)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$PIECE</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<p><b>$PIECE</b>(VALUE,STRING,PIECE)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$PIECE</b>(^(5,6),^(7,8),^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<p><b>$PIECE</b>(VALUE,STRING,FROM,TO)<br>
+<b>SET</b> ^ABC(1,2)="reset naked indicator"<br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b>
+^(3,4)=<b>$PIECE</b>(^(5,6),^(7,8),^(9,10),^(11,12))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. fetch ^(11,12) = <tt>^ABC(1,5,7,9,11,12)</tt><br>
+; 5. store ^(3,4) = <tt>^ABC(1,5,7,9,11,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,11,3,</tt></p>
+
+<p><b>SET $PIECE</b>(VALUE,STRING,FROM,TO)=VALUE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET $PIECE</b>(^(3,4),^(5,6),^(7,8),^(9,10))=^(11,12)</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. fetch ^(11,12) = <tt>^ABC(1,5,7,9,11,12)</tt><br>
+; 5. if <tt>^ABC(1,5,7,9,10)</tt> &lt; <tt>^ABC(1,5,7,8)</tt> or<br>
+; if <tt>^ABC(1,5,7,9,10)</tt> &lt; <tt>1</tt><br>
+; don't store, naked indicator is <tt>^ABC(1,5,7,9,11,</tt><br>
+; else continue<br>
+; 6. fetch/store ^(3,4) = <tt>^ABC(1,5,7,9,11,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,11,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

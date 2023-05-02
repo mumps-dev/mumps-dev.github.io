@@ -1,0 +1,90 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $STORAGE</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $STORAGE</h1>
+
+<a name="$S[TORAGE]"></a>
+<h2>$S[TORAGE]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard</p>
+
+<p>The value of this variable is an implementation-specific measure
+for the amount of storage that is available for the manipulation
+of local variables.</p>
+
+<p><tt><b>IF</b> <b>$STORAGE</b>&lt;500
+<b>WRITE</b> !,"Now",<b>$STORAGE</b>," left."</tt></p>
+
+<p>Assume that the following subroutine is available for
+execution:</p>
+
+<pre>
+X <b>WRITE</b> !,"Before NEW command: ",<b>$STORAGE</b>
+ <b>NEW</b> A,B,C
+ <b>WRITE</b> !,"After NEW command:  ",<b>$STORAGE</b>
+ <b>SET</b> A=1,B=2,C=3
+ <b>WRITE</b> !,"After SET command:  ",<b>$STORAGE</b>
+ <b>SET</b> LEVEL=LEVEL+1
+ <b>IF</b> LEVEL&lt;6 <b>DO</b> X
+ <b>QUIT</b>
+</pre>
+
+<p>Then, the commands<br>
+<tt><b>SET</b> LEVEL=0 <b>WRITE</b> "Start: ",<b>$STORAGE</b>
+<b>DO</b> X</tt><br>
+will produce (note that these changes are implementation-specific):
+
+<pre>
+Start: 153536
+Before NEW command: 153456                        Change is 80
+After NEW command:  153360                        Change is 96
+After SET command:  153168                       Change is 192
+Before NEW command: 153168                         Change is 0
+After NEW command:  153120                        Change is 48
+After SET command:  152928                       Change is 192
+Before NEW command: 152928                         Change is 0
+After NEW command:  152880                        Change is 48
+After SET command:  152688                       Change is 192
+Before NEW command: 152688                         Change is 0
+After NEW command:  152640                        Change is 48
+After SET command:  152448                       Change is 192
+Before NEW command: 152448                         Change is 0
+After NEW command:  152400                        Change is 48
+After SET command:  152208                       Change is 192
+Before NEW command: 152208                         Change is 0
+After NEW command:  152160                        Change is 48
+After SET command:  151968                       Change is 192
+</pre>
+
+Keep in mind that every <b>NEW</b> command creates a new
+environment for one or more variables. Although the old
+environment for those variables may be temporarily hidden, that
+environment still consumes space in the memory allocated to local
+variable storage.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

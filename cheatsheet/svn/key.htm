@@ -1,0 +1,152 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Special variables -- $KEY</title>
+<body background="../mbe.gif">
+<h1>Special variables -- $KEY</h1>
+
+<a name="$K[EY]"></a>
+<h2>$K[EY]</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The value of <b>$KEY</b> is the string that terminated the most
+recent input.</p>
+
+<p>After a command like <tt><b>READ</b> X#20</tt>, the value of
+<b>$KEY</b> is most likely to be equal to the empty string.<br>
+After a command like <tt><b>READ</b> X</tt>, the value of
+<b>$KEY</b> will usually be equal to <b>$CHAR</b>(13) (the enter-
+key). However, when input was terminated by typing a function
+key, the value of <b>$KEY</b> will be equal to the string of
+characters that is transmitted by that function key. The most
+common function keys on the VT-100 and compatible terminals
+are:</p>
+
+<p><table>
+<tr><th>Key</th>
+<th>Code sequence</th></tr>
+
+<tr><td>Up arrow</td>
+<td><b>$CHAR</b>(27,91,65)</td></tr>
+
+<tr><td>Down arrow</td>
+<td><b>$CHAR</b>(27,91,66)</td></tr>
+
+<tr><td>Right arrow</td>
+<td><b>$CHAR</b>(27,81,67)</td></tr>
+
+<tr><td>Left arrow</td>
+<td><b>$CHAR</b>(27,91,68)</td></tr>
+
+<tr><td>PF1</td>
+<td><b>$CHAR</b>(27,80)</td></tr>
+
+<tr><td>PF2</td>
+<td><b>$CHAR</b>(27,81)</td></tr>
+
+<tr><td>PF3</td>
+<td><b>$CHAR</b>(27,82)</td></tr>
+
+<tr><td>PF4</td>
+<td><b>$CHAR</b>(27,83)</td></tr>
+</table></p>
+
+<p>In addition, the VT-200 terminals (and the more modern versions
+of that family of terminals) also offer:</p>
+
+<p><table>
+<tr><th>Key</th>
+<th>Code sequence</th></tr>
+
+<tr><td>Find</td>
+<td><b>$CHAR</b>(27,91)_"1~"</td></tr>
+
+<tr><td>Insert</td>
+<td><b>$CHAR</b>(27,91)_"2~"</td></tr>
+
+<tr><td>Remove</td>
+<td><b>$CHAR</b>(27,91)_"3~"</td></tr>
+
+<tr><td>Select</td>
+<td><b>$CHAR</b>(27,91)_"4~"</td></tr>
+
+<tr><td>Previous page</td>
+<td><b>$CHAR</b>(27,91)_"5~"</td></tr>
+
+<tr><td>Next page</td>
+<td><b>$CHAR</b>(27,91)_"6~"</td></tr>
+
+<tr><td>F7</td>
+<td><b>$CHAR</b>(27,91)_"18~"</td></tr>
+
+<tr><td>F8</td>
+<td><b>$CHAR</b>(27,91)_"19~"</td></tr>
+
+<tr><td>F9</td>
+<td><b>$CHAR</b>(27,91)_"20~"</td></tr>
+
+<tr><td>F10</td>
+<td><b>$CHAR</b>(27,91)_"21~"</td></tr>
+
+<tr><td>F11</td>
+<td><b>$CHAR</b>(27,91)_"23~"</td></tr>
+
+<tr><td>F12</td>
+<td><b>$CHAR</b>(27,91)_"24~"</td></tr>
+
+<tr><td>F13</td>
+<td><b>$CHAR</b>(27,91)_"25~"</td></tr>
+
+<tr><td>F14</td>
+<td><b>$CHAR</b>(27,91)_"26~"</td></tr>
+
+<tr><td>Help</td>
+<td><b>$CHAR</b>(27,91)_"28~"</td></tr>
+
+<tr><td>Do</td>
+<td><b>$CHAR</b>(27,91)_"29~"</td></tr>
+
+<tr><td>F17</td>
+<td><b>$CHAR</b>(27,91)_"31~"</td></tr>
+
+<tr><td>F18</td>
+<td><b>$CHAR</b>(27,91)_"32~"</td></tr>
+
+<tr><td>F19</td>
+<td><b>$CHAR</b>(27,91)_"33~"</td></tr>
+
+<tr><td>F20</td>
+<td><b>$CHAR</b>(27,91)_"34~"</td></tr>
+</table></p>
+
+Approved for addition in a future ANSI M[UMPS] Language Standard.</p>
+
+<p>The initial value of <b>$KEY</b> is implementation-dependent.
+However, if the initial value of <b>$IO</b> is the empty string,
+then the initial value of <b>$KEY</b> is also the empty string.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under the
+title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various special variables that are
+defined in the M[UMPS] language standard (ANSI X11.1, ISO
+11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

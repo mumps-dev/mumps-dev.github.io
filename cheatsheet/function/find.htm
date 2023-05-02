@@ -1,0 +1,180 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Functions - $FIND</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Functions - $F[IND]</h1>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This function returns information about whether and where a
+substring occurs in a string.</p>
+
+<p>Assume that <tt>TEXT="ABCDABEFAD"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"A")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"A",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>6</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"A",11)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>11</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"ABC",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"ABD")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> Y=<b>$FIND</b>(TEXT,"",4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt><b>SET</b> T=TEXT<br>
+<b>SET</b> L=<b>$LENGTH</b>(T)+1<br>
+<b>SET</b> Y=<b>$FIND</b>(T,"",L)</tt></td>
+<td>&nbsp;</td>
+<td align=left valign=bottom><tt>0</tt></td></tr>
+</table></p>
+
+<p><b>SET</b> TEXT="ABCATEXTYZ"
+
+<table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A")</tt></td>
+<td>&nbsp;</td>
+<td align=left>2</td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"B")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"Z")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"ABC")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"TEXT")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>9</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,TEXT)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>11</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>("ABC","ABC")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A",1)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>2</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A",2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>5</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A",4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>5</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A",5)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"A",100)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>0</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>1</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"",4)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>4</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,"",10)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>10</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> Y="B"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+</table></p>
+
+<p><tt><b>SET</b> Z="1.2W",Y="B"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,Y,Z)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+
+<tr><td align=right><tt><b>$FIND</b>(TEXT,Y,2)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>3</tt></td></tr>
+</table></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>$FIND</b>(VALUE,STRING)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$FIND</b>(^(5,6),^(7,8))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,3,</tt></p>
+
+<p><b>$FIND</b>(VALUE,STRING,FROM)<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>SET</b> ^(3,4)=<b>$FIND</b>(^(5,6),^(7,8),^(9,10))</tt><br>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<hr>
+</body></html>

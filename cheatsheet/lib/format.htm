@@ -1,0 +1,266 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>Library Functions -- $%FORMAT^STRING</title>
+<body background="../mbe.gif">
+<h1>Library Functions -- $%FORMAT^STRING</h1>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This function formats a numeric value to match certain
+local preferences for the representation of numbers. The function
+allows for various separators, currency symbols, leading and trailing
+markers, et cetera.</p>
+
+<p>The examples below all work with the same test value<br>
+<tt><b>SET</b> B="100000.05"</tt></p>
+
+<p>Set up the formatting preferences:<br>
+<tt><b>SET</b> X="FM=Z:CS=""$"":DC=""."":SL="","":FS=""*"""<br>
+<b>SET</b> Z="cnsnnnsnnndnn"</tt><br>
+FM is the local variable that specifies the format mask<br>
+CS is the currency string<br>
+DC is the decimal character<br>
+SL is left separator character<br>
+FS is the fill string</p>
+
+<p>In the "mask string", the meaning of the letters is:<br>
+<tt>c</tt> = currency symbol<br>
+<tt>d</tt> = decimal separator (may occur only once in mask)<br>
+<tt>f</tt> = floating symbol<br>
+<tt>l</tt> = left justified numeric<br>
+<tt>m</tt> = money (right justified)<br>
+<tt>n</tt> = numeric<br>
+<tt>s</tt> = separator<br>
+<tt>x</tt> = spacer<br>
+<tt>-</tt> = display sign only if negative<br>
+<tt>+</tt> = display sign always<br>
+<tt>( and )</tt> = display negative numbers within parentheses<br>
+space = insert space for the spaces in the mask</p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"$**100,000.05"</tt></td></tr>
+</table></p>
+
+<p>Change the fill character:<br>
+<tt><b>SET</b> Z="+nsnnnsnnndnn",X=X_":FS=""0"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"+00100,000.05"</tt></td></tr>
+</table></p>
+  
+<p>Make the currency symbol a multi-character string:<br>
+<tt><b>SET</b> Z="ccnsnnnsnnndnn"<br>
+<b>SET</b> X=X_":FS="" "":CS=""DM"":SL=""."":DC="","""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"DM&nbsp;&nbsp;100.000,05"</tt></td></tr>
+</table></p>
+
+<p>Show the currency as a trailing string:<br>
+<tt><b>SET</b> Z="nsnnnsnnn ccc",X=X_":CS=""ATS"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;100.000&nbsp;ATS"</tt></td></tr>
+</table></p>
+  
+<p>Note that for every format property, the last one (right-most) prevails:<br>
+<tt><b>WRITE $PIECE</b>(X,":",1,7)<br>
+FM=Z:CS="$":DC=".":SL=",":FS="*":FS="0":FS=" "<br>
+<b>WRITE $PIECE</b>(X,":",8,99)<br>
+CS="DM":SL=".":DC=",":CS="ATS"</tt></p>
+
+<p>Some local preferences use the currency symbol as the decimal separator:<br>
+<tt><b>SET</b> X="FM=Z:DC=""$"":SL="" "":FS="" """<br>
+<b>SET</b> Z="nsnnnsnnndnn"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;100&nbsp;000$05"</tt></td></tr>
+</table></p>
+
+<p>Put the sign in a "floating" position:<br>
+<tt><b>SET</b> X="FM=Z:DC=""."":SL="","":FS="" """<br>
+<b>SET</b> Z="cfsfffsffndnn"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(-B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"$&nbsp;&nbsp;-100,000.05"</tt></td></tr>
+</table></p>
+
+<p>Apply a different fill character<br>
+<tt><b>SET</b> T=X_":FS=""$"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,T)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"$$$100,000.05"</tt></td></tr>
+</table></p>
+
+<p>Use parentheses to indicate negative value:<br>
+<tt><b>SET</b> Z="(nnsnnnsnnndnn)",Y=X_":FS=""&amp;"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(-B,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"(&&&100,000.05)"</tt></td></tr>
+</table></p>
+
+<p>Allow the parentheses to "float":<br>
+<tt><b>SET</b> Z="(ffsfffsffndnn)"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(-B,X)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;&nbsp;(100,000.05)"</tt></td></tr>
+</table></p>
+
+<p>Braces do not appear for positive values:<br>
+<tt><b>SET</b> Z="(nnsnnnsnnndnn)",Y=X_":FS=""&amp;"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(B,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&&&100,000.05&nbsp;"</tt></td></tr>
+</table></p>
+
+<p>Insert a separator character at specific places:<br>
+<tt><b>SET</b> Z="nnsnnsnnsn",Y=X_":SL=""-"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(1234567,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12-34-56-7"</tt></td></tr>
+</table></p>
+
+<p>Use multiple separators:<br>
+<tt><b>SET</b> Z="nns nns",Y=X_":SL=""""""'"""</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(1210,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"12'&nbsp;10""</tt></td></tr>
+</table></p>
+
+<p>Use different separators to the left and to the right
+of the decimal separator:<br>
+<tt><b>SET</b> Z="nnnnsnnnnsnnnnsnnnndnnnnsnnnnsnnnn"<br>
+<b>SET</b> Y=X_":SL=""!@#"":SR=""%^"":DC="","""<br>
+<b>SET</b> VAL=345678901234.56789</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(VAL,Y)</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3456@7890!1234,5678%9000^000"</tt></td></tr>
+</table></p>
+
+<p>Right and left justification:<br>
+<tt><b>SET</b> L="llsllsllsl",R="nnsnnsnnsn"<br>
+<b>SET ^$JOB</b>(<b>$JOB</b>,"FORMAT","SL")="-"</tt></p>
+
+<p><table width=95%>
+<tr><th align=right width=45%>Reference</th>
+<td>&nbsp;</td>
+<th align=left width=45%>Value</th></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(4567,"FM=R")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"&nbsp;&nbsp;&nbsp;&nbsp;4-56-7"</tt></td></tr>
+
+<tr><td align=right><tt><b>$%FORMAT^STRING</b>(4567,"FM=L")</tt></td>
+<td>&nbsp;</td>
+<td align=left><tt>"45-67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</tt></td></tr>
+</table></p>
+
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).
+Click <a href="format.rs">here</a> to
+view or download the code for this function.
+Click <a href="mlibfunc.rs">here</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various library functions that are
+defined for the M[UMPS] programming language.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

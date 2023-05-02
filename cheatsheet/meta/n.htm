@@ -1,0 +1,437 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -N-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter N</h1>
+
+<p><a href="#naked_indicator">naked indicator</a>,
+<a href="#name">name</a>,
+<a href="#namedactual">namedactual</a>,
+<a href="#namedactuallist">namedactuallist</a>,
+<a href="#namevalue">namevalue</a>,
+<a href="#newargument">newargument</a>,
+<a href="#newsvn">newsvn</a>,
+<a href="#nlformat">nlformat</a>,
+<a href="#noncomma">noncomma</a>,
+<a href="#noncommachars">noncommachars</a>,
+<a href="#noncommasemi">noncommasemi</a>,
+<a href="#nonquote">nonquote</a>,
+<a href="#nref">nref</a>,
+<a href="#nrefind">nrefind</a>,
+<a href="#Null_string">Null string</a>,
+<a href="#numexpr">numexpr</a>,
+<a href="#numlit">numlit</a></p>
+
+<hr>
+<a name="naked_indicator"></a>
+<h2>naked indicator</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>The <i>naked indicator</i> is an internal variable in a M[UMPS] system. The
+value of this variable may be either undefined or defined. When this variable
+has a defined value, a <i>naked reference</i> will build a reference
+to a global variable, based on the value of the <i>naked
+indicator</i>, and the information in the <i>naked reference</i>.</p>
+
+<p>Initially, the <i>naked indicator</i> is undefined.</p>
+
+<p>The <i>naked indicator</i> is defined after each reference to a
+subscripted global variable and becomes undefined after each reference to an
+unsubscripted global variable.</p>
+
+<p>A <i>naked reference</i> may redefine the value of the <i>naked
+indicator</i>.</p>
+
+<p><table width=90% border=2>
+<tr><th>Naked indicator<br>
+Before evaluation</th>
+<th>Reference</th>
+<th>Actual reference</th>
+<th>Naked indicator<br>
+After evaluation</th></tr>
+
+<tr><td>undefined</td>
+<td>^(123)</td>
+<td>error</td>
+<td>undefined</td></tr>
+
+<tr><td>undefined</td>
+<td>^ABC</td>
+<td>^ABC</td>
+<td>undefined</td></tr>
+
+<tr><td>undefined</td>
+<td>^A(1,2)</td>
+<td>^A(1,2)</td>
+<td>^A(1,</td></tr>
+
+<tr><td>^A(1,</td>
+<td>^(123)</td>
+<td>^A(1,123)</td>
+<td>^A(1,</td></tr>
+
+<tr><td>^A(1,</td>
+<td>^(4,5,6)</td>
+<td>^A(1,4,5,6)</td>
+<td>^A(1,4,5,</td></tr>
+
+<tr><td>^A(1,</td>
+<td>^BCD(1)</td>
+<td>^BCD(1)</td>
+<td>^BCD(</td></tr>
+
+<tr><td>^BCD(</td>
+<td>^KLM</td>
+<td>^KLM</td>
+<td>undefined</td></tr>
+</table></p>
+
+<hr>
+<a name="name"></a>
+<h2>name</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the sequence of characters that
+establishes the name of an entity. Note that the sequence of characters that
+are described by the metalanguage symbol <b>name</b> does not include
+the prefixed characters for the names of certain special entities (^ for
+routines and global variables, $ for intrinsic functions and special
+variables, $$ for extrinsic functions and extrinsic variables or ^$ for
+structured system variables).</p>
+
+<p>A <b>name</b> can start with either an alphabetic character or a
+percent sign (<tt>%</tt>); any further characters should be alphabetic
+characters or digits.</p>
+
+<p>While the definition of <b>name</b> allows for any alphabetic
+characters, the portability section prohibits the use of lower case characters
+in names.</p>
+
+<p>Only the first 8 characters in a name are interpreted by a M[UMPS] system.</p>
+
+<p>Tricky detail about the term "name": when used colloquially, the prefix
+characters (^, $, etcetera) are usually included, when used as a metalanguage
+symbol, these characters are not included.
+I.e. these prefix characters do not count when determining the length of
+the name.</p>
+
+<p>Modification in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>A new metalanguage symbol is defined (<b>ident</b>) which represents
+"any character that may be used in a name". This addition allows for the
+inclusion of non-ASCII alphabetic characters in names.</p>
+
+<p>A <b>name</b> can start with either an <b>ident</b> character or a percent
+sign (<tt>%</tt>); any further characters should be <b>ident</b> characters or
+digits.</p>
+
+<p>Modifications in a future ANSI M[UMPS] language standard.</p>
+
+<p>The characters that are eligible to be used in portable names are no
+longer restricted to upper case only.
+
+A M[UMPS] system is guaranteed to interpret the first 31 characters of a
+name. Implementations may allow for even longer names to be unique.</p>
+
+<p>In addition, characters beyond the implementation's maximum limit for 
+the length of a name are no longer ignored: an error
+(<a href="../mdcerror.htm#M56">M56</a>)
+will occur when too many characters are used in a name.</p>
+
+<hr>
+<a name="namedactual"></a>
+<h2>namedactual</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a value in a parameter
+of a method of an object. Such value can be passed either "by 
+value" or "by reference".</p>
+
+<hr>
+<a name="namedactuallist"></a>
+<h2>namedactuallist</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the list of parameters
+that may be passed to a method of an object. Parameters
+in this list (enclosed in parameters, separated by commas) may
+be either "values" (passed "by value" or "by reference)
+or "named values" (passed as a keyword = value combination).
+Simple "values" as well as "named values" may be passed "by
+value" as well as "by reference".</p>
+
+<hr>
+<a name="namevalue"></a>
+<h2>namevalue</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a value that meets the syntax of the name
+of a variable (local or global). A <b>namevalue</b> can not evaluate to a
+<i>naked reference</i>.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a value that meets the syntax of the name
+of a variable (local variable, global variable or structured system variable).
+A <b>namevalue</b> can not evaluate to a <i>naked reference</i>.</p>
+
+<hr>
+<a name="newargument"></a>
+<h2>newargument</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<b>NEW</b> command. Examples of valid arguments for the <b>NEW</b> command
+appear in an earlier section. The argument of the <b>NEW</b> command is either
+a name of a variable or a list of names of variables (separated by commas)
+enclosed in parentheses, or an indirection operator (<tt>@</tt>) followed by
+an expression that evaluates to a list (separated by commas) of such
+arguments.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>The intrinsic special variables <b>$ESTACK</b> and <b>$ETRAP</b> may occur as
+arguments of the <b>NEW</b> command.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>The intrinsic special variable <b>$TEST</b> may occur as an argument of the
+<b>NEW</b> command.</p>
+
+<hr>
+<a name="newsvn"></a>
+<h2>newsvn</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an occurrence of an intrinsic
+special variable as an argument of the <b>NEW</b> command.<br>
+Currently, the intrinsic special variables <b>$ESTACK</b> and
+<b>$ETRAP</b> may occur as arguments of the <b>NEW</b> command.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard:</p>
+
+<p>The intrinsic special variable <b>$TEST</b> may occur as an
+argument of the <b>NEW</b> command.</p>
+
+<p>The intrinsic special variable <b>$REFERENCE</b> may occur as
+an argument of the <b>NEW</b> command.</p>
+
+<hr>
+<a name="nlformat"></a>
+<h2>nlformat</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a format item that causes
+a line-feed in a <b>READ</b> or <b>WRITE</b> command.
+Such a format is written as an exclamation mark.</p>
+
+<hr>
+<a name="noncomma"></a>
+<h2>noncomma</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character (from the 94 printable ASCII
+characters) that is not the comma character (<b>$CHAR</b>(44) or
+<tt>","</tt>).</p>
+
+<hr>
+<a name="noncommachars"></a>
+<h2>noncommachars</h2>
+
+<p>Introduced in the 1995 M[UMPS] Windowing Application Programmer's Interface.</p>
+
+<p>This metalanguage symbol represents a sequence of zero or more characters,
+excluding the comma.</p>
+
+<hr>
+<a name="noncommasemi"></a>
+<h2>noncommasemi</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character
+(from the 94 printable ASCII
+characters) that is not the comma character (<b>$CHAR</b>(44) or
+<tt>","</tt>) or the semi-colon character (<b>$CHAR</b>(59) or
+<tt>";"</tt>).</p>
+
+<hr>
+<a name="nonquote"></a>
+<h2>nonquote</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents any character (from the 94 printable ASCII
+characters) that is not the quote character (<b>$CHAR</b>(34) or
+<tt>""""</tt>).</p>
+
+<hr>
+<a name="nref"></a>
+<h2>nref</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to a name, in the context of
+the <b>LOCK</b> command. A reference to a name, in this context, may be the
+name of any subscripted or unsubscripted local or global variable, specified
+either "directly" or "indirectly", but not a naked reference.</p>
+
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+
+<p>There may be an evnvironment specification in a name reference.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard:</p>
+
+<p>There may be a "subscript indirection" in a name reference.</p>
+
+<hr>
+<a name="nrefind"></a>
+<h2>nrefind</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to a name,
+in a form that makes an indirect reference to that name.</p>
+
+<hr>
+<a name="Null_string"></a>
+<h2>Null string</h2>
+
+<p>This term is not one that is formally in any M[UMPS] standard, but it is one
+that gives rise to a lot of confusion. To many people this term
+identifies a string that contains no characters, i.e. a string for
+which <b>$LENGTH</b>(string) equals 0 (zero).
+To many other people this term identifies a string that contains
+one character, namely the ASCII character that is called NULL (internal code
+0, or <b>$CHAR</b>(0)).</p>
+
+<p>As a result, many people prefer to avoid using the ambiguous term
+<i>null string</i> and
+use the term <i>empty string</i> to denote the string of length 0, and the
+term <i>NULL character</i> for the string of length 1.</p>
+
+<p>Note that in C and Unix (TM), the length of a string containing one <i>NULL
+character</i> equals 0, whereas in M[UMPS]
+<b>$LENGTH</b>(<b>$CHAR</b>(0))=1.</p>
+
+<hr>
+<a name="numexpr"></a>
+<h2>numexpr</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the numeric interpretation of an
+expression. In order to produce the numeric interpretation of an expression,
+first the expression is evaluated, and then reduced to its canonical numeric
+representation.</p>
+
+<p>The reduction to a canonic numerical representation
+involves (colloquially) the removal of any redundant leading and trailing
+zeroes, the conversion of exponentionential notation to "mantissa only"
+notation, and the reduction of any leading plus (<tt>+</tt>) and minus
+(<tt>-</tt>) signs to at most one leading minus sign.</p>
+
+<p><table width=90% border=2>
+<tr><th align=right>String value</th>
+<th align=left>Numeric interpretation</th></tr>
+
+<tr><td align=right> 123.456</td>
+<td>123.456</td></tr>
+
+<tr><td align=right> "5 apples"</td>
+<td>5</td></tr>
+
+<tr><td align=right> "+---+--+---+++-5.2300"</td>
+<td>-5.23</td></tr>
+
+<tr><td align=right> 123.45E6</td>
+<td>123450000</td></tr>
+</table></p>
+
+<hr>
+<a name="numlit"></a>
+<h2>numlit</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a numeric literal string. A numeric
+literal string consists of a mantissa (see metalanguage symbol
+<a href="m.htm#mant"> mant</a>),
+and optionally an exponent (see metalanguage symbol
+<a href="e.htm#exp"> exp</a>.<br>
+A <b>numlit</b> is not necessarily a canonic representation of a number.</p>
+
+<p>Valid numeric literals are:</p>
+
+<p><tt>0<br>
+123<br>
+00000<br>
+00123<br>
+.00000<br>
+.10100<br>
+.12345<br>
+1.23E+20<br>
+1.23E-5<br>
+1.23E-005<br>
+12E3</tt></p>
+
+<p>but not:</p>
+
+<p><tt>0.<br>
+1.<br>
+123e-4<br>
+12.3E4.5</tt></p>
+
+<p>The ANSI standard guarantees 9 digits of precision, and a numeric range from
+-1*10**25 through -1*10**-25, then 0, then +1*10**-25 through +1*10**25.</p>
+
+<p>Modification in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>The ANSI standard guarantees 12 digits of precision, and a numeric range from
+-1*10**25 through -1*10**-25,
+then 0, then +1*10**-25 through +1*10**25.</p>
+
+<p>Modification in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>The ANSI standard guarantees 15 digits of precision, a computational accuracy
+of 1 in 10**12 for the operators <tt>+</tt>, <tt>-</tt>,
+<tt>*</tt>, <tt>#</tt>, <tt>/</tt> and <tt>\</tt>, a computational accuracy
+of 1 in 10**9 for the operator <tt>**</tt>, and a numeric
+range from -1*10**25 through -1*10**-25, then 0, then +1*10**-25 through
++1*10**25.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "N" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

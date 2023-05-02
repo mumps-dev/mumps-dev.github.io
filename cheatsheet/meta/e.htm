@@ -1,0 +1,656 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] metalanguage terminology -E-</title>
+<body background="../mbe.gif">
+<h1>Metalanguage, letter E</h1>
+
+<p><a href="#ecode">ecode</a>,
+<a href="#einfoattribute">einfoattribute</a>,
+<a href="#einforef">einforef</a>,
+<a href="#ekeyword">ekeyword</a>,
+<a href="#elattribute">elattribute</a>,
+<a href="#emptystring">emptystring</a>,
+<a href="#ename">ename</a>,
+<a href="#endangle">endangle</a>,
+<a href="#entryref">entryref</a>,
+<a href="#environment">environment</a>,
+<a href="#eoffset">eoffset</a>,
+<a href="#eol">eol</a>,
+<a href="#eor">eor</a>,
+<a href="#erchar">erchar</a>,
+<a href="#erspec">erspec</a>,
+<a href="#espec">espec</a>,
+<a href="#especattribute">especattribute</a>,
+<a href="#especref">especref</a>,
+<a href="#etype">etype</a>,
+<a href="#evclass">evclass</a>,
+<a href="#eventexpr">eventexpr</a>,
+<a href="#evid">evid</a>,
+<a href="#exfunc">exfunc</a>,
+<a href="#exp">exp</a>,
+<a href="#expr">expr</a>,
+<a href="#expratom">expratom</a>,
+<a href="#expritem">expritem</a>,
+<a href="#exprtail">exprtail</a>,
+<a href="#externalroutinename">externalroutinename</a>,
+<a href="#externref">externref</a>,
+<a href="#extid">extid</a>,
+<a href="#extractfields">extractfields</a>,
+<a href="#extracttemplate">extracttemplate</a>,
+<a href="#extresource">extresource</a>,
+<a href="#extsyntax">extsyntax</a>,
+<a href="#exttext">exttext</a>,
+<a href="#exvar">exvar</a></p>
+
+<hr>
+<a name="ecode"></a>
+<h2>ecode</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a code for an erroneous situation that may
+be found in the value of intrinsic special variable <tt>$ECODE</tt>. Such a
+code looks like one of the letters M, U or Z, followed by one or more
+printable characters (see the metalanguage symbol
+<a href="g.htm#graphic"> graphic</a>) that are not equal to the comma
+(<tt>,</tt>).</p>
+
+<p>Codes that start with <tt>M</tt> are defined in the ANSI M[UMPS] language
+standard; codes that start with <tt>U</tt> may be defined by the user; codes
+that start with <tt>Z</tt> are defined by the implementor.</p>
+
+<hr>
+<a name="einfoattribute"></a>
+<h2>einfoattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code that describes the type of
+information that was passed back in the context of event-handling. This
+metalanguage symbol occurs as an expression that evaluates to one of
+<tt>"CHOICE"</tt>, <tt>"CLASS"</tt>, <tt>"ELEMENT"</tt>, <tt>"KEY"</tt>,
+<tt>"NEXTFOCUS"</tt>, <tt>"OK"</tt>, <tt>"PBUTTON"</tt>, <tt>"PPOS"</tt>,
+<tt>"PRIORFOCUS"</tt>, <tt>"PSTATE"</tt>, <tt>"SEQUENCE"</tt>, <tt>"TYPE"</tt>
+or <tt>"WINDOW"</tt>.</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Added <tt>"COL"</tt> and <tt>"ROW"</tt> as possible values for information
+attribute codes.</p>
+
+<hr>
+<a name="einforef"></a>
+<h2>einforef</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of a variable (global or local)
+that is to be used for the purpose of passing call-back information in the
+context of event-handling.</p>
+
+<hr>
+<a name="ekeyword"></a>
+<h2>ekeyword</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an expression that evaluates to the value
+<tt>"EVENT"</tt>.</p>
+
+<hr>
+<a name="elattribute"></a>
+<h2>elattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for an element attribute. This
+metalanguage symbol occurs as an expression that evaluates to either one
+of <tt>"ACTIVE"</tt>, <tt>"BCOLOR"</tt>, <tt>"CANCEL"</tt>,
+<tt>"CANCHANGE"</tt>, <tt>"CHARMAX"</tt>, <tt>"CHOICE"</tt>,
+<tt>"DRAW"</tt>, <tt>"DRAWTYPE"</tt>, <tt>"EVENT"</tt>,
+<tt>"FCOLOR"</tt>, <tt>"FFACE"</tt>, <tt>"FRAMED"</tt>,
+<tt>"FSIZE"</tt>, <tt>"ID"</tt>, <tt>"INSELECT"</tt>,
+<tt>"INTERVAL"</tt>, <tt>"NEXTG"</tt>, <tt>"POS"</tt>,
+<tt>"PRESOURCE"</tt>, <tt>"RESOURCE"</tt>, <tt>"ROWCOL"</tt>,
+<tt>"SCROLL"</tt>, <tt>"SCROLLBY"</tt>, <tt>"SCROLLDIR"</tt>,
+<tt>"SCROLLPOS"</tt>, <tt>"SCROLLRANGE"</tt>, <tt>"SELECTMAX"</tt>,
+<tt>"SELECTVAL"</tt>, <tt>"SIZE"</tt>, <tt>"TBCOLOR"</tt>,
+<tt>"TFCOLOR"</tt>, <tt>"TFFACE"</tt>, <tt>"TFSIZE"</tt>,
+<tt>"TFSTYLE"</tt>, <tt>"TITLE"</tt>, <tt>"TOPSHOW"</tt>,
+<tt>"TPOS"</tt>, <tt>"TYPE"</tt>, <tt>"UNITS"</tt>, <tt>"VALUE"</tt> or
+<tt>"VISIBLE"</tt>, or to an implementation-specific value (starts with
+<tt>"Z"</tt>) or to an application-specific value (starts with
+<tt>"Y")</tt>.</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Added <tt>"COL"</tt>, <tt>"COLWIDTH"</tt>, <tt>"GRID"</tt>, <tt>"HCOLID"</tt>,
+<tt>"HROWID"</tt>, <tt>"LEFTSHOW"</tt>, <tt>"PTYPE"</tt> and
+<tt>"ROWHEIGHT"</tt> as possible values for element attribute codes.</p>
+
+<hr>
+<a name="emptystring"></a>
+<h2>emptystring</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an empty string, a string of zero length,
+written in M[UMPS] as <tt>""</tt>.</p>
+
+<hr>
+<a name="ename"></a>
+<h2>ename</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of an element. Names of elements
+consist of alphabetic characters and digits and may start with a % sign.</p>
+
+<hr>
+<a name="endangle"></a>
+<h2>endangle</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the final angle in the context of a
+drawing command (ARC or PIE). The angle is measured in degrees. 0 degrees is
+horizontal, along the positive axis, 90 degrees is vertical along the positive
+axis.</p>
+
+<hr>
+<a name="entryref"></a>
+<h2>entryref</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the destination of a <b>DO</b> or
+<b>GOTO</b> command.</p>
+
+<p>Examples:</p>
+
+<p><tt>LABEL^ROUTINE</tt><br>
+<tt>12345^ABCDE</tt><br>
+<tt>00123^XYZ</tt><br>
+<tt>LABEL</tt><br>
+<tt>^ROUTINE</tt></p>
+
+<p>Valid, but not recommended:</p>
+
+<p><tt>LABEL+5^ROUTINE</tt><br>
+<tt>LABEL+5</tt></p>
+
+<hr>
+<a name="environment"></a>
+<h2>environment</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification of the name of an
+environment where certain entities may reside. The entities that may reside in
+other environments than the current processing environment are global
+variables, routines and LOCKed names.</p>
+
+<p>Examples:</p>
+
+<p><tt>SET X=^|"LONDON"|CUSTOMER(ID,12)<br>
+DO GETINFO^|"SANDIEGO"|CUSTUTIL(CUSTOMER,"BALANCE")</tt></p>
+
+<hr>
+<a name="eoffset"></a>
+<h2>eoffset</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the location in the line in a M[UMPS]
+program where an error occurred. The error location is represented as an
+integer number. Although the error location is intended to be the character
+position in the line where the error occurred, the standard does not describe
+how close the reported number has to be to the actual location in the source
+code.</p>
+
+<hr>
+<a name="eol"></a>
+<h2>eol</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the internal encoding for "end of
+line" within a routine. Although the standard does not specify how a
+routine should be stored internally in a system, the standard does specify
+that the data stream created for routine interchange between implementations
+should encode the "end of line" as a Carriage Return followed by a Line
+Feed.</p>
+
+<hr>
+<a name="eor"></a>
+<h2>eor</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the internal encoding for "end of
+routine" within a routine. Although the standard does not specify how a
+routine should be stored internally in a system, the standard does specify
+that the data stream created for routine interchange between implementations
+should encode the "end of routine" as a Carriage Return followed by a
+Form Feed.</p>
+
+<hr>
+<a name="erchar"></a>
+<h2>erchar</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the value of one of the
+directives of the FORMAT library function. The value represented
+by this metalanguage symbol is the "error string", a string that
+is used to indicate that the specified number cannot be formatted
+using the specified format mask.</p>
+
+<hr>
+<a name="erspec"></a>
+<h2>erspec</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents those subscripts
+in a reference to <b>^$J[OB]</b> that are needed to create
+a valid reference to <a href="#especref">descriptor for an
+error handler</a>.</p>
+
+<hr>
+<a name="espec"></a>
+<h2>espec</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents an event specification. An event
+specification looks like a list of expressions (separated by commas).</p>
+
+<hr>
+<a name="especattribute"></a>
+<h2>especattribute</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for an event specification
+attribute. This metalanguage symbol occurs as an expression that evaluates to
+either of the values <tt>"ENABLE"</tt> or <tt>"FILTERIN"</tt>.</p>
+
+<hr>
+<a name="especref"></a>
+<h2>especref</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents the name of the node in <b>^$WINDOW</b>
+or in <b>^$JOB</b>
+that specifies the window, event, element or menu choice that is involved in the
+processing of an event.</p>
+
+<hr>
+<a name="etype"></a>
+<h2>etype</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents a code for an event-type. This
+metalanguage symbol occurs as an expression that evaluates to either one of
+<tt>"CHANGE"</tt>, <tt>"CLICK"</tt>, <tt>"CLOSE"</tt>, <tt>"DBLCLICK"</tt>,
+<tt>"DESELECT"</tt>, <tt>"FKEYDOWN"</tt>, <tt>"FKEYUP"</tt>, <tt>"FOCUS"</tt>,
+<tt>"GOBOTTOM"</tt>, <tt>"GODOWN"</tt>, <tt>"GODOWNBIG"</tt>,
+<tt>"GOTOP"</tt>, <tt>"GOUP"</tt>, <tt>"GOUPBIG"</tt>, <tt>"HELP"</tt>,
+<tt>"KEYDOWN"</tt>, <tt>"KEYUP"</tt>, <tt>"MAX"</tt>, <tt>"MIN"</tt>,
+<tt>"MOVE"</tt>, <tt>"PDOWN"</tt>, <tt>"PDRAG"</tt>, <tt>"PMOVE"</tt>,
+<tt>"PUP"</tt>, <tt>"RESTORE"</tt>, <tt>"SELECT"</tt>, <tt>"TIMER"</tt>,
+<tt>"UNFOCUS"</tt>, or an implementation-specific value (starts with
+<tt>"Z"</tt>).</p>
+
+<p>Modifed in a future ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>Deleted <tt>"FKEYDOWN"</tt>, <tt>"FKEYUP"</tt> as possible values for event
+attribute codes.</p>
+
+<p>Added <tt>"CHAR"</tt> as a possible value for event attribute codes.</p>
+
+<hr>
+
+<a name="evclass"></a>
+<h2>evclass</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents the name of an event class.
+Possible class names may be <tt>"COMM"</tt> (events related to devices),
+<tt>"HALT"</tt> (events that are generated when processes
+terminate), <tt>"IPC"</tt> (events communicated by other
+processes), <tt>"INTERRUPT"</tt> (events that are generated when
+a process is interrupted in an implementation-specific fashion),
+<tt>"POWER"</tt> (events generated when loss of electrical power
+is imminent), <tt>"TIMER"</tt> (events that are generated when a
+timer's waiting time has elapsed)  and <tt>"USER"</tt> (events
+that are generated through the <b>ETRIGGER</b> command).</p>
+
+<hr>
+<a name="eventexpr"></a>
+<h2>eventexpr</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents an expression that is
+either an einfoattribute, or equal to the value "EVENTDEF".</p>
+
+<hr>
+<a name="evid"></a>
+<h2>evid</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a value that identifies a
+specific event within an event class. The range of possible
+values depends on the event class and may be
+implementation-specific.</p>
+
+<hr>
+<a name="exfunc"></a>
+<h2>exfunc</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an extrinsic function reference. An
+extrinsic function reference looks like <tt>$$LABEL(parameters)</tt> or
+<tt>$$LABEL^ROUTINE(parameters)</tt> (no off-set allowed in this
+specification).</p>
+
+<p>Note: An extrinsic variable is equivalent to an extrinsic function without
+parameters, i.e. <tt>$$LABEL^ROUTINE</tt> has the same value as
+<tt>$$LABEL^ROUTINE()</tt>.</p>
+
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>An extrinsic function may also be a reference to an external resource, i.e.
+<tt>$&LABEL^ROUTINE(parameters)</tt> or
+<tt>$&PACKAGE.LABEL^ROUTINE(parameters)</tt>.</p>
+
+<hr>
+<a name="exp"></a>
+<h2>exp</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an exponent. An exponent looks like a
+capital (!) <tt>E</tt>, then optionally a plus (<tt>+</tt>) or minus
+(<tt>-</tt>) sign, and then one or more digits.</p>
+
+<p>Valid exponents are:</p>
+
+<p><tt>E0</tt><br>
+<tt>E12</tt><br>
+<tt>E+12</tt><br>
+<tt>E-12</tt><br>
+<tt>E0012</tt></p>
+
+<p>but not:</p>
+
+<p><tt>E</tt><br>
+<tt>E12.34</tt><br>
+<tt>E---5</tt><br>
+<tt>e+13</tt></p>
+
+<hr>
+<a name="expr"></a>
+<h2>expr</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an expression. An expression (formula)
+starts with a basic value denoting object (<b>expratom</b>). Optionally, there
+may be more. If there is, first comes a (binary) operator, and then another
+basic value denoting object. The binary operator, in some cases, may be
+negated by a not sign (<tt>'</tt>). This additional part is called an
+<b>exprtail</b>. An expression may have any number of <b>exprtail</b>s.</p>
+
+<hr>
+<a name="expratom"></a>
+<h2>expratom</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the basic value-denoting object of which
+expressions are built. An <b>expratom</b> can be a name of a
+local variable (with or without subscripts), a name of a global variable
+(with or without subscripts), a special variable
+name, a function-reference, a numeric literal, a string literal, another
+expression in parentheses, or a unary operator followed by an
+<b>expratom</b>.</p>
+
+<p>Modified in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the basic value-denoting object of which
+expressions are built. An <b>expratom</b> can be a name of a
+local variable (with or without subscripts), a name of a global variable
+(with or without subscripts), or an <b>expritem</b>.</p>
+
+<p>Modified in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the basic value-denoting object of which
+expressions are built. An <b>expratom</b> can be a name of a
+local variable (with or without subscripts), a name of a global variable
+(with or without subscripts), a name of a structured system variable
+(which always has at least one subscript) or an <b>expritem</b>.</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>An <b>expratom</b> may also be a reference to a property or a
+method of an object.</p>
+
+<hr>
+<a name="expritem"></a>
+<h2>expritem</h2>
+
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a further refined value-denoting object of
+which expressions are built. An <b>expritem</b> can be a special variable name, a
+function-reference, a numeric literal, a string literal, another expression in
+parentheses, or a unary operator followed by an <b>expratom</b>.</p>
+
+<hr>
+<a name="exprtail"></a>
+<h2>exprtail</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the tail end of an expression. (See the
+metalanguage symbol <a href="#expr"> expr</a>).</p>
+
+<hr>
+<a name="externalroutinename"></a>
+<h2>externalroutinename</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of an external routine. Such a
+name looks like <tt>LABEL</tt> or <tt>LABEL^ROUTINE</tt>.</p>
+
+<hr>
+<a name="externref"></a>
+<h2>externref</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents a reference to an extrinsic variable, an
+extrinsic function or a subroutine that is not necessarily part of the current
+M[UMPS] environment. Such an external routine may be a M[UMPS] routine in the
+current environment or a routine (written in any language) in an externally
+available library.</p>
+
+<p>Examples:</p>
+
+<p><tt>&PACKAGE.ROUTINE</tt><br>
+<tt>&ROUTINE</tt><br>
+<tt>&PACKAGE.LABEL^ROUTINE</tt></p>
+
+<hr>
+<a name="extid"></a>
+<h2>extid</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the name of an external code processor.</p>
+
+<p>Currently, the only external code processor is <b>SQL</b> (ANSI X3.135).</p>
+
+<p><tt><b>&amp;SQL</b>(SELECT * FROM PATIENT)</tt></p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>The names of external code processors are case insensitive.</p>
+
+<p><tt><b>&amp;sql</b>(cursor A on EMPLOYEE)</tt></p>
+
+<p>Implementors may include implementation specific extarnal code 
+processors with names like <tt>&amp;Zxxx</tt>.</p>
+
+<p><tt>&amp;Zunix(grep MDC | more)</tt></p>
+
+<p>The text of the code to be passed to the external code processor may be 
+empty</p>
+
+<p><tt>&amp;ZOPSYS()</tt></p>
+
+<hr>
+<a name="extractfields"></a>
+<h2>extractfields</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the
+intrinsic function <b>$DEXTRACT</b>. This parameter corresponds to the
+list of field widths and alignments within
+the data record that is about to be accessed by the function.
+Items in this list are separated by commas.</p>
+
+<hr>
+<a name="extracttemplate"></a>
+<h2>extracttemplate</h2>
+
+<p>Approved for inclusion in a future ANSI M[UMPS] Language standard.</p>
+
+<p>This metalanguage symbol represents a parameter of the
+intrinsic function <b>$DEXTRACT</b>. This parameter corresponds to the
+specification of the list of field widths and alignments within
+the data record that is about to be accessed by the function.</p>
+
+<hr>
+<a name="extresource"></a>
+<h2>extresource</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application Programmer's Interface
+standard.</p>
+
+<p>This metalanguage symbol represents the name of an external resource. This
+metalanguage symbol occurs as an expression. If the value to which it
+evaluates starts with <tt>"F,"</tt>, the resource is a file, if the value
+starts with <tt>"R,"</tt> it is any other resource. If the value starts with
+<tt>"Z"</tt>, the meaning is implementation-specific.</p>
+
+<hr>
+<a name="extsyntax"></a>
+<h2>extsyntax</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents the specification a code segment that is
+in a language other than M[UMPS].  A specification of external syntax starts
+with an ampersand (<tt>&</tt>), and is followed by the name of the external
+code processor, followed by a parenthesis open, followed by the text to be
+processed by the external code processor, followed by a parenthesis close.</p>
+
+<p>The code to be processed by the external code processor may extend over more
+than one line. When this is the case, any continuation lines must start with
+the ampersand (<tt>&</tt>) symbol.</p>
+
+<p>The code to be processed by the external code processor may only contain
+printable graphic characters (see the metalanguage symbol
+<a href="g.htm#graphic"> graphic</a>).</p>
+
+<p>Currently, the only external code processor is <b>SQL</b> (ANSI X3.135).</p>
+
+<hr>
+<a name="exttext"></a>
+<h2>exttext</h2>
+
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents text to be processed by an external code
+processor.</p>
+
+<p>The code to be processed by the external code processor may extend over more
+than one line. When this is the case, any continuation lines must start with
+the ampersand (<tt>&</tt>) symbol.</p>
+
+<p>The code to be processed by the external code processor may only contain
+printable graphic characters (see the metalanguage symbol
+<a href="g.htm#graphic"> graphic</a>).</p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>Empty strings and blank lines are also permitted.</p>
+
+<hr>
+<a name="exvar"></a>
+<h2>exvar</h2>
+
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>This metalanguage symbol represents an extrinsic variable name. An extrinsic
+variable name looks like <tt>$$LABEL</tt> or  <tt>$$LABEL^ROUTINE</tt> (no
+off-set allowed in this specification).</p>
+
+<p>Note: An extrinsic variable is equivalent to an extrinsic function without
+parameters, i.e. <tt>$$LABEL^ROUTINE</tt> has the same value as
+<tt>$$LABEL^ROUTINE()</tt>.</p>
+
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+
+<p>An extrinsic variable may also be a reference to an external resource, i.e.
+<tt>$&LABEL^ROUTINE</tt> or <tt>$&PACKAGE.LABEL^ROUTINE</tt>.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published
+under the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various metalanguage terms
+starting with the letter "E" that are used throughout the M[UMPS]
+standards, as well as some other terms that may not be obvious to
+all readers of the M[UMPS] language standards.</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+
+<hr>
+</body></html>

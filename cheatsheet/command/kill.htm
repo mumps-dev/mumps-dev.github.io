@@ -1,0 +1,113 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>K[ILL]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>KILL</b> A,B,C,^A,^B,^C</tt><br>
+<tt><b>KILL</b> (A,B,C)</tt></p>
+
+<p>Note that <tt><b>KILL</b> (A(1),B)</tt> is not allowed.</p>
+
+<p>Additions in a future ANSI M[UMPS] language standard.</p>
+
+<p>In addition to the previous indirection capabilities, the possibility
+to <tt><b>KILL</b> (A,B,@C,D)</tt> with <tt>C</tt> equal to
+<tt>"P,Q,R"</tt> is included.</p>
+
+<p>When the traditional <b>KILL</b> command removes information, it
+removes any value, and any descendants of the variables affected.
+The addition is that two new commands are introduced (see command
+<b>KSUBSCRIPTS</b> and command <b>KVALUE</b>) that allow for a
+more selective removal of information.</p>
+
+<p><tt>&nbsp;<b>NEW</b><br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KSUBSCIPTS</b> A,B,C<br>
+&nbsp;; A should be unchanged<br>
+1<b> IF $DATA</b>(A)'=1 <b>DO</b> ERROR(1)<br>
+&nbsp;; B(10) should have been deleted<br>
+2 <b>IF $DATA</b>(B)'=0 <b>DO</b> ERROR(2)<br>
+&nbsp;; Only C(11) should have been deleted<br>
+3 <b>IF $DATA</b>(C)'=1 <b>DO</b> ERROR(3)<br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KVALUE</b> A,B,C<br>
+&nbsp;; A should have been deleted<br>
+4<b> IF $DATA</b>(A)'=0 <b>DO</b> ERROR(4)<br>
+&nbsp;;B should be unchanged<br>
+5 <b>IF $DATA</b>(B)'=10 <b>DO</b> ERROR(5)<br>
+&nbsp;; C should be deleted, C(11) should remain<br>
+6 <b>IF $DATA</b>(C)'=10 <b>DO</b> ERROR(6)<br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KSUBSCRIPTS</b> (A,B)<br>
+&nbsp;; A should be unchanged<br>
+7<b> IF $DATA</b>(A)'=1 <b>DO</b> ERROR(7)<br>
+&nbsp;; B(10) should be unaffected<br>
+8 <b>IF $DATA</b>(B)'=10 <b>DO</b> ERROR(8)<br>
+&nbsp;; Only C(11) should have been deleted<br>
+9 <b>IF $DATA</b>(C)'=1 <b>DO</b> ERROR(9)<br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KVALUE</b> (A,B)<br>
+&nbsp;; A should be unchanged<br>
+10<b> IF $DATA</b>(A)'=1 <b>DO</b> ERROR(10)<br>
+&nbsp;; B(10) should be unchanged<br>
+11 <b>IF $DATA</b>(B)'=0 <b>DO</b> ERROR(11)<br>
+&nbsp;; Only C should have been deleted<br>
+12 <b>IF $DATA</b>(C)'=10 <b>DO</b> ERROR(12)<br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KILL</b> A,B<br>
+&nbsp;; A should have been deleted<br>
+13<b> IF $DATA</b>(A)'=0 <b>DO</b> ERROR(13)<br>
+&nbsp;; B(10) should have been deleted<br>
+14 <b>IF $DATA</b>(B)'=0 <b>DO</b> ERROR(14)<br>
+&nbsp;; Both C and C(11) should be unaffected<br>
+15 <b>IF $DATA</b>(C)'=11 <b>DO</b> ERROR(15)<br>
+&nbsp;<b>DO</b> SETUP<br>
+&nbsp;<b>KILL</b> (A,B)<br>
+&nbsp;; A should be unaffected<br>
+16<b> IF $DATA</b>(A)'=1 <b>DO</b> ERROR(16)<br>
+&nbsp;; B(10) should be unaffected<br>
+17 <b>IF $DATA</b>(B)'=10 <b>DO</b> ERROR(17)<br>
+&nbsp;; Both C and C(11) should have been deleted<br>
+18 <b>IF $DATA</b>(C)'=0 <b>DO</b> ERROR(18)<br>
+&nbsp;<b>QUIT</b><br>
+SETUP <b>SET</b> A=1,B(10)=10,C=11,C(11)=11 <b>QUIT</b><br>
+ERROR(I) <b>WRITE</b> !,"Error in check # ",I<br>
+&nbsp;<b>WRITE</b> !,<b>$TEXT</b>(@I)<br>
+&nbsp;<b>QUIT</b></tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>KILL</b> VARIABLE<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>KILL</b> ^(3,4)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,</tt><br>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

@@ -1,0 +1,167 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>F[OR]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>FOR</b> I=1:1 <b>WRITE</b> I
+<b>QUIT</b>:I&gt;2&nbsp;&nbsp;<b>WRITE</b> "*"</tt><br>
+To be printed: <tt>1*2*3</tt><br>
+Final value of <tt>I</tt> is <tt>3</tt>.</p>
+
+<p><tt><b>FOR</b> I=1:1:3 <b>WRITE</b> I</tt><br>
+To be printed: <tt>123</tt><br>
+Final value of <tt>I</tt> is <tt>3</tt>.</p>
+
+<p><tt><b>FOR</b> I=1:1:3,"ABC",2,4:2:7 <b>WRITE</b> " ",I</tt><br>
+To be printed: <tt> 1 2 3 ABC 2 4 6</tt><br>
+Final value of <tt>I</tt> is <tt>6</tt>.</p>
+
+<p><tt><b>FOR</b> I=1:1:5 <b>SET</b>:I=3 I=-6&nbsp;&nbsp;<b>SET</b>:I=-3 I=9
+<b>WRITE</b> " ",I</tt><br>
+To be printed: <tt> 1 2 -6 -5 -4 9</tt><br>
+Final value of <tt>I</tt> is <tt>9</tt>.</p>
+
+<p>Note that the fact that <tt>I</tt> receives a value smaller than
+the lower limit is no reason to terminate the loop.</p>
+
+<p>Note that the fact that <tt>I</tt> receives a value greater than
+the upper limit is no reason to terminate execution of the scope
+of the <b>FOR</b> command.</p>
+
+<p><tt><b>FOR</b> I=1:1:4 <b>WRITE</b> I <b>FOR</b> J=1:1:3
+<b>WRITE</b> "*"</tt><br>
+To be printed: <tt>1***2***3***4***</tt><br>
+Final value of <tt>I</tt> is <tt>4</tt>, the final value of
+<tt>J</tt> is <tt>3</tt>.</p>
+
+<p><tt><b>FOR</b> I=3:5:0 <b>WRITE</b> I</tt><br>
+Nothing is printed. Final value of <tt>I</tt> is <tt>3</tt>.</p>
+
+<p><tt><b>SET</b> X=1,Y=2,Z=7 <b>FOR</b> I=X:Y:Z <b>WRITE</b>
+I</tt><br>
+To be printed: <tt>1357</tt></p>
+
+<p><tt>X&nbsp;&nbsp;&nbsp;<b>FOR</b> I=1:1:3 <b>FOR</b> J=1:2:5 <b>WRITE</b> " ",I,J <b>IF</b> I=2 <b>GOTO</b> Y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>WRITE</b> "Ready." <b>QUIT</b><br>
+Y&nbsp;&nbsp;&nbsp;<b>WRITE</b> ", jumped to Y." <b>QUIT</b></tt></p>
+
+<p>When this routine is executed using the command <tt><b>DO</b> X</tt><br>
+will be printed: <tt> 11 13 15 21, jumped to Y.</tt><br>
+The <b>GOTO</b> command terminates both <b>FOR</b> commands.</p>
+
+<p><tt>X&nbsp;&nbsp;&nbsp;<b>FOR</b> I=1:1:3 <b>FOR</b> J=1:2:5 <b>WRITE</b> " ",I,J <b>IF</b> I=2 <b>DO</b> Z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>WRITE</b> " Ready." <b>QUIT</b><br>
+Y&nbsp;&nbsp;&nbsp;<b>WRITE</b> " Y" <b>QUIT</b><br>
+Z&nbsp;&nbsp;&nbsp;<b>WRITE</b> " Z" <b>GOTO</b> Y</tt></p>
+
+<p>When this routine is executed using the command <tt><b>DO</b> X</tt><br>
+will be printed:<br>
+<tt> 11 13 15 21 Z Y 23 Z&nbsp;&nbsp;Y 25 Z Y 31 33 35 Ready.</tt><br>
+The <b>GOTO</b> command in line <tt>Z</tt> has no implications
+for any <b>FOR</b> command.</p>
+
+<p><tt><b>SET</b> K=0,L=0 <b>FOR</b> K=1:1:5,L=3:3:9 <b>WRITE</b>
+" ",K,L</tt><br>
+To be printed: <tt> 10 20 30 40 50 00 30 60 90</tt><br>
+Note that the value of <tt>L</tt> is not changed because of the
+<b> FOR</b> command. The expression <tt>L=3</tt> is a truth
+valued expression with the value 0 (FALSE).</p>
+
+<p><tt><b>FOR</b> K=1:1:3 <b>FOR</b> L=4:2:8 <b>WRITE</b> " ",K,L
+<b>QUIT</b>:L=6</tt><br>
+To be printed: <tt> 14 16 24 26 34 36</tt><br>
+The <b>QUIT</b> command only affects the <b>FOR</b> command with
+variable <tt>L</tt> as a counter.</p>
+
+<p><tt><b>SET</b> STEP=2<br>
+<b>FOR</b> K=1:STEP:9 <b>WRITE</b> " ",K,"_",STEP <b>SET</b>
+STEP=STEP+K</tt><br>
+To be printed: <tt> 1_2 3_3 5_6 7_11 9_18</tt><br>
+Changing the value of local variable <tt>STEP</tt> has no
+implications for the step-size used by the M[UMPS]-system.</p>
+
+<p><tt><b>FOR</b> K="A":1:4 <b>WRITE</b> " ",K</tt><br>
+To be printed: <tt> 0 1 2 3 4</tt><br>
+Note that the expression <tt>"A"</tt> will be evaluated as an
+<b>nve</b> (<b>n</b>umeric <b>v</b>alued <b>e</b>xpression),
+which causes it to be seen as a value of <tt>0</tt>.</p>
+
+<p><tt><b>SET</b> LIST="1*234*5*9876*abc*d*e*f*ghi*jkl",N=0<br>
+<b>FOR</b> I=1:1:<b>$LENGTH</b>(LIST,"*") <b>SET</b> N=N+1
+<b>WRITE</b> !,N,": ",<b>$PIECE</b>(LIST,"*",I)</tt><br>
+To be printed:<br>
+<tt>1: 1<br>
+2: 234<br>
+3: 5<br>
+4: 9876<br>
+5: abc<br>
+6: d<br>
+7: e<br>
+8: f<br>
+9: ghi<br>
+10: jkl</tt></p>
+
+<p><tt><b>SET</b> LIST="1*234*5*9876*abc*d*e*f*ghi*jkl",N=0<br>
+<b>FOR</b> I=1:1:<b>$LENGTH</b>(LIST,"*") <b>SET</b> N=N+1,I=I+1
+<b>QUIT</b>:N>4&nbsp;&nbsp;<b>WRITE</b> !,N,": ",<b>$PIECE</b>(LIST,"*",I)</tt><br>
+To be printed:<br>
+<tt>1: 234<br>
+2: 9876<br>
+3: d<br>
+4: f</tt></p>
+
+<p><tt><b>SET</b> LIST="1*234*5*9876*abc*d*e*f*ghi*jkl",N=0<br>
+<b>FOR</b> I=1:1:<b>$LENGTH</b>(LIST,"*") <b>SET</b> N=N+1,I=I+1
+<b>QUIT</b>:I>4&nbsp;&nbsp;<b>WRITE</b> !,N,": ",<b>$PIECE</b>(LIST,"*",I)</tt><br>
+To be printed:<br>
+<tt>1: 234<br>
+2: 9876</tt></p>
+
+<p>Typical code to iterate through a muli-level data structure would be:</p>
+
+<p><tt><b>SET</b> sub1="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> sub1=<b>$ORDER</b>(name(sub1)) <b>QUIT</b>:sub1=""&nbsp;&nbsp;<b>DO</b><br>
+&nbsp;. <b>SET</b> sub2="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> sub2=<b>$ORDER</b>(name(sub1,sub2)) <b>QUIT</b>:sub2=""&nbsp;&nbsp;<b>DO</b><br>
+&nbsp;. . <b>SET</b> sub3="" <b>FOR</b>&nbsp;&nbsp;<b>SET</b> sub3=<b>$ORDER</b>(name(sub1,sub2,sub3)) <b>QUIT</b>:sub3=""&nbsp;&nbsp;<b>DO</b><br>
+&nbsp;. . . ; Perform some action at this level<br>
+&nbsp;. . . <b>QUIT</b><br>
+&nbsp;. . <b>QUIT</b><br>
+&nbsp;. <b>QUIT</b></tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>FOR</b> LVN=FROM:STEP:UNTIL<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,</tt><br>
+<tt><b>FOR</b> I=^(3,4):^(5,6):^(7,8)</tt><br>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br>
+; 3. fetch ^(7,8) = <tt>^ABC(1,3,5,7,8)</tt><br>
+; Naked indicator is now: <tt>^ABC(1,3,5,7,</tt></p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>

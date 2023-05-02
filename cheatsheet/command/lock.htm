@@ -1,0 +1,571 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html>
+<title>M[UMPS] Commands</title>
+<body background="../mbe.gif">
+<h1>M[UMPS] Commands</h1>
+
+<h2>L[OCK]</h2>
+
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+
+<p><tt><b>LOCK</b> A,B,C</tt><br>
+Unlock all, LOCK <tt>C</tt><br>
+Well... actually, when anybody else has either <tt>A</tt> or <tt>B</tt>
+locked, this sequence of commands would wait first for these to be
+unlocked...</p>
+
+<p><tt><b>LOCK</b> (A,B,C)</tt><br>
+Unlock all, LOCK <tt>A</tt>, <tt>B</tt> and <tt>C</tt></p>
+
+<p><tt><b>LOCK</b> X:TIME</tt><br>
+Unlock all, LOCK <tt>X</tt> with time-out of <tt>TIME</tt>
+seconds.</p>
+
+<p><tt><b>LOCK</b></tt><br>
+Unlock all</p>
+
+<p><tt><b>IF</b> '<b>$DATA</b>(^PATIENT(ID)) <b>DO</b><br>
+. <b>LOCK</b> +^PATIENT(ID):5<br>
+. ; create patient record<br>
+. <b>LOCK</b> -^PATIENT(ID)<br>
+. <b>QUIT</b></tt><br>
+Assume that two processes execute this program segment
+simultaneously, and that the chronology of the actions between
+the jobs is as follows:</p>
+
+<p><table>
+<tr><th><i>One process</i></th>
+<th><i>Other process</i></th></tr>
+
+<tr><td><tt><b>IF</b> '<b>$DATA</b>(^PATIENT(123))</tt></td>
+<td>&nbsp;</td></tr>
+
+<tr><td>- swap out -</td>
+<td>&nbsp;</td></tr>
+
+<tr><td>&nbsp;</td>
+<td><tt><b>IF</b> <b>'$DATA</b>(^PATIENT(123))</tt></td></tr>
+
+<tr><td>&nbsp;</td>
+<td><tt><b>DO</b></tt></td></tr>
+
+<tr><td>&nbsp;</td>
+<td><tt><b>LOCK</b> +^PATIENT(123)</tt></td></tr>
+
+<tr><td>&nbsp;</td>
+<td>; create patient record</td></tr>
+
+<tr><td>&nbsp;</td>
+<td><tt><b>LOCK</b> -^PATIENT(123)</tt></td></tr>
+
+<tr><td>- swap in -</td>
+<td>&nbsp;</td></tr>
+
+<tr><td><tt><b>DO</b></tt></td>
+<td>&nbsp;</td></tr>
+
+<tr><td><tt><b>LOCK</b> +^PATIENT(123)</tt></td>
+<td>&nbsp;</td></tr>
+
+<tr><td>create patient record</td>
+<td>&nbsp;</td></tr>
+</table></p>
+
+<p>... Well, that's what we just wanted to avoid by using the
+<b>LOCK</b> command, wasn't it...</p>
+
+<p>Correct usage of the <b>LOCK</b> command in this context would
+be:<br>
+<tt><b>LOCK</b> +^PATIENT(ID):TIME<br>
+<b>ELSE&nbsp;&nbsp;WRITE</b> "Cannot create record."
+<b>QUIT</b><br>
+<b>QUIT</b>:<b>$DATA</b>(^PATIENT(ID))<br>
+; create patient record<br>
+<b>LOCK</b> -^PATIENT(ID)</tt><br>
+Always <b>LOCK</b> before a reference is made; that is the only
+way to synchronize processes.</p>
+
+<p>Added in the 1990 ANSI M[UMPS] language standard:</p>
+
+<p><tt><b>LOCK</b> +D</tt><br>
+Add <tt>D</tt> to the LOCK list.</p>
+
+<p><tt><b>LOCK</b> -A</tt><br>
+Remove <tt>A</tt> from the LOCK list.</p>
+
+<p>Assume that<br>
+<tt>A="KLM(1)"<br>
+KLM(2,3,4)="PQR"<br>
+<b>LOCK</b> @A@(3,4)</tt> would be equivalent to
+<tt><b>LOCK</b> "PQR"</tt>, which is an error, and<br>
+<tt><b>LOCK</b> @@A@(3,4)</tt> would be equivalent to <tt><b>LOCK</b> 
+PQR</tt>.</p>
+
+<p>The ANSI standard behavior is defined as follows:</p>
+
+<p><b>LOCK</b> (without a plus)<br>
+<ul>
+<li>First removes all names from the lock table that were entered
+by the current job</li>
+<li>Then adds the name(s) in the current LOCK argument to the
+lock table</li>
+</ul></p>
+
+<p><b>LOCK</b> with a plus<br>
+<ul>
+<li>Adds one instance of a name to the lock table</li>
+</ul></p>
+
+<p><b>LOCK</b> with a minus<br>
+<ul>
+<li>If any instances of the name are present for the current job,
+removes one instance from the lock table</li>
+</ul></p>
+
+<p>Hence, the behavior should be:</p>
+
+<p><table>
+<tr><td valign=top><tt><b>LOCK</b> +^GLO(1,2)</tt></td>
+<td valign=top>Adds one instance of the name <tt>^GLO(1,2)</tt>
+to the lock table; may need to wait until another job
+relinquishes its lock on this name.</td></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> +^GLO(1,2,3)</tt></td>
+<td valign=top>Adds one instance of the name <tt>^GLO(1,2,3)</tt>
+to the lock table; will always succeed immediately because the a
+name governing a superset is already owned.</td></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> -^GLO(1,2,3)</tt></td>
+<td valign=top>Removes one instance of the name
+<tt>^GLO(1,2,3)</tt> from the lock table</td></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> +GLO(1)</tt></td>
+<td valign=top>Adds one instance of the name <tt>^GLO(1)</tt> to
+the lock table; may need to wait, e.g. if someone else owns lock
+on <tt>^GLO(1,5)</tt>.</td></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> +GLO(2)</tt></td>
+<td valign=top>Adds one instance of the name <tt>^GLO(2)</tt> to
+the lock table; may need to wait until another job relinquishes
+its lock on this name.</td></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> -^GLO</tt></td>
+<td valign=top>If there is an occurrence of <tt>^GLO</tt> for the
+current job, one instance will be removed from the lock table,
+othewise no effect</td></tr>
+</table></p>
+
+<p>So, assuming that the lock table is empty, and the number of
+the current job is 1, the sequence of events will be:</p>
+
+<p><table border=2>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> +^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> +^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>2</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td rowspan=2 valign=top><tt><b>LOCK</b> +^GLO(1,2,3)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>2</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2,3)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> -^GLO(1,2,3)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>2</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td rowspan=2 valign=top><tt><b>LOCK</b> +GLO(1)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>2</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td rowspan=2 valign=top><tt><b>LOCK</b> +GLO(2)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>2</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(2)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> -^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+
+<tr><td valign=top><tt><b>LOCK</b> -^GLO</tt></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td></tr>
+</table></p>
+
+<p>Assuming that the lock table has the depicted initial
+content, and the number of
+the current job is 1, and
+assuming that job number 3 would relinquish the locks that
+are requested by job number 1, the sequence of events would be:</p>
+
+<p><table border=2>
+<tr><th>&nbsp;</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td>&nbsp;</td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td></td>
+<td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td></td>
+<td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td></td>
+<td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=4 valign=top><tt><b>LOCK</b> +^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td>
+<td align=left>Added after other job relinquishes its lock</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=4 valign=top><tt><b>LOCK</b> +^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>2</td>
+<td align=right>1</td>
+<td align=left>Count increases by 1</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=5 valign=top><tt><b>LOCK</b> +^GLO(1,2,3)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>2</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2,3)</tt></td>
+<td valign=top align=right>1</td>
+<td valign=top align=right>1</td>
+<td align=left>Can always be added immediately</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=5 valign=top><tt><b>LOCK</b> -^GLO(1,2,3)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>2</td>
+<td align=right>1</td></tr>
+
+<tr><td></td>
+<td></td>
+<td></td>
+<td align=left>Entry is removed when count reaches zero</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=5 valign=top><tt><b>LOCK</b> +GLO(1)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td>
+<td align=left>Can be added as long a no-one else owns it</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>2</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=6 valign=top><tt><b>LOCK</b> +GLO(2)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>2</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td>
+<td align=left>Can be added as long a no-one else owns it</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=6 valign=top><tt><b>LOCK</b> -^GLO(1,2)</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(1)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td>
+<td align=left>Count decreases by 1</td></tr>
+
+<tr><td valign=top><tt>^GLO(2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align=left>Comment</th></tr>
+
+<tr><td rowspan=6 valign=top><tt><b>LOCK</b> -^GLO</tt></td>
+<td valign=top><tt>^GLO</tt></td>
+<td align=right>1</td>
+<td align=right>3</td>
+<td align=left>Since the requesting job doesn't own this entry, no 
+change</td></tr>
+
+<tr><td valign=top><tt>^GLO(1)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(1,2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(2)</tt></td>
+<td align=right>1</td>
+<td align=right>1</td></tr>
+
+<tr><td valign=top><tt>^GLO(5)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+<tr><td valign=top><tt>^GLO(7)</tt></td>
+<td align=right>1</td>
+<td align=right>3</td></tr>
+
+</table></p>
+
+Approved for addition in a future ANSI M[UMPS] language standard.</p>
+
+<p>The option has been added to use "subscript indirection" in
+name references that occur in arguments of <b>LOCK</b> commands.</p>
+
+<p><tt><b>SET</b> Root="^DIC(19)"<br>
+<b>LOCK</b> +@Root@(42,0)</tt><br>
+is now equivalent with <tt><b>LOCK</b> +^DIC(19,42,0)</tt></p>
+
+<p>Examples with naked references:</p>
+
+<p><b>LOCK</b> NAME<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>LOCK</b> ^(3,4)</tt><br>
+; Error occurs (invalid <u>nref</u> in LOCK argument)<br>
+; This is a general syntactical error; no M... error code has
+been assigned.<br>
+; Naked indicator is unchanged</p>
+
+<p><b>LOCK</b> NAME<br>
+<tt><b>SET</b> ^ABC(1,2)="reset naked indicator"</tt><br>
+; Naked indicator is now <tt>^ABC(1,<br>
+<b>LOCK</b> ^(3,^(4,5))</tt><br>
+; fetch ^(4,5) = <tt>^ABC(1,4,5)</tt><br>
+; Naked indicator is now <tt>^ABC(1,4,</tt><br>
+; Error occurs (invalid <u>nref</u> in LOCK argument)<br>
+; Note that the naked indicator may change while evaluating
+subscripts,<br>
+; but not as a side-effect of the LOCK command itself.</p>
+
+<hr>
+
+<p>This document is &copy; Ed de Moel, 1995-2005.<br>
+It is part of a book by Ed de Moel that is published under
+the title "M[UMPS] by Example" (ISBN 0-918118-42-5).<br>
+Printed copies of the book are no longer available.</p>
+
+<p>This document describes the various commands that are defined
+in the M[UMPS] language standard (ANSI X11.1, ISO 11756).</p>
+
+<p><b><i>The information in this document is NOT authoritative
+and subject to be modified at any moment.<br>
+Please consult the appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+
+<p><b><i>In this document, information is included that will
+appear in
+future standards.<br>
+The MDC cannot guarantee that these 'next'
+standards will indeed appear.</i></b></p>
+</body></html>
