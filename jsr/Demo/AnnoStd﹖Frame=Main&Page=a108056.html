@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>WRITE</h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108057&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>controlmnemonic</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the name of a device control function. The
+meaning and effect of device control functions is described in the definition
+of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108043.html#Def_0001"><u>mnemonicspace</u></a> (function library) of which these control
+functions are a part.</p>
+<p>A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0001"><u>controlmnemonic</u></a> can start with either an alphabetic character or a
+question mark (<tt>?</tt>); any further characters should be alphabetic
+characters or digits.</p>
+<a name="Def_0002"></a>
+<h3>ffformat</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a format item that causes
+a form-feed in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command.
+Such a format is written as a number sign (#).</p>
+<a name="Def_0003"></a>
+<h3>format</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents special formatting commands that may occur
+as arguments of both the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> commands.</p>
+<p>Formatting specifications may include form feed instructions (number sign
+(<tt>#</tt>)), line feed instructions (exclamation mark (<tt>!</tt>)) and
+tabulation instructions (question mark (<tt>?</tt>) followed by column
+specification).</p>
+<p>Examples:</p>
+<p><tt>#</tt><br/>
+<tt>!</tt><br/>
+<tt>?5</tt><br/>
+<tt>#!!!!!?25</tt><br/>
+<tt>###</tt><br/>
+<tt>#?5</tt></p>
+<p>Note: The format specification itself does not allow for indirection, but a
+format specification is an argument of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command,
+and that argument may be indirected. As a result:</p>
+<p align="center"><tt>$EXTRACT("!!!!!!!!!!!!!!!!!!",1,WHTSPACE)</tt></p>
+<p>is a valid way to create a variable number of line feeds.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+<p>Formatting specifications may also include device control functions (see the
+metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0001"><u>controlmnemonic</u></a>).</p>
+<p>Examples:</p>
+<p><tt>WRITE /CUP(20,5),"Header goes here"<br/>
+WRITE /SGR(1),"This appears in boldface"</tt></p>
+<a name="Def_0004"></a>
+<h3>nlformat</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a format item that causes
+a line-feed in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command.
+Such a format is written as an exclamation mark.</p>
+<a name="Def_0005"></a>
+<h3>positionformat</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a format item that may
+occur in an argument of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command.</p>
+<p>Such format items may be <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0002"><u>ffformat</u></a> (form-feeds),
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0004"><u>nlformat</u></a> (line-feeds) or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0006"><u>tabformat</u></a> (tabulations).</p>
+<a name="Def_0006"></a>
+<h3>tabformat</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a format item that causes
+a tabulation in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command.
+Such a format is written as a question mark followed by a numeric
+expression.</p>
+<a name="Def_0007"></a>
+<h3>writeargument</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command. Examples of valid arguments for the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command
+appear in an earlier section. The argument of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command is
+either one of a list described below, or an indirection operator (<tt>@</tt>)
+followed by an expression that evaluates to a list (separated by commas) of
+such arguments.</p>
+<p>A directly specified <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> argument can be a format specification, an
+expression, or an asterisk followed by an expression.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+<p>A format specification can also be a reference to a device control function
+(see the metalanguage symbols
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108043.html#Def_0001"><u>mnemonicspace</u></a> and
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0001"><u>controlmnemonic</u></a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 01-Oct-2021, 08:35:29.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108056%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

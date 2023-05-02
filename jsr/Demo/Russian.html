@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Enter Text in Cyrillic</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="#4c76ac" text="#ecd264" link="#fcf274" vlink="#ecd264">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="#4c76ac">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Enter%20Text%20in%20Cyrillic&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fRussian%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a50%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="#4c76ac"><h1><font color="#ecd264" face="Arial" id="PageTitle">Enter Text in Cyrillic</font></h1></td></tr></table>
+<textarea id="Text" name="Text" cols="50" rows="5" style="font-size: 20pt;"></textarea>
+<p><input type="radio" name="Which" value="1" id="w1" onclick="Show(1);"/>&nbsp;Unicode &nbsp; &nbsp; <input type="radio" name="Which" value="2" id="w2" onclick="Show(2);"/>&nbsp;Phonetic Keyboard &nbsp; &nbsp; <input type="radio" name="Which" value="3" id="w3" onclick="Show(3);" checked="checked"/>&nbsp;Windows Keyboard &nbsp; &nbsp; <input type="radio" name="Which" value="4" id="w4" onclick="Show(4);"/>&nbsp;Instructions</p><table id="Unicode" style="display: none;" bgcolor="#80c0c0" border="0" cellpadding="2" cellspacing="1">
+<tr>
+<td onclick="AddLetter(1040);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1040;</b>&nbsp;</td>
+<td onclick="AddLetter(1041);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1041;</b>&nbsp;</td>
+<td onclick="AddLetter(1042);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1042;</b>&nbsp;</td>
+<td onclick="AddLetter(1043);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1043;</b>&nbsp;</td>
+<td onclick="AddLetter(1044);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1044;</b>&nbsp;</td>
+<td onclick="AddLetter(1045);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1045;</b>&nbsp;</td>
+<td onclick="AddLetter(1046);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1046;</b>&nbsp;</td>
+<td onclick="AddLetter(1047);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1047;</b>&nbsp;</td>
+<td onclick="AddLetter(1048);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1048;</b>&nbsp;</td>
+<td onclick="AddLetter(1049);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1049;</b>&nbsp;</td>
+<td onclick="AddLetter(1050);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1050;</b>&nbsp;</td>
+<td onclick="AddLetter(1051);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1051;</b>&nbsp;</td>
+<td onclick="AddLetter(1052);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1052;</b>&nbsp;</td>
+<td onclick="AddLetter(1053);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1053;</b>&nbsp;</td>
+<td onclick="AddLetter(1054);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1054;</b>&nbsp;</td>
+<td onclick="AddLetter(1055);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1055;</b>&nbsp;</td>
+<td onclick="AddLetter(1056);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1056;</b>&nbsp;</td>
+<td onclick="AddLetter(1057);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1057;</b>&nbsp;</td>
+<td onclick="AddLetter(1058);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1058;</b>&nbsp;</td>
+<td onclick="AddLetter(1059);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1059;</b>&nbsp;</td>
+<td onclick="AddLetter(1060);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1060;</b>&nbsp;</td>
+<td onclick="AddLetter(1061);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1061;</b>&nbsp;</td>
+<td onclick="AddLetter(1062);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1062;</b>&nbsp;</td>
+<td onclick="AddLetter(1063);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1063;</b>&nbsp;</td>
+<td onclick="AddLetter(1064);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1064;</b>&nbsp;</td>
+<td onclick="AddLetter(1065);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1065;</b>&nbsp;</td>
+<td onclick="AddLetter(1066);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1066;</b>&nbsp;</td>
+<td onclick="AddLetter(1067);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1067;</b>&nbsp;</td>
+<td onclick="AddLetter(1068);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1068;</b>&nbsp;</td>
+<td onclick="AddLetter(1069);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1069;</b>&nbsp;</td>
+<td onclick="AddLetter(1070);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1070;</b>&nbsp;</td>
+<td onclick="AddLetter(1071);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1071;</b>&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1072);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1072;</b>&nbsp;</td>
+<td onclick="AddLetter(1073);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1073;</b>&nbsp;</td>
+<td onclick="AddLetter(1074);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1074;</b>&nbsp;</td>
+<td onclick="AddLetter(1075);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1075;</b>&nbsp;</td>
+<td onclick="AddLetter(1076);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1076;</b>&nbsp;</td>
+<td onclick="AddLetter(1077);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1077;</b>&nbsp;</td>
+<td onclick="AddLetter(1078);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1078;</b>&nbsp;</td>
+<td onclick="AddLetter(1079);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1079;</b>&nbsp;</td>
+<td onclick="AddLetter(1080);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1080;</b>&nbsp;</td>
+<td onclick="AddLetter(1081);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1081;</b>&nbsp;</td>
+<td onclick="AddLetter(1082);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1082;</b>&nbsp;</td>
+<td onclick="AddLetter(1083);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1083;</b>&nbsp;</td>
+<td onclick="AddLetter(1084);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1084;</b>&nbsp;</td>
+<td onclick="AddLetter(1085);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1085;</b>&nbsp;</td>
+<td onclick="AddLetter(1086);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1086;</b>&nbsp;</td>
+<td onclick="AddLetter(1087);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1087;</b>&nbsp;</td>
+<td onclick="AddLetter(1088);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1088;</b>&nbsp;</td>
+<td onclick="AddLetter(1089);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1089;</b>&nbsp;</td>
+<td onclick="AddLetter(1090);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1090;</b>&nbsp;</td>
+<td onclick="AddLetter(1091);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1091;</b>&nbsp;</td>
+<td onclick="AddLetter(1092);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1092;</b>&nbsp;</td>
+<td onclick="AddLetter(1093);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1093;</b>&nbsp;</td>
+<td onclick="AddLetter(1094);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1094;</b>&nbsp;</td>
+<td onclick="AddLetter(1095);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1095;</b>&nbsp;</td>
+<td onclick="AddLetter(1096);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1096;</b>&nbsp;</td>
+<td onclick="AddLetter(1097);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1097;</b>&nbsp;</td>
+<td onclick="AddLetter(1098);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1098;</b>&nbsp;</td>
+<td onclick="AddLetter(1099);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1099;</b>&nbsp;</td>
+<td onclick="AddLetter(1100);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1100;</b>&nbsp;</td>
+<td onclick="AddLetter(1101);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1101;</b>&nbsp;</td>
+<td onclick="AddLetter(1102);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1102;</b>&nbsp;</td>
+<td onclick="AddLetter(1103);" bgcolor="#4c76ac" align="center">&nbsp;<b>&#1103;</b>&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1024);" bgcolor="#4c76ac" align="center">&nbsp;&#1024;&nbsp;</td>
+<td onclick="AddLetter(1025);" bgcolor="#4c76ac" align="center">&nbsp;&#1025;&nbsp;</td>
+<td onclick="AddLetter(1026);" bgcolor="#4c76ac" align="center">&nbsp;&#1026;&nbsp;</td>
+<td onclick="AddLetter(1027);" bgcolor="#4c76ac" align="center">&nbsp;&#1027;&nbsp;</td>
+<td onclick="AddLetter(1028);" bgcolor="#4c76ac" align="center">&nbsp;&#1028;&nbsp;</td>
+<td onclick="AddLetter(1029);" bgcolor="#4c76ac" align="center">&nbsp;&#1029;&nbsp;</td>
+<td onclick="AddLetter(1030);" bgcolor="#4c76ac" align="center">&nbsp;&#1030;&nbsp;</td>
+<td onclick="AddLetter(1031);" bgcolor="#4c76ac" align="center">&nbsp;&#1031;&nbsp;</td>
+<td onclick="AddLetter(1032);" bgcolor="#4c76ac" align="center">&nbsp;&#1032;&nbsp;</td>
+<td onclick="AddLetter(1033);" bgcolor="#4c76ac" align="center">&nbsp;&#1033;&nbsp;</td>
+<td onclick="AddLetter(1034);" bgcolor="#4c76ac" align="center">&nbsp;&#1034;&nbsp;</td>
+<td onclick="AddLetter(1035);" bgcolor="#4c76ac" align="center">&nbsp;&#1035;&nbsp;</td>
+<td onclick="AddLetter(1036);" bgcolor="#4c76ac" align="center">&nbsp;&#1036;&nbsp;</td>
+<td onclick="AddLetter(1037);" bgcolor="#4c76ac" align="center">&nbsp;&#1037;&nbsp;</td>
+<td onclick="AddLetter(1038);" bgcolor="#4c76ac" align="center">&nbsp;&#1038;&nbsp;</td>
+<td onclick="AddLetter(1039);" bgcolor="#4c76ac" align="center">&nbsp;&#1039;&nbsp;</td>
+<td onclick="AddLetter(1104);" bgcolor="#4c76ac" align="center">&nbsp;&#1104;&nbsp;</td>
+<td onclick="AddLetter(1105);" bgcolor="#4c76ac" align="center">&nbsp;&#1105;&nbsp;</td>
+<td onclick="AddLetter(1106);" bgcolor="#4c76ac" align="center">&nbsp;&#1106;&nbsp;</td>
+<td onclick="AddLetter(1107);" bgcolor="#4c76ac" align="center">&nbsp;&#1107;&nbsp;</td>
+<td onclick="AddLetter(1108);" bgcolor="#4c76ac" align="center">&nbsp;&#1108;&nbsp;</td>
+<td onclick="AddLetter(1109);" bgcolor="#4c76ac" align="center">&nbsp;&#1109;&nbsp;</td>
+<td onclick="AddLetter(1110);" bgcolor="#4c76ac" align="center">&nbsp;&#1110;&nbsp;</td>
+<td onclick="AddLetter(1111);" bgcolor="#4c76ac" align="center">&nbsp;&#1111;&nbsp;</td>
+<td onclick="AddLetter(1112);" bgcolor="#4c76ac" align="center">&nbsp;&#1112;&nbsp;</td>
+<td onclick="AddLetter(1113);" bgcolor="#4c76ac" align="center">&nbsp;&#1113;&nbsp;</td>
+<td onclick="AddLetter(1114);" bgcolor="#4c76ac" align="center">&nbsp;&#1114;&nbsp;</td>
+<td onclick="AddLetter(1115);" bgcolor="#4c76ac" align="center">&nbsp;&#1115;&nbsp;</td>
+<td onclick="AddLetter(1116);" bgcolor="#4c76ac" align="center">&nbsp;&#1116;&nbsp;</td>
+<td onclick="AddLetter(1117);" bgcolor="#4c76ac" align="center">&nbsp;&#1117;&nbsp;</td>
+<td onclick="AddLetter(1118);" bgcolor="#4c76ac" align="center">&nbsp;&#1118;&nbsp;</td>
+<td onclick="AddLetter(1119);" bgcolor="#4c76ac" align="center">&nbsp;&#1119;&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1120);" bgcolor="#4c76ac" align="center">&nbsp;&#1120;&nbsp;</td>
+<td onclick="AddLetter(1121);" bgcolor="#4c76ac" align="center">&nbsp;&#1121;&nbsp;</td>
+<td onclick="AddLetter(1122);" bgcolor="#4c76ac" align="center">&nbsp;&#1122;&nbsp;</td>
+<td onclick="AddLetter(1123);" bgcolor="#4c76ac" align="center">&nbsp;&#1123;&nbsp;</td>
+<td onclick="AddLetter(1124);" bgcolor="#4c76ac" align="center">&nbsp;&#1124;&nbsp;</td>
+<td onclick="AddLetter(1125);" bgcolor="#4c76ac" align="center">&nbsp;&#1125;&nbsp;</td>
+<td onclick="AddLetter(1126);" bgcolor="#4c76ac" align="center">&nbsp;&#1126;&nbsp;</td>
+<td onclick="AddLetter(1127);" bgcolor="#4c76ac" align="center">&nbsp;&#1127;&nbsp;</td>
+<td onclick="AddLetter(1128);" bgcolor="#4c76ac" align="center">&nbsp;&#1128;&nbsp;</td>
+<td onclick="AddLetter(1129);" bgcolor="#4c76ac" align="center">&nbsp;&#1129;&nbsp;</td>
+<td onclick="AddLetter(1130);" bgcolor="#4c76ac" align="center">&nbsp;&#1130;&nbsp;</td>
+<td onclick="AddLetter(1131);" bgcolor="#4c76ac" align="center">&nbsp;&#1131;&nbsp;</td>
+<td onclick="AddLetter(1132);" bgcolor="#4c76ac" align="center">&nbsp;&#1132;&nbsp;</td>
+<td onclick="AddLetter(1133);" bgcolor="#4c76ac" align="center">&nbsp;&#1133;&nbsp;</td>
+<td onclick="AddLetter(1134);" bgcolor="#4c76ac" align="center">&nbsp;&#1134;&nbsp;</td>
+<td onclick="AddLetter(1135);" bgcolor="#4c76ac" align="center">&nbsp;&#1135;&nbsp;</td>
+<td onclick="AddLetter(1136);" bgcolor="#4c76ac" align="center">&nbsp;&#1136;&nbsp;</td>
+<td onclick="AddLetter(1137);" bgcolor="#4c76ac" align="center">&nbsp;&#1137;&nbsp;</td>
+<td onclick="AddLetter(1138);" bgcolor="#4c76ac" align="center">&nbsp;&#1138;&nbsp;</td>
+<td onclick="AddLetter(1139);" bgcolor="#4c76ac" align="center">&nbsp;&#1139;&nbsp;</td>
+<td onclick="AddLetter(1140);" bgcolor="#4c76ac" align="center">&nbsp;&#1140;&nbsp;</td>
+<td onclick="AddLetter(1141);" bgcolor="#4c76ac" align="center">&nbsp;&#1141;&nbsp;</td>
+<td onclick="AddLetter(1142);" bgcolor="#4c76ac" align="center">&nbsp;&#1142;&nbsp;</td>
+<td onclick="AddLetter(1143);" bgcolor="#4c76ac" align="center">&nbsp;&#1143;&nbsp;</td>
+<td onclick="AddLetter(1144);" bgcolor="#4c76ac" align="center">&nbsp;&#1144;&nbsp;</td>
+<td onclick="AddLetter(1145);" bgcolor="#4c76ac" align="center">&nbsp;&#1145;&nbsp;</td>
+<td onclick="AddLetter(1146);" bgcolor="#4c76ac" align="center">&nbsp;&#1146;&nbsp;</td>
+<td onclick="AddLetter(1147);" bgcolor="#4c76ac" align="center">&nbsp;&#1147;&nbsp;</td>
+<td onclick="AddLetter(1148);" bgcolor="#4c76ac" align="center">&nbsp;&#1148;&nbsp;</td>
+<td onclick="AddLetter(1149);" bgcolor="#4c76ac" align="center">&nbsp;&#1149;&nbsp;</td>
+<td onclick="AddLetter(1150);" bgcolor="#4c76ac" align="center">&nbsp;&#1150;&nbsp;</td>
+<td onclick="AddLetter(1151);" bgcolor="#4c76ac" align="center">&nbsp;&#1151;&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1152);" bgcolor="#4c76ac" align="center">&nbsp;&#1152;&nbsp;</td>
+<td onclick="AddLetter(1153);" bgcolor="#4c76ac" align="center">&nbsp;&#1153;&nbsp;</td>
+<td onclick="AddLetter(1154);" bgcolor="#4c76ac" align="center">&nbsp;&#1154;&nbsp;</td>
+<td onclick="AddLetter(1155);" bgcolor="#4c76ac" align="center">&nbsp;&#1155;&nbsp;</td>
+<td onclick="AddLetter(1156);" bgcolor="#4c76ac" align="center">&nbsp;&#1156;&nbsp;</td>
+<td onclick="AddLetter(1157);" bgcolor="#4c76ac" align="center">&nbsp;&#1157;&nbsp;</td>
+<td onclick="AddLetter(1158);" bgcolor="#4c76ac" align="center">&nbsp;&#1158;&nbsp;</td>
+<td onclick="AddLetter(1159);" bgcolor="#4c76ac" align="center">&nbsp;&#1159;&nbsp;</td>
+<td onclick="AddLetter(1160);" bgcolor="#4c76ac" align="center">&nbsp;&#1160;&nbsp;</td>
+<td onclick="AddLetter(1161);" bgcolor="#4c76ac" align="center">&nbsp;&#1161;&nbsp;</td>
+<td onclick="AddLetter(1162);" bgcolor="#4c76ac" align="center">&nbsp;&#1162;&nbsp;</td>
+<td onclick="AddLetter(1163);" bgcolor="#4c76ac" align="center">&nbsp;&#1163;&nbsp;</td>
+<td onclick="AddLetter(1164);" bgcolor="#4c76ac" align="center">&nbsp;&#1164;&nbsp;</td>
+<td onclick="AddLetter(1165);" bgcolor="#4c76ac" align="center">&nbsp;&#1165;&nbsp;</td>
+<td onclick="AddLetter(1166);" bgcolor="#4c76ac" align="center">&nbsp;&#1166;&nbsp;</td>
+<td onclick="AddLetter(1167);" bgcolor="#4c76ac" align="center">&nbsp;&#1167;&nbsp;</td>
+<td onclick="AddLetter(1168);" bgcolor="#4c76ac" align="center">&nbsp;&#1168;&nbsp;</td>
+<td onclick="AddLetter(1169);" bgcolor="#4c76ac" align="center">&nbsp;&#1169;&nbsp;</td>
+<td onclick="AddLetter(1170);" bgcolor="#4c76ac" align="center">&nbsp;&#1170;&nbsp;</td>
+<td onclick="AddLetter(1171);" bgcolor="#4c76ac" align="center">&nbsp;&#1171;&nbsp;</td>
+<td onclick="AddLetter(1172);" bgcolor="#4c76ac" align="center">&nbsp;&#1172;&nbsp;</td>
+<td onclick="AddLetter(1173);" bgcolor="#4c76ac" align="center">&nbsp;&#1173;&nbsp;</td>
+<td onclick="AddLetter(1174);" bgcolor="#4c76ac" align="center">&nbsp;&#1174;&nbsp;</td>
+<td onclick="AddLetter(1175);" bgcolor="#4c76ac" align="center">&nbsp;&#1175;&nbsp;</td>
+<td onclick="AddLetter(1176);" bgcolor="#4c76ac" align="center">&nbsp;&#1176;&nbsp;</td>
+<td onclick="AddLetter(1177);" bgcolor="#4c76ac" align="center">&nbsp;&#1177;&nbsp;</td>
+<td onclick="AddLetter(1178);" bgcolor="#4c76ac" align="center">&nbsp;&#1178;&nbsp;</td>
+<td onclick="AddLetter(1179);" bgcolor="#4c76ac" align="center">&nbsp;&#1179;&nbsp;</td>
+<td onclick="AddLetter(1180);" bgcolor="#4c76ac" align="center">&nbsp;&#1180;&nbsp;</td>
+<td onclick="AddLetter(1181);" bgcolor="#4c76ac" align="center">&nbsp;&#1181;&nbsp;</td>
+<td onclick="AddLetter(1182);" bgcolor="#4c76ac" align="center">&nbsp;&#1182;&nbsp;</td>
+<td onclick="AddLetter(1183);" bgcolor="#4c76ac" align="center">&nbsp;&#1183;&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1184);" bgcolor="#4c76ac" align="center">&nbsp;&#1184;&nbsp;</td>
+<td onclick="AddLetter(1185);" bgcolor="#4c76ac" align="center">&nbsp;&#1185;&nbsp;</td>
+<td onclick="AddLetter(1186);" bgcolor="#4c76ac" align="center">&nbsp;&#1186;&nbsp;</td>
+<td onclick="AddLetter(1187);" bgcolor="#4c76ac" align="center">&nbsp;&#1187;&nbsp;</td>
+<td onclick="AddLetter(1188);" bgcolor="#4c76ac" align="center">&nbsp;&#1188;&nbsp;</td>
+<td onclick="AddLetter(1189);" bgcolor="#4c76ac" align="center">&nbsp;&#1189;&nbsp;</td>
+<td onclick="AddLetter(1190);" bgcolor="#4c76ac" align="center">&nbsp;&#1190;&nbsp;</td>
+<td onclick="AddLetter(1191);" bgcolor="#4c76ac" align="center">&nbsp;&#1191;&nbsp;</td>
+<td onclick="AddLetter(1192);" bgcolor="#4c76ac" align="center">&nbsp;&#1192;&nbsp;</td>
+<td onclick="AddLetter(1193);" bgcolor="#4c76ac" align="center">&nbsp;&#1193;&nbsp;</td>
+<td onclick="AddLetter(1194);" bgcolor="#4c76ac" align="center">&nbsp;&#1194;&nbsp;</td>
+<td onclick="AddLetter(1195);" bgcolor="#4c76ac" align="center">&nbsp;&#1195;&nbsp;</td>
+<td onclick="AddLetter(1196);" bgcolor="#4c76ac" align="center">&nbsp;&#1196;&nbsp;</td>
+<td onclick="AddLetter(1197);" bgcolor="#4c76ac" align="center">&nbsp;&#1197;&nbsp;</td>
+<td onclick="AddLetter(1198);" bgcolor="#4c76ac" align="center">&nbsp;&#1198;&nbsp;</td>
+<td onclick="AddLetter(1199);" bgcolor="#4c76ac" align="center">&nbsp;&#1199;&nbsp;</td>
+<td onclick="AddLetter(1200);" bgcolor="#4c76ac" align="center">&nbsp;&#1200;&nbsp;</td>
+<td onclick="AddLetter(1201);" bgcolor="#4c76ac" align="center">&nbsp;&#1201;&nbsp;</td>
+<td onclick="AddLetter(1202);" bgcolor="#4c76ac" align="center">&nbsp;&#1202;&nbsp;</td>
+<td onclick="AddLetter(1203);" bgcolor="#4c76ac" align="center">&nbsp;&#1203;&nbsp;</td>
+<td onclick="AddLetter(1204);" bgcolor="#4c76ac" align="center">&nbsp;&#1204;&nbsp;</td>
+<td onclick="AddLetter(1205);" bgcolor="#4c76ac" align="center">&nbsp;&#1205;&nbsp;</td>
+<td onclick="AddLetter(1206);" bgcolor="#4c76ac" align="center">&nbsp;&#1206;&nbsp;</td>
+<td onclick="AddLetter(1207);" bgcolor="#4c76ac" align="center">&nbsp;&#1207;&nbsp;</td>
+<td onclick="AddLetter(1208);" bgcolor="#4c76ac" align="center">&nbsp;&#1208;&nbsp;</td>
+<td onclick="AddLetter(1209);" bgcolor="#4c76ac" align="center">&nbsp;&#1209;&nbsp;</td>
+<td onclick="AddLetter(1210);" bgcolor="#4c76ac" align="center">&nbsp;&#1210;&nbsp;</td>
+<td onclick="AddLetter(1211);" bgcolor="#4c76ac" align="center">&nbsp;&#1211;&nbsp;</td>
+<td onclick="AddLetter(1212);" bgcolor="#4c76ac" align="center">&nbsp;&#1212;&nbsp;</td>
+<td onclick="AddLetter(1213);" bgcolor="#4c76ac" align="center">&nbsp;&#1213;&nbsp;</td>
+<td onclick="AddLetter(1214);" bgcolor="#4c76ac" align="center">&nbsp;&#1214;&nbsp;</td>
+<td onclick="AddLetter(1215);" bgcolor="#4c76ac" align="center">&nbsp;&#1215;&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1216);" bgcolor="#4c76ac" align="center">&nbsp;&#1216;&nbsp;</td>
+<td onclick="AddLetter(1217);" bgcolor="#4c76ac" align="center">&nbsp;&#1217;&nbsp;</td>
+<td onclick="AddLetter(1218);" bgcolor="#4c76ac" align="center">&nbsp;&#1218;&nbsp;</td>
+<td onclick="AddLetter(1219);" bgcolor="#4c76ac" align="center">&nbsp;&#1219;&nbsp;</td>
+<td onclick="AddLetter(1220);" bgcolor="#4c76ac" align="center">&nbsp;&#1220;&nbsp;</td>
+<td onclick="AddLetter(1221);" bgcolor="#4c76ac" align="center">&nbsp;&#1221;&nbsp;</td>
+<td onclick="AddLetter(1222);" bgcolor="#4c76ac" align="center">&nbsp;&#1222;&nbsp;</td>
+<td onclick="AddLetter(1223);" bgcolor="#4c76ac" align="center">&nbsp;&#1223;&nbsp;</td>
+<td onclick="AddLetter(1224);" bgcolor="#4c76ac" align="center">&nbsp;&#1224;&nbsp;</td>
+<td onclick="AddLetter(1225);" bgcolor="#4c76ac" align="center">&nbsp;&#1225;&nbsp;</td>
+<td onclick="AddLetter(1226);" bgcolor="#4c76ac" align="center">&nbsp;&#1226;&nbsp;</td>
+<td onclick="AddLetter(1227);" bgcolor="#4c76ac" align="center">&nbsp;&#1227;&nbsp;</td>
+<td onclick="AddLetter(1228);" bgcolor="#4c76ac" align="center">&nbsp;&#1228;&nbsp;</td>
+<td onclick="AddLetter(1229);" bgcolor="#4c76ac" align="center">&nbsp;&#1229;&nbsp;</td>
+<td onclick="AddLetter(1230);" bgcolor="#4c76ac" align="center">&nbsp;&#1230;&nbsp;</td>
+<td onclick="AddLetter(1231);" bgcolor="#4c76ac" align="center">&nbsp;&#1231;&nbsp;</td>
+<td onclick="AddLetter(1232);" bgcolor="#4c76ac" align="center">&nbsp;&#1232;&nbsp;</td>
+<td onclick="AddLetter(1233);" bgcolor="#4c76ac" align="center">&nbsp;&#1233;&nbsp;</td>
+<td onclick="AddLetter(1234);" bgcolor="#4c76ac" align="center">&nbsp;&#1234;&nbsp;</td>
+<td onclick="AddLetter(1235);" bgcolor="#4c76ac" align="center">&nbsp;&#1235;&nbsp;</td>
+<td onclick="AddLetter(1236);" bgcolor="#4c76ac" align="center">&nbsp;&#1236;&nbsp;</td>
+<td onclick="AddLetter(1237);" bgcolor="#4c76ac" align="center">&nbsp;&#1237;&nbsp;</td>
+<td onclick="AddLetter(1238);" bgcolor="#4c76ac" align="center">&nbsp;&#1238;&nbsp;</td>
+<td onclick="AddLetter(1239);" bgcolor="#4c76ac" align="center">&nbsp;&#1239;&nbsp;</td>
+<td onclick="AddLetter(1240);" bgcolor="#4c76ac" align="center">&nbsp;&#1240;&nbsp;</td>
+<td onclick="AddLetter(1241);" bgcolor="#4c76ac" align="center">&nbsp;&#1241;&nbsp;</td>
+<td onclick="AddLetter(1242);" bgcolor="#4c76ac" align="center">&nbsp;&#1242;&nbsp;</td>
+<td onclick="AddLetter(1243);" bgcolor="#4c76ac" align="center">&nbsp;&#1243;&nbsp;</td>
+<td onclick="AddLetter(1244);" bgcolor="#4c76ac" align="center">&nbsp;&#1244;&nbsp;</td>
+<td onclick="AddLetter(1245);" bgcolor="#4c76ac" align="center">&nbsp;&#1245;&nbsp;</td>
+<td onclick="AddLetter(1246);" bgcolor="#4c76ac" align="center">&nbsp;&#1246;&nbsp;</td>
+<td onclick="AddLetter(1247);" bgcolor="#4c76ac" align="center">&nbsp;&#1247;&nbsp;</td>
+</tr>
+<tr>
+<td onclick="AddLetter(1248);" bgcolor="#4c76ac" align="center">&nbsp;&#1248;&nbsp;</td>
+<td onclick="AddLetter(1249);" bgcolor="#4c76ac" align="center">&nbsp;&#1249;&nbsp;</td>
+<td onclick="AddLetter(1250);" bgcolor="#4c76ac" align="center">&nbsp;&#1250;&nbsp;</td>
+<td onclick="AddLetter(1251);" bgcolor="#4c76ac" align="center">&nbsp;&#1251;&nbsp;</td>
+<td onclick="AddLetter(1252);" bgcolor="#4c76ac" align="center">&nbsp;&#1252;&nbsp;</td>
+<td onclick="AddLetter(1253);" bgcolor="#4c76ac" align="center">&nbsp;&#1253;&nbsp;</td>
+<td onclick="AddLetter(1254);" bgcolor="#4c76ac" align="center">&nbsp;&#1254;&nbsp;</td>
+<td onclick="AddLetter(1255);" bgcolor="#4c76ac" align="center">&nbsp;&#1255;&nbsp;</td>
+<td onclick="AddLetter(1256);" bgcolor="#4c76ac" align="center">&nbsp;&#1256;&nbsp;</td>
+<td onclick="AddLetter(1257);" bgcolor="#4c76ac" align="center">&nbsp;&#1257;&nbsp;</td>
+<td onclick="AddLetter(1258);" bgcolor="#4c76ac" align="center">&nbsp;&#1258;&nbsp;</td>
+<td onclick="AddLetter(1259);" bgcolor="#4c76ac" align="center">&nbsp;&#1259;&nbsp;</td>
+<td onclick="AddLetter(1260);" bgcolor="#4c76ac" align="center">&nbsp;&#1260;&nbsp;</td>
+<td onclick="AddLetter(1261);" bgcolor="#4c76ac" align="center">&nbsp;&#1261;&nbsp;</td>
+<td onclick="AddLetter(1262);" bgcolor="#4c76ac" align="center">&nbsp;&#1262;&nbsp;</td>
+<td onclick="AddLetter(1263);" bgcolor="#4c76ac" align="center">&nbsp;&#1263;&nbsp;</td>
+<td onclick="AddLetter(1264);" bgcolor="#4c76ac" align="center">&nbsp;&#1264;&nbsp;</td>
+<td onclick="AddLetter(1265);" bgcolor="#4c76ac" align="center">&nbsp;&#1265;&nbsp;</td>
+<td onclick="AddLetter(1266);" bgcolor="#4c76ac" align="center">&nbsp;&#1266;&nbsp;</td>
+<td onclick="AddLetter(1267);" bgcolor="#4c76ac" align="center">&nbsp;&#1267;&nbsp;</td>
+<td onclick="AddLetter(1268);" bgcolor="#4c76ac" align="center">&nbsp;&#1268;&nbsp;</td>
+<td onclick="AddLetter(1269);" bgcolor="#4c76ac" align="center">&nbsp;&#1269;&nbsp;</td>
+<td onclick="AddLetter(1270);" bgcolor="#4c76ac" align="center">&nbsp;&#1270;&nbsp;</td>
+<td onclick="AddLetter(1271);" bgcolor="#4c76ac" align="center">&nbsp;&#1271;&nbsp;</td>
+<td onclick="AddLetter(1272);" bgcolor="#4c76ac" align="center">&nbsp;&#1272;&nbsp;</td>
+<td onclick="AddLetter(1273);" bgcolor="#4c76ac" align="center">&nbsp;&#1273;&nbsp;</td>
+<td onclick="AddLetter(1274);" bgcolor="#4c76ac" align="center">&nbsp;&#1274;&nbsp;</td>
+<td onclick="AddLetter(1275);" bgcolor="#4c76ac" align="center">&nbsp;&#1275;&nbsp;</td>
+<td onclick="AddLetter(1276);" bgcolor="#4c76ac" align="center">&nbsp;&#1276;&nbsp;</td>
+<td onclick="AddLetter(1277);" bgcolor="#4c76ac" align="center">&nbsp;&#1277;&nbsp;</td>
+<td onclick="AddLetter(1278);" bgcolor="#4c76ac" align="center">&nbsp;&#1278;&nbsp;</td>
+<td onclick="AddLetter(1279);" bgcolor="#4c76ac" align="center">&nbsp;&#1279;&nbsp;</td>
+</tr>
+</table>
+<table id="Key1" style="display: none;" bgcolor="#80c0c0" border="0" cellpadding="2" cellspacing="1">
+<tr><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td></tr><tr>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">esc</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F1</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F2</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F3</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F4</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F5</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F6</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F7</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F8</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F9</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F10</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F11</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F12</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ins</font></td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">del</font></td>
+</tr>
+<tr>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1025);" bgcolor="#4c76ac"><font size="+1">&#1025;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 33 : 49);" bgcolor="#4c76ac"><font size="-1">&#33;<br/>&#49;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 64 : 50);" bgcolor="#4c76ac"><font size="-1">&#64;<br/>&#50;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 35 : 51);" bgcolor="#4c76ac"><font size="-1">&#35;<br/>&#51;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 34 : 52);" bgcolor="#4c76ac"><font size="-1">&#34;<br/>&#52;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 58 : 53);" bgcolor="#4c76ac"><font size="-1">&#58;<br/>&#53;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 94 : 54);" bgcolor="#4c76ac"><font size="-1">&#94;<br/>&#54;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 38 : 55);" bgcolor="#4c76ac"><font size="-1">&#38;<br/>&#55;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 42 : 56);" bgcolor="#4c76ac"><font size="-1">&#42;<br/>&#56;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 40 : 57);" bgcolor="#4c76ac"><font size="-1">&#40;<br/>&#57;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 41 : 48);" bgcolor="#4c76ac"><font size="-1">&#41;<br/>&#48;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 95 : 45);" bgcolor="#4c76ac"><font size="-1">&#95;<br/>&#45;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1066);" bgcolor="#4c76ac"><font size="+1">&#1066;</font></td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">bksp</font></td>
+</tr>
+<tr>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">tab</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1071);" bgcolor="#4c76ac"><font size="+1">&#1071;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1064);" bgcolor="#4c76ac"><font size="+1">&#1064;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1045);" bgcolor="#4c76ac"><font size="+1">&#1045;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1056);" bgcolor="#4c76ac"><font size="+1">&#1056;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1058);" bgcolor="#4c76ac"><font size="+1">&#1058;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1067);" bgcolor="#4c76ac"><font size="+1">&#1067;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1059);" bgcolor="#4c76ac"><font size="+1">&#1059;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1048);" bgcolor="#4c76ac"><font size="+1">&#1048;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1054);" bgcolor="#4c76ac"><font size="+1">&#1054;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1055);" bgcolor="#4c76ac"><font size="+1">&#1055;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1070);" bgcolor="#4c76ac"><font size="+1">&#1070;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1065);" bgcolor="#4c76ac"><font size="+1">&#1065;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1069);" bgcolor="#4c76ac"><font size="+1">&#1069;</font></td>
+</tr>
+<tr>
+<td colspan="5" align="center" valign="middle" id="Shift1" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">caps lock</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1040);" bgcolor="#4c76ac"><font size="+1">&#1040;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1057);" bgcolor="#4c76ac"><font size="+1">&#1057;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1044);" bgcolor="#4c76ac"><font size="+1">&#1044;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1060);" bgcolor="#4c76ac"><font size="+1">&#1060;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1043);" bgcolor="#4c76ac"><font size="+1">&#1043;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1063);" bgcolor="#4c76ac"><font size="+1">&#1063;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1049);" bgcolor="#4c76ac"><font size="+1">&#1049;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1050);" bgcolor="#4c76ac"><font size="+1">&#1050;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1051);" bgcolor="#4c76ac"><font size="+1">&#1051;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1068);" bgcolor="#4c76ac"><font size="+1">&#1068;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1046);" bgcolor="#4c76ac"><font size="+1">&#1046;</font></td>
+<td colspan="5" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 10 : 10);" bgcolor="#4c76ac">enter</td>
+</tr>
+<tr>
+<td colspan="6" align="center" valign="middle" id="Shift2" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">shift</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1047);" bgcolor="#4c76ac"><font size="+1">&#1047;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1061);" bgcolor="#4c76ac"><font size="+1">&#1061;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1062);" bgcolor="#4c76ac"><font size="+1">&#1062;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1042);" bgcolor="#4c76ac"><font size="+1">&#1042;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1041);" bgcolor="#4c76ac"><font size="+1">&#1041;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1053);" bgcolor="#4c76ac"><font size="+1">&#1053;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1052);" bgcolor="#4c76ac"><font size="+1">&#1052;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 60 : 44);" bgcolor="#4c76ac"><font size="-1">&#60;<br/>&#44;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 62 : 46);" bgcolor="#4c76ac"><font size="-1">&#62;<br/>&#46;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 63 : 47);" bgcolor="#4c76ac"><font size="-1">&#63;<br/>&#47;</font></td>
+<td colspan="7" align="center" valign="middle" id="Shift3" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">shift</font></td>
+</tr>
+<tr>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ctrl</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">alt</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="24" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 32 : 32);" bgcolor="#4c76ac">space</td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">alt</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ctrl</font></td>
+</tr>
+</table>
+<table id="Key2" style="display: table;" bgcolor="#80c0c0" border="0" cellpadding="2" cellspacing="1">
+<tr><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td><td width="10"></td></tr><tr>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">esc</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F1</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F2</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F3</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F4</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F5</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F6</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F7</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F8</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F9</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F10</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F11</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">F12</font></td>
+<td colspan="2" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ins</font></td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">del</font></td>
+</tr>
+<tr>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1025);" bgcolor="#4c76ac"><font size="+1">&#1025;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 33 : 49);" bgcolor="#4c76ac"><font size="-1">&#33;<br/>&#49;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 34 : 50);" bgcolor="#4c76ac"><font size="-1">&#34;<br/>&#50;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 8470 : 51);" bgcolor="#4c76ac"><font size="-1">&#8470;<br/>&#51;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 59 : 52);" bgcolor="#4c76ac"><font size="-1">&#59;<br/>&#52;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 37 : 53);" bgcolor="#4c76ac"><font size="-1">&#37;<br/>&#53;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 58 : 54);" bgcolor="#4c76ac"><font size="-1">&#58;<br/>&#54;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 63 : 55);" bgcolor="#4c76ac"><font size="-1">&#63;<br/>&#55;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 42 : 56);" bgcolor="#4c76ac"><font size="-1">&#42;<br/>&#56;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 40 : 57);" bgcolor="#4c76ac"><font size="-1">&#40;<br/>&#57;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 41 : 48);" bgcolor="#4c76ac"><font size="-1">&#41;<br/>&#48;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 95 : 45);" bgcolor="#4c76ac"><font size="-1">&#95;<br/>&#45;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 43 : 61);" bgcolor="#4c76ac"><font size="-1">&#43;<br/>&#61;</font></td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">bksp</font></td>
+</tr>
+<tr>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">tab</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1049);" bgcolor="#4c76ac"><font size="+1">&#1049;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1062);" bgcolor="#4c76ac"><font size="+1">&#1062;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1059);" bgcolor="#4c76ac"><font size="+1">&#1059;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1050);" bgcolor="#4c76ac"><font size="+1">&#1050;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1045);" bgcolor="#4c76ac"><font size="+1">&#1045;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1053);" bgcolor="#4c76ac"><font size="+1">&#1053;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1043);" bgcolor="#4c76ac"><font size="+1">&#1043;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1064);" bgcolor="#4c76ac"><font size="+1">&#1064;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1065);" bgcolor="#4c76ac"><font size="+1">&#1065;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1047);" bgcolor="#4c76ac"><font size="+1">&#1047;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1061);" bgcolor="#4c76ac"><font size="+1">&#1061;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1066);" bgcolor="#4c76ac"><font size="+1">&#1066;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 47 : 92);" bgcolor="#4c76ac"><font size="-1">&#47;<br/>&#92;</font></td>
+</tr>
+<tr>
+<td colspan="5" align="center" valign="middle" id="Shift4" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">caps lock</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1060);" bgcolor="#4c76ac"><font size="+1">&#1060;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1067);" bgcolor="#4c76ac"><font size="+1">&#1067;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1042);" bgcolor="#4c76ac"><font size="+1">&#1042;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1040);" bgcolor="#4c76ac"><font size="+1">&#1040;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1055);" bgcolor="#4c76ac"><font size="+1">&#1055;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1056);" bgcolor="#4c76ac"><font size="+1">&#1056;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1054);" bgcolor="#4c76ac"><font size="+1">&#1054;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1051);" bgcolor="#4c76ac"><font size="+1">&#1051;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1044);" bgcolor="#4c76ac"><font size="+1">&#1044;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1046);" bgcolor="#4c76ac"><font size="+1">&#1046;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1069);" bgcolor="#4c76ac"><font size="+1">&#1069;</font></td>
+<td colspan="5" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 10 : 10);" bgcolor="#4c76ac">enter</td>
+</tr>
+<tr>
+<td colspan="6" align="center" valign="middle" id="Shift5" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">shift</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1071);" bgcolor="#4c76ac"><font size="+1">&#1071;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1063);" bgcolor="#4c76ac"><font size="+1">&#1063;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1057);" bgcolor="#4c76ac"><font size="+1">&#1057;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1052);" bgcolor="#4c76ac"><font size="+1">&#1052;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1048);" bgcolor="#4c76ac"><font size="+1">&#1048;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1058);" bgcolor="#4c76ac"><font size="+1">&#1058;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1068);" bgcolor="#4c76ac"><font size="+1">&#1068;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1042);" bgcolor="#4c76ac"><font size="+1">&#1042;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter(shift + 1070);" bgcolor="#4c76ac"><font size="+1">&#1070;</font></td>
+<td colspan="3" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 44 : 46);" bgcolor="#4c76ac"><font size="-1">&#44;<br/>&#46;</font></td>
+<td colspan="7" align="center" valign="middle" id="Shift6" onclick="Shift();" bgcolor="#5c76bc"><font color="#ecd264">shift</font></td>
+</tr>
+<tr>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ctrl</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">alt</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="24" align="center" valign="middle" onclick="AddLetter((shift < 1) ? 32 : 32);" bgcolor="#4c76ac">space</td>
+<td colspan="4" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">&nbsp;</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">alt</font></td>
+<td colspan="3" align="center" valign="middle" bgcolor="#5c76bc"><font color="black">ctrl</font></td>
+</tr>
+</table>
+<table id="Information" style="display: none;">
+<tr><td>Click on any of the radio-buttons to the left to select a character-set.</td></tr>
+<tr><td>Once a character-set is selected, click on any of the key with a yellow label to add a
+character the text in the above box.</td></tr>
+<tr><td>If one of the virtual keyboards is selected, note that the shift key will remain
+"locked" until clicked again.</td></tr>
+<tr><td>Once the text in that box is completed, it can be copied and pasted into any
+other document.</td></tr>
+<tr><td>The physical keyboard can be used to add any characters in the "usual" character-set.</td></tr>
+<tr><td>Keys with labels in black are currently non-functional.</td></tr>
+<tr><td><font size="-1">Click on the picture in the left upper corner to send feed-back to the author.</font></td></tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+
+var shift = 32;
+function Show(which)
+ {
+  document.getElementById('Unicode').style.display = (which == 1) ? 'table' : 'none';
+  document.getElementById('Key1').style.display = (which == 2) ? 'table' : 'none';
+  document.getElementById('Key2').style.display = (which == 3) ? 'table' : 'none';
+  document.getElementById('Information').style.display = (which == 4) ? 'table' : 'none';
+ }
+
+function Shift()
+ {
+  shift = 32 - shift;
+  document.getElementById('Shift1').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+  document.getElementById('Shift2').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+  document.getElementById('Shift3').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+  document.getElementById('Shift4').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+  document.getElementById('Shift5').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+  document.getElementById('Shift6').style.backgroundColor = (shift > 0) ? '#5c76bc' : '#7c96dc';
+ }
+
+function AddLetter(unicode)
+ {
+  var txtarea = document.getElementById('Text');
+  var scrollPos = txtarea.scrollTop;
+  var strPos = 0;
+  var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ?
+      'ff' : (document.selection ? 'ie' : false ) );
+  if (br == 'ie')
+   {
+    txtarea.focus();
+    var range = document.selection.createRange();
+    range.moveStart ('character', -txtarea.value.length);
+    strPos = 1; // length of inserted text
+   }
+  else
+   {
+    if (br == 'ff') strPos = txtarea.selectionStart;
+   }
+  var front = (txtarea.value).substring(0,strPos);
+  var back = (txtarea.value).substring(strPos,txtarea.value.length);
+  txtarea.value=front + String.fromCharCode(unicode) + back;
+  strPos = strPos + 1;
+  if (br == 'ie')
+   {
+    txtarea.focus();
+    var range = document.selection.createRange();
+    range.moveStart ('character', -txtarea.value.length);
+    range.moveStart ('character', strPos);
+    range.moveEnd ('character', 0);
+    range.select();
+   }
+  else
+   {
+    if (br == 'ff')
+     {
+      txtarea.selectionStart = strPos;
+      txtarea.selectionEnd = strPos;
+      txtarea.focus();
+     }
+   }
+  txtarea.scrollTop = scrollPos;
+ }
+//]]></script>
+
+
+</body>
+</html>

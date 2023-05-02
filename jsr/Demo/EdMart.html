@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Computer-Generated "Art"</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Computer%2dGenerated%20%22Art%22&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fEdMart%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a52%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Computer-Generated "Art"</font></h1></td></tr></table>
+<form name="form" action="EdMart.html" method="post">
+<input type="hidden" name="Action" value=""/>
+<input type="hidden" name="LastArt" value=""/>
+<p>Select Design: <select name="Design" onchange="DesignChange(this.value);"><option value="-" selected="selected">--Select from the list below--</option>
+<option value="a">Arcs</option>
+<option value="c">Circles</option>
+<option value="d">Diagonals</option>
+<option value="g">SpiroGraph</option>
+<option value="b">Bomans Squares</option>
+<option value="t">Bomans Triangles</option>
+<option value="h">Bomans Hexagons</option>
+</select></p>
+<table><tr><td id="Diagonals" style="display: none;">
+<table><tr><td># of sides (3 &le; # &le; 50):&nbsp;</td>
+<td><input type="text" name="Sides" size="3" value="3" style="text-align: right;"/></td></tr>
+</table></td></tr>
+<tr><td id="Arcs" style="display: none;">
+<table><tr><td>Start Angle (0 &le; # &le; 90):&nbsp;</td>
+<td><input type="text" name="ArcStart" size="3" value="0" style="text-align: right;"/></td></tr>
+<tr><td>End Angle (0 &le; # &le; 90):&nbsp;</td>
+<td><input type="text" name="ArcEnd" size="3" value="90" style="text-align: right;"/></td></tr>
+<tr><td>Start Radius (0 &le; # &le; 90):&nbsp;</td>
+<td><input type="text" name="RadStart" size="3" value="59" style="text-align: right;"/></td></tr>
+<tr><td>End Radius (0 &le; # &le; 90):&nbsp;</td>
+<td><input type="text" name="RadEnd" size="3" value="80" style="text-align: right;"/></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;First Arc&nbsp;</td><td>&nbsp;Second Arc&nbsp;</td></tr>
+<tr><td>Red Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="red(1,1)" size="3" value="0" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="red(1,2)" size="3" value="255" style="text-align: right;"/></td></tr>
+<tr><td>Green Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="green(1,1)" size="3" value="0" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="green(1,2)" size="3" value="0" style="text-align: right;"/></td></tr>
+<tr><td>Blue Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="blue(1,1)" size="3" value="255" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="blue(1,2)" size="3" value="0" style="text-align: right;"/></td></tr>
+</table></td></tr>
+<tr><td id="Circles" style="display: none;">
+<table><tr><td>Step-size (1 &le; # &le; 100):&nbsp;</td>
+<td><input type="text" name="CircleSteps" size="3" value="1" style="text-align: right;"/></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;One Circle&nbsp;</td><td>&nbsp;Alternating Circle&nbsp;</td></tr>
+<tr><td>Red Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="CircleRed1" size="3" value="0" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="CircleRed2" size="3" value="255" style="text-align: right;"/></td></tr>
+<tr><td>Green Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="CircleGreen1" size="3" value="0" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="CircleGreen2" size="3" value="0" style="text-align: right;"/></td></tr>
+<tr><td>Blue Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="CircleBlue1" size="3" value="255" style="text-align: right;"/></td>
+<td align="center"><input type="text" name="CircleBlue2" size="3" value="0" style="text-align: right;"/></td></tr>
+</table></td></tr>
+<tr><td id="Bomans" style="display: none;">
+<table>
+<tr><td colspan="2"><select name="BomansType"><option value="1" selected="selected">Type 1 (one square)</option><option value="2">Type 2 (four squares)</option></select></td></tr>
+<tr><td>Step-size (2 &le; # &le; 100):&nbsp;</td>
+<td><input type="text" name="BomansSteps" size="3" value="2" style="text-align: right;"/></td></tr>
+<tr><td colspan="2"><input type="checkbox" name="Fade"/>&nbsp;Fading colors</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;First Arc&nbsp;</td><td>&nbsp;Second Arc&nbsp;</td></tr>
+<tr><td>Red Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="BomansRed" size="3" value="0" style="text-align: right;"/></td></tr>
+<tr><td>Green Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="BomansGreen" size="3" value="0" style="text-align: right;"/></td></tr>
+<tr><td>Blue Saturation (0 &le; # &le; 255):&nbsp;</td>
+<td align="center"><input type="text" name="BomansBlue" size="3" value="0" style="text-align: right;"/></td></tr>
+</table></td></tr>
+<tr><td id="Spirograph" style="display: none;"><p>Relative Size of Radius: ratio between smaller wheel and larger wheel<br/>
+Radius Fraction: relative size of larger wheel; cannot exceed 100%</p>
+<table><tr><td>&nbsp;</td><td onclick="ToggleColumn(1);" align="center" id="Spiro_1_hdr"><input type="hidden" name="Spiro_1" id="Spiro_1" value="1"/><img src="../image/Ballads/minus.gif" id="Spiro_1_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(2);" align="center" id="Spiro_2_hdr"><input type="hidden" name="Spiro_2" id="Spiro_2" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_2_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(3);" align="center" id="Spiro_3_hdr" style="display: none;"><input type="hidden" name="Spiro_3" id="Spiro_3" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_3_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(4);" align="center" id="Spiro_4_hdr" style="display: none;"><input type="hidden" name="Spiro_4" id="Spiro_4" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_4_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(5);" align="center" id="Spiro_5_hdr" style="display: none;"><input type="hidden" name="Spiro_5" id="Spiro_5" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_5_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(6);" align="center" id="Spiro_6_hdr" style="display: none;"><input type="hidden" name="Spiro_6" id="Spiro_6" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_6_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(7);" align="center" id="Spiro_7_hdr" style="display: none;"><input type="hidden" name="Spiro_7" id="Spiro_7" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_7_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(8);" align="center" id="Spiro_8_hdr" style="display: none;"><input type="hidden" name="Spiro_8" id="Spiro_8" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_8_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(9);" align="center" id="Spiro_9_hdr" style="display: none;"><input type="hidden" name="Spiro_9" id="Spiro_9" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_9_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(10);" align="center" id="Spiro_10_hdr" style="display: none;"><input type="hidden" name="Spiro_10" id="Spiro_10" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_10_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(11);" align="center" id="Spiro_11_hdr" style="display: none;"><input type="hidden" name="Spiro_11" id="Spiro_11" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_11_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(12);" align="center" id="Spiro_12_hdr" style="display: none;"><input type="hidden" name="Spiro_12" id="Spiro_12" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_12_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(13);" align="center" id="Spiro_13_hdr" style="display: none;"><input type="hidden" name="Spiro_13" id="Spiro_13" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_13_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(14);" align="center" id="Spiro_14_hdr" style="display: none;"><input type="hidden" name="Spiro_14" id="Spiro_14" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_14_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(15);" align="center" id="Spiro_15_hdr" style="display: none;"><input type="hidden" name="Spiro_15" id="Spiro_15" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_15_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(16);" align="center" id="Spiro_16_hdr" style="display: none;"><input type="hidden" name="Spiro_16" id="Spiro_16" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_16_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(17);" align="center" id="Spiro_17_hdr" style="display: none;"><input type="hidden" name="Spiro_17" id="Spiro_17" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_17_i" alt="Activate/Deactivate"/></td><td onclick="ToggleColumn(18);" align="center" id="Spiro_18_hdr" style="display: none;"><input type="hidden" name="Spiro_18" id="Spiro_18" value="0"/><img src="../image/Ballads/plus.gif" id="Spiro_18_i" alt="Activate/Deactivate"/></td></tr>
+<tr><td align="right">Small Radius:&nbsp;</td>
+<td id="Spiro_1_s"><input type="text" size="3" name="SpiroSmall_1" id="SpiroSmall_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_2" id="SpiroSmall_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_3" id="SpiroSmall_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_4" id="SpiroSmall_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_5" id="SpiroSmall_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_6" id="SpiroSmall_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_7" id="SpiroSmall_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_8" id="SpiroSmall_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_9" id="SpiroSmall_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_10" id="SpiroSmall_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_11" id="SpiroSmall_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_12" id="SpiroSmall_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_13" id="SpiroSmall_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_14" id="SpiroSmall_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_15" id="SpiroSmall_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_16" id="SpiroSmall_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_17" id="SpiroSmall_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_s" style="display: none;"><input type="text" size="3" name="SpiroSmall_18" id="SpiroSmall_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Large Radius:&nbsp;</td>
+<td id="Spiro_1_l"><input type="text" size="3" name="SpiroLarge_1" id="SpiroLarge_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_2" id="SpiroLarge_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_3" id="SpiroLarge_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_4" id="SpiroLarge_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_5" id="SpiroLarge_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_6" id="SpiroLarge_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_7" id="SpiroLarge_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_8" id="SpiroLarge_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_9" id="SpiroLarge_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_10" id="SpiroLarge_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_11" id="SpiroLarge_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_12" id="SpiroLarge_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_13" id="SpiroLarge_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_14" id="SpiroLarge_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_15" id="SpiroLarge_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_16" id="SpiroLarge_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_17" id="SpiroLarge_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_l" style="display: none;"><input type="text" size="3" name="SpiroLarge_18" id="SpiroLarge_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Starting Angle: (0 &le; angle &le; 360)&nbsp;</td>
+<td id="Spiro_1_a"><input type="text" size="3" name="SpiroStart_1" id="SpiroStart_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_a" style="display: none;"><input type="text" size="3" name="SpiroStart_2" id="SpiroStart_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_a" style="display: none;"><input type="text" size="3" name="SpiroStart_3" id="SpiroStart_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_a" style="display: none;"><input type="text" size="3" name="SpiroStart_4" id="SpiroStart_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_a" style="display: none;"><input type="text" size="3" name="SpiroStart_5" id="SpiroStart_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_a" style="display: none;"><input type="text" size="3" name="SpiroStart_6" id="SpiroStart_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_a" style="display: none;"><input type="text" size="3" name="SpiroStart_7" id="SpiroStart_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_a" style="display: none;"><input type="text" size="3" name="SpiroStart_8" id="SpiroStart_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_a" style="display: none;"><input type="text" size="3" name="SpiroStart_9" id="SpiroStart_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_a" style="display: none;"><input type="text" size="3" name="SpiroStart_10" id="SpiroStart_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_a" style="display: none;"><input type="text" size="3" name="SpiroStart_11" id="SpiroStart_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_a" style="display: none;"><input type="text" size="3" name="SpiroStart_12" id="SpiroStart_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_a" style="display: none;"><input type="text" size="3" name="SpiroStart_13" id="SpiroStart_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_a" style="display: none;"><input type="text" size="3" name="SpiroStart_14" id="SpiroStart_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_a" style="display: none;"><input type="text" size="3" name="SpiroStart_15" id="SpiroStart_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_a" style="display: none;"><input type="text" size="3" name="SpiroStart_16" id="SpiroStart_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_a" style="display: none;"><input type="text" size="3" name="SpiroStart_17" id="SpiroStart_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_a" style="display: none;"><input type="text" size="3" name="SpiroStart_18" id="SpiroStart_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Relative Size of Radius: (1% &le; size &le; 100%)&nbsp;</td>
+<td id="Spiro_1_p"><input type="text" size="3" name="SpiroPercent_1" id="SpiroPercent_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_2" id="SpiroPercent_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_3" id="SpiroPercent_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_4" id="SpiroPercent_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_5" id="SpiroPercent_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_6" id="SpiroPercent_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_7" id="SpiroPercent_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_8" id="SpiroPercent_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_9" id="SpiroPercent_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_10" id="SpiroPercent_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_11" id="SpiroPercent_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_12" id="SpiroPercent_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_13" id="SpiroPercent_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_14" id="SpiroPercent_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_15" id="SpiroPercent_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_16" id="SpiroPercent_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_17" id="SpiroPercent_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_p" style="display: none;"><input type="text" size="3" name="SpiroPercent_18" id="SpiroPercent_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Red Saturation: (0 &le; # &le; 255)&nbsp;</td>
+<td id="Spiro_1_r"><input type="text" size="3" name="SpiroRed_1" id="SpiroRed_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_r" style="display: none;"><input type="text" size="3" name="SpiroRed_2" id="SpiroRed_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_r" style="display: none;"><input type="text" size="3" name="SpiroRed_3" id="SpiroRed_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_r" style="display: none;"><input type="text" size="3" name="SpiroRed_4" id="SpiroRed_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_r" style="display: none;"><input type="text" size="3" name="SpiroRed_5" id="SpiroRed_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_r" style="display: none;"><input type="text" size="3" name="SpiroRed_6" id="SpiroRed_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_r" style="display: none;"><input type="text" size="3" name="SpiroRed_7" id="SpiroRed_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_r" style="display: none;"><input type="text" size="3" name="SpiroRed_8" id="SpiroRed_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_r" style="display: none;"><input type="text" size="3" name="SpiroRed_9" id="SpiroRed_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_r" style="display: none;"><input type="text" size="3" name="SpiroRed_10" id="SpiroRed_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_r" style="display: none;"><input type="text" size="3" name="SpiroRed_11" id="SpiroRed_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_r" style="display: none;"><input type="text" size="3" name="SpiroRed_12" id="SpiroRed_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_r" style="display: none;"><input type="text" size="3" name="SpiroRed_13" id="SpiroRed_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_r" style="display: none;"><input type="text" size="3" name="SpiroRed_14" id="SpiroRed_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_r" style="display: none;"><input type="text" size="3" name="SpiroRed_15" id="SpiroRed_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_r" style="display: none;"><input type="text" size="3" name="SpiroRed_16" id="SpiroRed_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_r" style="display: none;"><input type="text" size="3" name="SpiroRed_17" id="SpiroRed_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_r" style="display: none;"><input type="text" size="3" name="SpiroRed_18" id="SpiroRed_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Green Saturation: (0 &le; # &le; 255)&nbsp;</td>
+<td id="Spiro_1_g"><input type="text" size="3" name="SpiroGreen_1" id="SpiroGreen_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_2" id="SpiroGreen_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_3" id="SpiroGreen_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_4" id="SpiroGreen_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_5" id="SpiroGreen_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_6" id="SpiroGreen_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_7" id="SpiroGreen_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_8" id="SpiroGreen_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_9" id="SpiroGreen_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_10" id="SpiroGreen_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_11" id="SpiroGreen_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_12" id="SpiroGreen_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_13" id="SpiroGreen_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_14" id="SpiroGreen_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_15" id="SpiroGreen_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_16" id="SpiroGreen_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_17" id="SpiroGreen_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_g" style="display: none;"><input type="text" size="3" name="SpiroGreen_18" id="SpiroGreen_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Blue Saturation: (0 &le; # &le; 255)&nbsp;</td>
+<td id="Spiro_1_b"><input type="text" size="3" name="SpiroBlue_1" id="SpiroBlue_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_2" id="SpiroBlue_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_3" id="SpiroBlue_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_4" id="SpiroBlue_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_5" id="SpiroBlue_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_6" id="SpiroBlue_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_7" id="SpiroBlue_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_8" id="SpiroBlue_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_9" id="SpiroBlue_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_10" id="SpiroBlue_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_11" id="SpiroBlue_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_12" id="SpiroBlue_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_13" id="SpiroBlue_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_14" id="SpiroBlue_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_15" id="SpiroBlue_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_16" id="SpiroBlue_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_17" id="SpiroBlue_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_b" style="display: none;"><input type="text" size="3" name="SpiroBlue_18" id="SpiroBlue_18" value="" style="text-align: right;"/></td>
+</tr>
+<tr><td align="right">Radius Fraction: (1% &le; # &le; 100%)&nbsp;</td>
+<td id="Spiro_1_f"><input type="text" size="3" name="SpiroFraction_1" id="SpiroFraction_1" value="" style="text-align: right;"/></td>
+<td id="Spiro_2_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_2" id="SpiroFraction_2" value="" style="text-align: right;"/></td>
+<td id="Spiro_3_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_3" id="SpiroFraction_3" value="" style="text-align: right;"/></td>
+<td id="Spiro_4_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_4" id="SpiroFraction_4" value="" style="text-align: right;"/></td>
+<td id="Spiro_5_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_5" id="SpiroFraction_5" value="" style="text-align: right;"/></td>
+<td id="Spiro_6_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_6" id="SpiroFraction_6" value="" style="text-align: right;"/></td>
+<td id="Spiro_7_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_7" id="SpiroFraction_7" value="" style="text-align: right;"/></td>
+<td id="Spiro_8_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_8" id="SpiroFraction_8" value="" style="text-align: right;"/></td>
+<td id="Spiro_9_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_9" id="SpiroFraction_9" value="" style="text-align: right;"/></td>
+<td id="Spiro_10_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_10" id="SpiroFraction_10" value="" style="text-align: right;"/></td>
+<td id="Spiro_11_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_11" id="SpiroFraction_11" value="" style="text-align: right;"/></td>
+<td id="Spiro_12_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_12" id="SpiroFraction_12" value="" style="text-align: right;"/></td>
+<td id="Spiro_13_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_13" id="SpiroFraction_13" value="" style="text-align: right;"/></td>
+<td id="Spiro_14_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_14" id="SpiroFraction_14" value="" style="text-align: right;"/></td>
+<td id="Spiro_15_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_15" id="SpiroFraction_15" value="" style="text-align: right;"/></td>
+<td id="Spiro_16_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_16" id="SpiroFraction_16" value="" style="text-align: right;"/></td>
+<td id="Spiro_17_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_17" id="SpiroFraction_17" value="" style="text-align: right;"/></td>
+<td id="Spiro_18_f" style="display: none;"><input type="text" size="3" name="SpiroFraction_18" id="SpiroFraction_18" value="" style="text-align: right;"/></td>
+</tr>
+</table>
+</td></tr></table>
+<p><input type="submit" value="Draw It"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="SaveAs"/>&nbsp;<input type="button" onclick="SaveIt();" value="Save It"/>&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="RePlay"><option value="">--Select a Saved Image--</option>
+<option value="BusyCircle">BusyCircle</option>
+<option value="First">First</option>
+<option value="Four">Four</option>
+<option value="Hex?">Hex?</option>
+<option value="Relaxed Circle">Relaxed Circle</option>
+<option value="Second">Second</option>
+<option value="SimpleArc">SimpleArc</option>
+<option value="Third">Third</option>
+</select>&nbsp;<input type="button" value="Re-Draw It" onclick="ReDraw();"/></p>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+
+function DesignChange (which)
+ {
+  var div1 = document.getElementById('Diagonals');
+  var div2 = document.getElementById('Spirograph');
+  var div3 = document.getElementById('Circles');
+  var div4 = document.getElementById('Bomans');
+  var div5 = document.getElementById('Arcs');
+  div1.style.display = 'none';
+  div2.style.display = 'none';
+  div3.style.display = 'none';
+  div4.style.display = 'none';
+  div5.style.display = 'none';
+  if (which == 'd') div1.style.display = 'table-cell';
+  if (which == 'g') div2.style.display = 'table-cell';
+  if (which == 'c') div3.style.display = 'table-cell';
+  if (which == 'b') div4.style.display = 'table-cell';
+  if (which == 't') div4.style.display = 'table-cell';
+  if (which == 'h') div4.style.display = 'table-cell';
+  if (which == 'a') div5.style.display = 'table-cell';
+ }
+
+function SaveIt ()
+ {
+  if (document.form.SaveAs.value != '')
+   {
+    document.form.Action.value = 'SaveIt';
+    document.form.submit();
+   }
+ }
+
+function ReDraw ()
+ {
+  if (document.form.RePlay.value != '')
+   {
+    document.form.Action.value = 'ReDraw';
+    document.form.submit();
+   }
+ }
+
+function ToggleColumn (col)
+ {
+  var current;
+  var toggle;
+  var show;
+  var next;
+  current = document.getElementById('Spiro_' + col).value;
+  toggle = 1 - current;
+  document.getElementById('Spiro_' + col).value = toggle;
+  show = (toggle > 0) ? 'table-cell' : 'none';
+  document.getElementById('Spiro_' + col + '_s').style.display = show;
+  document.getElementById('Spiro_' + col + '_l').style.display = show;
+  document.getElementById('Spiro_' + col + '_a').style.display = show;
+  document.getElementById('Spiro_' + col + '_r').style.display = show;
+  document.getElementById('Spiro_' + col + '_g').style.display = show;
+  document.getElementById('Spiro_' + col + '_b').style.display = show;
+  document.getElementById('Spiro_' + col + '_p').style.display = show;
+  document.getElementById('Spiro_' + col + '_f').style.display = show;
+  if (toggle < 1)
+   {
+    document.getElementById('SpiroSmall_' + col).value = '';
+    document.getElementById('SpiroLarge_' + col).value = '';
+    document.getElementById('SpiroStart_' + col).value = '';
+    document.getElementById('SpiroRed_' + col).value = '';
+    document.getElementById('SpiroGreen_' + col).value = '';
+    document.getElementById('SpiroBlue_' + col).value = '';
+    document.getElementById('SpiroPercent_' + col).value = '';
+    document.getElementById('SpiroFraction_' + col).value = '';
+   }
+  show = (toggle > 0) ? 'minus' : 'plus';
+  document.getElementById('Spiro_' + col + '_i').src = '/image/Ballads/' + show + '.gif';
+  if (toggle > 0)
+   {
+    next = col + 1;
+    next = document.getElementById('Spiro_' + next + '_hdr');
+    if (next != null) next.style.display = 'table-cell';
+   }
+ }
+//]]></script>
+
+</body>
+</html>

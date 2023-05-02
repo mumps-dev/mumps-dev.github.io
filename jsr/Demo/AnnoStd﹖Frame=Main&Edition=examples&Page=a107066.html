@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107066&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107066&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107065&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$KEY</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107067&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>The value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> is the string that terminated the most
+recent input.</p>
+<p>After a command like <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> X#20</tt>, the value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> is most likely to be equal to the empty string.<br/>
+After a command like <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> X</tt>, the value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> will usually be equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(13) (the enter-
+key). However, when input was terminated by typing a function
+key, the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> will be equal to the string of
+characters that is transmitted by that function key. The most
+common function keys on the VT&ndash;100 and compatible terminals
+are:</p>
+<table>
+<tr><th>Key</th>
+<th>Code sequence</th></tr>
+<tr><td>Up arrow</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91,65)</td></tr>
+<tr><td>Down arrow</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91,66)</td></tr>
+<tr><td>Right arrow</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,81,67)</td></tr>
+<tr><td>Left arrow</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91,68)</td></tr>
+<tr><td>PF1</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,80)</td></tr>
+<tr><td>PF2</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,81)</td></tr>
+<tr><td>PF3</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,82)</td></tr>
+<tr><td>PF4</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,83)</td></tr>
+</table>
+<p>In addition, the VT&ndash;200 terminals (and the more modern versions
+of that family of terminals) also offer:</p>
+<table>
+<tr><th>Key</th>
+<th>Code sequence</th></tr>
+<tr><td>Find</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"1~"</td></tr>
+<tr><td>Insert</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"2~"</td></tr>
+<tr><td>Remove</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"3~"</td></tr>
+<tr><td>Select</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"4~"</td></tr>
+<tr><td>Previous page</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"5~"</td></tr>
+<tr><td>Next page</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"6~"</td></tr>
+<tr><td>F7</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"18~"</td></tr>
+<tr><td>F8</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"19~"</td></tr>
+<tr><td>F9</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"20~"</td></tr>
+<tr><td>F10</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"21~"</td></tr>
+<tr><td>F11</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"23~"</td></tr>
+<tr><td>F12</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"24~"</td></tr>
+<tr><td>F13</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"25~"</td></tr>
+<tr><td>F14</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"26~"</td></tr>
+<tr><td>Help</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"28~"</td></tr>
+<tr><td>Do</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"29~"</td></tr>
+<tr><td>F17</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"31~"</td></tr>
+<tr><td>F18</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"32~"</td></tr>
+<tr><td>F19</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"33~"</td></tr>
+<tr><td>F20</td>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(27,91)_"34~"</td></tr>
+</table>
+<p>Approved for addition in a future M[UMPS] Language Standard.</p>
+<p>The initial value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> is implementation-dependent.
+However, if the initial value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107063.html#Def_0002">$IO</a> is the empty string,
+then the initial value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a> is also the empty string.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107066&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107066&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 07:20:03.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107066%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

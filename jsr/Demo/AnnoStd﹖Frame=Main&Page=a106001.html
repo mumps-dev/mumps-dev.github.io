@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2><u>routine</u></h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106002&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>label</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a label in a M[UMPS] routine.<br/>
+A label can be either a name or a string of digits.</p>
+<p>Note: Leading zeroes in a label are significant.<br/>
+Note: If a label starts with a digit, it must be all digits.</p>
+<a name="Def_0002"></a>
+<h3>line</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a line of M[UMPS] code.</p>
+<p>A line of code looks like: optionally a label, then a "line start white
+space",  optionally followed by zero or more commands, optionally followed
+by a comment. Between the various commands, there is "command separating
+white space", if there is a comment, there is "command separating white
+space" between the last command on the line and that comment.</p>
+<p>The "line start white space" is exactly one space character.</p>
+<p>The "command separating white space" is exactly one space character.</p>
+<p>Examples:</p>
+<p>(The symbol &#9251; is used in these examples to make the space character(s)
+visible):</p>
+<p><tt>&#9251;<br/>
+&#9251;;&#9251;comment<br/>
+LABEL&#9251;;&#9251;comment<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>&#9251;&#9251;X<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>X&#9251;;&#9251;comment<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108027.html#Def_0002">Else</a>&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=3</tt></p>
+<p>(Note: In the last example, there are two spaces following the verb ELSE. The
+first space separates the word ELSE from its (non-existent) argument, the
+second space separates that argument from the next command.)</p>
+<p>Additions in the 1990 ANSI M[UMPS] language standard.</p>
+<p>There may be a parameter list following the label.</p>
+<p>Following the "line start white space" there may be one or more "line
+indent markers". A "line indent marker" consists of a period,
+optionally followed by one or more space characters.</p>
+<p>The "line start white space" is one or more space characters.</p>
+<p>The "command separating white space" is one or more space characters.</p>
+<p>Examples:</p>
+<p>(The symbol &#9251; is used in these examples to make the space character(s)
+visible):</p>
+<p><tt>&#9251;&#9251;&#9251;&#9251;; comment<br/>
+LABEL(A,B)&#9251;; comment<br/>
+&#9251;&#9251;&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1&#9251;&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>&#9251;X<br/>
+&#9251;.&#9251;.&#9251;&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>&#9251; X&#9251;&#9251;&#9251;&#9251;; comment<br/>
+&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108027.html#Def_0002">Else</a>&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=3</tt></p>
+<p>but not:</p>
+<p><tt>&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;&#9251;&#9251;&#9251;X=2</tt></p>
+<p>Approved for addition in a future M[UMPS] language standard:</p>
+<p>Spaces may occur at the end of a line.<br/>
+<tt>&#9251;&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>&#9251;X=1&#9251;&#9251;&#9251;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>&#9251;"Hello."&#9251;&#9251;&#9251;</tt></p>
+<a name="Def_0003"></a>
+<h3>ls</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the line start character (which is equal
+to a space). Note that many "pretty print" programs represent the line
+start "white space" as a tabulation, but internally, a line start is
+represented as a space.</p>
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+<p>A line start may now consist of one or more spaces.</p>
+<a name="Def_0004"></a>
+<h3>routine</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the unit of program interchange. It begins
+with a header (see metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106002.html#Def_0007"><u>routinehead</u></a>), which is not
+executable, followed by the executable code (see metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106003.html#Def_0004"><u>routinebody</u></a>, followed by an "end of routine"
+marker (see metalanguage symbol <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106003.html#Def_0002"><u>eor</u></a>).</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 10:37:42.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da106001%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

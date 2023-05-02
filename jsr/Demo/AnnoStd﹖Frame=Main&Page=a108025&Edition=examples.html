@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108024&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>CLOSE</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108026&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This command relinquishes ownership of the current device.</p>
+<p>Clarification (no change intended) in a future M[UMPS]
+language standard:</p>
+<p>Any keywords in the argument of the command are processed in 
+strict left-to-right order. When multiple equivalent parameters 
+are encountered, the last occurrence processed will define the 
+action(s) to be taken.</p>
+<p>To be modified in a future M[UMPS] language standard.</p>
+<p>The modification is the specification that, if the current device
+is <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a>d, the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107063.html#Def_0002">$IO</a> will become the empty
+string.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:DEVICE=""<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Test device: " <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> DEVICE<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:DEVICE=""<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> DEVICE:1<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Cannot OPEN..."
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> DEVICE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> DEVICE<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> CHECK=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107063.html#Def_0002">$IO</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> CHECK'="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"New standard not
+observed."<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p>The ability to specify "user-defined" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s is added.
+It will be possible to specify to an implementation to use entries in a
+specific routine (let's call it <tt>USER</tt> for the purpose of this 
+discussion) for the processing of the commands <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a>
+and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> and the various <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>s for specific 
+combinations of device and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>.</p>
+<p>When this feature is active, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>
+<tt>/ABC(P1,P2)</tt> will be executed as <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> 
+ABC^USER(P1,P2)</tt>, and the command <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> 
+device:(PARAM1:KEY2=VALUE2)</tt> will be executed as:</p>
+<pre>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> X,Y
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> (X,Y)=2 ; Number of deviceparameters
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X(1)="PARAM1" ; First deviceparameter
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X(2)="KEY2",Y(2)=VALUE2
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %CLOSE^USER(device,.X,.Y,"")
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+</pre>
+<p>The name of a device may contain an environment specification<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> |"LONDON"|MTA47</tt></p>
+<p>When the device being <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a>d happens to be the
+the current device when the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> command is issued, the value
+of special variable <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107063.html#Def_0002">$IO</a> will change to be the empty 
+string.</p>
+<p>For more examples, see the examples with
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> command.</p>
+<p>The addition of a binding to TCP/IP socket devices includes a
+new deviceparameter.</p>
+<p>The deviceparameter is SOCKET.
+For examples, see the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> command.</p>
+<p>For a program that parses a programming language, it is hard
+to see the difference between:<br/>
+<tt>...:(abc=xyz):...</tt><br/>
+and<br/>
+<tt>...:(<b>FILENAME</b>="C:\temp\ABC.TMP"):...</tt><br/>
+In the former example, the text between the parentheses should be
+an expression that happens to return a boolean value, whereas in
+the latter example, the text between the parentheses could be a
+"keyword equals value" combination that has a meaning in certain
+mnemonicspaces.</p>
+<p>In order to make it easier to indicate this difference, the
+option to precede a devicekeyword with a slash has been
+introduced. This would make the latter example look like:<br/>
+<tt>...:(<b>/FILENAME</b>="C:\temp\ABC.TMP"):...</tt></p>
+<p>If an output time-out was established for a device,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a>ing that device will cancel the time-out.</p>
+<p>Examples with naked references:</p>
+<p>CLOSE DEVICE<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,</tt><br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> ^(3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt><br/>
+; Actual reference: <tt>^ABC(1,3,4)</tt></p>
+<p>CLOSE DEVICE:PARAMETERS<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,</tt><br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> ^(3,4):^(5,6)</tt><br/>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br/>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: ^ABC(1,3,5,</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:43:58.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108025%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

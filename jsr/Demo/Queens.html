@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Queens</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Queens&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fQueens%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a54%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Queens</font></h1></td></tr></table>
+<form name="form" action="http://71.174.62.16/Demo/Queens.csp" method="post">
+<input type="hidden" name="DoIt" value="Yes"/>
+<input type="hidden" name="Solutions" value=""/>
+<input type="hidden" name="Loop" value="0"/>
+<table><tr>
+<td valign="top"><table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td onclick="FindThem(1,1);"><img alt="White field" id="Image_1_1" src="../image/Chess/Black_Rook_on_White.gif"/></td>
+<td onclick="FindThem(1,2);"><img alt="Black field" id="Image_1_2" src="../image/Chess/Black_Knight_on_Black.gif"/></td>
+<td onclick="FindThem(1,3);"><img alt="White field" id="Image_1_3" src="../image/Chess/Black_Bishop_on_White.gif"/></td>
+<td onclick="FindThem(1,4);"><img alt="Black field" id="Image_1_4" src="../image/Chess/Black_Queen_on_Black.gif"/></td>
+<td onclick="FindThem(1,5);"><img alt="White field" id="Image_1_5" src="../image/Chess/Black_King_on_White.gif"/></td>
+<td onclick="FindThem(1,6);"><img alt="Black field" id="Image_1_6" src="../image/Chess/Black_Bishop_on_Black.gif"/></td>
+<td onclick="FindThem(1,7);"><img alt="White field" id="Image_1_7" src="../image/Chess/Black_Knight_on_White.gif"/></td>
+<td onclick="FindThem(1,8);"><img alt="Black field" id="Image_1_8" src="../image/Chess/Black_Rook_on_Black.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(2,1);"><img alt="Black field" id="Image_2_1" src="../image/Chess/Black_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(2,2);"><img alt="White field" id="Image_2_2" src="../image/Chess/Black_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(2,3);"><img alt="Black field" id="Image_2_3" src="../image/Chess/Black_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(2,4);"><img alt="White field" id="Image_2_4" src="../image/Chess/Black_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(2,5);"><img alt="Black field" id="Image_2_5" src="../image/Chess/Black_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(2,6);"><img alt="White field" id="Image_2_6" src="../image/Chess/Black_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(2,7);"><img alt="Black field" id="Image_2_7" src="../image/Chess/Black_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(2,8);"><img alt="White field" id="Image_2_8" src="../image/Chess/Black_Pawn_on_White.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(3,1);"><img alt="White field" id="Image_3_1" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(3,2);"><img alt="Black field" id="Image_3_2" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(3,3);"><img alt="White field" id="Image_3_3" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(3,4);"><img alt="Black field" id="Image_3_4" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(3,5);"><img alt="White field" id="Image_3_5" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(3,6);"><img alt="Black field" id="Image_3_6" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(3,7);"><img alt="White field" id="Image_3_7" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(3,8);"><img alt="Black field" id="Image_3_8" src="../image/Chess/Square_Black.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(4,1);"><img alt="Black field" id="Image_4_1" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(4,2);"><img alt="White field" id="Image_4_2" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(4,3);"><img alt="Black field" id="Image_4_3" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(4,4);"><img alt="White field" id="Image_4_4" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(4,5);"><img alt="Black field" id="Image_4_5" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(4,6);"><img alt="White field" id="Image_4_6" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(4,7);"><img alt="Black field" id="Image_4_7" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(4,8);"><img alt="White field" id="Image_4_8" src="../image/Chess/Square_White.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(5,1);"><img alt="White field" id="Image_5_1" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(5,2);"><img alt="Black field" id="Image_5_2" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(5,3);"><img alt="White field" id="Image_5_3" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(5,4);"><img alt="Black field" id="Image_5_4" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(5,5);"><img alt="White field" id="Image_5_5" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(5,6);"><img alt="Black field" id="Image_5_6" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(5,7);"><img alt="White field" id="Image_5_7" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(5,8);"><img alt="Black field" id="Image_5_8" src="../image/Chess/Square_Black.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(6,1);"><img alt="Black field" id="Image_6_1" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(6,2);"><img alt="White field" id="Image_6_2" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(6,3);"><img alt="Black field" id="Image_6_3" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(6,4);"><img alt="White field" id="Image_6_4" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(6,5);"><img alt="Black field" id="Image_6_5" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(6,6);"><img alt="White field" id="Image_6_6" src="../image/Chess/Square_White.gif"/></td>
+<td onclick="FindThem(6,7);"><img alt="Black field" id="Image_6_7" src="../image/Chess/Square_Black.gif"/></td>
+<td onclick="FindThem(6,8);"><img alt="White field" id="Image_6_8" src="../image/Chess/Square_White.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(7,1);"><img alt="White field" id="Image_7_1" src="../image/Chess/White_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(7,2);"><img alt="Black field" id="Image_7_2" src="../image/Chess/White_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(7,3);"><img alt="White field" id="Image_7_3" src="../image/Chess/White_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(7,4);"><img alt="Black field" id="Image_7_4" src="../image/Chess/White_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(7,5);"><img alt="White field" id="Image_7_5" src="../image/Chess/White_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(7,6);"><img alt="Black field" id="Image_7_6" src="../image/Chess/White_Pawn_on_Black.gif"/></td>
+<td onclick="FindThem(7,7);"><img alt="White field" id="Image_7_7" src="../image/Chess/White_Pawn_on_White.gif"/></td>
+<td onclick="FindThem(7,8);"><img alt="Black field" id="Image_7_8" src="../image/Chess/White_Pawn_on_Black.gif"/></td>
+</tr>
+<tr>
+<td onclick="FindThem(8,1);"><img alt="Black field" id="Image_8_1" src="../image/Chess/White_Rook_on_Black.gif"/></td>
+<td onclick="FindThem(8,2);"><img alt="White field" id="Image_8_2" src="../image/Chess/White_Knight_on_White.gif"/></td>
+<td onclick="FindThem(8,3);"><img alt="Black field" id="Image_8_3" src="../image/Chess/White_Bishop_on_Black.gif"/></td>
+<td onclick="FindThem(8,4);"><img alt="White field" id="Image_8_4" src="../image/Chess/White_Queen_on_White.gif"/></td>
+<td onclick="FindThem(8,5);"><img alt="Black field" id="Image_8_5" src="../image/Chess/White_King_on_Black.gif"/></td>
+<td onclick="FindThem(8,6);"><img alt="White field" id="Image_8_6" src="../image/Chess/White_Bishop_on_White.gif"/></td>
+<td onclick="FindThem(8,7);"><img alt="Black field" id="Image_8_7" src="../image/Chess/White_Knight_on_Black.gif"/></td>
+<td onclick="FindThem(8,8);"><img alt="White field" id="Image_8_8" src="../image/Chess/White_Rook_on_White.gif"/></td>
+</tr>
+</table>
+</td>
+<td valign="top"><p>This program solves the first years' computer science assignment to place 8 queens on a chess-board such that they don't attack one another.<br/>
+Click on a field where the first one is to go, 
+and the program will find spots for the other 7.</p>
+<div id="AllSolutions">&nbsp;</div>
+<div id="RepCount">&nbsp;</div>
+</td>
+</tr></table>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+
+function FindThem(y,x)
+ {
+  if (document.form.DoIt.value == 'Yes')
+   {
+    var ii;
+    var image;
+    var color;
+    var nn;
+    var xx;
+    var yy;
+    document.form.Solutions.value = '';
+    var rows = new Array (8);
+    var board = new Array (8);
+    for (yy = 0; yy < 8; yy++) board [yy] = new Array (8);
+    for (yy = 1; yy < 9; yy++)
+     {
+      for (xx = 1; xx < 9; xx++)
+       {
+        image = document.getElementById('Image_' + yy + '_' + xx);
+        color = ((xx + (yy % 2)) % 2);
+        image.src = '/image/Chess/Square_' + (color ? 'Black' : 'White') + '.gif';
+       }
+     }
+    image = document.getElementById('Image_' + y + '_' + x);
+    color = ((x + (y % 2)) % 2);
+    image.src = '/image/Chess/Black_Queen_on_' + (color ? 'Black' : 'White') + '.gif';
+    document.form.DoIt.value = 'No';
+    nn = parseInt (document.form.Loop.value) + 1;
+    document.form.Loop.value = nn;
+    rows [0] = y;
+    nn = 0;
+    if (y < 8)
+     {
+      for (ii = y + 1; ii < 9; ii++)
+       {
+        nn++;
+        rows [nn] = ii;
+       }
+     }
+    if (y > 1)
+     {
+      for (ii = y - 1; ii > 0; ii--)
+       {
+        nn++;
+        rows [nn] = ii;
+       }
+     }
+    for (yy = 0; yy < 8; yy++)
+     {
+      for (xx = 0; xx < 8; xx++)
+       {
+        board [yy] [xx] = 0;
+       }
+     }
+    board [y-1] [x-1] = 1;
+    document.getElementById('AllSolutions').innerHTML = '&nbsp;';
+    document.getElementById('RepCount').innerHTML = '&nbsp;';
+    GoFind (board, rows, 1);
+    document.form.DoIt.value = 'Yes';
+    if (document.form.Solutions.value == '')
+     {
+      all = '<p>No solutions found.<' + '/p>';
+     }
+    else
+     {
+      nn = document.form.Solutions.value.length / 9;
+      all = '<p>' + nn + ' solution' + (nn == 1 ? '' : 's') + ' found.<' + '/p>';
+      ShowThem (1, document.form.Loop.value);
+     }
+    document.getElementById ('AllSolutions').innerHTML = all;
+   }
+ }
+function ShowThem (which, loopval)
+ {
+  var color = 0;
+  var xx;
+  var yy;
+  var square;
+  var nextcall;
+  var nn = which;
+  if (nn > document.form.Solutions.value.length) nn = 1;
+  xx = Math.floor (nn / 9) + 1;
+  xx = '<h1># ' + xx + '</h1>';
+  document.getElementById('RepCount').innerHTML = xx;
+  for (yy = 0; yy < 8; yy++)
+   {
+    color = 1 - color;
+    for (xx = 0; xx < 8; xx++)
+     {
+      color = 1 - color;
+      square = '/image/Chess/Square_';
+      if (xx == (document.form.Solutions.value.charCodeAt(nn + yy) - 48)) square = '/image/Chess/Black_Queen_on_';
+      square += (color > 0 ? 'Black' : 'White') + '.gif';
+      document.getElementById('Image_' + (yy+1) + '_' + (xx+1)).src = square;
+     }
+   }
+  nextcall = 'ShowThem (' + (nn + 9) + ', ' + loopval + ');';
+  if (document.form.Loop.value == loopval) setTimeout(nextcall, 2000);
+ }
+function GoFind (board, rows, next)
+ {
+  var xo;
+  var yo;
+  var xn;
+  var yn;
+  var dy;
+  var ok;
+  var nn;
+  var image;
+  var color;
+  var blank;
+  var queen;
+  if (next > 7)
+   {
+    document.form.Solutions.value += 'x';
+    for (yo = 0; yo < 8; yo++)
+     {
+      for (xo = 0; xo < 8; xo++)
+       {
+        if (board [yo] [xo] > 0) document.form.Solutions.value += xo;
+       }
+     }
+   }
+  else
+   {
+    yn = rows [next] - 1;
+    for (xn = 0; xn < 8; xn++)
+     {
+      image = document.getElementById('Image_' + (yn+1) + '_' + (xn+1));
+      color = (((xn+1) + ((yn+1) % 2)) % 2);
+      queen = '/image/Chess/Black_Queen_on_' + (color ? 'Black' : 'White') + '.gif';
+      blank = '/image/Chess/Square_' + (color ? 'Black' : 'White') + '.gif';
+      ok = true;
+      for (nn = 0; nn < next; nn++)
+       {
+        yo = rows [nn] - 1;
+        if (board [yo] [xn] > 0) ok = false;
+        dy = yn - yo;
+        if ((xn - dy >= 0) && (xn - dy < 8))
+         {
+          if (board [yo] [xn - dy] > 0) ok = false;
+         }
+        if ((xn + dy >= 0) && (xn + dy < 8))
+         {
+          if (board [yo] [xn + dy] > 0) ok = false;
+         }
+       }
+      if (ok)
+       {
+        board [yn] [xn] = 1;
+        image.src = queen;
+        GoFind (board, rows, next + 1);
+       }
+      board [yn] [xn] = 0;
+      image.src = blank;
+     }
+   }
+ }
+//]]></script>
+
+</body>
+</html>

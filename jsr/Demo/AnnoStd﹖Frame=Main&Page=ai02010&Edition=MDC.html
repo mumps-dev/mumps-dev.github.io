@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02010&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02009&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$%ARCTAN</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02011&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>2 MATH Library<br/>
+2.10 ARCTAN</h3>
+<pre>
+ARCTAN(X,PREC) ;
+	New FOLD,HI,L,LIM,LO,K,SIGN,SIGS,SIGT,VALUE
+	Set PREC=$Get(PREC,11)
+	Set LO=0.0000000001,HI=9999999999
+	Set SIGT=$Select(X&lt;0:&ndash;1,1:1),X=$Translate(X,"-")
+	Set X=$Select(X&lt;LO:LO,X&gt;HI:HI,1:X)
+	Set FOLD=$Select(X'&lt;1:0,1:1)
+	Set X=$Select(FOLD:1/X,1:X)
+	Set L=X,VALUE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107173.html#Def_0002">$%PI^MATH</a>()/2-(1/X),SIGN=1
+	If X&lt;1.3 Do  Quit VALUE
+	. Set X=$Select(FOLD:1/X,1:X),VALUE=1/((1/X/X)+1)
+	. Set X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107180.html#Def_0002">$%SQRT^MATH</a>(VALUE,PREC)
+	. If $Translate(X,"-")=1 Do  Quit
+	. . Set VALUE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107173.html#Def_0002">$%PI^MATH</a>()/2*X
+	. . Quit
+	. If X&gt;0.9 Do  Quit
+	. . Set SIGS=$Select(X&lt;0:&ndash;1,1:1)
+	. . Set VALUE=1/(1/X/X&ndash;1)
+	. . Set X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107180.html#Def_0002">$%SQRT^MATH</a>(VALUE)
+	. . Set VALUE=$$ARCTAN(X,10)
+	. . Set VALUE=VALUE*SIGS
+	. . Quit
+	. Set (VALUE,L)=X
+	. Set LIM=$Select((PREC+3)'&gt;11:PREC+3,1:11),@("LIM=1E-"_LIM)
+	. For K=3:2 Do  Quit:($Translate(L,"-")&lt;LIM)
+	. . Set L=L*X*X*(K&ndash;2)/(K&ndash;1)*(K&ndash;2)/K,VALUE=VALUE+L
+	. . Quit
+	. Set VALUE=$Select(SIGT&lt;1:-VALUE,1:VALUE)
+	. Quit
+	Set LIM=$Select((PREC+3)'&gt;11:PREC+3,1:11),@("LIM=1E-"_LIM)
+	For K=3:2 Do  Quit:($Translate(1/L,"-")&lt;LIM)
+	. Set L=L*X*X,VALUE=VALUE+(1/(K*L)*SIGN)
+	. Set SIGN=SIGN*&ndash;1
+	. Quit
+	Set VALUE=$Select(FOLD:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107173.html#Def_0002">$%PI^MATH</a>()/2-VALUE,1:VALUE)
+	Set VALUE=$Select(SIGT&lt;1:-VALUE,1:VALUE)
+	Quit VALUE
+</pre>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02010&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 30-Nov-2011, 18:48:27.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3dai02010%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

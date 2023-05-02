@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107107&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$STACK</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107109&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<a name="Def_0005"></a>
+<h3>7.1.5.23 <a href="#Def_0002">$STack</a></h3>
+<p><a href="#Def_0001">$ST[ACK]</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> )</p>
+<p>This form returns a string as follows:</p>
+<ol type="a">
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is &ndash;1:
+<ol type="1">
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> is not empty, returns the highest value
+where <a href="#Def_0002">$STack</a>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> ) can return non-empty
+results.</li>
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> is empty then return <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>.</li>
+</ol></li>
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is 0 (zero), returns an implementation
+specific value indicating how this process was started.</li>
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is greater than 0 (zero) and less than or
+equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a> indicates how this level of the
+PROCESS-STACK was created:
+<ol type="1">
+<li>If due to a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0001"><u>commandword</u></a>, fully
+spelled out and in uppercase.</li>
+<li>if due to an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107055.html#Def_0001"><u>exfunc</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107056.html#Def_0001"><u>exvar</u></a>, the string
+"$$".</li>
+<li>if due to an error, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> representing the error
+that created the result returned by
+<a href="#Def_0002">$STack</a>(&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a>&nbsp;).</li>
+</ol></li>
+<li>If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is greater than <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>, returns an
+empty string.</li>
+<li>Values of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> less than &ndash;1 are reserved for future
+extensions to the <a href="#Def_0002">$STack</a> function.</li>
+</ol>
+<p><a href="#Def_0001">$ST[ACK]</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , <a href="#Def_0006"><u>stackcodexpr</u></a> )</p>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>stackcodexpr</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a></td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a></td>
+<td align="center"><a href="#Def_0007"><u>stackcode</u></a></td>
+</tr></table>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>stackcode</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">"PLACE"<br/>
+"MCODE"<br/>
+"ECODE"</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>This form returns information about the action that created
+the level of the PROCESS-STACK identified by <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> as
+follows:</p>
+<ol type="a">
+<li>Values of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a>&nbsp;&lt;&nbsp;0 are reserved.</li>
+<li>Values of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a>&nbsp;&gt;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a> return
+the empty string.</li>
+</ol>
+<table>
+<tr><td><b><a href="#Def_0007"><u>stackcode</u></a></b></td>
+<td><b>Returned String</b></td></tr>
+<tr><td valign="top">ECODE</td>
+<td>the list of any <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a>s added at the level of the
+PROCESS-STACK identified by <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a>.</td></tr>
+<tr><td valign="top">MCODE</td>
+<td>the value (in the case of an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108057.html#Def_0002">Xecute</a>) or the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106003.html#Def_0002"><u>line</u></a> for the location identified by
+<a href="#Def_0002">$STack</a>(&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , "PLACE"
+). If the line is not available, an empty string is
+returned.</td></tr>
+<tr><td valign="top">PLACE</td>
+<td>the location of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> at the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> level
+of the PROCESS-STACK as follows:
+<ol type="a">
+<li>if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is not equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+and <a href="#Def_0002">$STack</a>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , "ECODE" )
+would return the empty string, the last <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>
+executed.</li>
+<li>if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> is equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a> and
+<a href="#Def_0002">$STack</a>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , "ECODE" )
+would return the empty string, the currently executing
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>.</li>
+<li>if <a href="#Def_0002">$STack</a>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , "ECODE"
+) would return a non-empty string, the last <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> to
+start execution while <a href="#Def_0002">$STack</a>(
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> , "ECODE" ) would have returned the empty
+string.</li>
+</ol>
+<p>The location is in the form:</p>
+<p>&nbsp;&nbsp;&nbsp;<a href="#Def_0008"><u>place</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0005"><u>SP</u></a> + <a href="#Def_0009"><u>eoffset</u></a></p>
+<a name="Def_0008"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0008"><u>place</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">[ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106006.html#Def_0002"><u>label</u></a> ] [ + <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107049.html#Def_0002"><u>intlit</u></a>
+[ ^ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0006"><u>VB</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0004"><u>environment</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0006"><u>VB</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0002"><u>routinename</u></a><br/>
+@</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<a name="Def_0009"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0009"><u>eoffset</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107049.html#Def_0002"><u>intlit</u></a></td>
+</tr></table>
+<p>In <a href="#Def_0008"><u>place</u></a>, the first case is used to identify the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106003.html#Def_0002"><u>line</u></a> being executed at the time of creation of this level
+of the PROCESS-STACK. The second case (@) shows the point of
+execution occurring in an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108057.html#Def_0002">Xecute</a>.</p>
+<p><a href="#Def_0009"><u>eoffset</u></a> is an offset into the code or data identified
+by <a href="#Def_0008"><u>place</u></a> at which the error occurred. The value might
+point to the first or last character of a "token" just before or
+just after a "token", or even to the command or line in which the
+error occurred. Implementors should provide as accurate a value
+for <a href="#Def_0009"><u>eoffset</u></a> as practical.</p></td></tr>
+</table>
+<p>All values of <a href="#Def_0007"><u>stackcode</u></a> beginning with the letter Z are
+reserved for the implementation. All other values of
+<a href="#Def_0007"><u>stackcode</u></a> are reserved for future extensions to the
+<a href="#Def_0002">$STack</a> function. <a href="#Def_0007"><u>stackcode</u></a>s
+differing only in the
+use of corresponding upper and lower case letters are
+equivalent.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:22:28.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107108%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

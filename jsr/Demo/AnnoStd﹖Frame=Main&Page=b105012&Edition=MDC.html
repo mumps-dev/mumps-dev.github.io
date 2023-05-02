@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105011&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OMI - Write Argument</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105013&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>5.3.9 Write arguments</h3>
+<p>A <i>write</i> request (see 5.4.28) shall contain 0 to
+65&nbsp;535 write arguments, whose sequence shall preserve the
+sequence of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0004"><u>writeargument</u></a>s executed by the client process.
+Except as noted in the following paragraph, each
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0004"><u>writeargument</u></a> executed by the client process shall
+correspond to exactly 1 write argument.</p>
+<p>When the device supports the stream forms 1 or 2, then
+string-type write arguments need not correspond 1-to&ndash;1 with
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0004"><u>writeargument</u></a>s of the client routine. In forms 1 and 2
+the agent may concatenate the values of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>s from an
+unbroken sequence of "WRITE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>" commands. In form 2 it
+may also divide a value from 1 "WRITE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>" into separate
+write arguments.</p>
+<p>NOTE &ndash; Client routines may set standard special variables
+$DEVICE, $KEY, $X, and $Y; and in some implementations, also
+non-standard variables beginning with $Z. Although not arguments
+of the WRITE command, these variables effect device control
+functions; thus the <i>write</i> request transmits them.</p>
+<p>The following descriptions of write arguments' effects on the
+device are for information only; they refer to the forms of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0004"><u>writeargument</u></a> defined in ANSI/MDC X11.1.</p>
+<p>Each write argument shall comprise 1 or more fields. The first
+shall be a numeric type &lt;SI&gt;. Different types of arguments
+contain different numbers and kinds of additional fields.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 13:19:00.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3db105012%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

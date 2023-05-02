@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107198&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2><u>pattern</u></h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108001&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>7.2.3 Pattern match <a href="#Def_0001"><u>pattern</u></a></h3>
+<p>The pattern match operator ? tests the form of the string
+which is its left-hand operand. <i>S</i> ? <i>P</i> is true if
+and only if <i>S</i> is a member of the class of strings
+specified by the pattern <i>P</i>.</p>
+<p>A pattern is a concatenated list of pattern atoms.</p>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0001"><u>pattern</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="#Def_0002"><u>patatom</u></a> ...<br/>
+@ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="#Def_0001"><u>pattern</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>Assume that <a href="#Def_0001"><u>pattern</u></a> has <i>n</i> <a href="#Def_0002"><u>patatom</u></a>s.
+<i>S</i> ? <a href="#Def_0001"><u>pattern</u></a> is true if and only if there exists a
+partition of <i>S</i> into <i>n</i> substrings</p>
+<p>&nbsp;&nbsp;&nbsp;<i>S</i> = <i>S</i><sub>1</sub> <i>S</i><sub>2</sub> ...
+<i>S<sub>n</sub></i></p>
+<p>such that there is a one-to-one order-preserving
+correspondence between the <i>S<sub>i</sub></i> and the pattern
+atoms, and each <i>S<sub>i</sub></i> <i>satisfies</i> its
+respective pattern atom. Note that some of the
+<i>S<sub>i</sub></i> may be empty.</p>
+<p>Each pattern atom consists of a repeat count <a href="#Def_0003"><u>repcount</u></a>,
+followed by either a pattern code <a href="#Def_0004"><u>patcode</u></a> or a string
+literal <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107048.html#Def_0001"><u>strlit</u></a>. A substring <i>S<sub>i</sub></i> of
+<i>S</i> satisfies a pattern atom if it, in turn, can be
+decomposed into a number of concatenated substrings, each of
+which satisfies the associated <a href="#Def_0004"><u>patcode</u></a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107048.html#Def_0001"><u>strlit</u></a>.</p>
+<a name="Def_0002"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0002"><u>patatom</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0003"><u>repcount</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="#Def_0004"><u>patcode</u></a><br/>
+<u>patstr</u><br/>
+<a href="#Def_0008"><u>alternation</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<a name="Def_0003"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0003"><u>repcount</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><br/>
+[ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>1</sub> ] . [ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>2</sub> ]</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<a name="Def_0004"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0004"><u>patcode</u></a></td><td align="center">::=</td>
+<td align="center">[ ' ]</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">Y <a href="#Def_0005"><u>patnonY</u></a> Y<br/>
+Z <a href="#Def_0006"><u>patnonZ</u></a> Z<br/>
+<a href="#Def_0007"><u>patnonYZ</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">...</td>
+</tr></table>
+<a name="Def_0005"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0005"><u>patnonY</u></a></td><td align="center">::=</td>
+<td align="center">any of the characters in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a> except Y</td>
+</tr></table>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>patnonZ</u></a></td><td align="center">::=</td>
+<td align="center">any of the characters in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a> except Z</td>
+</tr></table>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>patnonYZ</u></a></td><td align="center">::=</td>
+<td align="center">any of the characters in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a> except Y and Z</td>
+</tr></table>
+<a name="Def_0008"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0008"><u>alternation</u></a></td><td align="center">::=</td>
+<td align="center">( <a href="#Def_0002"><u>patatom</u></a> [ , <a href="#Def_0002"><u>patatom</u></a> ] ... )</td>
+</tr></table>
+<p><a href="#Def_0004"><u>patcode</u></a>s beginning with the initial letter Y are
+available for use by M programmers. <a href="#Def_0004"><u>patcode</u></a>s beginning
+with the initial letter Z are available for use by implementors.
+<a href="#Def_0004"><u>patcode</u></a>s are specified in Character Set Profiles.</p>
+<p><u>Patcode</u>s differing only in the use of corresponding
+upper and lower case letters are equivalent. Each <a href="#Def_0004"><u>patcode</u></a>
+is satisfied by any single character in the union of the classes
+of characters represented, each class denoted by its own
+<a href="#Def_0004"><u>patcode</u></a> letter. Whether or not a specific character
+belongs to a <a href="#Def_0004"><u>patcode</u></a> class is determined by a process'
+Character Set Profile ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a109001.html#Def_0001"><u>charset</u></a> ).</p>
+<p>An <a href="#Def_0008"><u>alternation</u></a> is satisfied if any one of its
+<a href="#Def_0002"><u>patatom</u></a> components individually matches the corresponding
+S<sub>i</sub>.</p>
+<p>Each <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107048.html#Def_0001"><u>strlit</u></a> is satisfied by, and only by, the value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107048.html#Def_0001"><u>strlit</u></a>.</p>
+<p>If <a href="#Def_0003"><u>repcount</u></a> has the form of an indefinite multiplier
+".", <a href="#Def_0002"><u>patatom</u></a> is satisfied by a concatenation of any number
+of <i>S<sub>i</sub></i> (including none), each of which meets the
+specification of <a href="#Def_0002"><u>patatom</u></a>.</p>
+<p>If <a href="#Def_0003"><u>repcount</u></a> has the form of a single <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a>,
+<a href="#Def_0002"><u>patatom</u></a> is satisfied by a concatenation of exactly
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a> <i>S<sub>i</sub></i>, each of which meets the
+specification of <a href="#Def_0002"><u>patatom</u></a>. In particular, if the value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a> is zero, the corresponding <i>S<sub>i</sub></i> is
+empty.</p>
+<p>If <a href="#Def_0003"><u>repcount</u></a> has the form of a range,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>1</sub>.<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>2</sub>, the first
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a> gives the lower bound, and the second <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a>
+the upper bound. If the upper bound is less than the lower bound
+an error condition occurs with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107059.html#Def_0007"><u>ecode</u></a>="<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=ab00010.html#Def_0001">M10</a>". If the
+lower bound is omitted, so that the range has the form
+.<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>2</sub> , the lower bound is taken to be zero.
+If the upper bound is omitted, so that the range has the form
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>1</sub>. , the upper bound is taken to be
+indefinite; that is, the range is at least
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0002"><u>intlit</u></a><sub>1</sub> occurrences. Then <a href="#Def_0002"><u>patatom</u></a> is
+satisfied by the concatenation of a number of
+<i>S<sub>i</sub></i>, each of which meets the specification of
+<a href="#Def_0002"><u>patatom</u></a>, where the number must be within the expressed or
+implied bounds of the specified range, inclusive.</p>
+<p>The dual operator '? is defined by:</p>
+<p>&nbsp;&nbsp;&nbsp;<i>A</i> '? <i>B</i>  =  '(<i>A</i> ? <i>B</i>)</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:36:16.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107199%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

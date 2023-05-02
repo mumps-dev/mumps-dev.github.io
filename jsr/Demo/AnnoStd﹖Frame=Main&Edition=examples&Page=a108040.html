@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108039&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>LOCK</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108041&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> A,B,C</tt><br/>
+Unlock all, LOCK <tt>C</tt><br/>
+Well... actually, when anybody else has either <tt>A</tt> or <tt>B</tt>
+locked, this sequence of commands would wait first for these to be
+unlocked...</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> (A,B,C)</tt><br/>
+Unlock all, LOCK <tt>A</tt>, <tt>B</tt> and <tt>C</tt></p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> X:TIME</tt><br/>
+Unlock all, LOCK <tt>X</tt> with time-out of <tt>TIME</tt>
+seconds.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a></tt><br/>
+Unlock all</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^PATIENT(ID)) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^PATIENT(ID):5<br/>
+. ; create patient record<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^PATIENT(ID)<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt><br/>
+Assume that two processes execute this program segment
+simultaneously, and that the chronology of the actions between
+the jobs is as follows:</p>
+<table>
+<tr><th><i>One process</i></th>
+<th><i>Other process</i></th></tr>
+<tr><td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^PATIENT(123))</tt></td>
+<td>&nbsp;</td></tr>
+<tr><td>- swap out -</td>
+<td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td>
+<td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^PATIENT(123))</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a></tt></td></tr>
+<tr><td>&nbsp;</td>
+<td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^PATIENT(123)</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td>; create patient record</td></tr>
+<tr><td>&nbsp;</td>
+<td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^PATIENT(123)</tt></td></tr>
+<tr><td>- swap in -</td>
+<td>&nbsp;</td></tr>
+<tr><td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a></tt></td>
+<td>&nbsp;</td></tr>
+<tr><td><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^PATIENT(123)</tt></td>
+<td>&nbsp;</td></tr>
+<tr><td>create patient record</td>
+<td>&nbsp;</td></tr>
+</table>
+<p>... Well, that's what we just wanted to avoid by using the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> command, wasn't it...</p>
+<p>Correct usage of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> command in this context would
+be:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^PATIENT(ID):TIME<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108027.html#Def_0002">Else</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Cannot create record."
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^PATIENT(ID))<br/>
+; create patient record<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^PATIENT(ID)</tt><br/>
+Always <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> before a reference is made; that is the only
+way to synchronize processes.</p>
+<p>Added in the 1990 ANSI M[UMPS] language standard:</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +D</tt><br/>
+Add <tt>D</tt> to the LOCK list.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -A</tt><br/>
+Remove <tt>A</tt> from the LOCK list.</p>
+<p>Assume that<br/>
+<tt>A="KLM(1)"<br/>
+KLM(2,3,4)="PQR"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> @A@(3,4)</tt> would be equivalent to
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> "PQR"</tt>, which is an error, and<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> @@A@(3,4)</tt> would be equivalent to <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> 
+PQR</tt>.</p>
+<p>The ANSI standard behavior is defined as follows:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> (without a plus)</p>
+<ul>
+<li>First removes all names from the lock table that were entered
+by the current job</li>
+<li>Then adds the name(s) in the current LOCK argument to the
+lock table</li>
+</ul>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> with a plus</p>
+<ul>
+<li>Adds one instance of a name to the lock table</li>
+</ul>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> with a minus</p>
+<ul>
+<li>If any instances of the name are present for the current job,
+removes one instance from the lock table</li>
+</ul>
+<p>Hence, the behavior should be:</p>
+<table>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2)</tt></td>
+<td valign="top">Adds one instance of the name <tt>^GLO(1,2)</tt>
+to the lock table; may need to wait until another job
+relinquishes its lock on this name.</td></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2,3)</tt></td>
+<td valign="top">Adds one instance of the name <tt>^GLO(1,2,3)</tt>
+to the lock table; will always succeed immediately because the a
+name governing a superset is already owned.</td></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO(1,2,3)</tt></td>
+<td valign="top">Removes one instance of the name
+<tt>^GLO(1,2,3)</tt> from the lock table</td></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(1)</tt></td>
+<td valign="top">Adds one instance of the name <tt>^GLO(1)</tt> to
+the lock table; may need to wait, e.g. if someone else owns lock
+on <tt>^GLO(1,5)</tt>.</td></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(2)</tt></td>
+<td valign="top">Adds one instance of the name <tt>^GLO(2)</tt> to
+the lock table; may need to wait until another job relinquishes
+its lock on this name.</td></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO</tt></td>
+<td valign="top">If there is an occurrence of <tt>^GLO</tt> for the
+current job, one instance will be removed from the lock table,
+othewise no effect</td></tr>
+</table>
+<p>So, assuming that the lock table is empty, and the number of
+the current job is 1, the sequence of events will be:</p>
+<table border="2">
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">2</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td rowspan="2" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2,3)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">2</td>
+<td valign="top" align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2,3)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO(1,2,3)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">2</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td rowspan="2" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(1)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">2</td>
+<td valign="top" align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td rowspan="2" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(2)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">2</td>
+<td valign="top" align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(2)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th></tr>
+<tr><td valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO</tt></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td></tr>
+</table>
+<p>Assuming that the lock table has the depicted initial
+content, and the number of
+the current job is 1, and
+assuming that job number 3 would relinquish the locks that
+are requested by job number 1, the sequence of events would be:</p>
+<table border="2">
+<tr><th>&nbsp;</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td>&nbsp;</td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td></td>
+<td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td></td>
+<td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td></td>
+<td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="4" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Added after other job relinquishes its lock</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="4" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">Count increases by 1</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="5" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^GLO(1,2,3)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">2</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2,3)</tt></td>
+<td valign="top" align="right">1</td>
+<td valign="top" align="right">1</td>
+<td align="left">Can always be added immediately</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="5" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO(1,2,3)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">2</td>
+<td align="right">1</td></tr>
+<tr><td></td>
+<td></td>
+<td></td>
+<td align="left">Entry is removed when count reaches zero</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="5" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(1)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Can be added as long a no-one else owns it</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">2</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="6" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +GLO(2)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">2</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Can be added as long a no-one else owns it</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="6" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO(1,2)</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(1)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Count decreases by 1</td></tr>
+<tr><td valign="top"><tt>^GLO(2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><th>Command</th>
+<th>Name</th>
+<th>Count</th>
+<th>Owner</th>
+<th align="left">Comment</th></tr>
+<tr><td rowspan="6" valign="top"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^GLO</tt></td>
+<td valign="top"><tt>^GLO</tt></td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">Since the requesting job doesn't own this entry, no 
+change</td></tr>
+<tr><td valign="top"><tt>^GLO(1)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(1,2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(2)</tt></td>
+<td align="right">1</td>
+<td align="right">1</td></tr>
+<tr><td valign="top"><tt>^GLO(5)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+<tr><td valign="top"><tt>^GLO(7)</tt></td>
+<td align="right">1</td>
+<td align="right">3</td></tr>
+</table>
+<p>Approved for addition in a future M[UMPS] language standard.</p>
+<p>The option has been added to use "subscript indirection" in
+name references that occur in arguments of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> commands.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Root="^DIC(19)"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +@Root@(42,0)</tt><br/>
+is now equivalent with <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^DIC(19,42,0)</tt></p>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> NAME<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> ^(3,4)</tt><br/>
+; Error occurs (invalid <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0004"><u>nref</u></a> in LOCK argument)<br/>
+; This is a general syntactical error; no M... error code has
+been assigned.<br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is unchanged</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> NAME<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> ^(3,^(4,5))</tt><br/>
+; fetch ^(4,5) = <tt>^ABC(1,4,5)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,4,</tt><br/>
+; Error occurs (invalid <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0004"><u>nref</u></a> in LOCK argument)<br/>
+; Note that the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> may change while evaluating
+subscripts,<br/>
+; but not as a side-effect of the LOCK command itself.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 17:15:51.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108040%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

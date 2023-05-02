@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107033&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Events (Job)</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107035&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.1.3.5.5  Characteristic: Events</h3>
+<p>Registered Events:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0004"><u>processid</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a>
+"EVENT" , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0004"><u>evclass</u></a> ,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> )  =  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>3</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108011.html#Def_0001"><u>labelref</u></a></p>
+<p>This node identifies the events enabled for event processing
+under either the synchronous or asynchronous event processing
+models, and specifies the event handler that is invoked to
+process the event. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>ting this node enables the specified events
+for event processing. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a>ing this node disables the specified
+events for event processing, and removes all child nodes, even if
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108039.html#Def_0002">KValue</a> is used.</p>
+<p>Implementations are expected to support all of the specified
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0004"><u>evclass</u></a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> values with the understanding that
+some events may never occur on a given implementation. If an
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0004"><u>evclass</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> not defined in the standard is
+used, an error condition occurs with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00038.html#Def_0001">M38</a>".
+Attempting to set this node when <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> cannot be registered
+due to resource availability will generate an error condition
+with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00110.html#Def_0001">M110</a>".</p>
+<p>Event Processing Modes:</p>
+<table><tr>
+<td><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0004"><u>processid</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a>
+"EVENT" , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0004"><u>evclass</u></a> ,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>3</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> "MODE" ) =</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">"DISABLED"<br/>
+"SYNCHRONOUS"<br/>
+"ASYNCHRONOUS"</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>This node identifies the processing mode for the specified
+event by the specified process. If the specified event class is
+currently enabled for asynchronous event processing by this
+process (see Clause 8.2.3, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108021.html#Def_0002">ASTArt</a>), the value of the node will be
+"ASYNCHRONOUS". If the specified event class is currently enabled
+for synchronous event processing by this process (see Clause 8.2.10,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108028.html#Def_0002">ESTArt</a>), the value of the node will be "SYNCHRONOUS". If the
+specified event class is not enabled for either form of
+processing by this process, the value of the node will be
+"DISABLED".</p>
+<p>Event Block Counts:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0004"><u>processid</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a>
+"EVENT" , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0004"><u>evclass</u></a> ,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108030.html#Def_0008"><u>evid</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>3</sub> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> "BLOCKS" )  = 
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107049.html#Def_0002"><u>intlit</u></a></p>
+<p>This node gives the count of blocks (see Clause 8.2.1, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0002">ABlock</a>, and
+Clause 8.2.5, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108023.html#Def_0002">AUnblock</a>) on the specified event for the specified
+process. It only exists if the event class is enabled in either
+synchronous or asynchronous event processing modes. If the value
+of the node is zero, the events are not blocked. If the value is
+greater than zero, the events are blocked.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:33:03.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107034%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

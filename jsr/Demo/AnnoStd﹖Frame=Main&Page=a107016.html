@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107016&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107015&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Valid <u>name</u> Characters</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107017&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>Valid <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0003"><u>name</u></a> characters:</h3>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107013.html#Def_0003">^$Character</a>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107013.html#Def_0005"><u>charsetexpr</u></a> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107001.html#Def_0001"><u>expr</u></a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a105001.html#Def_0002"><u>V</u></a> "IDENT" ) = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107001.html#Def_0001"><u>expr</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107014.html#Def_0001"><u>algoref</u></a></p>
+<p>This node specifies the identification algorithm used to
+determine which characters in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a109001.html#Def_0001"><u>charset</u></a> are valid for use
+in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0003"><u>name</u></a>s (i.e. is a character in the set <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a>).</p>
+<p>The <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a> truth-value <i>truth</i>, of a character
+<i>char</i> using an identification algorithm <i>ident</i>, may be
+evaluated by executing the expression:
+("S&nbsp;<i>truth</i>="_<i>ident</i>_"(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107084.html#Def_0003">$ASCII</a>(<i>char</i>))").
+When <i>truth</i> is "true", <i>char</i> is an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a>; when
+<i>truth</i> is "false", <i>char</i> is not an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0007"><u>ident</u></a>. Note
+that for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107084.html#Def_0003">$ASCII</a>(<i>char</i>) values less than 128, 65&ndash;90
+and 97&ndash;122 are required to be "true" and all other values less
+than 128 are required to be "false". If the identification
+algorithm node is undefined, or is the empty string, then it will
+return "false" for all <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107084.html#Def_0003">$ASCII</a>(<i>char</i>) greater than
+127; values less than 128 will be returned as indicated.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107016&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 29-Nov-2011, 19:00:17.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107016%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

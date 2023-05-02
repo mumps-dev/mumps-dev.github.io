@@ -1,0 +1,131 @@
+jsrHang ; Ed de Moel ; Game of HangMan
+ ; **************************************************************
+ ; **                                                          **
+ ; ** Notice:                                                  **
+ ; ** Copyright (c) 2000-2001 Jacquard Systems Research        **
+ ; **                                                          **
+ ; ** This software is provided by Jacquard Systems Research   **
+ ; ** as a toy for the amusement of its players.               **
+ ; ** Any effects resulting from usage of this game beyond     **
+ ; ** its intended scope of usability are the sole             **
+ ; ** responsability of the player of this game.               **
+ ; **                                                          **
+ ; **************************************************************
+ ;
+ New hdr,i,data,entry
+ Write "CONTENT-TYPE: TEXT/HTML",!!
+ Set $ZTRAP="Do Error^jsrTools($ZSTATUS)"
+ ;
+ If $ZTRNLNM("REQUEST_METHOD")="POST" Do
+ . ; Retrieve variables from <stdin>
+ . Read data#$ZTRNLNM("CONTENT_LENGTH"):5
+ . QUit
+ Else  Do
+ . ; Retrieve variables from Query-String
+ . Set data=$ZTRNLNM("QUERY_STRING")
+ . Quit
+ ;
+ For i=1:1:$Length(data,"&") Do
+ . New ind,pc,val
+ . Set pc=$Piece(data,"&",i)
+ . Set ind=$$URLin^jsrTools($P(pc,"=",1)),val=$$URLin^jsrTools($P(pc,"=",2))
+ . Set:ind'="" %KEY(ind)=val
+ . Quit
+ ;
+ Do:'$G(^jsrHang("Word"))
+ . New i
+ . Set i=1,^jsrHang("Word",i)="Santa Claus"
+ . Set i=i+1,^jsrHang("Word",i)="Halloween"
+ . Set i=i+1,^jsrHang("Word",i)="Macaroni and Cheese"
+ . Set i=i+1,^jsrHang("Word",i)="Bicycle"
+ . Set i=i+1,^jsrHang("Word",i)="Scooter"
+ . Set i=i+1,^jsrHang("Word",i)="Tooth Paste"
+ . Set i=i+1,^jsrHang("Word",i)="Tooth Fairy"
+ . Set i=i+1,^jsrHang("Word",i)="Jacuzzi"
+ . Set i=i+1,^jsrHang("Word",i)="Oksana"
+ . Set i=i+1,^jsrHang("Word",i)="Homework"
+ . Set i=i+1,^jsrHang("Word",i)="Bedtime"
+ . Set i=i+1,^jsrHang("Word",i)="Dalmation"
+ . Set i=i+1,^jsrHang("Word",i)="102 Dalmations"
+ . Set i=i+1,^jsrHang("Word",i)="The Flintstones"
+ . Set i=i+1,^jsrHang("Word",i)="Carmen San Diego"
+ . Set i=i+1,^jsrHang("Word",i)="Pajama"
+ . Set i=i+1,^jsrHang("Word",i)="CD Player"
+ . Set i=i+1,^jsrHang("Word",i)="Computer"
+ . Set i=i+1,^jsrHang("Word",i)="Telephone"
+ . Set i=i+1,^jsrHang("Word",i)="Fairy Tales"
+ . Set ^jsrHang("Word")=i
+ . Quit
+ ;
+ Do
+ . New guessed,i,lo,msg,new,ok,rest,stage,up,word,x
+ . Do PagHdr^jsrTools("HangMan Game")
+ . Set word=$Get(%KEY("NewWord")) Do:word'=""
+ . . Lock +^jsrHang("New")
+ . . Set ^jsrHang("New")=$Get(^jsrHang("New"))+1
+ . . Set ^jsrHang("New",^jsrHang("New"))=word
+ . . Lock -^jsrHang("New")
+ . . QUit
+ . Set guessed=$Get(%KEY("OldGuesses"))
+ . Set new=$Get(%KEY("NewGuess"))
+ . Set word=$Get(%KEY("Word"))
+ . Set stage=$Get(%KEY("Stage"))
+ . If word=""!'stage Do
+ . . Set stage=11,guessed=" ",new=""
+ . . Set word=$Random(^jsrHang("Word"))+1
+ . . Quit
+ . Set x=$Get(^jsrHang("Word",word))
+ . Set lo="abcdefghijklmnopqrstuvwxyz"
+ . Set up="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ . If $Translate(x,up_" ",lo)=$Translate(new,up_" ",lo) Set guessed=x,new=""
+ . Set rest=$TRanslate(x,guessed)
+ . Set ok=0
+ . For i=1:1:$Length(new) Do
+ . . New e,l,u
+ . . Set e=$Extract(new,i)
+ . . Quit:e=" "
+ . . Set l=$TRanslate(e,lo,up),u=$TRanslate(e,up,lo)
+ . . Set:guessed'[u guessed=guessed_u
+ . . Set:guessed'[l guessed=guessed_l
+ . . If rest'[l,rest'[u Set stage=stage-1
+ . . Quit
+ . Set ok=1,msg=""
+ . Set:stage<1 stage=1
+ . Set:stage<2 guessed=x,ok=0,msg="<font color=#ff0000>R I P</font>"
+ . Write !,"<h2>"
+ . For i=1:1:$Length(x) Set:guessed'[$Extract(x,i) ok=0
+ . Set:ok stage=11,msg="Congratulations!"
+ . For i=1:1:$Length(x) Do
+ . . Set e=$Extract(x,i)
+ . . If guessed'[e Set e="_"
+ . . Set:e=" " e="&nbsp;"
+ . . Set:e="<" e="&lt;"
+ . . Set:e=">" e="&gt;"
+ . . Set:e="&" e="&amp;"
+ . . Write e Write:i<$Length(x) " "
+ . . Quit
+ . Write "</h2>"
+ . Write !,"<form action=""jsrHang"" method=""POST"">"
+ . If msg'="" Do
+ . . Write !,"<h3>",msg,"</h3>"
+ . . Write !,"<input type=hidden name=""Stage"" value=11>"
+ . . Write !,"<p><input type=submit value=""New Game""></p>"
+ . . Write:stage<2 !,"<p><img src=""/HangMan/jsrHan01.gif""></p>"
+ . . Quit
+ . Else  Do
+ . . Write !,"<input type=hidden name=""OldGuesses"" value="""_guessed_""">"
+ . . Write !,"<input type=hidden name=""Stage"" value="
+ . . Write $Select(stage>1:stage,1:0),">"
+ . . Write !,"<input type=hidden name=""Word"" value="_word_">"
+ . . Write:stage>1 !,"<p><input type=text name=""NewGuess"" value=""""></p>"
+ . . Write !,"<p><input type=submit value="""
+ . . Write $Select(stage>2:"Next Attempt",1:"New Game"),"""></p>"
+ . . Write "<p>Add new word to the database: "
+ . . Write "<input type=text name=""NewWord"" value=""""></p>"
+ . . Write !,"<p><img src=""/HangMan/jsrHan" Write:stage<10 0 Write stage
+ . . Write ".gif""></p>"
+ . . Quit
+ . Write !,"</form></body></html>",!
+ . Quit
+ Quit
+ ;

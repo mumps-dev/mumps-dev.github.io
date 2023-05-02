@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108017&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108016&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>User-Defined <u>mnemonicspace</u>s</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108018&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<a name="Def_0005"></a>
+<a name="Def_0006"></a>
+<a name="Def_0007"></a>
+<h3>8.1.9 User-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s</h3>
+<p>When a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a> is used for a device which has a
+user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> (see 8.2.25) then the usage of
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a> in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>
+command <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0005"><u>format</u></a> in the form</p>
+<p>&nbsp;&nbsp;&nbsp;<tt>/<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>,...)</tt></p>
+<p>is computationally equivalent, with the exception of the
+effect on <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>, to</p>
+<p>&nbsp;&nbsp;&nbsp;<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> <i>label</i>^<i>routine</i>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>,...)</tt></p>
+<p>where <i>routine</i> is the user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>
+routine and <i>label</i> is <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>, unless
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a> commences with a ? in which case it is
+replaced by %. If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>s of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> are case-insensitive then <i>label</i> is
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a> converted to upper-case. Unless
+specifically stated otherwise <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s are
+case-sensitive.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> are restored to their
+value prior to the execution of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>
+associated routine. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> is not restored if there is a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> on the original <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>.</p>
+<p>Any reference to a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a> within a
+user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> for which there is no associated
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106003.html#Def_0002"><u>line</u></a> causes an error condition with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> =
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00032.html#Def_0001">M32</a>".</p>
+<a name="Def_0008"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0008"><u>devicecommand</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">Close<br/>
+OPEN<br/>
+USE</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>If a label of the form %<i>command</i>, where <i>command</i>
+is a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0008"><u>devicecommand</u></a>, exists in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>
+command routine then execution of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> which is a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0008"><u>devicecommand</u></a> with at least one <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0007"><u>deviceparam</u></a> is
+computationally equivalent to</p>
+<p><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> KEYWORD,ATTRIB,I<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> (KEYWORD,ATTRIB)=<i>no</i><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> I=1:1:<i>no</i> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> KEYWORD(I)=<i>key</i><sub>I</sub><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(<i>att</i><sub>I</sub>) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ATTRIB(I)=<i>att</i><sub>I</sub><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Quit<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<i>label</i>^<i>routine</i>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>,.KEYWORD,.ATTRIB,<i>time</i>)</tt></p>
+<p>where <i>label</i> is the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0001"><u>commandword</u></a> converted to
+upper-case and expanded to the fully spelled out
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0008"><u>devicecommand</u></a>, <i>routine</i> is the user-defined
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> command routine, <i>no</i> is the number of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0007"><u>deviceparam</u></a>s, KEYWORD and ATTRIB contain the individual
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0007"><u>deviceparam</u></a>s in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0006"><u>deviceparameters</u></a> fully evaluated
+with
+<i>key<sub>i</sub></i>=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0008"><u>devicekeyword</u></a><sub>i</sub>
+or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0009"><u>deviceattribute</u></a><sub>i</sub> as appropriate and
+<i>att<sub>i</sub></i>=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>i</sub> if
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0007"><u>deviceparam</u></a> is in the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0009"><u>deviceattribute</u></a> form, and
+<i>time</i> is absent or the evaluated expression from
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> is present.</p>
+<p>The usage of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0007"><u>deviceparam</u></a> form <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a> is
+implementation specific.</p>
+<p>Any action implied by the presence of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>
+in such a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> takes effect before the above code is
+executed.</p>
+<a name="Def_0009"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0009"><u>iocommand</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">Read<br/>
+WRITE</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>If a label of the form <i>%command,</i>  where <i>command</i> 
+is an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0009"><u>iocommand</u></a>, exists in a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> command
+routine then execution of an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108017.html#Def_0009"><u>iocommand</u></a> of the form:</p>
+<ol type="a">
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0001">W[RITE]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0008"><u>ffformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0001">W[RITE]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0007"><u>nlformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0001">W[RITE]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0009"><u>tabformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0001">W[RITE]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0001">W[RITE]</a> * <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107007.html#Def_0001"><u>glvn</u></a> [ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0004"><u>readcount</u></a> ] [ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> 
+]</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0008"><u>ffformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0007"><u>nlformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0009"><u>tabformat</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0001">R[EAD]</a> * <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107007.html#Def_0001"><u>glvn</u></a> [ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> ]</li>
+</ol>
+<p>is respectively computationally equivalent, with the exception
+of the effect on <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>, to:</p>
+<ol type="a">
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>FF^<i>routine</i>()</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>NL^<i>routine</i>()</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>TAB^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> 
+)</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a> )</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>S^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> )</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107007.html#Def_0001"><u>glvn</u></a>=$$%READ^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>1</sub> [ , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>2</sub> ] )</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>FF^<i>routine</i>(1)</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>NL^<i>routine</i>(1)</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>TAB^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> 
+,1)</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a>^<i>routine</i>( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a> ,1)</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107007.html#Def_0001"><u>glvn</u></a>=$$%READS^<i>routine</i>( [ , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>2</sub> ] )</li>
+</ol>
+<p>where:</p>
+<ol type="1">
+<li><i>routine</i>  is the user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>
+command routine,</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>1</sub> is the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> from
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0004"><u>readcount</u></a>, or absent if no <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0004"><u>readcount</u></a> is present,
+and</li>
+<li>if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> is present, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>2</sub> is
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> from <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a>.</li>
+</ol>
+<p>It is the responsibility of the user-defined
+<u>mnemonicpace</u> routine to process the
+<u>deviceparameter</u>s in the appropriate order.</p>
+<p>During the execution of any user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>
+command routine:</p>
+<ol type="a">
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> redirection for the device that
+caused the routine to be executed is disabled; and</li>
+<li>the effect of user-defined processing of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>s and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>s for the same
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> is unspecified.</li>
+</ol>
+<p>Upon completion of execution of the user-defined
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> routine, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is restored to
+its original value.</p>
+<p>In the event that a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> is <i>not</i>  present,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> is also restored when execution of the routine
+completes. However, if a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108008.html#Def_0001"><u>timeout</u></a> is present, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a>
+is <i>not</i>  restored and it is the responsibility of the
+user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> routine to return <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a>
+to indicate whether the operation times out.</p>
+<p>Note: <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107072.html#Def_0002">$Storage</a> may be affected by the execution of
+user-defined <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> code.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108017&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 21:39:17.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108017%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107058&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$ECODE</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107060&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<a name="Def_0005"></a>
+<h3>7.1.4.10.2 <a href="#Def_0002">$ECode</a></h3>
+<p><a href="#Def_0001">$EC[ODE]</a></p>
+<p>contains information about an error condition. When the value
+of <a href="#Def_0002">$ECode</a> is the empty string, normal routine execution rules are
+in effect. When <a href="#Def_0002">$ECode</a> contains anything else, the execution
+rules in 6.3.3 (Error processing) are active. When a process is
+initiated, but before any commands are processed, the value of
+<a href="#Def_0002">$ECode</a> is the empty string.</p>
+<p>The syntax of a non-empty value returned by <a href="#Def_0002">$ECode</a> is as
+follows:</p>
+<p>&nbsp;&nbsp;&nbsp;, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0001"><u>L</u></a> <a href="#Def_0006"><u>ecode</u></a> ,</p>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>ecode</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">M<br/>
+U<br/>
+Z</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">[ <a href="#Def_0007"><u>noncomma</u></a> ]</td>
+</tr></table>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>noncomma</u></a></td><td align="center">::=</td>
+<td align="center">any of the characters in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0005"><u>graphic</u></a>
+except the comma character</td>
+</tr></table>
+<p>Note: <a href="#Def_0006"><u>ecode</u></a>s beginning with:<br/>
+&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;are reserved for the MDC<br/>
+&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;are reserved for the user<br/>
+&nbsp;&nbsp;&nbsp;Z&nbsp;&nbsp;&nbsp;are reserved for the implementation<br/>
+All other values are reserved.</p>
+<p>When an attempt is made to assign a value to <a href="#Def_0002">$ECode</a> that does
+not meet the above constraints, an error will occur with
+<a href="#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00101.html#Def_0001">M101</a>".</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 07:21:47.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107059%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

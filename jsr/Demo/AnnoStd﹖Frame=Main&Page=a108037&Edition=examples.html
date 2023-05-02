@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>KILL</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108038&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> A,B,C,^A,^B,^C</tt><br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> (A,B,C)</tt></p>
+<p>Note that <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> (A(1),B)</tt> is not allowed.</p>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p>In addition to the previous indirection capabilities, the possibility
+to <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> (A,B,@C,D)</tt> with <tt>C</tt> equal to
+<tt>"P,Q,R"</tt> is included.</p>
+<p>When the traditional <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> command removes information, it
+removes any value, and any descendants of the variables affected.
+The addition is that two new commands are introduced (see command
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108038.html#Def_0002">KSubscripts</a> and command <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108039.html#Def_0002">KValue</a>) that allow for a
+more selective removal of information.</p>
+<p><tt>&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a><br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108038.html#Def_0002">KSubscripts</a> A,B,C<br/>
+&nbsp;; A should be unchanged<br/>
+1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(1)<br/>
+&nbsp;; B(10) should have been deleted<br/>
+2 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(2)<br/>
+&nbsp;; Only C(11) should have been deleted<br/>
+3 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(3)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108039.html#Def_0002">KValue</a> A,B,C<br/>
+&nbsp;; A should have been deleted<br/>
+4 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(4)<br/>
+&nbsp;;B should be unchanged<br/>
+5 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(5)<br/>
+&nbsp;; C should be deleted, C(11) should remain<br/>
+6 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(6)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108038.html#Def_0002">KSubscripts</a> (A,B)<br/>
+&nbsp;; A should be unchanged<br/>
+7 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(7)<br/>
+&nbsp;; B(10) should be unaffected<br/>
+8 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(8)<br/>
+&nbsp;; Only C(11) should have been deleted<br/>
+9 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(9)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108039.html#Def_0002">KValue</a> (A,B)<br/>
+&nbsp;; A should be unchanged<br/>
+10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(10)<br/>
+&nbsp;; B(10) should be unchanged<br/>
+11 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(11)<br/>
+&nbsp;; Only C should have been deleted<br/>
+12 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(12)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> A,B<br/>
+&nbsp;; A should have been deleted<br/>
+13 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(13)<br/>
+&nbsp;; B(10) should have been deleted<br/>
+14 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(14)<br/>
+&nbsp;; Both C and C(11) should be unaffected<br/>
+15 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=11 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(15)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SETUP<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> (A,B)<br/>
+&nbsp;; A should be unaffected<br/>
+16 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(A)'=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(16)<br/>
+&nbsp;; B(10) should be unaffected<br/>
+17 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(B)'=10 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(17)<br/>
+&nbsp;; Both C and C(11) should have been deleted<br/>
+18 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(C)'=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ERROR(18)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+SETUP <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> A=1,B(10)=10,C=11,C(11)=11 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ERROR(I) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Error in check # ",I<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107109.html#Def_0002">$Text</a>(@I)<br/>
+&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> VARIABLE<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^(3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt><br/>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 09:01:39.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108037%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107070&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107070&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107069&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$REFERENCE</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107071&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>The value of this variable is equal to the name of the global
+variable that defined the current value of the "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"
+(or is empty when the "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>" is currently
+undefined).</p>
+<pre>
+NAKED() ; Get <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>
+ IF <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a> "&lt;undefined&gt;"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> TMP
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> TMP=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^(0))
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> TMP=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(TMP,1,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(TMP)&ndash;2)
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^ABC
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2,3)="Demo"
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "--&gt;""",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>,""""
+--&gt;"^ABC(1,2,3)"
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> A=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^ABC(1))
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "--&gt;""",A,""", and """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>,"""."
+--&gt;"^ABC(1,2,3)", and "".
+</pre>
+<p>After a reference to the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>, the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> becomes undefined, which means that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+becomes equal to the empty string.</p>
+<pre>
+ ...
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SAVNAK
+ ...
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> RESTNAK
+ ...
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+SAVNAK <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> OLD=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+RESTNAK <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>=OLD <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+</pre>
+<p>could be used to save and restore the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>. Note that
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>ting <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a> does not imply that the global
+variable that it points to is actually referenced, only that the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is (re)set.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^A(3))<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^(3)="data ^A 3 (must be retrieved later)"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SBE="$REFERENCE should be equal to "<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> V1=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,SBE,"'^A(3)': ",V1<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^(3,4))<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> V2=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,SBE,"'^A(3,4)': ",V2<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> ^P(27)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> V3=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,SBE,"'^A(3,4)': ",V3<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>=V1<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Naked reference should work: ",^(3)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p><tt>...<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X=1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(1)=2 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>=""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is undefined."</tt><br/>
+should produce:<br/>
+<tt>^X<br/>
+^X(1)</tt><br/>
+Note that a reference to <tt>^X</tt> makes the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>
+undefined, but does not make <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a> empty.<br/>
+The final command, <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>=""</tt> makes
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a> empty and also makes the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>
+undefined.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a> may occur as an argument of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> command.</p>
+<pre>
+        ; Define value of $REFERENCE
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^Test(1234)
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> Test1
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"The value of $REFERENCE is "
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"This value should be ^Test(1234)."
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> Test2
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"The value of $REFERENCE is "
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Should be ^Other(""Name"")."
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+Test1   <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> Test2
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+Test2   ; Re-define $REFERENCE
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^Other("Name"))
+        <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+</pre>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107070&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107070&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 29-Nov-2011, 21:15:25.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107070%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

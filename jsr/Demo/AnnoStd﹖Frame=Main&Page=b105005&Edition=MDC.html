@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105005&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105004&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OMI - Response Header</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105006&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>5.3.2 Response header</h3>
+<p>Each response shall contain a header that describes the
+server's response to 1 request.</p>
+<p>The response header is a short string &lt;SS&gt; so that the
+agent can locate the field following the header. 5.3.1 discusses
+the need for this ability.</p>
+<p>The fields of the response header and their sequence shall
+be:</p>
+<ol type="a">
+<li><i>Error class</i>: &lt;LI&gt; denotes 1 of 65&nbsp;536
+classes of errors. The MUMPS Development Committee assigns
+classes to OMI versions and to specific extensions of the
+standard (see 4.12). The classes of errors specified by
+ANSI/MDC&nbsp;X11.2 shall be 0 and 1. All other classes are
+reserved for assignment by the MUMPS Development Committee.<br/>
+An error class of 0 means that the request completed
+successfully. Class 1 indicates failure to perform the 
+request.</li>
+<li><i>Error type</i>: &lt;SI&gt; indicates the result of the
+server's attempt to perform the request. When the error class is
+0, indicating success, then the error type indicates types of
+success. For other error classes, the error type denotes a
+specific error condition.</li>
+<li><i>Error modifier</i>: &lt;LI&gt; modifies the meaning of
+specific error conditions. This field is optional, therefore it
+may be set to 0 by a server and may be ignored by an agent. See
+specific operations in 5.4 for use of the error modifier.</li>
+<li><i>Server status</i>: &lt;LI&gt; conveys information about
+the server itself, and is not necessarily related to the request.
+Each change in server status is conveyed in only 1 response. A
+value of 0 means that no change in server status has occurred
+since the last response.</li>
+<li><i>Sequence number</i>: &lt;LI&gt; This number shall equal
+the sequence number of the corresponding request.</li>
+<li><i>Request identifier</i>: This number shall equal the
+request identifier of the corresponding request.</li>
+</ol>
+<table align="center" cellspacing="0" cellpadding="2">
+<tr>
+<td colspan="7" bgcolor="#3c66ac" align="center">&lt;SS&gt;</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#3c66ac">&lt;SI&gt;</td>
+<td align="center" bgcolor="#3c56ac">&lt;LI&gt;<br/>Class</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>Type</td>
+<td align="center" bgcolor="#3c56ac">&lt;LI&gt;<br/>Modifier</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>Server Status</td>
+<td align="center" bgcolor="#3c56ac">&lt;LI&gt;<br/>Sequence</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>Req ID</td>
+</tr></table>
+<p align="center"><b>Figure 6 &ndash; Form of a response header</b></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105005&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 13:16:58.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3db105005%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

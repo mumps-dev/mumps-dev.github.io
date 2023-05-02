@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107005&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107004&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OREF</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.1.1.1.2 Values of data type OREF</h3>
+<a name="Def_0001"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a></td><td align="center">::=</td>
+<td align="center">any value with data type OREF</td>
+</tr></table>
+<p>Values of data type OREF are values that have no canonic
+representation. Instead, each <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a> uniquely identifies a
+specific <i>object</i>, in an implementation-specific manner.</p>
+<p>When a value of data type OREF is assigned to an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>,
+this value assignment is the only action that will result. In
+particular, no copy is made of the <i>object</i> that is
+identified by this <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a>.</p>
+<p>All copies of a value of data type OREF are completely
+equivalent for accessing the <i>object</i>.</p>
+<p>After an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> has been assigned a value of data type
+OREF, any new value may be assigned to that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>. Such new
+values may be of data type MVAL as well as OREF. Such assignments
+never have any impact on the object that is identified by the
+original <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a>.</p>
+<p>Values of data type OREF have no literal representation.
+Except in certain special situations, values of data type OREF
+are coerced into values of data type MVAL according to the
+following rules, based on the value of the default property, if
+any, of the object identified by the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a>:</p>
+<ol type="a">
+<li>Let <i>ref</i>  be the value of data type OREF that is being
+coerced.</li>
+<li>Let <i>obj</i>  be the <i>object</i> identified by 
+<i>ref.</i></li>
+<li>If <i>obj</i>  has no default <i>property</i>, an error
+condition will occur with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00107.html#Def_0001">M107</a>" (No Default
+Value).</li>
+<li>If the value of the default <i>property</i> of <i>obj</i> 
+has the data type OREF, then replace <i>ref</i>  by the value of
+this default <i>property</i> and go back to step b.</li>
+<li>Otherwise, the value of the default <i>property</i> of <i>obj
+</i> must be of data type MVAL, and this value will be returned
+as the coerced string value of the original <i>object</i>.</li>
+</ol>
+<p>The special situations under which values of data type OREF
+are not coerced into values of data type MVAL are:</p>
+<ol type="1">
+<li>The final values of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>s that are operands of ==
+operators.</li>
+<li>The values of parameters that are passed in
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108014.html#Def_0001"><u>actuallist</u></a>s or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108016.html#Def_0007"><u>namedactuallist</u></a>s that are not part of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108012.html#Def_0001"><u>externref</u></a>s or Job command arguments.</li>
+<li>The final values of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a>s on the right-hand side
+of the = in arguments of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108020.html#Def_0002">Assign</a> commands.</li>
+<li>Values that are returned as function-values through Quit
+commands.</li>
+<li>Values that are used as the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108016.html#Def_0005"><u>object</u></a> portion of an
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108016.html#Def_0002"><u>owservice</u></a>.</li>
+</ol>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107005&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:33:03.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107005%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

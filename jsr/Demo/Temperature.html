@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Convert Temperature</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Convert%20Temperature&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fTemperature%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a56%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Convert Temperature</font></h1></td></tr></table>
+<form name="form" action="Temperature.html" method="post">
+<input type="hidden" id="Slider_1_Value" value="37"/>
+<input type="hidden" id="Slider_2_Value" value="98.6"/>
+<input type="hidden" id="Slider_3_Value" value="24"/>
+<input type="hidden" id="Slider_4_Value" value="75"/>
+<input type="hidden" id="Slider_5_Value" value="0"/>
+<input type="hidden" id="Slider_6_Value" value="100"/>
+<input type="hidden" id="Slider_7_Value" value="0"/>
+<table border="0">
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'K');" id="Kelvin"/></td>
+<td valign="top">&nbsp;Kelvin</td>
+<td valign="top" rowspan="8">&nbsp;&nbsp;</td><td valign="top" rowspan="8"><span id="CelsiusFormula" style="display: none">Conversion from degrees Celsius to Kelvin:<br/>[<b>K</b>] = [<b>&#176;C</b>] + 273.15<br/><br/>
+Conversion from Kelvin to degrees Celsius:<br/>
+[<b>&#176;C</b>] = [<b>K</b>] &#8722; 273.15</span>
+<span id="FahrenheitFormula" style="display: none">Conversion from degrees Fahrenheit to Kelvin:<br/>[<b>K</b>] = ([<b>&#176;F</b>] &#8722; 32) &#215; 5 &#247; 9 + 273.15<br/><br/>
+Conversion from Kelvin to degrees Fahrenheit:<br/>
+[<b>&#176;F</b>] = ([<b>K</b>] &#8722; 273.15) &#215; 9 &#247; 5 + 32</span>
+<span id="ReaumurFormula" style="display: none">Conversion from degrees R&eacute;aumur to Kelvin:<br/>[<b>K</b>] = [<b>&#176;R&eacute;</b>] &#215; 5 &#247; 4 + 273.15<br/><br/>
+Conversion from Kelvin to degrees R&eacute;aumur:<br/>
+[<b>&#176;R&eacute;</b>] = ([<b>K</b>] &#8722; 273.15) &#215; 4 &#247; 5</span>
+<span id="RankineFormula" style="display: none">Conversion from degrees Rankine to Kelvin:<br/>[<b>K</b>] = [<b>&#176;Ra</b>] &#215; 5 &#247; 9<br/><br/>
+Conversion from Kelvin to degrees Rankine:<br/>
+[<b>&#176;Ra</b>] = [<b>K</b>] &#215; 9 &#247; 5</span>
+<span id="RomerFormula" style="display: none">Conversion from degrees R&oslash;mer to Kelvin:<br/>[<b>K</b>] = ([<b>&#176;R&oslash;</b>] &#8722; 7.5) &#215; 40 &#247; 21 + 273.15<br/><br/>
+Conversion from Kelvin to degrees R&oslash;mer:<br/>
+[<b>&#176;R&oslash;</b>] = ([<b>K</b>] &#8722; 273.15) &#215; 21 &#247; 40 + 7.5</span>
+<span id="NewtonFormula" style="display: none">Conversion from degrees Newton to Kelvin:<br/>[<b>K</b>] = ([<b>&#176;N</b>] &#215; 100 &#247; 33 + 273.15<br/><br/>
+Conversion from Kelvin to degrees Newton:<br/>
+[<b>&#176;N</b>] = ([<b>K</b>] &#8722; 273.15) &#215; 33 &#247; 100</span>
+<span id="DelisleFormula" style="display: none">Conversion from degrees Delisle to Kelvin:<br/>[<b>K</b>] = 373.15 &#8722; ([<b>&#176;D</b>] &#215; 2 &#247; 3)<br/><br/>
+Conversion from Kelvin to degrees Delisle:<br/>
+[<b>&#176;D</b>] = (373.15 &#8722; [<b>K</b>]) &#215; 3 &#247; 2</span>
+</td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'C');" id="Celcius"/></td>
+<td valign="top"><span onmouseover="Show('Celsius', 1);" onmouseout="Show('Celsius', 0);">&#176;&nbsp;Celsius</span></td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'F');" id="Fahrenheit"/></td>
+<td valign="top"><span onmouseover="Show('Fahrenheit', 1);" onmouseout="Show('Fahrenheit', 0);">&#176;&nbsp;Fahrenheit</span></td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'Re');" id="Reaumur"/></td>
+<td valign="top"><span onmouseover="Show('Reaumur', 1);" onmouseout="Show('Reaumur', 0);">&#176;&nbsp;R&eacute;aumur</span></td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'Ra');" id="Rankine"/></td>
+<td valign="top"><span onmouseover="Show('Rankine', 1);" onmouseout="Show('Rankine', 0);">&#176;&nbsp;Rankine</span></td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'Ro');" id="Romer"/></td>
+<td valign="top"><span onmouseover="Show('Romer', 1);" onmouseout="Show('Romer', 0);">&#176;&nbsp;R&oslash;mer</span></td>
+</tr>
+<tr>
+<td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'N');" id="Newton"/></td>
+<td valign="top"><span onmouseover="Show('Newton', 1);" onmouseout="Show('Newton', 0);">&#176;&nbsp;Newton</span></td>
+</tr>
+<tr><td valign="top"><input size="10" style="text-align: right;" onkeyup="Convert(this,'D');" id="Delisle"/></td>
+<td valign="top"><span onmouseover="Show('Delisle', 1);" onmouseout="Show('Delisle', 0);">&#176;&nbsp;Delisle</span></td>
+</tr>
+</table>
+<p>Include sample experiment <select name="ExperimentList" onchange="Experiment(this);">
+<option value="-" selected="selected">-- none --</option>
+<option value="1">Body Temperature (Celsius)</option>
+<option value="2">Body Temperature (Fahrenheit)</option>
+<option value="3">Air Temperature (Celsius)</option>
+<option value="4">Air Temperature (Fahrenheit)</option>
+<option value="7">Special Temperatures for Various Substances</option>
+</select></p>
+<div id="Experiment_1" style="display: none;">
+<h3>Move slider to experiment with body temperatures, starting from a Celsius scale</h3>
+<table width="100%" border="0">
+<tr>
+<td align="center" colspan="2" width="7%" bgcolor="#ADD8E6"><font color="red">32</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="#ADD8E6"><font color="red">33</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="#ADD8E6"><font color="red">34</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="#ADD8E6"><font color="red">35</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="#ADD8E6"><font color="red">36</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="white"><font color="black">37</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="white"><font color="black">38</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="white"><font color="red">39</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="white"><font color="red">40</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="white"><font color="red">41</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="red"><font color="yellow">42</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="red"><font color="yellow">43</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="red"><font color="yellow">44</font></td>
+<td align="center" colspan="2" width="7%" bgcolor="red"><font color="yellow">45</font></td>
+</tr>
+<tr><td width="3%">&nbsp;</td><td colspan="26" width="92%"><div id="Slider_1"></div></td><td width="3%">&nbsp;</td></tr>
+</table>
+</div>
+<div id="Experiment_2" style="display: none;">
+<h3>Move slider to experiment with body temperatures, starting from a Fahrenheit scale</h3>
+<table width="100%" border="0">
+<tr>
+<td align="center" colspan="2" width="9%" bgcolor="#ADD8E6"><font color="red">85</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="#ADD8E6"><font color="red">88</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="#ADD8E6"><font color="red">91</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="#ADD8E6"><font color="red">94</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="white"><font color="black">97</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="white"><font color="black">100</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="white"><font color="red">103</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="red"><font color="yellow">106</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="red"><font color="yellow">109</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="red"><font color="yellow">112</font></td>
+<td align="center" colspan="2" width="9%" bgcolor="red"><font color="yellow">115</font></td>
+</tr>
+<tr><td width="4%">&nbsp;</td><td colspan="20" width="90%"><div id="Slider_2"></div></td><td width="4%">&nbsp;</td></tr>
+</table>
+</div>
+<div id="Experiment_3" style="display: none;">
+<h3>Move slider to experiment with air temperatures, starting from a Celsius scale</h3>
+<table width="100%" border="0">
+<tr>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-50</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-43</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-36</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-29</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-22</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-15</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="black">-8</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="black">-1</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="black">6</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="black">13</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="blue">20</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="blue">27</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">34</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">41</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">48</font></td>
+</tr>
+<tr><td width="3%">&nbsp;</td><td colspan="28" width="93%"><div id="Slider_3"></div></td><td width="3%">&nbsp;</td></tr>
+</table>
+</div>
+<div id="Experiment_4" style="display: none;">
+<h3>Move slider to experiment with air temperatures, starting from a Fahrenheit scale</h3>
+<table width="100%" border="0">
+<tr>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-60</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-47</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-34</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-21</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">-8</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="red">5</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="black">18</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="#ADD8E6"><font color="black">31</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="black">44</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="black">57</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="blue">70</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="white"><font color="blue">83</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">96</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">109</font></td>
+<td align="center" colspan="2" width="6%" bgcolor="red"><font color="yellow">122</font></td>
+</tr>
+<tr><td width="3%">&nbsp;</td><td colspan="28" width="93%"><div id="Slider_4"></div></td><td width="3%">&nbsp;</td></tr>
+</table>
+</div>
+<div id="Experiment_5" style="display: none;">
+<h3>Melting Points</h3>
+<table>
+<tr>
+<td valign="top"><input type="radio" name="Melt" value="-272" onclick="ShowBox(-272,5);"/>&nbsp;Helium</td>
+<td valign="top"><input type="radio" name="Melt" value="-259.14" onclick="ShowBox(-259.14,5);"/>&nbsp;Hydrogen</td>
+<td valign="top"><input type="radio" name="Melt" value="-114" onclick="ShowBox(-114,5);"/>&nbsp;Ethanol</td>
+<td valign="top"><input type="radio" name="Melt" value="-97.6" onclick="ShowBox(-97.6,5);"/>&nbsp;Methanol</td>
+<td valign="top"><input type="radio" name="Melt" value="-39" onclick="ShowBox(-39,5);"/>&nbsp;Mercury</td>
+</tr>
+<tr>
+<td valign="top"><input type="radio" name="Melt" value="0" checked="checked" onclick="ShowBox(0,5);"/>&nbsp;Water</td>
+<td valign="top"><input type="radio" name="Melt" value="63.3" onclick="ShowBox(63.3,5);"/>&nbsp;Potassium</td>
+<td valign="top"><input type="radio" name="Melt" value="97.83" onclick="ShowBox(97.83,5);"/>&nbsp;Sodium</td>
+<td valign="top"><input type="radio" name="Melt" value="232" onclick="ShowBox(232,5);"/>&nbsp;Tin</td>
+<td valign="top"><input type="radio" name="Melt" value="419.5" onclick="ShowBox(419.5,5);"/>&nbsp;Zinc</td>
+</tr>
+<tr>
+<td valign="top"><input type="radio" name="Melt" value="660" onclick="ShowBox(660,5);"/>&nbsp;Aluminum</td>
+<td valign="top"><input type="radio" name="Melt" value="961" onclick="ShowBox(961,5);"/>&nbsp;Silver</td>
+<td valign="top"><input type="radio" name="Melt" value="1063" onclick="ShowBox(1063,5);"/>&nbsp;Gold</td>
+<td valign="top"><input type="radio" name="Melt" value="1084" onclick="ShowBox(1084,5);"/>&nbsp;Copper</td>
+<td valign="top"><input type="radio" name="Melt" value="1149" onclick="ShowBox(1149,5);"/>&nbsp;Iron</td>
+</tr></table>
+</div>
+<div id="Experiment_6" style="display: none;">
+<h3>Boiling Points</h3>
+<table>
+<tr>
+<td valign="top"><input type="radio" name="Boil" value="-268.928" onclick="ShowBox(-268.928,6);"/>&nbsp;Helium</td>
+<td valign="top"><input type="radio" name="Boil" value="-252.879" onclick="ShowBox(-252.879,6);"/>&nbsp;Hydrogen</td>
+<td valign="top"><input type="radio" name="Boil" value="-195.79" onclick="ShowBox(-195.79,6);"/>&nbsp;Nitrogen</td>
+<td valign="top"><input type="radio" name="Boil" value="-182.962" onclick="ShowBox(-182.962,6);"/>&nbsp;Oxygen</td>
+<td valign="top"><input type="radio" name="Boil" value="64.7" onclick="ShowBox(64.7,6);"/>&nbsp;Methanol</td>
+</tr>
+<tr>
+<td valign="top"><input type="radio" name="Boil" value="78.37" onclick="ShowBox(78.37,6);"/>&nbsp;Ethanol</td>
+<td valign="top"><input type="radio" name="Boil" value="100" checked="checked" onclick="ShowBox(100,6);"/>&nbsp;Water</td>
+<td valign="top"><input type="radio" name="Boil" value="356.73" onclick="ShowBox(356.73,6);"/>&nbsp;Mercury</td>
+</tr></table>
+</div>
+<div id="Experiment_7" style="display: none;">
+<h3>Substance-specific Temperatures</h3>
+<table>
+<tr><td>Substance</td>
+<td>&nbsp;Melting Point&nbsp;</td>
+<td>&nbsp;Triple Point&nbsp;</td>
+<td>&nbsp;Boiling Point&nbsp;</td></tr>
+<tr><td>Al = Aluminum</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="660.32" onclick="ShowBox(660.32,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2470" onclick="ShowBox(2470,7);"/></td>
+</tr>
+<tr><td>Cu = Copper</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="1084" onclick="ShowBox(1084,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2567" onclick="ShowBox(2567,7);"/></td>
+</tr>
+<tr><td>C<sub>2</sub>H<sub>6</sub>O = Ethanol</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-114" onclick="ShowBox(-114,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-123" onclick="ShowBox(-123,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="78.37" onclick="ShowBox(78.37,7);"/></td>
+</tr>
+<tr><td>Au = Gold</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="1063" onclick="ShowBox(1063,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2660" onclick="ShowBox(2660,7);"/></td>
+</tr>
+<tr><td>He = Helium</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-272" onclick="ShowBox(-272,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-270.98" onclick="ShowBox(-270.98,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-268.928" onclick="ShowBox(-268.928,7);"/></td>
+</tr>
+<tr><td>H = Hydrogen</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-259.14" onclick="ShowBox(-259.14,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-259.31" onclick="ShowBox(-259.31,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-252.879" onclick="ShowBox(-252.879,7);"/></td>
+</tr>
+<tr><td>Fe = Iron</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="1149" onclick="ShowBox(1149,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2862" onclick="ShowBox(2862,7);"/></td>
+</tr>
+<tr><td>Hg = Mercury</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-39" onclick="ShowBox(-39,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="356.73" onclick="ShowBox(356.73,7);"/></td>
+</tr>
+<tr><td>CH<sub>4</sub>O = Methanol</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-97.6" onclick="ShowBox(-97.6,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-97.65" onclick="ShowBox(-97.65,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="64.7" onclick="ShowBox(64.7,7);"/></td>
+</tr>
+<tr><td>N = Nitrogen</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-210" onclick="ShowBox(-210,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-210" onclick="ShowBox(-210,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-195.79" onclick="ShowBox(-195.79,7);"/></td>
+</tr>
+<tr><td>O = Oxygen</td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="-182.962" onclick="ShowBox(-182.962,7);"/></td>
+</tr>
+<tr><td>K = Potassium</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="63.3" onclick="ShowBox(63.3,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="63" onclick="ShowBox(63,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="758.8" onclick="ShowBox(758.8,7);"/></td>
+</tr>
+<tr><td>Ag = Silver</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="961" onclick="ShowBox(961,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2193" onclick="ShowBox(2193,7);"/></td>
+</tr>
+<tr><td>Na = Sodium</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="97.83" onclick="ShowBox(97.83,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="882.8" onclick="ShowBox(882.8,7);"/></td>
+</tr>
+<tr><td>Sn = Tin</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="232" onclick="ShowBox(232,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="2603" onclick="ShowBox(2603,7);"/></td>
+</tr>
+<tr><td>H<sub>2</sub>O = Water</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="0" checked="checked" onclick="ShowBox(0,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value=".01" onclick="ShowBox(.01,7);"/></td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="100" onclick="ShowBox(100,7);"/></td>
+</tr>
+<tr><td>Zn = Zinc</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="419.5" onclick="ShowBox(419.5,7);"/></td>
+<td valign="top" align="center">&nbsp;</td>
+<td valign="top" align="center"><input type="radio" name="Slider_7" value="907" onclick="ShowBox(907,7);"/></td>
+</tr>
+</table></div>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function()
+ {
+  $('#Slider_1').slider(
+   {
+    min: 320,
+    max: 450,
+    step: 1,
+    value: document.getElementById('Slider_1_Value').value * 10,
+    slide: function (event, ui)
+     {
+      document.getElementById('Slider_1_Value').value = ui.value / 10;
+      $(this).slider('value', ui.value);
+      Convert (document.getElementById('Slider_1_Value'), 'c');
+      this.focus();
+     }
+   });
+  $('#Slider_2').slider(
+   {
+    min: 850,
+    max: 1150,
+    step: 1,
+    value: document.getElementById('Slider_2_Value').value * 10,
+    slide: function (event, ui)
+     {
+      document.getElementById('Slider_2_Value').value = ui.value / 10;
+      $(this).slider('value', ui.value);
+      Convert (document.getElementById('Slider_2_Value'), 'f');
+      this.focus();
+     }
+   });
+  $('#Slider_3').slider(
+   {
+    min: -500,
+    max: 500,
+    step: 1,
+    value: document.getElementById('Slider_3_Value').value * 10,
+    slide: function (event, ui)
+     {
+      document.getElementById('Slider_3_Value').value = ui.value / 10;
+      $(this).slider('value', ui.value);
+      Convert (document.getElementById('Slider_3_Value'), 'c');
+      this.focus();
+     }
+   });
+  $('#Slider_4').slider(
+   {
+    min: -600,
+    max: 1250,
+    step: 1,
+    value: document.getElementById('Slider_4_Value').value * 10,
+    slide: function (event, ui)
+     {
+      document.getElementById('Slider_4_Value').value = ui.value / 10;
+      $(this).slider('value', ui.value);
+      Convert (document.getElementById('Slider_4_Value'), 'f');
+      this.focus();
+     }
+   });
+ })
+function Show (which, onoff)
+ {
+  var show = onoff > 0 ? 'inline' : 'none';
+  document.getElementById(which + 'Formula').style.display = show;
+ }
+function Experiment (list)
+ {
+  document.getElementById('Experiment_1').style.display = 'none';
+  document.getElementById('Experiment_2').style.display = 'none';
+  document.getElementById('Experiment_3').style.display = 'none';
+  document.getElementById('Experiment_4').style.display = 'none';
+  document.getElementById('Experiment_7').style.display = 'none';
+  if (list.value != '-')
+   {
+    document.getElementById('Experiment_' + list.value).style.display = 'inline';
+    Convert (document.getElementById('Slider_' + list.value + '_Value'), 'cfcfccc'.charAt(list.value - 1));
+   }
+ }
+function ShowBox (celsius, exp)
+ {
+  document.getElementById('Slider_' + exp + '_Value').value = celsius;
+  Convert (document.getElementById('Slider_' + exp + '_Value'), 'c');
+ }
+function Convert (box, which)
+ {
+  var background;
+  var foreground;
+  var kelvin;
+  var celsius;
+  var fahrenheit;
+  var reaumur;
+  var rankine;
+  var romer;
+  var newton;
+  var delisle;
+  var temp;
+  var inputbox;
+  kelvin = '';
+  temp = parseFloat(box.value);
+  if (!isNaN(temp))
+   {
+    background = 'white';
+    foreground = 'black';
+    if (which == 'K')  kelvin = temp;
+    if (which == 'k')  kelvin = temp;
+    if (which == 'C')  kelvin = temp + 273.15;
+    if (which == 'c')  kelvin = temp + 273.15;
+    if (which == 'F')  kelvin = ((temp - 32) * 5 / 9) + 273.15;
+    if (which == 'f')  kelvin = ((temp - 32) * 5 / 9) + 273.15;
+    if (which == 'Re') kelvin = (temp * 5 / 4) + 273.15;
+    if (which == 'Ra') kelvin = temp * 5 / 9;
+    if (which == 'Ro') kelvin = ((temp - 7.5) * 40 / 21) + 273.15;
+    if (which == 'N')  kelvin = (temp * 100 / 33) + 273.15;
+    if (which == 'D')  kelvin = 373.15 - (temp * 2 / 3);
+    if (kelvin < 0)
+     {
+      background = 'red';
+      foreground = 'yellow';
+     }
+    inputbox = document.getElementById('Kelvin')
+    if (which != 'K') inputbox.value = kelvin.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = kelvin - 273.15;
+    inputbox = document.getElementById('Celcius')
+    if (which != 'C')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = (kelvin - 273.15) * 9 / 5 + 32;
+    inputbox = document.getElementById('Fahrenheit')
+    if (which != 'F')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = (kelvin - 273.15) * 0.8;
+    inputbox = document.getElementById('Reaumur')
+    if (which != 'Re')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = (kelvin - 273.15) * 21 / 40 + 7.5;
+    inputbox = document.getElementById('Romer')
+    if (which != 'Ro')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = kelvin * 9 / 5;
+    inputbox = document.getElementById('Rankine')
+    if (which != 'Ra')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = (kelvin - 273.15) * 33 / 100;
+    inputbox = document.getElementById('Newton')
+    if (which != 'N')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    temp = (373.15 - kelvin) * 3 / 2;
+    inputbox = document.getElementById('Delisle')
+    if (which != 'D')  inputbox.value = temp.toFixed (2);
+    inputbox.style.backgroundColor = background;
+    inputbox.style.color = foreground;
+    box.focus();
+   }
+ }
+//]]></script>
+
+</body>
+</html>

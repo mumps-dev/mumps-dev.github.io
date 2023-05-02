@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Triangle NIM game (15 marbles)</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="#4c76ac" text="#ecd264" link="#fcf274" vlink="#ecd264">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="#4c76ac">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Triangle%20NIM%20game%20%2815%20marbles%29&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fg15%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a23%3a19%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="#4c76ac"><h1><font color="#ecd264" face="Arial" id="PageTitle">Triangle NIM game (15 marbles)</font></h1></td></tr></table>
+
+<form name="form" action="g15.html" method="post">
+<input type="hidden" id="Move_0" value="4 2 1"/>
+<input type="hidden" id="Move_1" value="6 5 4"/>
+<input type="hidden" id="Move_2" value="1 3 6"/>
+<input type="hidden" id="Move_3" value="7 4 2"/>
+<input type="hidden" id="Move_4" value="10 6 3"/>
+<input type="hidden" id="Move_5" value="13 8 4"/>
+<input type="hidden" id="Move_6" value="15 14 13"/>
+<input type="hidden" id="Move_7" value="12 13 14"/>
+<input type="hidden" id="Move_8" value="2 4 7"/>
+<input type="hidden" id="Move_9" value="11 7 4"/>
+<input type="hidden" id="Move_10" value="14 9 5"/>
+<input type="hidden" id="Move_11" value="4 5 6"/>
+<input type="hidden" id="Move_12" value="6 3 1"/>
+<pre>
+           <span id="Peg_1">x</span>
+          / \
+         <span id="Peg_2">x</span>---<span id="Peg_3">x</span>
+        / \ / \
+       <span id="Peg_4">x</span>---<span id="Peg_5">x</span>---<span id="Peg_6">x</span>
+      / \ / \ / \
+     <span id="Peg_7">x</span>---<span id="Peg_8">x</span>---<span id="Peg_9">x</span>---<span id="Peg_10">x</span>
+    / \ / \ / \ / \
+   <span id="Peg_11">x</span>---<span id="Peg_12">x</span>---<span id="Peg_13">x</span>---<span id="Peg_14">x</span>---<span id="Peg_15">x</span>
+</pre>
+
+<p>Delay <input type="text" name="Delay" value="2" size="2"/> seconds<br/>
+<input type="button" onclick="Move(0);" value="Start"/></p>
+
+</form>
+<script type="text/javascript"><!-- //<![CDATA[
+function Move(which)
+ {
+ var delay = parseInt(document.form.Delay.value) * 1000 + 1000;
+ var next = which + 1;
+ var triple = document.getElementById('Move_' + which).value.split(' ');
+ var one = document.getElementById('Peg_' + triple[0]).innerHTML;
+ var two = document.getElementById('Peg_' + triple[1]).innerHTML;
+ setTimeout('document.getElementById(\'Peg_' + triple[0] + '\').innerHTML = \'<font color="red">' + one + '<' + '/font>\';', 100);
+ setTimeout('document.getElementById(\'Peg_' + triple[1] + '\').innerHTML = \'<font color="red">' + two + '<' + '/font>\';', 300);
+ setTimeout('document.getElementById(\'Peg_' + triple[0] + '\').innerHTML = \' \';', 500);
+ setTimeout('document.getElementById(\'Peg_' + triple[1] + '\').innerHTML = \' \';', 600);
+ setTimeout('document.getElementById(\'Peg_' + triple[2] + '\').innerHTML = \'x\';', 700);
+ if (next < 13)
+  {
+   setTimeout('Move(' + next + ');', delay);
+  }
+ }
+
+//]]> --></script>
+</body>
+</html>

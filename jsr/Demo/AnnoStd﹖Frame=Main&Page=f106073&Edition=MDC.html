@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106073&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106072&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - TOPSHOW</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106074&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>6.4.53 TOPSHOW <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a></h3>
+<table>
+<tr><td valign="top"><b>Definition</b></td>
+<td valign="top"><p>TOPSHOW specifies which choice is displayed at
+the top of the visible area of certain gadget types that display
+choices, or which non-header row is displayed at the top of the
+scrolling region of a table gadget. If the user scrolls the
+choices or table rows, the value of TOPSHOW changes.</p>
+<p>If the application assigns a value to TOPSHOW, the list of
+choices or table rows may scroll.</p>
+<p>If the value assigned to TOPSHOW exactly matches an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a>
+subscript specified for a choice or an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> subscript
+specified for a table non-header row, the choice or row
+identified by that subscript is displayed at the top of the
+visible area or scrolling region.</p>
+<p>If the application assigns a value to TOPSHOW which does not
+exactly match an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> subscript or an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a>
+subscript for a non-header row specified for the gadget, the
+choice row identified by the first <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or the first
+non-header row identified by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> subscript that
+follows (in the collation sequence of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>) the specified
+TOPSHOW value is displayed at the top of the visible area or
+scrolling region. TOPSHOW is then set to that subscript value.</p>
+<p>If the application assigns a value to TOPSHOW which does not
+exactly match an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> subscript specified
+for the gadget, and which is not followed (in the collation
+sequence of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>) by any <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or by any <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a>
+subscript for a non-header row specified for the gadget, the list
+of choices or rows scrolls (if necessary) so that the last choice
+in the list or the last row in the table is displayed in the
+visible area. TOPSHOW is then set to the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> displayed at the top of the visible area.</p>
+<p>If the aggregate height of choices or rows is at least great
+enough to fill the display area and the value assigned to TOPSHOW
+would cause the display area to be only partially filled, the
+underlying windowing platform or the MWAPI implementation may
+scroll the list to fill the visible area. TOPSHOW is then set to
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> value for the choice or
+non-header row displayed at the top of the visible
+area.</p></td></tr>
+<tr><td valign="top"><b>Domain</b></td>
+<td valign="top">For a table gadget: <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107014.html#Def_0005"><u>emptystring</u></a><br/>
+For other gadget types: <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107014.html#Def_0005"><u>emptystring</u></a></td></tr>
+<tr><td valign="top"><b>Access</b></td>
+<td valign="top">Create, Modify, Reference</td></tr>
+<tr><td valign="top"><b>Default</b></td>
+<td valign="top">For a table gadget: <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0009"><u>ritem</u></a> subscript of
+first row in the table, if any; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107014.html#Def_0005"><u>emptystring</u></a> otherwise.<br/>
+For other gadget types: <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a> subscript of first choice in
+the list, if any; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107014.html#Def_0005"><u>emptystring</u></a> otherwise.</td></tr>
+</table>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106073&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 29-Nov-2011, 19:03:11.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df106073%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

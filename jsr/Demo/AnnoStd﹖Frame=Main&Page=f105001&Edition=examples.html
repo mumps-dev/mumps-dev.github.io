@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104001&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - Windows</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110002&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>^$W[INDOW]</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+<p>This structured system variable provides information about the
+windows that are currently known to the M[UMPS] process.</p>
+<p>Most of the examples below will use this window:</p>
+<p>[ graphic to be inserted later ]</p>
+<p>which is defined in the global variable <tt>^BURGER</tt> as:</p>
+<pre>
+^BURGER("MESSAGE","G","OK","EVENT","SELECT")="POPUP^BURGER"
+^BURGER("MESSAGE","G","OK","POS")="50,5"
+^BURGER("MESSAGE","G","OK","SIZE")="100,30,PIXEL"
+^BURGER("MESSAGE","G","OK","TITLE")="OK"
+^BURGER("MESSAGE","G","OK","TYPE")="BUTTON"
+^BURGER("MESSAGE","G","TEXT","CANCHANGE")=0
+^BURGER("MESSAGE","G","TEXT","POS")="5,2"
+^BURGER("MESSAGE","G","TEXT","TYPE")="TEXT"
+^BURGER("MESSAGE","MODAL")="PARENT"
+^BURGER("MESSAGE","PARENT")="ORDER"
+^BURGER("MESSAGE","POS")="12,0"
+^BURGER("MESSAGE","RESIZE")=0
+^BURGER("MESSAGE","SIZE")="60,7"
+^BURGER("MESSAGE","UNITS")="CHAR"
+^BURGER("MESSAGE","VISIBLE")=0
+^BURGER("ORDER","G","BURGER","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","BURGER","POS")="240,160"
+^BURGER("ORDER","G","BURGER","SIZE")="110,25"
+^BURGER("ORDER","G","BURGER","TITLE")="Burger  $1.00"
+^BURGER("ORDER","G","BURGER","TYPE")="CHECK"
+^BURGER("ORDER","G","CUSTOMER","CHARMAX")=60
+^BURGER("ORDER","G","CUSTOMER","EVENT","CHANGE")="CUST^BURGER"
+^BURGER("ORDER","G","CUSTOMER","POS")="140,30"
+^BURGER("ORDER","G","CUSTOMER","SIZE")="220,25"
+^BURGER("ORDER","G","CUSTOMER","TITLE")="Customer Name:"
+^BURGER("ORDER","G","CUSTOMER","TPOS")="LEFT"
+^BURGER("ORDER","G","CUSTOMER","TYPE")="TEXT"
+^BURGER("ORDER","G","DRINKS","CHOICE",1)="Coke         $0.75"
+^BURGER("ORDER","G","DRINKS","CHOICE",2)="Pepsi        $0.70"
+^BURGER("ORDER","G","DRINKS","CHOICE",3)="Orange       $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",4)="Water        $0.00"
+^BURGER("ORDER","G","DRINKS","CHOICE",5)="Root Beer    $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",6)="Sprite       $0.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",7)="Bass Ale     $3.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",8)="Meisterbrau  $3.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",9)="Budweiser    $1.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",10)="Red Wine     $2.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",11)="White Wine   $2.50"
+^BURGER("ORDER","G","DRINKS","CHOICE",12)="Pink Wine    $1.75"
+^BURGER("ORDER","G","DRINKS","POS")="40,120"
+^BURGER("ORDER","G","DRINKS","SIZE")="140,140"
+^BURGER("ORDER","G","DRINKS","TITLE")="Drinks"
+^BURGER("ORDER","G","DRINKS","TYPE")="LIST"
+^BURGER("ORDER","G","DRINKS","VALUE",4)=""
+^BURGER("ORDER","G","FRIES","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","FRIES","POS")="240,130"
+^BURGER("ORDER","G","FRIES","SIZE")="110,25"
+^BURGER("ORDER","G","FRIES","TITLE")="Fries        $0.50"
+^BURGER("ORDER","G","FRIES","TYPE")="CHECK"
+^BURGER("ORDER","G","ORDER","EVENT","SELECT")="ORDER^BURGER"
+^BURGER("ORDER","G","ORDER","POS")="280,280"
+^BURGER("ORDER","G","ORDER","SIZE")="60,25"
+^BURGER("ORDER","G","ORDER","TITLE")="Order"
+^BURGER("ORDER","G","ORDER","TYPE")="BUTTON"
+^BURGER("ORDER","G","PIE","EVENT","CHANGE")="TOTAL^BURGER"
+^BURGER("ORDER","G","PIE","POS")="240,190"
+^BURGER("ORDER","G","PIE","SIZE")="110,25"
+^BURGER("ORDER","G","PIE","TITLE")="Pie          $0.50"
+^BURGER("ORDER","G","PIE","TYPE")="CHECK"
+^BURGER("ORDER","G","TOTAL","POS")="40,280"
+^BURGER("ORDER","G","TOTAL","SIZE")="100,40"
+^BURGER("ORDER","G","TOTAL","TITLE")="Total: $ 0.00"
+^BURGER("ORDER","G","TOTAL","TYPE")="LABEL"
+^BURGER("ORDER","M","MENU1","CHOICE",1)="Options"
+^BURGER("ORDER","M","MENU1","CHOICE",1,"SUBMENU")="MENU2"
+^BURGER("ORDER","M","MENU2","CHOICE",1)="Clear"
+^BURGER("ORDER","M","MENU2","CHOICE",1,"EVENT","SELECT")="CLEAR^BURGER"
+^BURGER("ORDER","M","MENU2","CHOICE",2)="Exit"
+^BURGER("ORDER","M","MENU2","CHOICE",2,"EVENT","SELECT")="EXIT^BURGER"
+^BURGER("ORDER","MENUBAR")="MENU1"
+^BURGER("ORDER","POS")="20,30"
+^BURGER("ORDER","RESIZE")=0
+^BURGER("ORDER","SIZE")="400,400"
+^BURGER("ORDER","TITLE")="Fast Food Order"
+^BURGER("ORDER","UNITS")="PIXEL"
+^BURGER("ORDER","VISIBLE")=1
+^BURGER("ORDER","VISIBLE","TYPE")="CHECK"
+</pre>
+<p>and is manipulated by the program:</p>
+<p><tt>BURGER ; Written by Thomas Salander,<br/>
+ ; after an original by Guy Gardner<br/>
+ ;<br/>
+ ; Copy the window definition from a global variable<br/>
+ ; into the ^$WINDOW structure<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("ORDER")=^BURGER("ORDER")<br/>
+ ;<br/>
+ ; Copy the window definition for the message pop-up<br/>
+ ; window as well. This window has its 'visible'<br/>
+ ; flag off, so that it does not yet appear.<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("MESSAGE")=^BURGER("MESSAGE")<br/>
+ ;<br/>
+ ; Start call-back processing<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108028.html#Def_0003">ESTART</a><br/>
+ ;<br/>
+ ; Return here after handling call-backs.<br/>
+ ; Delete windows and terminate program.<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("ORDER"),<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("MESSAGE")<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+EXIT ; Call-back for exit item in menu<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108029.html#Def_0003">ESTOP</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+CLEAR ; Call-back for Clear item in menu<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0003">NEW</a> ITEM,T<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0003">FOR</a> ITEM="DRINKS","FRIES","BURGER","PIE" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0003">DO</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <>^$WINDOW("ORDER","G",ITEM,"VALUE")<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> T="Total: $0.00"<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("ORDER","G","TOTAL","TITLE")=T<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+CUST ; Call-back for change in Customer Name:<br/>
+ ; text gadget<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0003">NEW</a> VALUE,TXT<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a>
+VALUE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("ORDER","G","CUSTOMER","VALUE")<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a>:VALUE=""&nbsp;&nbsp;; Nothing selected<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a>:VALUE?1.A1","1.A&nbsp;&nbsp;; All is well<br/>
+ ;<br/>
+ ; Set up to display the modal message window<br/>
+ ; First, change the message<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TXT="Please enter name in form Last,First only."<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("MESSAGE","G","TEXT","VALUE")=TXT<br/>
+ ;<br/>
+ ; Now display the message window<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("MESSAGE","VISIBLE")=1<br/>
+ ;<br/>
+ ; Now wait for the event<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108028.html#Def_0003">ESTART</a><br/>
+ ;<br/>
+ ; When we return from this event handler,<br/>
+ ; our event data is restored to the state<br/>
+ ; it was before the call.<br/>
+ ; Since the results are not valid, prevent<br/>
+ ; the change of focus.<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a>("OK")<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+TOTAL ; Call-back for all check boxes and list box<br/>
+ ; When data changes in order...<br/>
+ ; used to update the Total<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0003">NEW</a> WIN,TOT,ITEM,TITLE,D<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> WIN=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a>("WINDOW")<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TOT=0<br/>
+ ;<br/>
+ ; Loop through the check-boxes<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0003">FOR</a> ITEM="FRIES","BURGER","PIE" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0003">DO</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a>:'<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",ITEM,"VALUE")&nbsp;&nbsp;; not on<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TITLE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",ITEM,"TITLE")<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TOT=TOT+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0005">$PIECE</a>(TITLE,"$",2) ; add price<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+ ; If a drink was ordered, add the price<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> D="DRINKS"<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0003">IF</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",D,"VALUE") DO<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> ITEM=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0005">$ORDER</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",D,"VALUE",""))<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TITLE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",D,"CHOICE",ITEM)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TOT=TOT+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0005">$PIECE</a>(TITLE,"$",2) ; add price<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TOT=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107094.html#Def_0005">$JUSTIFY</a>(TOT,0,2)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a>:TOT&lt;1 TOT=0_TOT <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> TOT="Total: $ "_TOT<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G","TOTAL","TITLE")=TOT<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+ORDER ; Call-back for push button Order<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0003">NEW</a> WIN,ITEM,D<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> WIN=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>("WINDOW")<br/>
+ ;<br/>
+ ; Loop through the check-boxes<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0003">FOR</a> ITEM="FRIES","BURGER","PIE" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0003">DO</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a>:'<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",ITEM,"VALUE")&nbsp;&nbsp;; Not on<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> ^ORDER(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0005">$JOB</a>,ITEM)=1<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+ ; Was a drink ordered?<br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> D="DRINKS"<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> ITEM=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0005">$ORDER</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",D,"VALUE",""))<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0003">IF</a> ITEM <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0003">DO</a>&nbsp;&nbsp;; Yes, a drink was ordered<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> ITEM=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(WIN,"G",D,"CHOICE",ITEM)<br/>
+ . ; Strip price<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> ^ORDER(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0005">$JOB</a>,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0005">$PIECE</a>(ITEM," ",1))=1<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0003">DO</a> CLEAR<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a><br/>
+ ;<br/>
+POPUP ; Call-back from the modal message window<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a>("WINDOW"),"VISIBLE")=0<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108029.html#Def_0003">ESTOP</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108044.html#Def_0003">QUIT</a></tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:33:06.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df105001%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title></title>
+<style type="text/css">body {font-family: Arial;}
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    -moz-print-color-adjust: exact;
+    -ms-print-color-adjust: exact;
+    print-color-adjust: exact;
+   }
+ }
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell2" valign="bottom" bgcolor="white"></td></tr></table>
+<form action="Grid.html" name="form" method="post">
+<input type="hidden" name="ClueList" value=""/>
+<input type="hidden" name="UndoList" value=""/>
+<span id="HeaderText"><h3>Various Grids</h3></span>
+<div id="Header">
+<table><tr><td valign="top"><select name="Type" onchange="SizeDialog();FillTable();">
+<option selected="selected" value="KenKen">KenKen</option>
+<option  value="SuDoKu">SuDoKu</option>
+<option  value="Quilt">Quilt</option>
+<option  value="Crossword">Crossword</option>
+</select>
+<span id="KenKenSize">&nbsp; &nbsp; &nbsp;
+Grid-size: &nbsp; <input type="radio" name="Size" value = "4" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;4&nbsp; &nbsp; &nbsp;
+<input type="radio" name="Size" value = "5" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;5&nbsp; &nbsp; &nbsp;
+<input type="radio" name="Size" value = "6" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;6&nbsp; &nbsp; &nbsp;
+<input type="radio" name="Size" value = "7" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;7&nbsp; &nbsp; &nbsp;
+<input type="radio" name="Size" value = "8" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;8&nbsp; &nbsp; &nbsp;
+<input type="radio" name="Size" checked="checked" value = "9" onclick="FillTable();KenKenSolve(document.form.KenKenValue.value);">&nbsp;9</span><span id="QuiltSize" style="display: none;">&nbsp; &nbsp; &nbsp;
+Grid-Width (Columns): &nbsp; <input type="text" name="QuiltColumns" size="3" onchange="FillTable();" style="text-align: right;" value="10"/>&nbsp; &nbsp; &nbsp;
+Grid-Height (Rows): &nbsp; <input type="text" name="QuiltRows" size="3" onchange="FillTable();" style="text-align: right;" value="10"/></span><span id="CrosswordSize" style="display: none;">&nbsp; &nbsp; &nbsp;
+</td><td id="CrosswordDetails" style="display: none;"><table cellspacing="0" cellpadding="0">
+<tr><td colspan="3">Grid-Size:</td>
+<td colspan="3">Symmetry-Axis:</td>
+</tr>
+<tr>
+<td>Width (Columns): &nbsp; </td>
+<td><input type="text" name="CrosswordColumns" size="3" onchange="CrosswordAxes(); FillTable();" style="text-align: right;" value="15"/></td>
+<td>&nbsp; &nbsp; &nbsp;</td>
+<td align="center">&nbsp;&nbsp;&mdash;&nbsp;&nbsp;</td>
+<td align="center">&nbsp;&nbsp;&#9474;&nbsp;&nbsp;</td>
+<td align="center">&nbsp;&nbsp;&#9532;&nbsp;&nbsp;</td>
+<td align="center" id="Cross_D1">&nbsp;&nbsp;&#9585;&nbsp;&nbsp;</td>
+<td align="center" id="Cross_E1">&nbsp;&nbsp;&#9586;&nbsp;&nbsp;</td>
+<td align="center" id="Cross_F1">&nbsp;&nbsp;&#9587;&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td>Height (Rows): &nbsp; </td>
+<td><input type="text" name="CrosswordRows" size="3" onchange="CrosswordAxes(); FillTable();" style="text-align: right;" value="15"/></td>
+<td>&nbsp; &nbsp; &nbsp;</td>
+<td align="center"><input type="checkbox" id="Sym_A"/></td>
+<td align="center"><input type="checkbox" id="Sym_B"/></td>
+<td align="center"><input type="checkbox" id="Sym_C"/></td>
+<td align="center" id="Cross_D2"><input type="checkbox" id="Sym_D"/></td>
+<td align="center" id="Cross_E2"><input type="checkbox" id="Sym_E"/></td>
+<td align="center" id="Cross_F2"><input type="checkbox" id="Sym_F"/></td>
+</tr>
+</table></span></td></tr></table>
+<p>Title: <input type="Text" id="Title" size="50"/>&nbsp;&nbsp;&nbsp;<input type="button" value="Print" onclick="PrintThis();"/>
+</p>
+</div><table>
+  <tr>
+    <td width="50px">&nbsp;</td>
+    <td>
+      <table id = "Table" cellpadding="0" cellspacing="0" borderspacing="0">
+        <td><td>&nbsp;</td></tr>
+      </table>
+    </td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td id="KenKenHelp" valign="top">
+      Number of cells: 
+<span id="CellCount_2"><input type="radio" name="KenKenCells" value="2"/>&nbsp;2&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_3"><input type="radio" name="KenKenCells" value="3"/>&nbsp;3&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_4"><input type="radio" name="KenKenCells" value="4"/>&nbsp;4&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_5"><input type="radio" name="KenKenCells" value="5"/>&nbsp;5&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_6"><input type="radio" name="KenKenCells" value="6"/>&nbsp;6&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_7"><input type="radio" name="KenKenCells" value="7"/>&nbsp;7&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_8"><input type="radio" name="KenKenCells" value="8"/>&nbsp;8&nbsp;&nbsp;&nbsp;
+</span><span id="CellCount_9"><input type="radio" name="KenKenCells" value="9"/>&nbsp;9</span><br/>
+      Expression to be solved: <input type="text" size="5" onchange="KenKenSolve(this.value);" name="KenKenValue"/>
+      <span id="KenKenCandidates">&nbsp;</span>
+    </td>
+  <tr>
+</table>
+<div id="CrosswordClues" style="display: none">
+<div style="page-break-before: always;"></div>
+<table>
+<tr>
+<td id="Across" width="350px" valign="top">
+</td>
+<td id="Down" width="350px" valign="top">
+</td>
+</tr>
+</table>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function()
+ {
+  FillTable();
+ });
+
+function SaveHTML(text)
+ {
+  return document.createElement('div').appendChild(document.createTextNode(text)).parentNode.innerHTML;
+ }
+
+function PrintThis()
+ {
+  document.getElementById('Header').style.display = 'none';
+  document.getElementById('HeaderText').style.display = 'none';
+  var title = document.getElementById('Title').value;
+  var kenkenhelp = document.getElementById('KenKenHelp').style.display;
+  document.getElementById('KenKenHelp').style.display = 'none';
+  if (title != '')
+   {
+    document.getElementById('HeaderText').innerHTML = '<h3>' + SaveHTML(title) + '</h3>';
+    document.getElementById('HeaderText').style.display = 'block';
+   }
+  var listofclues = document.form.ClueList.value.split(',');
+  if (document.form.Type.value != 'Crossword') listofclues = [];
+  var ii;
+  var box1;
+  var box2;
+  var box3;
+  var clue;
+  var text;
+  for (ii = 0; ii < listofclues.length; ii++)
+   {
+    clue = listofclues[ii].split('_');
+    box1 = document.getElementById('Clue_' + clue[0] + 1 + '_' + clue[1]);
+    box2 = document.getElementById('Clue_' + clue[0] + 2 + '_' + clue[1]);
+    box3 = document.getElementById('Clue_' + clue[0] + 3 + '_' + clue[1]);
+    text = box2.value;
+    box3.innerHTML = (text == '') ? '<br/>_________________________' : SaveHTML(text);
+    box1.style.display = 'none';
+    box3.style.display = 'inline';
+   }
+  window.print();
+  document.getElementById('HeaderText').style.display = 'block';
+  document.getElementById('Header').style.display = 'block';
+  document.getElementById('KenKenHelp').style.display = kenkenhelp;
+  for (ii = 0; ii < listofclues.length; ii++)
+   {
+    clue = listofclues[ii].split('_');
+    box1 = document.getElementById('Clue_' + clue[0] + 1 + '_' + clue[1]);
+    box3 = document.getElementById('Clue_' + clue[0] + 3 + '_' + clue[1]);
+    box1.style.display = 'inline';
+    box3.style.display = 'none';
+   }
+ }
+
+function KenKenCheck(digit, cells, size, outcome, operator, candidates)
+ {
+  var ii;
+  var these = '';
+  var test = digit[1];
+  for (ii = 2; ii <= cells; ii++)
+   {
+    if (operator == 'plus') test = test + digit[ii];
+    if (operator == 'minus') test = test - digit[ii];
+    if (operator == 'times') test = test * digit[ii];
+    if (operator == 'divide') test = Math.floor(test / digit[ii]);
+   }
+  if (test == outcome)
+   {
+    var copy = [];
+    for (ii = 1; ii <= cells; ii++)
+     {
+      copy.push(digit[ii]);
+     }
+    copy.sort();
+    these = copy[0];
+    for (ii = 1; ii < cells; ii++)
+     {
+      these = these + ' ' + copy[ii];
+     }
+    these += '<br/>';
+    if (!candidates.includes('<br/>' + these))
+     {
+      candidates += these;
+     }
+   }
+  return candidates;
+ }
+
+function KenKenSolve(text)
+ {
+  var ii;
+  var cell;
+  var letter;
+  var outcome;
+  var numpart = '';
+  var candidates = '<br/>';
+  var operator = '';
+  var digit = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var size = parseInt(document.form.Size.value);
+  var cells = parseInt(document.form.KenKenCells.value);
+  for (ii = 0; ii < text.length; ii++)
+   {
+    letter = text.charCodeAt(ii);
+    if ((operator == '') && (letter > 47) && (letter < 58)) numpart = numpart + String.fromCharCode(letter);
+    if (letter ==  43) operator = 'plus';    // +
+    if (letter ==  45) operator = 'minus';   // -
+    if (letter ==  42) operator = 'times';   // *
+    if (letter ==  88) operator = 'times';   // x
+    if (letter == 120) operator = 'times';   // X
+    if (letter ==  47) operator = 'divide';  // /
+    if (letter ==  58) operator = 'divide';  // :
+   }
+  outcome = parseInt(numpart);
+  document.getElementById('KenKenCandidates').innerHTML = '<br/>' + size + ' possible digits, ' + cells + ' cells involved<br/>Outcome is ' + outcome + '<br/>Operator is ' + operator + '.';
+  for (ii = 1; ii < 10; ii++)
+   {
+    digit[ii] = 0;
+   }
+  // size = number of possible values, cells = number of cells involved...!
+  for (digit[1] = 1; digit[1] <= size; digit[1]++)
+   {
+    if (cells > 1)
+     {
+      for (digit[2] = 1; digit[2] <= size; digit[2]++)
+       {
+        if (cells > 2)
+         {
+          for (digit[3] = 1; digit[3] <= size; digit[3]++)
+           {
+            if (cells > 3)
+             {
+              for (digit[4] = 1; digit[4] <= size; digit[4]++)
+               {
+                if (cells > 4)
+                 {
+                  for (digit[5] = 1; digit[5] <= size; digit[5]++)
+                   {
+                    if (cells > 5)
+                     {
+                      for (digit[6] = 1; digit[6] <= size; digit[6]++)
+                       {
+                        if (cells > 6)
+                         {
+                          for (digit[7] = 1; digit[7] <= size; digit[7]++)
+                           {
+                            if (cells > 7)
+                             {
+                              for (digit[8] = 1; digit[8] <= size; digit[8]++)
+                               {
+                                if (cells > 8)
+                                 {
+                                  for (digit[9] = 1; digit[9] <= size; digit[9]++)
+                                   {
+                                    candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                                   }
+                                 }
+                                else
+                                 {
+                                  candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                                 }
+                               }
+                             }
+                            else
+                             {
+                              candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                             }
+                           }
+                         }
+                        else
+                         {
+                          candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                         }
+                       }
+                     }
+                    else
+                     {
+                      candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                     }
+                   }
+                 }
+                else
+                 {
+                  candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+                 }
+               }
+             }
+            else
+             {
+              candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+             }
+           }
+         }
+        else
+         {
+          candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+         }
+       }
+     }
+    else
+     {
+      candidates = KenKenCheck(digit, cells, size, outcome, operator, candidates);
+     }
+    
+   }
+  document.getElementById('KenKenCandidates').innerHTML += candidates;
+ }
+
+function CrosswordAxes()
+ {
+  var rows = parseInt(document.form.CrosswordRows.value);
+  var columns = parseInt(document.form.CrosswordColumns.value);
+  if (rows == columns)
+   {
+    document.getElementById('Cross_D1').style.display = 'table-cell';
+    document.getElementById('Cross_E1').style.display = 'table-cell';
+    document.getElementById('Cross_F1').style.display = 'table-cell';
+    document.getElementById('Cross_D2').style.display = 'table-cell';
+    document.getElementById('Cross_E2').style.display = 'table-cell';
+    document.getElementById('Cross_F2').style.display = 'table-cell';
+   }
+  else
+   {
+    document.getElementById('Cross_D1').style.display = 'none';
+    document.getElementById('Cross_E1').style.display = 'none';
+    document.getElementById('Cross_F1').style.display = 'none';
+    document.getElementById('Cross_D2').style.display = 'none';
+    document.getElementById('Cross_E2').style.display = 'none';
+    document.getElementById('Cross_F2').style.display = 'none';
+    document.getElementById('Sym_D').checked = false;
+    document.getElementById('Sym_E').checked = false;
+    document.getElementById('Sym_F').checked = false;
+   }
+ }
+
+function HandleHeaderKey(event, row, column)
+ {
+  var plus = String.fromCharCode(65291);
+  var minus = String.fromCharCode(8722);
+  var times = String.fromCharCode(215);
+  var divide = String.fromCharCode(247);
+  var key = event.key;
+  var cell = document.getElementById('Header_' + row + '_' + column);
+  var content = cell.innerHTML;
+  if (content.length > 0)
+   {
+    if ((key == 'Delete') || (key == 'Backspace'))
+     {
+      content = content.substr(0, content.length - 1);
+     }
+   }
+  if ((key == '+') && (!content.includes(plus)))
+   {
+    content += plus;
+   }
+  if ((key == '-') && (!content.includes(minus)))
+   {
+    content += minus;
+   }
+  if (((key == 'X') || (key == 'x') || (key == '*')) && (!content.includes(times)))
+   {
+    content += times;
+   }
+  if ((key == '/') && (!content.includes(divide)))
+   {
+    content += divide;
+   }
+  if ('1234567890'.includes(key))
+   {
+    content += key;
+   }
+  cell.innerHTML = content;
+ }
+
+function SizeDialog()
+ {
+  document.getElementById('HeaderText').innerHTML = (document.form.Title.value == '')
+    ? ('<h3>' + document.form.Type.value + '</h3>')
+    : ('<h3>' + SaveHTML(document.form.Title.value) + '</h3>');
+  if (document.form.Type.value == 'KenKen')
+   {
+    document.getElementById('KenKenSize').style.display = 'inline';
+    document.getElementById('QuiltSize').style.display = 'none';
+    document.getElementById('CrosswordSize').style.display = 'none';
+    document.getElementById('KenKenHelp').style.display = 'table-cell';
+   }
+  if (document.form.Type.value == 'SuDoKu')
+   {
+    document.form.Size.value = 9;
+    document.getElementById('KenKenSize').style.display = 'none';
+    document.getElementById('KenKenHelp').style.display = 'none';
+    document.getElementById('QuiltSize').style.display = 'none';
+    document.getElementById('CrosswordSize').style.display = 'none';
+    document.getElementById('CrosswordDetails').style.display = 'none';
+   }
+  if (document.form.Type.value == 'Quilt')
+   {
+    document.getElementById('KenKenSize').style.display = 'none';
+    document.getElementById('KenKenHelp').style.display = 'none';
+    document.getElementById('QuiltSize').style.display = 'inline';
+    document.getElementById('CrosswordSize').style.display = 'none';
+    document.getElementById('CrosswordDetails').style.display = 'none';
+   }
+  if (document.form.Type.value == 'Crossword')
+   {
+    document.getElementById('KenKenSize').style.display = 'none';
+    document.getElementById('KenKenHelp').style.display = 'none';
+    document.getElementById('QuiltSize').style.display = 'none';
+    document.getElementById('CrosswordSize').style.display = 'inline';
+    document.getElementById('CrosswordDetails').style.display = 'table-cell';
+   }
+ }
+
+function HandleQuiltKey(event, row, column)
+ {
+  var code = event.keyCode;
+  var ok = false;
+  var cell = document.getElementById('Cell_' + row + '_' + column);
+  var content = cell.innerHTML;
+  if (code == 32) content = '&nbsp;';
+  if (code == 46) content = '&nbsp;';
+  if (code ==  8) content = '&nbsp;';
+  if ((code > 64) && (code <  91)) ok = true;
+  if ((code > 96) && (code < 123)) ok = true;
+  if ((code > 47) && (code <  58)) ok = true;
+  if (ok)
+   {
+    content = '<span style="font-size: 48px;">' + event.key + '</span>';
+   }
+  cell.innerHTML = content;
+ }
+
+function HandleCrosswordKey(event, row, column)
+ {
+  var letter = event.key;
+  var code = letter.charCodeAt(0);
+  var ok = false;
+  var cell = document.getElementById('Cell_' + row + '_' + column);
+  var content = cell.innerHTML;
+  var clue = parseInt(content);
+  if (isNaN(clue)) clue = '';
+  if (code == 32) content = (clue == '') ? '&nbsp;' : clue;
+  if (code == 46) content = (clue == '') ? '&nbsp;' : clue;
+  if (code ==  8) content = (clue == '') ? '&nbsp;' : clue;
+  if ((code > 64) && (code <  91)) ok = true;
+  if ((code > 96) && (code < 123))
+   {
+    ok = true;
+    letter = String.fromCharCode(code - 32);
+   }
+  if (ok)
+   {
+    content = clue + '<div style="font-size: 11px; font-weight: bold; text-align: center; width: 30px;">' + letter + '</div>';
+   }
+  cell.innerHTML = content;
+ }
+
+function HandleDataKey(event, row, column, pointsize, idtype)
+ {
+  var code = event.keyCode;
+  var eventkey = event.key;
+  var ok = 0;
+  var ii;
+  var cell = document.getElementById(idtype + '_' + row + '_' + column);
+  var max = parseInt(document.form.Size.value);
+  var all = '1';  for (ii = 2; ii < (max + 1); ii++) all += ' ' + ii;  if ((code == 90) && (event.ctrlKey))
+   {
+    var redo = document.form.UndoList.value.split('|');
+    var step;
+    var id;
+    if (redo.length > 0)
+     {
+      redo.splice(redo.length - 1);
+      document.form.UndoList.value = redo.join('|');
+      for (y1 = 1; y1 < (max+1); y1++)
+       {
+        for (x1 = 1; x1 < (max+1); x1++)
+         {
+          document.getElementById(idtype + '_' + y1 + '_' + x1).innerHTML = all;
+         }
+       }
+      for (ii = 0; ii < redo.length; ii++)
+       {
+        step = redo[ii].split(' ');
+        cell = document.getElementById(step[0]);
+        cell.innerHTML = (step[1] == '32') ? all : '<span style="font-size: ' + pointsize + 'px;">' + step[2] + '</span>';
+       }
+      Eliminate(all, max, idtype);
+     }
+   }
+  else
+   {
+    if (code == 32) ok = 1;
+    if ((code > 47) && (code < (max+1+48))) ok = 2;
+    if (ok > 0)
+     {
+      var add = (document.form.UndoList.value != '') ? '|' : '';
+      add += event.srcElement.id + ' ' + code + ' ' + eventkey;
+      document.form.UndoList.value += add;
+      cell.innerHTML = (ok == 1) ? all : '<span style="font-size: ' + pointsize + 'px;">' + eventkey + '</span>';
+      Eliminate(all, max, idtype);
+     }
+   }
+ }
+
+function Eliminate(all, max, idtype)
+ {
+  var x1;
+  var y1;
+  var x2;
+  var y2;
+  var cell;
+  var remove;
+  var content;
+  var newcontent;
+  for (y1 = 1; y1 < (max+1); y1++)
+   {
+    for (x1 = 1; x1 < (max+1); x1++)
+     {
+      cell = document.getElementById(idtype + '_' + y1 + '_' + x1);
+      content = cell.innerHTML;
+      if (!content.includes('span'))
+       {
+        newcontent = all;
+        for (y2 = 1; y2 < (max+1); y2++)
+         {
+          cell = document.getElementById(idtype + '_' + y2 + '_' + x1);
+          content = cell.innerHTML;
+          if (content.includes('span'))
+           {
+            remove = content.charAt(content.indexOf('>') + 1);
+            newcontent = newcontent.replace(remove, ' ');
+           }
+         }
+        for (x2 = 1; x2 < (max+1); x2++)
+         {
+          cell = document.getElementById(idtype + '_' + y1 + '_' + x2);
+          content = cell.innerHTML;
+          if (content.includes('span'))
+           {
+            remove = content.charAt(content.indexOf('>') + 1);
+            newcontent = newcontent.replace(remove, ' ');
+           }
+         }
+        if (document.form.Type.value == 'SuDoKu')
+         {
+          var subx = (Math.floor((x1 - 1) / 3) * 3) + 1;
+          var suby = (Math.floor((y1 - 1) / 3) * 3) + 1;
+          for (y2 = suby; y2 < (suby + 3); y2++)
+           {
+            for (x2 = subx; x2 < (subx + 3); x2++)
+             {
+              cell = document.getElementById('Data_' + y2 + '_' + x2);
+              content = cell.innerHTML;
+              if (content.includes('span'))
+               {
+                remove = content.charAt(content.indexOf('>') + 1);
+                newcontent = newcontent.replace(remove, ' ');
+               }
+             }
+           }
+         }
+        cell = document.getElementById('Data_' + y1 + '_' + x1);
+        cell.innerHTML = newcontent;
+       }
+     }
+   }
+ }
+
+function CrosswordClick(row, column, rowmax, columnmax)
+ {
+  var current = document.getElementById('Cell_' + row + '_' + column);
+  var background = current.style.backgroundColor;
+  var newcolor = (background == 'white') ? 'black' : 'white';
+  var color;
+  var otherrow;
+  var othercolumn;
+  var othercell;
+  current.style.setProperty('background-color', newcolor, 'important');
+  if (document.getElementById('Sym_A').checked)
+   {
+    otherrow = rowmax + 1 - row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + column);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  if (document.getElementById('Sym_B').checked)
+   {
+    othercolumn = columnmax + 1 - column;
+    othercell = document.getElementById('Cell_' + row + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  if (document.getElementById('Sym_C').checked)
+   {
+    otherrow = rowmax + 1 - row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + column);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+    othercolumn = columnmax + 1 - column;
+    othercell = document.getElementById('Cell_' + row + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+    otherrow = rowmax + 1 - row;
+    othercolumn = columnmax + 1 - column;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  if (document.getElementById('Sym_D').checked)
+   {
+    otherrow = columnmax + 1 - column;
+    othercolumn = rowmax + 1 - row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  if (document.getElementById('Sym_E').checked)
+   {
+    otherrow = column;
+    othercolumn = row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  if (document.getElementById('Sym_F').checked)
+   {
+    otherrow = columnmax + 1 - column;
+    othercolumn = rowmax + 1 - row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+    otherrow = column;
+    othercolumn = row;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+    otherrow = rowmax + 1 - row;
+    othercolumn = columnmax + 1 - column;
+    othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+    othercell.style.setProperty('background-color', newcolor, 'important');
+   }
+  var count = 0;
+  for (otherrow = 1; otherrow <= rowmax; otherrow++)
+   {
+    for (othercolumn = 1; othercolumn <= columnmax; othercolumn++)
+     {
+      othercell = document.getElementById('Cell_' + otherrow + '_' + othercolumn);
+      color = othercell.style.backgroundColor;
+      othercell.innerHTML = '&nbsp;';
+      if (color == 'white')
+       {
+        var ok1 = 0;
+        var ok2 = 0;
+        var ok3 = 0;
+        var ok4 = 0;
+        if (othercolumn > 1)
+         {
+          if (document.getElementById('Cell_' + otherrow + '_' + (othercolumn - 1)).style.backgroundColor == 'black') ok1 = 1;
+          if (othercolumn == columnmax) ok1 = 0;
+          if ((ok1 > 0) && (document.getElementById('Cell_' + otherrow + '_' + (othercolumn + 1)).style.backgroundColor == 'black')) ok1 = 0;
+         }
+        if (otherrow > 1)
+         {
+          if (document.getElementById('Cell_' + (otherrow - 1) + '_' + othercolumn).style.backgroundColor == 'black') ok2 = 1;
+          if (otherrow == rowmax) ok2 = 0;
+          if ((ok2 > 0) && (document.getElementById('Cell_' + (otherrow + 1) + '_' + othercolumn).style.backgroundColor == 'black')) ok2 = 0;
+         }
+        if (othercolumn == 1)
+         {
+          ok3 = 1;
+          if (document.getElementById('Cell_' + otherrow + '_' + (othercolumn + 1)).style.backgroundColor == 'black') ok3 = 0;
+         }
+        if (otherrow == 1)
+         {
+          ok4 = 1;
+          if (document.getElementById('Cell_' + (otherrow + 1) + '_' + othercolumn).style.backgroundColor == 'black') ok4 = 0;
+         }
+        if (ok1 + ok2 + ok3 + ok4 > 0)
+         {
+          count++;
+          othercell.innerHTML = count
+         }
+       }
+     }
+   }
+  document.getElementById('CrosswordClues').style.display = 'none';
+  if (document.form.Type.value == 'Crossword')
+   {
+    var across = '<b>Across</b><ol type="1">';
+    var down = '<b>Down</b><ol type="1">';
+    var cell;
+    var color;
+    var ok;
+    var clue = '';
+    var row;
+    var column;
+    var listofclues = [];
+    var rowmax = parseInt(document.form.CrosswordRows.value);
+    var columnmax = parseInt(document.form.CrosswordColumns.value);
+    document.form.ClueList.value = '';
+    for (row = 1; row <= rowmax; row++)
+     {
+      for (column = 1; column <= columnmax; column++)
+       {
+        cell = document.getElementById('Cell_' + row + '_' + column);
+        clue = cell.innerHTML;
+        color = cell.style.backgroundColor;
+        if ((color == 'white') && (clue != ''))
+         {
+          ok = true;
+          if (column > 1)
+           {
+            if (document.getElementById('Cell_' + row + '_' + (column - 1)).style.backgroundColor == 'white') ok = false;
+           }
+          if (column < columnmax)
+           {
+            if (document.getElementById('Cell_' + row + '_' + (column + 1)).style.backgroundColor != 'white') ok = false;
+           }
+          if (column == columnmax)
+           {
+            ok = false;
+           }
+          if (ok)
+           {
+            across += '<li value="' + clue + '"><span id="Clue_A1_' + clue + '"><input type="text" id="Clue_A2_' + clue + '"></span><span id="Clue_A3_' + clue + '" style="display: none;">&nbsp;</span></li>';
+            listofclues.push('A_' + clue);
+           }
+          ok = true;
+          if (row > 1)
+           {
+            if (document.getElementById('Cell_' + (row - 1) + '_' + column).style.backgroundColor == 'white') ok = false;
+           }
+          if (row < rowmax)
+           {
+            if (document.getElementById('Cell_' + (row + 1) + '_' + column).style.backgroundColor != 'white') ok = false;
+           }
+          if (row == rowmax)
+           {
+            ok = false;
+           }
+          if (ok)
+           {
+            down += '<li value="' + clue + '"><span id="Clue_D1_' + clue + '"><input type="text" id="Clue_D2_' + clue + '"></span><span id="Clue_D3_' + clue + '" style="display: none;">&nbsp;</span></li>';
+            listofclues.push('D_' + clue);
+           }
+         }
+       }
+     }
+    if (across.length > 27)
+     {
+      document.getElementById('Across').innerHTML = across;
+      document.getElementById('Down').innerHTML = down;
+      document.getElementById('CrosswordClues').style.display = 'block';
+     }
+   }
+  document.form.ClueList.value = listofclues.toString();
+ }
+
+function SetBorder(event, row, column, size, hormax, vermax)
+ {
+  var xx = parseInt(event.offsetX);
+  var yy = parseInt(event.offsetY);
+  var ii;
+  var actualrow = row;
+  var actualcolumn = column;
+  var ok = false;
+  if ((xx > size) && (column != hormax))
+   {
+    ok = true;
+   }
+  if ((xx < 10) && (column > 1))
+   {
+    ok = true;
+    actualcolumn = column - 1;
+   }
+  if (ok)
+   {
+    cell = document.getElementById('Cell_' + actualrow + '_' + actualcolumn);
+    ii = parseInt(cell.style.borderRight);
+    cell.style.borderRight = (ii == 1) ? '5px solid black' : '1px solid blue';
+   }
+  actualrow = row;
+  actualcolumn = column;
+  ok = false;
+  if ((yy > size) && (row != vermax))
+   {
+    ok = true;
+   }
+  if ((yy < 10) && (row > 1))
+   {
+    ok = true;
+    actualrow = row - 1;
+   }
+  if (ok)
+   {
+    cell = document.getElementById('Cell_' + actualrow + '_' + actualcolumn);
+    ii = parseInt(cell.style.borderBottom);
+    cell.style.borderBottom = (ii == 1) ? '5px solid black' : '1px solid blue';
+   }
+ }
+
+function FillTable()
+ {
+  var type = document.form.Type.value;
+  var horsize = parseInt(document.form.Size.value);
+  var versize = horsize;
+  document.form.UndoList.value = '';
+  if (type == 'Quilt')
+   {
+    horsize = parseInt(document.form.QuiltColumns.value);
+    versize = parseInt(document.form.QuiltRows.value);
+   }
+  if (type == 'Crossword')
+   {
+    horsize = parseInt(document.form.CrosswordColumns.value);
+    versize = parseInt(document.form.CrosswordRows.value);
+   }
+  var pixsize = Math.min(Math.floor (700 / horsize), 100);
+  if (type == 'Crossword')
+   {
+    pixsize = 30;
+   }
+  var content = '';
+  var which = false;
+  if (type == 'KenKen')
+    {
+     var count;
+     for (count = 2; count < 10; count++)
+      {
+       document.getElementById('CellCount_' + count).style.display = (horsize < count) ? 'none' : 'inline';
+      }
+     count = parseInt(document.form.KenKenCells.value);
+     if (count > horsize)
+      {
+       document.form.KenKenCells.value = horsize
+      }
+   }
+  for (var row = 1; row < versize + 1; row++)
+   {
+    content += '<tr>\n';
+    for (var column = 1; column < horsize + 1; column++)
+     {
+      if (type == 'KenKen')
+       {
+        content += '<td align="center" valign="bottom" id="Cell_' + row + '_' + column + '" ';
+        content += 'onclick="SetBorder(event, ' + row + ', ' + column + ', ' + (pixsize-10) + ', ' + horsize + ', ' + versize + ');" ';
+        content += 'style="border-top: ' + ((row == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-bottom: ' + ((row == versize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'border-left: ' + ((column == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-right: ' + ((column == horsize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'width: ' + pixsize + 'px; height: ' + pixsize + 'px;"';
+        content += '>\n<table cellspacing="0" cellpadding="0" borderspacing="0">\n';
+        content += '<tr style="height: 24px;">\n';
+        content += '<td align="left" id="Header_' + row + '_' + column + '" ';
+        content += 'onmouseover="this.focus(); this.style.backgroundColor = \'lightblue\';" ';
+        content += 'onmouseout="this.style.backgroundColor = \'white\';" ';
+        content += 'onkeyup="HandleHeaderKey(event, ' + row + ', ' + column + ');" ';
+        content += 'width="100%" tabindex="' + (row*20+column) + '" ';
+        content += '>&nbsp;</td>\n';
+        content += '</tr>\n';
+        content += '<tr style="height: ' + (pixsize - 24) + 'px;">\n';
+        content += '<td align="center" valign="bottom" id="Data_' + row + '_' + column + '" ';
+        content += 'onkeyup="HandleDataKey(event, ' + row + ', ' + column + ', 36, \'Data\');" ';
+        content += 'onmouseover="this.focus(); this.style.backgroundColor = \'lightblue\';" ';
+        content += 'onmouseout="this.style.backgroundColor = \'white\';" ';
+        content += 'width="100%" tabindex="' + (row*10+column) + '" ';
+        content += '>1';
+        for (var ii = 2; ii < horsize + 1; ii++)
+         {
+          content += ' ' + ii;
+         }
+        content += '</td>\n</tr>\n</table>\n';
+       }
+      if (type == 'SuDoKu')
+       {
+        content += '<td align="center" valign="bottom" id="Cell_' + row + '_' + column + '" ';
+        content += 'style="border-top: ' + ((row == 1) ? '5px solid black' : 'none') + '; ';
+        which = false;
+        if (row == 3) which = true;
+        if (row == 6) which = true;
+        if (row == 9) which = true;
+        content += 'border-bottom: ' + (which ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'border-left: ' + ((column == 1) ? '5px solid black' : 'none') + '; ';
+        which = false;
+        if (column == 3) which = true;
+        if (column == 6) which = true;
+        if (column == 9) which = true;
+        content += 'border-right: ' + (which ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'width: ' + pixsize + 'px; height: ' + pixsize + 'px;"';
+        content += 'onmouseover="this.focus(); this.style.backgroundColor = \'lightblue\';" ';
+        content += 'onmouseout="this.style.backgroundColor = \'white\';" ';
+        content += 'onkeyup="HandleDataKey(event, ' + row + ', ' + column + ', 48, \'Cell\');" ';
+        content += 'tabindex="' + (row*10+column) + '" ';
+        content += '>1';
+        for (var ii = 2; ii < horsize + 1; ii++)
+         {
+          content += ' ' + ii;
+         }
+       }
+      if (type == 'Quilt')
+       {
+        content += '<td align="center" valign="bottom" id="Cell_' + row + '_' + column + '" ';
+        content += 'style="border-top: ' + ((row == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-bottom: ' + ((row == versize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'border-left: ' + ((column == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-right: ' + ((column == horsize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'width: ' + pixsize + 'px; height: ' + pixsize + 'px;"';
+        content += 'onkeyup="HandleQuiltKey(event, ' + row + ', ' + column + ');" ';
+        content += 'onmouseover="this.focus(); this.style.backgroundColor = \'lightblue\';" ';
+        content += 'onmouseout="this.style.backgroundColor = \'white\';" ';
+        content += 'tabindex="' + (row*30+column) + '" ';
+        content += '>&nbsp;</td>\n';
+       }
+      if (type == 'Crossword')
+       {
+        content += '<td align="left" valign="top" id="Cell_' + row + '_' + column + '" ';
+        content += 'style="border-top: ' + ((row == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-bottom: ' + ((row == versize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'border-left: ' + ((column == 1) ? '5px solid black' : 'none') + '; ';
+        content += 'border-right: ' + ((column == horsize) ? '5px solid black' : '1px solid blue') + '; ';
+        content += 'font-size: 9px; ';
+        content += 'background-color: white; ';
+        content += 'width: ' + pixsize + 'px; height: ' + pixsize + 'px;"';
+        content += 'onmouseover="this.focus();" ';
+        //content += 'onmouseover="this.focus(); this.style.backgroundColor = \'lightblue\';" ';
+        //content += 'onmouseout="this.style.backgroundColor = \'white\';" ';
+        content += 'onkeyup="HandleCrosswordKey(event, ' + row + ', ' + column + ');" ';
+        content += 'onclick="CrosswordClick(' + row + ', ' + column + ', ' + versize + ', ' + horsize + ');"';
+        content += 'tabindex="' + (row*30+column) + '" ';
+        content += '>&nbsp;</td>\n';
+       }
+      content += '</td>\n';
+     }
+    content += '</tr>\n';
+   }
+  document.getElementById('Table').innerHTML = content;
+ }
+
+//]]></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t074&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t073&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$ORDER</h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t075&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>SORDER function</h3>
+<p>Some of the sentences in the original descriptions
+of the transition diagrams have a period at the end,
+some sentences don't.<br/>
+The editor ensured that there are periods at the end of each sentence.</p>
+<p>The text for the 1984 standard
+mentions the "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a107014.html#Def_0004">null string</a>".</p>
+<p>Note that a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a107014.html#Def_0004">null string</a> in a language like C looks like:<br/>
+<tt>&nbsp;&nbsp;&nbsp;char str [] = {0};</tt><br/>
+or<br/>
+<tt>&nbsp;&nbsp;&nbsp;char str = "";</tt><br/>
+and is stored in memory as an array or "short integers",
+where the array length is 1 element, and the value of that
+element is 0 (zero).</p>
+<p>In M[UMPS], however, one can
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> str=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(65,66,0,67,0,68)</tt>
+and thus create a string that consists of 6 characters, two of them
+being the control-character commonly known as "the NULL character".</p>
+<p>If a C program would create a string like<br/>
+<tt>&nbsp;&nbsp;&nbsp;char str [] = {65, 66, 0, 67, 0, 68};</tt><br/>
+the length of that string would be considered to be 2 (two)
+characters, and the string-related functions of the language
+would not "see" beyond the first "null" character.</p>
+<p>Since it is possible in M[UMPS] to have a string
+that is equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(0), the meaning of the term
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a107014.html#Def_0004">null string</a>" is considered to be ambiguous (it can mean
+either a string of zero characters, or a string of one
+character, that character being the NULL character).
+As a result, the standard does not use the term "null
+string" in any of the formal parts, but instead uses
+the term "empty string" when referring to a string
+consisting of 0 (zero) characters. When referring to
+the other possible meaning, the standard refers to
+the ASCII NULL character.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t074&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:09:36.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da10t074%2fEdition%3dnotes%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

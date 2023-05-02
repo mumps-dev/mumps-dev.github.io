@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106011&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106009&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Transaction Processing</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106012&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>6.3.1 Transaction processing</h3>
+<p>A TRANSACTION is the execution of a sequence of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a>s that begins with a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a> and ends with either a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108049.html#Def_0003">TCommit</a> or a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108052.html#Def_0003">TROllback</a>, and that is not within the scope of any
+other TRANSACTION. A TRANSACTION may be restartable,
+serializable, or both, depending on parameters specified in the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a> that initiates the TRANSACTION. (See 8.2.22 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a>.) These
+properties affect execution of the TRANSACTION as described
+below.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a> adds one to the intrinsic special variable <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a>,
+which is initialized to zero when a process begins execution.
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108049.html#Def_0003">TCommit</a> subtracts one from <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> is greater than
+zero. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108052.html#Def_0003">TROllback</a> sets <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> to zero. A process is within a
+TRANSACTION whenever its <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> value is greater than zero. A
+process is not within a TRANSACTION whenever its <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> value is
+zero.</p>
+<p>If, as a result of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108049.html#Def_0003">TCommit</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> would become zero, an
+attempt is made to COMMIT the TRANSACTION. A COMMIT causes the
+global variable modifications made within the TRANSACTION to
+become durable and accessible to other processes.</p>
+<p>A ROLLBACK is performed if, within a TRANSACTION, either a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108052.html#Def_0003">TROllback</a> or a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108033.html#Def_0003">Halt</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a> is executed. A ROLLBACK
+rescinds all global variable modifications performed within the
+scope of the TRANSACTION, removes any <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s from the
+Lock-LIST that were not included in the Lock-LIST when the
+TRANSACTION started (i.e. when <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> changed from zero to one),
+and removes any <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> CONTEXT-STRUCTUREs for both the
+TRANSACTION linked list and the PROCESS-STACK linked list,
+discarding the CONTEXT-STRUCTUREs. M errors do not cause an
+implicit ROLLBACK. (See the Lock <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a> for definitions
+of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a> and Lock-LIST.)</p>
+<p>Global variable modifications carried out by <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a>s
+executed within a TRANSACTION are subject to the following rules:</p>
+<ol type="a">
+<li>A process that is outside of a TRANSACTION cannot access the
+global variable modifications made within a TRANSACTION until
+that TRANSACTION has been COMMITted.</li>
+<li>A process that is inside a TRANSACTION is not explicitly
+excluded from accessing modifications made by other processes.
+However, a process cannot COMMIT a TRANSACTION that has accessed
+the global variable modifications of any other uncommitted
+TRANSACTION before that other TRANSACTION has been committed.</li>
+<li>If the <u>transparameter</u>s within the argument to the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a> initiating the TRANSACTION specifies serializability, then
+all global modifications performed by the TRANSACTION and all
+other concurrently executing TRANSACTIONs must be equivalent to
+some serial, non-overlapping execution of those TRANSACTIONs.</li>
+</ol>
+<a name="Def_0002"></a>
+<p>If it has been determined that a TRANSACTION in progress
+either cannot or is unlikely to conform to the above-stated
+rules, then the TRANSACTION implicitly <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a>s. In addition, the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108051.html#Def_0003">TREstart</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a> explicitly causes the TRANSACTION to
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a>.</p>
+<p>The actions of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> depend on whether it is restartable.
+A TRANSACTION is restartable if the initiating <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a> specifies a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0007"><u>restartargument</u></a>. (See 8.2.22 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a>.)  A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> of a
+restartable TRANSACTION causes execution to resume with the
+initial <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a>. A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> of a non-restartable TRANSACTION ends
+in an error (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107059.html#Def_0007"><u>ecode</u></a>="<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=ab00027.html#Def_0001">M27</a>").</p>
+<p>The following discussion uses terms defined in the Variable
+Handling (see 7.1.2.2) and Process-Stack (see 7.1.2.3) models
+and, like those subclauses, does not imply a required
+implementation technique.</p>
+<p>Execution of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> occurs as follows:</p>
+<ol type="a">
+<li>The frame at the top of the PROCESS-STACK is examined. If the
+frame's linked list of CONTEXT-STRUCTUREs contains entries, they
+are processed in last-in-first-out order from their creation. If
+the CONTEXT-STRUCTURE is exclusive, all entries in the currently
+active local variable NAME-TABLE are pointed to empty DATA-CELLs.
+In all cases, the CONTEXT-STRUCTURE NAME-TABLEs are copied to the
+currently active NAME-TABLEs. For each <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> CONTEXT-STRUCTURE,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> is decremented by one until <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> reaches 0 (zero) or
+the list is exhausted. If <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> does not reach 0 (zero),
+then:
+<ol type="1">
+<li>if the frame contains <u>formallist </u>information, it is
+processed as described by step d in the description of the Quit
+command (see 8.2.16).</li>
+<li>the frame is removed and step a repeats.</li>
+</ol></li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107074.html#Def_0003">$Test</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0005">naked indicator</a> are restored from the
+CONTEXT-STRUCTURE that triggered <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107075.html#Def_0003">$TLevel</a> to reach 0 (zero).</li>
+<li>A ROLLBACK is performed. If the TRANSACTION is not
+restartable, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> terminates and an error condition occurs
+with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107059.html#Def_0007"><u>ecode</u></a>= "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=ab00027.html#Def_0001">M27</a>"</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107076.html#Def_0003">$TRestart</a> is incremented by 1. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106011.html#Def_0002">REstart</a> terminates and
+execution continues with the initial <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0003">TStart</a>, which includes
+re-evaluating <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108005.html#Def_0001"><u>postcond</u></a>, if any, and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108053.html#Def_0006"><u>tstartargument</u></a>,
+if any.</li>
+</ol>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106011&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:03:45.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da106011%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

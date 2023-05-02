@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Kalah</title>
+<style type="text/css">body {font-family: Arial;}
+.pit {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: solid 1px blue;
+  text-align: center;
+  vertical-align: middle;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Kalah&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fKalah%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a53%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Kalah</font></h1></td></tr></table>
+
+<form action="Kalah.html" name="form" method="post">
+<input type="hidden" name="Player" value="1"/>
+<p id="ShowInstructions"><input type="button" onclick="Instructions(1);" value="Show Instructions"/></p>
+<p id="HideInstructions" style="display: none;"><input type="button" onclick="Instructions(0);" value="Hide Instructions"/><br/>
+Kalah is a game in which two players move objects across a number of containers.<br/>
+A move is made by picking up the objects (beads, beans, marbles, etc.) in one of the containers on the side
+of the board where the player is sitting, and dropping them one by one in the
+neighboring containers to the right (counter-clockwise).<br/>
+The object of the game is to maximize the number of objects in the &ldquo;home pit&rdquo;
+(the container between the two rows on the right-hand side of the player).<br/>
+Objects end up in one&rsquo;s &ldquo;home pit&rdquo; during any normal move
+or when the last object in a move would go into an empty container on the player&rsquo;s side, in which case
+all objects from the container opposite the empty one are transferred to the
+player&rsquo;s &ldquo;home pit&rdquo;.</span>
+</p>
+
+<p id="Initialize">Initial number of beads: <input type="text" size="4" name="InitialNumber"/><br/>
+Who starts: <input type="radio" onclick="SetPlayer(1);" name="WhoStarts" value="1" checked="checked"/> Computer
+&nbsp; &nbsp; &nbsp; 
+<input type="radio" onclick="SetPlayer(2);" name="WhoStarts" value="2"/> Player<br/>
+<input type="button" onclick="Start();" value="Start Game"/></p>
+<table>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>&nbsp;</td>
+          <td onclick="Move(1,14)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_14">&nbsp;</td>
+          <td onclick="Move(1,13)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_13">&nbsp;</td>
+          <td onclick="Move(1,12)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_12">&nbsp;</td>
+          <td onclick="Move(1,11)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_11">&nbsp;</td>
+          <td onclick="Move(1,10)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_10">&nbsp;</td>
+          <td onclick="Move(1,9)" class="pit" rowspan="2" bgcolor="lightblue" id="Pit_9">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td rowspan="2" bgcolor="lightblue" class="pit" id="Pit_1">&nbsp;</td>
+          <td rowspan="2" bgcolor="CornflowerBlue" class="pit" id="Pit_8">&nbsp;</td>
+        </tr>
+        <tr>
+          <td onclick="Move(2,2)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_2">&nbsp;</td>
+          <td onclick="Move(2,3)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_3">&nbsp;</td>
+          <td onclick="Move(2,4)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_4">&nbsp;</td>
+          <td onclick="Move(2,5)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_5">&nbsp;</td>
+          <td onclick="Move(2,6)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_6">&nbsp;</td>
+          <td onclick="Move(2,7)" class="pit" rowspan="2" bgcolor="CornflowerBlue"id="Pit_7">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top">
+      <span style="background-color: lightblue;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Computer<br/>
+      <span style="background-color: CornflowerBlue;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Player<br/>
+      <span id="WhoseTurn">&nbsp;</span>
+    </td>
+  </tr>
+</table>
+<p id="Status">&nbsp;</p>
+
+</form><script type="text/javascript">
+//<![CDATA[
+
+function Instructions (which)
+ {
+  var show = document.getElementById('ShowInstructions');
+  var hide = document.getElementById('HideInstructions');
+  show.style.display = which > 0 ? 'none' : 'block';
+  hide.style.display = which > 0 ? 'block' : 'none';
+ }
+function SetPlayer(who)
+ {
+  document.form.Player.value = who;
+ }
+function Computer()
+ {
+  var who = parseInt(document.form.Player.value);
+  var ii = 0;
+  var start = 0;
+  var last = 0;
+  var best = 0;
+  var chosen = 0;
+  var homecount = 0;
+  var mine = false;
+  var boxes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  var score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  var endshome = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];  for (ii = 1; ii < 15; ii++)
+   {
+    boxes [ii] = parseInt(document.getElementById('Pit_' + ii).innerHTML);
+   }
+  var home = who == 1 ? 1 : 8;
+  for (ii = 1; ii < 7; ii++)
+   {
+    start = who == 1 ? (8 + ii) : (1 + ii);
+    last = start + boxes[start];
+    if (boxes[start] > 0)
+     {
+      homecount = boxes[home];
+      while (last > 14)
+       {
+        last -= 14;
+        homecount++;
+       }
+      if ((who == 1) && (last > 1) && (last < 8)) homecount++;
+      if ((who == 2) && (last > 7)) homecount++;
+      mine = false;
+      if ((who == 1) && (last > 8)) mine = true; 
+      if ((who == 1) && (last < 8) && (last != 1)) mine = true;
+      if (last == home) endshome[start] = true;
+      if ((boxes[last] < 1) && mine)
+       {
+        homecount += boxes [16 - last];
+        endshome[start] = false;
+       }
+      score[start] = homecount;
+     }
+   }
+  best = 0;
+  chosen = 0;
+  for (ii = 1; ii < 7; ii++)
+   {
+    start = who == 1 ? (8 + ii) : (1 + ii);
+    if (score[start] > best)
+     {
+      best = score[start];
+      chosen = start;
+     }
+   }
+  for (ii = 1; ii < 7; ii++)
+   {
+    start = who == 1 ? (8 + ii) : (1 + ii);
+    if (endshome[start]) chosen = start;
+   }
+  if (chosen > 0)
+   {
+    Move(who,chosen);
+   }
+ }
+function Start()
+ {
+  var who = parseInt(document.form.Player.value);
+  var beads = parseInt(document.form.InitialNumber.value);
+  if ((beads > 0) && (beads < 11))
+   {
+    document.getElementById('Initialize').style.display = 'none';
+    for (pit = 1; pit < 15; pit++)
+     {
+      if ((pit != 1) & (pit != 8))
+       {
+        document.getElementById('Pit_' + pit).innerHTML = beads;
+       }
+      else
+       {
+        document.getElementById('Pit_' + pit).innerHTML = '0';
+       }
+     }
+   }
+  document.getElementById('WhoseTurn').innerHTML = 'It&rsquo;s ' + (who == 1 ? 'Computer' : 'Player') + '&rsquo;s turn.';
+  if (who == 1)
+   {
+    Computer();
+   }
+ }
+function Move(player, pit)
+ {
+  var who = parseInt(document.form.Player.value);
+  var beads = 0;
+  var beads1 = 0;
+  var beads2 = 0;
+  var ii = 0;
+  var home = 0;
+  var homebeads = 0;
+  var opposite = 0;
+  var nextpit = 0;
+  var nextbeads = 0;
+  var status = '';
+  if (who == player)
+   {
+    var skip = who == 2 ? 1 : 8;
+    var mine = false;
+    beads = parseInt(document.getElementById('Pit_' + pit).innerHTML);
+    if (beads > 0)
+     {
+      nextpit = pit;
+      for (ii = 1; ii <= beads; ii++)
+       {
+        nextpit++;
+        if (nextpit > 14) nextpit = 1;
+        if (nextpit == skip)
+         {
+          ii--;
+         }
+        else
+         {
+          nextbeads = parseInt(document.getElementById('Pit_' + nextpit).innerHTML) + 1;
+          document.getElementById('Pit_' + nextpit).innerHTML = nextbeads;
+          mine = false;
+          if ((who == 1) && (nextpit > 8)) mine = true;
+          if ((who == 2) && (nextpit < 8)) mine = true;
+          if ((nextbeads == 1) && (ii == beads) && (mine))
+           {
+            home = (who == 1) ? 8 : 1;
+            homebeads = parseInt(document.getElementById('Pit_' + home).innerHTML);
+            opposite = 16 - nextpit;
+            homebeads += parseInt(document.getElementById('Pit_' + opposite).innerHTML);
+            document.getElementById('Pit_' + home).innerHTML = homebeads;
+            document.getElementById('Pit_' + opposite).innerHTML = '0'
+           }
+         }
+       }
+      document.getElementById('Pit_' + pit).innerHTML = '0';
+      mine = false;
+      if ((who == 1) && (nextpit == 1)) mine = true;
+      if ((who == 2) && (nextpit == 8)) mine = true;
+      if (!mine)
+       {
+        document.form.Player.value = 3 - who;
+        document.getElementById('WhoseTurn').innerHTML = 'It&rsquo;s ' + (who != 1 ? 'Computer' : 'Player') + '&rsquo;s turn.';
+       }
+     }
+    beads1 = 0;
+    beads2 = 0
+    for (ii = 1; ii < 7; ii++)
+     {
+      beads1 += parseInt(document.getElementById('Pit_' + (ii + 8)).innerHTML)
+      beads2 += parseInt(document.getElementById('Pit_' + (ii + 1)).innerHTML)
+     }
+    if ((beads1 < 1) || (beads2 < 1))
+     {
+      document.form.Player.value = '0'; // game over
+      beads1 += parseInt(document.getElementById('Pit_8').innerHTML)
+      beads2 += parseInt(document.getElementById('Pit_1').innerHTML)
+      status = (beads1 > beads2 ? 'Player' : 'Computer') + ' wins.';
+      document.getElementById('Status').innerHTML = status;
+     }
+    else
+     {
+      if (parseInt(document.form.Player.value) == 1)
+       {
+        Computer();
+       }
+     }
+   }
+ }
+//]]></script>
+
+
+</body>
+</html>

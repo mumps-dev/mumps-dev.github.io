@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107107&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$STACK</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107109&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This function returns information extracted from the error-trap
+status information stack.</p>
+<p>Assume that a routine called <tt>T4EDM</tt> exists, with the
+following code:</p>
+<pre>
+T4EDM ; test error trapping
+X <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Start test routine, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> $ECODE="",SHOWN=0
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> L1
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"At end of routine, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+L1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now at label L1, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>="w !,""Error trap from L1 ("",$STACK,""/"",$ESTACK,"")."" DO E1 DO SHOW($STACK)"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> L2
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SHOWN=0
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"NOTE: The error trap should have ended here."
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now let's generate a user-defined error:"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>=",User defined error,"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now leaving subroutine L1, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+L2 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now at label L2, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>="w !,""Error trap from L2 ("",$STACK,""/"",$ESTACK,"")."" do E2 s:'$ESTACK $ECODE="""" DO SHOW($STACK)"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> L3
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now leaving subroutine L2, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+L3 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now at label L3, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="w !,""Now comes the error:"" set A=1/0"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Y="xecute X"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> A="x Y"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108057.html#Def_0002">Xecute</a> A
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Now leaving subroutine L3, $STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ESTACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+E1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> " E1 ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,! <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> TRACE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+E2 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> " E2 ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,! <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> TRACE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+TRACE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> MAX,I,K,HERE
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:SHOWN
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> MAX=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(&ndash;1),HERE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> K=0:1:MAX <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107107.html#Def_0002">$Select</a>(HERE=K:" * ",1:"&nbsp;&nbsp;&nbsp;"),<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107094.html#Def_0002">$Justify</a>(K,2),": ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(K)
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> I="PLACE","MCODE","ECODE" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !?9,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(K,I)
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SHOWN=1
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+SHOW(N) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"In show, N=",N,",$STACK=",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+</pre>
+<p>Execution of this routine will yield the following result:</p>
+<pre>
+do X
+Start test routine, $STACK=1, $ESTACK=1
+Now at label L1, $STACK=2, $ESTACK=2
+Now at label L2, $STACK=3, $ESTACK=0
+Now at label L3, $STACK=4, $ESTACK=1
+Now comes the error:
+Error trap from L2 (7/4). E2 ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+    0:
+          @ +1
+          do X
+    1: DO
+          X+3^T4EDM +1
+           DO L1
+    2: DO
+          L1+3^T4EDM +1
+           DO L2
+    3: DO
+          L2+4^T4EDM +1
+           DO L3
+    4: DO
+          L3+5^T4EDM +1
+           XECUTE A
+    5: XECUTE
+          @ +1
+          x Y
+    6: XECUTE
+          @ +1
+          xecute X
+    7: XECUTE
+          @ +2
+          w !,"Now comes the error:" set A=1/0
+          ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+    8: DO
+          E2^T4EDM +2
+          E2 WRITE " E2 ",$ECODE,! DO TRACE QUIT
+ *  9: DO
+          TRACE+3^T4EDM +2
+           FOR K=0:1:MAX DO
+In show, N=7, $STACK=8
+Error trap from L2 (6/3). E2 ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+In show, N=6, $STACK=7
+Error trap from L2 (5/2). E2 ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+In show, N=5, $STACK=6
+Error trap from L2 (4/1). E2 ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+In show, N=4, $STACK=5
+Error trap from L2 (3/0). E2 ,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00009.html#Def_0001">M9</a>,
+In show, N=3, $STACK=4
+NOTE: The error trap should have ended here.
+Now let's generate a user-defined error:
+Error trap from L1 (2/2). e1 ,User defined error,.
+    0:
+          @ +1
+          do X
+    1: DO
+          X+3^T4EDM +1
+           DO L1
+    2: DO
+          L1+7^T4EDM +1
+           SET $ECODE=",User defined error,"
+          ,User defined error,
+    3: DO
+          E1^T4EDM +2
+          E1 WRITE " E1 ",$ECODE,! DO TRACE QUIT
+ *  4: DO
+          TRACE+3^T4EDM +2
+           FOR K=0:1:MAX DO
+In show, N=2, $STACK=3
+Error trap from L1 (1/1). E1 ,User defined error,
+In show, N=1, $STACK=2
+Error trap from L1 (0/0). E1 ,User defined error,
+In show, N=0, $STACK=1
+</pre>
+<p>Now, let s have a look at the stacking of variables and error-traps.<br/>
+Assume that a routine called <tt>T1EDM</tt> exists, with the
+following code:</p>
+<pre>
+T1EDM ;
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Start: $STACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ECODE = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,""","
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !?5,"$ETRAP = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> """, $ESTACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>,!
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> LEVEL=1
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>="GOTO ERROR"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> X
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ ;
+X <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> LEVEL#3=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> LEVEL#4=0 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> LOCAL <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> LOCAL(LEVEL)=LEVEL
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> LOCAL(LEVEL,LEVEL)="Demo"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> LEVEL=16 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>="<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108032.html#Def_0002">Goto</a> NESTERR"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Level = ",LEVEL
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $STACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ECODE = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,""","
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !?5,"$ETRAP = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> """, $ESTACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>,!
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> LEVEL=LEVEL+1
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> LEVEL&lt;20 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> X
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108027.html#Def_0002">Else</a>  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>=",U13," ; User defined error code
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !!,"Back: level = ",LEVEL
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $STACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ECODE = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,""","
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !?5,"$ETRAP = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> """, $ESTACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>,!
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ ;
+ERROR <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !!,"Error: level = ",LEVEL
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $STACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $ECODE = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>,""","
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !?5,"$ETRAP = """,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> """, $ESTACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Error location: """
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>,"PLACE"),"""."
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"MUMPS code: """
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>,"MCODE"),"""."
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Error code: """
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>,"ECODE"),"""."
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> R="LOCAL"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> R=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(@R) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:R=""  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,R," = ",@R
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ ;
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>&lt;7 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a>=""
+ ;
+ ; As long as the value of $ECODE is
+ ; non-empty, the system will execute
+ ; the error trap upon exit from the
+ ; error trap routine.
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ ;
+NESTERR ;
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Nested error trap"
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ", $STACK = ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107071.html#Def_0002">$STack</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+</pre>
+<p>Then the command <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> ^T1EDM</tt> will produce the
+following result:</p>
+<pre>
+Start: $STACK = 1, $ECODE = "",
+     $ETRAP = "", $ESTACK = 1
+Level = 1, $STACK = 2, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Level = 2, $STACK = 3, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 3
+Level = 3, $STACK = 4, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Level = 4, $STACK = 5, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Level = 5, $STACK = 6, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Level = 6, $STACK = 7, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Level = 7, $STACK = 8, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Level = 8, $STACK = 9, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Level = 9, $STACK = 10, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Level = 10, $STACK = 11, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Level = 11, $STACK = 12, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Level = 12, $STACK = 13, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Level = 13, $STACK = 14, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Level = 14, $STACK = 15, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Level = 15, $STACK = 16, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Level = 16, $STACK = 17, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 1
+Level = 17, $STACK = 18, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 2
+Level = 18, $STACK = 19, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 0
+Level = 19, $STACK = 20, $ECODE = "",
+     $ETRAP = "GOTO NESTERR", $ESTACK = 1
+Nested error trap, $STACK = 20
+Nested error trap, $STACK = 19
+Nested error trap, $STACK = 18
+Nested error trap, $STACK = 17
+Error: level = 20, $STACK = 16, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+Error: level = 20, $STACK = 15, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+Error: level = 20, $STACK = 14, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+Error: level = 20, $STACK = 13, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(12) = 12
+LOCAL(12,12) = Demo
+LOCAL(13,13) = Demo
+LOCAL(14,14) = Demo
+LOCAL(15,15) = Demo
+Error: level = 20, $STACK = 12, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+Error: level = 20, $STACK = 11, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+Error: level = 20, $STACK = 10, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+Error: level = 20, $STACK = 9, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(8) = 8
+LOCAL(8,8) = Demo
+LOCAL(9,9) = Demo
+LOCAL(10,10) = Demo
+LOCAL(11,11) = Demo
+Error: level = 20, $STACK = 8, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+Error: level = 20, $STACK = 7, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+Error: level = 20, $STACK = 6, $ECODE = ",U13,",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+Error location: "X+10^T1EDM +2".
+MUMPS code: " IF LEVEL&lt;20 D X".
+Error code: "".
+LOCAL(4) = 4
+LOCAL(4,4) = Demo
+LOCAL(5,5) = Demo
+LOCAL(6,6) = Demo
+LOCAL(7,7) = Demo
+Back: level = 20, $STACK = 5, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 1
+Back: level = 20, $STACK = 4, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 0
+Back: level = 20, $STACK = 3, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 3
+Back: level = 20, $STACK = 2, $ECODE = "",
+     $ETRAP = "GOTO ERROR", $ESTACK = 2
+</pre>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:22:28.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107108%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

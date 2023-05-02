@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=1984.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2><u>routine</u></h2><h3>1984 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106002&amp;Edition=1984.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>3.4 Routines</h3>
+<p>The <a href="#Def_0001"><u>routine</u></a> is the unit of program interchange. In
+program interchange, each <a href="#Def_0001"><u>routine</u></a> begins with its
+<a href="#Def_0002"><u>routinehead</u></a>, which contains the identifying
+<a href="#Def_0003"><u>routinename</u></a>, and the <a href="#Def_0002"><u>routinehead</u></a> is followed by the
+<a href="#Def_0004"><u>routinebody</u></a>, which contains the executed code. The
+<a href="#Def_0002"><u>routinehead</u></a> is not part of the executed code.</p>
+<a name="Def_0001"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0001"><u>routine</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0002"><u>routinehead</u></a></td>
+<td align="center"><a href="#Def_0004"><u>routinebody</u></a></td>
+</tr></table>
+<p>See also the transition diagram for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a10t007.html#Def_0002"><u>routine</u></a>.</p>
+<a name="Def_0002"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0002"><u>routinehead</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0003"><u>routinename</u></a></td>
+<td align="center"><a href="#Def_0009"><u>eol</u></a></td>
+</tr></table>
+<a name="Def_0003"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0003"><u>routinename</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106002.html#Def_0001"><u>name</u></a></td>
+</tr></table>
+<p>The <a href="#Def_0004"><u>routinebody</u></a> is a sequence of <a href="#Def_0005"><u>line</u></a>s
+terminated by the <a href="#Def_0010"><u>eor</u></a>. Each <a href="#Def_0005"><u>line</u></a> ends with
+<a href="#Def_0009"><u>eol</u></a>, starts with <a href="#Def_0007"><u>ls</u></a> optionally preceded by a
+<a href="#Def_0006"><u>label</u></a>, and may contain zero or more <u>commands</u>
+(separated by one or more spaces) between <a href="#Def_0007"><u>ls</u></a> and eol. Any
+<a href="#Def_0005"><u>line</u></a> may end with a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108003.html#Def_0001"><u>comment</u></a> immediately preceding
+the <a href="#Def_0009"><u>eol</u></a>. Zero or more spaces may separate the comment from
+the last command of the line.</p>
+<a name="Def_0004"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0004"><u>routinebody</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0005"><u>line</u></a></td>
+<td align="center">[ <a href="#Def_0005"><u>line</u></a> ] ...</td>
+<td align="center"><a href="#Def_0010"><u>eor</u></a></td>
+</tr></table>
+<a name="Def_0005"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0005"><u>line</u></a></td><td align="center">::=</td>
+<td align="center">[ <a href="#Def_0006"><u>label</u></a> ]</td>
+<td align="center"><a href="#Def_0007"><u>ls</u></a></td>
+<td align="center">&#9484;<br/>&#9474;<br/>&#9492;</td>
+<td align="center"><u>commands</u> [ [ <a href="#Def_0008"><u>cs</u></a> ] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108003.html#Def_0001"><u>comment</u></a> ]<br/>
+[ <a href="#Def_0008"><u>cs</u></a> ] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108003.html#Def_0001"><u>comment</u></a></td>
+<td align="center">&#9488;<br/>&#9474;<br/>&#9496;</td>
+<td align="center"><a href="#Def_0009"><u>eol</u></a></td>
+</tr></table>
+<p>See also the transition diagram for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a10t008.html#Def_0001"><u>line</u></a>.</p>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>label</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106002.html#Def_0001"><u>name</u></a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107049.html#Def_0002"><u>intlit</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>See also the transition diagram for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a10t040.html#Def_0001"><u>label</u></a>.</p>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>ls</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0004">SP</a></td>
+<td align="center">[ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0004">SP</a> ] ...</td>
+<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="center">(one or more spaces)</td>
+</tr></table>
+<a name="Def_0008"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0008"><u>cs</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0004">SP</a></td>
+<td align="center">[ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0004">SP</a> ] ...</td>
+<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="center">(one or more spaces)</td>
+</tr></table>
+<a name="Def_0009"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0009"><u>eol</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0001">CR</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0002">LF</a></td>
+<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="center">(two control characters)</td>
+</tr></table>
+<a name="Def_0010"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0010"><u>eor</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0001">CR</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a105002.html#Def_0003">FF</a></td>
+<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="center">(two control characters)</td>
+</tr></table>
+<p>Each occurrence of a <a href="#Def_0006"><u>label</u></a> to the left of <a href="#Def_0007"><u>ls</u></a> in
+a <a href="#Def_0005"><u>line</u></a> is called a "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108009.html#Def_0004">defining occurrence</a>" of <a href="#Def_0006"><u>label</u></a>.
+No two <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108009.html#Def_0004">defining occurrence</a>s of <a href="#Def_0006"><u>label</u></a> may have the same
+spelling in one <a href="#Def_0004"><u>routinebody</u></a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 10:37:42.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da106001%2fEdition%3d1984%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

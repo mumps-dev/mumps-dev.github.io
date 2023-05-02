@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Process-Stack</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107011&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.1.2.3 Process-Stack</h3>
+<p>The PROCESS-STACK is a virtual last-in-first-out (LIFO)
+list (a simple push-down stack) used to describe the behavior of
+M. It is used as an aid in describing how M appears to work and
+does not imply that an implementation is required to use such a
+stack to achieve the specified behavior. Three types of items, or
+frames, will be placed on the PROCESS-STACK, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108026.html#Def_0003">Do</a> frames
+(including <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108057.html#Def_0003">Xecute</a>s), extrinsic frames (including
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107055.html#Def_0001"><u>exfunc</u></a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107056.html#Def_0001"><u>exvar</u></a>) and error frames (for errors that
+occur during error processing):</p>
+<ol type="a">
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108026.html#Def_0003">Do</a> frames contain the execution level and the
+execution location of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108026.html#Def_0005"><u>doargument</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108057.html#Def_0004"><u>xargument</u></a>.
+In the case of the argumentless <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108026.html#Def_0003">Do</a>, the execution level,
+the execution location of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108026.html#Def_0003">Do</a> command and a saved value
+of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107074.html#Def_0003">$Test</a> are saved. The execution location of a process is
+a descriptor of the location of the command and possible argument
+currently being executed. This descriptor includes, at minimum,
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0002"><u>routinename</u></a> and the character position following the
+current command or argument.</li>
+<li>Extrinsic frames contain saved values of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107074.html#Def_0003">$Test</a>, the execution level, and the execution 
+location.</li>
+<li>Error frames contain information about error
+conditions during error processing (see 6.3.2 Error
+processing).</li>
+</ol>
+<p>The term CONTEXT-STRUCTURE is used to refer to a set of
+information related to the maintenance of the process context.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:03:45.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107010%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

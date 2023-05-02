@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109004&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109003&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - Pointer Events</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109005&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>8.1.2 Pointer Events</h3>
+<p>Pointer events (i.e. click, double click, pointer down,
+pointer up, pointer move, and pointer drag events) occur when the
+user takes certain actions with the pointer and the pointer is
+located within a window created via the MWAPI. If the pointer is
+within a gadget for which a pointer event can occur, then the
+event occurs for that gadget. Otherwise, if the pointer is within
+a window for which a pointer event can occur,  then the pointer
+event occurs for that window.</p>
+<p>A pointer down event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal
+to "PDOWN", occurs when the user presses a pointer button.</p>
+<p>A pointer up event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal
+to "PUP", occurs when the user releases a pointer button.</p>
+<p>A pointer move event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal
+to "PMOVE", occurs when the user moves the pointer with no
+pointer buttons pressed.</p>
+<p>For a scroll gadget, a pointer drag event, indicated by an
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal to "PDRAG" occurs when the user drags
+the gadget's position indicator. For windows and other gadget
+types, a pointer drag event occurs when the user moves the
+pointer with at least one pointer button pressed. Pointer drag
+events occur for the window or gadget in which the pointer was
+located when the drag was initiated, even if the pointer is
+subsequently dragged outside of the window or gadget in which the
+drag began.</p>
+<p>A click event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal to
+"CLICK", occurs when the user presses and releases a pointer
+button without an intervening change in the pointer position. For
+a button click action by the user, the following sequence of
+events occurs: pointer down, pointer up, and click.</p>
+<p>A double click event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal
+to "DBLCLICK", occurs when (a) the user twice presses and
+releases a pointer button without any intervening changes in the
+pointer position and (b) the second button press occurs within a
+specified time interval of the first button press. The time
+interval is not specified by the MWAPI and may be controllable by
+the user. For a button double click action by the user, the
+following sequence of events occurs: pointer down, pointer up,
+click, pointer down, double click, and pointer up.</p>
+<p>A pointer event does not occur if the FILTERIN
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109014.html#Def_0003"><u>especattribute</u></a> is present for the event and the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103016.html#Def_0002"><u>pbuttoncode</u></a> associated with the event is not one of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103016.html#Def_0002"><u>pbuttoncode</u></a>s present in the value of that FILTERIN
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109014.html#Def_0003"><u>especattribute</u></a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109004&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 21-Mar-2004, 10:09:40.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df109004%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

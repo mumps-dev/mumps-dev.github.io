@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107187&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107187&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107186&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$%FORMAT^STRING</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107188&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This function formats a numeric value to match certain
+local preferences for the representation of numbers. The function
+allows for various separators, currency symbols, leading and trailing
+markers, et cetera.</p>
+<p>The examples below all work with the same test value<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> B="100000.05"</tt></p>
+<p>Set up the formatting preferences:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="FM=Z:CS=""$"":DC=""."":SL="","":FS=""*"""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="cnsnnnsnnndnn"</tt><br/>
+FM is the local variable that specifies the format mask<br/>
+CS is the currency string<br/>
+DC is the decimal character<br/>
+SL is left separator character<br/>
+FS is the fill string</p>
+<p>In the "mask string", the meaning of the letters is:<br/>
+<tt>c</tt> = currency symbol<br/>
+<tt>d</tt> = decimal separator (may occur only once in mask)<br/>
+<tt>f</tt> = floating symbol<br/>
+<tt>l</tt> = left justified numeric<br/>
+<tt>m</tt> = money (right justified)<br/>
+<tt>n</tt> = numeric<br/>
+<tt>s</tt> = separator<br/>
+<tt>x</tt> = spacer<br/>
+<tt>-</tt> = display sign only if negative<br/>
+<tt>+</tt> = display sign always<br/>
+<tt>( and )</tt> = display negative numbers within parentheses<br/>
+space = insert space for the spaces in the mask</p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"$**100,000.05"</tt></td></tr>
+</table>
+<p>Change the fill character:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="+nsnnnsnnndnn",X=X_":FS=""0"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"+00100,000.05"</tt></td></tr>
+</table>
+  
+<p>Make the currency symbol a multi-character string:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="ccnsnnnsnnndnn"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=X_":FS="" "":CS=""DM"":SL=""."":DC="","""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"DM&nbsp;&nbsp;100.000,05"</tt></td></tr>
+</table>
+<p>Show the currency as a trailing string:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="nsnnnsnnn ccc",X=X_":CS=""ATS"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&nbsp;100.000&nbsp;ATS"</tt></td></tr>
+</table>
+  
+<p>Note that for every format property, the last one (right-most) prevails:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(X,":",1,7)<br/>
+FM=Z:CS="$":DC=".":SL=",":FS="*":FS="0":FS=" "<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(X,":",8,99)<br/>
+CS="DM":SL=".":DC=",":CS="ATS"</tt></p>
+<p>Some local preferences use the currency symbol as the decimal separator:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="FM=Z:DC=""$"":SL="" "":FS="" """<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="nsnnnsnnndnn"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&nbsp;100&nbsp;000$05"</tt></td></tr>
+</table>
+<p>Put the sign in a "floating" position:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="FM=Z:DC=""."":SL="","":FS="" """<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="cfsfffsffndnn"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(-B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"$&nbsp;&nbsp;&ndash;100,000.05"</tt></td></tr>
+</table>
+<p>Apply a different fill character<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> T=X_":FS=""$"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,T)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"$$$100,000.05"</tt></td></tr>
+</table>
+<p>Use parentheses to indicate negative value:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="(nnsnnnsnnndnn)",Y=X_":FS=""&amp;"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(-B,Y)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"(&amp;&amp;&amp;100,000.05)"</tt></td></tr>
+</table>
+<p>Allow the parentheses to "float":<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="(ffsfffsffndnn)"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(-B,X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&nbsp;&nbsp;(100,000.05)"</tt></td></tr>
+</table>
+<p>Braces do not appear for positive values:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="(nnsnnnsnnndnn)",Y=X_":FS=""&amp;"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(B,Y)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&amp;&amp;&amp;100,000.05&nbsp;"</tt></td></tr>
+</table>
+<p>Insert a separator character at specific places:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="nnsnnsnnsn",Y=X_":SL=""-"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(1234567,Y)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"12&ndash;34&ndash;56&ndash;7"</tt></td></tr>
+</table>
+<p>Use multiple separators:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="nns nns",Y=X_":SL=""""""'"""</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(1210,Y)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"12'&nbsp;10""</tt></td></tr>
+</table>
+<p>Use different separators to the left and to the right
+of the decimal separator:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Z="nnnnsnnnnsnnnnsnnnndnnnnsnnnnsnnnn"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> Y=X_":SL=""!@#"":SR=""%^"":DC="","""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> VAL=345678901234.56789</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(VAL,Y)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3456@7890!1234,5678%9000^000"</tt></td></tr>
+</table>
+<p>Right and left justification:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> L="llsllsllsl",R="nnsnnsnnsn"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,"FORMAT","SL")="-"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(4567,"FM=R")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&nbsp;&nbsp;&nbsp;&nbsp;4&ndash;56&ndash;7"</tt></td></tr>
+<tr><td align="right"><tt><a href="#Def_0001">$%FORMAT^STRING</a>(4567,"FM=L")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"45&ndash;67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</tt></td></tr>
+</table>
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).<br/>
+Click here for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ai03004.html#Def_0001">$%FORMAT^STRING sample code</a> to
+view or download the code for this function.<br/>
+Click here for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ai00000.html#Def_0001">AllFunctions</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107187&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107187&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 17:28:16.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107187%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t004&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t004&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t003&amp;Edition=1984.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Example</h2><h3>1984 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t005&amp;Edition=1984.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>1.2 Example</h3>
+<p>A simple arithmetic expression, sum, can be defined as
+follows.</p>
+<p align="center"><u>sum</u> P[+ sum]</p>
+<p>The primitive symbols are P and +,</p>
+<p>This example can be used to illustrate recursion and the
+technique for scanning text with a transition diagram. The
+definition above forces a right-to-left order of evaluation.
+Because this definition is recursive, a "Stack" is needed to save
+intermediate results whenever <u>sum</u> reinvokes itself. Items
+are saved onto this Stack by a PUT operation, and are retrieved
+by a GET operation, in a last-in-first-out order. The transition
+diagram for the definition of sum above is shown below.</p>
+<p><object data="../image/AnnoStd/1984_p05.svg" width="250" height="250" type="image/svg+xml" /></p>
+<ol type="1">
+<li>Place value of P into A, that is, P <img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/> A.</li>
+<li>A + Result <img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/> Result.</li>
+<li>A <img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/> Result.</li>
+</ol>
+<p>In order to illustrate the effect of a diagram's structure on
+the order of evaulation, this example can be tested on the input
+string P+Q+R <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a> , where Q and R are separate occurrences
+of the symbol P, and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a> is the string termination
+character. The steps below interpret this string using the above
+diagram, in the same fashion as the algorithm on the previous
+page uses the MUMPS diagrams in Section 2.</p>
+<ol type="1">
+<li>The window is initially positioned at the first character of
+the string, P.</li>
+<li>Path Ea contains the same symbol as in the window (P);
+consequently, the path to node a is traversed and the window is
+moved to the next character of the input string.</li>
+<li>Action 1 is executed. The value of P is placed in
+A<sub>0</sub>. (A<sub>0</sub> is the zero-level occurrence of
+temporary variable A.)</li>
+<li>Path ab contains the same symbol as in the window (+), causing
+transversal of the path to node b, and moving the window to the
+next character of the input string.</li>
+<li>Path bX is a call to <u>sum</u>. PUT Ao on the Stack and start
+at node E, now at level <sub>1</sub>.</li>
+<li>Path Ea contains the same symbol as in the window (Q=P), so
+traverse the path to node a, moving the window to the next input
+character.</li>
+<li>Action 1 is executed, placing the value of Q in A<sub>1</sub>.</li>
+<li>Path ab contains the same symbol as in the window (+), so
+traverse the path to node b, and move the window to the next
+character.</li>
+<li>Path bX is again a call to <u>sum</u>. PUT A<sub>l </sub>on
+the Stack and start at node E, now at level 2.</li>
+<li>As before, path Ea is traversed and the value of R is placed
+in A<sub>2</sub>.</li>
+<li>The default blank path aX is now traversed because there is an
+end-of-line symbol in the window, which is not the same as a
++.</li>
+<li>Action 3 is executed, which places the value in A<sub>2</sub>
+(i.e., R) into Result.</li>
+<li>The second call to <u>sum</u> is now complete, so effectively
+path bX can now be traversed at level 1.</li>
+<li>Action 2 is executed, by first performing a GET A<sub>l</sub>
+from the Stack, then forming A<sub>l </sub>+ Result (which is Q +
+R), and finally placing the sum into Result.</li>
+<li>The first call to <u>sum</u> is now successful, so path bX can
+now be traversed at level 0.</li>
+<li>As above, action 2 is executed, doing a GET Ao from the Stack,
+forming the sum Ao + Result (which is P + Q + R), and placing
+this value into Result.</li>
+<li>The variable Result now contains the value obtained from
+scanning the input string P+Q+R <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a>. This value can in
+turn be used in another diagram which invoked the <u>sum</u>
+diagram, much as Result was used in the recursive calls of sum
+above.</li>
+</ol>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t004&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t004&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 11:07:53.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da10t004%2fEdition%3d1984%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

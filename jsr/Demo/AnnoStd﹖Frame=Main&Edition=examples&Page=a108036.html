@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108035&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>JOB</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> LABEL^ROUTINE::20</tt><br/>
+This command will attempt to create a new M[UMPS] process. If this cannot be
+completed within the time-out period (20 seconds), the special
+variable <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> is set to <i>false</i>. If the process is
+created, the special variable <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> is set to
+<i>true</i>.
+The newly created process will start processing the specified
+routine at the specified label.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> LABEL^ROUTINE</tt><br/>
+Execution is suspended until a new M[UMPS] process is
+successfully created.
+The newly created process will start processing the specified
+routine at the specified label.</p>
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> LABEL^ROUTINE(12,34,56)</tt><br/>
+Execution is suspended until a new M[UMPS] process is
+successfully created.<br/>
+The newly created process will start processing the specified
+routine at the specified label. Initial values for the formal
+parameters specified in the parameterlist at the specified label
+are passed (<i>by value</i>).</p>
+<p>Approved for addition in a future M[UMPS] language standard.</p>
+<p>Jobs may be executed in a different environment.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> LABEL^ROUTINE</tt><br/>
+fetches the routine from the current routine environment and
+executes it in the current environment.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> LABEL^|"SPECIAL"|ROUTINE</tt><br/>
+fetches the routine from the environment called
+<tt>"SPECIAL"</tt> and executes it in the current environment.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> |"ELSEWHERE"|LABEL^ROUTINE</tt><br/>
+fetches the routine from the current routine environment and
+executes it in the environment called <tt>"ELSEWHERE"</tt>.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> |"ELSEWHERE"|LABEL^|"SPECIAL"|ROUTINE</tt><br/>
+fetches the routine from the environment called
+<tt>"SPECIAL"</tt> and executes it in the environment called
+<tt>"ELSEWHERE"</tt>.</p>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> ENTRYREF<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> @^(3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt><br/>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> ENTRYREF:PARAMETERS<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,</tt><br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> @^(3,4):^(5,6)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt><br/>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br/>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,5,</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 12-Sep-2014, 09:12:45.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108036%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Probability of Heart Infarct</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="#4c76ac" text="#ecd264" link="#fcf274" vlink="#ecd264">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="#4c76ac">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Probability%20of%20Heart%20Infarct&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fInfarct%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a52%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="#4c76ac"><h1><font color="#ecd264" face="Arial" id="PageTitle">Probability of Heart Infarct</font></h1></td></tr></table>
+
+<form action="Infarct.html" name="form" method="post"><input type="hidden" id="Chance_Dut" value="De kans op een acuut hartinfarct is ongeveer "/>
+<input type="hidden" id="Chance_Eng" value="The probability of a heart attack is roughly "/>
+<input type="hidden" name="prefix" value="The probability of a heart attack is roughly "/>
+<input type="hidden" id="Improb_Dut" value="De kans op een acuut hartinfarct is onwaarschijnlijk hoog."/>
+<input type="hidden" id="Improb_Eng" value="The probability of a heart attack is improbably high."/>
+<input type="hidden" name="improb" value="The probability of a heart attack is improbably high."/>
+<p><input type="radio" name="Language" value="Dut" onclick="SwitchLanguage(this, 'Dut');"/>&nbsp;Nederlands &nbsp; &nbsp; &nbsp; <input type="radio" name="Language" value="Eng" onclick="SwitchLanguage(this, 'Eng');" checked="checked"/>&nbsp;English</p>
+<p><span id="Intro_Dut" style="display: none;">Bereken de kans op een acuut hartinfarct op basis
+van een aantal eenvoudige vragen.<br/>
+De gegevens voor dit programma zijn ontleend aan
+de ami-ro-meter van B&ouml;hringer te Ingelheim, die
+op zijn beurt weer weer is gebaseerd op gegevens
+uit het IMIR onderzoek van het Thoraxcentrum
+in Rotterdam (Erasmus universiteit).</span>
+<span id="Intro_Eng">Calculate the probability of an acute hart attack on the basis
+of a number of simple questions.<br/>
+This program is based on data from
+the ami-ro-meter from B&ouml;hringer at Ingelheim, which
+in turn is based on data from the
+IMIR research at the Thorax Center
+in Rotterdam (Erasmus University).</span></p>
+<table><tr><td align="right"><span id="Q1_Dut" style="display: none;">Geslacht</span><span id="Q1_Eng">Gender</span>:&nbsp;</td>
+<td><input type="radio" name="Gender" value="U" checked="checked" onclick="Calculate();"/>&nbsp;<span id="A1u_Dut" style="display:none">Onbekend</span><span id="A1u_Eng">Unknown</span> &nbsp; &nbsp; &nbsp; <input type="radio" name="Gender" value="M" checked="checked" onclick="Calculate();"/>&nbsp;<span id="A1m_Dut" style="display: none;">Man</span><span id="A1m_Eng">Male</span> &nbsp; &nbsp; &nbsp; <input type="radio" name="Gender" value="F" checked="checked" onclick="Calculate();"/>&nbsp;<span id="A1f_Dut" style="display:none">Vrouw</span><span id="A1f_Eng">Female</span></td></tr>
+<tr><td align="right"><span id="Q2_Dut" style="display: none;">Leeftijd</span><span id="Q2_Eng">Age</span>:&nbsp;</td>
+<td><input type="text" name="Age" size="3" onchange="Calculate();"/></td></tr>
+<tr><td align="right">&nbsp;</td><td><input type="checkbox" name="RecentChestPain" onchange="Calculate();" onclick="Toggle456();"/>&nbsp;<span id="Q3_Dut" style="display: none;">De laatste twee dagen erge pijn in de borst</span><span id="Q3_Eng">Recent onset or worse chest pain (less than 48 hours)</span></td></tr>
+<tr id="Row_4" style="display: none;"><td align="right">&nbsp;</td><td><input type="checkbox" name="LongerThan30Min" onchange="Calculate();"/>&nbsp;<span id="Q4_Dut" style="display: none;">De pijn duurde langer dan een half uur</span><span id="Q4_Eng">Duration of chest pain was more than 30 minutes</span></td></tr>
+<tr id="Row_5" style="display: none;"><td align="right">&nbsp;</td><td><input type="checkbox" name="StabbingPain" onchange="Calculate();"/>&nbsp;<span id="Q5_Dut" style="display: none;">Het was een stekende pijn</span><span id="Q5_Eng">It was a stabbing pain</span></td></tr>
+<tr id="Row_6" style="display: none;"><td align="right">&nbsp;</td><td><input type="checkbox" name="MajorComplaint" onchange="Calculate();"/>&nbsp;<span id="Q6_Dut" style="display: none;">Die pijn in de borst is de voornaamste klacht</span><span id="Q6_Eng">The major complaint is chest pain</span></td></tr>
+<tr><td align="right">&nbsp;</td><td><input type="checkbox" name="ClammySkin" onchange="Calculate();"/>&nbsp;<span id="Q7_Dut" style="display: none;">De patient heeft een vochtige, klamme huid</span><span id="Q7_Eng">The patient has a cold clammy skin</span></td></tr>
+<tr><td align="right"><span id="Q8_Dut" style="display: none;">Hartslag (aantal slagen per minuut)</span><span id="Q8_Eng">Heart rate, beats per minute</span>:&nbsp;</td>
+<td><input type="text" name="HeartRate" size="4" onchange="Calculate();"/></td></tr>
+<tr><td align="right">&nbsp;</td><td><input type="checkbox" name="PrematureBeats" onchange="Calculate();"/>&nbsp;<span id="Q9_Dut" style="display: none;">Hartslag is meer dan 3 maal per minuut onregelmatig</span><span id="Q9_Eng">There are more than 3 premature beats per minute</span></td></tr>
+<tr><td align="right"><span id="Q10_Dut" style="display: none;">Bloeddruk</span><span id="Q10_Eng">Blood Pressure</span>:&nbsp;</td>
+<td><span id="A10s_Dut" style="display:none">Bovendruk (diastolisch)</span><span id="A10s_Eng">Diastolic</span>&nbsp;<input type="text" name="BPDiastolic" onchange="Calculate();" size="4"/> &nbsp; &nbsp; &nbsp; <span id="A10d_Dut" style="display:none">Onderdruk (systolisch)</span><span id="A10d_Eng">Systolic</span>&nbsp;<input type="text" name="BPSystolic" onchange="Calculate();" size="4"/></td></tr>
+
+</table>
+<div id="Probability"></div>
+</form>
+<script type="text/javascript"><!-- //<![CDATA[
+function SwitchLanguage(object, language)
+ {
+  var current = document.form.Language.value;
+  var item = 'Intro|Q1|A1u|A1m|A1f|Q2|Q3|Q4|Q5|Q6|Q7|Q8|Q9|Q10|A10s|A10d'.split('|');
+  var ii;
+  for (ii = 0; ii < item.length; ii++)
+   {
+    document.getElementById(item[ii] + '_Dut').style.display = 'none';
+    document.getElementById(item[ii] + '_Eng').style.display = 'none';
+    if (current != '')
+     {
+      document.getElementById(item[ii] + '_' + current).style.display = 'inline';
+     }
+   }
+  document.form.prefix.value = document.getElementById('Chance_' + current).value;
+  document.form.improb.value = document.getElementById('Improb_' + current).value;
+  document.getElementById('Probability').innerHTML = '&nbsp;';
+ }
+
+function Toggle456()
+ {
+  var show = document.form.RecentChestPain.checked ? 'table-row' : 'none';
+  document.getElementById('Row_4').style.display = show;
+  document.getElementById('Row_5').style.display = show;
+  document.getElementById('Row_6').style.display = show;
+ }
+
+function Calculate()
+ {
+  var prob = 0;
+  var show = '&nbsp;';
+  var kans;
+  var ii;
+  var ok = true;
+  var table = '4 4.75 5.7 6.5 7.2 7.9 8.7 9.65 10.95 13.3 15.85'.split(' ');
+  var lower = '5 10 20 30 40 50 60 70 80 90 95 666'.split(' ');
+  var BPs, BPd;
+  var d1, d2, d3, d4;
+  if (isNaN (parseInt(document.form.Age.value))) ok = false;
+  if (isNaN (parseInt(document.form.HeartRate.value))) ok = false;
+  if (isNaN (parseInt(document.form.BPDiastolic.value))) ok = false;
+  if (isNaN (parseInt(document.form.BPSystolic.value))) ok = false;
+  if (ok)
+   {
+    if (document.form.Gender.value == 'M') prob = 2.3/50;
+    prob += 2.3 * parseInt(document.form.Age.value)/50;
+    if (document.form.RecentChestPain.checked)
+     {
+      prob += 1.72;
+      if (document.form.LongerThan30Min.checked) prob += 1;
+      if (document.form.StabbingPain.checked) prob -= 0.5;
+      if (document.form.MajorComplaint.checked) prob += 0.75;
+     }
+    if (document.form.ClammySkin.checked) prob += 3.9;
+    prob += 0.019 * parseInt(document.form.HeartRate.value);
+    if (document.form.PrematureBeats.checked) prob += 0.7;
+    BPs = parseInt(document.form.BPSystolic.value);
+    BPd = parseInt(document.form.BPDiastolic.value);
+    if (BPs > BPd)
+     {
+      BPs = parseInt(document.form.BPDiastolic.value);
+      BPd = parseInt(document.form.BPSystolic.value);
+      document.form.BPSystolic.value = BPs;
+      document.form.BPDiastolic.value = BPd;
+     }
+    prob += (BPd - BPs) * 0.018;
+    if (BPs < 110) prob += 1;
+    kans = lower[0];
+    d2 = 666;
+    for (ii = 0; (ii < 11) && (prob >= table[ii]); ii++)
+     {
+      kans = lower[ii];
+      if (ii > 0)
+       {
+        d1 = prob - table[ii-1];
+        d2 = lower [ii] - lower [ii-1];
+        d3 = table [ii] - table [ii-1];
+        d4 = lower[ii-1];
+       }
+     }
+    if (kans == 666)
+     {
+      show = document.form.improb.value;
+     }
+    else
+     {
+      if (d2 != 666)  kans = d1 * d2 / d3 + d4;
+      kans = Math.floor(kans);
+      show = document.form.prefix.value + kans + '%';
+     }
+    document.getElementById('Probability').innerHTML = '<p>' + show + '<' + '/p>';
+   }
+ }
+
+//]]> --></script>
+</body>
+</html>

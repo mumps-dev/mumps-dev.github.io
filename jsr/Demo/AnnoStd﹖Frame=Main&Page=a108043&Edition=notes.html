@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108042&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OPEN</h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108045&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>mnemonicspace</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the name of a mnemonicspace. A
+mnemonicspace is a library containing functions for controlling a specific
+class of device or file. Such a library may or may not be bound to another
+standard.</p>
+<p>Currently the only known mnemonicspace is <tt>"X3.64"</tt>, which is the
+ANSI standard that offers the VT-100 compatible terminal controls.</p>
+<p>Approved for addition in a future M[UMPS] language standard.</p>
+<p>New mnemonicspaces are:</p>
+<p>...</p>
+<a name="Def_0002"></a>
+<h3>mnemonicspacename</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the syntax for names of mnemonicspaces. A
+name of a mnemonicspace must start with an identifier character (see the
+metalanguage symbol <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106002.html#Def_0005"><u>ident</u></a>
+and may be followed by zero or more
+characters that are identifier characters, digits, periods (<tt>.</tt>) or
+hyphens (<tt>-</tt>).</p>
+<p>Approved for addition in a future M[UMPS] language standard.</p>
+<p>The name of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108043.html#Def_0001"><u>mnemonicspace</u></a> may
+also be a specification of a "portable mnemonicspace". Such a
+specification looks like a caret, followed by the name of a
+routine, optionally followed by another caret and the name of
+another routine. The name of the first routine in this context is
+the name of the routine that will be executed to process
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108056.html#Def_0001"><u>controlmnemonic</u></a>s in this
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108043.html#Def_0001"><u>mnemonicspace</u></a>.
+If a second name of a routine is specified, and a routine of
+that name exists on the current environment, this is intended
+to be the a user-written routine to be used instead of the
+(default) first routine.</p>
+<a name="Def_0003"></a>
+<h3>mnemonicspec</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the mnemonicspaces that may be in effect
+for a certain device or file. This specification is either an expression that
+evaluates to the name of one mnemonicspace or a list of such expressions
+(separated by commas) enclosed in parentheses.</p>
+<a name="Def_0004"></a>
+<h3>openargument</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> command. Examples of valid arguments for the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> command
+appear in an earlier section. The argument of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> command is
+either an expression, optionally followed by more expressions (separated by
+colons), or an indirection operator (<tt>@</tt>) followed by an expression
+that evaluates to a list (separated by commas) of such arguments.</p>
+<a name="Def_0005"></a>
+<h3>openparameters</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents any implementation-specific parameters to
+be observed for the device or file being opened, optionally followed by a
+time-out specification. The implementation-specific parameters may be either a
+single expression, or a list of expressions (separated by colons), enclosed in
+parentheses.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 17:03:29.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108043%2fEdition%3dnotes%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

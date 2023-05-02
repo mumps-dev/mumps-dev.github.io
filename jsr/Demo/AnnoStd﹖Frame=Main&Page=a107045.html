@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107045&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107041&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>^$Y*</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107049&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<p>Approved addition for a future M[UMPS] Language Standard.</p>
+<p>Users may add definitions to their systems that enable them to
+create their own structured system variables.</p>
+<p>The implementation will provide a means to associate the name of
+a routine with the name of a user defined structured system
+variable. Within such a routine, the following labels are defined
+to have a specific meaning.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> MyVar=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107045.html#Def_0001">^$Y</a>Mine(1,2,"ABC",4,5))</tt></p>
+<p>The following examples assume that the value of local variable
+MyVar is equal to the name value of a user defined structured
+system variable.</p>
+<p>The function <tt><b>$$%VALUE</b>(MyVar)</tt> is invoked to obtain
+the value of a user defined structured system variable.</p>
+<p>The function <tt><b>$$%DATA</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as a parameter of
+the intrinsic function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>.</p>
+<p>The functions <tt><b>$$%GET</b>(MyVar)</tt> and
+<tt><b>$$%GET</b>(MyVar,default)</tt> are invoked when a user
+defined structured system variable appears as the first parameter
+of the intrinsic function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>.</p>
+<p>The functions <tt><b>$$%ORDER</b>(MyVar)</tt> and
+<tt><b>$$%ORDER</b>(MyVar,direction)</tt> are invoked when a user
+defined structured system variable appears as the first
+parameter of the intrinsic function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>.</p>
+<p>The functions <tt><b>$$%QUERY</b>(MyVar)</tt> and
+<tt><b>$$%QUERY</b>(MyVar,direction)</tt> are invoked when a user
+defined structured system variable appears as the first parameter
+of the intrinsic function <b>QUERY</b>.</p>
+<p>The subroutine <tt><b>%KILL</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as an argument of
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> command.</p>
+<p>The subroutine <tt><b>%KSUBSCRIPTS</b>(MyVar)</tt> is invoked
+when a user defined structured system variable appears as an
+argument of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108038.html#Def_0002">KSubscripts</a> command.</p>
+<p>The subroutine <tt><b>%KVALUE</b>(MyVar)</tt> is invoked when a
+user defined structured system variable appears as an argument of
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108039.html#Def_0002">KValue</a> command.</p>
+<p>The subroutine <tt><b>%MERGE</b>(MyVar,source)</tt> is invoked
+when a user defined structured system variable appears as an
+argument on the left hand side of the equal sign of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0002">Merge</a> command (or when different sub-nodes of the same
+user defined structured system variable are specified in the same
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0002">Merge</a> command).</p>
+<p>The subroutine <tt><b>%MERGES</b>(MyVar,destination)</tt> is
+invoked when a user defined structured system variable appears as
+an argument on the right hand side of the equal sign of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0002">Merge</a> command.</p>
+<p>The subroutine <tt><b>%SET</b>(MyVar,value)</tt> is invoked when
+a user defined structured system variable appears as an argument
+on the left hand side of the equal sign of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>
+command.</p>
+<p>Assuming that the routine <tt>MyRout</tt> is bound to the user
+defined structured system variable <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107045.html#Def_0001">^$Y</a>Cust</tt>,</p>
+<p><tt>SET ^%YCust(123)="Santa Claus"</tt></p>
+<p>would cause a call to the subroutine</p>
+<p align="center"><tt><b>%SET</b>^MyRout("<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107045.html#Def_0001">^$Y</a>Cust(123)","Santa Claus")</tt></p>
+<p>The subroutine can then take care of any cross-referencing
+activity that may be needed for the application to which
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107045.html#Def_0001">^$Y</a>Cust</tt> belongs, e.g.</p>
+<p><tt><b>%SET</b>(ref,value) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> glob,old,x<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> glob="^MyApp("_<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(ref,"(",2,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(ref)+2)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +@glob<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> old=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(@glob)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(old," ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(old," "))<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> x'="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^MyApp("Lastname",x,glob)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(value," ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(value," "))<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> x'="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^MyApp("LastName",x,glob)=""<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> @glob=value<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -@glob<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107045&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 15:52:55.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107045%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

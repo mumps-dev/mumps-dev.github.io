@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107099&amp;Edition=1984.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$ORDER</h2><h3>1984 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1984.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<a name="Def_0005"></a>
+<a name="Def_0006"></a>
+<h3>3.2.8 Functions <u>function</u></h3>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107100.html#Def_0002">$O[RDER]</a>( glvn )</p>
+<p>returns a value which is a subscript according to a subscript
+ordering sequence. This ordering sequence is specified below with
+the aid of a function, CO, which is used for definitional
+purposes only, to establish the collating sequence.</p>
+<p>CO(s,t) is defined, for strings s and t, as follows:</p>
+<p>When t follows s in the ordering sequence, CO(s,t) returns t.
+Otherwise, CO(s,t) returns s.</p>
+<p>Let m and n be strings satisfying the definition of numeric
+data values (Section 3.2.4.1), and u and v be nonempty strings
+which do not satisfy this definition. The following cases define
+the ordering sequence:</p>
+<ol type="a">
+<li>CO("",s) = s.</li>
+<li>CO(m,n) = n if n &gt; m; otherwise, CO(m,n) = in.</li>
+<li>CO(m,u) = u.</li>
+<li>CO(u,v) = v if v ] u; otherwise, CO(u,v) = u.</li>
+</ol>
+<p>In words, all strings follow the empty string, numerics
+collate in numeric order, numerics precede nonnumeric strings,
+and nonnumeric strings are ordered by the conventional ASCII
+collating sequence.</p>
+<p>Only subscripted forms of lvn and gvn are permitted. Let
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> be of the form Name(s<sub>1</sub>,
+s<sub>2</sub>, ..., s<sub>n</sub>) where s<sub>n</sub> may be the
+empty string. Let A be the set of subscripts that follow
+s<sub>n</sub>. That is, for all s in A:</p>
+<ol type="a">
+<li>CO(sn,s) = s and</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107086.html#Def_0001">$D</a>(Name(s<sub>1</sub>, s<sub>2</sub>, ..., s<sub>n&ndash;1</sub>,
+s)) is not zero.</li>
+</ol>
+<p>Then <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107100.html#Def_0001">$O</a>(Name(s<sub>1</sub>, s<sub>2</sub>, ...,
+s<sub>n</sub>)) returns that value t in A such that CO(t,s) = s
+for all s not equal to t; that is, all other subscripts which
+follow s<sub>n</sub> also follow t.</p>
+<p>If no such t exists, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107100.html#Def_0001">$O</a> returns the empty string.</p>
+<p>See also the transition diagram for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a10t074.html#Def_0001">$Order</a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 15:55:44.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107100%2fEdition%3d1984%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106012&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106011&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Error Processing</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106013&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>6.3.3  Error processing</h3>
+<p>Error trapping provides a mechanism by which a process can
+execute specifiable commands in the event that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> becomes
+non-empty. The following facilities are provided:</p>
+<p>The <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a> special variable may be set to either the empty
+string or to code to be invoked when <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> becomes non-empty.
+Stacking of the contents of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a> is performed via the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a>
+command.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> provides information describing existing error
+conditions. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> is a comma-surrounded list of conditions.</p>
+<p>The $STack function and $STack variable provide stack related
+information.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a> counts stack levels since <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107060.html#Def_0002">$EStack</a> was last <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a>ed.</p>
+<p>When an error condition is detected, the information about the
+error is appended to the current value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> and to
+$STack($STack,"ECODE"). If appending to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> or
+$STack($STack,"ECODE") would exceed an implementation's maximum
+string length, the implementation may choose which older
+information in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> or $STack($STack,"ECODE") to discard. The
+value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> may also be replaced via the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> command.</p>
+<p>An Error Processing transfer of control consists of
+terminating the current command and processing in the scope of
+<i>any</i> active <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> commands and indirection; and second,
+explicitly resuming execution at the same <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106004.html#Def_0001">LEVEL</a> with two lines
+where the body of the first line is the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a> and the
+body of the second line is:</p>
+<p><tt>&nbsp;&nbsp;&nbsp;Quit:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107069.html#Def_0002">$Quit</a> "" Quit</tt></p>
+<p>The two lines are:</p>
+<p><tt>&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106007.html#Def_0001"><u>ls</u></a> [<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106004.html#Def_0003"><u>li</u></a>] <i>x</i> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0007"><u>eol</u></a><br/>
+&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106007.html#Def_0001"><u>ls</u></a> [<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106004.html#Def_0003"><u>li</u></a>] Quit:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107069.html#Def_0002">$Quit</a> "" Quit&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0007"><u>eol</u></a></tt></p>
+<p>Where  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106004.html#Def_0003"><u>li</u></a> represents the line level at the time of the
+transfer of control and <i>x</i> represents the value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107061.html#Def_0002">$ETrap</a>.</p>
+<p>For purposes of this transfer each <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> argument is
+considered to have its own <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0001"><u>commandword</u></a> (see 8.1 General
+command rules).</p>
+<p>When an error condition is detected, the information about the
+error is appended to the current value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> and to
+$STack($STack,"ECODE"). The value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> may also be replaced
+via the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> command.</p>
+<p>An Error Processing transfer of control is performed when:</p>
+<ol type="a">
+<li>The value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> is updated to a non-empty value. This
+occurs when an error condition is detected or may be forced via
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108020.html#Def_0002">Assign</a> command.</li>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> is not the empty string and a Quit command removes a
+PROCESS-STACK level at which $STack($STack,"ECODE") would return
+a non-empty string, and, at the new PROCESS-STACK level,
+$STack($STack,"ECODE") would return an empty string (in other
+words, when a Quit takes the process from a frame in which an
+error occurred to a frame where no error has occurred).</li>
+</ol>
+<p>When in the context of error processing (i.e.,
+$STack($STack,"ECODE") returns a non-empty string) a new error
+condition occurs (i.e., the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0002">$ECode</a> changes to a
+different non-empty string), the following actions are
+performed:</p>
+<ol type="a">
+<li>It associates the information about the failure as if it were
+associated with the frame identified by $STack+1.</li>
+<li>The following commands are implicitly incorporated into the
+current execution environment immediately preceding the next
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> in the normal execution sequence:<br/>
+<tt>&nbsp;&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108052.html#Def_0002">TROllback</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107075.html#Def_0002">$TLevel</a>&nbsp;&nbsp;Quit:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107069.html#Def_0002">$Quit</a>&nbsp;""&nbsp;Quit&nbsp;&nbsp;;</tt></li></ol>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106012&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:03:45.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da106012%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

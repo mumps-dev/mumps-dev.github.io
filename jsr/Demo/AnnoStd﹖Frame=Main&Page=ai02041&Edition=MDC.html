@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02041&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02040&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$%MTXEQU</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02042&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>2 MATH Library<br/>
+2.41 MTXEQU</h3>
+<pre>
+MTXEQU(A,B,R,N,M) ;
+	; Solve matrix equation A [M,M] * R [M,N] = B [M,N]
+	If $Get(M)&lt;1 Quit ""
+	If $Get(N)&lt;1 Quit ""
+	If '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107165.html#Def_0002">$%MTXDET^MATH</a>(.A,M) Quit 0
+	;
+	New I,I1,J,J1,J2,K,L,T,T1,T2,TEMP,X
+	;
+	Set X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107164.html#Def_0002">$%MTXCOPY^MATH</a>(.A,.T,N,N)
+	Set X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107164.html#Def_0002">$%MTXCOPY^MATH</a>(.B,.R,N,M)
+	;
+	; Reduction of matrix A
+	; Steps of reduction are counted by index K
+	;
+	For K=1:1:N&ndash;1 Do
+	. ;
+	. ; Search for largest coefficient of T
+	. ; (denoted by TEMP)
+	. ; in first column of reduced system
+	. ;
+	. Set TEMP=0,J2=K
+	. For J1=K:1:N Do
+	. . Quit:$TRanslate($Get(T(J1,K)),"-")&gt;$TRanslate(TEMP,"-")
+	. . Set TEMP=T(J1,K),J2=J1
+	. . Quit
+	. ;
+	. ; Exchange row number K with row number J2,
+	. ; if necessary
+	. ;
+	. Do:J2'=K
+	. . ;
+	. . For J=K:1:N Do
+	. . . Set T1=$Get(T(K,J)),T2=$Get(T(J2,J))
+	. . . Kill T(K,J),T(J2,J)
+	. . . If T1'="" Set T(J2,J)=T1
+	. . . If T2'="" Set T(K,J)=T2
+	. . . Quit
+	. . For J=1:1:M Do
+	. . . Set T1=$Get(R(K,J)),T2=$Get(R(J2,J))
+	. . . Kill R(K,J),R(J2,J)
+	. . . If T1'="" Set R(J2,J)=T1
+	. . . If T2'="" Set R(K,J)=T2
+	. . . Quit
+	. . Quit
+	. ;
+	. ; Actual reduction
+	. ;
+	. For I=K+1:1:N Do
+	. . For J=K+1:1:N Do
+	. . . Quit:'$Get(T(K,K))
+	. . . Set T(I,J)=-$Get(T(K,J))*$Get(T(I,K))/T(K,K)+$Get(T(I,J))
+	. . . Quit
+	. . For J=1:1:M Do
+	. . . Quit:'$Get(T(K,K))
+	. . . Set R(I,J)=-$Get(R(K,J))*$Get(T(I,K))/T(K,K)+$Get(R(I,J))
+	. . . Quit
+	. . Quit
+	. Quit
+	;
+	; Backsubstitution
+	;
+	For J=1:1:M Do
+	. If $Get(T(N,N)) Set R(N,J)=$Get(R(N,J))/T(N,N)
+	. If N&ndash;1&gt;0 For I1=1:1:N&ndash;1 Do
+	. . Set I=N-I1
+	. . For L=I+1:1:N Do
+	. . . Set R(I,J)=-$Get(T(I,L))*$Get(R(L,J))+$Get(R(I,J))
+	. . . Quit
+	. . If $Get(T(I,I)) Set R(I,J)=$Get(R(I,J))/$Get(T(I,I))
+	. . Quit
+	. Quit
+	Quit $Select(M=N:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107165.html#Def_0002">$%MTXDET^MATH</a>(.R,M),1:1)
+</pre>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02041&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 30-Nov-2011, 19:05:40.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3dai02041%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

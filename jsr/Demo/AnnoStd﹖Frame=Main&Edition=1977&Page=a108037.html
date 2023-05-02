@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108035&amp;Edition=1977.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>KILL</h2><h3>1977 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1977.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<h3>3.6.10 KILL</h3>
+<table><tr><td align="center"><a href="#Def_0002">K[ILL]</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a108005.html#Def_0001"><u>postcond</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center">[ <img alt="Space" align="middle" src="../image/AnnoStd/space.gif"/> ]<br/>
+<img alt="Space" align="middle" src="../image/AnnoStd/space.gif"/> <u>L</u> <a href="#Def_0005"><u>killargument</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<a name="Def_0005"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0005"><u>killargument</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107007.html#Def_0001"><u>glvn</u></a><br/>
+( <u>L</u> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> )<br/>
+@ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> <u>V</u> <u>L</u> <a href="#Def_0005"><u>killargument</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>The three argument forms of KILL are given the following names.</p>
+<ol type="a">
+<li>Empty argument list: Kill All.</li>
+<li>glvn: Selective Kill.</li>
+<li>(L lvn): Exclusive Kill.</li>
+</ol>
+<p>Killing the variable M sets SD(M) = 0 and causes the value of
+M to be undefined. Any attempt to obtain the value of M while it
+is undefined is erroneous. The value of M remains undefined until
+M appears to the left of the delimiter = in an executed SET
+command. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107086.html#Def_0001">$D</a>(M) remains 0 until M or a descendant of M appears to
+the left of the delimiter = in an executed SET command. Killing a
+variable whose <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107086.html#Def_0001">$D</a> = 0 has no effect.</p>
+<p>To kill a variable with the unsubscripted name N also kills
+all subscripted variables with the same name N.</p>
+<a name="Def_0006"></a>
+<p>To kill an m-tuply subscripted variable N(v<sub>1</sub>,
+v<sub>2</sub>, ..., v<sub>m</sub>) with name N and subscript
+values v<sub>1</sub>, v<sub>2</sub>, ..., v<sub>m</sub> also
+kills all n-tuply subscripted variables N(v<sub>1</sub>,
+v<sub>2</sub>, ..., v<sub>m</sub>, v<sub>m+1</sub>, ...,
+v<sub>n</sub>), for all n &gt; m, with the same N and identical
+values for the first m subscripts. (These derived n-tuply
+subscripted variables are called the "descendants" of the m-tuply
+subscripted variable.)</p>
+<p>The Kill All form kills all local variables.</p>
+<p>The Selective Kill form kills the variables named.</p>
+<p>In the Exclusive Kill form <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> must not contain
+subscripts, although <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> may have descendants. Exclusive
+Kill kills all local variables except those named and their
+descendants.</p>
+<p>If M is not killed but N, a descendant of M, is killed, the
+killing does not effect a change to the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a107086.html#Def_0001">$D</a>(M).</p>
+<p>See also the transition diagram for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1977&amp;Page=a10t021.html#Def_0001">Kill</a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 09:01:39.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108037%2fEdition%3d1977%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

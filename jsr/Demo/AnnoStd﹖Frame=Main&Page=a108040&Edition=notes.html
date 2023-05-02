@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>LOCK</h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108041&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>lockargument</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents an occurrence of an argument of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0002">Lock</a> command. Examples of valid arguments for the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0002">Lock</a> command
+appear in an earlier section. The argument of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0002">Lock</a> command is
+either a name reference (see metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a108040.html#Def_0002"><u>nref</u></a> or a
+list of name rerefences (separated by commas) enclosed in parentheses,
+optionally followed by a colon and an expression, or an indirection operator
+(<tt>@</tt>) followed by an expression that evaluates to a list (separated
+by commas) of such arguments.</p>
+<p>Modified in the 1990 ANSI M[UMPS] language standard.</p>
+<p>An argument of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0002">Lock</a> command may be preceeded by a plus (<tt>+</tt>)
+or minus (<tt>-</tt>) sign, to indicate addition or deletion of a LOCK.</p>
+<a name="Def_0002"></a>
+<h3>nref</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a reference to a name, in the context of
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108040.html#Def_0002">Lock</a> command. A reference to a name, in this context, may be the
+name of any subscripted or unsubscripted local or global variable, specified
+either "directly" or "indirectly", but not a naked reference.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard:</p>
+<p>There may be an evnvironment specification in a name reference.</p>
+<p>Approved for addition in a future M[UMPS] language standard:</p>
+<p>There may be a "subscript indirection" in a name reference.</p>
+<a name="Def_0003"></a>
+<h3>rnref</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a "regular" reference
+to a name. Such a reference can be either direct, or indirect.</p>
+<p>Names, in this context, may reference local as well as global
+variables, with or without an environment specification, and with
+or without a list of subscripts.</p>
+<a name="Def_0004"></a>
+<h3>nrefind</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a reference to a name,
+in a form that makes an indirect reference to that name.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 17:15:51.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108040%2fEdition%3dnotes%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

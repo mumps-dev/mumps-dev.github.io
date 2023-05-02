@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107002&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Variables</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107007&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.1.1 Variables</h3>
+<p>The M standard uses the terms <i>local variables</i> and
+<i>global variables</i> somewhat differently from their
+connotation in certain other computer languages. This subclause
+provides a definition of these terms as used in the M
+environment.</p>
+<p>A M <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106001.html#Def_0001"><u>routine</u></a>, or set of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106001.html#Def_0001"><u>routine</u></a>s, runs in the
+context of an operating system process. During its execution, the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106001.html#Def_0001"><u>routine</u></a> will create and modify variables that are
+restricted to its process. It can also access (or create)
+variables that can be shared with other processes. These shared
+variables will normally be stored on secondary peripheral devices
+such as disks. At the termination of the process, the
+process-specific variables cease to exist. The variables created
+for long term (shared) use remain on auxiliary storage devices
+where they may be accessed by subsequent processes.</p>
+<p>M uses the term <i>local variable</i> to denote variables that
+are created for use during a single process activation. These
+variables are not available to other processes. However, they are
+generally available to all routines executed within the process's
+lifetime. M does include certain constructs, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108042.html#Def_0003">New</a>
+command and parameter passing, which limit the availability of
+certain variables to specific routines or parts of routines.</p>
+<p>A <i>global variable</i> is one that is created by a process,
+but is permanent and shared. As soon as a process creates,
+modifies or deletes a global variable outside of a TRANSACTION,
+other processes accessing that global variable outside of a
+TRANSACTION receive its modified form. (See 6.3.1 Transaction
+processing for a definition of TRANSACTION and information on how
+TRANSACTIONs affect global modifications.)  Global variables do
+not disappear when a process terminates. Like local variables,
+global variables are available to all routines executed within a
+process.</p>
+<p>M has no explicit declaration or definition statements. Local
+and global variables, both non-subscripted and subscripted, are
+automatically created as data is stored into them, and their data
+contents can be referred to once information has been stored.
+Since the language has only one data type - string - there is no
+need for type declarations or explicit data type conversions.
+Array structures can be multidimensional with data simultaneously
+stored at all levels including the variable name level.
+Subscripts can be positive, negative, or zero; they can be
+integer or noninteger numbers as well as nonnumeric strings
+(other than empty strings).</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 22-Feb-2004, 16:10:34.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107006%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

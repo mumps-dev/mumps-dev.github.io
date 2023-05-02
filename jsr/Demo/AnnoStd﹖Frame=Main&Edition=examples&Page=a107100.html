@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107099&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$ORDER</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+<p>This function returns information about other defined information
+in a data-structure, based on the collating sequence in use for
+that data-structure.</p>
+<p>Assume that of global variable <tt>^A</tt> the following elements
+exist (see diagram):</p>
+<p><img alt="Order" src="../image/AnnoStd/order.gif"/></p>
+<p>The code <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ID=&ndash;1 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> K=1:1:25 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>
+ID=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(ID))</tt> will cause the following values to
+be assigned to the local variable <tt>ID</tt>:<br/>
+<tt>"2"</tt>, <tt>"3"</tt>, <tt>"4"</tt>, <tt>"34"</tt>, <tt>"&ndash;5A"</tt>,
+<tt>"5A"</tt>, <tt>"A"</tt>, <tt>"AB"</tt>,
+<tt>"AD"</tt>, <tt>"B"</tt>, <tt>""</tt>, <tt>"&ndash;34"</tt>, <tt>"&ndash;4"</tt>,
+<tt>"&ndash;3"</tt>, <tt>"&ndash;2"</tt>, <tt>"2"</tt>,
+<tt>"3"</tt>, <tt>"4"</tt>, <tt>"34"</tt>, <tt>"&ndash;5A"</tt>,
+<tt>"5A"</tt>, <tt>"A"</tt>, <tt>"AB"</tt>, <tt>"AD"</tt> and
+<tt>"B"</tt>.</p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(&ndash;34))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>&ndash;4</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(34))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"&ndash;5A"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A("B"))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,1))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>2</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10,""))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>3</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10,3))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(&ndash;2))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>2</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A("&ndash;5A"))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"5A"</tt></td></tr>
+</table>
+<p>Assume that a database contains a set of customer records,
+organized by name of customers</p>
+<p><tt>^Demog("AlphaName","BAKER")=988<br/>
+^Demog("AlphaName","HUSKINS")=12345<br/>
+^Demog("AlphaName","ROSSMAN")=123<br/>
+^Demog("AlphaName","SHIMPACH")=345<br/>
+^Demog("AlphaName","SOUTHERN")=876<br/>
+^Demog("AlphaName","XANDER")=1098</tt></p>
+<p>In order to process only a specific sub-range of that data-set,
+code like the following segment could be considered:</p>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Enter first letter(s): " <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> start<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> name=start,done=0,index="AlphaName"<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:done<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107086.html#Def_0002">$Data</a>(^Demog(index,name))<br/>
+ . . ; Process one customer<br/>
+ . . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> name=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^Demog(index,name))<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(name,1,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(start)'=start done=1<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>Of course, it is always possible that there are multiple customers
+with the same name, in which case it would make sense to organize
+the data as:</p>
+<p><tt>^Demog("AlphaName","BAKER",988)=""<br/>
+^Demog("AlphaName","HUSKINS",12345)=""<br/>
+^Demog("AlphaName","HUSKINS",12399)=""<br/>
+^Demog("AlphaName","ROSSMAN",123)=""<br/>
+^Demog("AlphaName","SHIMPACH",345)=""<br/>
+^Demog("AlphaName","SOUTHERN",876)=""<br/>
+^Demog("AlphaName","XANDER",106)=""<br/>
+^Demog("AlphaName","XANDER",1098)=""</tt></p>
+<p>Note that in this structure all information is in the
+subscripts, and that the data-value, equal to empty strings
+for all elements, is really irrelevant.</p>
+<p>To process a sub-set, code like the following segment
+could be used:</p>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Enter first letter(s): " <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> start<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> name=start,done=0,index="AlphaName"<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:done<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> cust="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:cust=""<br/>
+ . . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> cust=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^Demog(index,name,cust))<br/>
+ . . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:cust=""<br/>
+ . . ; Process one customer<br/>
+ . . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> name=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^Demog(index,name))<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(name,1,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(start)'=start done=1<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard (reverse
+traversal):</p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,1),1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>2</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10),1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10,""),1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>3</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10,3),1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,1),&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>""</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10),&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>2</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(3,10,""),&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>3</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^A(""),&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"B"</tt></td></tr>
+</table>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(GLVN)<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^(3,4)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(^(5,6))</tt><br/>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br/>
+; 2. store ^(3,4) = <tt>^ABC(1,5,3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,5,3,</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 15:55:44.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107100%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

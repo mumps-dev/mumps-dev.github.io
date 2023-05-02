@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301002&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a300001&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>X3.64 Binding</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301003&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<h2>1 The binding</h2>
+<p>ANSI X3.64 is accessed from the M language by making use of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108043.html#Def_0008"><u>mnemonicspace</u></a>s. A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a> from X3.64 may be
+accessed as follows:</p>
+<p>/<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a> [ ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107001.html#Def_0001"><u>expr</u></a> [, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107001.html#Def_0001"><u>expr</u></a> ]
+... ) ]</p>
+<p> where the relevant <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a> equalling the
+generic function and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107001.html#Def_0001"><u>expr</u></a>s the possible applicable
+parameters. The use of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a> produces the
+effect defined in ANSI X3.64 for the control-function with the
+same name as the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a> specified.</p>
+<p>Some <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a>s return a value, or a collection
+of values. It is perfectly legal to issue these
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a>s with either a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108045.html#Def_0003">Read</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0003">Write</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a>. If a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108045.html#Def_0003">Read</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a> is used, the
+argument list in the statement(s) must be ordered to correctly
+accept the returned values. If a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0003">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a> is
+used the values returned may be read by a single, or series of,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108045.html#Def_0003">Read</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a>s. These <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108045.html#Def_0003">Read</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108001.html#Def_0002"><u>command</u></a>s
+must be correctly ordered to match the returned values, however
+there may be intermediate calculations utilizing some of the
+returned values before reading the remaining values in the list.
+Reading the return list of values may be terminated without error
+by issuing another <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a>. In this case, all
+returned values not assigned to a variable will be lost to the
+application program.</p>
+<p>All <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a>s have the same name in M as in
+X3.64.</p>
+<p>Unless explicitly mentioned, the use of X3.64
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108056.html#Def_0007"><u>controlmnemonic</u></a>s has no side-effects on special variables
+such as <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107077.html#Def_0002">$X</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107078.html#Def_0002">$Y</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107066.html#Def_0003">$Key</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107058.html#Def_0005">$Device</a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301002&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 27-Feb-2004, 23:49:26.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da301002%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

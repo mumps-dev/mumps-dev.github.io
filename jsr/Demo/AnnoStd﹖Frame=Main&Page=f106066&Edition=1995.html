@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106066&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106065&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - SIZE</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106067&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>6.4.30 SIZE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a></h3>
+<table>
+<tr><td valign="top"><b>Definition</b></td>
+<td valign="top"><p>SIZE specifies the size of the gadget,
+expressed in the unit of measure defined by the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0001"><u>unitspec</u></a>
+component of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a> value, if present, and by the
+gadget's UNITS <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> otherwise.</p>
+<p>If the unit of measure is not CHAR and a gadget is
+rectangular, SIZE specifies the overall size of the gadget. If
+the unit of measure is not CHAR and a gadget is not rectangular,
+SIZE specifies the size of the smallest rectangle that can bound
+the gadget.</p>
+<p>If the unit of measure is CHAR, the basis font is the font
+specified by the gadget's FFACE, FSIZE and FSTYLE
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a>s. For a check box, document, label, list box,
+list button, list entry box, long list box, push button, radio
+button set, or text gadget, if the unit of measure is CHAR, the
+gadget is large enough to accommodate <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a> lines of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a> characters each using the basis font; the overall
+size of the gadget may be larger. For other gadget types, a unit
+of measure of CHAR specifies the overall size of the gadget.</p>
+<p>If the unit of measure is REL, the basis size is the size of
+the parent's window viewport when the parent is created.</p>
+<p>For a group frame, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a> values
+greater than 0 (zero) produce a rectangle; an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a> value
+of 0 (zero) produces a vertical line; a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a> value of 0
+(zero) produces a horizontal line. If an application attempts to
+assign to the SIZE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> of a group frame a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a> value for which <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a> are
+both 0 (zero), an error condition occurs with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107059.html#Def_0006">$ECODE</a> containing
+",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f111003.html#Def_0012">M?2</a>," and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f111002.html#Def_0001">$EREF</a> containing a value that indicates the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a> reference for which the error occurred.</p>
+<p>For a generic box or group frame gadget, if a value is not
+assigned to the SIZE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> when the gadget is
+created, an error condition occurs with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107059.html#Def_0006">$ECODE</a> containing ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f111003.html#Def_0017">M?7</a>",
+and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f111002.html#Def_0001">$EREF</a> containing a value that indicates the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a>
+reference for which the error occurred.</p>
+<p>Whenever a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a> value specifies the overall size of a
+gadget, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a> includes the gadget's border, if any. For
+a check box, label or push button gadget, the overall size of a
+gadget includes the gadget's title, if any. For a document, list
+box, list button, list entry box, long list box, radio button set
+or text gadget, the overall size of a gadget excludes the
+gadget's title, if any. For a group frame, the overall size of a
+gadget may exclude the gadget's title, if any.</p>
+<p>For a list button, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a> includes the size of the button
+and the list. The actual height of the list button gadget may be
+whatever is required to contain the choices and some platforms
+may not allow the list to be scrolled.</p>
+<p>Assigning a value to the SIZE <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> for a gadget
+does not imply any automatic scaling of the gadget's contents.</p>
+<p>When an application assigns a value to the SIZE
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> of an existing gadget, if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a> is not specified then the horizontal or vertical
+size of the gadget, respectively, is not altered.</p></td></tr>
+<tr><td valign="top"><b>Domain</b></td>
+<td valign="top"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0007"><u>size</u></a></td></tr>
+<tr><td valign="top"><b>Access</b></td>
+<td valign="top">Create, Modify, Reference</td></tr>
+<tr><td valign="top"><b>Default</b></td>
+<td valign="top">For a check box, document, symbol, label, list
+box, list button, list entry box, long list box, push button,
+radio button set, scroll , or text element, if <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0008"><u>hsize</u></a>,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f103012.html#Def_0009"><u>vsize</u></a>, or both are not specified when a gadget is created,
+the default for each unspecified value is platform.</td></tr>
+</table>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106066&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 29-Nov-2011, 19:03:11.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df106066%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202008&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Number of Subscripts</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202010&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>2.4.2 Number of subscripts</h3>
+<p>The number of subscripts in a global variable is limited in
+that, in a global array reference, the total length of the array
+reference must not exceed the maximum string length (see 2.8).
+The length of an array reference is calculated as follows:</p>
+<p>assuming an array reference in the form:</p>
+<p><tt>^|<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0004"><u>environment</u></a>|<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0003"><u>name</u></a>(i<sub>1</sub>,i<sub>2</sub>,
+... ,i<sub>n</sub>)</tt><br/>
+&nbsp;&nbsp;&nbsp;<tt>E = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0001">$L</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0004"><u>environment</u></a>)</tt><br/>
+&nbsp;&nbsp;&nbsp;<tt>N = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0001">$L</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a106002.html#Def_0003"><u>name</u></a>)</tt><br/>
+&nbsp;&nbsp;&nbsp;<tt>I = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0001">$L</a>(i<sub>1</sub>) + <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0001">$L</a>(i<sub>2</sub>) + ... +
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0001">$L</a>(i<sub>n</sub>)</tt></p>
+<p>where each subscript (i<sub>1</sub> through
+i<sub>n</sub>) is either a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107049.html#Def_0001"><u>numlit</u></a> or a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107081.html#Def_0002"><u>sublit</u></a></p>
+<p>&nbsp;&nbsp;&nbsp;<tt>L = n</tt></p>
+<p>then the total length of an array reference is</p>
+<p>&nbsp;&nbsp;&nbsp;<tt>E + 3 + N + I + ( 2 * L ) + 15</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:03:46.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da202009%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108016&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108015&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Accessing a Service</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108017&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>8.1.8.1 Accessing a service</h3>
+<p>A <i>service</i> is identified by a name, called a
+<a href="#Def_0001"><u>servicename</u></a>.</p>
+<a name="Def_0001"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0001"><u>servicename</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>A <i>service</i> is accessed explicitly by means of an
+<a href="#Def_0002"><u>owservice</u></a> (object with service):</p>
+<a name="Def_0002"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0002"><u>owservice</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="#Def_0003"><u>owmethod</u></a><br/>
+<a href="#Def_0004"><u>owproperty</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<a name="Def_0003"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0003"><u>owmethod</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0005"><u>object</u></a> . <u>service</u></td>
+</tr></table>
+<a name="Def_0004"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0004"><u>owproperty</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0005"><u>object</u></a> . [ <a href="#Def_0006"><u>fservice</u></a> ]</td>
+</tr></table>
+<a name="Def_0005"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0005"><u>object</u></a></td><td align="center">::=</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0002"><u>V</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107005.html#Def_0001"><u>oref</u></a></td>
+</tr></table>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>fservice</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0001"><u>servicename</u></a> [ <a href="#Def_0007"><u>namedactuallist</u></a> ]</td>
+</tr></table>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>namedactuallist</u></a></td><td align="center">::=</td>
+<td align="center">(</td>
+<td align="center">&#9484;<br/>&#9474;<br/>&#9492;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0001"><u>L</u></a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108014.html#Def_0002"><u>actual</u></a> [ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0001"><u>L</u></a> <a href="#Def_0008"><u>namedactual</u></a> ]<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a105001.html#Def_0001"><u>L</u></a> <a href="#Def_0008"><u>namedactual</u></a></td>
+<td align="center">&#9488;<br/>&#9474;<br/>&#9496;</td>
+<td align="center">)</td>
+</tr></table>
+<a name="Def_0008"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0008"><u>namedactual</u></a></td><td align="center">::=</td>
+<td align="center"><a href="#Def_0009"><u>actualkeyword</u></a> := <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108014.html#Def_0002"><u>actual</u></a></td>
+</tr></table>
+<a name="Def_0009"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0009"><u>actualkeyword</u></a></td><td align="center">::=</td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+<td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a><br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a></td>
+<td align="center">&#9474;<br/>&#9474;<br/>&#9474;</td>
+</tr></table>
+<p>The <a href="#Def_0005"><u>object</u></a> specifies an <i>object</i>, and the
+<a href="#Def_0006"><u>fservice</u></a> specifies the <i>service</i> to be requested of
+that <i>object</i>.</p>
+<p>If an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> is used in a context where an
+<a href="#Def_0005"><u>object</u></a> is expected, and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> does not
+return a value of the data type OREF, an error condition will
+occur with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00108.html#Def_0001">M108</a>" (Not an Object).</p>
+<p>If, in the context of an <a href="#Def_0003"><u>owmethod</u></a> or an
+<a href="#Def_0004"><u>owproperty</u></a>, an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107002.html#Def_0001"><u>expratom</u></a> returns a value of data
+type OREF that refers to an <i>object</i> that is not currently
+accessible, an error condition will occur with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> =
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00105.html#Def_0001">M105</a>" (Inaccessible Object).</p>
+<p>If an <a href="#Def_0006"><u>fservice</u></a> fails to specify a <i>service</i>
+provided by the <i>object</i>, or that <i>service</i> does not
+support the context of the access, an error condition will occur
+with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00106.html#Def_0001">M106</a>" (Invalid Service). In the case
+of a <i>property</i>, if no <a href="#Def_0006"><u>fservice</u></a> is specified, the
+value of the default <i>property</i>, if any, for the
+<i>object</i> is used. If there is no default <i>property</i>, an
+error condition will occur with <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> = "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ab00107.html#Def_0001">M107</a>" (No
+Default Value).</p>
+<p>A <a href="#Def_0007"><u>namedactuallist</u></a> may contain positional parameters and
+named parameters. An <a href="#Def_0009"><u>actualkeyword</u></a> specifies the name of
+the parameter in the <i>service</i> being accessed that will
+receive the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108014.html#Def_0002"><u>actual</u></a>. An <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108014.html#Def_0002"><u>actual</u></a> without an
+<a href="#Def_0009"><u>actualkeyword</u></a> is a positional parameter.</p>
+<p>Note: names of <i>services</i> and parameters that do not
+conform to the syntax of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> can be used with external
+<i>objects</i>. In these cases, the name of the <i>service</i> or
+parameter must be represented as a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a>, i.e., such
+names must be enclosed in quotation marks, and any quotation
+marks within the name must be spelled twice. A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107048.html#Def_0001"><u>strlit</u></a> that
+evaluates to a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> is equivalent to that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> when
+used as a <a href="#Def_0001"><u>servicename</u></a> or an <a href="#Def_0009"><u>actualkeyword</u></a>.</p>
+<p>Upon completion of a <i>service</i>, the values of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> will be restored to their
+respective values prior to execution of the <i>service</i>.</p>
+<p>The meaning of invoking an <i>object</i>'s <i>services</i>,
+either implicitly or explicitly, when the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107075.html#Def_0002">$TLevel</a>
+is greater than 0 is reserved.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108016&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:33:04.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108016%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

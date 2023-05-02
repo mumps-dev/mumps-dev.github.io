@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105001&amp;Edition=1984.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Basic Alphabet</h2><h3>1984 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001&amp;Edition=1984.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<h3>3. Static Syntax<br/>
+3.1 Basic Alphabet</h3>
+<p>The routine, which is the object whose static syntax is being
+described in Section 3, is a string made up of the following 98
+symbols.</p>
+<ul>
+<li>The 95 ASCII printable characters, including SP (space)</li>
+<li>The line-start symbol <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0007"><u>ls</u></a></li>
+<li>The end-of-line symbol <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a></li>
+<li>The end-of-routine symbol <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0010"><u>eor</u></a></li>
+</ul>
+<p>In program interchange, the following ASCII characters are
+used in place of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0007"><u>ls</u></a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a>, and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0010"><u>eor</u></a>.</p>
+<ul>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0007"><u>ls</u></a>: SP <br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a>: CR LF <br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0010"><u>eor</u></a>: CR FF</li>
+</ul>
+<p>When a program is stored internally, the standard does not
+specify what forms <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0007"><u>ls</u></a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a>, and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0010"><u>eor</u></a> take.
+They may, in fact, be expressed by means other than characters in
+the program. When a program is entered from a keyboard, the
+standard does not specify what operator procedures correspond to
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0007"><u>ls</u></a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0009"><u>eol</u></a>, or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a106001.html#Def_0010"><u>eor</u></a>.</p>
+<p>The syntactic types <a href="#Def_0005"><u>graphic</u></a>, <a href="#Def_0006"><u>alpha</u></a>, and
+<a href="#Def_0007"><u>digit</u></a> are defined here informally in order to save space.</p>
+<a name="Def_0005"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0005"><u>graphic</u></a></td><td align="center">::=</td>
+<td align="left">any of the class of 95 ASCII printable characters,
+including SP (space), represented by <img alt="Space" align="middle" src="../image/AnnoStd/space.gif"/> or SP.</td>
+</tr></table>
+<a name="Def_0006"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0006"><u>alpha</u></a></td><td align="center">::=</td>
+<td align="left">any of the class of 52 upper and lower case
+letters: A-Z, a-z.</td>
+</tr></table>
+<a name="Def_0007"></a>
+<table><tr><td align="center">&nbsp;&nbsp;&nbsp;</td>
+<td align="center"><a href="#Def_0007"><u>digit</u></a></td><td align="center">::=</td>
+<td align="left">any of the class of 10 digits: 0&ndash;9.</td>
+</tr></table>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 08:19:31.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da105002%2fEdition%3d1984%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

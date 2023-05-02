@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b103001&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OMI and MUMPS</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104002&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>4 General description<br/>
+4.1 OMI and MUMPS</h3>
+<p>ANSI/MDC&nbsp;X11.1 defines the components of the MUMPS
+database and operations on them. OMI makes some of these
+operations, listed here, available over a network. The following
+references are to the formal definitions in ANSI/MDC&nbsp;X11.1;
+the additional text is for information only:</p>
+<ul>
+<li><i><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0004"><u>environment</u></a></i>: 7.1.2.4 identifies a specific set of all
+possible names &ndash; a name space. A particular name may appear
+only once in an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0004"><u>environment</u></a>. Typical implementations place
+an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0004"><u>environment</u></a> in a directory or a user class, and &ndash;
+with a network &ndash; on a node as well.</li>
+<li><i><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a></i>: 7.1.2.4 Global variables are persistent data
+records organized into trees. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> is the name of a global
+variable, for example:<br/>
+&nbsp;&nbsp;&nbsp;^INV(5321,&quot;Denver&quot;,&quot;qu&quot;)<br/>
+A global variable may optionally have a value, and it may
+optionally have descendants. A tree of global variables is
+informally called a &quot;global.&quot;</li>
+<li><i>naked reference</i>: 7.1.2.4 a shorthand form of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a>
+referring to the last-used <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a>.</li>
+<li><i><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a></i>: 8.2.12 The objects of database lock operations
+are organized into trees. Their names are similar to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a>s,
+but they relate to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a>s only by an application's
+convention. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s have no values.</li>
+<li><i>$Data</i>: 7.1.5.3 Function of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> indicates whether the
+variable it names has a value and whether it has descendants.</li>
+<li><i>$Get</i>: 7.1.5.7 Function of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> returns the value of
+the variable it names, or the empty string if the variable is not
+defined.</li>
+<li><i>$Job</i>: 7.1.4.10 An unsigned decimal integer
+uniquely identifies a process on a particular computer.</li>
+<li><i>Kill</i>: 8.2.11 deletes a global variable and its
+descendants.</li>
+<li><i>Lock+</i>: 8.2.12 claims exclusive use of an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a> or a
+list of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s. If the claim succeeds, other concurrent
+processes' claims on those <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s will not succeed.</li>
+<li><i>Lock-</i>: 8.2.12 releases a claim on an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a> or a list of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s.</li>
+<li><i>Merge</i>: 8.2.13 assigns the value of one variable to another
+and then assigns the values of all the first variable's
+descendants to corresponding descendants of the second
+variable.</li>
+<li><i>$Order</i>: 7.1.5.11 Function of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> returns the final
+subscript of the next <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> in a defined tree-walking
+order.</li>
+<li><i>$Query</i>: 7.1.5.15 Function of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> returns the next
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107011.html#Def_0001"><u>gvn</u></a> in a defined tree-walking order.</li>
+<li><i>Set</i>: 8.2.18 creates a global variable and assigns it a
+value.</li>
+<li><i>Set $Extract</i>: 8.2.18 creates a global variable and modifies
+its value by assigning a range of its character positions.</li>
+<li><i>Set $Piece</i>: 8.2.18 creates a global variable and modifies its
+value by assigning one or more of its pieces.</li>
+</ul>
+<p>B.6 (of this International Standard, not X11.1) suggests how
+implementations may combine these basic operations to achieve
+more complex MUMPS operations.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104001&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 15:40:37.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3db104001%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

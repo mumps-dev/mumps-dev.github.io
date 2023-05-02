@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105004&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105003&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>OMI - Request Header</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105005&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>5.3.1 Request header</h3>
+<p>Each request shall contain a header that, among other things,
+identifies the user. Inclusion of this information permits
+transactions to be isolated (see 4.3.3). Without it the server
+would have to track users and their authorizations across
+transactions.</p>
+<p>The request header is a short string &lt;SS&gt; so that the
+server can locate the field following the header regardless of the length of
+the header.</p>
+<p><b>Note</b> &ndash; The request header has fixed length, but future versions
+of OMI may specify different lengths. Servers and agents need to find the
+version numbers following the header in connect messages, regardless of the
+version in use (see 4.8).</p>
+<p>The fields of the request header and their sequence shall
+be:</p>
+<ol type="a">
+<li><i>Operation class</i>: &lt;LI&gt; denotes 1 of 65&nbsp;536
+classes of operations. The MUMPS Development Committee assigns
+classes to OMI versions and to specific extensions of the
+standard (see 4.11). The class of operations specified by
+ANSI/MDC&nbsp;X11.2 shall be 1. All other classes are reserved
+for assignment by the MUMPS Development Committee.</li>
+<li><i>Operation type</i>: &lt;SI&gt; denotes a specific
+operation within an operation class. For example, <i>set</i> and
+<i>kill</i> are operation types
+10 and 13.</li>
+<li><i>User identifier</i>: &lt;LI&gt; identifies a user for
+security purposes. See 4.5.</li>
+<li><i>Group identifier</i>: &lt;LI&gt; identifies a group of
+users for security purposes. See 4.5.</li>
+<li><i>Sequence number</i>: &lt;LI&gt; This sequential number
+starts at 1 and increments by 1 to 65&nbsp;535, then continues
+with 1. The server may use this number to verify that requests
+are received and processed in the correct order. The agent may
+choose any valid starting sequence number for a <i>connect</i>
+request, causing the server to synchronize at that sequence
+number.</li>
+<li><i>Request identifier</i>: &lt;LI&gt; links responses to
+requests. The content of this field is left to the implementer,
+except that the server must return the value from each request in
+the corresponding response.</li>
+</ol>
+<p>Table 1 shows the OMI operations and the values assigned to
+their operation types. These operations suffice for the database
+functions of ANSI/MDC&nbsp;X11.1. The <i>unlock client</i> and
+<i>unlock all</i> operations provide additional convenience for
+implementers.</p>
+<p>Control operations establish and maintain the OMI session.
+They do not relate to application-level processes.</p>
+<p>The global update and fetch operations perform assignment and
+retrieval of global variables and their values. They correspond
+directly to application-level database operations.</p>
+<p>Lock operations claim and release exclusive use of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a108040.html#Def_0005"><u>nref</u></a>s, which correspond to database records by application
+program conventions.</p>
+<table align="center" cellspacing="0" cellpadding="2">
+<tr><td colspan="7" bgcolor="#3c66ac" align="center">&lt;SS&gt;</td></tr>
+<tr><td align="center" bgcolor="#3c66ac">&lt;SI&gt;</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>Class</td>
+<td align="center" bgcolor="#3c56ac">&lt;SI&gt;<br/>Type</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>User</td>
+<td align="center" bgcolor="#3c56ac">&lt;LI&gt;<br/>Group</td>
+<td align="center" bgcolor="#3c46ac">&lt;LI&gt;<br/>Sequence</td>
+<td align="center" bgcolor="#3c56ac">&lt;LI&gt;<br/>Req ID</td>
+</tr></table>
+<p align="center"><b>Figure 2 &ndash; Form of a request header</b></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105004&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 13:16:37.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3db105004%2fEdition%3d%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

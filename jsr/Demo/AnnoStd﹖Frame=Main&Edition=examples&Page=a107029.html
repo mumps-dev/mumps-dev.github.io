@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107027&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>^$JOB</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107036&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This structured system variable provides information about the
+processes that are currently known to the M[UMPS] system.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Currently active jobs:"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Job"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?12,"Character set"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?30,"Global Environment"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?50,"LOCK Environment"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?70,"Routine Environment"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> J=""
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> J=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(J))
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:J=""&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,J<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?12,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(J,"CHARACTER"))<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?30,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(J,"GLOBAL"))<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?50,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(J,"LOCK"))<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> ?70,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(J,"ROUTINE"))<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>The routine</p>
+<pre>
+GSIZE(ENV,NAME) ;
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> OLDENV,REF,SIZE
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> OLDENV=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,"GLOBAL")
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,"GLOBAL")=ENV
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> REF="^"_NAME,SIZE=0
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> REF=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(@REF) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:REF=""
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SIZE=SIZE+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(REF)+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(@REF))
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,"GLOBAL")=OLDENV
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a> SIZE
+</pre>
+<p>would compute the size of a global variable in an arbitrary environment.</p>
+<p>Approved for addition in a future M[UMPS] language standard.</p>
+<p>If your implementation has granted you the privilege to do so,
+you may be able to remove a job from the system by executing the
+command<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(number)</tt></p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"$PRINCIPAL")</tt> and <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"$IO")</tt>
+show the principal and current devices for the various processes.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"OPEN",device)</tt> provides a list of devices that
+are open for a given process.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"DEVICE")</tt> specifies the default environment
+in which the process can <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> devices.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"LIBRARY",sequence)=library</tt> specifies
+the set of libraries that is currently available to a job, and
+the order in which these libraries are searched for 
+entry-points.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"USER")</tt> is intended to contain an
+implementation-specific value that identifies the current user.
+At the start of a M[UMPS] process, the implementation may or may
+not provide an initial value. When this variable has no defined
+value, a M[UMPS] process may define a value for it; once this
+variable has a defined value; no M[UMPS] process may modify this
+value.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"GROUP")</tt> is intended to contain an
+implementation-specific value that identifies the group of which
+the current user is a member. At the start of a M[UMPS] process,
+the implementation may or may not provide an initial value. When
+this variable has no defined value, a M[UMPS] process may define
+a value for it; once this variable has a defined value; no
+M[UMPS] process may modify this value.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(job,"VAR",name)</tt> may be used to access
+the local symbol table of a process.
+The following code could be used to capture the state of a
+process in an error handler:</p>
+<pre>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> +^ERROR("NEW")
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> (^ERROR,%error)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(^ERROR)+1
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108040.html#Def_0003">Lock</a> -^ERROR("NEW")
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0002">Merge</a> ^ERROR(%error)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,"VAR")
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^ERROR(%error,"%error") ; only variable used
+</pre>
+<p>Approved for addition in a future M[UMPS] Windowing Application
+Programmer's Interface standard.</p>
+<p>The ability to process events in an asynchronous fashion is
+introduced. The commands <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0002">ABlock</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108021.html#Def_0002">ASTArt</a>,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108022.html#Def_0002">ASTOp</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108023.html#Def_0002">AUnblock</a> allow for starting and stopping
+recognition of certain events. The structured system variable
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a> is used to register the entry point this is intended
+to be started when a certain event occurs. Nodes in
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107025.html#Def_0002">^$Event</a> are used to specify other specific behavior of the
+various events.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,<b>"EVENT"</b>,eventclass,eventid)=entryref</tt>
+identifies the events that are enabled for event processing.
+Possible values for <tt>eventclass</tt> are explained with the command
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0002">ABlock</a>. Possible values of <tt>eventid</tt> depend on the event 
+class.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,<b>"EVENT"</b>,eventclass,eventid,<b>"MODE"</b>)</tt>
+may have one of three possible values: <tt>"DISABLED"</tt>,
+<tt>"SYNCHRONOUS"</tt> or <tt>"ASYNCHRONOUS"</tt>.
+The value of this node identifies the processing mode for the
+specified event and the specified process.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107029.html#Def_0002">^$Job</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107065.html#Def_0002">$Job</a>,<b>"EVENT"</b>,eventclass,eventid,<b>"BLOCKS"</b>)</tt>
+has an integer value. This value is either zero or a positive
+integer number. When this value is non-zero, it indicates the
+number of blocks (see the commands <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108019.html#Def_0002">ABlock</a> and 
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108023.html#Def_0002">AUnblock</a>) that have been issued for the event.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 10:38:44.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107029%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

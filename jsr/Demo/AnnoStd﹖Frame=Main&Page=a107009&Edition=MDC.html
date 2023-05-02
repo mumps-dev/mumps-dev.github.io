@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107008&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>Local Variable Handling</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.1.2.2 Local variable handling</h3>
+<p>In general, the operation of the local variable symbol table
+can be viewed as follows. Prior to the initial setting of
+information into a variable, the data value of that variable is
+said to be undefined. Data is stored into a variable with
+commands such as <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108020.html#Def_0002">Assign</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>, Job,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0002">Merge</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108049.html#Def_0002">TCommit</a>,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108051.html#Def_0002">TREstart</a>, and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108052.html#Def_0002">TROllback</a>. Subsequent references to
+that variable return the data value that was most recently
+stored. When a variable is killed, as with the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a>
+command, that variable and all of its array descendants (if any)
+are deleted, and their data values become undefined.</p>
+<p>No explicit syntax is needed for a routine or subroutine to
+have access to the local variables of its caller. Except when the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> command or parameter passing is being used, a subroutine or
+called routine (the callee) has the same set of variable values
+as its caller and, upon completion of the called routine or
+subroutine, the caller resumes execution with the same set of
+variable values as the callee had at its completion.</p>
+<p>The <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> command provides scoping of local variables. It causes
+the current values of a specified set of variables to be saved.
+The variables are then set to undefined data values. Upon
+returning to the caller of the current routine or subroutine, the
+saved values, including any undefined states, are restored to
+those variables. Parameter passing, including the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> command,
+extrinsic functions, and extrinsic variables, allows parameters
+to be passed into a subroutine or routine without the callee
+being concerned with the variable names used by the caller for
+the data being passed or returned.</p>
+<p>The formal association of local variables with their values
+can best be described by a conceptual model. This model is NOT
+meant to imply an implementation technique for a M[UMPS]
+implementation.</p>
+<p>The value of a variable may be described by a relationship
+between two structures: the NAME-TABLE and the VALUE-TABLE. (In
+reality, at least two such table sets are required, one pair per
+executing process for process-specific local variables and one
+pair for system-wide global variables.) Since the value
+association process is the same for both types of variables, and
+since issues of scoping due to parameter passing or nested
+environments apply only to local variables, the discussion that
+follows will address only local variable value association. It
+should be noted, however, that while the overall structures of
+the table sets are the same, there are two major differences in
+the way the sets are used. First, the global variable tables are
+shared. This means that any operations on the global variable
+tables, e.g., <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a>, by one process, affect the tables for
+all processes. Second, since scoping issues of parameter passing
+and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> command are not applicable to global variables, there
+is always a one-to-one relationship between entries in the global
+NAME-TABLE (variable names) and entries in the global VALUE-TABLE
+(values).</p>
+<p>The NAME-TABLE consists of a set of entries, each of which
+contains a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> and a pointer. This pointer represents a
+correspondence between that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> and exactly one DATA-CELL
+from the VALUE-TABLE. The VALUE-TABLE consists of a set of
+DATA-CELLs, each of which contains zero or more tuples of varying
+degrees. The degree of a tuple is the number (possibly 0) of
+elements or subscripts in the tuple list. Each tuple present in
+the DATA-CELL has an associated data value.</p>
+<p>The NAME-TABLE entries contain every non-subscripted variable
+or array name (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a>) known, or accessible, by the process
+in the current environment. The VALUE-TABLE DATA-CELLs contain
+the set of tuples that represent all variables currently having
+data-values for the process. Every <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> (entry) in the
+NAME-TABLE refers (points) to exactly one DATA-CELL, and every
+entry contains a unique name. Several NAME-TABLE entries
+(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a>s) can refer to the same DATA-CELL, however, and thus
+there is a many-to-one relationship between (all) NAME-TABLE
+entries and DATA-CELLs. A <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> is said to be <i>bound</i>
+to its corresponding DATA-CELL through the pointer in the
+NAME-TABLE entry. Thus the pointer is used to represent the
+correspondence and the phrase <i>change the pointer</i> is the
+equivalent to saying <i>change the correspondence so that a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> now corresponds to a possible different DATA-CELL
+(value)</i>. NAME-TABLE entries are also placed in the
+PROCESS-STACK (see 7.1.2.3 Process-Stack).</p>
+<p>The value of an unsubscripted <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> corresponds to the
+tuple of degree 0 found in the DATA-CELL that is bound to the
+NAME-TABLE entry containing the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>.
+The value of a subscripted <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> (array node) of degree n
+also corresponds to a tuple in the DATA-CELL that is bound to the
+NAME-TABLE entry containing the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>.
+The specific tuple in that DATA-CELL is the tuple of degree n
+such that each subscript of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> has the same value as
+the corresponding element of the tuple. If the designated tuple
+doesn't exist in the DATA-CELL then the corresponding <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>
+is said to be <i>undefined</i>.</p>
+<p>In the following figure, the variables and array nodes have
+the designated data values.</p>
+<table><tr><td>&nbsp;&nbsp;&nbsp;</td>
+<td><i>VAR1</i> = "Hello"<br/>
+<i>VAR2</i> = 12.34<br/>
+<i>VAR3</i> = "abc"<br/>
+<i>VAR3</i>("Smith","John",1234)=123<br/>
+<i>VAR3</i>("Widget","red") = &ndash;56</td></tr></table>
+<p>Also, the variable <i>DEF</i> existed at one time but no
+longer has any data or array value, and the variable <i>XYZ</i>
+has been bound through parameter passing to the same data and
+array information as the variable <i>VAR2</i>.</p>
+<table align="center">
+<tr><td>NAME-TABLE</td><td>&nbsp;</td><td>VALUE-TABLE DATA-CELLS</td></tr>
+<tr><td align="right"><i>VAR1</i></td>
+<td align="center"><img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/></td>
+<td align="center"><table width="90%" border="2"><tr>
+<td>() = "Hello"</td></tr></table></td></tr>
+<tr><td align="right"><i>VAR2</i><br/><i>XYZ</i></td>
+<td align="center"><img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/></td>
+<td align="center"><table width="90%" border="2"><tr>
+<td>() = 12.34</td></tr></table></td></tr>
+<tr><td align="right"><i>VAR3</i></td>
+<td align="center"><img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/></td>
+<td align="center"><table width="90%" border="2"><tr>
+<td>() = "abc"<br/>
+("Smith","John",1234) = 123<br/>
+("Widget","red") = &ndash;56</td></tr></table></td></tr>
+<tr><td align="right"><i>DEF</i></td>
+<td align="center"><img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/></td>
+<td align="center"><table width="90%" border="2"><tr>
+<td>&nbsp;</td></tr></table></td></tr>
+</table>
+<p>The initial state of a process prior to execution of any
+M[UMPS] code consists of an empty NAME-TABLE and VALUE-TABLE.
+When information is to be stored (set, given, or assigned) into a
+variable (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>):</p>
+<ol type="a">
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> does not already appear
+in an entry in the NAME-TABLE, an entry is added to the
+NAME-TABLE which contains the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> and a pointer to a new
+(empty) DATA-CELL. The corresponding DATA-CELL is added to the
+VALUE-TABLE without any initial tuples.</li>
+<li>Otherwise, the pointer in the NAME-TABLE entry which
+contained the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is extracted. The
+operations in steps c and d refer to tuples in that DATA-CELL
+referred to by this pointer.</li>
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is unsubscripted, then the tuple of degree
+0 in the DATA-CELL has its data value replaced by the new data
+value. If that tuple did not already exist, it is created with
+the new data value.</li>
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is subscripted, then the tuple of
+subscripts in the DATA-CELL (i.e., the tuple created by dropping
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>; the degree of the tuple equals
+the number of subscripts) has its data value replaced by the new
+data value. If that tuple did not already exist, it is created
+with the new data value.</li>
+</ol>
+<p>When information is to be retrieved, if the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is not found in the NAME-TABLE, or if its
+corresponding DATA-CELL tuple does not exist, then the data value
+is said to be undefined. Otherwise, the data value exists and is
+retrieved. A data value of the empty string (a string of zero
+length) is not the same as an undefined data value.</p>
+<p>When a variable is deleted (killed):</p>
+<ol type="a">
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is not found in the
+NAME-TABLE, no further action is taken.</li>
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is unsubscripted, all of the tuples in the
+corresponding DATA-CELL are deleted.</li>
+<li>If the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a> is subscripted, let <i>N</i> be the degree
+of the subscript tuple formed by removing the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a> from
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>. All tuples that satisfy the following two
+conditions are deleted from the corresponding DATA-CELL:
+<ol type="1">
+<li>The degree of the tuple must be greater than or equal to
+<i>N</i>, and</li>
+<li>The first <i>N</i> descriptors of the tuple must equal the
+corresponding subscripts of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>.</li>
+</ol></li>
+</ol>
+<p>In this formal language model, even if all of the tuples in a
+DATA-CELL are deleted, neither the DATA-CELL nor the
+corresponding <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a106002.html#Def_0003"><u>name</u></a>s in the NAME-TABLE are ever deleted.
+Their continued existence is frequently required as a result of
+parameter passing and the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> command.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 15:17:34.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107009%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

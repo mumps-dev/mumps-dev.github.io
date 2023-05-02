@@ -1,0 +1,319 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Perquacky</title></head>
+
+<script type="text/javascript">
+var timerID = 0;
+var tStart  = null;
+var used = new Array (15);
+
+function UpdateTimer()
+ {
+  if (timerID)
+   {
+    clearTimeout (timerID);
+    clockID  = 0;
+   }
+  if (!tStart) tStart   = new Date();
+  var   tDate = new Date();
+  var   tDiff = tDate.getTime() - tStart.getTime();
+  var   strVal, strColor;
+  var   intMin, intSec, intTot, intBars, intLoop;
+  tDate.setTime (tDiff);
+  intMin = tDate.getMinutes();
+  strVal = "" + intMin;
+  if (intMin < 10) strVal = "0" + strVal;
+  document.Perquacky.theTime.value = strVal + ":"
+  intSec = tDate.getSeconds();
+  strVal = "" + intSec;
+  if (intSec < 10) strVal = "0" + strVal;
+  document.Perquacky.theTime.value = document.Perquacky.theTime.value + strVal;
+  intTot = (intMin * 60) + intSec;
+  intBars = intTot * 50 / 180;
+  if (intBars > 50) document.Perquacky.submit();
+  strColor = "#00ff00";
+  if (intBars > 40) strColor = "#ffff00";
+  if (intBars > 47) strColor = "#ff0000";
+  for (intLoop = 1; intLoop <= intBars; intLoop++)
+   {
+    strVal = "Bar_";
+    if (intLoop < 10) strVal = strVal + "0";
+    strVal = strVal + intLoop;
+    document.getElementById(strVal).style.backgroundColor = strColor;
+   }
+  
+  timerID = setTimeout ("UpdateTimer()", 1000);
+ }
+function Toggle()
+ {
+  if (document.Perquacky.theButton.value == "Start Clock")
+   {
+    var intN, inti;
+    var stri;
+    intN = src=document.Perquacky.HideDice.value;
+    for (inti = 1; inti <= intN; inti++)
+     {
+      stri = "" + inti;
+      if (inti < 10) stri = "0" + stri;
+      document.getElementById("Dice_"+stri).src=document.getElementById("DiceHide_"+stri).value;
+     }
+    document.Perquacky.theButton.value = "Count Score";
+    Start();
+    document.getElementById("Long_Word").focus();
+    return false;
+   }
+  else
+   {
+    Stop();
+    document.Perquacky.submit();
+    return true;
+   }
+ }
+function Start()
+ {
+  tStart   = new Date();
+  document.Perquacky.theTime.value = "00:00";
+  timerID  = setTimeout ("UpdateTimer()", 1000);
+ }
+function Stop()
+ {
+  if (timerID)
+   {
+    clearTimeout (timerID);
+    timerID  = 0;
+   }
+  tStart = null;
+ }
+function Reset()
+ {
+  tStart = null;
+  document.Perquacky.theTime.value = "00:00";
+ }
+function split(words)
+ {
+  var count;
+  var lgth;
+  var nam;
+  var ii;
+  var letter;
+  var word;
+  var minim;
+  minim = 3;
+  if (document.getElementById('Word_1_3') == null) minim = 4;
+  for (lgth = minim; lgth < 11; lgth++)
+   {
+    used [lgth] = 0;
+    for (count = 1; count < 6; count++)
+     {
+      nam = 'Word_' + count + '_' + lgth;
+      document.getElementById(nam).value = '';
+     }
+   }
+  word = '';
+  for (ii = 0; ii < words.length; ii++)
+   {
+    letter = words.charCodeAt(ii);
+    if ((letter > 64) && (letter < 91))
+     {
+      letter += 32;
+     }
+    if ((letter > 96) && (letter < 123))
+     {
+      word = word + String.fromCharCode (letter);
+     }
+    else
+     {
+      showWord (word, minim);
+      word = '';
+     }
+   }
+  showWord (word, minim);
+ }
+function showWord (word, minim)
+ {
+  var nam;
+  if ((word.length >= minim) && (word.length < 11))
+   {
+    used [word.length] ++;
+    if (used [word.length] < 6)
+     {
+      nam = 'Word_' + used [word.length] + '_' + word.length;
+      document.getElementById(nam).value=word;
+     }
+   }
+ }
+</script>
+
+<body bgcolor=#4c76ac text=#ecd264 link=#fcf274 vlink=#ecd264 onload="Reset();Stop();" onunload="Stop();">
+
+<form name="Perquacky" action="Perquacky.html" method="post">
+<input type="hidden" name="Game" value=670>
+<table cellspacing=0 width=100% border=0>
+<tr>
+<td bgcolor=#4c76ac>&nbsp;&nbsp;<a href="http://www.jacquardsystems.com"><img border=0 src="../image/jsr2.gif"></a></td>
+<td valign=bottom bgcolor=#4c76ac>
+<h1><font color=#ecd264 face=Arial>Perquacky</font></h1></td>
+</tr>
+</table>
+
+<table><tr><td valign="top">
+<table><tr><td valign="top" align="center">
+</td></tr></table><p>Score this round: 0.</p></td>
+<td valign="top"><table border=2><tr><td colspan=3 align="center"><b>Highest scores</b></td></tr>
+<tr><td align="center"><b>#</b></td>
+<td align="center"><b>Per Round</b></td>
+<td align="center"><b>Total</b></td></tr>
+<tr><td align="right">1</td>
+<td>Ed: 7600</td><td>Ed: 12150</td></tr><tr><td align="right">2</td>
+<td>Ed: 7400 (2 times)</td><td>Ed: 11100</td></tr><tr><td align="right">3</td>
+<td>Ed: 6900</td><td>Ed: 10900</td></tr><tr><td align="right">4</td>
+<td>Ed: 6200 (7 times)</td><td>Ed: 10850</td></tr><tr><td align="right">5</td>
+<td>Ed: 5950</td><td>Ed: 10600</td></tr><tr><td align="right">6</td>
+<td>Ed: 5900</td><td>Ed: 10000</td></tr><tr><td align="right">7</td>
+<td>Ed: 5500</td><td>Ed: 9850</td></tr><tr><td align="right">8</td>
+<td>Ed: 5400 (3 times)</td><td>Ed: 9370</td></tr><tr><td align="right">9</td>
+<td>Ed: 5300 (2 times)</td><td>Ed: 9200</td></tr><tr><td align="right">10</td>
+<td>Ed: 5200 (2 times)</td><td>Ed: 9070</td></tr></table></td></tr></table>
+<input type="hidden" name="HideDice" value=10>
+<p><input type="hidden" name="HideDice_01" id="DiceHide_01" value="/image/Perquacky/dicebo.gif">
+<img id="Dice_01" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_02" id="DiceHide_02" value="/image/Perquacky/dicebf.gif">
+<img id="Dice_02" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_03" id="DiceHide_03" value="/image/Perquacky/dicebr.gif">
+<img id="Dice_03" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_04" id="DiceHide_04" value="/image/Perquacky/dicebb.gif">
+<img id="Dice_04" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_05" id="DiceHide_05" value="/image/Perquacky/diceba.gif">
+<img id="Dice_05" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_06" id="DiceHide_06" value="/image/Perquacky/dicebh.gif">
+<img id="Dice_06" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_07" id="DiceHide_07" value="/image/Perquacky/dicebe.gif">
+<img id="Dice_07" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_08" id="DiceHide_08" value="/image/Perquacky/dicebe.gif">
+<img id="Dice_08" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_09" id="DiceHide_09" value="/image/Perquacky/dicebw.gif">
+<img id="Dice_09" src="../image/Perquacky/dice.gif">
+<input type="hidden" name="HideDice_10" id="DiceHide_10" value="/image/Perquacky/dicebi.gif">
+<img id="Dice_10" src="../image/Perquacky/dice.gif"></p>
+<input type=hidden name="Letters" value="ofrbaheewi">
+<p><b>Player</b>: &nbsp; <input name="Player" type="text" value=""></p>
+<table>
+<tr>
+<td align="center"><b>3</b></td>
+<td align="center"><b>4</b></td>
+<td align="center"><b>5</b></td>
+<td align="center"><b>6</b></td>
+<td align="center"><b>7</b></td>
+<td align="center"><b>8</b></td>
+<td align="center"><b>9</b></td>
+<td align="center"><b>10</b></td>
+</tr>
+<tr>
+<td align="center"><input type="text" id="Word_1_3" readonly name="Word_1_3" size=3></td>
+<td align="center"><input type="text" id="Word_1_4" readonly name="Word_1_4" size=4></td>
+<td align="center"><input type="text" id="Word_1_5" readonly name="Word_1_5" size=5></td>
+<td align="center"><input type="text" id="Word_1_6" readonly name="Word_1_6" size=6></td>
+<td align="center"><input type="text" id="Word_1_7" readonly name="Word_1_7" size=7></td>
+<td align="center"><input type="text" id="Word_1_8" readonly name="Word_1_8" size=8></td>
+<td align="center"><input type="text" id="Word_1_9" readonly name="Word_1_9" size=9></td>
+<td align="center"><input type="text" id="Word_1_10" readonly name="Word_1_10" size=10></td>
+</tr>
+<tr>
+<td align="center"><input type="text" id="Word_2_3" readonly name="Word_2_3" size=3></td>
+<td align="center"><input type="text" id="Word_2_4" readonly name="Word_2_4" size=4></td>
+<td align="center"><input type="text" id="Word_2_5" readonly name="Word_2_5" size=5></td>
+<td align="center"><input type="text" id="Word_2_6" readonly name="Word_2_6" size=6></td>
+<td align="center"><input type="text" id="Word_2_7" readonly name="Word_2_7" size=7></td>
+<td align="center"><input type="text" id="Word_2_8" readonly name="Word_2_8" size=8></td>
+<td align="center"><input type="text" id="Word_2_9" readonly name="Word_2_9" size=9></td>
+<td align="center"><input type="text" id="Word_2_10" readonly name="Word_2_10" size=10></td>
+</tr>
+<tr>
+<td align="center"><input type="text" id="Word_3_3" readonly name="Word_3_3" size=3></td>
+<td align="center"><input type="text" id="Word_3_4" readonly name="Word_3_4" size=4></td>
+<td align="center"><input type="text" id="Word_3_5" readonly name="Word_3_5" size=5></td>
+<td align="center"><input type="text" id="Word_3_6" readonly name="Word_3_6" size=6></td>
+<td align="center"><input type="text" id="Word_3_7" readonly name="Word_3_7" size=7></td>
+<td align="center"><input type="text" id="Word_3_8" readonly name="Word_3_8" size=8></td>
+<td align="center"><input type="text" id="Word_3_9" readonly name="Word_3_9" size=9></td>
+<td align="center"><input type="text" id="Word_3_10" readonly name="Word_3_10" size=10></td>
+</tr>
+<tr>
+<td align="center"><input type="text" id="Word_4_3" readonly name="Word_4_3" size=3></td>
+<td align="center"><input type="text" id="Word_4_4" readonly name="Word_4_4" size=4></td>
+<td align="center"><input type="text" id="Word_4_5" readonly name="Word_4_5" size=5></td>
+<td align="center"><input type="text" id="Word_4_6" readonly name="Word_4_6" size=6></td>
+<td align="center"><input type="text" id="Word_4_7" readonly name="Word_4_7" size=7></td>
+<td align="center"><input type="text" id="Word_4_8" readonly name="Word_4_8" size=8></td>
+<td align="center"><input type="text" id="Word_4_9" readonly name="Word_4_9" size=9></td>
+<td align="center"><input type="text" id="Word_4_10" readonly name="Word_4_10" size=10></td>
+</tr>
+<tr>
+<td align="center"><input type="text" id="Word_5_3" readonly name="Word_5_3" size=3></td>
+<td align="center"><input type="text" id="Word_5_4" readonly name="Word_5_4" size=4></td>
+<td align="center"><input type="text" id="Word_5_5" readonly name="Word_5_5" size=5></td>
+<td align="center"><input type="text" id="Word_5_6" readonly name="Word_5_6" size=6></td>
+<td align="center"><input type="text" id="Word_5_7" readonly name="Word_5_7" size=7></td>
+<td align="center"><input type="text" id="Word_5_8" readonly name="Word_5_8" size=8></td>
+<td align="center"><input type="text" id="Word_5_9" readonly name="Word_5_9" size=9></td>
+<td align="center"><input type="text" id="Word_5_10" readonly name="Word_5_10" size=10></td>
+</tr>
+<tr><td colspan=8><input size=90 onkeyup="split(this.value);" id="Long_Word" name="Word_Long"></td></tr></table>
+<table width="90%" cellspacing=0 cellpadding=0>
+ <tr>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_01">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_02">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_03">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_04">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_05">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_06">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_07">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_08">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_09">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_10">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_11">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_12">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_13">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_14">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_15">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_16">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_17">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_18">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_19">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_20">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_21">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_22">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_23">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_24">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_25">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_26">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_27">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_28">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_29">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_30">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_31">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_32">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_33">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_34">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_35">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_36">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_37">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_38">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_39">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_40">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_41">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_42">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_43">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_44">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_45">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_46">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_47">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_48">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_49">&nbsp;</td>
+  <td width="2%" bgcolor="#a0a0a0" id="Bar_50">&nbsp;</td>
+ </tr>
+</table>
+<input type="submit" onclick="return Toggle();" name="theButton" value="Start Clock">
+<input type="submit" onclick="return false;" value="00:00" name="theTime"></p>
+</body>
+</html>

@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<h3 align="center">See also...</h3>
+<p><a target="main" href="AnnoStd%EF%B9%96Frame=Literature.html">Literature</a><br/>
+<a href="#color">Change Colors</a><br/><a target="main" href="AnnoStd%EF%B9%96Frame=QuickJump.html">Quick Jump</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Implementation.html">Implementation-Specifics</a>
+</p>
+<h3 align="center">Contents</h3>
+<p>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100001.html">Annotations...</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100002.html">Title Page</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100003.html">Committee Statements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100004.html">Foreword</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100005.html">Introduction</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a100006.html">M[UMPS] by Example</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101001.html">Scope</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101002.html">Document Organization</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101003.html">Character Set</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101004.html">Routine Structure</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101005.html">Program Punctuation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101006.html">Data Types</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101007.html">Precedence of Operators</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101008.html">Commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101009.html">Functions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a101010.html">Special Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a102001.html">Normative References</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a103001.html">Conforming Implementations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a103002.html">Conforming Programs</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a104001.html">Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105001.html">Metalanguage Description</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a105002.html">Basic Alphabet</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106001.html"><u>routine</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106002.html"><u>routinehead</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106003.html"><u>routinebody</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106004.html"><u>levelline</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106005.html"><u>formalline</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106006.html"><u>label</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106007.html"><u>ls</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106008.html"><u>linebody</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106009.html">Routine Execution</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106010.html">Generic Indirection</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106011.html">Transaction Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106012.html">Error Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106013.html">Event Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106014.html">Event Classes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106015.html">Event Class COMM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106016.html">Event Class HALT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106017.html">Event Class IPC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106018.html">Event Class INTERRUPT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106019.html">Event Class POWER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106020.html">Event Class TIMER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106021.html">Event Class USER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106022.html">Event Class Z*</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106023.html">Event Registration</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106024.html">Asynchronous Event Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106025.html">Synchronous Event Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a106026.html">Embedded Programs</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107001.html"><u>expr</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107002.html"><u>expratom</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107003.html">Values</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107004.html">MVAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107005.html">OREF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107006.html">Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107007.html"><u>glvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107008.html"><u>lvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107009.html">Local Variable Handling</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107010.html">Process-Stack</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107011.html"><u>gvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107012.html"><u>ssvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107013.html">^$CHARACTER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107014.html">Input-Transformation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107015.html">Output-Transformation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107016.html">Valid <u>name</u> Characters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107017.html"><u>patcode</u> Definition</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107018.html">Collation Algorithm</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107019.html">Case Conversion</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107020.html">^$DEVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107021.html">Character Set (device)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107022.html">Device Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107023.html">Format Functions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107024.html">Sockets</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107025.html">^$EVENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107026.html">Timer Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107027.html">^$GLOBAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107028.html">Collation Algorithm</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107029.html">^$JOB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107030.html">Character Set Profile (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107031.html">Available Libraries (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107032.html">Devices (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107033.html">User and Group (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107034.html">Events (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107035.html">Environment (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107036.html">Local Variables (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107037.html">Localized Formatting (Job)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107038.html">^$LIBRARY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107039.html">^$LOCK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107040.html">^$ROUTINE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107041.html">^$SYSTEM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107042.html">Localized Formatting (System)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107043.html">Character Set Profile (System)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107044.html">Collation Algorithm (System)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107045.html">^$Y*</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107046.html">^$Z*</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107047.html"><u>expritem</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107048.html"><u>strlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107049.html"><u>numlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107050.html">Numeric Data Values</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107051.html">Meaning of <u>numlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107052.html">Numeric Interpretation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107053.html">Integer Interpretation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107054.html">Truth-Value Interpretation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107055.html">Extrinsic Function <u>exfunc</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107056.html">Extrinsic Variable <u>exvar</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107057.html"><u>svn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107058.html">$DEVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107059.html">$ECODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107060.html">$ESTACK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107061.html">$ETRAP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107062.html">$HOROLOG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107063.html">$IO</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107064.html">$IOREFERENCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107065.html">$JOB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107066.html">$KEY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107067.html">$PIOREFERENCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107068.html">$PRINCIPAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107069.html">$QUIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107070.html">$REFERENCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107071.html">$STACK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107072.html">$STORAGE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107073.html">$SYSTEM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107074.html">$TEST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107075.html">$TLEVEL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107076.html">$TRESTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107077.html">$X</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107078.html">$Y</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107079.html">$Z*</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107080.html"><u>unaryop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107081.html"><u>namevalue</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107082.html">Intrinsic Function</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107084.html">$ASCII</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107085.html">$CHAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107086.html">$DATA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107087.html">$DEXTRACT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107088.html">$DPIECE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107089.html">$EXTRACT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107090.html">$FIND</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107091.html">$FNUMBER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107092.html">$GET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107093.html">$HOROLOG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107094.html">$JUSTIFY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107095.html">$LENGTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107096.html">$MIRACLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107097.html">$MUMPS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107098.html">$NAME</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107099.html">$NEXT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100.html">$ORDER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101.html">$PIECE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107102.html">$QLENGTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107103.html">$QSUBSCRIPT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104.html">$QUERY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107105.html">$RANDOM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107106.html">$REVERSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107107.html">$SELECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107108.html">$STACK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107109.html">$TEXT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107110.html">$TYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111.html">$TRANSLATE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107112.html">$VIEW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107113.html">$Z*</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107114.html">Libraries</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107115.html">Mandatory Libraries</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107116.html">Optional Libraries</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107117.html">Library Element Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107118.html">Availability of Library Element</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107119.html">CHARACTER Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107120.html">^%COLLATE^CHARACTER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107121.html">$%COMPARE^CHARACTER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107122.html">$%LOWER^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107123.html">$%PATCODE^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107124.html">$%UPPER^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107125.html">MATH Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107126.html">$%ABS^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107127.html">$%ARCCOS^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107128.html">$%ARCCOSH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107129.html">$%ARCCOT^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107130.html">$%ARCCOTH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107131.html">$%ARCCSC^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107132.html">$%ARCSEC^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107133.html">$%ARCSIN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107134.html">$%ARCSINH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107135.html">$%ARCTAN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107136.html">$%ARCTANH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107137.html">$%CABS^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107138.html">$%CADD^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107139.html">$%CCOS^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107140.html">$%CDIV^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107141.html">$%CEXP^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107142.html">$%CLOG^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107143.html">$%CMUL^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107144.html">$%COMPLEX^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107145.html">$%CONJUG^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107146.html">$%COS^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107147.html">$%COSH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107148.html">$%COT^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107149.html">$%COTH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107150.html">$%CPOWER^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107151.html">$%CSC^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107152.html">$%CSCH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107153.html">$%CSIN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107154.html">$%CSUB^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107155.html">$%DECDMS^MATH}}</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107156.html">$%DEGRAD^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107157.html">$%DMSDEC^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107158.html">$%E^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107159.html">$%EXP^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107160.html">$%LOG^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107161.html">$%LOG10^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107162.html">$%MTXADD^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107163.html">$%MTXCOF^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107164.html">$%MTXCOPY^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107165.html">$%MTXDET^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107166.html">$%MTXEQU^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107167.html">$%MTXINV^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107168.html">$%MTXMUL^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107169.html">$%MTXSCA^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107170.html">$%MTXSUB^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107171.html">$%MTXTRP^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107172.html">$%MTXUNIT^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107173.html">$%PI^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107174.html">$%RADDEG^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107175.html">$%SEC^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107176.html">$%SECH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107177.html">$%SIGN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107178.html">$%SIN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107179.html">$%SINH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107180.html">$%SQRT^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107181.html">$%TAN^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107182.html">$%TANH^MATH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107183.html">STRING Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107184.html">$%CRC16^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107185.html">$%CRC32^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107186.html">$%CRCCCITT^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107187.html">$%FORMAT^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107188.html">$%PRODUCE^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107189.html">$%REPLACE^STRING</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107190.html"><u>exprtail</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107191.html"><u>binaryop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107192.html">Concatenation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107193.html">Arithmetic Operators</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107194.html"><u>truthop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107195.html"><u>relation</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107196.html">Numeric Relations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197.html">String Relations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107198.html"><u>logicalop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199.html"><u>pattern</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107301.html">Window Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107302.html">Gadget Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107303.html">Choice Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107304.html">Event Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107305.html">Event Information</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107311.html">ISO-8859-1</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107312.html">MS-DOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107313.html">Digital Equipment</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107314.html">Apple Macintosh</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107316.html">EBCDIC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108001.html">General Command Rules</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108002.html">Spaces in Commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108003.html"><u>comment</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108004.html">Command Argument Indirection</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108005.html"><u>postcond</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108006.html"><u>format</u> in READ and WRITE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108007.html">Side-Effects on $X and $Y</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108008.html"><u>timeout</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108009.html"><u>lineref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108010.html"><u>entryref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108011.html"><u>labelref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108012.html"><u>externref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108013.html"><u>libraryref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108014.html">Parameter Passing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108015.html">Object Usage</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108016.html">Accessing a Service</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108017.html">User-Defined <u>mnemonicspace</u>s</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108018.html">Command Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108019.html">ABLOCK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108020.html">ASSIGN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108021.html">ASTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108022.html">ASTOP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108023.html">AUNBLOCK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108024.html">BREAK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108025.html">CLOSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108026.html">DO</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108027.html">ELSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108028.html">ESTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108029.html">ESTOP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108030.html">ETRIGGER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108031.html">FOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108032.html">GOTO</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108033.html">HALT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108034.html">HANG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108035.html">IF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108036.html">JOB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108037.html">KILL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108038.html">KSUBSCRIPTS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108039.html">KVALUE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108040.html">LOCK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108041.html">MERGE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108042.html">NEW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108043.html">OPEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108044.html">QUIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108045.html">READ</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108046.html">RLOAD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108047.html">RSAVE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108048.html">SET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108049.html">TCOMMIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108050.html">THEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108051.html">TRESTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108052.html">TROLLBACK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108053.html">TSTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054.html">USE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108055.html">VIEW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108056.html">WRITE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108057.html">XECUTE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108058.html">Z* commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108059.html">Output Time-Out</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a109001.html"><u>charset</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t001.html">Transition Diagrams</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t002.html">Scanning Algorithm (text)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t003.html">Scanning Algortitm (Pascal-like)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t004.html">Example</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t005.html">Common Data</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t006.html">Diagrams</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t007.html"><u>routine</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t008.html"><u>line</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t009.html"><u>command</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t010.html">BREAK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t011.html">CLOSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t012.html">DO</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t013.html">ELSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t014.html">FOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t015.html">GOTO</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t016.html">H* commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t017.html">HALT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t018.html">HANG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t019.html">IF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t020.html">JOB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t021.html">KILL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t022.html">LOCK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t023.html">OPEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t024.html">QUIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t025.html">READ</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t026.html">SET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t027.html">USE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t028.html">WRITE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t029.html">XECUTE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t030.html"><u>postcond</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t031.html"><u>argcond</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t032.html"><u>argument</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t033.html"><u>comend</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t034.html"><u>indarg</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t035.html"><u>indnam</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t036.html"><u>format</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t037.html"><u>timeout</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t038.html"><u>entryref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t039.html"><u>lineref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t040.html"><u>label</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t041.html"><u>name</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t042.html"><u>intlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t043.html"><u>dummylist</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t044.html"><u>deviceparameters</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t045.html"><u>checkforparameters</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t046.html"><u>jobparameters</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t047.html"><u>nref</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t048.html"><u>setpiece</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t049.html"><u>numexpr</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t050.html"><u>intexpr</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t051.html"><u>tvexpr</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t052.html"><u>expr</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t053.html"><u>binaryop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t054.html"><u>truthop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t055.html"><u>pattern</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t056.html"><u>patatom</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t057.html"><u>patcode</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t058.html"><u>expratom</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t059.html"><u>unaryop</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t060.html"><u>glvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t061.html"><u>lvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t062.html"><u>gvn</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t063.html"><u>numlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t064.html"><u>strlit</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t065.html"><u>function</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t066.html">$ASCII</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t067.html">$CHAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t068.html">$DATA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t069.html">$EXTRACT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t070.html">$FIND</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t071.html">$JUSTIFY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t072.html">$LENGTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t073.html">$NEXT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t074.html">$ORDER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t075.html">$PIECE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t076.html">$RANDOM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t077.html">$SELECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t078.html">$TEXT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t900.html">footnotes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a200001.html">Portability Requirements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a201001.html">Character Set</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202001.html">Names</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202002.html">External Names</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202003.html">Number of Local Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202004.html">Number of Subscripts</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202005.html">Values of Subscripts</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202006.html">Number of nodes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202007.html">Scope of Local Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202008.html">Number of Global Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202009.html">Number of Subscripts</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202010.html">Values of Subscripts</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202011.html">Number of Nodes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202012.html">Data Types</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202013.html">Number Range</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202014.html">Integers</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202015.html">Character Strings</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a202016.html">Special Variables</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a203001.html">Expressions (Nesting)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a203002.html">Results</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a203003.html">External References</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204001.html">Command Lines</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204002.html">Number of Command Lines</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204003.html">Number of Commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204004.html">Labels</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204005.html">Number of Labels</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a204006.html">Number of Routines</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a205001.html">External Routine Calls</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a206001.html">Character Set Profiles</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a207001.html">Indirection</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a208001.html">Storage Space Restrictions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a209001.html">Process-Stack</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a210001.html">Formats</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a210002.html"><u>mnemonicspace</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a210003.html"><u>controlmnemonic</u></a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a210004.html">Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a211001.html">Transaction Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a211002.html">Nested TSTARTs</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a212001.html">Event Processing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a212002.html">Queue Depth</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a212003.html">Timer-Resolution</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a212004.html">Event Classes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a213001.html">Other Portability Requirements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a300001.html">X3.64</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301002.html">X3.64 Binding</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301003.html">Effect on $X and $Y</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301004.html">Effect on $KEY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301005.html">Effect on $DEVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a301006.html">Open-Ended Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a302001.html">Implementation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a302002.html">Application</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a303001.html">Conformance</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901001.html">Operators</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901002.html">Plus Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901003.html">Minus Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901004.html">Times Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901005.html">Divided By Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901006.html">Integer Divided By Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901007.html">Modulo Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901008.html">Power Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901009.html">Concatenate Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901010.html">Becomes Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901011.html">Equals Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901012.html">Object Equals Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901013.html">Greater Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901014.html">Less Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901015.html">Less/Equal Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901016.html">Greater/Equal Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901017.html">Pattern Match Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901018.html">Contains Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901019.html">Follows Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901020.html">Follows/Equal Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901021.html">Collates After Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901022.html">Collates After/Equals Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901023.html">And Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901024.html">Or Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901025.html">Exclusive Or Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901026.html">Not Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a901027.html">Indirect Operator</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902001.html">Special Characters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902002.html">ASCII 32</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902003.html">ASCII 33</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902004.html">ASCII 34</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902005.html">ASCII 35</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902006.html">ASCII 36</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902007.html">ASCII 37</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902008.html">ASCII 38</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902009.html">ASCII 39</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902010.html">ASCII 40</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902011.html">ASCII 41</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902012.html">ASCII 42</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902013.html">ASCII 43</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902014.html">ASCII 44</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902015.html">ASCII 45</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902016.html">ASCII 46</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902017.html">ASCII 47</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902018.html">ASCII 58</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902019.html">ASCII 59</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902020.html">ASCII 60</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902021.html">ASCII 61</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902022.html">ASCII 62</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902023.html">ASCII 63</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902024.html">ASCII 64</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902025.html">ASCII 91</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902026.html">ASCII 92</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902027.html">ASCII 93</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902028.html">ASCII 94</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902029.html">ASCII 95</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902030.html">ASCII 96</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902031.html">ASCII 123</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902032.html">ASCII 124</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902033.html">ASCII 125</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a902034.html">ASCII 126</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903001.html">Metalanguage A</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903002.html">Metalanguage B</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903003.html">Metalanguage C</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903004.html">Metalanguage D</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903005.html">Metalanguage E</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903006.html">Metalanguage F</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903007.html">Metalanguage G</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903008.html">Metalanguage H</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903009.html">Metalanguage I</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903010.html">Metalanguage J</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903011.html">Metalanguage K</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903012.html">Metalanguage L</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903013.html">Metalanguage M</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903014.html">Metalanguage N</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903015.html">Metalanguage O</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903016.html">Metalanguage P</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903018.html">Metalanguage R</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903019.html">Metalanguage S</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903020.html">Metalanguage T</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903021.html">Metalanguage U</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903022.html">Metalanguage V</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903023.html">Metalanguage W</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a903024.html">Metalanguage X</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa00001.html">A: Character Set Profiles</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa01001.html"><u>charset</u> M</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa02001.html"><u>charset</u> ASCII</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa03001.html"><u>charset</u> JIS90</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa04001.html"><u>charset</u> ISO&ndash;8859-UAA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=aa05001.html"><u>charset</u> ISO&ndash;8859&ndash;1-USA/M</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00000.html">B: Error Codes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00001.html">Error Code M1</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00002.html">Error Code M2</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00003.html">Error Code M3</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00004.html">Error Code M4</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00005.html">Error Code M5</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00006.html">Error Code M6</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00007.html">Error Code M7</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00008.html">Error Code M8</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00009.html">Error Code M9</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00010.html">Error Code M10</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00011.html">Error Code M11</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00012.html">Error Code M12</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00013.html">Error Code M13</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00014.html">Error Code M14</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00015.html">Error Code M15</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00016.html">Error Code M16</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00017.html">Error Code M17</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00018.html">Error Code M18</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00019.html">Error Code M19</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00020.html">Error Code M20</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00021.html">Error Code M21</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00022.html">Error Code M22</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00023.html">Error Code M23</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00024.html">Error Code M24</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00025.html">Error Code M25</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00026.html">Error Code M26</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00027.html">Error Code M27</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00028.html">Error Code M28</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00029.html">Error Code M29</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00030.html">Error Code M30</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00031.html">Error Code M31</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00032.html">Error Code M32</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00033.html">Error Code M33</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00034.html">Error Code M34</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00035.html">Error Code M35</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00036.html">Error Code M36</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00037.html">Error Code M37</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00038.html">Error Code M38</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00039.html">Error Code M39</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00040.html">Error Code M40</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00041.html">Error Code M41</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00042.html">Error Code M42</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00043.html">Error Code M43</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00044.html">Error Code M44</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00045.html">Error Code M45</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00046.html">Error Code M46</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00047.html">Error Code M47</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00048.html">Error Code M48</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00049.html">Error Code M49</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00050.html">Error Code M50</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00051.html">Error Code M51</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00052.html">Error Code M52</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00053.html">Error Code M53</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00054.html">Error Code M54</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00055.html">Error Code M55</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00056.html">Error Code M56</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00057.html">Error Code M57</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00058.html">Error Code M58</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00059.html">Error Code M59</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00060.html">Error Code M60</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00061.html">Error Code M61</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00062.html">Error Code M62</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00063.html">Error Code M63</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00064.html">Error Code M64</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00065.html">Error Code M65</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00066.html">Error Code M66</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00067.html">Error Code M67</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00068.html">Error Code M68</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00069.html">Error Code M69</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00070.html">Error Code M70</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00071.html">Error Code M71</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00072.html">Error Code M72</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00073.html">Error Code M73</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00074.html">Error Code M74</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00075.html">Error Code M75</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00076.html">Error Code M76</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00077.html">Error Code M77</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00078.html">Error Code M78</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00079.html">Error Code M79</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00080.html">Error Code M80</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00081.html">Error Code M81</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00082.html">Error Code M82</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00083.html">Error Code M83</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00084.html">Error Code M84</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00085.html">Error Code M85</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00086.html">Error Code M86</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00087.html">Error Code M87</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00088.html">Error Code M88</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00089.html">Error Code M89</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00090.html">Error Code M90</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00091.html">Error Code M91</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00092.html">Error Code M92</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00093.html">Error Code M93</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00094.html">Error Code M94</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00095.html">Error Code M95</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00096.html">Error Code M96</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00097.html">Error Code M97</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00098.html">Error Code M98</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00099.html">Error Code M99</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00100.html">Error Code M100</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00101.html">Error Code M101</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00102.html">Error Code M102</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00103.html">Error Code M103</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00104.html">Error Code M104</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00105.html">Error Code M105</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00106.html">Error Code M106</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00107.html">Error Code M107</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00108.html">Error Code M108</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00109.html">Error Code M109</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00110.html">Error Code M110</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00111.html">Error Code M111</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00112.html">Error Code M112</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00113.html">Error Code M113</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ab00501.html">Error Code S0</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ac00001.html">Metalanguage Elements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ad00001.html">Embedded SQL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ad00002.html">Embedded SQL Host Program</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ad00003.html">Embedded SQL MUMPS Program</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ade0001.html">First Line Convention</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ae00001.html">Transportability</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ae01001.html">Routine Transfer Format</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ae03001.html">Global Variable Transfer Format</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ae04001.html">Transfer Media</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=af00001.html">X3.64 <u>controlmnemonic</u>s</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag00001.html"><u>charset</u> JIS90</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag01001.html"><u>charset</u> JIS90</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag02001.html">JIS X0201&ndash;1990</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag03001.html">JIS X0208&ndash;1990</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag04001.html">Pattern Codes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag05001.html">Characters in <u>name</u>s</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ag06001.html">Collation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah01001.html">Sockets Binding</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah02001.html">General</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03001.html">Commands and Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03002.html">OPEN and USE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03003.html">ATTACH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03004.html">CONNECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03005.html">DELIMITER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03006.html">IOERRor</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03007.html">LISTEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03008.html">DETACH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03009.html">SOCKET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03010.html">CLOSE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03011.html">SOCKET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03012.html">READ</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah03013.html">WRITE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah04001.html"><u>controlmnemonic</u>s</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah04002.html">LISTEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah04003.html">WAIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ah05001.html">^$DEVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai00000.html">Appendix I</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01000.html">CHARACTER Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01001.html">$%COLLATE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01002.html">$%COMPARE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01003.html">$%LOWER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01004.html">$%PATCODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai01005.html">$%UPPER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02000.html">MATH Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02001.html">$%ABS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02002.html">$%ARCCOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02003.html">$%ARCCOSH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02004.html">$%ARCCOT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02005.html">$%ARCCOTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02006.html">$%ARCCSC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02007.html">$%ARCSEC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02008.html">$%ARCSIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02009.html">$%ARCSINH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02010.html">$%ARCTAN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02011.html">$%ARCTANH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02012.html">$%CABS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02013.html">$%CADD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02014.html">$%CCOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02015.html">$%CDIV</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02016.html">$%CEXP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02017.html">$%CLOG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02018.html">$%CMUL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02019.html">$%COMPLEX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02020.html">$%CONJUG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02021.html">$%COS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02022.html">$%COSH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02023.html">$%COT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02024.html">$%COTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02025.html">$%CPOWER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02026.html">$%CSC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02027.html">$%CSCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02028.html">$%CSIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02029.html">$%CSUB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02030.html">$%DECDMS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02031.html">$%DEGRAD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02032.html">$%DMSDEC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02033.html">$%E</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02034.html">$%EXP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02035.html">$%LOG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02036.html">$%LOG10</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02037.html">$%MTXADD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02038.html">$%MTXCOF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02039.html">$%MTXCOPY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02040.html">$%MTXDET</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02041.html">$%MTXEQU</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02042.html">$%MTXINV</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02043.html">$%MTXMUL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02044.html">$%MTXSCA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02045.html">$%MTXSUB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02046.html">$%MTXTRP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02047.html">$%MTXUNIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02048.html">$%PI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02049.html">$%RADDEG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02050.html">$%SEC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02051.html">$%SECH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02052.html">$%SIGN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02053.html">$%SIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02054.html">$%SINH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02055.html">$%SQRT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02056.html">$%TAN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai02057.html">$%TANH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03000.html">STRING Library</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03001.html">$%CRC16</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03002.html">$%CRC32</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03003.html">$%CRCCCITT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03004.html">$%FORMAT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03005.html">$%PRODUCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ai03006.html">$%REPLACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b100001.html">OMI - Cover page</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b100002.html">OMI - Foreword</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b101001.html">OMI - Scope</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b101002.html">OMI - Purpose</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b101003.html">OMI - Application</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b102001.html">OMI - Normative References</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b103001.html">OMI - Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104001.html">OMI and MUMPS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104002.html">OMI - OSI Model</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104003.html">OMI - Client-Server</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104004.html">OMI - Sessions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104005.html">OMI - Role of Agent</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104006.html">OMI - Transactions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104007.html">OMI - Complex Locks</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104008.html">OMI - National Character Sets</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104009.html">OMI - Character Sets for Devices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104010.html">OMI - Security</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104011.html">OMI - Privacy</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104012.html">OMI - Data Integrity</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104013.html">OMI - Authentication</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104014.html">OMI - Identifiction</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104015.html">OMI - Authorization</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104016.html">OMI - Replication</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104017.html">OMI - Environments</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104018.html">OMI - Devices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104019.html">OMI - Version Negotiation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104020.html">OMI - Exception Handling</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104021.html">OMI - Database Errors</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104022.html">OMI - Protocol Exceptions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104023.html">OMI - Session Establishment Errors</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104024.html">OMI - Virtual Circuit Failure</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104025.html">OMI - Implementation Limits</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b104026.html">OMI - Extensions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105001.html">OMI - Characters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105002.html">OMI - Fields</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105003.html">OMI - Message Form</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105004.html">OMI - Request Header</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105005.html">OMI - Response Header</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105006.html">OMI- Global Reference</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105007.html">OMI - Routine Reference</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105008.html">OMI - Mnemonis Space</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105009.html">OMI - Process Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105010.html">OMI - Device Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105011.html">OMI - Stream and Record</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105012.html">OMI - Write Argument</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105013.html">OMI - String</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105014.html">OMI - Write *</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105015.html">OMI - New Line</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105016.html">OMI - Top of Form</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105017.html">OMI - Tab</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105018.html">OMI - Control Mnemonic</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105019.html">OMI - Set $DEVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105020.html">OMI - Set $KEY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105021.html">OMI - Set $X</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105022.html">OMI - Set $Y</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105023.html">OMI - Set Non-Standard</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105024.html">OMI - Requests and Responses</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105025.html">OMI - Connect</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105026.html">OMI - Status</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105027.html">OMI - Disconnect</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105028.html">OMI - Set</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105029.html">OMI - Set $Piece</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105030.html">OMI - Set $Extract</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105031.html">OMI - Kill</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105032.html">OMI - Get</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105033.html">OMI - Define</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105034.html">OMI - $Order</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105035.html">OMI - Subscript</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105036.html">OMI - Global Name</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105037.html">OMI - Reverse Order</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105038.html">OMI - Subscript</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105039.html">OMI - Global Name</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105040.html">OMI - Query</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105041.html">OMI - Reverse Qeury</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105042.html">OMI - Extended Get</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105043.html">OMI - Extended Order</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105044.html">OMI - Reverse Extended Order</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105045.html">OMI - Extended Query</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105046.html">OMI - Lock</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105047.html">OMI - Unlock</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105048.html">OMI - Unlock Client</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105049.html">OMI - Unlock All</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105050.html">OMI - Open Device</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105051.html">OMI - Close Device</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105052.html">OMI - Close Client's Devices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105053.html">OMI - Close All Devices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105054.html">OMI - Set Device Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105055.html">OMI - Get Device Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105056.html">OMI - Write</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105057.html">OMI - Finish Output</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105058.html">OMI - About Output</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105059.html">OMI - Job</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105060.html">OMI - Job Status</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105061.html">OMI - Cancel Job</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=b105062.html">OMI - Cancel All Jobs</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ba00001.html">OMI - Appendix A - Conformance</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ba01001.html">OMI - Implementations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=ba02001.html">OMI - Programs</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb00001.html">OMI - Appendix B - Rationale</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01001.html">OMI - Implementation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01002.html">OMI - Network Management</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01003.html">OMI - Authorization</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01004.html">OMI - Protocol Stack</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01005.html">OMI - Shared Resources</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01006.html">OMI - Sessions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01007.html">OMI - Complex Operations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01008.html">OMI - Merge</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01009.html">OMI - Device Ownership</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01010.html">OMI - Device Parameters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01011.html">OMI - Substitute Device Names</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01012.html">OMI - Delayed Write Completion</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01013.html">OMI - Multiple Requests per Message</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01014.html">OMI - Registering Implementations</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bb01015.html">OMI - Compliance Verification</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc00001.html">OMI - Annex C - Extensions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01001.html">OMI - Requests and responses</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01002.html">OMI - Increment</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01003.html">OMI - Reverse Query</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01004.html">OMI - Other Database Support</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01005.html">OMI - Beyond Database Functions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01006.html">OMI - Performance Enhancements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=bc01007.html">OMI - Other Protocols</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c100001.html">GKS Binding</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c110001.html">GKS - Scope</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c120001.html">GKS - References</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c130001.html">GKS - Principles</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c130002.html">GKS - API environment</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c130003.html">GKS - Side Effects</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c130004.html">GKS - <u>controlmnemonic</u>s</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140101.html">GKS - /GOPKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140102.html">GKS - /GCLKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140103.html">GKS - /GOPWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140104.html">GKS - /GCLWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140105.html">GKS - /GACWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140106.html">GKS - /GDAWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140107.html">GKS - /GCLRWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140108.html">GKS - /GRSGWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140109.html">GKS - /GUWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140110.html">GKS - /GSDS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140111.html">GKS - /GMSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140112.html">GKS - /GESC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140201.html">GKS - /GPL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140202.html">GKS - /GPM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140203.html">GKS - /GTX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140204.html">GKS - /GFA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140205.html">GKS - /GCA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140206.html">GKS - /GGDP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140301.html">GKS - /GSPLI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140302.html">GKS - /GSLN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140303.html">GKS - /GSLWSC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140304.html">GKS - /GSPLCI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140305.html">GKS - /GSPMI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140306.html">GKS - /GSMK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140307.html">GKS - /GSMKSC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140308.html">GKS - /GSPMCI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140309.html">GKS - /GSTXI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140310.html">GKS - /GSTXFP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140311.html">GKS - /GSCHXP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140312.html">GKS - /GSCHSP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140313.html">GKS - /GSTXCI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140314.html">GKS - /GSCHH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140315.html">GKS - /GSCHUP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140316.html">GKS - /GSTXP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140317.html">GKS - /GSTXAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140318.html">GKS - /GSFAI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140319.html">GKS - /GSFAIS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140320.html">GKS - /GSFASI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140321.html">GKS - /GSFACI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140322.html">GKS - /GSPA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140323.html">GKS - /GSPARF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140324.html">GKS - /GSASF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140325.html">GKS - /GSPKID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140401.html">GKS - /GSPLR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140402.html">GKS - /GSPMR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140403.html">GKS - /GSTXR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140404.html">GKS - /GSFAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140405.html">GKS - /GSPAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140406.html">GKS - /GSCR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140501.html">GKS - /GSWN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140502.html">GKS - /GSVP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140503.html">GKS - /GSVPIP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140504.html">GKS - /GSELNT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140505.html">GKS - /GSCLIP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140601.html">GKS - /GSWKWN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140602.html">GKS - /GSWKVP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140701.html">GKS - /GCRSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140702.html">GKS - /GCLSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140703.html">GKS - /GRENSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140704.html">GKS - /GDSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140705.html">GKS - /GDSGWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140706.html">GKS - /GASGWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140707.html">GKS - /GCSGWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140708.html">GKS - /GINSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140801.html">GKS - /GSSGT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140802.html">GKS - /GSVIS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140803.html">GKS - /GSHLIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140804.html">GKS - /GSSGP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140805.html">GKS - /GSDTEC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140901.html">GKS - /GINLC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140902.html">GKS - /GINSK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140903.html">GKS - /GINVL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140904.html">GKS - /GINCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140905.html">GKS - /GINPK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c140906.html">GKS - /GINST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141001.html">GKS - /GSLCM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141002.html">GKS - /GSSKM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141003.html">GKS - /GSVLM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141004.html">GKS - /GSCHM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141005.html">GKS - /GSPKM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141006.html">GKS - /GSSTM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141101.html">GKS - /GRQLC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141102.html">GKS - /GRQSK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141103.html">GKS - /GRQVL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141104.html">GKS - /GRQCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141105.html">GKS - /GRQPK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141106.html">GKS - /GRQST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141201.html">GKS - /GSMLC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141202.html">GKS - /GSMSK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141203.html">GKS - /GSMVL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141204.html">GKS - /GSMCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141205.html">GKS - /GSMPK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141206.html">GKS - /GSMST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141301.html">GKS - /GWAIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141302.html">GKS - /GFLUSH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141303.html">GKS - /GGTLC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141304.html">GKS - /GGTSK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141305.html">GKS - /GGTVL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141306.html">GKS - /GGTCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141307.html">GKS - /GGTPK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141308.html">GKS - /GGTST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141401.html">GKS - /GWITM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141402.html">GKS - /GGTITM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141403.html">GKS - /GRDITM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141404.html">GKS - /GIITM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141501.html">GKS - /GQOPS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141601.html">GKS - /GQLVKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141602.html">GKS - /GQEWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141603.html">GKS - /GQWKM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141604.html">GKS - /GQMNTN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141701.html">GKS - /GQOPWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141702.html">GKS - /GQACWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141703.html">GKS - /GQCPAV</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141704.html">GKS - /GQPKID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141705.html">GKS - /GQCIAV</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141706.html">GKS - /GQCNTN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141707.html">GKS - /GQENTN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141708.html">GKS - /GQNT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141709.html">GKS - /GQCLIP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141710.html">GKS - /GQOPSG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141711.html">GKS - /GQSGUS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141712.html">GKS - /GQSIM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141801.html">GKS - /GQWKC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141802.html">GKS - /GQWKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141803.html">GKS - /GQWKDU</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141804.html">GKS - /GQEPLI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141805.html">GKS - /GQPLR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141806.html">GKS - /GQEPMI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141807.html">GKS - /GQPMR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141808.html">GKS - /GQETXI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141809.html">GKS - /GQTXR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141810.html">GKS - /GQTXX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141811.html">GKS - /GQEFAI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141812.html">GKS - /GQFAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141813.html">GKS - /GQEPAI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141814.html">GKS - /GQPAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141815.html">GKS - /GQECI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141816.html">GKS - /GQCR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141817.html">GKS - /GQWKT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141818.html">GKS - /GQSGWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141819.html">GKS - /GQLCS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141820.html">GKS - /GQSKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141821.html">GKS - /GQVLS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141822.html">GKS - /GQCHS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141823.html">GKS - /GQPKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141824.html">GKS - /GQSTS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141901.html">GKS - /GQWKCA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141902.html">GKS - /GQWKCL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141903.html">GKS - /GQDSP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141904.html">GKS - /GQDWKA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141905.html">GKS - /GQDDS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141906.html">GKS - /GQLPF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141907.html">GKS - /GQPPLR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141908.html">GKS - /GQPMF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141909.html">GKS - /GQPPMR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141910.html">GKS - /GQTXF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141911.html">GKS - /GQPTXR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141912.html">GKS - /GQFAF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141913.html">GKS - /GQPFAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141914.html">GKS - /GQPAF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141915.html">GKS - /GQPPAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141916.html">GKS - /GQCF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141917.html">GKS - /GQPCR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141918.html">GKS - /GQEGDP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141919.html">GKS - /GQGPD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141920.html">GKS - /GQLWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141921.html">GKS - /GQSGP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141922.html">GKS - /GQDSGA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141923.html">GKS - /GQLI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141924.html">GKS - /GQDLC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141925.html">GKS - /GQDSK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141926.html">GKS - /GQDVL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141927.html">GKS - /GQDCH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141928.html">GKS - /GQDPK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c141929.html">GKS - /GQDST</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142001.html">GKS - /GQASWK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142002.html">GKS - /GQSGA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142101.html">GKS - /GQPXAD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142102.html">GKS - /GQPXA</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142103.html">GKS - /GQPX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142201.html">GKS - /GQIQOV</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142301.html">GKS - /GEVTM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142302.html">GKS - /GACTM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142401.html">GKS - /GECLGKS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142402.html">GKS - /GERHND</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=c142403.html">GKS - /GERLOG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d000001.html">X-Window - Cover Page</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d000002.html">X-Window - Foreword</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d101001.html">X-Window - Scope</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d101002.html">X-Window - X Window and Motif</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d101003.html">X-Window - Scope of Binding</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d101004.html">X-Window - Notices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d102001.html">X-Window - Normative Reference</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d103001.html">X-Window - Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d104001.html">X-Window - Conventions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d104002.html">X-Window - Package Name Syntax</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105001.html">X-Window - XLIB</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105002.html">X-Window - XTOOLKIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105003.html">X-Window - XMOTIF</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105004.html">X-Window - XMOTIFRM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105005.html">X-Window - XMUMPS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105006.html">X-Window - Allocate</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105007.html">X-Window - Copy</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105008.html">X-Window - Deallocate</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105009.html">X-Window - GetValue</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105010.html">X-Window - SetValue</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105011.html">X-Window - SetString</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105012.html">X-Window - GetString</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105013.html">X-Window - Exit</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105014.html">X-Window - RegisterEventHandler</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105015.html">X-Window - RegisterCallback</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105016.html">X-Window - RegisterWorkProc</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105017.html">X-Window - UnregisterEventHandler</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105018.html">X-Window - UnregisterCallBack</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d105019.html">X-Window - UnregisterWorkProc</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d106001.html">X-Window - Compliance (Direct)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=d106002.html">X-Window - Compliance (Indirect)</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f000001.html">MWAPI - Title Page</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f100001.html">MWAPI</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101001.html">MWAPI - General, Scope</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101002.html">MWAPI - Environment</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101003.html">MWAPI - Elements and Choices</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101004.html">MWAPI - Displays</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101005.html">MWAPI - Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101006.html">MWAPI - Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101007.html">MWAPI - Drawing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101008.html">MWAPI - Parents and Children</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101009.html">MWAPI - Data Exchange</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f101010.html">MWAPI - Build Mode</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f102001.html">MWAPI - Normative References</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103001.html">MWAPI - Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103002.html">MWAPI - Manipulating Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103003.html">MWAPI - Attribute Definitions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103004.html">MWAPI -  Attribute Value Domains</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103005.html">MWAPI - Colors</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103006.html">MWAPI - Characters</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103007.html">MWAPI - True/False</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103008.html">MWAPI - Implementation and Application Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103009.html">MWAPI - External Resources</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103010.html">MWAPI - Fonts</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103011.html">MWAPI - Identifiers</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103012.html">MWAPI - Position, Size and Units</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103013.html">MWAPI - Display Characteristics</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103014.html">MWAPI - Drawing Characteristics</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103015.html">MWAPI - Orientation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103016.html">MWAPI - Key, Character and Pointer Button Codes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103017.html">MWAPI - Insertion Point and Selection Range</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103018.html">MWAPI - Title Position</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103019.html">MWAPI - Choice Layout</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103020.html">MWAPI - Modality</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103021.html">MWAPI - Scrolling</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103022.html">MWAPI - Focus Location</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103023.html">MWAPI - Data Exchange</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103024.html">MWAPI - Build Mode</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104001.html">MWAPI - Displays</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104002.html">MWAPI - Display Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104003.html">MWAPI - BCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104004.html">MWAPI - CLIPBOARD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104005.html">MWAPI - COLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104006.html">MWAPI - COLORTYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104007.html">MWAPI - FCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104008.html">MWAPI - FFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104009.html">MWAPI - FOCUS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104010.html">MWAPI - FSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104011.html">MWAPI - FSTYLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104012.html">MWAPI - KEYBOARD</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104013.html">MWAPI - LINKID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104014.html">MWAPI - LINKSERVICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104015.html">MWAPI - LINKSOURCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104016.html">MWAPI - PEN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104017.html">MWAPI - PLATFORM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104018.html">MWAPI - PTR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104019.html">MWAPI - PTYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104020.html">MWAPI - SIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104021.html">MWAPI - SPECTRUM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104022.html">MWAPI - TBCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104023.html">MWAPI - TFCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104024.html">MWAPI - TYPEFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f104025.html">MWAPI - UNITS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105001.html">MWAPI - Windows</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105002.html">MWAPI - Window Types</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105003.html">MWAPI - MTERM Window</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105004.html">MWAPI - Window components</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105005.html">MWAPI - Window Repainting</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105006.html">MWAPI - Window Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105007.html">MWAPI - Applicability of Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105008.html">MWAPI - ACTIVE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105009.html">MWAPI - BCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105010.html">MWAPI - BEVENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105011.html">MWAPI - BLDMODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105012.html">MWAPI - COLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105013.html">MWAPI - DEFBUTTON</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105014.html">MWAPI - DISPLAY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105015.html">MWAPI - EVENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105016.html">MWAPI - FCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105017.html">MWAPI - FFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105018.html">MWAPI - FSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105019.html">MWAPI - FSTYLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105020.html">MWAPI - GRID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105021.html">MWAPI - ICON</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105022.html">MWAPI - ICONIFY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105023.html">MWAPI - ID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105024.html">MWAPI - ITITLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105025.html">MWAPI - LINKTOPIC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105026.html">MWAPI - MAX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105027.html">MWAPI - MENUBAR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105028.html">MWAPI - MIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105029.html">MWAPI - MODAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105030.html">MWAPI - NEXTG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105031.html">MWAPI - PARENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105032.html">MWAPI - POS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105033.html">MWAPI - PSELECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105034.html">MWAPI - PTYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105035.html">MWAPI - RESIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105036.html">MWAPI - SCROLL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105037.html">MWAPI - SIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105038.html">MWAPI - SIZEMIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105039.html">MWAPI - SIZEWIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105040.html">MWAPI - TBCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105041.html">MWAPI - TFCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105042.html">MWAPI - TIED</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105043.html">MWAPI - TITLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105044.html">MWAPI - TYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105045.html">MWAPI - UNITS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105046.html">MWAPI - VALUE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f105047.html">MWAPI - VISIBLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106001.html">MWAPI - Elements</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106002.html">MWAPI - Gadgets</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106003.html">MWAPI - Check Box</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106004.html">MWAPI - Document</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106005.html">MWAPI - Generic Box</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106006.html">MWAPI - Group Frame</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106007.html">MWAPI - Label</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106008.html">MWAPI - List Box</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106009.html">MWAPI - List Button</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106010.html">MWAPI - List Entry Box</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106011.html">MWAPI - Long List Box</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106012.html">MWAPI - Push Button</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106013.html">MWAPI - Radio Button Set</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106014.html">MWAPI - Scroll</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106015.html">MWAPI - Symbol</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106016.html">MWAPI - Table</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106017.html">MWAPI - Text</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106018.html">MWAPI - Menus</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106019.html">MWAPI - Timers</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106020.html">MWAPI - Element Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106021.html">MWAPI - Applicability of Element Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106022.html">MWAPI - ACTIVE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106023.html">MWAPI - BCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106024.html">MWAPI - BLDMODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106025.html">MWAPI - CANCEL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106026.html">MWAPI - CANCHANGE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106027.html">MWAPI - CHANGED</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106028.html">MWAPI - CHARMAX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106029.html">MWAPI - CHOICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106030.html">colkeyword</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106031.html">MWAPI - COLWIDTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106032.html">MWAPI - DRAW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106033.html">MWAPI - DRAWTYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106034.html">MWAPI - EVENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106035.html">MWAPI - FCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106036.html">MWAPI - FFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106037.html">MWAPI - FREAMED</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106038.html">MWAPI - FSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106039.html">MWAPI - FSTYLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106040.html">MWAPI - GRID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106041.html">MWAPI - HCOLID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106042.html">MWAPI - HROWID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106043.html">MWAPI - ID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106044.html">MWAPI - INSELECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106045.html">MWAPI - INTERVAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106046.html">MWAPI - LEFTSHOW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106047.html">MWAPI - LINKACTION</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106048.html">MWAPI - LINKITEM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106049.html">MWAPI - LINKMODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106050.html">MWAPI - LINKSOURCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106051.html">MWAPI - LINKTIMEOUT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106052.html">MWAPI - NEXTG</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106053.html">MWAPI - POS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106054.html">MWAPI - PTYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106055.html">MWAPI - RESOURCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106056.html">MWAPI - ROW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106057.html">MWAPI - ROWCOL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106058.html">MWAPI - ROWHEIGHT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106059.html">MWAPI - SCROLL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106060.html">MWAPI - SCROLLBY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106061.html">MWAPI - SCROLLDIR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106062.html">MWAPI - SCROLLPOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106063.html">MWAPI - SCROLLRANGE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106064.html">MWAPI - SELECTMAX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106065.html">MWAPI - SELECTVAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106066.html">MWAPI - SIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106067.html">MWAPI - TBCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106068.html">MWAPI - TFCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106069.html">MWAPI - TFFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106070.html">MWAPI - TFSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106071.html">MWAPI - TFSTYLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106072.html">MWAPI - TITLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106073.html">MWAPI - TOPSHOW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106074.html">MWAPI - TPOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106075.html">MWAPI - TYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106076.html">MWAPI - UNITS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106077.html">MWAPI - VALUE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106078.html">MWAPI - VISIBLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106079.html">MWAPI - Choice Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106080.html">MWAPI - Applicability of Choice Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106081.html">MWAPI - ACCELERATOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106082.html">MWAPI - ACTIVE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106083.html">MWAPI - AID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106084.html">MWAPI - EVENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106085.html">MWAPI - MARKER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106086.html">MWAPI - RESOURCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106087.html">MWAPI - SEPARATOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106088.html">MWAPI - SUBMENU</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106089.html">MWAPI - Row and Column Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106090.html">MWAPI - Applicability of Row and Column Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106091.html">MWAPI - COLWIDTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f106092.html">MWAPI - ROWHEIGHT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107001.html">MWAPI - Drawing</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107002.html">MWAPI - Draw Command Numbers</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107003.html">MWAPI - Draw Commands</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107004.html">MWAPI - ARC</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107005.html">MWAPI - BCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107006.html">MWAPI - BITMAP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107007.html">MWAPI - BOX</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107008.html">MWAPI - DMODE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107009.html">MWAPI - DRAWTEXT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107010.html">MWAPI - FCOLOR</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107011.html">MWAPI - FFACE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107012.html">MWAPI - FILLPAT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107013.html">MWAPI - FSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107014.html">MWAPI - FSTYLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107015.html">MWAPI - LINE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107016.html">MWAPI - OVAL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107017.html">MWAPI - PENSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107018.html">MWAPI - PICTURE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107019.html">MWAPI - PIE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107020.html">MWAPI - POINT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f107021.html">MWAPI - UNITS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f108001.html">MWAPI - Data Exchange</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f108002.html">MWAPI - Server</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f108003.html">MWAPI - Client</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109001.html">MWAPI - Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109002.html">MWAPI - Event Types</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109003.html">MWAPI - Window State Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109004.html">MWAPI - Pointer Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109005.html">MWAPI - Keyboard Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109006.html">MWAPI - Focus Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109007.html">MWAPI - Select Event</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109008.html">MWAPI - Long List Box Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109009.html">MWAPI - Help Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109010.html">MWAPI - Timer Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109011.html">MWAPI - Data Exchange Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109012.html">MWAPI - Build Mode Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109013.html">MWAPI - Applicability of Event Types</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109014.html">MWAPI - Event Specification Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109015.html">MWAPI - ENABLE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109016.html">MWAPI - FILTERIN</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109017.html">MWAPI - Processing Events</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109018.html">MWAPI - Event Commands - ESTART</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109019.html">MWAPI - ESTOP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109020.html">MWAPI - ETRIGGER</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109021.html">MWAPI - Event Information</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109022.html">MWAPI - CHOICE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109023.html">MWAPI - CLASS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109024.html">MWAPI - COL</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109025.html">MWAPI - ELEMENT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109026.html">MWAPI - GROUP</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109027.html">MWAPI - KEY</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109028.html">MWAPI - LINKCOMMAND</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109029.html">MWAPI - LINKID</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109030.html">MWAPI - LINKITEM</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109031.html">MWAPI - LINKREASON</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109032.html">MWAPI - LINKSOURCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109033.html">MWAPI - LINKSTATUS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109034.html">MWAPI - NEXTFOCUS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109035.html">MWAPI - OK</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109036.html">MWAPI - PBUTTON</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109037.html">MWAPI - PPOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109038.html">MWAPI - PRIORFOCUS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109039.html">MWAPI - PRIORPOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109040.html">MWAPI - PSELECT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109041.html">MWAPI - PSTATE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109042.html">MWAPI - ROW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109043.html">MWAPI - SEQUENCE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109044.html">MWAPI - TRACKPOS</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109045.html">MWAPI - TRACKSIZE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109046.html">MWAPI - TYPE</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109047.html">MWAPI - WINDOW</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109048.html">MWAPI - Applicability of Event Information Attributes</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110001.html">MWAPI - Additional Functions</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110002.html">MWAPI - $WFONT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110003.html">MWAPI - $WTFIT</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110004.html">MWAPI - $WTWIDTH</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f110005.html">MWAPI - Special Variable</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f111001.html">MWAPI - Error Handling</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f111002.html">MWAPI - Error Information</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f111003.html">MWAPI - Errors</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f112001.html">MWAPI - Conformance</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f112002.html">MWAPI - MDC Conforming Implementation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f112003.html">MWAPI - MDC Strictly Conforming Imlementation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f112004.html">MWAPI - MDC Partial Implementation</a><br/>
+<a target="main" href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f112005.html">MWAPI - Multiple Levels of Conformance</a></p>
+<form name="form" action="http://71.174.62.16/Demo/post" target="AnnoStd">
+<a name="color"></a>
+<table>
+<tr><td align="right"><b>Background</b>:</td><td><input type="text" size="10" onblur="javascript:document.cookie='color='+document.form.Background.value+'|'+document.form.Foreground.value+'|'+document.form.ForeLink.value+'|'+document.form.VisiLink.value+';expires=Sat, 31-Dec-2050 23:59:59 GMT';document.getElementById('Color1').style.backgroundColor=document.form.Background.value;"  name="Background" value="#4c76ac"/></td><td id="Color1" bgcolor="#4c76ac">&nbsp;&nbsp;&nbsp;</td></tr>
+<tr><td align="right"><b>Foreground</b>:</td><td><input type="text" size="10" onblur="javascript:document.cookie='color='+document.form.Background.value+'|'+document.form.Foreground.value+'|'+document.form.ForeLink.value+'|'+document.form.VisiLink.value+';expires=Sat, 31-Dec-2050 23:59:59 GMT';document.getElementById('Color2').style.backgroundColor=document.form.Foreground.value;"  name="Foreground" value="#ecd264"/></td><td id="Color2" bgcolor="#ecd264">&nbsp;&nbsp;&nbsp;</td></tr>
+<tr><td align="right"><b>New Link</b>:</td><td><input type="text" size="10" onblur="javascript:document.cookie='color='+document.form.Background.value+'|'+document.form.Foreground.value+'|'+document.form.ForeLink.value+'|'+document.form.VisiLink.value+';expires=Sat, 31-Dec-2050 23:59:59 GMT';document.getElementById('Color3').style.backgroundColor=document.form.ForeLink.value;"  name="ForeLink" value="#bca234"/></td><td id="Color3" bgcolor="#bca234">&nbsp;&nbsp;&nbsp;</td></tr>
+<tr><td align="right"><b>Visited Link</b>:</td><td><input type="text" size="10" onblur="javascript:document.cookie='color='+document.form.Background.value+'|'+document.form.Foreground.value+'|'+document.form.ForeLink.value+'|'+document.form.VisiLink.value+';expires=Sat, 31-Dec-2050 23:59:59 GMT';document.getElementById('Color4').style.backgroundColor=document.form.VisiLink.value;"  name="VisiLink" value="#bca234"/></td><td id="Color4" bgcolor="#bca234">&nbsp;&nbsp;&nbsp;</td></tr>
+</table>
+<span onclick="javascript:document.form.Background.value='#4c76ac';document.form.Foreground.value='#ecd264';document.form.ForeLink.value='#bca234';document.form.VisiLink.value='#bca234';document.cookie='color='+document.form.Background.value+document.form.Foreground.value+document.form.ForeLink.value+document.form.VisiLink.value+';expires=Sat, 31-Dec-2050 23:59:59 GMT';document.getElementById('Color1').style.backgroundColor=document.form.Background.value;document.getElementById('Color2').style.backgroundColor=document.form.Foreground.value;document.getElementById('Color3').style.backgroundColor=document.form.ForeLink.value;document.getElementById('Color4').style.backgroundColor=document.form.VisiLink.value;">Reset default colors</span>
+</form>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107100&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$PIECE</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107102&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<a name="Def_0002"></a>
+<a name="Def_0003"></a>
+<a name="Def_0004"></a>
+<a name="Def_0005"></a>
+<h3>7.1.5.16 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a></h3>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0001">$P[IECE]</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> )</p>
+<p>This form is defined here with the aid of a function, NF,
+which is used for definitional purposes only, called <i>find the
+position number following the</i> m<i>th occurrence</i>.</p>
+<table><tr><td>&nbsp;&nbsp;&nbsp;</td>
+<td><p>NF(<i>s</i> , <i>d</i> , <i>m</i>) is defined, for strings
+<i>s</i>, <i>d</i>, and integer <i>m</i>, as follows:</p>
+<p>When <i>d</i> is the empty string, the result is zero.</p>
+<p>When <i>m</i>&nbsp;'&gt;&nbsp;0, the result is zero.</p>
+<p>When <i>d</i> is not a substring of <i>s</i>, i.e., when
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107090.html#Def_0002">$Find</a>(<i>s</i> , <i>d</i>) = 0, then the result is
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>s</i>) + <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>d</i>) + 1.</p>
+<p>Otherwise, NF(<i>s</i> , <i>d</i> , 1) = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107090.html#Def_0002">$Find</a>(<i>s</i>
+, <i>d</i>).</p>
+<p>For <i>m</i>&nbsp;&gt;&nbsp;1, NF(<i>s</i> , <i>d</i> , <i>m</i>) =</p>
+<p>NF( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>( <i>s</i> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107090.html#Def_0002">$Find</a>( <i>s</i> ,
+<i>d</i>), <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>s</i>) ), <i>d</i> , <i>m</i> - 1) +
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107090.html#Def_0002">$Find</a>(<i>s</i> , <i>d</i>) - 1.</p>
+<p>That is, NF extends <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107090.html#Def_0002">$Find</a> to give the position number
+of the character to the right of the <i>m</i>th occurrence of the
+string <i>d</i> in <i>s</i>.</p></td></tr></table>
+<p>Let <i>s</i> be the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub>, and let
+<i>d</i> be the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub>.
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i>,<i>d</i>) returns the substring of
+<i>s</i> bounded on the right but not including the first
+(leftmost) occurrence of <i>d</i>.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i>) = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(<i>s</i>
+, 0, NF(<i>s</i> , <i>d</i> ,1) - <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>d</i>) - 1).</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0001">$P[IECE]</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> ,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a> )</p>
+<p>Let <i>m</i> be the integer value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a>.
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i>,<i>d</i>,<i>m</i>) returns the substring
+of <i>s</i> bounded by but not including the <i>m&ndash;1</i>th and the
+<i>m</i>th occurrence of <i>d</i>.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> , <i>m</i>) =
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>( <i>s</i> , NF(<i>s</i> , <i>d</i> , <i>m</i> - 1),
+NF(<i>s</i> , <i>d</i> , <i>m</i>) - <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>d</i>) -
+1).</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0001">$P[IECE]</a> ( <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>1</sub> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107001.html#Def_0001"><u>expr</u></a><sub>2</sub> ,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>1</sub> , <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>2</sub> )</p>
+<p>Let <i>m</i> be the integer value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>1</sub>.Let <i>n</i> be the integer value of
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107053.html#Def_0001"><u>intexpr</u></a><sub>2</sub>. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> ,
+<i>m</i> , <i>n</i> ) returns the substring of <i>s</i> bounded
+on the left but not including the <i>m&ndash;1</i>th occurrence of
+<i>d</i> in <i>s</i>, and bounded on the right but not including
+the <i>n</i>th occurrence of <i>d</i> in <i>s</i>.</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> , <i>m</i> , <i>n</i> ) =
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(<i>s</i> , NF(<i>s</i> , <i>d</i> , <i>m</i> - 1),
+NF(<i>s</i> , <i>d</i> , <i>n</i> ) - <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(<i>d</i>) -
+1).</p>
+<p>Note that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> , <i>m</i> ,
+<i>m</i> ) = <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> , <i>m</i> ), and
+that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> ,1) =
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107101.html#Def_0002">$Piece</a>(<i>s</i> , <i>d</i> ).</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107101&amp;Edition=examples.html"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesa.gif"/></a></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:20:54.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107101%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

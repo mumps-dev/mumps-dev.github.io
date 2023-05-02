@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107195&amp;Edition=notes.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2><u>pattern</u></h2><h3>Annotations</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108001&amp;Edition=notes.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>alternation</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a specification of multiple alternate
+patterns that may occur to satisfy part of a pattern match specification.</p>
+<p>A list of alternate patterns looks like a list of pattern atoms (separated by
+commas) enclosed in parentheses.</p>
+<p>Modification in a future M[UMPS] language standard.</p>
+<p>A list of alternate patterns looks like a list of pattern specifications
+(separated by commas) enclosed in parentheses.</p>
+<p>Note: The limitation to pattern atoms in the 1995 ANSI M[UMPS] language
+standard was unintended.</p>
+<a name="Def_0002"></a>
+<h3>charspec</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a "pattern range". A pattern range
+is indicated by a specification enclosed in square brackets.
+Such a specification looks like
+either a single constant, or two constants separated by a colon.
+A <a href="#Def_0013"><u>strconst</u></a> (string-constant), in this context, is
+either a string literal, or a reference to the intrinsic function
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>.</p>
+<a name="Def_0003"></a>
+<h3>patatom</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents one part of a pattern to be matched. A
+specification consists of either a number (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a107049.html#Def_0002"><u>intlit</u></a>) or a period followed
+by either a string literal or a pattern code (<a href="#Def_0004"><u>patcode</u></a>).</p>
+<p>Valid specifications are:</p>
+<p><tt>1"string"<br/>
+9"THIS SPECIFIC TEXT"<br/>
+3E<br/>
+.A<br/>
+5N</tt></p>
+<p>Addition in the 1984 ANSI M[UMPS] language standard.</p>
+<p>Ranges of occurrences are introduced.</p>
+<p>Valid specifications are:</p>
+<p><tt>1.5N<br/>
+2.7"This String"<br/>
+.3A<br/>
+6.N</tt></p>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p>Alternative options for one pattern atom are introduced (see metalanguage
+symbol <a href="#Def_0001"><u>alternation</u></a>.</p>
+<p>Valid specifications look like:</p>
+<p><tt>1.5(2A,3N,1"Xyz")</tt></p>
+<p>A pattern-match operation may also be used to extract the
+value of the sub-string that matches a specific pattern and store
+the value of this sub-string into a variable. In this context, a
+pattern atom may end with a name of a variable, enclosed in
+parentheses, e.g. <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> X?4N(ITEM)3A</tt>.</p>
+<a name="Def_0004"></a>
+<h3>patcode</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a code that identifies a certain class of
+characters. Valid codes are A, C, E, L, N, P and U.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+<p>Implementors and applications can define their own pattern codes by supplying
+a pattern-check algorithm in the structured system variable
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107013.html#Def_0003">^$Character</a>(charset,"PATTERN",newcode)</tt>.</p>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p>Patterns may also be "negated", i.e. a string that matches a
+negated pattern matches anything but the pattern that is being
+negated.</p>
+<p>A pattern code may also be a "pattern range". A pattern range
+is indicated by a <a href="#Def_0002"><u>charspec</u></a> specification
+enclosed in square brackets. Such a specification looks like
+either a single constant, or two constants separated by a colon.
+A <a href="#Def_0013"><u>strconst</u></a> (string-constant), in this context, is
+either a string literal, or a reference to the intrinsic function
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>.</p>
+<a name="Def_0005"></a>
+<h3>patgrp</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a group
+of <a href="#Def_0003"><u>patatom</u></a>s (pattern-atoms).</p>
+<p>Such a group may occur in the context of
+an <a href="#Def_0001"><u>alternation</u></a>,
+which is a specification of a number of patterns, one of
+which should be matched by the string that is being compared
+to this list of possible patterns.</p>
+<a name="Def_0006"></a>
+<h3>patnonY</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106002.html#Def_0005"><u>ident</u></a>) and that is not the
+character Y (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(89) or <tt>"Y"</tt>).</p>
+<a name="Def_0007"></a>
+<h3>patnonYZ</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106002.html#Def_0005"><u>ident</u></a>) and that is not one of
+the the character Y (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(89) or <tt>"Y"</tt>) or Z (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(90)
+or <tt>"Z"</tt>).</p>
+<a name="Def_0008"></a>
+<h3>patnonZ</h3>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents any character that is valid in an
+identifier (see the metalanguage symbol
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=notes&amp;Page=a106002.html#Def_0005"><u>ident</u></a>) and that is not the
+character Z (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(90) or <tt>"Z"</tt>).</p>
+<a name="Def_0009"></a>
+<h3>patsetdest</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the destination where
+the value of a sub-string may be stored. Such a destination
+looks like the name of a variable, enclosed in parentheses.</p>
+<p>A pattern-match operation may be used to extract the
+value of the sub-string that matches a specific pattern and store
+the value of this sub-string into a variable. In this context, a
+pattern atom may end with a name of a variable, enclosed in
+parentheses, e.g. <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> X?4N(ITEM)3A</tt>.</p>
+<a name="Def_0010"></a>
+<h3>patstr</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents either a string literal
+or a "negated" string literal. This metalanguage symbol was
+added to facilitate the definition of "negated pattern 
+matching".</p>
+<p>A string literal is "negated" when it is preceded by the
+unary operator "not" (apostrophe).</p>
+<a name="Def_0011"></a>
+<h3>pattern</h3>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the specification of a text pattern. A
+pattern specification is either an indefinite repetition of pattern atoms
+(see the metalanguage symbol
+<a href="#Def_0003"><u>patatom</u></a>), or an indirection operator
+followed by an expression that evaluates to a pattern specification.</p>
+<a name="Def_0012"></a>
+<h3>repcount</h3>
+<p>Introduced in the 1984 ANSI M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents the number of times that a certain pattern
+element may occur in the total pattern.</p>
+<p>Examples:</p>
+<table>
+<tr><td><tt>12</tt></td>
+<td>exactly 12</td></tr>
+<tr><td><tt>.</tt></td>
+<td>any number</td></tr>
+<tr><td><tt>5.</tt></td>
+<td>at least 5</td></tr>
+<tr><td><tt>.9</tt></td>
+<td>at most 9</td></tr>
+</table>
+<a name="Def_0013"></a>
+<h3>strconst</h3>
+<p>Approved for inclusion in a future M[UMPS] language standard.</p>
+<p>This metalanguage symbol represents a string constant.
+A string constant appears in the context of "pattern ranges", and
+looks like either a string literal, or a reference to the intrinsic function
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107199&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:36:16.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107199%2fEdition%3dnotes%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Make all the squares the same color</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Make%20all%20the%20squares%20the%20same%20color&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fDots%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a23%3a15%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Make all the squares the same color</font></h1></td></tr></table>
+<form name="form"/>
+<table>
+<tr>
+<td>&nbsp;</td>
+<td align="center">&nbsp;3&nbsp;</td>
+<td align="center">&nbsp;4&nbsp;</td>
+<td align="center">&nbsp;5&nbsp;</td>
+<td align="center">&nbsp;6&nbsp;</td>
+<td align="center">&nbsp;7&nbsp;</td>
+<td align="center">&nbsp;8&nbsp;</td>
+<td align="center">&nbsp;9&nbsp;</td>
+<td align="center">&nbsp;10&nbsp;</td>
+<td align="center">&nbsp;11&nbsp;</td>
+<td align="center">&nbsp;12&nbsp;</td>
+<td align="center">&nbsp;13&nbsp;</td>
+<td align="center">&nbsp;14&nbsp;</td>
+</tr>
+<tr>
+<td align="right"><b>Horizontal</b>:&nbsp;</td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="3"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="4"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="5"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="6"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="7"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="8"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="9"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="10"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="11"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="12"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="13"/></td>
+<td align="center"><input type="radio" size="5" name="Horizontal" value="14"/></td>
+</tr>
+<tr>
+<td align="right"><b>Vertical</b>:&nbsp;</td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="3"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="4"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="5"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="6"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="7"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="8"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="9"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="10"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="11"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="12"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="13"/></td>
+<td align="center"><input type="radio" size="5" name="Vertical" value="14"/></td>
+</tr>
+</table>
+<p><input type="submit" value="Start"/></p>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+
+function Dot(yy,xx)
+ {
+  var color;
+  var won = true;
+  var cell;
+  var nx = xx - 1;
+  var ny = yy - 1;
+  var dir = Math.random() * 8;
+  if (dir >= 1)
+   {
+    nx = xx;
+    ny = yy - 1;
+   }
+  if (dir >= 2)
+   {
+    nx = xx + 1;
+    ny = yy - 1;
+   }
+  if (dir >= 3)
+   {
+    nx = xx - 1;
+    ny = yy;
+   }
+  if (dir >= 4)
+   {
+    nx = xx + 1;
+    ny = yy;
+   }
+  if (dir >= 5)
+   {
+    nx = xx - 1;
+    ny = yy + 1;
+   }
+  if (dir >= 6)
+   {
+    nx = xx;
+    ny = yy + 1;
+   }
+  if (dir >= 7)
+   {
+    nx = xx + 1;
+    ny = yy + 1;
+   }
+  color = document.getElementById('Cell_' + yy + '_' + xx).style.backgroundColor;
+  document.getElementById('Cell_' + yy + '_' + xx).style.backgroundColor = color == 'rgb(0, 0, 0)' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
+  cell = document.getElementById('Cell_' + ny + '_' + nx);
+  if (cell)
+   {
+    color = cell.style.backgroundColor;
+    cell.style.backgroundColor = color == 'rgb(0, 0, 0)' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
+   }
+  color = document.getElementById('Cell_1_1').style.backgroundColor;
+  for (ny = 1; ny < 1; ny++)
+   {
+    for (nx = 1; nx < 1; nx++)
+     {
+      if (document.getElementById('Cell_' + ny + '_' + nx).style.backgroundColor != color)
+       {
+        won = false;
+       }
+     }
+   }
+  if (won)
+   {
+    document.getElementById('Game').style.display = 'none';
+    document.getElementById('YouWon').style.display = 'block';
+   }
+ };
+
+//]]></script>
+
+
+</body>
+</html>

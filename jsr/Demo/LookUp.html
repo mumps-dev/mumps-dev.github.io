@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Bitmap Editor</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="#4c76ac" text="#ecd264" link="#fcf274" vlink="#ecd264">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="#4c76ac">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Bitmap%20Editor&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fLookUp%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a50%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="#4c76ac"><h1><font color="#ecd264" face="Arial" id="PageTitle">Bitmap Editor</font></h1></td></tr></table>
+
+<form action="jsrKanji.html" method="post">
+<table><tr><td valign=top>
+<h3>Character size is:</h3>
+<p><input type=text size=4 name="Horizontal" value=24> (horizontal) by <input type=text size=4 name="Vertical" value=24> (vertical).</p>
+<p>Character Set: <select name="FetchSet">
+<option value="test">test</option>
+<option value="ch">ch (read-only)</option>
+<option value="cj">cj (read-only)</option>
+<option value="cr01">cr01 (read-only)</option>
+<option value="cr02">cr02 (read-only)</option>
+<option value="cr03">cr03 (read-only)</option>
+<option value="cr04">cr04 (read-only)</option>
+<option value="cr05">cr05 (read-only)</option>
+<option value="cr06">cr06 (read-only)</option>
+<option value="cr07">cr07 (read-only)</option>
+<option value="cr08">cr08 (read-only)</option>
+<option value="cr09">cr09 (read-only)</option>
+<option value="cr10">cr10 (read-only)</option>
+<option value="cr11">cr11 (read-only)</option>
+<option value="cr12">cr12 (read-only)</option>
+<option value="cr13">cr13 (read-only)</option>
+<option value="cr14">cr14 (read-only)</option>
+<option value="ja">ja (read-only)</option>
+<option value="jr01">jr01 (read-only)</option>
+<option value="jr02">jr02 (read-only)</option>
+<option value="jr03">jr03 (read-only)</option>
+<option value="jr04">jr04 (read-only)</option>
+<option value="jr05">jr05 (read-only)</option>
+<option value="jr06">jr06 (read-only)</option>
+<option value="jr07">jr07 (read-only)</option>
+<option value="jr08">jr08 (read-only)</option>
+<option value="jr09">jr09 (read-only)</option>
+<option value="jr10">jr10 (read-only)</option>
+<option value="jr11">jr11 (read-only)</option>
+<option value="jr12">jr12 (read-only)</option>
+<option value="jr13">jr13 (read-only)</option>
+<option value="jr14">jr14 (read-only)</option>
+<option value="jr15">jr15 (read-only)</option>
+<option value="s1">s1 (read-only)</option>
+<option value="s2">s2 (read-only)</option>
+<option value="s3">s3 (read-only)</option></select>, character: <input type=text size=5 name="Character" value=><br/>
+Row: <input type=text size=3 name="Row" value=>, Column: <input type=text size=3 name="Column" value=> (Character = 16 x Row + Column)</td></tr>
+<tr><td valign=top><table border=1><tr><td valign=top>Background:<br/><input type=checkbox name="Transparent" checked> Transparent<br/>
+<input type=text size=6 name="BackGround" value="ffffff"> color</td><td valign=top>Foreground:<br/>
+<input type=text size=6 name="ForeGround" value="000000"> color</td></tr>
+<tr><td colspan=2 align=left>(ffffff = white, 000000 = black,<br/>ff0000 = red, 00ff00 = green, 0000ff = blue)</td></tr></table></p></tr></table>
+<p><input type=submit name="Fetch" value="Fetch Bitmap"></p>
+<table cellspacing=0>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_1_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_2_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_3_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_4_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_5_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_6_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_7_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_8_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_9_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_10_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_11_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_12_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_13_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_14_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_15_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_16_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_17_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_18_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_19_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_20_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_21_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_22_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_23_24">&nbsp;</td>
+</tr>
+<tr><td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_1">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_2">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_3">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_4">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_5">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_6">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_7">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_8">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_9">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_10">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_11">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_12">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_13">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_14">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_15">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_16">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_17">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_18">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_19">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_20">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_21">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_22">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_23">&nbsp;</td>
+<td bgcolor=#4c76ac>&nbsp;<input type=checkbox name="C_24_24">&nbsp;</td>
+</tr>
+</table>
+<table border=1><tr><td align=center valign=top><b>Rotate<br/>Counter<br/>Clockwise<br/><input type=submit align=center name="D90" value="  90 degrees"><br/><input type=submit align=center name="D180" value="180 degrees"><br/><input type=submit align=center name="D270" value="270 degrees"></td><td align=center valign=top><b>Flip<br/><input type=submit align=center name="FHor" value="Horizontal"><br/><input type=submit align=center name="FVer" value="  Vertical "></td><td align=center valign=top><b>Shift<br/><input type=submit align=center name="SUp" value="  Up  "><br/><input type=submit align=center name="SDown" value="Down"><br/><input type=submit align=center name="SLeft" value=" Left  "><br/><input type=submit align=center name="SRight" value=" Right"></td><td align=center valign=top><b>Show<br/>Modifications<br/><input type=submit align=center value="Re-Display"></td></tr></table>
+<table border=2><tr><td><h3>Create New Library:</h3>
+<table>
+<tr><td align=right><b>Name</b></td>
+<td align=left><input type=text name="NewLib" value=""></td></tr>
+<tr><td align=right><b>Define Password</b></td>
+<td align=left><input type=password name="NewPw" value=""></td></tr>
+<tr><td align=right><b>Verify Password</b></td>
+<td align=left><input type=password name="ChkPw" value=""></td></tr>
+<tr><td colspan=2 align=center><input type=submit value="Create" name="Create"></td></tr>
+</table></td>
+<td><h3>Save Character in Private Library:</h3>
+<table>
+<tr><td align=right><b>Character Set</b></td>
+<td align=left><select name="SaveSet">
+<option value="test">test</option></select></td></tr>
+<tr><td align=right><b>Character Code</b></td>
+<td align=left><input type=text name="SaveChar" value=""></td></tr>
+<tr><td align=right><b>Password</b></td>
+<td align=left><input type=password name="Pw" value=""></td></tr>
+<tr><td colspan=2 align=center><input type=submit value="Save" name="Save"></td></tr></table>
+</table></td></tr></form>

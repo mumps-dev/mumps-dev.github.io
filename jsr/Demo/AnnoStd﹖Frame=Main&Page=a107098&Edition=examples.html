@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107098&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107098&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107097&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$NAME</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107099&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1995 ANSI M[UMPS] language standard.</p>
+<p>This function returns the 'canonic representation' of the name of
+the variable that is passed as a parameter.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="Define <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^(3,4))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC(1,3,4)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^X(123+456_" apples"))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^X(""579 apples"")"</tt></td></tr>
+</table>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="^ABC(11,22,33,44)"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC(11,22,33,44)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X,0)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X,1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC(11)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X,3)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC(11,22,33)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X,9)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC(11,22,33,44)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@X,&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left">Error (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00039.html#Def_0001">M39</a>)</td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(X,1)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"X"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A(3,"A",4+3))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A(3,""A"",7)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A(3,"A",7),2)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A(3,""A"")"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A(3,4,5),0)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A(1,2,3,4),8)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A(1,2,3,4)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^A(1,2,3,4),&ndash;1)</tt></td>
+<td>&nbsp;</td>
+<td align="left">error (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00039.html#Def_0001">M39</a>)</td></tr>
+</table>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=^A(1,2,3)</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^(4,5))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^A(1,2,4,5)"</tt></td></tr>
+</table>
+<p>The application of the functions <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107102.html#Def_0002">$QLength</a>
+and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107103.html#Def_0002">$QSubscript</a> is tightly coupled, which can be seen in the
+following example.</p>
+<p>Note that this function merely operates on the name of a variable. The
+variable that is identified by this name is never accessed by this
+function. Therefore, this function only affects the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> if a
+global variable needs to be accessed to evaluate the reference to the
+name in question.</p>
+<p>So:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(^two(1))
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^one(2))," ",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^(3))</tt><br/>
+will produce<br/>
+<tt>^one(2) ^two(3)</tt></p>
+<p>The routine below scans a structure and totals the information
+stored at the various levels of this structure into an array.</p>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> START=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^SOMENAME(SOME,ARBITRARY,DEPTH))<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> STORE=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(TOTALS)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> SCAN(START,STORE)<br/>
+ ;...<br/>
+SCAN(START,TOT) ;<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> G,HEAD,MAJOR,MINOR,SS1,SS2<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> HEAD=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107102.html#Def_0002">$QLength</a>(START)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> MAJOR=HEAD+1,MINOR=HEAD+2<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> @TOT<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> G=START<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> G=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(@G)
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(@G,HEAD)'=START&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a><br/> 
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SS1=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107103.html#Def_0002">$QSubscript</a>(G,MAJOR)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107102.html#Def_0002">$QLength</a>(G)=MAJOR <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> @TOT@(SS1)=@G <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> SS2=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107103.html#Def_0002">$QSubscript</a>(G,MINOR)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> @TOT@(SS1,SS2)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107092.html#Def_0002">$Get</a>(@TOT@(SS1,SS2))+@G<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>The return value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a> contains an environment
+specification if and only if the parameter value contains an
+environment specification.</p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^|HERE|ABC)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^|""PRD,MST""|ABC"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^ABC)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"^ABC</tt>"</td></tr>
+</table>
+<p>The 'canonic' names of structured system variables
+are always fully spelled:</p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107013.html#Def_0001">^$C</a>("M","COLLATE"))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>^$CHARACTER("M","COLLATE")</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107013.html#Def_0003">^$Character</a>("M","COLLATE"))</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>^$CHARACTER("M","COLLATE")</tt></td></tr>
+</table>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(GLVN)<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^(3,4)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^(5,6))</tt><br/>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt>
+(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is still <tt>^ABC(1,</tt>)<br/>
+; 2. store ^(3,4) = <tt>^ABC(1,3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt></p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(GLVN,SUB)<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^(3,4)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107098.html#Def_0002">$NAme</a>(^(5,6),^(7,8))</tt><br/>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt>
+(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is still <tt>^ABC(1,</tt>)<br/>
+; 2. fetch ^(7,8) = <tt>^ABC(1,7,8)</tt><br/>
+; 3. store ^(3,4) = <tt>^ABC(1,7,3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,7,3,</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107098&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107098&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 12-Sep-2014, 12:24:24.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107098%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Display M[UMPS] Code</title>
+<style type="text/css">body {font-family: Arial;}
+</style>
+<link type="text/css" rel="stylesheet" href="../jquery/jquery_ui_1_9_0.css"/>
+<script type="text/javascript" src="../jquery/jquery_1_8_2.js"></script>
+<script type="text/javascript" src="../jquery/jquery_ui_1_9_0.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="black">
+<table id="HeaderTable" cellspacing="0" width="100%" border="0">
+<tr><td id="HeaderCell1" bgcolor="white">&nbsp;&nbsp;<a href="mailto:demoel@jacquardsystems.com?subject=Display%20M%5bUMPS%5d%20Code&amp;body=Hallo%20Ed%2c%0a%0aThis%20e%2dmail%20message%20is%20about%20your%20web%2dpage%20at%20%2fDemo%2fPrettyMUMPS%0a%0aI%20want%20you%20to%20know%20that%20%2e%2e%2e%0a%0aSincerely%2c%20%2e%2e%2e%0a%0aP%2eS%2e%3a%20Information%20that%20may%20be%20helpful%20to%20you%3a%0aCookie%20%3d%20%22%22%0aCall%20From%20%3d%20%2274%2e103%2e172%2e229%22%0aPage%20requested%20at%202%20May%202023%2012%3a22%3a49%0a%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0aThis%20electronic%20mail%20transmission%20contains%20confidential%20and%2for%0aprivileged%20information%20intended%20only%20for%20the%20person%28s%29%20named%2e%0aAny%20use%2c%20distribution%2c%20copying%20or%20disclosure%20by%20another%20person%0ais%20strictly%20prohibited%2e%0a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%0a"><img alt="Ed de Moel" border="0" src="../image/edm.gif" width="46" height="64"/></a></td><td id="HeaderCell2" valign="bottom" bgcolor="white"><h1><font color="black" face="Arial" id="PageTitle">Display M[UMPS] Code</font></h1></td></tr></table>
+
+<form action="PrettyMUMPS.html" method="post">
+<textarea name="Code" id="Code" rows="1" cols="80" onkeyup="GrowArea(event, 'Code');"></textarea>
+<table width="100%">
+<tr><td valign="top" width="33%">
+
+<p>Show M[UMPS] code:<br/><input type="radio" name="abbr" value="al"/> abbreviated in lower case<br/>
+<input type="radio" name="abbr" value="au"/> abbreviated in upper case<br/>
+<input type="radio" name="abbr" value="m" checked="checked"/> fully spelled out in mixed case<br/>
+<input type="radio" name="abbr" value="fl"/> fully spelled out in lower case<br/>
+<input type="radio" name="abbr" value="fu"/> fully spelled out in upper case.</p>
+</td><td valign="top" width="34%">
+<p>M[UMPS] dialect:<br/><input type="radio" name="Dialect" value="GT.M"/> GT.M = Greystone Technology M[UMPS]<br/>
+<input type="radio" name="Dialect" value="MSM"/> MSM = Micronetics Standard M[UMPS]<br/>
+<input type="radio" name="Dialect" value="Cache" checked="checked"/> Cach&eacute; Object Script</p>
+</td><td valign="top" width="33%">
+<table>
+<tr><td colspan="3">Colors:</td></tr>
+<tr><td>Label</td>
+<td><input type="text" name="C5" id="C5" size="10" onchange="if (this.value != '') document.getElementById('C5show').style.backgroundColor = this.value;"value="purple"/></td>
+<td id="C5show" bgcolor="purple">&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr><td>Function</td>
+<td><input type="text" name="C6" id="C6" size="10" onchange="if (this.value != '') document.getElementById('C6show').style.backgroundColor = this.value;"value="darkblue"/></td>
+<td id="C6show" bgcolor="darkblue">&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr><td>System Variable</td>
+<td><input type="text" name="C7" id="C7" size="10" onchange="if (this.value != '') document.getElementById('C7show').style.backgroundColor = this.value;"value="blue"/></td>
+<td id="C7show" bgcolor="blue">&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr><td>Command</td>
+<td><input type="text" name="C8" id="C8" size="10" onchange="if (this.value != '') document.getElementById('C8show').style.backgroundColor = this.value;"value="red"/></td>
+<td id="C8show" bgcolor="red">&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr><td>Comment</td>
+<td><input type="text" name="C9" id="C9" size="10" onchange="if (this.value != '') document.getElementById('C9show').style.backgroundColor = this.value;"value="green"/></td>
+<td id="C9show" bgcolor="green">&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+</table>
+<p><input type="submit" value="Display"/></p>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function()
+ {
+  FixArea(document.getElementById('Code'), 25);
+ });
+function GrowArea(ev, area)
+ {
+
+  var key = 0;
+  var ok = 0;
+  if (window.event) key = window.event.keyCode;
+  else if (ev) key = ev.which;
+  if (key ==  10) ok = 1;
+  if (key ==  13) ok = 1;
+  if (key ==  22) ok = 1;
+  if (key ==  24) ok = 1;
+  if (key ==   8) ok = 1;
+  if (key == 127) ok = 1;
+  if (ok > 0)
+   {
+    FixArea (document.getElementById(area), 25);
+   }
+ }
+
+
+function FixArea(area, max)
+ {
+
+  var actlen;
+  var columns;
+  var tLines;
+  var ii;
+  try
+   {
+    tLines = area.value.split('\n');
+    actlen = tLines.length;
+    columns = area.getAttribute ('cols');
+    for (ii = 0; ii < tLines.length; ii++)
+     {
+      actlen += Math.floor ((tLines[ii].length + 1) / columns);
+     }
+    if (actlen < 2)
+     {
+      actlen = 4;
+     }
+    else
+     {
+      actlen += 2;
+      if (actlen > max) actlen = max;
+     }
+    area.setAttribute ('rows', actlen);
+   }
+  catch (err)
+   {
+   }
+ }
+
+
+
+//]]></script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107109&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$TRANSLATE</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107112&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+<p>This function returns a translated version of the value of the
+input-string.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> UP="ABCDEFGHIJKLMNOPQRSTUVWXYZ"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> LO="abcdefghijklmnopqrstuvwxyz"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="ABCdef"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,LO,UP)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"ABCDEF"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,UP,LO)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"abcdef"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,LO)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"ABC"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,UP)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"def"</tt></td></tr>
+</table>
+<p>Note that case conversion using
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107084.html#Def_0002">$ASCII</a>(X)+32)</tt> and
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107084.html#Def_0002">$ASCII</a>(X)&ndash;32)</tt>
+only works within the
+strictly bounded 128 character ASCII set. Case conversion using
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a> will always work, regardless of the character
+set being used.</p>
+<p>Assume that <tt>X="12/26/94"</tt></p>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>("Yy/Mm/Dd","Mm/Dd/Yy",X)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>"94/12/26"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=122694<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>("efabcd","abcdef",X)</tt></td>
+<td>&nbsp;</td>
+<td valign="bottom" align="left"><tt>"941226"</tt></td></tr>
+</table>
+<p><b>Note</b>: in this example, start with the string <tt>"efabcd"</tt>.
+Replace all <tt>"a"</tt>s with the first character of the value of X,
+all <tt>"b"</tt>s with the second character, et cetera.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> (FORWARD,BACKWARD)=""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> K=0:1:255 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> FORWARD=FORWARD_<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(K)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> K=0:1:255 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> BACKWARD=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107085.html#Def_0002">$Char</a>(K)_BACKWARD<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(FORWARD,BACKWARD,"ABCDE") = "EDCBA"</tt></p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(string,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(string,"0123456789"))</tt>
+will return only the digits that occur in the value of <tt>string</tt>.
+Note that this result is not necessarily the same as the value
+of <tt>+string</tt>.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X="abc123cde654ghi"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(X,"1234567890"))</tt>
+returns <tt>123654</tt></p>
+<p>The "inner" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a> returns a value that is the
+original value of <tt>X</tt>, with all digits removed.<br/>
+The "outer" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a> returns a value that is the
+original value of <tt>X</tt>, with all characters removed that
+occur in the return value of the inner <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>.<br/>
+Effectively, this combination of two nested <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>s
+will return only those characters from the original value of
+<tt>X</tt> that occur in the value of the second parameter of in
+"inner" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>.</p>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(VALUE,OLD)<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^(3,4)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(^(5,6),^(7,8))</tt><br/>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br/>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br/>
+; 3. store ^(3,4) = <tt>^ABC(1,5,7,3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,5,7,3,</tt></p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(VALUE,OLD,NEW)<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>
+^(3,4)=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107111.html#Def_0002">$TRanslate</a>(^(5,6),^(7,8),^(9,10))</tt><br/>
+; 1. fetch ^(5,6) = <tt>^ABC(1,5,6)</tt><br/>
+; 2. fetch ^(7,8) = <tt>^ABC(1,5,7,8)</tt><br/>
+; 3. fetch ^(9,10) = <tt>^ABC(1,5,7,9,10)</tt><br/>
+; 4. store ^(3,4) = <tt>^ABC(1,5,7,9,3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,5,7,9,3,</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107111&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 12-Sep-2014, 12:34:35.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107111%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

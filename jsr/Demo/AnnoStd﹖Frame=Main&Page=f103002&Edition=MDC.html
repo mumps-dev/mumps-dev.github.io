@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103002&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103001&amp;Edition=MDC.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - Manipulating Attributes</h2><h3>Draft MDC Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103003&amp;Edition=MDC.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>3.1 Manipulating Attributes</h3>
+<p>When an M[UMPS] process begins execution, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a> and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a> are
+not defined.</p>
+<p>Values may be <i>assigned</i> to attributes by referencing
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f104001.html#Def_0001">^$DISPLAY</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a> as a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107007.html#Def_0001"><u>glvn</u></a> on the left hand
+side of the equal sign in an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> or as a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0006"><u>setleft</u></a> in an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0003">SET</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>.</p>
+<p>When attribute values are assigned with an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>, all visible effects occur at the successful
+conclusion of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>. Note that this does not
+require that the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> modify an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a> in an
+atomic fashion. Rather, it places the visible effects at the
+conclusion of the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>.</p>
+<p>If an application attempts to assign a value to a reserved
+attribute name, an error condition occurs with an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> =
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f111003.html#Def_0001">M46</a>" and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f111002.html#Def_0001">$EREF</a> containing a value that indicates the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a> reference for which the error occurred.</p>
+<p>An entity is <i>created</i> at the conclusion of the first M[UMPS]
+command that assigns a value to one or more of its attributes. If
+a value is not explicitly assigned to an attribute when an entity
+is created, a default value may be provided by the MWAPI or the
+underlying windowing platform. If the default value is dependent
+upon the values of one or more attributes of another existing
+entity, the attribute values of that other entity at the time of
+the new entity's creation are used. Subsequent changes to the
+existing entity's attribute values do not affect previously
+established default values.</p>
+<p><i><b>Note</b>: If there are multiple attributes for which
+values must be assigned when an entity is created, the entity can
+only be created using the M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108041.html#Def_0003">MERGE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>. All gadgets
+currently defined by this standard have this characteristic.</i></p>
+<p>Certain attributes of an existing display, window, element,
+choice or event information structure can be modified by
+assigning new values to them. Attribute values are also modified
+by the MWAPI in response to user actions or other occurrences.</p>
+<p>If a value domain is specified for an attribute, all values
+outside the specified domain are reserved. Unless specifically
+stated otherwise, if an application attempts to assign to an
+attribute a value that is outside the specified domain of that
+attribute, an error condition occurs with an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107059.html#Def_0006"><u>ecode</u></a> =
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f111003.html#Def_0002">M47</a>" and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f111002.html#Def_0001">$EREF</a> containing a value that indicates the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a> reference for which the error occurred.</p>
+<p>The value of an attribute, whether explicitly assigned by the
+application, or present by default, or set by the MWAPI, can be
+obtained by referencing <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f104001.html#Def_0001">^$DISPLAY</a> or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a>.</p>
+<p>In any context in which an attribute is modifiable, using the
+M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> to remove the value of an attribute causes
+the attribute to have the default value that it would have if the
+entity were created at that instant, if a default is specified,
+or to become undefined, if no default is specified.</p>
+<p>In any context in which an attribute is not modifiable, an
+attempt by an application to assign a value to the attribute or
+to remove the value of the attribute is ignored.</p>
+<p>An <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105003.html#Def_0001">MTERM</a> window that was created by the execution of an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0003">OPEN</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> is destroyed by using its <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0003"><u>wname</u></a> as the
+device designation in an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0003">CLOSE</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>. Any other
+window, an element, or a choice is <i>destroyed</i> by removing
+its <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0003"><u>wname</u></a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0004"><u>ename</u></a>, or <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f103011.html#Def_0008"><u>item</u></a>, respectively,
+from <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a> with the M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>. Destroying an
+entity causes it to become undefined and causes all of the
+attributes of the entity to be removed from <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>. When a
+window is destroyed, all descendant windows and elements are
+destroyed. When an element is destroyed, all descendant choices
+are destroyed</p>
+<p>Execution of an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0003">KILL</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a> which has a
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0005"><u>killargument</u></a> equal to "<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a>" or
+"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0004">^$W</a>" causes all windows defined in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a> to be
+destroyed and causes the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f105001.html#Def_0002">^$WINDOW</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107012.html#Def_0001"><u>ssvn</u></a> to become undefined.
+When a process executes an M[UMPS] <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108033.html#Def_0003">HALT</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108001.html#Def_0002"><u>command</u></a>, all of the
+windows that belong exclusively to it are destroyed and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=f109021.html#Def_0001">^$EVENT</a>
+becomes undefined.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f103002&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCd.gif"/></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 21-Mar-2004, 13:13:10.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df103002%2fEdition%3dMDC%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

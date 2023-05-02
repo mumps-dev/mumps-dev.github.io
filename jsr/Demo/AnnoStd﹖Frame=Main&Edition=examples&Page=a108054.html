@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108053&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>USE</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108055&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1977 ANSI M[UMPS] language standard.</p>
+<p>Clarification (no change intended) in a future M[UMPS]
+language standard:</p>
+<p>Any keywords in the argument of the command are processed in 
+strict left-to-right order. When multiple equivalent parameters 
+are encountered, the last occurrence processed will define the 
+action(s) to be taken.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> VDU,PRINT<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> I=1:1:END <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> DEV=VDU,PRINT <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> DEV
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,X(I)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> VDU,PRINT</tt><br/>
+Print the same text on two devices.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> DEVICE::50 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108027.html#Def_0002">Else</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Can't
+open..." <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt><br/>
+Attempt to open the device. If the device does not become
+available within the time-out period (50 seconds), stop trying
+and set the value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> to false.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> DEVICE:::"X3.64"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> DEVICE::"X3.64"</tt><br/>
+Open a device with the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> <tt>"X3.64"</tt> (VT-
+100 compatible terminal).</p>
+<p>The most common functions in ANSI X3.64 are itemized in
+the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a301002.html#Def_0001">X3.64</a> description.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> DEVICE::10:("X3.64","GKS")</tt><br/>
+This command opens a device and specified both the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s X3.64 and GKS. It also specifies a time-out
+of 10 seconds. X3.64 will be the initial <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> for
+the device; GKS may be selected in subsequent <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a>
+commands, and X3.64 may be re-selected. No other <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s
+may be selected in subsequent <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> commands.</p>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p>More <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s are becoming available.</p>
+<p>The ability to specify "user-defined" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s is added.
+It will be possible to specify to an implementation to use entries in a
+specific routine (let's call it <tt>USER</tt> for the purpose of this 
+discussion) for the processing of the commands <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a>, <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a>
+and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> and the various <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>s for specific 
+combinations of device and <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>.</p>
+<p>When this feature is active, the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0010"><u>controlmnemonic</u></a>
+<tt>/ABC(P1,P2)</tt> will be executed as <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> 
+ABC^USER(P1,P2)</tt>, and the command <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> 
+device:(PARAM1:KEY2=VALUE2)</tt> will be executed as:</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a><br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108042.html#Def_0002">New</a> X,Y<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> (X,Y)=2 ; Number of deviceparameters<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X(1)="PARAM1" ; First deviceparameter<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X(2)="KEY2",Y(2)=VALUE2<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> %USE^USER(device,.X,.Y,"")<br/>
+. <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>The name of a device may contain an environment specification<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> |"LONDON"|MTA47</tt></p>
+<p>A time-out for output operations may be specified. In order for
+this capability to be available, the current device must have
+established a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a> that supports this feature.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> device:(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108059.html#Def_0001">OUTTIMEOUT</a>=duration)</tt></p>
+<p>will establish a time-out period of <tt>duration</tt> seconds. If
+any subsequent output-producing argument of a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> or
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> command fails to complete execution within this
+time-out period, this condition will be visible in two fashions:</p>
+<ul>
+<li><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(device,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107023.html#Def_0002">"OUTSTALLED"</a>)=1</li>
+<li>an error occurs with ecode equal to <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ab00100.html#Def_0001">M100</a></li>
+</ul>
+<p>If the value of <tt>duration</tt> in the example above would not
+be greater than zero, no time-out would apply for the device in 
+question.</p>
+<p>The ability to specify an "output time-out" is added. An output
+time-out is specified as a device parameter in an OPEN or USE
+command.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> "TTY2":<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108059.html#Def_0001">OUTTIMEOUT</a>=5:"X3.64"</tt><br/>
+Assuming that the implementation allows for the
+<u>deviceparameter</u> <tt>OUTTIMEOUT</tt> in the class
+library called <tt>"X3.64"</tt> (VT&ndash;100 compatible devices), an
+error with code <tt>M100</tt> will occur when an attempt is made
+to output data to the device called <tt>"TTY2"</tt>, and it is
+not possible to produce this output within 5 seconds.</p>
+<p>Until external action has cleared this error condition, the value
+of <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107020.html#Def_0001">^$D[EVICE]</a>("TTY2",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107023.html#Def_0002">"OUTSTALLED"</a>)</tt> will have the value 1 
+(true).</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> "TTY2":<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108059.html#Def_0001">OUTTIMEOUT</a>=0</tt><br/>
+will cancel the recognition of output time-out conditions, and 
+will cause the system to wait until output to the device in 
+question has completed.</p>
+<p>The addition of a binding to TCP/IP socket devices includes a
+number of new deviceparameters.</p>
+<p>Below, a number of sample programs are shown that could be used
+as clients and servers in a network of programs that communicate
+through TCP/IP sockets.</p>
+<h3>Client Process</h3>
+<p><tt> ; connect to any server providing the service<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> timeout=10<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>connect</b>="myservice"):timeout:<b>"SOCKET"</b><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to connect to server" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev<br/>
+ ;==> WRITE/READ dialogue with server ...<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+<br/>
+ ; restrict the search to TCP/IP servers<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>connect</b>="myservice:IP:TCP")::<b>"SOCKET"</b><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to connect to server" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> address=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,sockindx,<b>"REMOTEADDRESS"</b>)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Connected to server at ",address<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev<br/>
+ ;==> WRITE/READ dialogue with server ...<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>or</p>
+<p><tt> ; connect to a specific server and port<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>connect</b>="128.200.1.5:IP:TCP:2001")::<b>"SOCKET"</b> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev<br/>
+ ;==> WRITE/READ dialogue with server ...<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<h3>Serial Server Process</h3>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> timeout=10<br/>
+ ; obtain a socket<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>listen</b>=":IP:TCP:2001"):timeout:<b>"SOCKET"</b><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to open server port" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ ; establish a queue depth of 3<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <b>/listen</b>(3)<br/>
+ ; wait for a client connection<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <b>/wait</b>(timeout)
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107058.html#Def_0004">$Device</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a>'="" d<br/>
+ . ;==> READ/WRITE dialogue with client ...<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockhndl=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,sockindx,<b>"SOCKETHANDLE"</b>)<br/>
+ . ; close current device<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev:(<b>socket</b>=sockhndl)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<h3>Concurrent Server Process</h3>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> timeout=10<br/>
+ ; obtain a socket<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>listen</b>=":IP:TCP:2001"):timeout:<b>"SOCKET"</b><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> '<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107074.html#Def_0002">$Test</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to open server port" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ ; establish a queue depth of 3<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <b>/listen</b>(3)<br/>
+ ; wait for a client connection<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <b>/wait</b>(timeout)
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107058.html#Def_0004">$Device</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a>'="" d<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockhndl=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,sockindx,<b>"SOCKETHANDLE"</b>)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev:(<b>detach</b>=sockhndl)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> server^srv(sockhndl)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>In this example, the routine ^srv could look like</p>
+<p><tt> ...<br/>
+server(sockhndl) ;<br/>
+ ...<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:(<b>attach</b>=sockhndl)::<b>"SOCKET"</b><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev<br/>
+ ;==> READ/WRITE dialogue with client<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<h3>Multi Protocol Server Process</h3>
+<p><tt> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> timeout=10<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0002">Open</a> dev:::<b>"SOCKET"</b>&nbsp;&nbsp;; acquire M[UMPS] device<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev:(<b>listen</b>=":IP:TCP:2001") ; Establish TCP protocol<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107058.html#Def_0004">$Device</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to listen for TCP connections"
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> tcpindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> tcphndl=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,tcpindx,<b>"SOCKETHANDLE"</b>)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev:(<b>listen</b>=":SPX:1025") ; Establish SPX protocol<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107058.html#Def_0004">$Device</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> !,"Unable to listen for SPX connections"
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> spxindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> spxhndl=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,spxindx,<b>"SOCKETHANDLE"</b>)<br/>
+ ; wait for a client connection on either protocol<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> <b>/wait</b>(timeout)
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107058.html#Def_0004">$Device</a>&nbsp;&nbsp;<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a>'="" d<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockindx=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,<b>"SOCKETINDEX"</b>)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> sockhndl=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107020.html#Def_0002">^$Device</a>(dev,sockindx,<b>"SOCKETHANDLE"</b>)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107066.html#Def_0002">$Key</a>'="CONNECT" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107068.html#Def_0002">$Principal</a>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "Shouldn't happen"
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev:(<b>socket</b>=sockhndl) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a><br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> dev:(<b>detach</b>=sockhndl)<br/>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108036.html#Def_0003">Job</a> server^srv(sockhndl) ; Same server as above example<br/>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108025.html#Def_0002">Close</a> dev <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a></tt></p>
+<p>For a program that parses a programming language, it is hard
+to see the difference between:<br/>
+<tt>...:(abc=xyz):...</tt><br/>
+and<br/>
+<tt>...:(<b>FILENAME</b>="C:\temp\ABC.TMP"):...</tt><br/>
+In the former example, the text between the parentheses should be
+an expression that happens to return a boolean value, whereas in
+the latter example, the text between the parentheses could be a
+"keyword equals value" combination that has a meaning in certain
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108043.html#Def_0007"><u>mnemonicspace</u></a>s.</p>
+<p>In order to make it easier to indicate this difference, the
+option to precede a devicekeyword with a slash has been
+introduced. This would make the latter example look like:<br/>
+<tt>...:(<b>/FILENAME</b>="C:\temp\ABC.TMP"):...</tt></p>
+<p>Examples with naked references:</p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> DEVICE<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> ^(3,4)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,</tt><br/>
+; Actual reference is: <tt>^ABC(1,3,4)</tt></p>
+<p><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> DEVICE:PARAMETERS<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108054.html#Def_0002">Use</a> ^(3,4):^(5,6)</tt><br/>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br/>
+; 2. fetch ^(5,6) = <tt>^ABC(1,3,5,6)</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now: <tt>^ABC(1,3,5,</tt></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a108054&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 09:18:38.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da108054%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

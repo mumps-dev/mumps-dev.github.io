@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107196&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>String Relations</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107198&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>7.2.2.3 String relations</h3>
+<p>The relations  = ] [  and  ]]  do not imply any numeric
+interpretation of either of their operands.</p>
+<p>The relation = tests string identity. If the operands are not
+known to be numeric and numeric equality is to be tested, the
+programmer may apply an appropriate unary operator to the
+nonnumeric operands. If both arguments are known to be in numeric
+form (as would be the case, for example, if they resulted from
+the application of any operator except _), application of a unary
+operator is not necessary. The uniqueness of the numeric
+representation guarantees the equivalence of string and numeric
+equality when both operands are numeric. Note, however, that the
+division operator / may produce inexact results, with the usual
+problems attendant to inexact arithmetic.</p>
+<p>The relation [ is called <i>contains</i>. <i>A</i> [ <i>B</i>
+is true if and only if <i>B</i> is a substring of <i>A</i>; that
+is, <i>A</i> [ <i>B</i> has the same value as
+<tt>''<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107090.html#Def_0003">$Find</a>(<i>A</i>,<i>B</i>)</tt>. Note that the empty
+string is a substring of every string.</p>
+<p>The relation ] is called <i>follows</i>. <i>A</i> ] <i>B</i>
+is true if and only if <i>A</i> follows <i>B</i> in the sequence,
+defined here. <i>A</i> follows <i>B</i> if and only if any of the
+following is true.</p>
+<ol type="a">
+<li><i>B</i> is empty and <i>A</i> is not.</li>
+<li>Neither <i>A</i> nor <i>B</i> is empty, and the
+leftmost character of <i>A</i> follows (i.e., has a numerically
+greater <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107084.html#Def_0003">$ASCII</a> value than) the leftmost character of
+<i>B</i>.</li>
+<li>There exists a positive integer <i>n</i> such that
+<i>A</i> and <i>B</i> have identical heads of length <i>n</i>,
+(i.e., <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107089.html#Def_0003">$Extract</a>(<i>A</i>,1,<i>n</i>) =
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107089.html#Def_0003">$Extract</a>(<i>B</i>,1,<i>n</i>)) and the remainder of
+<i>A</i> follows the remainder of <i>B</i> (i.e.,
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107089.html#Def_0003">$Extract</a>(<i>A</i>,<i>n</i>+1,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0003">$Length</a>(<i>A</i>))
+follows
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107089.html#Def_0003">$Extract</a>(<i>B</i>,<i>n</i>+1,<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107095.html#Def_0003">$Length</a>(<i>B</i>))).</li>
+</ol>
+<p>The relation ]] is called <i>sorts after</i>. A]]B is true if
+and only if A follows B in the subscript ordering sequence
+defined by the single argument <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107100.html#Def_0003">$Order</a> function as if that
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107100.html#Def_0003">$Order</a> refers to a <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=a107008.html#Def_0001"><u>lvn</u></a>..</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1984.html"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107197&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 28-Nov-2011, 20:03:45.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107197%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

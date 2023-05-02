@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107184&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107182&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$%CRC16^STRING</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107185&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Approved for inclusion in a future M[UMPS] language standard as part
+of the library for cyclic redundancy checks.</p>
+<p>This function computes a Cyclic Redundancy Code of the 8-bit
+character string <tt>string</tt>, using X<sup>16</sup> +
+X<sup>15</sup> + X<sup>2</sup> + 1 as the polynomial. The
+optional parameter <tt>seed</tt> may supply an initial value,
+which allows for running CRC calculations on multiple strings. If
+the parameter <tt>seed</tt> is not specified, a default value of
+0 is assumed. The value of <tt>seed</tt> is limited to 0 &le;
+<tt>seed</tt> &lt; 2<sup>16</sup>. The function value will be
+between 0 and 2<sup>16</sup>.</p>
+<p>A typical method of transmitting data is to send data followed
+by a check-sum value, e.g.:</p>
+<pre>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108045.html#Def_0002">Read</a> Data <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> L=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107095.html#Def_0002">$Length</a>(Data)
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> CRC=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(Data,L&ndash;1,L)
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> VAL=0
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> i=1:1:2 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> VAL=VAL*256+$ASCII(CRC,i)
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> DATA=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107089.html#Def_0002">$Extract</a>(Data,1,L&ndash;2)
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108035.html#Def_0002">If</a> <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(Data)'=VAL <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a> Error
+</pre>
+<p>A check-sum can also be calculated over multiple strings:</p>
+<pre>
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a>(I,C)=0
+ <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> I=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>(X(I)) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:'I  <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108026.html#Def_0002">Do</a>
+ . <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> C=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(X(I),C)
+</pre>
+<table width="95%">
+<tr><th align="right" width="45%">Reference</th>
+<td>&nbsp;</td>
+<th align="left" width="45%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(123)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>47620</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(1234)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>5306</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(12345)</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>42069</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>(" ")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>55297</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("1234567890123456789012345678901234567890")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>57484</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("ABCDEFGHIJKLMNOPQRSTUVWXYZ")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>6375</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("a")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>59585</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("abc")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>38712</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("abcd")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>14743</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("abcdef")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>22533</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=a107184.html#Def_0001">$%CRC16^STRING</a>("abcdefghijklmnopqrstuvwxyz")</tt></td>
+<td>&nbsp;</td>
+<td align="left"><tt>39965</tt></td></tr>
+</table>
+<p>The MDC has approved code to approximate the return value of this function.
+Implementors are encouraged to provide more accurate and efficient code).<br/>
+Click here for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=ai03001.html#Def_0001">$%CRC16^STRING sample code</a> to
+view or download the code for this function.<br/>
+Click here for <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=examples&amp;Page=ai00000.html#Def_0001">AllFunctions</a> to view
+or download the code for all M[UMPS] Library Functions.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107184&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 12-Sep-2014, 12:53:05.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107184%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

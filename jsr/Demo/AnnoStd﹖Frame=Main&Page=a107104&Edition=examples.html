@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107103&amp;Edition=examples.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>$QUERY</h2><h3>M[UMPS] by Example</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107105&amp;Edition=examples.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<p>Introduced in the 1990 ANSI M[UMPS] language standard.</p>
+<p>This function returns information about other defined information
+in a data-structure, based on the collating sequence in use for
+that data-structure.</p>
+<p>Assume that a global variable ^A exists as depicted in the
+diagram with the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>. The code:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> REF="^A"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a> I=1:1:20 <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> REF=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(@REF)
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> " ",REF</tt><br/>
+will produce the following print-out:</p>
+<p><tt> ^A(&ndash;34) ^A(&ndash;4) ^A(&ndash;3) ^A(&ndash;2) ^A(2) ^A(3) ^A(3,1)<br/>
+ ^A(3,2) ^A(3,10) ^A(3,10,3) ^A(4) ^A(34) ^A("&ndash;5A")<br/>
+ ^A("5A") ^A("A") ^A("AB") ^A("AD) ^A(B")&nbsp;&nbsp;^A(&ndash;34)</tt></p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^ABC<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2,3)="Demo"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> X=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^ABC(1,""))</tt><br/>
+The effect of this reference to the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a> is not
+portable. Use of the empty string as a subscript is only portable
+in the context of the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>.<br/>
+While some implementations may return the value
+<tt>"^ABC(1,2,3)"</tt> in local variable <tt>X</tt>, others may
+return an error.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^X<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(1,2,1)=""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(1,2,2)=""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(1,3)=""<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> A=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^X(1,1))</tt><br/>
+will return the value <tt>"^X(1,2,1)"</tt> in local variable
+<tt>A</tt>.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^X<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X("&ndash;80 apples")="X"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(&ndash;30)="N"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(&ndash;7)="A"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(&ndash;3.5)="B"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^X(0)="W"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> NAM="^X"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108031.html#Def_0002">For</a>&nbsp;&nbsp;Set NAM=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(@NAM) <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1990&amp;Page=a108044.html#Def_0003">Quit</a>:NAM="" <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> " ",@NAM<br/>
+ N A B W X</tt><br/>
+Note that the string <tt>"&ndash;80 apples"</tt> collates after the
+highest number.</p>
+<p>Addition in the 1995 ANSI M[UMPS] language standard.</p>
+<p>The return value of <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a> contains an environment
+specification if and only if the parameter value contains an
+environment specification.</p>
+<p>Assume that a process is operating in an environment
+called <tt>"first"</tt> and that the following variables exist:<br/>
+<tt>lvn(1) = "local"<br/>
+^one = 1<br/>
+^one(1) = 1<br/>
+^one(3) = 3</tt></p>
+<p>Also, assume that in an environment called <tt>"second"</tt> the
+following variables exist:<br/>
+^two = 2<br/>
+^two(2) = 22<br/>
+^two(2,2,2,2)=2222</p>
+<table width="90%">
+<tr><th align="right" width="40%">Reference</th>
+<th align="left" width="20%">Value</th></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(lvn)</tt></td>
+<td align="left"><tt>"lvn(1)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^one)</tt></td>
+<td align="left"><tt>"^one(1)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^|"first"|one)</tt></td>
+<td align="left"><tt>"^|""first""|one(1)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^|"second"|two)</tt></td>
+<td align="left"><tt>"^|""second""|two(2)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^one(^|"second"|two))</tt></td>
+<td align="left"><tt>"^one(3)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=^|"second"|two(2)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> y=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^(2))</tt></td>
+<td align="left"><tt>y="^two(2,2,2,2)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^|"second"|two)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> y=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(lvn)</tt></td>
+<td align="left"><tt>x="^|""second""|two(2)"<br/>
+y="lvn(1)"</tt></td></tr>
+<tr><td align="right"><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> x=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^|"second"|two)<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> y=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^one)</tt></td>
+<td align="left"><tt>x="^|""second""|two(2)"<br/>
+y="^one(1)"</tt></td></tr>
+</table>
+<p>Additions in a future M[UMPS] language standard.</p>
+<p><tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108037.html#Def_0002">Kill</a> ^ABC<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> ^ABC(1,2,3)="Demo"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "--&gt;""",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>,""""<br/>
+--&gt;"^ABC(1,2,3)"<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108048.html#Def_0002">Set</a> A=<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^ABC(1))<br/>
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a108056.html#Def_0002">Write</a> "--&gt;""",A,""", and
+""",<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>,"""."<br/>
+--&gt;"^ABC(1,2,3)", and "".</tt><br/>
+After a reference to the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>, the
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> becomes undefined, which means that <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107070.html#Def_0002">$Reference</a>
+becomes equal to the empty string.</p>
+<p>Reverse <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a> will work in a manner analogous to reverse
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107100.html#Def_0002">$Order</a>:<br/>
+<tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(^A("&ndash;5A"),&ndash;1) = "^A(34)"</tt></p>
+<p>When the function <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a> returns the name of a standardized
+structured system variable, the name will be returned in a
+"canonical" form. In its canonical form, the parts of these names
+that may be abbreviated will be fully spelled, and those parts of
+these names that are case insensitive will be converted to upper
+case only.</p>
+<p>E.g. <tt><a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107104.html#Def_0002">$Query</a>(<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107013.html#Def_0001">^$C</a>("M"))</tt> could return
+<tt>"<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107013.html#Def_0003">^$Character</a>("M",<b>"COLLATE"</b>)"</tt></p>
+<p>Examples with naked references:</p>
+<p><b>$Query</b>(GLVN)<br/>
+<tt><b>Set</b> ^ABC(1,2)="reset <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a>"</tt><br/>
+; <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> is now <tt>^ABC(1,<br/>
+<b>Set</b> x=<b>$Query</b>(^(3,4))</tt><br/>
+; 1. fetch ^(3,4) = <tt>^ABC(1,3,4)</tt><br/>
+; 2. the <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=MDC&amp;Page=a107011.html#Def_0005">naked indicator</a> becomes undefined after a reference to <b>$Query</b></p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=1990.html"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=1995.html"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995a.gif"/></a></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a107104&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesd.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><b><i>The information in this page is
+NOT authoritative and subject to be modified
+at any moment.<br/>Please consult the
+appropriate (draft) language standard for an
+authoritative definition.</i></b></p>
+<p><b><i>Some specifications are "approved
+for inclusion in a future standard". Note
+that the MUMPS Development Committee cannot
+guarantee that such future standards will
+indeed be published.</i></b></p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 21:38:53.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da107104%2fEdition%3dexamples%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109006&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109005&amp;Edition=1995.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>MWAPI - Focus Events</h2><h3>1995 Version of ANSI (Equivalent to Current ISO Version) of Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109007&amp;Edition=1995.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><h3>8.1.4 Focus Events</h3>
+<p>Focus events are focus, unfocus and change events.</p>
+<p>A focus event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal to
+"FOCUS", occurs when a window or gadget has received focus.</p>
+<p>For a window, an unfocus event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a>
+value equal to "UNFOCUS", occurs when a window is about to lose
+focus to another window defined in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f105001.html#Def_0002">^$WINDOW</a>. If a window
+W<sub>1</sub> which is defined in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f105001.html#Def_0002">^$WINDOW</a> has focus, then focus
+changes to one or more windows not defined in <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f105001.html#Def_0002">^$WINDOW</a>, and then
+focus changes to a window W<sub>2</sub> which is defined in
+<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f105001.html#Def_0002">^$WINDOW</a>, an unfocus event occurs for W<sub>1</sub> if
+W<sub>1</sub> is a different window than W<sub>2</sub> and no
+unfocus event occurs for W<sub>1</sub> if W<sub>1</sub> is a the
+same window as W<sub>2</sub>.</p>
+<p>For a gadget, an unfocus event occurs when the gadget is about
+to lose focus to another gadget defined for the same window. If a
+gadget G in window W has focus, then focus changes to one or more
+other windows, and then focus changes to window W, an unfocus
+event occurs for gadget G when focus changes to window W but not
+to gadget G.</p>
+<p>A change event, indicated by an <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109002.html#Def_0001"><u>etype</u></a> value equal to
+"CHANGE", occurs for a gadget instead of an unfocus event if (a)
+change events are enabled for the gadget and (b) the value of the
+gadget's CHANGED <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f106020.html#Def_0001"><u>elattribute</u></a> is equal to TRUE. If both
+change and unfocus events are enabled for a gadget and a change
+event occurs, then an unfocus event does not occur.</p>
+<p>If, during call back processing for a change or unfocus event,
+an application removes the OK <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109021.html#Def_0003"><u>einfoattribute</u></a> from <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1995&amp;Page=f109021.html#Def_0001">^$EVENT</a>,
+the request to change focus is denied. If the action which
+produced the change or unfocus event also would produce a
+subsequent focus event, that focus event does not occur. In
+addition, any deferred events except timer events are discarded
+and, to the extent possible, visual and other effects of the
+attempt to change focus are prevented or reversed.</p>
+<p>If an action yields both an unfocus or change event and a
+focus event, the unfocus or change event precedes the focus
+event.</p>
+<table width="91%"><tr>
+<td width="13%" align="center"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995d.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=f109006&amp;Edition=MDC.html"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesc.gif"/></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 21-Mar-2004, 13:13:20.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3df109006%2fEdition%3d1995%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>

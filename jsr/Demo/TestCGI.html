@@ -1,0 +1,686 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>A web-interface for GT.M</title></head>
+<body bgcolor=#4c76ac text=#ecd264 link=#fcf274 vlink=#ecd264>
+<table>
+<tr><td valign=top><a href="http://www.jacquardsystems.com"><img src="../image/jsr2.gif" border=0></a></td>
+<td><h1>A web-interface to GT.M</h1>
+<h2>or, Less is More</h2></td></tr>
+</table>
+
+<h3><i><a href="TestCGI.html#N_2_">Ed de Moel</a>,
+<a href="http://www.jacquardsystems.com">Jacquard Systems Research</a></i></h3>
+
+<p>One of the first questions I asked when I started to
+consider GT.M (Greystone MUMPS) as an alternative for
+MSM and Cach&eacute; was about the nature of the
+interface between this implementation of M[UMPS] and
+"the web". The answer surprised me a little: I was
+informed that there was none. When I pressed the issue,
+I learned that <a href="TestCGI.html#N_1_">Winfried Bantel</a> had
+implemented "<i>something based on CGI</i>", but that
+was all the information that was available.</p>
+
+<p>As I was pretty busy at that time, I left that issue
+on the "to do" pile on my desk, and recently, I finally
+got around to looking at what is or isn't there. The
+result was very surprising: there was nothing, which
+ends up meaning that everything that is needed is
+there, and the possibilities are almost unlimited.</p>
+
+<h3>The CGI interface</h3>
+
+<p>The basic premise of the CGI interface is that, when
+a certain request is made from a browser, a program can
+be started on the computer that acts as the web-server
+for such requests. When that program is started, the
+low-level software on the server-computer has set up a
+number of "environment variables" that contain the
+details about the request, and it is up to the
+application program to interpret these variables and
+take appropriate action. The underlying software is
+called the <b>C</b>ommon <b>G</b>ateway <b>I</b>nterface
+(CGI), and its variables are commonly referred to as
+"the CGI variables". The example below will describe
+how these variables can be accessed from a GT.M
+program.</p>
+
+<h3>The surprise</h3>
+
+<p>The approach that Winfried Bantel had taken was to
+use this (bare-bones) interface, create a little
+program in C that sets up the parameters needed to
+invoke GT.M correctly, and then call GT.M to execute
+the M[UMPS] program that would process the web-request.
+So there it was: without any software to be provided by
+the implementor of the M[UMPS] system, the full power
+of CGI is available to the M[UMPS] application
+programmer, and the only limitations that matter are
+those that the application programmer chooses to put on his or
+her application.</p>
+
+<p>The C program is basically a "one-liner". All it
+does is set up some parameter variables, and then call
+GT.M. The sample code below is what I used for my first
+test (I only made some slight enhancements to the
+sample program that was provided by Winfried
+Bantel)
+(click <a href="TestCGI.c">here</a> to download the C-program):</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main ()
+{
+
+    /* Where GT.M lives */
+    char gtmdir [] = "<font color=#ff0000><b><i>/home/edm/gtm/v4p2cd</i></b></font>";
+
+    /* Where the application lives */
+    char appdir []  = "<font color=#ff0000><b><i>/home/edm/gtm/edm</i></b></font>";
+
+    /* GT.M database descriptor file */
+    char gtmdb []  = "<font color=#ff0000><b><i>/edm.gld</i></b></font>;
+
+    /* MUMPS program to execute */
+    char mumpspgm [] = "<font color=#ff0000><b><i>^TestCGI</i></b></font>";
+
+    char routpath [256];
+    char execute [256];
+    char gtmgbldir [256];
+
+    setenv("gtm_dist", gtmdir, 1);
+
+    sprintf(gtmgbldir, "%s%s", appdir, gtmdb);
+    setenv("gtmgbldir", gtmgbldir, 1);
+
+    sprintf (routpath, "%s %s", appdir, gtmdir);
+    setenv("gtmroutines", routpath, 1);
+
+    sprintf(execute,"cd %s;%s/mumps -run %s", appdir, gtmdir, mumpspgm);
+
+    if (system(execute)) /* Invoke GT.M */
+    { /* Error occured */
+        printf("CONTENT-TYPE: TEXT/PLAIN\n\nError!!!\n");
+        printf("gtmdir      = %s\n", gtmdir);
+        printf("database    = %s\n", gtmdb);
+        printf("gtmgbldir   = %s\n", getenv("gtmgbldir"));
+        printf("gtmroutines = %s\n", getenv("gtmroutines"));
+        printf("gtm_dist    = %s\n", getenv("gtm_dist"));
+        printf("execute     = %s\n", execute);
+    }
+}
+</font></pre></td></tr></table>
+
+<p>At the top of the routine, the parameters are
+defined. The values used for my test are shown in red
+bold italics. Next, these values are copied into the
+appropriate places, and then GT.M is invoked using the
+built-in function <tt>system</tt>. That's all that is
+needed.</p>
+
+<p>If there should be an error in one of the
+parameters, the invocation of <tt>system(execute)</tt>
+will fail, and the bottom-part of the program will
+execute. In such a case, the text generated by the
+<tt>printf</tt>s in this section will appear as an
+error message in the browser window.</p>
+
+<p>In order to make this program work, it has to be
+compiled (<tt>cc TestCGI.c</tt>), and the resulting
+executable program will have to be copied into the
+directory where the CGI processor expects to find its
+executables.</p>
+
+<p>(In my case: <tt>mv a.out /home/httpd/cgi-bin/TestCGI</tt>).</p>
+
+<h3>The M[UMPS] part</h3>
+
+<p>Now, let's look at the M[UMPS] program. One
+difference between GT.M and many other implementations
+of M[UMPS] is that programs are compiled rather than
+interpreted. This means that the source code is stored
+in "normal" files in directories of the operating system,
+as well as the executeble versions of the programs.<br>
+In this case, the source code would be stored in
+<tt>TestCGI.m</tt>, and the compiled (executable)
+code would be stored in <tt>TestCGI.o</tt>. In the
+C program, the directory that contains these files
+was specified as <tt>/home/edm/gtm/edm</tt>.</p>
+
+<p>The M[UMPS] program, of course, is supposed to do
+"whatever the application requires". But, before the
+actual application can start, the parameters passed in
+the web-request (often called URL, <b>U</b>niform
+<b>R</b>esource <b>L</b>ocator, or URI, <b>U</b>niform
+<b>R</b>esource <b>I</b>dentifier) need to be copied
+from the CGI environment into the M[UMPS]
+environment.</p>
+
+<p>Let's look at the start of my test program:
+(click <a href="TestCGI.mmm.txt">here</a> to download the M[UMPS]-program):</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+TestCGI ; CGI-Call for GTM
+ ;
+ New i,data,entry
+ Write "CONTENT-TYPE: TEXT/HTML",!!
+ Set $ZTRAP="Do Error^"_$Text(+0)_"($ZSTATUS)"
+ ;
+ If $ZTRNLNM("REQUEST_METHOD")="POST" Do
+ . ; Retrieve variables from &lt;stdin&gt;
+ . Read data#$ZTRNLNM("CONTENT_LENGTH"):5
+ . Quit
+ Else  Do
+ . ; Retrieve variables from Query-String
+ . Set data=$ZTRNLNM("QUERY_STRING")
+ . Quit
+ ;
+ For i=1:1:$Length(data,"&amp;") Do
+ . New ind,pc,val
+ . Set pc=$Piece(data,"&amp;",i)
+ . Set ind=$$URLin($Piece(pc,"=",1)),val=$$URLin($Piece(pc,"=",2))
+ . Set:ind'="" %Key(ind)=val
+ . Quit
+ ;
+ Set entry=$Get(%Key("Action"))
+ If entry="" Do Error("No action requested.")
+ ; Error trap does not return
+ ;
+ If entry="xxx" Do xxx Halt
+ If entry="yyy" Do yyy Halt
+ . . .
+ ;
+ Do Error("Invalid action requested: """_entry_""".")
+ ; Error trap does not return
+ ;
+</font></pre></td></tr></table>
+
+<p>The first thing that this program does is find out
+which of the possible mechanism the requestor used to
+pass parameters in the web-request. There are two
+possible ways: GET and POST. When the request is a
+"GET", all parameters are specified on the URL; when
+the request is a "POST", the parameters can be read
+from standard input (which is the current device when
+the program is started). Examples below will demonstrate
+when which option will be used.</p>
+
+<p>The program checks which method applies for the
+current invocation by fetching the value of an
+environment variable. The name of the variable is
+<tt>REQUEST_METHOD</tt>. The function in GT.M that
+fetches values of environment variables is
+<tt>$ZTRNLNM</tt>. Once we know which method is being
+used, we need to get the actual parameters. If the
+method is <tt>"GET"</tt>, the environment variable
+<tt>QUERY_STRING</tt> will have the complete query,
+including all parameters, and otherwise (if the method
+is <tt>"POST"</tt>), the parameters have to be read
+from standard input. In that case, environment variable
+<tt>CONTENT_LENGTH</tt> will tell us how many
+characters to read to obtain all parameter values.</p>
+
+<p>Once these parameter values are captured into
+local variables of the M[UMPS] program, they can
+be used to call the appropriate application
+subroutine(s), and within those communicate the
+desired specific details.</p>
+
+<h3>The big surprise</h3>
+
+<p>So, the interesting thing is that, even though GT.M
+doesn't include any web-specific tools, it already did
+contain tools to allow the implementation to interact
+with the operating environment within which it does its
+work. And the surprise is that these tools are quite
+enough to get a web-interface to work. All it takes is
+a C program to start the M[UMPS] program, and a
+built-in function to get access to the CGI
+variables.</p>
+
+<p>The downside of this situation is that there are no
+explicit tools that would help an
+application-programmer create a web-interface for an
+existing application, but I also noticed that a much
+more important benefit of this situation is that there
+are no built-in limitations in the web-interface that
+prevent the application-programmer from using any
+specific detail of the possible ways to interact with
+"the web".</p>
+
+<h3>More details</h3>
+
+<p>In order to evaluate the parameters, a function
+<tt>$$URLin</tt> is called, and for error-handling, a
+subroutine <tt>Error</tt> is called. The rest of this
+article describes these and other functions that would
+help create a functioning web-application.</p>
+
+<h3>Parameters</h3>
+
+<p>The language of "the web" has a construct known as a
+"web-address", sometimes called a URL or a URI. This
+feature is used to gain access to information. A URL
+typically looks like
+<tt>http://machine.domain/directory/filename?keyword=
+value&amp;keyword= value&amp;...</tt>, where
+<tt>"http"</tt> is the name of the
+communication-protocol to be used, <tt>machine</tt> is
+the name of the computer to be accessed,
+<tt>domain</tt> is the name of the network
+(organization) to which that computer belongs,
+<tt>directory</tt> is any number of levels of
+directories and subdirectories to get to the
+<tt>filename</tt>, and the optional
+<tt>keyword=value</tt> combinations specify any
+additional parameters to be passed to the application
+identified by <tt>filename</tt>.</p>
+
+<p>An issue that each language addresses in its
+own way is how to deal with "special characters".
+In order to be able to parse out the keywords and
+values appropriately, the web-language has the
+rule that all characters in parameters or keywords
+that are not numeric or alphabetic must be encoded
+as a percent-sign (%) followed by two hexadecimal
+digits, representing the ASCII code of the
+character in question. Thus, a comma would become
+<tt>%2c</tt> (ASCII code 44), and a plus sign would
+become <tt>%2b</tt>. A special case is the
+space-character, which may also be represented as a
+plus-sign (the hexadecimal representation
+(<tt>%20</tt>) is also valid). In the sample
+program, the parameters are parsed out by the
+procedure <tt>$$URLin</tt>, which looks like:</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+URLin(x) New c,e,hex,i,p,r,z
+ Set hex="0123456789abcdef",z=$tr(x,"ABCDEF","abcdef")
+ Set r="" For i=1:1:$Length(x) Do
+ . Set e=$Extract(x,i)
+ . If e="+" Set r=r_" " Quit
+ . If e="%" Do  Quit
+ . . Set c=$Find(hex,$Extract(z,i+1))-2*16+$Find(hex,$Extract(z,i+2))-2
+ . . Set r=r_$Char(c),i=i+2
+ . . Quit
+ . Set r=r_e
+ . Quit
+ Quit r
+</font></pre></td></tr></table>
+
+<p>The sample M[UMPS] program uses a parameter called
+<tt>Action</tt> as a first selector that decides which
+of the available subroutines the program will execute.
+Note the lines that look like:</p>
+
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;If entry="xxx" Do xxx Halt</tt></p>
+
+<p>Each of these lines calls the appropriate subroutine
+for one of the possible actions.</p>
+
+<p>Inside these subroutines, the values in the array
+<tt>%Key()</tt> will give access to any further
+parameters.</p>
+
+<p>Now, the M[UMPS] program could simply execute <tt>Do
+@entry</tt>. If the program were written like that, any
+callable M[UMPS] subroutine could be invoked using the
+same interface program (and the error-trap this is
+already set up would take care of any values for
+<tt>entry</tt> that could not be processed). However,
+in practice, there are issues of security to consider,
+and most systems contain maintenance programs that
+should not be too easily accessible to outside users,
+so some level of protection will typically be
+required.</p>
+
+<p>Similar to the parameter-input-conversion function,
+the program contains a procedure to format parameters
+that are to be passed into a web-address:</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+URLout(x) New e,i,hex,r
+ Set hex="0123456789abcdef"
+ Set r="" For i=1:1:$Length(x) Do
+ . Set e=$Extract(x,i)
+ . If e?1AN Set r=r_e Quit
+ . If e=" " Set r=r_"+" Quit
+ . Set e=$ASCII(e),r=r_"%"_$Extract(hex,e\16+1)_$Extract(hex,e#16+1)
+ . Quit
+ Quit r
+</font></pre></td></tr></table>
+
+<p>Next to the procedure called <tt>$$URLout</tt>,
+there also is a procedure called
+<tt>$$HTMLout</tt>. The function of the latter
+procedure comes into play when representing normal text
+within a web-page. Within the web-language (HTML,
+<b>H</b>yper<b>T</b>ext <b>M</b>ark-up
+<b>L</b>anguage), the characters ampersand (&amp;),
+less than (&lt;) and greater than (&gt;) have a special
+meaning, and those characters shouldn't appear by
+themselves. Characters outside of the 7-bit ASCII set
+may be mis-interpreted when transmitted without special
+care.  If any of those characters need to be shown, a
+special construct is needed. The function
+<tt>$$HTMLout</tt> takes care of these
+transformations:</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+HTMLout(x) New e,i,r
+ Set r="" For i=1:1:$Length(x) Do
+ . Set e=$Extract(x,i)
+ . If e="&amp;" Set r=r_"&amp;amp;" Quit
+ . If e="&lt;" Set r=r_"&amp;lt;" Quit
+ . If e="&gt;" Set r=r_"&amp;gt;" Quit
+ . If $Ascii(e)&gt;126 Set r=r_"&amp;#"_$Ascii(e)_";" Quit
+ . Set r=r_e
+ . Quit
+ Quit r
+</font></pre></td></tr></table>
+
+<h3>Error Handling</h3>
+
+<p>One unfortunate aspect of application-programs is
+that there are always expected and unexpected cases
+that cannot be handled by the software. Whenever such a
+situation arises, the error needs to be reported, and,
+if possible handled. The sample program contains a
+simple error-handling subroutine that just reports the
+error and some information about the M[UMPS]
+environment when the error happened. A "real"
+application would probably need a somewhat more
+sophisticated error handler, but this sample-version
+would be enough to get any prototype-program going:</p>
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+Error(MSG) ;
+ Write "&lt;html&gt;&lt;title&gt;Sample Error Report&lt;/title&gt;&lt;body&gt;"
+ Write !,"&lt;h2&gt;&lt;font color=#ff0000&gt;Error: "_$$HTMLout(MSG)_"&lt;/h2&gt;"
+ Write !,"&lt;h3&gt;GT.M version is ",$ZVERSION,"&lt;/h3&gt;"
+ Write !,"&lt;pre&gt;"
+ ZShow "*"
+ Write !,"&lt;/pre&gt;"
+ Write !,"&lt;/body&gt;&lt;/html&gt;"
+ Halt
+</font></pre></td></tr></table>
+
+<p>Note that this error handling procedure has a
+parameter, and that for expected errors a specific
+value is passed (e.g. "No action specified" or "Invalid
+action requested"), whereas for unexpected errors an
+ad-hoc value (<tt>$ZSTATUS</tt>) is being passed.</p>
+
+<h3>Get and Post</h3>
+
+<p>When a request is made using a URL like 
+<tt>http://www.company.com/cgi-bin/program?Action=Buy&Article=Milk&Quantity=2</tt>, 
+the transaction is processed as a "Get" request. 
+This is also the case when the URL is provided in 
+a hyper-text-link like <tt>&lt;a 
+href="http://...&Quantity=2"&gt;</tt>. The "Post" 
+method comes into play when information is entered 
+into a <i>form</i> and subsequently transmitted 
+to the web-server. The code-snippet below creates 
+a form with fields that correspond to the 
+parameters in the above example.
+
+<table><tr><td bgcolor=#e0e0e0><pre><font color=#000000>
+ Write !,"&lt;form action=""TestCGI"" method=""POST""&gt;"
+ Write !,"&lt;table&gt;"
+ Write !,"&lt;tr&gt;&lt;td align=right&gt;Action:&lt;/td&gt;"
+ Write !,"&lt;td&gt;&lt;input type=radio value=""Buy"" name=""Action""&gt; Buy&lt;br&gt;"
+ Write !,"&lt;input type=radio value=""Sell"" checked name=""Action""&gt; Sell&lt;/td&gt;&lt;/tr&gt;"
+ Write !,"&lt;tr&gt;&lt;td align=right&gt;Article:&lt;/td&gt;"
+ Write !,"&lt;td&gt;&lt;select&gt;"
+ Write !,"&lt;option value=1001&gt;Milk&lt;/option&gt;"
+ Write !,"&lt;option value=1002&gt;Yoghurt&lt;/option&gt;"
+ Write !,"&lt;option value=1003 selected&gt;Butter&lt;/option&gt;"
+ Write !,"&lt;option value=1004&gt;Cheese&lt;/option&gt;"
+ Write !,"&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;"
+ Write !,"&lt;tr&gt;&lt;td align=right&gt;Quantity:&lt;/td&gt;"
+ Write !,"&lt;td&gt;&lt;input type=text name=""Quantity"" value=5&gt;&lt;/td&gt;&lt;/tr&gt;"
+ Write !,"&lt;/table&gt;"
+ Write !,"&lt;p&gt;&lt;input type=submit value=""Process Order""&gt;&lt;/p&gt;"
+ Write !,"&lt;/form&gt;"
+</font></pre></td></tr></table>
+
+When displayed in a browser, this "form" would 
+appear as:
+
+<table><tr><td bgcolor=#e0e0e0>
+<form action="TestCGI.html" method="POST">
+<table>
+<tr><td align=right><font color=#000000>Action:</font></td>
+<td><font color=#000000><input type=radio value="Buy" name="Action"> Buy<br>
+<input type=radio value="Sell" checked name="Action"> Sell</font></td></tr>
+<tr><td align=right><font color=#000000>Article:</td>
+<td><select>
+<option value=1001>Milk</option>
+<option value=1002>Yoghurt</option>
+<option value=1003 selected>Butter</option>
+<option value=1004>Cheese</option>
+</select></font></td></tr>
+<tr><td align=right><font color=#000000>Quantity:</font></td>
+<td><input type=text name="Quantity" value=5></font></td></tr>
+</table>
+<p><font color=#000000><input type=submit value="Process Order"></font></p>
+</form>
+</td></font></tr></table>
+
+<p>The line that starts the "form" specifies the method
+to be used for processing the request. Both "Get" and "Post"
+are allowed for forms. However, when the "Post" method is
+chosen, the URL that is displayed in most browsers will
+look a lot cleaner than when the "Get" method is chosen.
+Also, when the number of parameters gets large, the "Get"
+method is likely to run into problems with the maximum
+number of characters that can be in a URL, whereas there
+is no limit to the amount of text that can be fed into
+a program through standard input...</p>
+
+<h3>More CGI Variables</h3>
+
+<p>The sample M[UMPS] program uses three CGI variables
+to obtain the information that it needs to finds its
+parameter values (<tt>REQUEST_METHOD</tt>,
+<tt>CONTENT_LENGTH</tt> and <tt>QUERY_STRING</tt>). The
+variable <tt>REQUEST_METHOD</tt> is always defined,
+<tt>QUERY_STRING</tt> is also always defined, but it
+only has a non-empty value when at least one parameter
+is specified in the URL. <tt>CONTENT_LENGTH</tt>,
+however, is only defined if the current method is a
+"POST".</p>
+
+<p>A complete list of all CGI variables is hard to
+provide, because each web-server offers its own. The
+table below shows the variables that are used by Apache
+1.3.12. (View "your own" copy of these variables
+by clicking on the following links:<br>
+<ul><li>GET method using plain URL: 
+<a href="jsrCGI.html">http://71.174.62.16/Demo/jsrCGI</a></li>
+<li>GET method using URL with variables: 
+<a href="jsrCGI%EF%B9%96Action=View&amp;Hex=%EF%B9%AA%20v.html">http://71.174.62.16/Demo/jsrCGI?Action=View&Hex=%25%20%76</a></li>
+<li>Post method with hidden and explicit variables:<br>
+<form method=POST action="jsrCGI.html">
+&lt;form method=POST action="http://71.174.62.16/Demo/jsrCGI"&gt;<br>
+<input type=hidden name="Action" value="ViewForm">
+&lt;input type=hidden name="Action" value="ViewForm"&gt;<br>
+&lt;input type=text name="YourText"&gt;<input type=text name="YourText"><br>
+&lt;input type=password name="YourPassWord"&gt;<input type=password name="YourPassWord"><br>
+&lt;input type=submit name="YourButton" value="Press Here"&gt;<input type=submit name="YourButton" value="Press Here"><br>
+&lt;/form&gt;</form></li>
+</ul>
+(Note that "your" IP address will always appear to be 90.0.0.1.
+This is the (intranet) address of the firewall that relays your
+request to the computer that actually processes the requests.)</p>
+
+<table>
+<tr><th align=left valign=bottom>When<br>defined</th>
+<th align=left valign=bottom>Name</th>
+<th align=left valign=bottom>Sample value</th></tr>
+
+<tr><td align=left valign=top>post</td>
+<td align=left valign=top><tt>CONTENT_LENGTH</tt></td>
+<td align=left valign=top>80</td></tr>
+
+<tr><td align=left valign=top>post</td>
+<td align=left valign=top><tt>CONTENT_TYPE</tt></td>
+<td align=left valign=top>application/x-www-form-urlencoded</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>DOCUMENT_ROOT</tt></td>
+<td align=left valign=top>/home/httpd/html</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>GATEWAY_INTERFACE</tt></td>
+<td align=left valign=top>CGI/1.1</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HOST</tt></td>
+<td align=left valign=top>jsrnote01</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HOSTTYPE</tt></td>
+<td align=left valign=top>i386-linux</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_ACCEPT_CHARSET</tt></td>
+<td align=left valign=top>iso-8859-1,*,utf-8</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_ACCEPT_ENCODING</tt></td>
+<td align=left valign=top>gzip</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_ACCEPT_LANGUAGE</tt></td>
+<td align=left valign=top>en,ru</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_ACCEPT</tt></td>
+<td align=left valign=top>image/gif, image/x-xbitmap, image/jpeg,
+image/pjpeg, image/png, */*</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_CONNECTION</tt></td>
+<td align=left valign=top>Keep-Alive</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_HOST</tt></td>
+<td align=left valign=top>90.0.0.5</td></tr>
+
+<tr><td align=left valign=top>post</td>
+<td align=left valign=top><tt>HTTP_REFERER</tt></td>
+<td align=left valign=top>http://90.0.0.5/Demo/TestCGI?Action=xxx</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>HTTP_USER_AGENT</tt></td>
+<td align=left valign=top>Mozilla/4.7 [en] (WinNT; U)</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>MACHTYPE</tt></td>
+<td align=left valign=top>i386</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>OSTYPE</tt></td>
+<td align=left valign=top>linux</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>PATH</tt></td>
+<td align=left valign=top>/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>PWD</tt></td>
+<td align=left valign=top>/home/edm/gtm/edm</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>QUERY_STRING</tt></td>
+<td align=left valign=top>Action=xxx</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>REMOTE_ADDR</tt></td>
+<td align=left valign=top>90.0.0.17</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>REMOTE_PORT</tt></td>
+<td align=left valign=top>2928</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>REQUEST_METHOD</tt></td>
+<td align=left valign=top>POST</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>REQUEST_URI</tt></td>
+<td align=left valign=top>/Demo/TestCGI?Action=xxx </td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SCRIPT_FILENAME</tt></td>
+<td align=left valign=top>/home/edm/demo/TestCGI</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SCRIPT_NAME</tt></td>
+<td align=left valign=top>/Demo/TestCGI</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_ADDR</tt></td>
+<td align=left valign=top>90.0.0.5</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_ADMIN</tt></td>
+<td align=left valign=top>root@localhost</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_NAME</tt></td>
+<td align=left valign=top>JSRNote01</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_PORT</tt></td>
+<td align=left valign=top>80</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_PROTOCOL</tt></td>
+<td align=left valign=top>HTTP/1.0</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_SIGNATURE</tt></td>
+<td align=left valign=top>&lt;ADDRESS&gt;Apache/1.3.12 Server at
+JSRNote01 Port 80&lt;/ADDRESS&gt;</td></tr>
+
+<tr><td align=left valign=top>always</td>
+<td align=left valign=top><tt>SERVER_SOFTWARE</tt></td>
+<td align=left valign=top>Apache/1.3.12 (Unix)  (Red Hat/Linux)
+PHP/3.0.15 mod_perl/1.21</td></tr>
+</table>
+
+<h3>Notes</h3>
+
+<a name="N_2_"></a>
+
+<p><i>Ed de Moel is past chairman of the MDC and works with <a
+href="http://www.jacquardsystems.com">Jacquard Systems Research.</a><br>
+His experience includes developing software for research in medicine and
+physics.<br>
+Over the past ten years, Ed's has mostly focused on the production of tools
+for data management and analysis, and tools for the support of day-to-day
+operation of medical systems.<br>
+Ed has worked with the Greystone Group at Sanchez
+on a project to make GT.M more compliant with the 1995
+ANSI standard, and currently works with the Department of Veterans
+Affairs on their project to add images to the medical record.</br>
+Ed can be reached <a HREF="mailto:demoel@jacquardsystems.com.">by
+e-mail</a>.</i></p>
+
+<hr>
+
+<a name="N_1_"></a>
+<p><i><a href="mailto:winfried.bantel@e-ntwicklung.de">Winfried Bantel</a>
+(<a href="http://www.e-ntwicklung.de/">home-page</a>)
+is a consultant from Germany. Over the years he has provided numerous
+contributions to the M[UMPS] communities in
+Germany and world-wide.</i></p>
+ 
+</body>
+</html>

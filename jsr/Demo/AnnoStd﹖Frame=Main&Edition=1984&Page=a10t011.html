@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>The Annotated M[UMPS] Standards</title></head>
+<body bgcolor="#4c76ac" text="#ecd264" link="#bca234" vlink="#bca234">
+<form method="post" action="AnnoStd.html">
+<input type="hidden" name="Frame" value="Search"/>
+<input type="text" name="Search" size="20"/>
+<input type="submit" value="Search"/></form><table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t011&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t011&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr>
+<tr><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t010&amp;Edition=1984.html"><span style="font-size: 72px">&#9756;</span></a></td><td colspan="5" align="center"><h2>CLOSE</h2><h3>1984 Version of ANSI Standard</h3></td><td align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t012&amp;Edition=1984.html"><span style="font-size: 72px">&#9758;</span></a></td></tr></table><a name="Def_0001"></a>
+<h3>CLOSE command</h3>
+<p>See <a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a108025.html#Def_0004">Close</a> for formal definition.</p>
+<p><object data="../image/AnnoStd/1984_trans_close.svg" width="420" height="750" type="image/svg+xml" /></p>
+<ol type="1">
+<li>Result <img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/> Devnam.</li>
+<li>Null string ("") <img align="middle" alt="Right Arrow" src="../image/AnnoStd/right_arrow.gif"/>
+Result.</li>
+<li>Search the Openlist for the device named in Devnam.<br/>
+If not found, take no further action.<br/>
+Otherwise, perform the following operations:
+<ol type="a">
+<li>Remove the device specified in Devnam from the Openlist.</li>
+<li>If Result contains any device parameters, find the device
+named in Devnam in the Devicelist, and change those parameters
+which appear in Result to their new values from Result.</li>
+<li>Perform any termination procedures for the device named in
+Devnam according to its device parameters in Devicelist.</li>
+<li>If the named device is the current device (<a href="AnnoStd%EF%B9%96Frame=Main&amp;Edition=1984&amp;Page=a107063.html#Def_0003">$IO</a>), execute an
+OPEN P USE P where P designates a predetermined default
+device.</li>
+</ol></li>
+</ol>
+<table width="91%"><tr>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t011&amp;Edition=1977.html"><img alt="Button for 1977" border="0" src="../image/AnnoStd/1977a.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for 1984" border="0" src="../image/AnnoStd/1984d.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1990" border="0" src="../image/AnnoStd/1990c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for 1995" border="0" src="../image/AnnoStd/1995c.gif"/></td>
+<td width="13%" align="center"><img alt="Button for MDC" border="0" src="../image/AnnoStd/MDCc.gif"/></td>
+<td width="13%" align="center"><a href="AnnoStd%EF%B9%96Frame=Main&amp;Page=a10t011&amp;Edition=notes.html"><img alt="Button for notes" border="0" src="../image/AnnoStd/notesa.gif"/></a></td>
+<td width="13%" align="center"><img alt="Button for examples" border="0" src="../image/AnnoStd/examplesc.gif"/></td></tr></table>
+<p>Copyright &copy; Standard Documents; 1977-2023 MUMPS Development Committee;<br/>
+Copyright &copy; Examples: 1995-2023 Ed de Moel;<br/>
+Copyright &copy; Annotations: 2003-2008 Jacquard Systems Research<br/>
+Copyright &copy; Annotations: 2008-2023 Ed de Moel.</p>
+<p><font size="-1">This page most recently updated on 13-Sep-2014, 16:06:32.</font></p>
+<p>For comments, <a href="mailto:demoel@jacquardsystems.com?Subject=Annotated%20Standards%20%28Frame%3dMain%2fPage%3da10t011%2fEdition%3d1984%29">contact Ed de Moel (demoel@jacquardsystems.com)</a></p>
+</body>
+</html>
