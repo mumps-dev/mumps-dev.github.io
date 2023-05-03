@@ -1,7 +1,10 @@
 # mumps web resources
 
-### Quick Reference
+### QuickRef
 https://github.com/mumps-dev/mumps-dev.github.io/tree/main/quick-ref  
+
+### JSR
+https://github.com/mumps-dev/mumps-dev.github.io/tree/main/jsr
 
 
 ### MUMPS Tutorials - Prof O'Kane
