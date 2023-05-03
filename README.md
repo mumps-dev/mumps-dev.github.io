@@ -1,6 +1,7 @@
 # mumps web resources
 
 ### Quick Reference
+https://github.com/mumps-dev/mumps-dev.github.io/tree/main/quick-ref  
 
 
 ### MUMPS Tutorials - Prof O'Kane
