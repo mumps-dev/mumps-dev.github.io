@@ -20,8 +20,7 @@ https://news.ycombinator.com/item?id=16309237
 	67 points by twunde on Feb 5, 2018 | hide | past | favorite | 42 comments
 
 
-	
-	
+
 mxtbccagmailcom on Feb 6, 2018 | next [–]
 
 My first professional development language. It was old, when I started to use it in 1986. You had to be disciplined - 'cus' writing spaghetti was way too easy. My style was "structured goto's". :-) You got to remember this language was written on a PDP-7 with 4k -that's 4096 bytes- of main memory and before Edsger Dijkstra's letter "Go To Statement Considered Harmful", published in March 1968.
@@ -350,5 +349,4 @@ I think the argument is that someone needs to distribute more vaccines against t
 iwre0 on Feb 6, 2018 | prev [–]
 
 I work with it now, and I like it ....
-
 ```
